@@ -4,15 +4,51 @@
   "real_participants": 0,
   "engine": "Chromium desktop with viewport override, not physical iOS Safari",
   "checks": [
-    {"viewport": [320, 568], "scroll_width": 305, "button_height": 84.96875, "consent_premarked": false},
-    {"viewport": [390, 844], "scroll_width": 375, "button_height": 57.78125, "consent_premarked": false},
-    {"viewport": [430, 932], "scroll_width": 415, "button_height": 57.78125, "consent_premarked": false},
-    {"viewport": [844, 390], "scroll_width": 829, "button_height": 57.78125, "consent_premarked": false}
+    {
+      "viewport": [
+        320,
+        568
+      ],
+      "scroll_width": 305,
+      "button_height": 84.96875,
+      "consent_premarked": false
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "scroll_width": 375,
+      "button_height": 57.78125,
+      "consent_premarked": false
+    },
+    {
+      "viewport": [
+        430,
+        932
+      ],
+      "scroll_width": 415,
+      "button_height": 57.78125,
+      "consent_premarked": false
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "scroll_width": 829,
+      "button_height": 57.78125,
+      "consent_premarked": false
+    }
   ],
   "three_stages_checked": true,
   "downloaded_json_validated_privately": true,
   "qa_code": "R999",
   "share_success_cancel_failure": "unit tests with mocks; physical share UI not tested",
   "physical_iphone_check": "pending",
-  "live_pages_check": "pending_human_merge_and_deployment"
+  "live_pages_check": "verified_https_assets_and_download",
+  "live_pages_url": "https://jea27.github.io/Lut_generator/investigacion/",
+  "live_pages_source_commit": "86d2137be6488def5a15c2dfb304202a2a414874",
+  "live_pages_assets_match_git_blobs": true,
+  "live_pages_download_schema_valid": true
 }

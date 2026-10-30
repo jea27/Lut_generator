@@ -133,3 +133,11 @@
 - Consentimiento original conservado; exportación JSON voluntaria con compartir por función disponible y fallback de descarga. Respuestas en memoria; se aclara registro técnico de IP por Pages.
 - Códigos R101/R102/R103 reservados y sin asignar. R999 solo QA, rechazado por el registro de participantes. Recogida privada documentada.
 - 87 unittest locales OK. Cuatro tamaños móviles emulados sin overflow, controles >=44px, consentimiento sin premarcar; tres etapas y JSON sintético descargado/verificado, sin respuestas reales. Share probado con mocks; Safari/iPhone físico pendiente.
+
+## 2026-10-30 · [COL-006] Enlace publicado, permisos y controles verificables
+- PR34 revisada/integrada al inicio; sin cambios ni commits pendientes en raíz. PR35 del formulario integrada por jea27 durante la sesión, no por el agente. Pages run41114395315 success: /investigacion/ disponible, HTML/JS/CSS coinciden con hashes de blobs Git.
+- Flujo HTTPS y descarga R999 sintética válidos. QA en 320/390/430 y paisaje; sin overflow ni consentimiento premarcado. Importador bloquea R999; originales QA privados, sin respuestas reales. Safari/iPhone físico pendiente, no se confunde con emulación.
+- PR36 guía de incorporación/consentimiento fotográfico y plantilla vacía, sin permisos ficticios ni medios nuevos. PR37 controles reales de los cuatro JPEG CC0: 12 lecturas, identidad/repetición reproducibles, tiempos solo de infraestructura. Sin ground truth inventado ni productos ejecutados.
+- 91 unittest en integración local sin omisiones; empaquetado y JS correctos, integración sin conflictos. CI tiene ocho omisiones opcionales por dependencias ausentes, documentadas. No instalaciones, proveedor nuevo ni cambios de permisos.
+- Issue29 reutilizada para revisión/prueba iPhone/canal/responsable/conservación. Workflow41114232338 success, bot6531560480 menciona jea27. Una sola mención nueva; marcadores evitan avisos por PR36/37. Cuerpo conservado como UTF-8 al consultar gh.
+- Puerta P0 mantiene 0 entrevistas, 0 pares aceptados y 0 casos de productos, exit2 esperado y ninguna tarea aprobada. COL001 pendiente. No se inicia P1 ni se fusionan PR por el agente. Recuperación detallada añadida a ESTADO_AGENTE.
