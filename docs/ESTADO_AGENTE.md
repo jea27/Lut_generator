@@ -35,13 +35,13 @@ mismo bloqueo. No se cerró ni aprobó ninguna tarea.
   aviso41089220791; PR23 run41089234703/aviso41089234711; PR26 run41090372324/
   aviso41090372385. Todos validate/notify success, Pages omitido desde PR.
 - PR #28: https://github.com/jea27/Lut_generator/pull/28. Auditoría inicial con
-  64 tests validada por CI run41091623916; los últimos cambios de documentación
-  se verifican en sus checks antes de terminar. Sin autoaprobación.
+  64 tests validada por CI run41091623916; checks finales de la auditoría en
+  run41092154515 (validate) y 41092155755 (deduplicación), ambos success. Sin autoaprobación.
 - Solicitud consolidada #29 con los siete campos, needs-human y mención real:
   run41091807276 success, comentario6528069841. Una sola nueva petición para
   aportar evidencia; la solicitud previa de COL-005 (#15) no se reenvía.
-- Sync run41091807163 success. El dashboard procede solo de GitHub; la consulta
-  final comprobará bloqueos sin inferir que las tareas estén aprobadas.
+- Sync run41092196966 success. JSON público comprobado: cinco frentes P0
+  blocked y COL-005 review. Ninguna tarea figura aprobada por el agente.
 
 ## Ramas y carpetas conservadas
 
@@ -57,7 +57,8 @@ localmente en .git/info/exclude. No borrarlos ni volver a crear las ramas.
 
 ## Cambios pendientes y bloqueos humanos
 
-- Auditoría/estado publicados en PR #28; revisión humana y checks finales.
+- Auditoría/estado publicados en PR #28; checks correctos, sin código pendiente.
+  Estado de PR #28 observado al cierre: MERGED. Un merge del usuario no aprueba P0.
 - Canonicales #6/#16/#17/#18/#19 marcadas blocked por insumos pendientes;
   #13 sigue status:review. Ninguna cerrada ni approved por el agente.
 - Acción humana consolidada: https://github.com/jea27/Lut_generator/issues/29.
@@ -102,3 +103,12 @@ privadas explícitas. No publicar respuestas ni rutas privadas en informes.
    PR. Solicitudes nuevas: título LUMAFORGE ACCIÓN REQUERIDA y siete campos;
    reutilizar marcador para no duplicar notificaciones del mismo bloqueo.
 7. Jamás iniciar el motor/P1 por un exit 0: p0_status no concede autorización.
+
+## Cierre verificable
+
+Raíz y tres worktrees comprobados limpios antes de este último checkpoint.
+Todos los cambios de código probados y publicados. Solo se actualiza este
+registro al cierre; no repetir la suite local sin nuevos cambios de código.
+Solicitud #29 conserva un único comentario del bot tras marcar ready: sin
+segundo aviso del mismo bloqueo. Los enlaces de publicación final y cualquier
+actualización documental quedan en la Issue #19. No hay operación Git a medias.
