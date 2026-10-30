@@ -15,12 +15,24 @@ El sistema no envía push desde Codex de forma intrínseca: lo hace **GitHub Act
 - **Revisión de código:** cuando se abre, actualiza o marca lista una PR no-borrador `[COL-###]`, el bot crea una Issue de revisión vinculada a la PR, explica la decisión, añade needs-human y menciona al revisor allí. Las actualizaciones no duplican la solicitud existente. Se evita comentar en la PR porque el token actual devolvió 403; no se amplían permisos.
 - **Autorización:** gastos, proveedores, secretos, publicar a producción, permisos, arquitectura no aprobada y operaciones destructivas quedan detenidas hasta respuesta explícita; no basta con notificar.
 
-## Prueba mínima (cuando el repo esté conectado)
+## Prueba mínima y solicitudes actuales
+
+La recepción en el móvil ya fue confirmada. No repetir la prueba si el mismo
+bloqueo ya tiene solicitud. Para una decisión nueva, crear o actualizar una
+Issue con el título y los siete campos del protocolo, y después needs-human.
+Una Issue COL-000 de ejemplo con cuerpo genérico ya no cumple el formato.
+
+Para repetir expresamente una acción de prueba autorizada, usar una Issue de
+acción existente, completa y etiquetada. El modo manual recibe su número:
+
 ```powershell
-gh label create needs-human --color F9A825 --force
-gh issue create --title "[COL-000] PRUEBA aviso móvil" --body "Prueba: confirmar recepción y cerrar manualmente." --label needs-human
+gh workflow run alert-human.yml --repo jea27/Lut_generator --ref main -f issue_number=NUMERO_REAL
 ```
-Esta prueba genera una Issue fuera de los 42 IDs válidos y podría permanecer fuera del dashboard; ciérrala/bórrala una vez comprobada. Asegúrate de que el workflow fue habilitado en Actions y revisa su ejecución si no llega push.
+
+Una petición ya mencionada se omite por su marcador; no retirar/aplicar la
+etiqueta para reenviar el mismo bloqueo. Verificar run, comentario bot y, solo
+si se está validando una recepción nueva, confirmación del usuario. Mantener
+el registro histórico de las pruebas anteriores sin repetir notificaciones.
 
 ## Protocolo para el agente
 El agente debe publicar un comentario de decisión en una Issue antes de marcar `needs-human`:
@@ -59,8 +71,8 @@ Ni el dashboard ni la acción de GitHub programan a Codex para desarrollar en tu
 No se modificaron permisos, tokens, protecciones ni ajustes del móvil. No se
 fusionaron PR ni se aprobaron tareas. El cierre de la prueba queda al usuario.
 Esta comprobación no garantiza entregas futuras ni valida los avisos por fallos
-críticos o el disparador manual: el manual del workflow actual se omite por su
-condición de job. Para repetir la prueba, usar una Issue acordada y añadir
+críticos o el disparador manual en aquella versión. La versión posterior incorpora
+un target explícito y deduplicación, con pruebas locales documentadas. Para repetir la prueba, usar una Issue acordada y añadir
 needs-human después de publicar la pregunta. Los cambios más amplios de
 seguimiento siguen separados en la rama local de preparación P0.
 

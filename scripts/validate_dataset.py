@@ -69,7 +69,7 @@ def validate(data, media_root=None):
                 sources.add(digest)
             rights = asset.get('rights')
             if not isinstance(rights, dict) or rights.get('status') != 'cleared' or not re.fullmatch(
-                    r'RIGHTS-[A-Z0-9-]+', str(rights.get('record_id', ''))) or not rights.get('basis'):
+                    r'RIGHTS-[A-Z0-9-]+', str(rights.get('record_id', ''))) or not isinstance(rights.get('basis'), str) or not rights['basis'].strip():
                 pending.append(f'{label}: rights review/evidence missing')
                 pair_pending = True
             if asset.get('color_space') != 'sRGB' or not re.fullmatch(

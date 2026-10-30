@@ -102,3 +102,17 @@
 - Avisos propuestos: título LUMAFORGE ACCIÓN REQUERIDA, siete campos, contenido no vacío, CRLF aceptado y deduplicación por PR/contenido. Modo manual con Issue explícita y sin interpretar entradas como código.
 - 27 unittest OK. Permisos del workflow conservados; sin cambios de configuración sensible ni tokens. Puerta P0 documentada como pendiente, nunca como go.
 - Checkpoint 1: COL-004 preparada en worktree, 30 unittest OK y cero medios listos; se continúa con COL-002/003.
+
+## 2026-10-30 · [COL-006] Auditoría integrada de P0 y cierre de evidencia
+- Continuadas entregas independientes: COL-004 PR22 (integridad), COL-002 PR23 (actas) y COL-003 PR26 (benchmark); GitHub registra integración por jea27. Detalles en docs/diario/COL-002.md, COL-003.md y COL-004.md. No se ejecutó merge por el agente.
+- Integradas de forma segura en la rama de coordinación, sin sobrescribir documentación ni datos. Añadido p0_status.py, de solo lectura: resume registros y aceptación GitHub, ignora Issues de aviso y falla cerrado con duplicados/lectura no disponible. Nunca concede P1.
+- Corregido un caso de permisos de dataset: basis no textual/vacía no cuenta como registro de uso completo.
+- 64 unittest OK. Comprobación real de readiness: 0 entrevistas, 0 pares, 0 ejecuciones; los tres validadores y p0_status --github --ready devuelven 2, esperado. Las seis Issues P0 siguen sin aceptación humana.
+- Fuentes oficiales de COL-003 muestran diferencia entre landing antigua y requisitos actuales de Colourlab v4; no se presupone disponibilidad ni se instalan herramientas.
+- Checkpoint completo en ESTADO_AGENTE.md. Siguientes pasos requieren revisión, actas, medios con permiso y acceso autorizado; no se inventa progreso ni se inicia P1.
+
+### Checkpoint remoto de la sesión intensiva
+- PR #28 de auditoría/recuperación publicada; run41091623916 success con 64 tests. Se prepara para revisión sin fusionarla.
+- Una solicitud de insumos reales en Issue #29, título LUMAFORGE ACCIÓN REQUERIDA y siete campos completos, creada antes de needs-human. Run41091807276 success; bot menciona a jea27 en comentario6528069841. No se afirma recepción física de este aviso nuevo ni se interpreta como aprobación.
+- Las Issues #6/#16/#17/#18/#19 están blocked; #13 en revisión. Todas siguen abiertas y sin approved. Sincronización run41091807163 success; estado publicado se comprueba al terminar.
+- No queda ejecución P0 con entradas disponibles: continuar exige actas, medios/permisos o acceso autorizado. Se preservan todos los worktrees y commits; ESTADO_AGENTE contiene comandos y dependencias para reanudar.

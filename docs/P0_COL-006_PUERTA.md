@@ -59,3 +59,26 @@ Implementar transformaciones, LUT o modelos de imagen es P1/P3 y queda fuera.
 
 Un documento vacío o una opción de esta plantilla no es autorización. Ni el
 agente ni un script rellenan la decisión o aplican approved por el usuario.
+
+## Auditoría de estado reproducible
+
+```powershell
+python scripts/p0_status.py --github
+python scripts/p0_status.py --github --ready --as-of 2026-10-30
+```
+
+La herramienta solo lee los tres registros y las Issues canónicas con roadmap.
+Ignora solicitudes de notificación, detecta IDs duplicados y exige cierre más
+approved para reflejar aceptación de cada tarea. Una PR fusionada no la inventa.
+La fecha explícita debe actualizarse al reanudar una sesión posterior.
+
+Exit 2 con --ready es el resultado esperado mientras falten evidencia o
+aceptación. Exit 1 indica un validador/registro inválido o no disponible. Sin
+--ready puede devolverse 0 para una auditoría estructural de registros vacíos;
+no significa P0 completado. Si GitHub no se consulta o falla, no inferir aprobación.
+
+Opciones --interviews, --dataset y --benchmark permiten leer registros locales
+privados explícitos sin copiarlos a Git. --media-root comprueba los medios de
+COL-004. El informe contiene contadores, no respuestas o rutas privadas.
+automatic_p1_authorization siempre es false: este programa no concede permisos
+ni inicia P1, aunque los registros y las etiquetas estén completos.

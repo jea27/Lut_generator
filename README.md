@@ -100,3 +100,7 @@ Preparación del desarrollo y evidencias: `docs/PREPARACION_DESARROLLO.md`. Prim
 COL-005: [hipótesis de negocio](docs/P0_COL-005_HIPOTESIS_NEGOCIO.md) y
 [cuestionario de disposición a pagar](docs/P0_COL-005_CUESTIONARIO.md).
 Instrumentos preparados para revisión; no contienen resultados de entrevistas.
+
+Auditoría P0: `python scripts/p0_status.py --github --ready`. Un exit 2 informa
+de evidencia o aceptación pendiente; no lo solventes inventando registros.
+Recuperación de sesión: [docs/ESTADO_AGENTE.md](docs/ESTADO_AGENTE.md).
