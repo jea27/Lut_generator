@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<title>LumaForge · Investigación P0</title>
+<link rel="stylesheet" href="form.css">
+<main>
+  <p class="eyebrow">LumaForge · Instrumento de investigación sin ejecutar</p>
+  <h1>Cómo trabajas con el color</h1>
+  <p>No hay respuestas correctas. Puedes omitir preguntas o cerrar la página para
+  terminar. No hay motor disponible ni venta. No incluyas nombres, correos,
+  empresa, datos de clientes ni archivos de trabajo.</p>
+  <p>Este formulario no envía datos. Al terminar descarga un JSON que puedes
+  revisar y compartir voluntariamente por el canal privado acordado con el
+  responsable. La respuesta se tratará como autoinforme pendiente de verificar,
+  nunca como entrevista realizada. Conserva tu código para pedir corrección o
+  retirada al responsable mediante ese mismo canal. No hay servidor de respuestas.</p>
+  <form>
+    <label>Código asignado por el responsable (R001–R999)
+      <input id="code" name="code" pattern="R(?!000)[0-9]{3}" maxlength="4" required placeholder="R001" autocomplete="off">
+    </label>
+    <label class="consent"><input type="checkbox" id="consent" required>
+      Consiento notas anonimizadas para esta investigación de LumaForge. Puedo
+      retirar mi participación. No autorizo contacto ni publicación de mis respuestas.</label>
+    <h2 id="stage"></h2>
+    <aside id="concept" hidden>
+      Exploramos una herramienta para Windows que procese localmente imágenes
+      preparadas en sRGB, permita aproximar y ajustar un estilo de referencia y
+      exportar una transformación global LUT .cube y una receta. La LUT necesita
+      un editor compatible, no transporta máscaras ni garantiza igualar escenas
+      distintas. El motor aún no está implementado. Vídeo, RAW/Log/HDR, XMP,
+      integraciones e IA avanzada no forman parte de esta oferta de investigación.
+    </aside>
+    <aside id="price" hidden>Solo como escenario de investigación: imagina que
+      la herramienta descrita estuviese disponible, pudieras comprobar tus
+      criterios antes de pagar y costase 49 € en total, pago único individual.
+      No estamos vendiendo ni cobrando; no implica futuras versiones ni soporte ilimitados.
+    </aside>
+    <p>Respuestas opcionales; deja en blanco para omitir o escribe «prefiero no responder».
+      Cada etapa se conserva antes de mostrar el siguiente estímulo.</p>
+    <div id="questions"></div>
+    <button type="submit">Continuar</button>
+    <p id="notice" role="status" aria-live="polite"></p>
+  </form>
+  <footer>Versión LF-P0-FORM-2026-10-30-v1 · Sin analítica ni almacenamiento persistente.
+    No recargues la página si quieres conservar respuestas sin descargar.</footer>
+</main>
+<script src="form.js"></script>
+</html>
