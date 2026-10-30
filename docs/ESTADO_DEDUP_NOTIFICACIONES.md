@@ -19,3 +19,7 @@
 - PR #64: https://github.com/jea27/Lut_generator/pull/64; abierta y lista para revisión humana. Marcador de PR #64 registrado en la solicitud existente #21 antes de activar ready_for_review; conserva needs-human. Issue #19 recibió el diagnóstico y la propuesta.
 - Checks iniciales: validación del roadmap completada; compilación Studio y validación MVP estaban en curso al consultar. Aviso en ejecución; confirmar que termina sin crear otra solicitud.
 - Ningún cambio de workflow, roadmap, apps/ o packages/. No se ejecutaron tests locales: documentación solamente.
+
+## Resultado final de CI observado (30-10-2026)
+
+- En la revisión de PR #64: validación MVP, compilación Studio y validación de roadmap pasaron; el workflow de aviso terminó correctamente sin crear Issue adicional ni enviar mención repetida; publicación omitida al no editar el roadmap. Resultados observados en el commit de documentación previo a este checkpoint.
