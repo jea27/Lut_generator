@@ -36,7 +36,7 @@ El código puede publicarse en **rama `codex/...` y PR**, solo con el permiso in
 Con una única cuenta GitHub, la aprobación formal de la propia PR puede no contar como revisión independiente. Se puede validar manualmente y hacer el merge personalmente, pero no inventar una barrera de seguridad que GitHub no aplica.
 
 ## Dashboard
-`publish-roadmap.yml` escucha eventos de Issues/PR/push y cron; sincroniza metadatos en cada publicación Pages. La web consulta JSON periódicamente. Si Pages no está desplegado, la sincronización visual remota no funciona aunque el repo sí tenga Issues.
+`publish-roadmap.yml` valida las PR hacia `main` y publica Pages únicamente tras un push a `main`, después de superar la validación. Sincroniza metadatos en cada publicación; no se publica por cambios de Issues, cron ni ejecución manual. La web consulta JSON periódicamente, pero esos cambios de estado se reflejan tras el siguiente push a `main`. Si Pages no está desplegado, la sincronización visual remota no funciona aunque el repo sí tenga Issues.
 
 ## Diferencia frente a ejecución 24/7
 Ni el dashboard ni la acción de GitHub programan a Codex para desarrollar en tu PC: para procesamiento local continuo debes mantener PC encendido y una sesión/proceso Codex en marcha, o construir más adelante un runner/orquestador. No hay autonomía en segundo plano hasta configurar explícitamente ese componente.

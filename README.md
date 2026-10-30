@@ -26,14 +26,14 @@ Abre http://localhost:8080. El dashboard reconsulta `data/roadmap.json` cada 60 
 
 ## 2. Publicar con URL accesible
 
-1. Crea un repositorio GitHub nuevo, preferiblemente inicialmente **público** si vas a usar la plantilla de un repositorio. No subas secretos ni materiales de clientes.
-2. Sube todos los archivos y carpetas, incluida `.github/workflows/publish-roadmap.yml`, en rama `main`.
-3. En GitHub → **Settings → Pages**, selecciona **Build and deployment → Source: GitHub Actions**.
-4. En **Actions**, ejecuta manualmente el workflow **Publicar roadmap** (o haz push a `main`).
-5. GitHub Pages te dará la URL pública: normalmente `https://USUARIO.github.io/REPOSITORIO/`.
+1. Usa el repositorio existente **[jea27/Lut_generator](https://github.com/jea27/Lut_generator)**. **LumaForge** sigue siendo el nombre provisional del producto.
+2. Conserva `.github/workflows/`, `docs/`, `scripts/`, `site/`, `tests/`, `AGENTS.md` y este README directamente en la raíz Git, sin una carpeta contenedora `lumaforge/`. Integra la corrección en `main` mediante revisión humana.
+3. Mantén GitHub → **Settings → Pages → Build and deployment → Source: GitHub Actions** (verificado por API como `build_type: workflow` el 30-10-2026).
+4. El workflow **Publicar roadmap** valida las PR hacia `main`, incluidas sus actualizaciones. Solo publica Pages tras un push a `main` y si las validaciones pasan; no publica desde PR, cron, Issues ni ejecución manual.
+5. La URL configurada es `https://jea27.github.io/Lut_generator/`; la publicación de esta corrección solo quedará verificada cuando termine su despliegue.
 6. Prueba desde el móvil. Si no se despliega, revisa el registro de Actions/permisos del repositorio.
 
-El workflow lee Issues y PR con `GITHUB_TOKEN`, ejecuta tests, genera un JSON **solo de metadatos no sensibles** y publica `site/` en Pages. La web vuelve a consultar ese JSON cada minuto; las actualizaciones de Issues/push se publican después de que termine la acción, y las PR abiertas sin otro evento se reflejan al siguiente cron (cada 30 minutos, sujeto a retrasos de GitHub).
+En las PR se ejecutan pruebas Python y validaciones de JavaScript y JSON con permisos de lectura, sin usar el entorno `github-pages`. Tras un push a `main`, el job de publicación lee Issues y PR con `GITHUB_TOKEN`, genera un JSON **solo de metadatos no sensibles** y publica `site/` en Pages. La web vuelve a consultar ese JSON cada minuto, pero los cambios de Issues/PR solo se publican con el siguiente push a `main`. Los recursos usan rutas relativas y conservan la base `/Lut_generator/`.
 
 **Alternativa:** Cloudflare Pages puede desplegar la web cuando hay pushes al repo, pero para sincronizar Issues/PR sin commits hay que mantener la acción de generación y añadir una publicación/trigger. La plantilla lista funciona con GitHub Pages, no tiene configuración de Cloudflare ya conectada.
 
@@ -92,3 +92,5 @@ El sitio no ejecuta IA; solo observa el progreso. No se ha desplegado ninguna UR
 ```bash
 python -m unittest discover -s tests -v
 ```
+
+La reestructuración, las comprobaciones de conservación y las limitaciones de la validación están registradas en `docs/REESTRUCTURACION_RAIZ.md`.

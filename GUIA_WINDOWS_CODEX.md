@@ -39,20 +39,20 @@ codex
 ```
 En Codex, pega el contenido de `PROMPT_INICIAL_CODEX.md`. No necesitas copiar todo el chat: los documentos hacen de memoria compartida durable. Mantén el sandbox y solicitudes de aprobación activados; evita permisos irrestrictos.
 
-## 5. Crear GitHub remoto (solo tras tu confirmación)
+## 5. Comprobar el remoto existente
+
+El repositorio es `jea27/Lut_generator`; LumaForge es el nombre provisional del producto. Abre la raíz que contiene `.git`, `.github`, `docs`, `scripts`, `site` y `tests`, sin entrar en una carpeta contenedora `lumaforge/`.
+
 ```powershell
-gh auth login
-git init
-git add .
-git commit -m "chore: initialize LumaForge planning and Codex handoff"
-git branch -M main
-# Sustituye NOMBRE_REPO según prefieras, recomendado público solo si los metadatos no son sensibles:
-gh repo create NOMBRE_REPO --public --source . --remote origin --push
+git status
+git rev-parse --show-toplevel
+git remote -v
+gh repo view jea27/Lut_generator
 ```
-> Si ya existe repo, no vuelvas a hacer `git init` ni sobrescribas `origin`: comprueba antes `git status`, `git remote -v`, `gh repo view`.
+No repitas `git init`, no crees otro repositorio ni sobrescribas `origin`. Antes de hacer push o cambiar configuraciones remotas, presenta los cambios y solicita aprobación explícita.
 
 ## 6. Activar web
-GitHub → repositorio → Settings → Pages → Source: **GitHub Actions**. Ejecuta Actions → **Publicar roadmap** → Run workflow. Abre el enlace de Pages que muestre la acción. La URL típica es `https://USUARIO.github.io/NOMBRE_REPO/`, no la des por creada hasta verificarla.
+Conserva GitHub → repositorio → Settings → Pages → Source: **GitHub Actions**. El workflow valida las PR sin publicar; solo publica el artefacto de `site/` con un push a `main` y tras pasar las pruebas. Tras integrar la corrección en `main`, comprueba Actions → **Publicar roadmap** y su enlace `https://jea27.github.io/Lut_generator/`. No des el despliegue por correcto antes de verificar su ejecución.
 
 ## 7. Importar las 42 Issues (solo cuando quieras)
 ```powershell
@@ -72,7 +72,7 @@ Instala GitHub Mobile, inicia sesión y habilita push de @menciones y asignacion
 1. Elige un COL-###, crea/selecciona su Issue.
 2. Codex implementa en rama `codex/COL-###-tema`, corre tests y documenta.
 3. Codex hace `git push` a su rama y abre PR **solo después** de la autorización inicial de este flujo; nunca hace merge.
-4. GitHub Actions detecta Issues y PR y actualiza el dashboard remoto. El usuario recibe push móvil para revisión/ayuda.
+4. GitHub Actions valida las PR; el dashboard se sincroniza y publica tras el siguiente push a `main`. El workflow de notificaciones sigue atendiendo sus eventos de revisión/ayuda.
 5. El humano revisa y corrige, integra a main, coloca `approved` y cierra la Issue (si corresponde). El dashboard reflejará `done` tras sincronizar.
 
 ## 10. Que trabaje cuando te ausentes

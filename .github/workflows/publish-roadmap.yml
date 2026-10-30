@@ -1,0 +1,76 @@
+name: Publicar roadmap
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      # En PR, checkout valida el merge de la propuesta con main, no main solo.
+      - name: Checkout del cambio
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Ejecutar pruebas
+        run: python -m unittest discover -s tests -v
+      - name: Validar JavaScript y datos
+        run: |
+          node --check site/app.js
+          node --check site/data/fallback.js
+          python -m json.tool site/data/roadmap.json > /dev/null
+
+  publish:
+    needs: validate
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: read
+      pull-requests: read
+      pages: write
+      id-token: write
+    concurrency:
+      group: roadmap-pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout del commit validado de main
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Sincronizar Issues y Pull Requests
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python scripts/sync_github.py
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Empaquetar web
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+      - name: Desplegar sitio
+        uses: actions/deploy-pages@v4
+        id: deployment
