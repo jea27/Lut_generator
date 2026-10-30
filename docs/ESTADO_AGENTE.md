@@ -22,15 +22,16 @@
   hipotético del instrumento existente, no oferta.
 - No se tocaron `apps/` ni `packages/`. `git diff --check` y parseo JSON con el
   runtime Python del proyecto pasaron. Tests no ejecutados por ser cambio
-  documental. Falta commit, push a esta rama y PR; no publicar una conclusión
-  legal como dictamen; revisión profesional previa a cobrar.
+  documental. Commit `6148a2e` publicado y PR #55 abierta, no borrador; checks
+  validate/notify quedaron queued en la primera consulta. No publicar una
+  conclusión legal como dictamen; revisión profesional previa a cobrar.
 
 ## Siguiente paso / reanudación
 
-Desde este worktree está confirmado el enlace interno al nuevo memo. Publicar
-solo `codex/COL-005-investigacion-comercial-ue`; vincular la PR
-a #13 y mantener `review` hasta decisión humana. Seguir leyendo #15 para evitar
-duplicar solicitud o notificación.
+Desde este worktree seguir PR #55 y confirmar sus checks y el comportamiento
+del workflow notify. Mantener #13 en review y reutilizar #15; no duplicar
+solicitud ni notificación. Si hay nuevas ediciones, publicar solo en
+`codex/COL-005-investigacion-comercial-ue`.
 
 # Estado del agente · checkpoint P0 de investigación · 2026-10-30
 
