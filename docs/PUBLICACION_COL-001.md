@@ -56,8 +56,6 @@ Revisión mediante Issue vinculada validada en run 41080088759 y deduplicación
 en run 41080353905. Los enlaces de la nueva PR y sus checks se registran en la
 Issue y en la entrega del chat después de su creación.
 
-## Revisión humana pendiente
-
 ## Resultado remoto verificado
 
 - PR abierta: https://github.com/jea27/Lut_generator/pull/7.
