@@ -66,6 +66,15 @@
 - PR #7 abierta: https://github.com/jea27/Lut_generator/pull/7; CI run 41081007929 success con 21 tests OK. Aviso run 41081007870 success, mención a jea27 en Issue #8.
 - Repetición del workflow existente de main, run 41080377557 intento 2: validate y publish success. JSON publicado comprobado con COL-001 review, Issue #6 y PR #7; no completada ni aprobada. Sin push ni merge a main.
 
+## 2026-10-30 · [COL-001] Retomar publicación y revalidar Mobile sin duplicados
+- Comprobados git status limpio, rama activa codex/COL-001-preparacion-p0, HEAD local y remoto coincidentes en 944e67c; trabajo conservado. Issue #6 y PR #9 reutilizadas, sin duplicar.
+- gh 2.103.3 autenticado como jea27; REVIEWER_GITHUB=jea27 comprobado. Sin reinstalaciones, cambios de permisos ni configuración sensible.
+- 21 unittest locales OK. Checks previos de PR #9 correctos; sincronización automática run 41081400237 success.
+- Nueva prueba real en Issue #3: pregunta con opciones/recomendación antes de retirar y volver a aplicar needs-human. Run 41081563516 success, mención https://github.com/jea27/Lut_generator/issues/3#issuecomment-6526618289.
+- Usuario confirmó «Sí, recibido en el móvil». Recepción registrada como prueba, nunca como aprobación.
+- JSON público comprobado con COL-001 review, Issue #6 y PR #9; no completada. Actualizado por workflow, sin editar estados manualmente.
+- Informe: docs/REVALIDACION_AVISO_COL-001.md. Evidencias publicadas en la misma rama/PR autorizadas. Sin merge, aprobación, cierre de Issue ni inicio del motor.
+
 ## Plantilla para próximas entregas
 
 ### AAAA-MM-DD · [COL-XXX] Título
