@@ -141,3 +141,16 @@
 - 91 unittest en integración local sin omisiones; empaquetado y JS correctos, integración sin conflictos. CI tiene ocho omisiones opcionales por dependencias ausentes, documentadas. No instalaciones, proveedor nuevo ni cambios de permisos.
 - Issue29 reutilizada para revisión/prueba iPhone/canal/responsable/conservación. Workflow41114232338 success, bot6531560480 menciona jea27. Una sola mención nueva; marcadores evitan avisos por PR36/37. Cuerpo conservado como UTF-8 al consultar gh.
 - Puerta P0 mantiene 0 entrevistas, 0 pares aceptados y 0 casos de productos, exit2 esperado y ninguna tarea aprobada. COL001 pendiente. No se inicia P1 ni se fusionan PR por el agente. Recuperación detallada añadida a ESTADO_AGENTE.
+
+## 2026-10-30 · [COL-007] Autorización y MVP real P1/P2
+- El usuario autoriza expresamente desarrollo P1/P2 con P0 comercial incompleta. Registrado en AGENTS y DECISION_MVP_P1_P2; no se interpreta como cierre de P0 ni aprobación de tareas.
+- Núcleo independiente en packages/colour_core y FastAPI en apps/api: JPEG/PNG8/EXIF/ICC, estadísticas Lab/luminancia/histogramas/paleta, baselines Lab statistics y mean-only acotados, intensidad y ajustes globales. Receta horneada33³ y render trilineal por esa misma LUT; sin adaptación escondida al exportar.
+- Archivos reales PNG/JPG4928x3264 con ICC, .cube y JSON generados a partir de fotos CC0 locales; no se publica ninguna fotografía. Reporte MVP_01_SMOKE con hashes/tiempos/RSS, no validación comercial. Export original ~9-11s y ~785MB RSS muestreado en esa ejecución; no GPU ni pico exacto.
+- 14 unittest MVP OK: identidad/intensidad0, primarias D65/roundtrip, extremos/monotonicidad, alfa/EXIF/ICC, dos baselines, LUT trilineal <2e-6, API/JSON no finito/origen/formatos/presets/limpieza. Suite existente87 OK; P0 no cambia.
+- Dependencias autorizadas aisladas en .venv-mvp y fijadas; Node/Vue/Quasar con package-lock. CI Windows de backend en PR52, sin ampliar permisos ni modificar Pages.
+
+## 2026-10-30 · [COL-015] Color Studio funcional
+- Vue3/TypeScript/Quasar en apps/web, Vite8 compilado, FastAPI sirve el build local. UI oscura con paneles, importación real, comparador sincronizado con zoom, intensidad/controles, undo/redo30 estados de sesión y biblioteca JSON persistente local.
+- GUI real: dos importaciones CC0, matching, intensidad0/100, comparación, exposición, guardar/aplicar preset, undo e importar receta; PNG4928x3264 y LUT33³/JSON descargados y verificados. JPG real probado por API. Captura/artefactos se mantienen locales e ignorados.
+- Iniciar-LumaForge.cmd y setup_mvp.ps1 permiten preparación/arranque Windows sin cambiar PATH ni políticas. Instalación inicial necesita Internet; procesamiento posterior no usa Internet ni tokens. No hay IA avanzada, FFmpeg, Tauri o editores externos implementados.
+- Interfaz en rama apilada sobre motor; integra también el checkpoint P0 pendiente de PR38 sin sobrescribir su contenido. No merge remoto ni approved por el agente. Revisión y límites completos en MVP_V01_WINDOWS y MVP_COLOR_CONTRACT.
