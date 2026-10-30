@@ -9,6 +9,7 @@
 - Se documentó una matriz inicial de venta B2C España/UE: LSSI/consumo, descarga y desistimiento, conformidad digital, IVA/OSS, RGPD/medios, cookies, accesibilidad y licencias. Es desk research, no asesoría jurídica/fiscal; no se abrió checkout, no hay precio acordado ni venta.
 - El estímulo de 49 € de COL-005 queda intacto; se recomienda contrastar uso episódico frente a licencia local, pase por proyecto y suscripción ligada a servicio recurrente. Sigue sujeto a revisión de la Issue #15. No hay entrevistas, compra o conversión nuevas.
 - No se alteró manualmente ningún estado de `site/data/roadmap.json`; solo campos descriptivos de precios de competidores. `git diff --check` pasó y el parser Python del runtime del proyecto cargó el JSON correctamente. No se ejecutaron tests (cambio documental). PR #55 abierta; checks validate/notify quedaron queued en primera consulta.
+- El evento `pull_request.opened` ganó la carrera a la actualización del marcador y el workflow creó Issue #56 con needs-human y un aviso. Se editó #56 para dirigir a la solicitud consolidada #15, sin cerrar Issues ni retirar/reaplicar etiquetas; #15 conserva la misma revisión para #14/#55. No se envió una notificación manual adicional.
 
 ## 2026-10-30 · Handoff inicial
 - Estado: se entrega starter de roadmap + material de contexto y workflows de notificaciones; motor de edición todavía NO implementado.

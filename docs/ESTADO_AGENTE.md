@@ -23,14 +23,16 @@
 - No se tocaron `apps/` ni `packages/`. `git diff --check` y parseo JSON con el
   runtime Python del proyecto pasaron. Tests no ejecutados por ser cambio
   documental. Commit `6148a2e` publicado y PR #55 abierta, no borrador; checks
-  validate/notify quedaron queued en la primera consulta. No publicar una
-  conclusión legal como dictamen; revisión profesional previa a cobrar.
+  validate/notify quedaron queued en la primera consulta. El workflow creó
+  Issue #56 por carrera al procesar PR abierta; #56 redirige a la petición
+  consolidada #15. No se cerró ninguna Issue ni se tocó etiqueta. No publicar
+  una conclusión legal como dictamen; revisión profesional previa a cobrar.
 
 ## Siguiente paso / reanudación
 
 Desde este worktree seguir PR #55 y confirmar sus checks y el comportamiento
-del workflow notify. Mantener #13 en review y reutilizar #15; no duplicar
-solicitud ni notificación. Si hay nuevas ediciones, publicar solo en
+del workflow notify. Mantener #13 en review y usar #15 como petición activa;
+#56 solo redirige y no requiere respuesta. Si hay nuevas ediciones, publicar solo en
 `codex/COL-005-investigacion-comercial-ue`.
 
 # Estado del agente · checkpoint P0 de investigación · 2026-10-30
