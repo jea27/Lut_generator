@@ -704,8 +704,8 @@
       "name": "Colourlab Ai 4",
       "type": "Vídeo profesional",
       "offer": "Matching por referencia, balance y flujo con NLE; IA/MCP",
-      "pricing": "49 USD/mes; 399/año",
-      "gap": "Potente, pero Apple Silicon en lanzamiento de AI 4 y orientación pro.",
+      "pricing": "Consulta 30-10-2026: producto $49/mes, $399/año o $799 perpetuo; documentación de licencias muestra $490/año y $980 perpetuo (discrepancia entre páginas)",
+      "gap": "Flujo profesional; página de producto declara Windows pendiente. Confirmar edición, tarifa y disponibilidad antes de comparar.",
       "url": "https://colourlab.ai/products/colourlab-ai-4/",
       "priority": "Directo"
     },
@@ -713,8 +713,8 @@
       "name": "Luttie",
       "type": "Matching web",
       "offer": "Color Match en navegador, intensidad, export LUT Pro",
-      "pricing": "21,99 USD/mes Pro",
-      "gap": "Se solapa muy directamente con nuestro MVP; requiere diferenciación demostrable.",
+      "pricing": "Consulta 30-10-2026: gratis básico; pase 7 días $12; Pro $21.99/mes; lifetime $109 promocional",
+      "gap": "Se solapa con el MVP; ofrece pase temporal y pago perpetuo además de mensual. Diferenciación aún no demostrada.",
       "url": "https://luttie.app/pricing",
       "priority": "Directo"
     },
@@ -722,8 +722,8 @@
       "name": "fylm.ai",
       "type": "Color grading cloud",
       "offer": "Match IA, LUT, colaboración y extensión Premiere",
-      "pricing": "7 USD/mes anual Lite; 15 Pro",
-      "gap": "Opción económica existente; no competir solo por precio.",
+      "pricing": "Consulta 30-10-2026: gratis; Lite $7/mes y Pro $15/mes anual; Team $30/mes anual desde 3 usuarios",
+      "gap": "Opción económica con planes cloud/equipo; importes indicados requieren anualidad. No competir solo por precio.",
       "url": "https://fylm.ai/pricing/",
       "priority": "Directo"
     },
@@ -749,7 +749,7 @@
       "name": "Neurapix",
       "type": "SmartPresets",
       "offer": "Estilos aprendidos y edición por imagen en Lightroom",
-      "pricing": "0,04 €/foto o Unlimited 49,95 €/mes anual",
+      "pricing": "Página global consultada 30-10-2026: $0.04/foto o Unlimited $49.95/mes ($599.40/año, excl. VAT); precio ES no verificado",
       "gap": "Alternativa sólida en fotografía; nuestra ventaja sería interoperabilidad vídeo.",
       "url": "https://neurapix.com/es/",
       "priority": "Adyacente"

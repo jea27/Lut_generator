@@ -2,6 +2,14 @@
 
 > Codex debe añadir una entrada breve y verificable por entrega. No borrar entradas anteriores ni atribuir pruebas no ejecutadas.
 
+## 2026-10-30 · [COL-005] Actualización comercial y comercialización España/UE
+- Trabajo aislado en `.codex-worktrees/COL-005-investigacion-comercial-ue`, rama `codex/COL-005-investigacion-comercial-ue`, creada desde `origin/main` (86d2137); raíz compartida estaba limpia en `codex/COL-015-mvp-studio`. No se tocaron `apps/` ni `packages/`.
+- GitHub consultado antes de empezar: COL-005 Issue #13 abierta con `status:review`, aviso de revisión #15 ya existente y PR #14/35 integradas. Se conserva el estado `review`; no se duplica Issue ni notificación.
+- Fuentes oficiales de producto consultadas 30-10-2026: Luttie, fylm.ai, Colourlab Ai 4 y Neurapix. Hallazgo: modelos freemium, pase temporal, pago por foto, suscripción anual/mensual y perpetua; Colourlab tiene tarifas incompatibles entre su página de producto y documentación de licencia, y declara Windows pendiente. Importes y discrepancias quedan delimitados en `docs/P0_COMERCIAL_ESPANA_UE.md` y resumidos en los competidores del roadmap; no son compras ni benchmark ejecutado.
+- Se documentó una matriz inicial de venta B2C España/UE: LSSI/consumo, descarga y desistimiento, conformidad digital, IVA/OSS, RGPD/medios, cookies, accesibilidad y licencias. Es desk research, no asesoría jurídica/fiscal; no se abrió checkout, no hay precio acordado ni venta.
+- El estímulo de 49 € de COL-005 queda intacto; se recomienda contrastar uso episódico frente a licencia local, pase por proyecto y suscripción ligada a servicio recurrente. Sigue sujeto a revisión de la Issue #15. No hay entrevistas, compra o conversión nuevas.
+- No se alteró manualmente ningún estado de `site/data/roadmap.json`; solo campos descriptivos de precios de competidores. `git diff --check` pasó y el parser Python del runtime del proyecto cargó el JSON correctamente. No se ejecutaron tests (cambio documental); queda revisar diff y CI de PR.
+
 ## 2026-10-30 · Handoff inicial
 - Estado: se entrega starter de roadmap + material de contexto y workflows de notificaciones; motor de edición todavía NO implementado.
 - Decisión: arquitectura local-first, motor de color determinista, IA local opcional, soporte foto + vídeo.

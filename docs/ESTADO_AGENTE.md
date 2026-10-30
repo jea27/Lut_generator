@@ -1,3 +1,37 @@
+# Checkpoint de investigación comercial · 2026-10-30
+
+## Trabajo actual
+
+- COL-005 / Issue #13: ampliar desk research de modelos de precio y
+  comercialización España/UE en worktree aislado
+  `.codex-worktrees/COL-005-investigacion-comercial-ue`, rama
+  `codex/COL-005-investigacion-comercial-ue`, base `origin/main` 86d2137.
+- Cambios preparados: `docs/P0_COMERCIAL_ESPANA_UE.md`, enlace desde
+  `docs/ESTUDIO_DE_MERCADO.md`, resumen fechado de precios en competidores del
+  roadmap, y registro en `docs/DIARIO_DESARROLLO.md`.
+- Issue #13 sigue abierta en revisión; #15 es la solicitud humana vigente. No
+  reutilizar el estado para simular aprobación, no duplicar aviso, no hacer
+  merge/cerrar/aplicar `approved`.
+
+## Evidencia / límites
+
+- Fuentes primarias de producto y organismos UE/BOE consultadas el 2026-10-30;
+  precios no normalizados y discrepancia de Colourlab explícita en el memo.
+- Desk research únicamente: cero entrevistas, compras, benchmarks ejecutados,
+  ventas o validación de tarifa. El precio de 49 € permanece como estímulo
+  hipotético del instrumento existente, no oferta.
+- No se tocaron `apps/` ni `packages/`. `git diff --check` y parseo JSON con el
+  runtime Python del proyecto pasaron. Tests no ejecutados por ser cambio
+  documental. Falta commit, push a esta rama y PR; no publicar una conclusión
+  legal como dictamen; revisión profesional previa a cobrar.
+
+## Siguiente paso / reanudación
+
+Desde este worktree está confirmado el enlace interno al nuevo memo. Publicar
+solo `codex/COL-005-investigacion-comercial-ue`; vincular la PR
+a #13 y mantener `review` hasta decisión humana. Seguir leyendo #15 para evitar
+duplicar solicitud o notificación.
+
 # Estado del agente · checkpoint P0 de investigación · 2026-10-30
 
 ## Tarea actual y rama

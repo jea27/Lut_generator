@@ -1,6 +1,10 @@
 # LumaForge — Investigación de mercado y posicionamiento
 **Fecha de corte:** 30 de octubre de 2026. **Estado:** desk research; no incluye entrevistas primarias ni pruebas propias de los productos. **Nombre:** provisional, sin comprobación de marca/dominio.
 
+Actualización de precios, modelos de monetización y requisitos de venta en
+España/UE: [P0_COMERCIAL_ESPANA_UE.md](P0_COMERCIAL_ESPANA_UE.md). Las cifras de
+proveedores son transcripciones fechadas, no compras ni precios normalizados.
+
 ## Resumen ejecutivo
 
 - **La categoría ya existe.** Color matching de referencia, 3D LUT automáticas y edición IA tienen competidores bien establecidos, productos web y proyectos open source. La ventaja no puede ser «convertir una foto en LUT» por sí sola.
