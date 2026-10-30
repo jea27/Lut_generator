@@ -63,6 +63,8 @@
 - 21 unittest OK, sintaxis JS correcta; búsqueda de secretos y revisión de archivos públicos sin hallazgos en la entrega. Rutas de perfil sustituidas por placeholders; historial local preliminar conservado en respaldo local y publicación consolidada desde main con identidad noreply.
 - La sincronización de esta entrega reutiliza una ejecución de main ya desplegada; no se edita JSON para simular progreso. El nuevo refresco por eventos solo se activará después de integración humana.
 - Informe y límites: PUBLICACION_COL-001.md. Los enlaces de PR y ejecuciones reales se registran en la Issue y en la entrega del chat tras crearse.
+- PR #7 abierta: https://github.com/jea27/Lut_generator/pull/7; CI run 41081007929 success con 21 tests OK. Aviso run 41081007870 success, mención a jea27 en Issue #8.
+- Repetición del workflow existente de main, run 41080377557 intento 2: validate y publish success. JSON publicado comprobado con COL-001 review, Issue #6 y PR #7; no completada ni aprobada. Sin push ni merge a main.
 
 ## Plantilla para próximas entregas
 
