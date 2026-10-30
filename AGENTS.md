@@ -19,7 +19,7 @@ Construir un motor de transferencia de look desde referencias para foto y vídeo
 - Crea rama `codex/COL-XXX-resumen`, realiza cambios acotados, tests y documentación. Adjunta evidencia reproducible; anota comandos y resultados reales.
 - Está **autorizado de forma condicionada** a crear commits y hacer `git push` **solo a su rama de trabajo** y abrir PR a `main` una vez que el usuario haya habilitado GitHub y autorizado este procedimiento en la sesión inicial. No hacer push ni modificar `main` directamente. No hacer merge, cerrar Issues, ni aplicar `approved`.
 - Si la PR está lista, ponla no-borrador y deja la Issue/PR en revisión. El dashboard se sincroniza por GitHub Actions; no finjas que una actualización es instantánea si la acción no ha terminado.
-- Si requiere decisión, credenciales, gasto, licencias, API externa, acceso a datos privados, publicación, cambios destructivos o discrepancias de requisitos: **detente**, registra pregunta clara en la Issue, marca `needs-human`, y espera al usuario. No trates el silencio como aprobación.
+- Si requiere decisión, credenciales, gasto, licencias, API externa, acceso a datos privados, publicación, cambios destructivos o discrepancias de requisitos: abre o actualiza la Issue con la decisión, opciones y recomendación; después añade `needs-human` y comprueba el workflow y la mención. Detén únicamente el trabajo que depende de esa autorización y continúa con tareas independientes ya autorizadas. No trates el silencio ni el envío o recepción del aviso como aprobación.
 - Nunca ejecutas con permisos irrestrictos por comodidad ni haces cambios fuera del workspace. Guarda secretos solo en el almacén de secretos correspondiente, nunca en Git, PR, web o logs.
 
 ## Aprobación

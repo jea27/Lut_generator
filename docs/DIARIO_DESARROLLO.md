@@ -26,6 +26,23 @@
 - Evidencia local: 11 pruebas OK, sintaxis JS y JSON OK, YAML y contrato de eventos/permisos/rutas comprobados, diff sin errores. Detalles en `docs/REESTRUCTURACION_RAIZ.md`.
 - Autorizado commit y push a la rama de la PR; sin merge ni modificación de protecciones. Despliegue real pendiente de integración humana.
 
+## 2026-10-30 · [COL-001] Validación real de notificaciones humanas
+- Solicitud expresa: configurar y comprobar avisos de jea27/Lut_generator, crear PR de la entrega y detener solo trabajo dependiente de autorizaciones.
+- Rama independiente: `codex/COL-001-validacion-avisos` desde origin/main. Conservada sin cambios la rama local anterior de preparación P0.
+- GitHub CLI localizada en `C:\Program Files\GitHub CLI\gh.exe`, autenticada como jea27. Variable existente REVIEWER_GITHUB=jea27 consultada; no se cambió.
+- Issue de prueba #3 creada con opciones y recomendación, y etiquetada needs-human después de la pregunta: https://github.com/jea27/Lut_generator/issues/3.
+- Workflow real https://github.com/jea27/Lut_generator/actions/runs/41079364488: success; job notify y paso de mención correctos.
+- Mención del bot verificada: https://github.com/jea27/Lut_generator/issues/3#issuecomment-6526303053.
+- Usuario confirmó en el chat: «Sí, recibida en el móvil». Recorrido por needs-human validado; ninguna aprobación de producto se infiere de la recepción.
+- Actualizados AGENTS.md, protocolo y texto del bot: solo se detiene el trabajo dependiente; continúan tareas independientes autorizadas.
+- Sin cambios de permisos, protecciones, tokens ni configuración del móvil; sin merge, cierres ni etiquetas approved. COL-001 sigue pendiente de entrevistas; esta entrega es preparación de seguimiento.
+- Limitación: prueba real del recorrido por etiqueta, no de fallos críticos ni del disparador manual.
+- Verificación de la entrega: 11 unittest OK con Python incluido en Codex; diff sin errores. Texto y evidencias de PR en `docs/PR_VALIDACION_AVISOS.md`.
+- PR publicada: https://github.com/jea27/Lut_generator/pull/4. Su primer aviso de revisión falló con 403 al comentar en la PR; no se ampliaron permisos. Corregido para crear Issue de revisión vinculada, con opciones/recomendación, needs-human y mención; deduplicación por PR y evento synchronize.
+- Corrección comprobada realmente: run https://github.com/jea27/Lut_generator/actions/runs/41080088759 success; bot creó Issue #5 y mención https://github.com/jea27/Lut_generator/issues/5#issuecomment-6526363671. CI validate success en run 41080088573, sin despliegue desde PR.
+- Añadidas pruebas del script exacto de Actions con dobles de API; no requieren permisos ni red.
+- Suite ampliada ejecutada: 15 unittest OK (incluye aviso en Issue, login inválido y deduplicación). El aviso de revisión utiliza los permisos originales; la integración en main queda a revisión humana en PR #4.
+
 ## Plantilla para próximas entregas
 
 ### AAAA-MM-DD · [COL-XXX] Título
