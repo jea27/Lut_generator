@@ -190,3 +190,84 @@ comprobados. Source research/ y empaquetado allowlist para Pages preparados;
 publicación depende de merge humano y Actions. R101/102/103 reservados sin
 asignar; R999 QA privada, bloqueado en registro real. Se continúa con permisos
 fotográficos/COL004 y controles CC0/COL003 sin contactar participantes.
+
+## Checkpoint vigente · formulario web y controles P0 · 2026-10-30
+
+### Tarea actual y rama
+COL006 / Issue19, rama raíz codex/COL-006-checkpoint-formulario. Sustituye como
+estado vigente las secciones históricas anteriores. PR34 estaba integrada al
+iniciar; árbol limpio y sin commits pendientes respecto a main. PR35 fue
+integrada posteriormente por jea27 (86d2137), no por el agente.
+
+### Trabajo completado
+- COL005/PR35: formulario público https://jea27.github.io/Lut_generator/investigacion/
+  con tres códigos reservados: #R101, #R102 y #R103. Sin identidades asignadas,
+  invitaciones enviadas ni respuestas reales. Consentimiento y esquema v1
+  conservados. JSON solo por acción de la persona, previsualización/descarga/
+  compartir con fallback; no servidor de respuestas ni nuevos proveedores.
+- Allowlist HTML/JS/CSS en ambos workflows existentes; un sync posterior también
+  conserva el formulario. Archivos generados ignorados. No se cambian permisos.
+- COL004/PR36: guía y plantilla vacía para autoría/licencia, consentimiento de
+  personas identificables, alcance interno, custodia y retirada. Cumplimentar
+  solo en privado; no autoriza ninguna foto por sí misma.
+- COL003/PR37: experimentos posibles y runner de controles sobre los cuatro
+  originales CC0 existentes. Doce lecturas reales (tres por foto), identidad y
+  repetición reproducibles. Tiempos de infraestructura, nunca inferencia.
+  DSC0106 no alineado por tamaño; DSC0181 sin revisión de target pese a igual
+  tamaño. Cero productos ejecutados y cero pares aceptados por esta entrega.
+
+### Pruebas y evidencias
+- Rama web: 87 unittest locales OK, sin omisiones. Rama controles: 85 OK.
+- Integración en .codex-worktrees/P0-web-verificacion: **91 unittest OK sin
+  omisiones**, node --check y empaquetado allowlist correctos, sin conflictos.
+- Viewports locales 320x568, 390x844, 430x932 y 844x390: sin desbordamiento;
+  botón >=44px, consentimiento sin premarcar. Tres etapas y JSON sintético R999
+  descargado y validado, separado de participantes. Importador rechaza R999.
+- Pages real: run41114395315 success. HTTP HTML/JS/CSS comparados con SHA-256 de
+  blobs Git en main, coincidencia exacta. La copia Windows tiene CRLF; por eso
+  se comparó contra blobs Git canónicos, sin confundir finales de línea.
+- Navegador sobre HTTPS: tres etapas y descarga R999 válidas. Vista pública a
+  390px también sin desbordamiento. Share: mocks de éxito/cancelación/fallo;
+  no se afirma entrega ni prueba física de Safari/iPhone.
+- QA sintética privada en .research-private/qa/R999-web-mobile-20261030.json y
+  R999-public-pages-20261030.json. Ningún recibo de participante creado. Captura
+  local en .research-media/formulario-publico-movil-qa.png; no evidencia de usuario.
+- p0_status --github --ready: exit2 esperado, cero entrevistas, cero pares
+  aceptados, cero runs de producto, ninguna tarea aceptada; sin duplicados.
+- CI de ramas y sincronización: consultar los checks de PR35/36/37 y de esta PR;
+  NumPy/Pillow ausentes en CI implican ocho omisiones opcionales explícitas.
+  Las pruebas locales numéricas sí se ejecutaron. No repetir por cambios solo MD.
+
+### Bloqueos humanos y aviso
+Solicitud existente #29 actualizada, needs-human y siete campos. Un solo aviso
+nuevo: run41114232338 success y comentario6531560480 menciona @jea27. PR36/37
+reutilizan esa solicitud sin nuevos avisos. No se confirma recepción física de
+este aviso nuevo. Se corrigió su cuerpo al conservar UTF-8 al leer JSON de gh;
+no se vuelven a decodificar bytes UTF-8 con la página de códigos de Windows.
+
+Pendiente: prueba R999 en Safari/iPhone, guardado en Archivos y devolución del
+JSON sintético por canal privado. Responsable/canal/conservación para personas
+reales siguen por acordar; propuesta jea27/30 días no es consentimiento obtenido.
+El usuario distribuye los enlaces cuando esa información esté acordada; el agente
+no contacta personas por iniciativa propia. Fotos para piel con permisos y acceso
+a herramientas autorizadas siguen pendientes. COL001 no completada; P1 detenido.
+
+### Próximos pasos elegibles y reanudación
+Leer docs/P0_FORMULARIO_WEB.md para recogida/importación privada; usar
+scripts/register_form_response.py solo con JSON de persona real y código asignado,
+no con R999. El recibo conserva pending_human y counts_as_interview=false.
+Leer docs/P0_GUIA_FOTOGRAFIAS_PERMISOS.md antes de recibir fotos y
+P0_EXPERIMENTOS_PILOTO.md antes de ejecutar productos; ambas entregas en sus PR
+si todavía no están integradas. Solo registrar entrevistas realmente celebradas.
+
+Nuevos worktrees conservados dentro de .codex-worktrees/:
+- COL-004-permisos: codex/COL-004-guia-permisos.
+- COL-003-controles: codex/COL-003-controles-piloto.
+- P0-web-verificacion: codex/COL-006-verificacion-web.
+No borrar los worktrees previos. El código web está ya en main por merge humano.
+
+Desde la raíz: git status --short; git branch --show-current; consultar Issue29.
+Python explícito del runtime (comandos arriba) y p0_status --github --ready.
+Para rerun de controles usar --media-root .research-media/polyhaven-rural, reporte
+nuevo; no sobrescribir el informe original ni rellenar benchmark.json con controles.
+No publicar JSON de respuestas, fotos, permisos firmados, contactos ni EXIF privado.
