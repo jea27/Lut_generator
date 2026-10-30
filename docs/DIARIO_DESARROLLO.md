@@ -116,3 +116,8 @@
 - Una solicitud de insumos reales en Issue #29, título LUMAFORGE ACCIÓN REQUERIDA y siete campos completos, creada antes de needs-human. Run41091807276 success; bot menciona a jea27 en comentario6528069841. No se afirma recepción física de este aviso nuevo ni se interpreta como aprobación.
 - Las Issues #6/#16/#17/#18/#19 están blocked; #13 en revisión. Todas siguen abiertas y sin approved. Sincronización run41091807163 success; estado publicado se comprueba al terminar.
 - No queda ejecución P0 con entradas disponibles: continuar exige actas, medios/permisos o acceso autorizado. Se preservan todos los worktrees y commits; ESTADO_AGENTE contiene comandos y dependencias para reanudar.
+
+## 2026-10-30 · [COL-004] Piloto fotográfico CC0
+- Cuatro JPEG originales de dos capturas Poly Haven/Sergej Majboroda, 34.773.100 bytes, verificados por tamaño, MD5 proveedor, SHA-256 y decodificación. Binarios locales ignorados; manifiesto con trazabilidad publicado.
+- Variantes no asumidas alineadas ni sRGB por la extensión. Cobertura/derechos adicionales y perfiles pendientes. Cero pares aprobados P0.
+- 67 unittest locales OK, incluidos tres controles de descarga; no se instala ninguna herramienta. CLI usa Pillow ya disponible (13.0.0); dos tests opcionales se omiten donde falte.

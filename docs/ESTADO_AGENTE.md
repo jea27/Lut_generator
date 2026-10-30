@@ -102,3 +102,10 @@ privadas explícitas. No publicar respuestas ni rutas privadas en informes.
    PR. Solicitudes nuevas: título LUMAFORGE ACCIÓN REQUERIDA y siete campos;
    reutilizar marcador para no duplicar notificaciones del mismo bloqueo.
 7. Jamás iniciar el motor/P1 por un exit 0: p0_status no concede autorización.
+
+## Checkpoint de continuación · piloto CC0
+Rama codex/COL-004-piloto-trazable, base origin/main ebf5cc1. Cuatro fotografías
+reales descargadas a .research-media ignorado, manifiesto público sin binarios.
+67 unittest locales OK. Dos capturas; no ground truth alineado, ni aceptación P0.
+Siguiente: métricas offline/COL-003 y formulario COL-002. Trabajo previo y PR30
+preservados. No hay cambios de motor, instalaciones ni modificaciones de main.

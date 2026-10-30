@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "evidence_type": "real_photo_infrastructure_pilot",
+  "retrieved_utc": "2026-10-30T17:02:29.805606+00:00",
+  "author": "Sergej Majboroda",
+  "provider": "Poly Haven",
+  "source_page": "https://polyhaven.com/a/rural_landscape",
+  "metadata_url": "https://api.polyhaven.com/files/rural_landscape",
+  "license": "CC0-1.0",
+  "license_url": "https://polyhaven.com/license",
+  "deed": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "coverage_review": "pending",
+  "pairs": [
+    {
+      "capture": "DSC_0106",
+      "assets": [
+        {
+          "sha256": "d23e0db0afa94b44f1b4adfb3a8e168d7877266103bcc1365622f149dff15e32",
+          "bytes": 7227955,
+          "width": 4928,
+          "height": 3264,
+          "mode": "RGB",
+          "icc_present": true,
+          "color_review": "pending",
+          "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/rural_landscape/jpg_plain/DSC_0106.jpg",
+          "provider_md5": "5787d4d2d84bf857e15c1b2eaf29ad78",
+          "local_path": ".research-media/polyhaven-rural/DSC_0106-jpg_plain.jpg",
+          "variant": "jpg_plain"
+        },
+        {
+          "sha256": "1e3bb248bd900639242f554ddf0275fd2450efa5a98d7a6d819d784fa1c8dbe2",
+          "bytes": 11523209,
+          "width": 4891,
+          "height": 3255,
+          "mode": "RGB",
+          "icc_present": true,
+          "color_review": "pending",
+          "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/rural_landscape/jpg_pretty/DSC_0106.jpg",
+          "provider_md5": "c026f3eb7ac7c37b9e068b8ef029008e",
+          "local_path": ".research-media/polyhaven-rural/DSC_0106-jpg_pretty.jpg",
+          "variant": "jpg_pretty"
+        }
+      ],
+      "alignment_verified": false,
+      "ground_truth": false
+    },
+    {
+      "capture": "DSC_0181",
+      "assets": [
+        {
+          "sha256": "707d5e1a109a9018af848db60e5c5a1aedf4218ab353e24e308a5acf2a2d61a1",
+          "bytes": 6276679,
+          "width": 4928,
+          "height": 3264,
+          "mode": "RGB",
+          "icc_present": true,
+          "color_review": "pending",
+          "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/rural_landscape/jpg_plain/DSC_0181.jpg",
+          "provider_md5": "ca034964d2467bc9f45e7979581b1868",
+          "local_path": ".research-media/polyhaven-rural/DSC_0181-jpg_plain.jpg",
+          "variant": "jpg_plain"
+        },
+        {
+          "sha256": "92586431b8358502c888af0c6a8b128964361ff1066c843b1d80b5355754c36c",
+          "bytes": 9745257,
+          "width": 4928,
+          "height": 3264,
+          "mode": "RGB",
+          "icc_present": true,
+          "color_review": "pending",
+          "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/rural_landscape/jpg_pretty/DSC_0181.jpg",
+          "provider_md5": "977640e4967f704a18df40a5f9a3faa9",
+          "local_path": ".research-media/polyhaven-rural/DSC_0181-jpg_pretty.jpg",
+          "variant": "jpg_pretty"
+        }
+      ],
+      "alignment_verified": false,
+      "ground_truth": false
+    }
+  ]
+}
