@@ -46,5 +46,5 @@ jobs:
               : 'Entrega de Codex lista para revisión. Comprueba código, tests y criterios antes de aprobar.';
             await github.rest.issues.createComment({
               owner, repo, issue_number: issue,
-              body: `🔔 @${reviewer} — ${reason}\n\nLa IA no continuará esta decisión ni fusionará la PR sin autorización.`
+              body: `🔔 @${reviewer} — ${reason}\n\nLa IA detendrá únicamente el trabajo que dependa de esta decisión y continuará con tareas independientes autorizadas. Este aviso no constituye aprobación ni autoriza fusionar la PR.`
             });
