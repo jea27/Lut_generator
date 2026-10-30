@@ -33,7 +33,9 @@ jobs:
         run: |
           node --check site/app.js
           node --check site/data/fallback.js
+          node --check research/form.js
           python -m json.tool site/data/roadmap.json > /dev/null
+          python scripts/prepare_research_site.py
 
   publish:
     needs: validate
@@ -65,6 +67,8 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python scripts/sync_github.py
+      - name: Preparar formulario estático sin datos
+        run: python scripts/prepare_research_site.py
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
       - name: Empaquetar web

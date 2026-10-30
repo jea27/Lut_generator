@@ -145,3 +145,11 @@ reutiliza archivos existentes verificándolos; desde otra carpeta no apunta a lo
 medios raíz. El formulario está en research/form.html y su procedimiento en
 P0_FORMULARIO_REAL.md. Abrir ramas nuevas solo para una Issue P0 elegible y
 conservar siempre lo pendiente; nunca escribir directamente en main.
+
+## Continuación · enlace web COL-005 (checkpoint de trabajo)
+PR34 ya integrada en ae34ea0, árbol inicial limpio. Rama raíz actual
+codex/COL-005-formulario-web. 87 tests locales OK y cuatro viewports móviles
+comprobados. Source research/ y empaquetado allowlist para Pages preparados;
+publicación depende de merge humano y Actions. R101/102/103 reservados sin
+asignar; R999 QA privada, bloqueado en registro real. Se continúa con permisos
+fotográficos/COL004 y controles CC0/COL003 sin contactar participantes.

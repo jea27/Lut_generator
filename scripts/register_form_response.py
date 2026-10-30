@@ -54,6 +54,8 @@ def register(source, root):
     if len(payload) > 200_000:
         raise ValueError("Response too large")
     data = validate(json.loads(payload))
+    if data['participant_code'] == 'R999':
+        raise ValueError('R999 is synthetic QA and cannot be registered as participant evidence')
     private = Path(root) / ".research-private" / "responses"
     private.mkdir(parents=True, exist_ok=True)
     receipts = []

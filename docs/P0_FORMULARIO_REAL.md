@@ -7,9 +7,14 @@ Complementa el cuestionario COL-005; no sustituye las 12 entrevistas del gate.
 
 Abrir `research/form.html` en un navegador moderno; si file:// restringe scripts,
 usar `python -m http.server 8765 --bind 127.0.0.1 --directory research` desde
-esta carpeta. Visitar http://127.0.0.1:8765/form.html. No exponer 0.0.0.0,
-publicar en Pages, usar túneles ni activar un proveedor de formularios.
-No hay envío, analítica ni persistencia del formulario. Exporta JSON local;
+esta carpeta. Visitar http://127.0.0.1:8765/form.html. No exponer el servidor de
+pruebas en 0.0.0.0 ni usar túneles o un proveedor de respuestas. La publicación
+estática autorizada se prepara por el flujo documentado a continuación.
+La instrucción local anterior se conserva; el usuario autorizó el 2026-10-30
+preparar un enlace web. `P0_FORMULARIO_WEB.md` documenta esa ampliación sobre
+Pages y la recogida privada, sin cambiar el consentimiento. El enlace solo
+está disponible tras integración humana y publicación verificadas.
+No hay envío automático, analítica ni persistencia del formulario. Exporta JSON local;
 el participante decide compartirlo por un canal privado previamente acordado.
 
 Tres etapas guardan respuestas antes de mostrar estímulos: Q1–Q8 trabajo real;
@@ -43,7 +48,7 @@ son autodeclarados: no acreditan por sí solos persona real ni ausencia de fraud
 
 Fixtures sintéticas solo viven en tests temporales. El registro de entrevistas
 permanece vacío; ninguna respuesta real se genera para demostrar la UI. No se
-añade un formulario al dashboard publicado ni se contrata servicio externo.
+recopilan respuestas desde el dashboard ni se contrata servicio externo.
 
 ## Petición mínima al responsable
 

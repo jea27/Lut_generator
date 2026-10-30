@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "purpose": "Codes reserved for three future real participants; not identities or evidence",
+  "codes": [
+    {"code": "R101", "state": "reserved_not_distributed"},
+    {"code": "R102", "state": "reserved_not_distributed"},
+    {"code": "R103", "state": "reserved_not_distributed"}
+  ],
+  "responses_received": 0
+}
