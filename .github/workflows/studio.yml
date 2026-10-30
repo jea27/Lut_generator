@@ -1,0 +1,22 @@
+name: Compilar Color Studio
+on:
+  pull_request:
+    branches: [main, 'codex/COL-007-mvp-color-local']
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  studio:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci
+        working-directory: apps/web
+      - run: npm run build
+        working-directory: apps/web

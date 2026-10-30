@@ -58,5 +58,6 @@
     "temperature": 0.0
   },
   "commercial_validation": false,
-  "external_editor_tests": false
+  "external_editor_tests": false,
+  "reference_sha256": "92586431b8358502c888af0c6a8b128964361ff1066c843b1d80b5355754c36c"
 }

@@ -1,8 +1,18 @@
-# LumaForge · Entrega para Codex local en Windows
+# LumaForge · Color Studio local y seguimiento
+
+**MVP v0.1 técnico:** abrir `Iniciar-LumaForge.cmd` y visitar
+http://127.0.0.1:8790. Preparación, recorrido y límites en
+[MVP_V01_WINDOWS.md](docs/MVP_V01_WINDOWS.md).
+Motor/API en `packages/colour_core` y `apps/api`; Vue/TypeScript/Quasar en
+`apps/web`. Permite importar, comparar, ajustar y exportar PNG/JPG/LUT/JSON.
+P0 comercial sigue pendiente; el usuario autorizó expresamente P1/P2.
+
+## Contexto del traspaso inicial
 
 **EMPIEZA AQUÍ:** `GUIA_WINDOWS_CODEX.md` para instalar y conectar, después abre `PROMPT_INICIAL_CODEX.md` y pégalo en Codex. El contexto exhaustivo de la conversación anterior está en `docs/TRASPASO_A_CODEX.md`; las reglas permanentes para el agente están en `AGENTS.md`.
 
-El sitio es una **hoja de ruta funcional**, no el producto de edición todavía. GitHub y el despliegue actual de Pages se verificaron el 30-10-2026. Las notificaciones móviles siguen sin validar.
+`site/` sigue siendo el dashboard separado del editor local. GitHub Pages y las
+notificaciones Mobile ya se verificaron; no se presupone recepción de futuros avisos.
 
 ---
 
@@ -10,7 +20,9 @@ El sitio es una **hoja de ruta funcional**, no el producto de edición todavía.
 
 Sitio estático responsive y accesible desde navegador, con **42 tareas**, investigación, decisiones, arquitectura y sistema de sincronización automático de estado desde GitHub Issues/PRs cuando se despliega.
 
-**Estado actual:** entrega de planificación, no motor de edición de color. El nombre es provisional. Las 42 tareas aparecen planificadas. No hay Issues COL creadas en la consulta inicial; el motor no está iniciado.
+**Seguimiento:** el nombre sigue siendo provisional y hay 42 tareas. Los estados
+publicados proceden de Issues/PR reales; el JSON fuente contiene el plan inicial.
+Que exista un MVP técnico no significa que sus tareas estén aprobadas.
 
 ## 1. Probar en tu equipo
 
