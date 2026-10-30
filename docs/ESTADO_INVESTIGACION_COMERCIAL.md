@@ -36,3 +36,10 @@
   los resultados automáticos si el workflow los ejecuta.
 - Ningún trabajo en `apps/`, `packages/` o motor. P0 entrevistas y benchmark
   siguen pendientes de datos reales/permisos.
+
+## Checkpoint de publicación (30-10-2026)
+
+- PR #63: https://github.com/jea27/Lut_generator/pull/63, abierta y lista para revisión humana; marcador de PR #63 registrado en la solicitud canónica #15 antes de activar ready_for_review. #15 conserva needs-human. Issue #13 recibió el enlace y la propuesta Look Match.
+- Validación inicial de PR #63: compilación Studio y validación MVP completadas con éxito; workflows de aviso y validación de esta transición estaban en curso al consultar. Verificar resultado final en Actions.
+- Sin tests locales ni ejecución de competidores. Sin cambios en roadmap JSON, apps/ o packages/. PR #55 ya integrada y no repetida.
+
