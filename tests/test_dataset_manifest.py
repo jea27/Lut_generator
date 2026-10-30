@@ -84,6 +84,14 @@ class DatasetTests(unittest.TestCase):
             data = self.fixture(pathlib.Path(folder))
             self.assertFalse(dataset.validate(data)['gate_ready'])
 
+    def test_rights_basis_requires_a_real_text_reference(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = pathlib.Path(folder)
+            data = self.fixture(root)
+            for value in (True, [], {}, '   '):
+                data['pairs'][0]['source']['rights']['basis'] = value
+                self.assertFalse(dataset.validate(data,root)['gate_ready'])
+
     def test_malformed_manifest_fails_closed(self):
         for change in ({'pairs': []}, {'version': True}, {'pairs': [None]*20}):
             with self.subTest(change=change):
