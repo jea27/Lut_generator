@@ -1,0 +1,189 @@
+{
+  "version": 1,
+  "evidence_type": "real_photo_infrastructure_control",
+  "research_validated": false,
+  "product_runs": 0,
+  "synthetic_samples": 0,
+  "measured_utc": "2026-10-30T19:20:08.673031+00:00",
+  "pilot_manifest_sha256": "3e0c48b2096866871e5d1ccaeecab065e0fd60c2e3c23f638c7fe069e2e3b4b8",
+  "numpy": "2.3.5",
+  "pillow": "13.0.0",
+  "scope": "ICC decode/EXIF/Lanczos max-side512 and identity metrics; no grading model",
+  "timing_caveat": "First observed is not a cold-cache guarantee; subsequent samples are not model latency",
+  "assets": [
+    {
+      "asset": "DSC_0106-jpg_plain.jpg",
+      "sha256": "d23e0db0afa94b44f1b4adfb3a8e168d7877266103bcc1365622f149dff15e32",
+      "profile": "sRGB IEC61966-2.1",
+      "oriented_size": [
+        4928,
+        3264
+      ],
+      "measurement_size": [
+        512,
+        339
+      ],
+      "identity_control": {
+        "mse_encoded_srgb": 0.0,
+        "psnr_db": null,
+        "psnr_infinite": true,
+        "delta_e76_d65_mean": 0.0,
+        "delta_e76_d65_p95": 0.0,
+        "ssim_uniform7_luma_valid_samplecov": 0.9999999999992265,
+        "gradient_correlation": 0.9999999999999998,
+        "output_endpoint_channel_fraction": 0.07117671460176991
+      },
+      "repeat_decode_control": {
+        "count": 3,
+        "max_abs_encoded_srgb_from_first": 0.0
+      },
+      "preprocess_wall_seconds_observed": [
+        0.394718900002772,
+        0.34764739999809535,
+        0.3545637999995961
+      ],
+      "preprocess_first_observed_seconds": 0.394718900002772,
+      "preprocess_subsequent_summary": {
+        "count": 2,
+        "median_seconds": 0.3511055999988457,
+        "p95_nearest_rank_seconds": 0.3545637999995961
+      },
+      "identity_metric_wall_seconds": 0.10316160000002128,
+      "model_inference_seconds": null
+    },
+    {
+      "asset": "DSC_0106-jpg_pretty.jpg",
+      "sha256": "1e3bb248bd900639242f554ddf0275fd2450efa5a98d7a6d819d784fa1c8dbe2",
+      "profile": "sRGB IEC61966-2.1",
+      "oriented_size": [
+        4891,
+        3255
+      ],
+      "measurement_size": [
+        512,
+        341
+      ],
+      "identity_control": {
+        "mse_encoded_srgb": 0.0,
+        "psnr_db": null,
+        "psnr_infinite": true,
+        "delta_e76_d65_mean": 0.0,
+        "delta_e76_d65_p95": 0.0,
+        "ssim_uniform7_luma_valid_samplecov": 1.0,
+        "gradient_correlation": 1.0,
+        "output_endpoint_channel_fraction": 0.004263272849462365
+      },
+      "repeat_decode_control": {
+        "count": 3,
+        "max_abs_encoded_srgb_from_first": 0.0
+      },
+      "preprocess_wall_seconds_observed": [
+        0.35859780000100727,
+        0.3532048000015493,
+        0.35745179999867105
+      ],
+      "preprocess_first_observed_seconds": 0.35859780000100727,
+      "preprocess_subsequent_summary": {
+        "count": 2,
+        "median_seconds": 0.3553283000001102,
+        "p95_nearest_rank_seconds": 0.35745179999867105
+      },
+      "identity_metric_wall_seconds": 0.08844479999970645,
+      "model_inference_seconds": null
+    },
+    {
+      "asset": "DSC_0181-jpg_plain.jpg",
+      "sha256": "707d5e1a109a9018af848db60e5c5a1aedf4218ab353e24e308a5acf2a2d61a1",
+      "profile": "sRGB IEC61966-2.1",
+      "oriented_size": [
+        4928,
+        3264
+      ],
+      "measurement_size": [
+        512,
+        339
+      ],
+      "identity_control": {
+        "mse_encoded_srgb": 0.0,
+        "psnr_db": null,
+        "psnr_infinite": true,
+        "delta_e76_d65_mean": 0.0,
+        "delta_e76_d65_p95": 0.0,
+        "ssim_uniform7_luma_valid_samplecov": 0.999999999999966,
+        "gradient_correlation": 1.0,
+        "output_endpoint_channel_fraction": 5.377335299901672e-05
+      },
+      "repeat_decode_control": {
+        "count": 3,
+        "max_abs_encoded_srgb_from_first": 0.0
+      },
+      "preprocess_wall_seconds_observed": [
+        0.3446852000015497,
+        0.38348990000304184,
+        0.34700920000250335
+      ],
+      "preprocess_first_observed_seconds": 0.3446852000015497,
+      "preprocess_subsequent_summary": {
+        "count": 2,
+        "median_seconds": 0.3652495500027726,
+        "p95_nearest_rank_seconds": 0.38348990000304184
+      },
+      "identity_metric_wall_seconds": 0.08769649999885587,
+      "model_inference_seconds": null
+    },
+    {
+      "asset": "DSC_0181-jpg_pretty.jpg",
+      "sha256": "92586431b8358502c888af0c6a8b128964361ff1066c843b1d80b5355754c36c",
+      "profile": "sRGB IEC61966-2.1",
+      "oriented_size": [
+        4928,
+        3264
+      ],
+      "measurement_size": [
+        512,
+        339
+      ],
+      "identity_control": {
+        "mse_encoded_srgb": 0.0,
+        "psnr_db": null,
+        "psnr_infinite": true,
+        "delta_e76_d65_mean": 0.0,
+        "delta_e76_d65_p95": 0.0,
+        "ssim_uniform7_luma_valid_samplecov": 1.0,
+        "gradient_correlation": 1.0,
+        "output_endpoint_channel_fraction": 1.728429203539823e-05
+      },
+      "repeat_decode_control": {
+        "count": 3,
+        "max_abs_encoded_srgb_from_first": 0.0
+      },
+      "preprocess_wall_seconds_observed": [
+        0.34997999999905005,
+        0.37525770000138436,
+        0.3510134999996808
+      ],
+      "preprocess_first_observed_seconds": 0.34997999999905005,
+      "preprocess_subsequent_summary": {
+        "count": 2,
+        "median_seconds": 0.3631356000005326,
+        "p95_nearest_rank_seconds": 0.37525770000138436
+      },
+      "identity_metric_wall_seconds": 0.08786560000226018,
+      "model_inference_seconds": null
+    }
+  ],
+  "pair_guards": [
+    {
+      "capture": "DSC_0106",
+      "dimensions_equal": false,
+      "pixel_fidelity_allowed": false,
+      "reason": "reject_before_resize"
+    },
+    {
+      "capture": "DSC_0181",
+      "dimensions_equal": true,
+      "pixel_fidelity_allowed": false,
+      "reason": "alignment_and_target_not_reviewed"
+    }
+  ]
+}
