@@ -52,7 +52,7 @@ gh repo view jea27/Lut_generator
 No repitas `git init`, no crees otro repositorio ni sobrescribas `origin`. Antes de hacer push o cambiar configuraciones remotas, presenta los cambios y solicita aprobación explícita.
 
 ## 6. Activar web
-Conserva GitHub → repositorio → Settings → Pages → Source: **GitHub Actions**. El workflow publica el artefacto de `site/`. Tras aprobar la publicación e integrar la corrección en `main`, comprueba Actions → **Publicar roadmap** y su enlace `https://jea27.github.io/Lut_generator/`. No des el despliegue por correcto antes de verificar su ejecución.
+Conserva GitHub → repositorio → Settings → Pages → Source: **GitHub Actions**. El workflow valida las PR sin publicar; solo publica el artefacto de `site/` con un push a `main` y tras pasar las pruebas. Tras integrar la corrección en `main`, comprueba Actions → **Publicar roadmap** y su enlace `https://jea27.github.io/Lut_generator/`. No des el despliegue por correcto antes de verificar su ejecución.
 
 ## 7. Importar las 42 Issues (solo cuando quieras)
 ```powershell
@@ -72,7 +72,7 @@ Instala GitHub Mobile, inicia sesión y habilita push de @menciones y asignacion
 1. Elige un COL-###, crea/selecciona su Issue.
 2. Codex implementa en rama `codex/COL-###-tema`, corre tests y documenta.
 3. Codex hace `git push` a su rama y abre PR **solo después** de la autorización inicial de este flujo; nunca hace merge.
-4. GitHub Actions detecta Issues y PR y actualiza el dashboard remoto. El usuario recibe push móvil para revisión/ayuda.
+4. GitHub Actions valida las PR; el dashboard se sincroniza y publica tras el siguiente push a `main`. El workflow de notificaciones sigue atendiendo sus eventos de revisión/ayuda.
 5. El humano revisa y corrige, integra a main, coloca `approved` y cierra la Issue (si corresponde). El dashboard reflejará `done` tras sincronizar.
 
 ## 10. Que trabaje cuando te ausentes

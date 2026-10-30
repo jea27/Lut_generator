@@ -18,6 +18,14 @@
 - Evidencia, limitaciones y commit propuesto: `docs/REESTRUCTURACION_RAIZ.md`.
 - Autorización posterior del usuario: crear commit, subir esta rama y abrir PR hacia `main`; sin merge ni cambios de configuración remota. El enlace y el resultado de publicación se registran en la entrega de la sesión y en la PR.
 
+## 2026-10-30 · Separar validación PR y despliegue Pages
+- Solicitud directa del usuario para actualizar la PR #1 en `codex/fix-repository-root`.
+- Causa verificada: Pages rechazaba el despliegue del ref de la PR por las protecciones del entorno.
+- Job `validate` para PR/push con lectura y pruebas; job `publish` solo en push a `main`, condicionado a validación correcta y con entorno/permisos Pages propios. Checkout del commit del evento; artefacto `site/` y base `/Lut_generator/` conservados.
+- Eliminados disparadores Issues/cron/manual. La sincronización de estados ahora se publica con el siguiente push a `main`; guías actualizadas.
+- Evidencia local: 11 pruebas OK, sintaxis JS y JSON OK, YAML y contrato de eventos/permisos/rutas comprobados, diff sin errores. Detalles en `docs/REESTRUCTURACION_RAIZ.md`.
+- Autorizado commit y push a la rama de la PR; sin merge ni modificación de protecciones. Despliegue real pendiente de integración humana.
+
 ## Plantilla para próximas entregas
 
 ### AAAA-MM-DD · [COL-XXX] Título

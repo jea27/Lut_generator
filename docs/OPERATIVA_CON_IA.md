@@ -2,7 +2,7 @@
 
 ## ¿Qué actualiza el dashboard realmente?
 
-El **workflow incluido** consulta el estado de Issues y pull requests del **mismo repositorio** cada 30 minutos y en eventos de Issues/push a main. Publica `site/data/roadmap.json` en GitHub Pages; la web lo consulta al cargar y cada 60 segundos mientras está abierta. El workflow publica estado, **no implementa código**.
+El **workflow incluido** valida las PR hacia `main` sin publicar ni acceder al entorno Pages. Solo tras un push a `main`, y si pasa la validación, consulta Issues y pull requests del **mismo repositorio** y publica `site/data/roadmap.json` dentro de `site/` en GitHub Pages. La web lo consulta al cargar y cada 60 segundos, pero los cambios remotos de Issues/PR no se publican hasta el siguiente push a `main`. No hay cron ni publicación manual. El workflow publica estado, **no implementa código**.
 
 No hay agente de desarrollo conectado de forma predeterminada. Para automatizar programación debes activar por separado Codex en tu IDE o un agente GitHub que pueda recibir issues. No se ha conectado nada a tu cuenta.
 

@@ -59,3 +59,16 @@ fix: move LumaForge project to repository root
 En la entrega inicial no se había creado el commit ni realizado push, merge, PR o escritura remota. No se añadieron funciones de producto. Los demás hallazgos de la auditoría inicial quedan fuera de esta corrección.
 
 El usuario autorizó después crear el commit, publicar exclusivamente la rama `codex/fix-repository-root` y abrir una PR hacia `main`. La integración en `main` permanece bajo revisión humana y no se autoriza el merge. Después de integrar, comprobar el workflow **Publicar roadmap**, su artefacto y la URL de Pages. No hace falta modificar el origen de Pages, que ya es GitHub Actions.
+
+## Corrección posterior del workflow · PR #1
+
+La [ejecución inicial de la PR](https://github.com/jea27/Lut_generator/actions/runs/41075737878) falló antes de ejecutar pasos: el entorno `github-pages` impide desplegar `refs/pull/1/merge`. El usuario autorizó corregir el workflow y subir la actualización a la misma rama, sin merge ni cambios de protecciones.
+
+- `validate` se ejecuta en PR hacia `main` (incluido `synchronize`) y en push a `main`. Checkout sin `ref: main` permite probar el merge propuesto en PR y el commit exacto del evento push. Ejecuta unittest, sintaxis de ambos JavaScript y análisis JSON. Solo dispone de `contents: read`, sin entorno Pages.
+- `publish` depende de `validate` y exige `github.event_name == 'push' && github.ref == 'refs/heads/main'`. Conserva el entorno `github-pages`, permisos de lectura de metadatos y los permisos `pages: write` e `id-token: write` únicamente en este job. La exclusión mutua se limita a despliegues.
+- Se eliminan disparadores Issues, cron y manual, así como el filtro de rutas del push: cualquier push a `main` valida y puede publicar. Los cambios de Issues/PR se incorporan al JSON en el siguiente push a `main`, no cada 30 minutos. README, guía y documentación operativa reflejan esta decisión.
+- Se mantienen sincronización de metadatos, configure-pages, upload-pages-artifact con `path: site` y deploy-pages. No se añade prefijo a los archivos: al publicar el contenido de `site/`, sus recursos relativos y el fetch de `data/roadmap.json` siguen resolviéndose bajo `https://jea27.github.io/Lut_generator/`.
+- Validación local repetida: **11 unittest OK**, ambos `node --check` OK y JSON válido. Script temporal con PyYAML: YAML sin claves duplicadas, contrato de jobs/permisos/artefacto correcto, siete combinaciones evento/ref comprobadas y rutas web bajo `/Lut_generator/` verificadas. `git diff --check`: sin errores.
+- La prueba de despliegue real desde `main` sigue pendiente de revisión e integración humana. La validación YAML local no sustituye actionlint ni la ejecución real de Actions; el resultado del check de esta actualización se registra en la PR.
+
+Referencia de la solución: [condiciones y permisos por job](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax) y [workflows personalizados de Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
