@@ -56,3 +56,9 @@ class ApiTests(unittest.TestCase):
     def test_oversized_request_rejected_before_multipart(self):
         response=self.client.post('/api/images',headers={**H,'Content-Length':str(34*1024*1024)})
         self.assertEqual(response.status_code,413)
+
+    def test_nonfinite_json_is_rejected_without_echoing_input(self):
+        response=self.client.post('/api/preview',content='{"source_id":"private","recipe":{"intensity":NaN}}',
+                                  headers={**H,'Content-Type':'application/json'})
+        self.assertEqual(response.status_code,422)
+        self.assertNotIn('private',response.text)

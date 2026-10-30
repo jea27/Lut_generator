@@ -11,6 +11,7 @@ from urllib.parse import urlparse
 
 import psutil
 from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi.exceptions import RequestValidationError
 from fastapi.responses import FileResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
@@ -83,6 +84,11 @@ def create_app(data_dir=None):
 
     @app.exception_handler(ValueError)
     async def invalid(request,error): return JSONResponse({'detail':str(error)},status_code=422)
+
+    @app.exception_handler(RequestValidationError)
+    async def invalid_request(request,error):
+        # Do not echo raw private input or NaN into an error JSON response.
+        return JSONResponse({'detail':'Invalid request: check recipe version, finite values and control ranges'},status_code=422)
 
     @app.exception_handler(UnidentifiedImageError)
     async def invalid_image(request,error): return JSONResponse({'detail':'Invalid JPEG/PNG image'},status_code=422)
