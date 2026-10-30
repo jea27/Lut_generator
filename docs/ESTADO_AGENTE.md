@@ -1,4 +1,80 @@
-# Estado del agente · checkpoint P0 de investigación · 2026-10-30
+# Estado del agente · LumaForge MVP v0.1 · 2026-10-30
+
+## Checkpoint vigente · P1/P2 autorizado
+
+
+Este bloque sustituye cualquier prohibición histórica de iniciar P1/P2 de los
+checkpoints anteriores. El usuario autorizó explícitamente ambas fases técnicas
+con P0 comercial pendiente. No cambia la aprobación de P0 ni autoriza merges.
+
+### Tarea actual y ramas
+- Motor/API COL007–012: codex/COL-007-mvp-color-local, PR52, Issues39–44.
+- Medición/revisión: COL013/014, Issues45/46, aceptación completa pendiente.
+- Estudio COL015–019: codex/COL-015-mvp-studio, Issues47–51, rama actual raíz,
+  apilada sobre la del motor. Revisar motor primero y luego estudio.
+- Todo P0 conservado, incluido checkpoint38 integrado localmente en esta rama;
+  PR36/37/38 previas no son borradas ni se fusionan desde el agente.
+
+### Trabajo completado
+Aplicación ejecutable: referencia/destino JPG/PNG8; análisis real; dos métodos
+Lab con límites; comparador, intensidad/controles, presets JSON, PNG/JPG original
+con ICC y LUT global33³. Código separado apps/api, apps/web, packages/colour_core.
+Sin API externa de imagen, costes por proceso, autenticación cloud o cambio de Pages.
+Dependencias locales autorizadas e instaladas en .venv-mvp/node_modules, ignoradas.
+
+### Pruebas y resultados
+14 unittest MVP OK sin omisiones y87 existentes OK en runtime anterior. TypeScript
++Vite build OK, npm audit de instalación0 vulnerabilidades. CI backend Windows
+correcta en PR52; consultar sus checks para la última revisión. UI tiene CI propia.
+TestClient de Starlette emite aviso de deprecación httpx, no error de pruebas.
+Roundtrip de LUT por lector trilineal independiente <2e-6 por canal; export real
+4928x3264 PNG/JPG, LUT33³ y JSON. Smoke en docs/evidence/MVP_01_SMOKE.json.
+GUI: importación, matching, intensidad0, comparación51%, exposición0.10,
+preset/undo/restauración/importación JSON y descargas PNG/cube/JSON comprobadas.
+Viewports390 y1280 sin overflow. Detalles en docs/evidence/MVP_01_GUI.md.
+Aproximadamente10s/RSS785MB en export16MP observada; preview ~1s/RSS235MB.
+No son garantías ni medición de memoria GPU. Originales y exportaciones privadas
+no se publican ni se convierten en evidencia de mercado.
+
+### Cambios pendientes y revisión
+Revisión visual/humana de calidad y criterios completos por Issue; no autoaprobar.
+COL013 aún no tiene benchmark completo por20 escenas/GPU, COL018 no tiene
+miniaturas reales ni historial de sesión persistido en disco; sí presets JSON y
+undo/redo en memoria. COL020/021/022 y P0 entrevistas/evaluación ciega no ejecutadas.
+No RAW/Log/HDR/16bit/vídeo, máscaras/segmentación/Tauri ni prueba de .cube en
+Photoshop/Premiere/Resolve. Estas extensiones solo diseñadas, no implementadas.
+
+### Reanudar / abrir
+Abrir http://127.0.0.1:8790 si sigue activo; en caso contrario doble clic en
+Iniciar-LumaForge.cmd desde la raíz. Preparación en docs/MVP_V01_WINDOWS.md.
+La API sirve el build de apps/web/dist (no publicar ese editor en Pages).
+Servidor loopback únicamente; detener con Ctrl+C en su consola.
+Copias temporales en .lumaforge-local/images y presets en .lumaforge-local/presets,
+ignorados. Máximo8 imágenes; eliminar copias desde la UI cuando se alcance límite.
+Originales externos intactos. Hay exports reales en .lumaforge-local/demo y en
+Descargas generados por la GUI. No borrar esta información al reanudar.
+
+Para pruebas: ./.venv-mvp/Scripts/python.exe -m unittest discover -s tests_mvp -v
+Compilación: npm --prefix apps/web run build. La app sirve sin Internet después
+ de preparar dependencias/build. No iniciar trabajo avanzado antes de estabilizar.
+Siguiente: revisión humana del MVP y validación externa de LUT/otras escenas
+con permisos, mientras P0 comercial continúa por su circuito independiente.
+
+### Evidencia final y revisión
+PR52 motor/API y PR53 Color Studio listas para revisión, sin merge por el agente.
+CI backend Windows41118511892 y frontend41119407555 success; 14 pruebas MVP
+ejecutadas sin omisiones. 87 pruebas de seguimiento anteriores OK.
+Acción consolidada Issue54: aviso41119481395 success, comentario6532271615
+menciona @jea27. Respuesta real del propietario6532291469: base técnica aceptada
+para revisión; no equivale a merge ni aprobación de todos los criterios. No
+repetir ese aviso. La próxima sesión debe leer Issue54 antes de nuevas peticiones.
+Worktree adicional .codex-worktrees/MVP-core conserva rama motor; raíz en rama
+Color Studio. Las dependencias/build y datos locales están preparados e ignorados.
+La demo de navegador se deja abierta con imágenes CC0 y servidor loopback activo.
+
+## Checkpoints históricos P0 (no sustituyen la autorización vigente)
+
+### Archivo de investigación P0 · 2026-10-30
 
 ## Tarea actual y rama
 
@@ -234,62 +310,3 @@ Python explícito del runtime (comandos arriba) y p0_status --github --ready.
 Para rerun de controles usar --media-root .research-media/polyhaven-rural, reporte
 nuevo; no sobrescribir el informe original ni rellenar benchmark.json con controles.
 No publicar JSON de respuestas, fotos, permisos firmados, contactos ni EXIF privado.
-
-## ESTADO VIGENTE · MVP v0.1 P1/P2 autorizado · 2026-10-30
-
-Este bloque sustituye cualquier prohibición histórica de iniciar P1/P2 de los
-checkpoints anteriores. El usuario autorizó explícitamente ambas fases técnicas
-con P0 comercial pendiente. No cambia la aprobación de P0 ni autoriza merges.
-
-### Tarea actual y ramas
-- Motor/API COL007–012: codex/COL-007-mvp-color-local, PR52, Issues39–44.
-- Medición/revisión: COL013/014, Issues45/46, aceptación completa pendiente.
-- Estudio COL015–019: codex/COL-015-mvp-studio, Issues47–51, rama actual raíz,
-  apilada sobre la del motor. Revisar motor primero y luego estudio.
-- Todo P0 conservado, incluido checkpoint38 integrado localmente en esta rama;
-  PR36/37/38 previas no son borradas ni se fusionan desde el agente.
-
-### Trabajo completado
-Aplicación ejecutable: referencia/destino JPG/PNG8; análisis real; dos métodos
-Lab con límites; comparador, intensidad/controles, presets JSON, PNG/JPG original
-con ICC y LUT global33³. Código separado apps/api, apps/web, packages/colour_core.
-Sin API externa de imagen, costes por proceso, autenticación cloud o cambio de Pages.
-Dependencias locales autorizadas e instaladas en .venv-mvp/node_modules, ignoradas.
-
-### Pruebas y resultados
-14 unittest MVP OK sin omisiones y87 existentes OK en runtime anterior. TypeScript
-+Vite build OK, npm audit de instalación0 vulnerabilidades. CI backend Windows
-correcta en PR52; consultar sus checks para la última revisión. UI tiene CI propia.
-TestClient de Starlette emite aviso de deprecación httpx, no error de pruebas.
-Roundtrip de LUT por lector trilineal independiente <2e-6 por canal; export real
-4928x3264 PNG/JPG, LUT33³ y JSON. Smoke en docs/evidence/MVP_01_SMOKE.json.
-GUI: importación, matching, intensidad0, comparación51%, exposición0.10,
-preset/undo/restauración/importación JSON y descargas PNG/cube/JSON comprobadas.
-Viewports390 y1280 sin overflow. Detalles en docs/evidence/MVP_01_GUI.md.
-Aproximadamente10s/RSS785MB en export16MP observada; preview ~1s/RSS235MB.
-No son garantías ni medición de memoria GPU. Originales y exportaciones privadas
-no se publican ni se convierten en evidencia de mercado.
-
-### Cambios pendientes y revisión
-Revisión visual/humana de calidad y criterios completos por Issue; no autoaprobar.
-COL013 aún no tiene benchmark completo por20 escenas/GPU, COL018 no tiene
-miniaturas reales ni historial de sesión persistido en disco; sí presets JSON y
-undo/redo en memoria. COL020/021/022 y P0 entrevistas/evaluación ciega no ejecutadas.
-No RAW/Log/HDR/16bit/vídeo, máscaras/segmentación/Tauri ni prueba de .cube en
-Photoshop/Premiere/Resolve. Estas extensiones solo diseñadas, no implementadas.
-
-### Reanudar / abrir
-Abrir http://127.0.0.1:8790 si sigue activo; en caso contrario doble clic en
-Iniciar-LumaForge.cmd desde la raíz. Preparación en docs/MVP_V01_WINDOWS.md.
-La API sirve el build de apps/web/dist (no publicar ese editor en Pages).
-Servidor loopback únicamente; detener con Ctrl+C en su consola.
-Copias temporales en .lumaforge-local/images y presets en .lumaforge-local/presets,
-ignorados. Máximo8 imágenes; eliminar copias desde la UI cuando se alcance límite.
-Originales externos intactos. Hay exports reales en .lumaforge-local/demo y en
-Descargas generados por la GUI. No borrar esta información al reanudar.
-
-Para pruebas: ./.venv-mvp/Scripts/python.exe -m unittest discover -s tests_mvp -v
-Compilación: npm --prefix apps/web run build. La app sirve sin Internet después
- de preparar dependencias/build. No iniciar trabajo avanzado antes de estabilizar.
-Siguiente: revisión humana del MVP y validación externa de LUT/otras escenas
-con permisos, mientras P0 comercial continúa por su circuito independiente.
