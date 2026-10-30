@@ -13,3 +13,5 @@ build/
 *.tmp
 Thumbs.db
 .DS_Store
+.research-media/
+.research-private/
