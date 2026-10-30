@@ -36,7 +36,7 @@ El código puede publicarse en **rama `codex/...` y PR**, solo con el permiso in
 Con una única cuenta GitHub, la aprobación formal de la propia PR puede no contar como revisión independiente. Se puede validar manualmente y hacer el merge personalmente, pero no inventar una barrera de seguridad que GitHub no aplica.
 
 ## Dashboard
-`publish-roadmap.yml` valida las PR hacia `main` y publica Pages únicamente tras un push a `main`, después de superar la validación. Sincroniza metadatos en cada publicación; no se publica por cambios de Issues, cron ni ejecución manual. La web consulta JSON periódicamente, pero esos cambios de estado se reflejan tras el siguiente push a `main`. Si Pages no está desplegado, la sincronización visual remota no funciona aunque el repo sí tenga Issues.
+`publish-roadmap.yml` valida PR y publica desde main. El workflow integrado `sync-roadmap.yml` sincroniza Issues/PR mediante eventos, cron y ejecución manual; no es necesario hacer commits de estados. Los cambios requieren que Actions termine y Pages sirva el nuevo JSON.
 
 ## Diferencia frente a ejecución 24/7
 Ni el dashboard ni la acción de GitHub programan a Codex para desarrollar en tu PC: para procesamiento local continuo debes mantener PC encendido y una sesión/proceso Codex en marcha, o construir más adelante un runner/orquestador. No hay autonomía en segundo plano hasta configurar explícitamente ese componente.
@@ -74,3 +74,19 @@ Solicitud creada por el bot: https://github.com/jea27/Lut_generator/issues/5,
 con needs-human y comentario de mención verificables. La recepción móvil
 confirmada por el usuario corresponde a la prueba #3; no se presupone una
 confirmación adicional para cada aviso posterior.
+
+## Formato obligatorio de acciones humanas
+
+Título: `[LUMAFORGE] ACCIÓN REQUERIDA — Descripción concreta`.
+
+El cuerpo contiene secciones Markdown `## Qué has terminado`,
+`## Qué necesitas de mí`, `## Por qué necesitas mi intervención`,
+`## Opciones disponibles`, `## Tu recomendación`, `## Cómo responder`
+y `## Enlace`, con contenido concreto. Crear primero el cuerpo, después
+needs-human. No usar títulos genéricos ni un aviso para cada actualización.
+
+La propuesta de este cambio valida ese formato antes de mencionar al revisor
+y deduplica una misma petición por contenido; las PR por su número estable.
+El cambio no convierte un comentario o merge en aceptación de producto.
+Las Issues históricas conservan su historia; para el mismo bloqueo se reutilizan
+y se actualiza su formato sin reenviar una notificación ya entregada.

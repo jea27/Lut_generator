@@ -25,7 +25,25 @@ Construir un motor de transferencia de look desde referencias para foto y vídeo
 ## Aprobación
 `done` se obtiene exclusivamente de las reglas del sync GitHub: issue cerrada + etiqueta `approved` + PR fusionada si corresponde. La IA nunca se autoaprueba. Para una sola cuenta GitHub, los requisitos de revisión formal necesitan un revisor distinto o controles externos: el texto del prompt por sí solo no sustituye permisos reales.
 
-## Verificaciones
+## Autonomía P0 y recuperación (instrucción del usuario, 2026-10-30)
+
+- Crear/actualizar rutinariamente Issues, ramas y PR de P0 y publicar sus ramas
+  está autorizado. Tras una entrega, continuar con otra tarea independiente
+  elegible; detener únicamente trabajo que dependa de una decisión pendiente.
+- Ningún merge, escritura directa en main, cierre aprobado o etiqueta approved
+  por el agente. P1 requiere criterios de salida de P0 y autorización explícita
+  del usuario; un merge o una notificación no cumplen esa autorización.
+- Cada solicitud nueva usa título `[LUMAFORGE] ACCIÓN REQUERIDA — ...` y campos
+  Qué has terminado, Qué necesitas de mí, Por qué necesitas mi intervención,
+  Opciones disponibles, Tu recomendación, Cómo responder y Enlace. Publicar la
+  solicitud antes de needs-human y comprobar workflow/mención. Reutilizar una
+  solicitud para el mismo bloqueo, sin retirar/reaplicar etiquetas para repetirlo.
+- Mantener docs/ESTADO_AGENTE.md con tareas, ramas, pruebas, cambios pendientes,
+  bloqueos, siguientes tareas e instrucciones de reanudación en cada checkpoint.
+- Distinguir preparación de instrumentos, ejecución real y aprobación humana.
+  No rellenar evidencia ausente con fixtures de pruebas o hipótesis.
+
+## Verificaciones técnicas
 - Dashboard: `python -m unittest discover -s tests -v`.
 - Nuevas funciones: añadir pruebas apropiadas, comprobar espacios de color, gestión de gamma, gamut clipping y reproducción consistente entre plataformas.
 - Nada de fotos personales de clientes en Git ni de recursos descargados sin licencia.

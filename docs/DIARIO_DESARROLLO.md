@@ -95,3 +95,10 @@
 - Decisiones y cambios de alcance:
 - Riesgos / pendientes:
 - Próximo paso propuesto:
+
+## 2026-10-30 · [COL-006] Coordinación autónoma y formato de avisos
+- Rama codex/COL-006-coordinacion-p0; Issue #19. Estado de recuperación guardado antes de avanzar con worktrees independientes de COL-002/003/004.
+- COL-005 conciliada: PR #14 integrada y Issue #13 abierta sin approved significan review. Se sustituyó status:in-progress por status:review; no se cerró ni aprobó. Issue #15 reutilizada con formato concreto sin repetir el aviso.
+- Avisos propuestos: título LUMAFORGE ACCIÓN REQUERIDA, siete campos, contenido no vacío, CRLF aceptado y deduplicación por PR/contenido. Modo manual con Issue explícita y sin interpretar entradas como código.
+- 27 unittest OK. Permisos del workflow conservados; sin cambios de configuración sensible ni tokens. Puerta P0 documentada como pendiente, nunca como go.
+- Checkpoint 1: COL-004 preparada en worktree, 30 unittest OK y cero medios listos; se continúa con COL-002/003.
