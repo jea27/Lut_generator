@@ -1,23 +1,50 @@
-﻿# Comprueba el estado local sin instalar software ni crear recursos remotos.
-$ErrorActionPreference = 'Continue'
-$root = Split-Path -Parent $PSScriptRoot
-Set-Location $root
-Write-Host "LumaForge - comprobacion no destructiva" -ForegroundColor Cyan
-foreach ($cmd in @('git', 'python', 'gh', 'codex')) {
-    $found = Get-Command $cmd -ErrorAction SilentlyContinue
-    if ($found) { Write-Host "OK ${cmd}: $($found.Source)" -ForegroundColor Green }
-    else { Write-Host "FALTA $cmd" -ForegroundColor Yellow }
+# Auditoria local: no instala software ni modifica recursos remotos.
+param([string]$PythonPath, [string]$GhPath, [switch]$SkipGitHub)
+$ErrorActionPreference = 'Stop'
+$script:failed = $false
+function Invoke-Check {
+    param([string]$Executable, [string[]]$Arguments)
+    try {
+        & $Executable @Arguments
+        if ($LASTEXITCODE -ne 0) { $script:failed = $true }
+    } catch { Write-Warning $_.Exception.Message; $script:failed = $true }
 }
-if (Get-Command python -ErrorAction SilentlyContinue) {
-    python -m unittest discover -s tests -v
-    python scripts/import_issues.py
-}
-if (Get-Command git -ErrorAction SilentlyContinue) {
-    git status --short
-    git remote -v
-}
-if (Get-Command gh -ErrorAction SilentlyContinue) {
-    gh auth status
-}
-Write-Host "No se han hecho commits, pushes ni cambios remotos." -ForegroundColor Cyan
-
+Push-Location (Split-Path -Parent $PSScriptRoot)
+try {
+    if (!$PythonPath) {
+        $candidate = Get-Command python -ErrorAction SilentlyContinue
+        if ($candidate -and $candidate.Source -notlike '*\WindowsApps\*') {
+            $PythonPath = $candidate.Source
+        } else {
+            $bundled = Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
+            if (Test-Path -LiteralPath $bundled) { $PythonPath = $bundled }
+        }
+    }
+    if ($PythonPath) {
+        Write-Host "Python: $PythonPath"
+        Invoke-Check $PythonPath @('--version')
+        Invoke-Check $PythonPath @('-m', 'unittest', 'discover', '-s', 'tests', '-v')
+        Invoke-Check $PythonPath @('scripts/import_issues.py')
+    } else { Write-Warning 'Falta Python funcional: usa -PythonPath'; $script:failed = $true }
+    Invoke-Check 'node' @('--version')
+    Invoke-Check 'node' @('--check', 'site/app.js')
+    Invoke-Check 'git' @('--version')
+    Invoke-Check 'git' @('status', '--short', '--branch')
+    Invoke-Check 'git' @('remote', '-v')
+    if (!$SkipGitHub) {
+        if (!$GhPath) {
+            $candidate = Get-Command gh -ErrorAction SilentlyContinue
+            if ($candidate) { $GhPath = $candidate.Source }
+            elseif (Test-Path -LiteralPath (Join-Path $env:ProgramFiles 'GitHub CLI\gh.exe')) {
+                $GhPath = Join-Path $env:ProgramFiles 'GitHub CLI\gh.exe'
+            }
+        }
+        if ($GhPath) {
+            Invoke-Check $GhPath @('--version')
+            Invoke-Check $GhPath @('auth', 'status')
+        } else { Write-Warning 'gh no disponible; autenticacion sin verificar'; $script:failed = $true }
+    } else { Write-Host 'GitHub omitido expresamente: autenticacion sin verificar.' }
+} finally { Pop-Location }
+Write-Host 'Sin instalaciones ni escrituras remotas.'
+if ($script:failed) { exit 1 }
+exit 0

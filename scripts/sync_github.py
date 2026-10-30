@@ -49,13 +49,13 @@ def derive_status(task, issue, pull):
     if not issue:
         return 'planned'
     labels={x.get('name','').lower() for x in issue.get('labels',[])}
-    if 'blocked' in labels:
+    if labels & {'blocked', 'needs-human'}:
         return 'blocked'
     merged=bool(pull and pull.get('merged_at'))
     accepted=issue.get('state')=='closed' and 'approved' in labels
     if accepted and (not task.get('requires_pr') or merged):
         return 'done'
-    if issue.get('state')=='closed' or merged or pull and pull.get('state')=='open' or 'status:review' in labels:
+    if issue.get('state')=='closed' or merged or pull and pull.get('state')=='open' and not pull.get('draft') or 'status:review' in labels:
         return 'review'
     if 'status:in-progress' in labels:
         return 'progress'
@@ -86,9 +86,11 @@ def main():
                 issue_by_id[tid]=issue
     pr_by_id={}
     for pr in prs:
+        if pr.get('base', {}).get('ref') != 'main':
+            continue
         for tid in ids_from_title(pr.get('title')):
             old=pr_by_id.get(tid)
-            if old is None or pr.get('updated_at','')>old.get('updated_at',''):
+            if old is None or pr_rank(pr)>pr_rank(old):
                 pr_by_id[tid]=pr
     summary={}
     for task in data['tasks']:
@@ -105,7 +107,15 @@ def main():
     now=datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00','Z')
     data['project'].update({'mode':'github','repository_url':f'https://github.com/{repo}','updated_at':now})
     PATH.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    PATH.with_name('fallback.js').write_text(
+        'window.INITIAL_ROADMAP = '+json.dumps(data,ensure_ascii=False,indent=2)+';\n',encoding='utf-8')
     print(f"Sincronizadas {len(issues)} issues, {len(prs)} PR. Estado: {summary}. {now}")
+
+def pr_rank(pull):
+    # Keep a new active delivery visible; discarded PRs cannot hide a merge.
+    return (2 if pull.get('state') == 'open' else 1 if pull.get('merged_at') else 0,
+            pull.get('updated_at', ''))
+
 
 if __name__=='__main__':
     main()

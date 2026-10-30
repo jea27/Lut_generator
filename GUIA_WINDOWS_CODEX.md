@@ -82,3 +82,12 @@ Una sesión Codex interactiva no se transforma por sí sola en servicio 24/7. En
 - No publiques repositorio privado, secretos, contraseñas, fotografías privadas ni credenciales en GitHub Pages.
 - Si quieres código privado y dashboard público, hay que separar un repo de publicación con JSON sanitizado; **no está implementado**.
 - El objetivo inicial es transparencia y control, no que Codex decida por su cuenta qué es una entrega aprobada.
+
+## Preparación local actual
+
+El comprobador admite Python incluido en Codex sin instalar software y permite
+rutas explícitas: `scripts/check_setup.ps1 -PythonPath RUTA -GhPath RUTA`.
+`-SkipGitHub` valida solo el entorno local; no certifica autenticación.
+La propuesta local añade refresco independiente por eventos desde main y
+prueba manual móvil. Ver `docs/PREPARACION_DESARROLLO.md`; sustituirá las
+limitaciones de sincronización de los pasos anteriores una vez integrada.
