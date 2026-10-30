@@ -1,0 +1,217 @@
+{
+  "version": 1,
+  "coverage_review": {
+    "status": "pending",
+    "record_id": null
+  },
+  "pairs": [
+    {
+      "id": "P0-001",
+      "scene": "portrait",
+      "challenges": [
+        "skin",
+        "shadows"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    },
+    {
+      "id": "P0-002",
+      "scene": "portrait",
+      "challenges": [
+        "skin",
+        "highlights"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    },
+    {
+      "id": "P0-003",
+      "scene": "portrait",
+      "challenges": [
+        "skin",
+        "mixed-light"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    },
+    {
+      "id": "P0-004",
+      "scene": "portrait",
+      "challenges": [
+        "skin",
+        "backlight"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    },
+    {
+      "id": "P0-005",
+      "scene": "landscape",
+      "challenges": [
+        "highlights"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    },
+    {
+      "id": "P0-006",
+      "scene": "landscape",
+      "challenges": [
+        "shadows"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    },
+    {
+      "id": "P0-007",
+      "scene": "landscape",
+      "challenges": [
+        "saturation"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    },
+    {
+      "id": "P0-008",
+      "scene": "landscape",
+      "challenges": [
+        "backlight"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    },
+    {
+      "id": "P0-009",
+      "scene": "interior",
+      "challenges": [
+        "mixed-light"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    },
+    {
+      "id": "P0-010",
+      "scene": "interior",
+      "challenges": [
+        "shadows"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    },
+    {
+      "id": "P0-011",
+      "scene": "interior",
+      "challenges": [
+        "highlights"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    },
+    {
+      "id": "P0-012",
+      "scene": "interior",
+      "challenges": [
+        "saturation"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    },
+    {
+      "id": "P0-013",
+      "scene": "street",
+      "challenges": [
+        "night"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    },
+    {
+      "id": "P0-014",
+      "scene": "street",
+      "challenges": [
+        "mixed-light",
+        "night"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    },
+    {
+      "id": "P0-015",
+      "scene": "street",
+      "challenges": [
+        "backlight"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    },
+    {
+      "id": "P0-016",
+      "scene": "street",
+      "challenges": [
+        "highlights",
+        "shadows"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    },
+    {
+      "id": "P0-017",
+      "scene": "still-life",
+      "challenges": [
+        "saturation"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    },
+    {
+      "id": "P0-018",
+      "scene": "still-life",
+      "challenges": [
+        "shadows"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    },
+    {
+      "id": "P0-019",
+      "scene": "portrait",
+      "challenges": [
+        "skin",
+        "night"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    },
+    {
+      "id": "P0-020",
+      "scene": "landscape",
+      "challenges": [
+        "night",
+        "highlights"
+      ],
+      "state": "planned",
+      "source": null,
+      "reference": null
+    }
+  ]
+}
