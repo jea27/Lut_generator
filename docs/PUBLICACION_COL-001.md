@@ -56,6 +56,23 @@ Revisión mediante Issue vinculada validada en run 41080088759 y deduplicación
 en run 41080353905. Los enlaces de la nueva PR y sus checks se registran en la
 Issue y en la entrega del chat después de su creación.
 
+## Resultado remoto verificado
+
+- PR abierta: https://github.com/jea27/Lut_generator/pull/7.
+- CI de la propuesta: https://github.com/jea27/Lut_generator/actions/runs/41081007929,
+  success; registro confirma 21 pruebas OK. publish omitido desde PR.
+- Aviso de revisión: https://github.com/jea27/Lut_generator/actions/runs/41081007870,
+  success; bot creó Issue #8 con needs-human y mencionó al responsable:
+  https://github.com/jea27/Lut_generator/issues/8#issuecomment-6526523109.
+- Sincronización existente repetida, intento 2:
+  https://github.com/jea27/Lut_generator/actions/runs/41080377557/attempts/2.
+  validate y publish success. No se hizo push ni merge a main.
+- JSON público consultado tras desplegar: updated_at 2026-10-30T15:28:44.802437Z,
+  COL-001 status review, issue_number 6 y pr_url de PR #7. No done ni approved.
+  review representa la preparación revisable, no entrevistas completadas.
+- Los nuevos disparadores de sync-roadmap.yml siguen pendientes de integración;
+  esta actualización se obtuvo mediante el workflow ya integrado.
+
 ## Revisión humana pendiente
 
 Revisar esta preparación y solicitar cambios o integrar personalmente la PR.

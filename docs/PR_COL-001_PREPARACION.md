@@ -14,3 +14,9 @@ validado. La PR no contiene palabras de cierre automático.
 
 Pruebas y revisión de publicación: docs/PUBLICACION_COL-001.md.
 No hay motor de color ni cambios directos a main. Sin ampliación de permisos.
+
+Issue canónica abierta: https://github.com/jea27/Lut_generator/issues/6.
+CI con 21 pruebas correctas: https://github.com/jea27/Lut_generator/actions/runs/41081007929.
+Aviso correcto: https://github.com/jea27/Lut_generator/actions/runs/41081007870.
+Roadmap desplegado mediante el workflow existente: https://github.com/jea27/Lut_generator/actions/runs/41080377557/attempts/2.
+JSON público verificado: COL-001 review, enlazado a Issue #6 y esta PR; no completada.

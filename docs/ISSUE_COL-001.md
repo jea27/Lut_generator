@@ -25,3 +25,7 @@ superar P0/COL-006 o recibir autorización explícita.
 site/data/roadmap.json, docs/P0_COL-001_SEGMENTOS.md, docs/ESTUDIO_DE_MERCADO.md.
 Los avisos de revisión (#5) y la prueba móvil (#3) son solicitudes operativas;
 esta es la Issue canónica de producto. Sin cierre automático desde la PR.
+
+Preparación para revisión: https://github.com/jea27/Lut_generator/pull/7.
+Evidencias y sincronización: docs/PUBLICACION_COL-001.md, incluidos 21 tests
+correctos en CI. La preparación en revisión no completa las entrevistas.
