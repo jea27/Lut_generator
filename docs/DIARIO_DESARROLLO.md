@@ -43,6 +43,27 @@
 - Añadidas pruebas del script exacto de Actions con dobles de API; no requieren permisos ni red.
 - Suite ampliada ejecutada: 15 unittest OK (incluye aviso en Issue, login inválido y deduplicación). El aviso de revisión utiliza los permisos originales; la integración en main queda a revisión humana en PR #4.
 
+## 2026-10-30 · [COL-001] Preparación oficial local de P0
+- Solicitud del usuario: preparar entorno y seguimiento, comenzar P0 y pedir autorización antes de escrituras remotas.
+- Estado inicial limpio, raíz correcta, remoto jea27/Lut_generator; PR #1 integrada y despliegue main verificado success. Cero Issues COL en la consulta inicial.
+- Rama: `codex/COL-001-preparacion-p0` desde origin/main `fa9883e`; sin push ni PR nueva.
+- Preparados comprobador Windows, sincronización por eventos desde main, reglas de estado y fallback, avisos de revisión/decisión/fallo y documentación de operación. No se han cambiado configuración ni permisos remotos.
+- Evidencia: 17 unittest y 8 pruebas Node OK; DRY RUN 42 tareas; YAML sin duplicados y contratos de eventos/permisos correctos; prueba negativa del comprobador exit 1. Navegador publicado: filtro P0 y detalle COL-001 correctos.
+- COL-001: guion de entrevistas, segmentos candidatos y registros anonimizados; ninguna entrevista realizada. Criterio de aceptación aún pendiente. Las 42 tareas versionadas conservan sus estados originales.
+- gh no disponible; autenticación, REVIEWER_GITHUB y recepción móvil no verificadas. Aviso histórico skipped no demuestra envío.
+- Decisión: preparar PR parcial sin cierre automático de Issue. Publicación, etiquetas, Issue y prueba móvil pendientes de autorización; merge y aprobación a cargo humano.
+- Informes: `PREPARACION_DESARROLLO.md`, `P0_COL-001_SEGMENTOS.md`, `PR_COL-001_PREPARACION.md`.
+- Motor sin iniciar; siguiente paso local de producto: recoger evidencia P0 antes de COL-006.
+
+## 2026-10-30 · [COL-001] Publicación autorizada de la preparación P0
+- Autorización explícita de publicar la rama codex/COL-001-preparacion-p0, crear Issue y abrir PR; sin merge ni aprobación propia.
+- Incorporado origin/main 871a37c preservando el workflow de avisos de PR #4 y el protocolo humano. Retirado el manejador previo no usado; conflictos resueltos en la rama de trabajo.
+- Issue canónica #6: https://github.com/jea27/Lut_generator/issues/6, abierta, roadmap y status:in-progress; faltan entrevistas reales y mapa validado.
+- gh localizado ya instalado en %ProgramFiles%/GitHub CLI/gh.exe y autenticado. Sin reinstalaciones ni cambios de permisos.
+- 21 unittest OK, sintaxis JS correcta; búsqueda de secretos y revisión de archivos públicos sin hallazgos en la entrega. Rutas de perfil sustituidas por placeholders; historial local preliminar conservado en respaldo local y publicación consolidada desde main con identidad noreply.
+- La sincronización de esta entrega reutiliza una ejecución de main ya desplegada; no se edita JSON para simular progreso. El nuevo refresco por eventos solo se activará después de integración humana.
+- Informe y límites: PUBLICACION_COL-001.md. Los enlaces de PR y ejecuciones reales se registran en la Issue y en la entrega del chat tras crearse.
+
 ## Plantilla para próximas entregas
 
 ### AAAA-MM-DD · [COL-XXX] Título

@@ -1,0 +1,57 @@
+name: Sincronizar roadmap
+
+on:
+  issues:
+    types: [opened, edited, labeled, unlabeled, closed, reopened, deleted]
+  workflow_run:
+    workflows: [Publicar roadmap]
+    types: [completed]
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    # Always run trusted main, never a PR ref or a PR-produced artifact.
+    # A separate workflow prevents completion events from triggering themselves.
+    if: >-
+      ${{ github.ref == 'refs/heads/main' &&
+          (github.event_name != 'workflow_run' ||
+           github.event.workflow_run.event == 'pull_request') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: read
+      pull-requests: read
+      pages: write
+      id-token: write
+    concurrency:
+      group: roadmap-pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verificar reglas antes de publicar
+        run: python -m unittest discover -s tests -v
+      - name: Consultar estado real
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python scripts/sync_github.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+      - uses: actions/deploy-pages@v4
+        id: deployment

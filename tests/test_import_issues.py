@@ -1,6 +1,9 @@
 import importlib.util
 import pathlib
 import unittest
+import contextlib
+import io
+from unittest.mock import patch
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location('import_issues', ROOT / 'scripts' / 'import_issues.py')
@@ -15,8 +18,13 @@ class ImportIssueTests(unittest.TestCase):
         self.assertEqual(mod.issue_title(task), '[COL-123] Test')
         self.assertIn('Prueba demostrable', mod.issue_body(task))
     def test_dry_run_never_uses_gh(self):
-        # La ejecución sin --apply no llama a gh (revisión estructural en CI).
-        self.assertTrue(callable(mod.main))
+        output = io.StringIO()
+        with patch('sys.argv', ['import_issues.py']), patch.object(mod.subprocess, 'run') as run:
+            with contextlib.redirect_stdout(output):
+                mod.main()
+        run.assert_not_called()
+        self.assertIn('DRY RUN: 42', output.getvalue())
+        self.assertIn('[COL-042]', output.getvalue())
 
 if __name__ == '__main__':
     unittest.main()

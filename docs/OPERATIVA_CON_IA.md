@@ -2,9 +2,9 @@
 
 ## ¿Qué actualiza el dashboard realmente?
 
-El **workflow incluido** valida las PR hacia `main` sin publicar ni acceder al entorno Pages. Solo tras un push a `main`, y si pasa la validación, consulta Issues y pull requests del **mismo repositorio** y publica `site/data/roadmap.json` dentro de `site/` en GitHub Pages. La web lo consulta al cargar y cada 60 segundos, pero los cambios remotos de Issues/PR no se publican hasta el siguiente push a `main`. No hay cron ni publicación manual. El workflow publica estado, **no implementa código**.
+`publish-roadmap.yml` valida las PR sin desplegar desde su ref y publica después de un push a main validado. La propuesta local `sync-roadmap.yml` añade refrescos desde main al cambiar Issues, terminar la validación de una PR, cada 30 minutos y por ejecución manual. Comparte la cola de Pages y no ejecuta código ni artefactos de PR. La web consulta el JSON cada 60 segundos. Los eventos nuevos solo estarán activos después de revisión, autorización de publicación e integración humana; no son una conexión ya validada. Los workflows publican estado, no implementan código.
 
-No hay agente de desarrollo conectado de forma predeterminada. Para automatizar programación debes activar por separado Codex en tu IDE o un agente GitHub que pueda recibir issues. No se ha conectado nada a tu cuenta.
+No hay agente de desarrollo conectado de forma predeterminada. Para automatizar programación debes activar por separado Codex en tu IDE o un agente GitHub que pueda recibir issues. El repositorio jea27/Lut_generator y Pages se verificaron el 30-10-2026; no hay un agente remoto de desarrollo configurado por estos workflows.
 
 ## Convención de seguimiento
 
@@ -12,7 +12,7 @@ No hay agente de desarrollo conectado de forma predeterminada. Para automatizar 
 - El agente trabaja sobre rama independiente y abre una PR con el mismo ID `[COL-007] ...` en su título.
 - Etiqueta `status:in-progress`: en curso.
 - PR abierta / fusionada o issue cerrada sin aprobación: **para revisar**.
-- Etiqueta `blocked`: bloqueada (prioritaria sobre cualquier estado).
+- Etiqueta `blocked` o `needs-human`: bloqueada (prioritaria sobre cualquier estado).
 - **Aprobada:** issue cerrada con etiqueta `approved`, y **PR fusionada si ese entregable la requiere**. No permitir al agente aplicar `approved`.
 - Las tareas humanas de investigación pueden aprobarse sin PR.
 - Las notas creadas en el dashboard son *borradores locales*: copiar y pegar en la issue o PR. No hay escritura directa desde el sitio público.
