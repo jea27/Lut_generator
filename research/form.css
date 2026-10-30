@@ -4,10 +4,16 @@ main { max-width: 800px; padding: 2rem; margin: 2rem auto; background: white; bo
 h1, h2 { line-height: 1.2; }
 .eyebrow { color: #37556c; font-size: .85rem; }
 label { display: block; margin: 1.5rem 0; font-weight: 600; }
+label, p, aside, summary { overflow-wrap: anywhere; }
 input:not([type=checkbox]), textarea { display: block; width: 100%; padding: .7rem; margin-top: .5rem; font: inherit; border: 1px solid #657a89; border-radius: 5px; }
 .consent { font-weight: 400; }
 aside { padding: 1rem; border-left: 4px solid #16705c; background: #e9f6f1; }
 button { padding: .9rem 1.2rem; background: #155d75; color: white; border: 0; border-radius: 5px; font: inherit; cursor: pointer; }
+button { min-height: 44px; max-width: 100%; margin: .35rem 0; }
+input[type=checkbox] { min-width: 24px; min-height: 24px; vertical-align: middle; }
+details { margin: 1rem 0; }
+summary { cursor: pointer; padding: .5rem 0; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: .8rem; }
 :focus-visible { outline: 3px solid #d07800; outline-offset: 3px; }
 footer { font-size: .85rem; margin-top: 2rem; }
 @media(max-width: 600px) { main { margin: 0; padding: 1.2rem; border-radius: 0; } }

@@ -59,6 +59,15 @@ class FormTests(unittest.TestCase):
                 register(source, root)
             self.assertFalse((root / "data/p0/interviews.json").exists())
 
+    def test_synthetic_gui_code_cannot_enter_participant_receipts(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / 'synthetic.json'
+            data = fixture(); data['participant_code'] = 'R999'
+            source.write_text(json.dumps(data), encoding='utf-8')
+            with self.assertRaises(ValueError):
+                register(source, directory)
+            self.assertFalse((Path(directory) / '.research-private/responses').exists())
+
     @unittest.skipUnless(shutil.which("node"), "Node unavailable")
     def test_browser_export_matches_python_schema(self):
         root = Path(__file__).resolve().parents[1]

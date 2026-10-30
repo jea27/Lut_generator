@@ -49,6 +49,8 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python scripts/sync_github.py
+      - name: Preparar formulario estático sin datos
+        run: python scripts/prepare_research_site.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

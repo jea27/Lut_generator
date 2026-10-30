@@ -126,3 +126,10 @@
 - 81 unittest locales en integración sin omisiones; JS comprobado. CI separada: PR31 67 con 2 omisiones Pillow, PR32 72 con 6 omisiones NumPy, PR33 70 sin omisiones; todos success. Publicación/sync run41097620802 success tras merges humanos. Dashboard HTTP: 42 tareas y P0 5 blocked/1 review. No se falsificó JSON.
 - Solicitud #29 reutilizada: decisión de distribución/canal/responsable/conservación, primeros medios propios con derechos y acceso ya autorizado. Una ejecución manual 41097290400 success, mención @jea27 en comentario6528828373; sin afirmar recepción física nueva. No repetir aviso por marcadores de PR.
 - p0_status --github --ready mantiene 0 entrevistas, 0 pares aceptados, 0 casos de producto, cero tareas P0 aceptadas, exit2 esperado. COL-001 pendiente, COL-005 review; no hay permiso P1. ESTADO_AGENTE actualizado con rutas privadas ignoradas, ramas, pruebas y pasos para reanudar.
+
+## 2026-10-30 · [COL-005] Preparar enlace de investigación y QA móvil
+- PR34 integrada; raíz limpia y sin commits pendientes. Rama codex/COL-005-formulario-web desde origin/main ae34ea0.
+- Allowlist HTML/JS/CSS hacia site/investigacion en ambos workflows existentes. Sin nuevos permisos ni proveedor; no se modifica main ni se fusiona.
+- Consentimiento original conservado; exportación JSON voluntaria con compartir por función disponible y fallback de descarga. Respuestas en memoria; se aclara registro técnico de IP por Pages.
+- Códigos R101/R102/R103 reservados y sin asignar. R999 solo QA, rechazado por el registro de participantes. Recogida privada documentada.
+- 87 unittest locales OK. Cuatro tamaños móviles emulados sin overflow, controles >=44px, consentimiento sin premarcar; tres etapas y JSON sintético descargado/verificado, sin respuestas reales. Share probado con mocks; Safari/iPhone físico pendiente.

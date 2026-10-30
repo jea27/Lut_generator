@@ -1,5 +1,5 @@
 'use strict';
-// Local-only research instrument. No network calls, analytics or contact fields.
+// Browser-local answers. Static hosting only; export is initiated by the participant.
 const VERSION = 'LF-P0-FORM-2026-10-30-v1';
 const QUESTIONS = [
   'Q1. Tipo de proyectos, segmento A/B/C/D, sistema operativo y autonomía de compra (sin nombres ni empresa).',
@@ -38,7 +38,24 @@ function makeResponse(code, consent, answers, timestamps, uuid, now) {
       disposition: answer.trim() ? 'answered' : 'omitted'}))};
 }
 
-if (typeof module !== 'undefined') module.exports = {VERSION, QUESTIONS, makeResponse};
+function participantCodeFromHash(hash) {
+  return /^#R(?!000)[0-9]{3}$/.test(hash) ? hash.slice(1) : '';
+}
+
+function canShareFile(navigatorObject, file) {
+  try {
+    return typeof navigatorObject.share === 'function' && typeof navigatorObject.canShare === 'function'
+      && navigatorObject.canShare({files: [file]}) === true;
+  } catch { return false; }
+}
+
+async function shareResponse(navigatorObject, file) {
+  if (!canShareFile(navigatorObject, file)) return 'unavailable';
+  try { await navigatorObject.share({files: [file]}); return 'handed_to_share_ui'; }
+  catch (error) { return error.name === 'AbortError' ? 'cancelled' : 'failed'; }
+}
+
+if (typeof module !== 'undefined') module.exports = {VERSION, QUESTIONS, makeResponse, participantCodeFromHash, canShareFile, shareResponse};
 if (typeof document !== 'undefined') {
   let stage = 0;
   const answers = [], timestamps = [];
@@ -47,7 +64,28 @@ if (typeof document !== 'undefined') {
   const heading = document.querySelector('#stage');
   const fields = document.querySelector('#questions');
   const notice = document.querySelector('#notice');
-  const button = document.querySelector('button');
+  const button = document.querySelector('#continue');
+  const codeField = document.querySelector('#code');
+  codeField.value = participantCodeFromHash(window.location.hash);
+  let exportedFile = null;
+  function download() {
+    if (!exportedFile) return;
+    const url = URL.createObjectURL(exportedFile);
+    const link = document.createElement('a'); link.href = url; link.download = exportedFile.name;
+    document.body.append(link); link.click(); link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+    notice.textContent = 'Descarga solicitada. Comprueba el archivo en Archivos/Descargas. No se ha enviado a ningún destinatario.';
+  }
+  document.querySelector('#download').addEventListener('click', download);
+  document.querySelector('#share').addEventListener('click', async () => {
+    const result = await shareResponse(navigator, exportedFile);
+    notice.textContent = {
+      unavailable: 'Este navegador no permite compartir el archivo. Usa Descargar JSON.',
+      handed_to_share_ui: 'Archivo entregado al menú de compartir. Comprueba el destinatario y la recepción por el canal acordado; no podemos verificar la entrega.',
+      cancelled: 'Compartir cancelado. Tu respuesta sigue disponible para descargar; no se confirma ningún envío.',
+      failed: 'No se pudo compartir. Tu respuesta sigue disponible: usa Descargar JSON.'
+    }[result];
+  });
   function render() {
     heading.textContent = ['1 de 3 · Tu trabajo real', '2 de 3 · Concepto e importe espontáneo', '3 de 3 · Escenario de precio'][stage];
     document.querySelector('#concept').hidden = stage !== 1;
@@ -60,10 +98,11 @@ if (typeof document !== 'undefined') {
       input.name = 'Q' + (q+1); input.maxLength = 2000; input.rows = 3;
       label.append(input); fields.append(label);
     }
-    button.textContent = stage === 2 ? 'Descargar respuesta JSON (sin enviar)' : 'Guardar esta etapa y continuar';
+    button.textContent = stage === 2 ? 'Preparar JSON sin enviar' : 'Guardar esta etapa y continuar';
   }
   form.addEventListener('submit', event => {
     event.preventDefault();
+    if (exportedFile) return;
     const code = document.querySelector('#code').value;
     if (!/^R(?!000)[0-9]{3}$/.test(code) || !document.querySelector('#consent').checked) {
       notice.textContent = 'Introduce un código R001–R999 y acepta notas anonimizadas para continuar.'; return;
@@ -75,10 +114,14 @@ if (typeof document !== 'undefined') {
     if (stage < 2) { stage++; render(); window.scrollTo(0, 0); return; }
     try {
       const payload = makeResponse(code, true, answers, timestamps, crypto.randomUUID(), new Date().toISOString());
-      const url = URL.createObjectURL(new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'}));
-      const link = document.createElement('a'); link.href = url; link.download = code + '-respuesta.json';
-      document.body.append(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
-      notice.textContent = 'Archivo generado localmente. Nada enviado. Revisa datos identificativos antes de compartirlo por el canal privado acordado. No lo subas a GitHub.';
+      const json = JSON.stringify(payload, null, 2);
+      exportedFile = new File([json], code + '-respuesta.json', {type:'application/json'});
+      document.querySelector('#preview').textContent = json;
+      document.querySelector('#export-options').hidden = false;
+      document.querySelector('#questions').hidden = true;
+      document.querySelector('#share').hidden = !canShareFile(navigator, exportedFile);
+      button.hidden = true;
+      notice.textContent = 'Archivo preparado localmente. Nada enviado. Elige descargar o compartir y comprueba que no contiene identificadores personales.';
     } catch (error) { notice.textContent = error.message; }
   });
   render();

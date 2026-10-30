@@ -2,20 +2,38 @@
 <html lang="es">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
 <title>LumaForge · Investigación P0</title>
 <link rel="stylesheet" href="form.css">
 <main>
-  <p class="eyebrow">LumaForge · Instrumento de investigación sin ejecutar</p>
+  <p class="eyebrow">LumaForge · Investigación P0 · Participación voluntaria</p>
   <h1>Cómo trabajas con el color</h1>
   <p>No hay respuestas correctas. Puedes omitir preguntas o cerrar la página para
   terminar. No hay motor disponible ni venta. No incluyas nombres, correos,
   empresa, datos de clientes ni archivos de trabajo.</p>
-  <p>Este formulario no envía datos. Al terminar descarga un JSON que puedes
+  <p>Este formulario no envía tus respuestas al alojamiento. Al terminar prepara un JSON que puedes
   revisar y compartir voluntariamente por el canal privado acordado con el
   responsable. La respuesta se tratará como autoinforme pendiente de verificar,
   nunca como entrevista realizada. Conserva tu código para pedir corrección o
   retirada al responsable mediante ese mismo canal. No hay servidor de respuestas.</p>
+  <details>
+    <summary>Privacidad y devolución de tu respuesta</summary>
+    <p>Antes de participar, quien te invita debe indicarte por un canal privado
+      quién es responsable, cómo devolver el JSON y solicitar retirada, y el plazo
+      de conservación. Si no lo ha hecho, pídele esa información antes de continuar.</p>
+    <p>Las respuestas permanecen en esta pestaña hasta que decides descargar o
+      compartir el archivo. No usamos analítica, cookies del formulario ni
+      almacenamiento persistente. Al abrir el enlace, GitHub Pages sirve los
+      archivos y puede registrar datos técnicos de la visita, como la dirección IP,
+      según su <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noreferrer noopener" target="_blank">política de privacidad</a>.
+      Las respuestas no se incluyen en la URL ni se envían al alojamiento.</p>
+    <p>En iPhone puedes descargar el JSON a Archivos o, si el navegador lo permite,
+      compartirlo con el botón del final. Elige únicamente el destinatario o canal
+      privado que hayas acordado. No publiques el archivo ni lo pegues en GitHub.</p>
+  </details>
+  <noscript>Este formulario necesita JavaScript para conservar etapas y descargar
+    el JSON local. No se envían respuestas mediante este sitio.</noscript>
   <form>
     <label>Código asignado por el responsable (R001–R999)
       <input id="code" name="code" pattern="R(?!000)[0-9]{3}" maxlength="4" required placeholder="R001" autocomplete="off">
@@ -40,7 +58,17 @@
     <p>Respuestas opcionales; deja en blanco para omitir o escribe «prefiero no responder».
       Cada etapa se conserva antes de mostrar el siguiente estímulo.</p>
     <div id="questions"></div>
-    <button type="submit">Continuar</button>
+    <button id="continue" type="submit">Continuar</button>
+    <section id="export-options" hidden aria-label="Guardar tu respuesta">
+      <p>Respuesta preparada en esta pestaña. Revisa que no incluya datos que te
+        identifiquen antes de devolverla por el canal privado acordado.</p>
+      <button id="download" type="button">Descargar JSON</button>
+      <button id="share" type="button" hidden>Compartir JSON por el canal privado elegido</button>
+      <p id="share-help">Si la descarga se abre como texto, utiliza el menú del
+        navegador para guardar el archivo en Archivos/Descargas. No borres el código
+        ni modifiques el JSON antes de importarlo; para corregirlo, avisa al responsable.</p>
+      <details><summary>Revisar el JSON antes de compartir</summary><pre id="preview"></pre></details>
+    </section>
     <p id="notice" role="status" aria-live="polite"></p>
   </form>
   <footer>Versión LF-P0-FORM-2026-10-30-v1 · Sin analítica ni almacenamiento persistente.
