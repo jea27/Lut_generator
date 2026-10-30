@@ -12,7 +12,7 @@ El sistema no envía push desde Codex de forma intrínseca: lo hace **GitHub Act
 
 ## ¿Cuándo salta el aviso?
 - **Necesita ayuda:** Codex debe añadir la etiqueta `needs-human` a una Issue existente del roadmap y publicar antes una pregunta específica, opciones y riesgos. El workflow, activado al etiquetar, deja un comentario como `github-actions[bot]` que menciona al revisor.
-- **Revisión de código:** cuando se abre o se marca como lista para revisión una PR no-borrador `[COL-###]`, el bot menciona al revisor para revisar diff, tests y evidencias.
+- **Revisión de código:** cuando se abre, actualiza o marca lista una PR no-borrador `[COL-###]`, el bot crea una Issue de revisión vinculada a la PR, explica la decisión, añade needs-human y menciona al revisor allí. Las actualizaciones no duplican la solicitud existente. Se evita comentar en la PR porque el token actual devolvió 403; no se amplían permisos.
 - **Autorización:** gastos, proveedores, secretos, publicar a producción, permisos, arquitectura no aprobada y operaciones destructivas quedan detenidas hasta respuesta explícita; no basta con notificar.
 
 ## Prueba mínima (cuando el repo esté conectado)
@@ -63,3 +63,14 @@ críticos o el disparador manual: el manual del workflow actual se omite por su
 condición de job. Para repetir la prueba, usar una Issue acordada y añadir
 needs-human después de publicar la pregunta. Los cambios más amplios de
 seguimiento siguen separados en la rama local de preparación P0.
+
+### Revisión de PR sin ampliar permisos
+
+El primer aviso de PR #4 falló con 403 al comentar en la propia PR:
+https://github.com/jea27/Lut_generator/actions/runs/41079917645.
+La corrección conserva todos los permisos y publica la solicitud en una Issue.
+Run real correcto: https://github.com/jea27/Lut_generator/actions/runs/41080088759.
+Solicitud creada por el bot: https://github.com/jea27/Lut_generator/issues/5,
+con needs-human y comentario de mención verificables. La recepción móvil
+confirmada por el usuario corresponde a la prueba #3; no se presupone una
+confirmación adicional para cada aviso posterior.

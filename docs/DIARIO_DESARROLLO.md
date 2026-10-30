@@ -38,6 +38,10 @@
 - Sin cambios de permisos, protecciones, tokens ni configuración del móvil; sin merge, cierres ni etiquetas approved. COL-001 sigue pendiente de entrevistas; esta entrega es preparación de seguimiento.
 - Limitación: prueba real del recorrido por etiqueta, no de fallos críticos ni del disparador manual.
 - Verificación de la entrega: 11 unittest OK con Python incluido en Codex; diff sin errores. Texto y evidencias de PR en `docs/PR_VALIDACION_AVISOS.md`.
+- PR publicada: https://github.com/jea27/Lut_generator/pull/4. Su primer aviso de revisión falló con 403 al comentar en la PR; no se ampliaron permisos. Corregido para crear Issue de revisión vinculada, con opciones/recomendación, needs-human y mención; deduplicación por PR y evento synchronize.
+- Corrección comprobada realmente: run https://github.com/jea27/Lut_generator/actions/runs/41080088759 success; bot creó Issue #5 y mención https://github.com/jea27/Lut_generator/issues/5#issuecomment-6526363671. CI validate success en run 41080088573, sin despliegue desde PR.
+- Añadidas pruebas del script exacto de Actions con dobles de API; no requieren permisos ni red.
+- Suite ampliada ejecutada: 15 unittest OK (incluye aviso en Issue, login inválido y deduplicación). El aviso de revisión utiliza los permisos originales; la integración en main queda a revisión humana en PR #4.
 
 ## Plantilla para próximas entregas
 
