@@ -43,3 +43,7 @@
 - Validación inicial de PR #63: compilación Studio y validación MVP completadas con éxito; workflows de aviso y validación de esta transición estaban en curso al consultar. Verificar resultado final en Actions.
 - Sin tests locales ni ejecución de competidores. Sin cambios en roadmap JSON, apps/ o packages/. PR #55 ya integrada y no repetida.
 
+
+## Resultado final de CI observado (30-10-2026)
+
+- En la revisión de PR #63: las validaciones MVP, Studio y roadmap pasaron; el aviso terminó correctamente y omitió duplicado; la publicación se omitió porque el cambio no edita el roadmap. No hubo nueva Issue de acción. Estos resultados corresponden a la versión de contenido antes de este checkpoint final.
