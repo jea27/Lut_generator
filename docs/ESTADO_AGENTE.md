@@ -1,114 +1,147 @@
-# Estado del agente · sesión intensiva 2026-10-30
+# Estado del agente · checkpoint P0 de investigación · 2026-10-30
 
 ## Tarea actual y rama
 
-COL-006, Issue #19: auditoría de evidencia publicada en PR #28 y cierre del checkpoint P0.
-Rama raíz `codex/COL-006-coordinacion-p0`. No hay go ni autorización P1.
-Última base incorporada sin sobrescribir trabajo: origin/main ce670b1.
+COL-006 / Issue #19: checkpoint posterior a la preparación de investigación.
+Rama raíz `codex/COL-006-checkpoint-investigacion`, base `origin/main f06efa3`.
+GitHub registra que **jea27** integró PR #31, #32, #33 y el checkpoint anterior
+#30. El agente no realizó esos merges. Se prepara una PR documental nueva
+porque #30 ya está fusionada; no se duplica ninguna Issue canónica.
 
-## Trabajo completado (preparación, no validación de mercado)
+No hay autorización P1 ni decisión go. Main no se modifica directamente.
+El historial anterior queda conservado, incluido `2ef5fc5`; no se sobrescribió
+trabajo local ajeno. Las nuevas ramas se crearon desde origin/main en worktrees.
 
-| Frente | Entrega | Estado de evidencia |
+## Trabajo completado en esta continuación
+
+| Frente | Entrega | Evidencia y límite |
 |---|---|---|
-| COL-001 / #6 | Guion conservado | Cero actas nuevas; entrevistas pendientes |
-| COL-002 / #16 | Registro, operativa y validador; PR #23 | Registro vacío, cero sesiones |
-| COL-003 / #17 | Cinco fuentes primarias, protocolo y validador; PR #26 | Cero pruebas de producto |
-| COL-004 / #18 | Manifiesto 20 slots y validador; PR #22 | Cero pares listos, cero medios descargados |
-| COL-005 / #13 | Hipótesis/cuestionario en PR #14 | Documento integrado, aceptación humana pendiente |
-| COL-006 / #19 | Puerta documental y avisos en PR #20; auditoría p0_status nueva | Evidencia incompleta, P1 sin iniciar |
+| COL-004 / #18 / PR #31 | Fuentes y piloto CC0 reproducible | Cuatro JPEG reales, dos capturas rurales; 34.773.100 bytes, autor Sergej Majboroda/Poly Haven, licencia/URL/MD5 proveedor/SHA-256. Binarios solo locales |
+| COL-003 / #17 / PR #32 | CanonCGT y métricas offline | Paper y repo oficial fijado; código/pesos Apache2.0, derechos de datasets aparte. Modelo no ejecutado. Sexto candidato documental sin sustituir los cinco exigidos |
+| COL-002 / #16 / PR #33 | Formulario local y recibos privados | Q1-Q15 por etapas, precio después de Q11; JSON sin envío, verificación pendiente y deduplicación. Cero participantes contactados |
+| COL-006 / #19 | Integración, aviso único, recuperación | 81 tests locales; sincronización consultada; ningún criterio aprobado automáticamente |
 
-GitHub registra PR #20/#22/#23/#26 integradas por jea27, no por el agente.
-COL-005 permanece review porque #13 está abierta sin approved: merge no es
-aceptación. Se reutilizó #15, con título/estructura nuevos, sin reenviar el
-mismo bloqueo. No se cerró ni aprobó ninguna tarea.
+Documentación detallada: P0_PILOTO_FUENTES.md, P0_CANONCGT.md, P0_METRICAS.md,
+P0_FORMULARIO_REAL.md y diarios por tarea. Decisiones globales en DIARIO_DESARROLLO.
 
-## Pruebas realizadas
+### Dataset y evidencias separadas
 
-- Root integrado más auditoría final: 64 unittest OK; CI de PR #28 run 41091623916 success.
-- Incluye avisos completos/CRLF/deduplicación/manual, dataset (10 tests propios),
-  entrevistas (10), benchmark (9) y auditoría P0 (8), más tests previos.
-- Los tres registros vacíos son estructuralmente válidos; --ready devuelve 2.
-- p0_status --github --ready: exit 2; 0 entrevistas, 0 pares listos, 0 casos
-  automáticos; ninguna de las seis Issues aceptada y sin IDs canónicos duplicados.
-- Fixtures de tests no se escriben a los registros ni cuentan como evidencia.
-- Checks reales: PR20 run 41088346523/aviso41088346462; PR22 run41089220665/
-  aviso41089220791; PR23 run41089234703/aviso41089234711; PR26 run41090372324/
-  aviso41090372385. Todos validate/notify success, Pages omitido desde PR.
-- PR #28: https://github.com/jea27/Lut_generator/pull/28. Auditoría inicial con
-  64 tests validada por CI run41091623916; checks finales de la auditoría en
-  run41092154515 (validate) y 41092155755 (deduplicación), ambos success. Sin autoaprobación.
-- Solicitud consolidada #29 con los siete campos, needs-human y mención real:
-  run41091807276 success, comentario6528069841. Una sola nueva petición para
-  aportar evidencia; la solicitud previa de COL-005 (#15) no se reenvía.
-- Sync run41092196966 success. JSON público comprobado: cinco frentes P0
-  blocked y COL-005 review. Ninguna tarea figura aprobada por el agente.
+- `.research-media/polyhaven-rural/`: cuatro JPEG originales ignorados. Índice
+  público `data/p0/pilot.json`, sin binarios. Se verificaron tamaño, MD5 y SHA-256,
+  decodificación y descripción ICC sRGB IEC61966-2.1 de los cuatro archivos.
+- Revisión visual de previsualizaciones: no se observan personas identificables
+  ni marcas destacadas. No es garantía jurídica ni revisión humana de cobertura.
+- DSC_0106 plain 4928x3264 frente a pretty 4891x3255: no es target alineado.
+  DSC_0181 comparte tamaño, pero eso tampoco prueba alineación. No se promueven
+  variantes como ground truth ni se fuerzan registros listos en dataset.json.
+- `data/p0/controls/identity-real-photo.json`: control de identidad sobre una
+  fotografía real. DeltaE76=0, SSIM aproximadamente 1, PSNR infinito representado
+  por null+indicador. 0,852 s mide lectura/preprocesado/métricas, no un modelo.
+- Fixtures sintéticas solo prueban infraestructura. QA de formulario: R999,
+  todas las preguntas omitidas, archivo en `.research-private/qa/` de la raíz;
+  captura `.research-media/formulario-qa-sintetica.png`. No son respuestas reales.
+- Autoinformes permanecen `self_report_form/submitted_unverified`. SHA-256 y
+  fechas prueban integridad/recepción, no identidad ni consentimiento efectivo.
+  No se convierten a `interview_notes`; recibos futuros solo en carpeta privada.
 
-## Ramas y carpetas conservadas
+## Pruebas realizadas y herramientas
 
-| Rama | Carpeta desde la raíz | Commit de entrega |
+- Git y Node operativos; gh 2.103.3 localizado en `%ProgramFiles%/GitHub CLI/gh.exe`.
+  Sesión jea27 activa con repo/workflow; REVIEWER_GITHUB=jea27 comprobado.
+- Python 3.12.14 del runtime ya instalado; NumPy 2.3.5 y Pillow 13.0.0 disponibles.
+  Sin instalaciones, cambios de permisos, tokens nuevos, pesos o Torch/LPIPS.
+- Ramas por separado: piloto 67 tests, métricas 72, formulario 70, todos locales
+  OK. Integración de las tres ramas en worktree P0-verificacion: **81 tests OK
+  sin omisiones**, node --check formulario y app.js OK; merge local sin conflictos.
+- Las diferencias del código integrado con main f06efa3 son nulas; solo difería
+  el checkpoint documental. No se repiten pruebas numéricas sin cambios de código.
+- CI PR31: run41097285452 success, 67 tests y dos omisiones por Pillow ausente.
+  CI PR32: run41097288188 success, 72 tests y seis omisiones por NumPy ausente.
+  CI PR33: run41097293957 success, 70 tests sin omisiones.
+  Esas omisiones no se presentan como pruebas numéricas remotas ejecutadas.
+- Publicación/sync tras merges humanos: run41097620802 validate y publish success.
+  Dashboard leído por HTTP: 42 tareas, P0 con cinco blocked y COL-005 review;
+  enlaces a PR31/32/33/30 reales. Sin edición manual de estados JSON.
+- p0_status --github --ready: registros válidos y cero entrevistas, cero pares
+  aceptados, cero casos de producto. Ninguna de las seis Issues P0 aceptada;
+  sin IDs canónicos duplicados. Exit 2 esperado; no es fallo de infraestructura.
+- Inspección de cambios publicados: sin credenciales, claves privadas, rutas
+  personales de Windows ni fotografías/respuestas privadas. Autoría fotográfica
+  pública conservada por trazabilidad. Binarios y QA privados ignorados por Git.
+
+## Notificación y decisiones humanas pendientes
+
+Una sola solicitud existente actualizada: [Issue #29](https://github.com/jea27/Lut_generator/issues/29),
+con título requerido, siete campos y needs-human. Workflow manual
+[41097290400](https://github.com/jea27/Lut_generator/actions/runs/41097290400) success;
+bot menciona a @jea27 en [comentario6528828373](https://github.com/jea27/Lut_generator/issues/29#issuecomment-6528828373).
+Marcadores de PR en esa misma Issue impiden avisos independientes repetidos.
+La recepción en iPhone de avisos previos fue confirmada; la de este aviso nuevo
+no se afirma sin confirmación. Un aviso o merge nunca sustituye una aprobación.
+
+Pendiente:
+1. Revisar preparación; COL-005 sigue review (#13/#15) hasta aceptación explícita.
+2. Elegir distribución: se recomienda que jea27 comparta el instrumento por
+   canal privado con tres personas conocidas A/B/C-D, defina responsable y plazo
+   (propuesta: jea27, 30 días). Alternativa: autorización de canal/candidatos/texto
+   concretos al agente. No contactar a nadie antes de esa decisión.
+3. Aportar inicialmente 2-3 fotos propias para piel con permisos de autor/modelo
+   y referencias con derechos claros, por rutas privadas. Faltan diversidad y
+   revisión de 20 pares; no subirlos a Issues/PR/Pages.
+4. Identificar herramientas/versiones del benchmark ya instaladas/autorizadas.
+   No instalar ni contratar nada para sortear el bloqueo.
+5. Ejecutar las 12 entrevistas reales, comparativas 5x20 y revisión humana.
+   Formularios no sustituyen entrevistas; intención de pago no equivale a compra.
+
+COL-001 y COL-002 siguen pendientes de entrevistas reales. COL-003/004/006
+siguen bloqueadas en sus criterios de evidencia; ninguna tarea cerrada/approved
+por el agente. P1 permanece detenido.
+
+## Cambios pendientes y próximas tareas elegibles
+
+Código de preparación integrado por jea27. Este checkpoint/diario se publica
+para revisión en una rama documental independiente. Ver el estado actual de
+su PR y checks antes de actuar: no asumir que un merge de preparación aprueba P0.
+
+El siguiente trabajo con evidencia exige respuestas/permisos/acceso enumerados
+en #29. Al recibirlos, registrar primero un lote pequeño y contrastar original,
+consentimiento, autoría, perfiles y geometría. Ampliar fuentes CC0 según la
+cobertura faltante; no duplicar 20 variantes rurales para aparentar diversidad.
+No hay otro criterio P0 que pueda completarse inventando datos o usando fixtures.
+
+## Ramas y worktrees preservados
+
+| Carpeta relativa a raíz | Rama | Uso |
 |---|---|---|
-| codex/COL-002-evidencia-entrevistas | .codex-worktrees/COL-002 | e968719 |
-| codex/COL-003-protocolo-benchmark | .codex-worktrees/COL-003 | 163c957 |
-| codex/COL-004-manifiesto-dataset | .codex-worktrees/COL-004 | b9de8d2 |
-| codex/COL-006-coordinacion-p0 | raíz | 209650c, 2d15fe7 y 7c689dc; checkpoint final en HEAD |
+| raíz | codex/COL-006-checkpoint-investigacion | Recuperación vigente |
+| .codex-worktrees/P0-verificacion | codex/COL-006-verificacion-investigacion | Integración local de PR31/32/33, 81 tests |
+| .codex-worktrees/COL-003-metricas | codex/COL-003-metricas-canoncgt | Preparación PR32 |
+| .codex-worktrees/COL-002-formulario | codex/COL-002-formulario-local | Preparación PR33 |
+| .codex-worktrees/COL-002 | codex/COL-002-evidencia-entrevistas | Entrega anterior conservada |
+| .codex-worktrees/COL-003 | codex/COL-003-protocolo-benchmark | Entrega anterior conservada |
+| .codex-worktrees/COL-004 | codex/COL-004-manifiesto-dataset | Entrega anterior conservada |
 
-Son worktrees propios, no agentes paralelos. El contenedor está excluido solo
-localmente en .git/info/exclude. No borrarlos ni volver a crear las ramas.
-
-## Cambios pendientes y bloqueos humanos
-
-- Auditoría/estado publicados en PR #28; checks correctos, sin código pendiente.
-  Estado de PR #28 observado al cierre: MERGED. Un merge del usuario no aprueba P0.
-- Canonicales #6/#16/#17/#18/#19 marcadas blocked por insumos pendientes;
-  #13 sigue status:review. Ninguna cerrada ni approved por el agente.
-- Acción humana consolidada: https://github.com/jea27/Lut_generator/issues/29.
-- Revisar/aceptar o corregir instrumentos y herramientas. El agente no aplica approved.
-- Usuario: aportar actas anonimizadas reales o autorizar un canal/candidatos
-  concretos de reclutamiento; no publicar contactos en GitHub.
-- Usuario: aportar 20 pares privados con registros de uso/preparación de color.
-  Informar la ubicación por canal privado, no subir fotos o permisos con PII.
-- Dataset listo y acceso autorizado son prerrequisitos del benchmark. Colourlab
-  v4 documenta Apple silicon; no presumir Windows por una promesa antigua.
-- No crear cuentas, instalar herramientas, aceptar condiciones, gastar o enviar
-  fotos a servicios externos sin autorización específica.
-- P0 completo y autorización explícita son condiciones separadas antes de P1.
-
-## Próximas tareas elegibles
-
-Ahora solo faltan revisión, evidencia real o acceso. No queda una ejecución de
-investigación P0 que pueda producirse sin esos insumos. Al llegar datos: validar
-el primer lote de COL-002 o COL-004, registrar ausencias/fallos, sintetizar
-COL-001 y después ejecutar COL-003. No repetir investigación documental o
-pruebas ya pasadas si no hay cambios o fallo nuevo.
+No borrar ni recrear estas ramas/carpetas. La rama piloto sigue conservada en
+Git, además de su integración humana en main. Las carpetas .research-media y
+.research-private de la raíz están ignoradas también mediante exclude local.
+El servidor QA se limita a 127.0.0.1 y se detiene al finalizar la revisión.
 
 ## Instrucciones concretas de reanudación
 
-1. Leer AGENTS y este estado; `git status --short --branch`; `git worktree list`.
-2. `git fetch origin main`; consultar Issues #6, #13, #16–#19 y sus solicitudes
-   humanas nuevas. No confundir comentario/merge con aceptación de tarea.
-3. Conservar modificaciones locales y reutilizar ramas/PR. Incorporar main
-   solo si es seguro; no reset destructivo, force push ni merge de PR por IA.
-4. Comprobar el registro local autorizado con:
+Desde esta raíz, comprobar git status/branch y leer Issue29 antes de contactar
+participantes o instalar herramientas. En PowerShell, sin depender de WindowsApps:
 
 ```powershell
-& "$env:USERPROFILE\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" scripts/p0_status.py --github --ready
+git status --short
+git branch --show-current
+git fetch origin
+& "$env:ProgramFiles\GitHub CLI\gh.exe" issue view 29 --repo jea27/Lut_generator
+& "$env:USERPROFILE\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" scripts/p0_status.py --github --gh-path "$env:ProgramFiles\GitHub CLI\gh.exe" --ready
 ```
 
-Exit 2 por falta de evidencia/aprobación es esperado, no error que deba taparse.
-Opciones --interviews/--dataset/--benchmark y --media-root leen ubicaciones
-privadas explícitas. No publicar respuestas ni rutas privadas en informes.
-5. Si existe nueva evidencia o código modificado, ejecutar tests adecuados y
-   documentar el resultado. Si no, no repetir las 64 pruebas por rutina.
-6. Actualizar la Issue de tarea y el checkpoint, publicar solo su rama y abrir
-   PR. Solicitudes nuevas: título LUMAFORGE ACCIÓN REQUERIDA y siete campos;
-   reutilizar marcador para no duplicar notificaciones del mismo bloqueo.
-7. Jamás iniciar el motor/P1 por un exit 0: p0_status no concede autorización.
-
-## Cierre verificable
-
-Raíz y tres worktrees comprobados limpios antes de este último checkpoint.
-Todos los cambios de código probados y publicados. Solo se actualiza este
-registro al cierre; no repetir la suite local sin nuevos cambios de código.
-Solicitud #29 conserva un único comentario del bot tras marcar ready: sin
-segundo aviso del mismo bloqueo. Los enlaces de publicación final y cualquier
-actualización documental quedan en la Issue #19. No hay operación Git a medias.
+Exit 2 es lo esperado mientras falten evidencias. No subir originales, respuestas
+ni contactos. Para comprobar hashes del piloto, `prepare_pilot.py --download`
+reutiliza archivos existentes verificándolos; desde otra carpeta no apunta a los
+medios raíz. El formulario está en research/form.html y su procedimiento en
+P0_FORMULARIO_REAL.md. Abrir ramas nuevas solo para una Issue P0 elegible y
+conservar siempre lo pendiente; nunca escribir directamente en main.
