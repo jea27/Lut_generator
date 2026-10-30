@@ -1,3 +1,40 @@
+# Checkpoint de investigación comercial · 2026-10-30
+
+## Trabajo actual
+
+- COL-005 / Issue #13: ampliar desk research de modelos de precio y
+  comercialización España/UE en worktree aislado
+  `.codex-worktrees/COL-005-investigacion-comercial-ue`, rama
+  `codex/COL-005-investigacion-comercial-ue`, base `origin/main` 86d2137.
+- Cambios preparados: `docs/P0_COMERCIAL_ESPANA_UE.md`, enlace desde
+  `docs/ESTUDIO_DE_MERCADO.md`, resumen fechado de precios en competidores del
+  roadmap, y registro en `docs/DIARIO_DESARROLLO.md`.
+- Issue #13 sigue abierta en revisión; #15 es la solicitud humana vigente. No
+  reutilizar el estado para simular aprobación, no duplicar aviso, no hacer
+  merge/cerrar/aplicar `approved`.
+
+## Evidencia / límites
+
+- Fuentes primarias de producto y organismos UE/BOE consultadas el 2026-10-30;
+  precios no normalizados y discrepancia de Colourlab explícita en el memo.
+- Desk research únicamente: cero entrevistas, compras, benchmarks ejecutados,
+  ventas o validación de tarifa. El precio de 49 € permanece como estímulo
+  hipotético del instrumento existente, no oferta.
+- No se tocaron `apps/` ni `packages/`. `git diff --check` y parseo JSON con el
+  runtime Python del proyecto pasaron. Tests no ejecutados por ser cambio
+  documental. Commit `6148a2e` publicado y PR #55 abierta, no borrador; checks
+  validate/notify quedaron queued en la primera consulta. El workflow creó
+  Issue #56 por carrera al procesar PR abierta; #56 redirige a la petición
+  consolidada #15. No se cerró ninguna Issue ni se tocó etiqueta. No publicar
+  una conclusión legal como dictamen; revisión profesional previa a cobrar.
+
+## Siguiente paso / reanudación
+
+Desde este worktree seguir PR #55 y confirmar sus checks y el comportamiento
+del workflow notify. Mantener #13 en review y usar #15 como petición activa;
+#56 solo redirige y no requiere respuesta. Si hay nuevas ediciones, publicar solo en
+`codex/COL-005-investigacion-comercial-ue`.
+
 # Estado del agente · checkpoint P0 de investigación · 2026-10-30
 
 ## Tarea actual y rama
