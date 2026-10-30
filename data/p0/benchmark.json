@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "dataset_sha256": null,
+  "products": [
+    {
+      "id": "luttie",
+      "name": "Luttie",
+      "source_url": "https://luttie.app/docs/color-match",
+      "access": "not-tested"
+    },
+    {
+      "id": "fylm",
+      "name": "fylm.ai",
+      "source_url": "https://fylm.ai/docs/what-are-matches-and-how-do-i-use-them/",
+      "access": "not-tested"
+    },
+    {
+      "id": "resolve",
+      "name": "DaVinci Resolve",
+      "source_url": "https://www.blackmagicdesign.com/products/davinciresolve/color",
+      "access": "not-tested"
+    },
+    {
+      "id": "gmic",
+      "name": "G'MIC",
+      "source_url": "https://gmic.eu/",
+      "access": "not-tested"
+    },
+    {
+      "id": "colourlab",
+      "name": "Colourlab Ai",
+      "source_url": "https://colourlab.ai/products/colourlab-ai-4",
+      "access": "not-tested"
+    }
+  ],
+  "pair_ids": [
+    "P0-001",
+    "P0-002",
+    "P0-003",
+    "P0-004",
+    "P0-005",
+    "P0-006",
+    "P0-007",
+    "P0-008",
+    "P0-009",
+    "P0-010",
+    "P0-011",
+    "P0-012",
+    "P0-013",
+    "P0-014",
+    "P0-015",
+    "P0-016",
+    "P0-017",
+    "P0-018",
+    "P0-019",
+    "P0-020"
+  ],
+  "runs": []
+}
