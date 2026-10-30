@@ -36,6 +36,14 @@ class EngineTests(unittest.TestCase):
         np.testing.assert_array_equal(transform(flat,fit(flat,flat)),flat)
         self.assertTrue(np.isfinite(transform(flat,fit(flat,ref))).all())
 
+    def test_neutral_tone_curves_monotonic_at_control_limits(self):
+        from packages.colour_core.engine import linear, M
+        ramp=np.repeat(np.linspace(0,1,1025,dtype=np.float32)[:,None],3,axis=1)
+        for exposure in (-2,2):
+            for contrast in (.6,1.4):
+                out=transform(ramp,Recipe(exposure=exposure,contrast=contrast))
+                self.assertGreaterEqual(float(np.min(np.diff(linear(out) @ M[1]))),-1e-6)
+
     def test_analysis_histogram_counts_and_alpha_ignored(self):
         a=analyze(self.a)
         self.assertEqual(sum(a['histograms'][0]),a['sample_pixels'])
