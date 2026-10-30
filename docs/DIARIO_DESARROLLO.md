@@ -75,6 +75,17 @@
 - JSON público comprobado con COL-001 review, Issue #6 y PR #9; no completada. Actualizado por workflow, sin editar estados manualmente.
 - Informe: docs/REVALIDACION_AVISO_COL-001.md. Evidencias publicadas en la misma rama/PR autorizadas. Sin merge, aprobación, cierre de Issue ni inicio del motor.
 
+## 2026-10-30 · [COL-005] Hipótesis y cuestionario de disposición a pagar
+- Árbol local limpio; documentación anterior conservada e incorporada en origin/main 43e2480 (PR #11 integrada por jea27). No había cambios pendientes que sobrescribir ni fue necesario duplicar documentación.
+- Rama independiente codex/COL-005-hipotesis-negocio desde origin/main. Issue canónica creada tras comprobar que no existía: https://github.com/jea27/Lut_generator/issues/13, roadmap y status:in-progress.
+- Preparadas tres hipótesis falsables: problema recurrente, valor de portabilidad y compra real futura. Umbrales exploratorios propuestos, denominador y refutación explícitos; sin cambiar arquitectura ni puertas de fase.
+- Cuestionario neutral de 15 preguntas y actas vacías; conducta antes del concepto y precio. 49 € es estímulo hipotético de investigación dentro de la banda heredada, no precio comercial, oferta, cobro ni gasto autorizado.
+- Decisión: separar señal declarada de compra real. Preparar el instrumento no requiere terminar COL-001; ejecutarlo depende de entrevistas reales COL-001/COL-002. El piloto comercial necesita autorización y un entregable real.
+- Sin entrevistas nuevas, participantes reclutados, compras, citas ni resultados inventados. COL-001 y su Issue #6 siguen pendientes, sin approved; motor sin iniciar y paso a P1 reservado al usuario.
+- Validación de la entrega: 21 unittest existentes OK y diff sin errores; revisión manual de trazabilidad entre hipótesis, preguntas y criterios de refutación. Pruebas/ejecuciones remotas se registran en Issue y PR al terminar.
+- Documentos: P0_COL-005_HIPOTESIS_NEGOCIO.md, P0_COL-005_CUESTIONARIO.md y PR_COL-005.md. Revisión humana solicitada sobre instrumento, umbrales y precio de investigación, sin autoaprobación.
+- Otras P0: COL-003 requiere dataset y comparativas reales; COL-004 aún requiere medios con derechos; COL-002 requiere participantes reales. Ninguna se declara completada por preparar documentos. COL-006 no se inicia sin evidencia.
+
 ## Plantilla para próximas entregas
 
 ### AAAA-MM-DD · [COL-XXX] Título

@@ -96,3 +96,7 @@ python -m unittest discover -s tests -v
 La reestructuración, las comprobaciones de conservación y las limitaciones de la validación están registradas en `docs/REESTRUCTURACION_RAIZ.md`.
 
 Preparación del desarrollo y evidencias: `docs/PREPARACION_DESARROLLO.md`. Primera tarea P0: `docs/P0_COL-001_SEGMENTOS.md`.
+
+COL-005: [hipótesis de negocio](docs/P0_COL-005_HIPOTESIS_NEGOCIO.md) y
+[cuestionario de disposición a pagar](docs/P0_COL-005_CUESTIONARIO.md).
+Instrumentos preparados para revisión; no contienen resultados de entrevistas.
