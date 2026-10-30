@@ -1,0 +1,62 @@
+{
+  "evidence_type": "real_cc0_photo_engine_smoke_not_market_validation",
+  "source_sha256": "d23e0db0afa94b44f1b4adfb3a8e168d7877266103bcc1365622f149dff15e32",
+  "source_size": [
+    4928,
+    3264
+  ],
+  "source_author": "Sergej Majboroda / Poly Haven",
+  "source_license": "CC0-1.0",
+  "results": [
+    {
+      "format": "png",
+      "bytes": 18178777,
+      "sha256": "ef31bafdb2d0f649058c47dcc089f40938c58a328bffdc2cb0f24744d5ad2fe2",
+      "wall_ms": "10445.4",
+      "rss_peak_mb": "774.8"
+    },
+    {
+      "format": "jpg",
+      "bytes": 4855050,
+      "sha256": "fda0c80f9dcc33ee7185d138540885caa9b4fcaa19ec5d83f34c73c8958391ac",
+      "wall_ms": "9436.7",
+      "rss_peak_mb": "784.1"
+    },
+    {
+      "format": "cube",
+      "bytes": 1078344,
+      "sha256": "022257805222977e44996f28560afa8e56aa35c7f5b0150226bed617345d4276",
+      "wall_ms": "39.1",
+      "rss_peak_mb": "81.9"
+    },
+    {
+      "format": "json",
+      "bytes": 302,
+      "sha256": "64553b1b31998321bfb64bc5d168b18eb57dcdc512369af45cee7a56551b0d7a",
+      "wall_ms": "0.1",
+      "rss_peak_mb": "80.9"
+    }
+  ],
+  "recipe": {
+    "version": 1,
+    "domain": "encoded-sRGB-D65",
+    "method": "lab-statistics",
+    "scale": [
+      0.8,
+      1.2,
+      1.2
+    ],
+    "offset": [
+      12.0,
+      -2.3602672815322876,
+      -4.222404670715332
+    ],
+    "intensity": 1.0,
+    "exposure": 0.0,
+    "contrast": 1.0,
+    "saturation": 1.0,
+    "temperature": 0.0
+  },
+  "commercial_validation": false,
+  "external_editor_tests": false
+}

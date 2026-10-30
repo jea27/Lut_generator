@@ -44,6 +44,16 @@ Construir un motor de transferencia de look desde referencias para foto y vídeo
   No rellenar evidencia ausente con fixtures de pruebas o hipótesis.
 
 ## Verificaciones técnicas
+
+## Autorización explícita MVP v0.1 (2026-10-30)
+
+El usuario autoriza comenzar P1 y P2 aunque P0 comercial siga incompleta.
+Esta excepción sustituye la condición anterior de salida P0 para desarrollo
+técnico. Autoriza preparar dependencias locales, implementar y probar el MVP,
+publicar ramas técnicas/PR. No autoriza aprobar tareas, fusionar PR, publicar
+versiones finales, usar APIs de imagen ni marcar P0 completada. Conservar la
+investigación y el dashboard; aplicaciones en apps/ y motor en packages/.
+
 - Dashboard: `python -m unittest discover -s tests -v`.
 - Nuevas funciones: añadir pruebas apropiadas, comprobar espacios de color, gestión de gamma, gamut clipping y reproducción consistente entre plataformas.
 - Nada de fotos personales de clientes en Git ni de recursos descargados sin licencia.
