@@ -1,0 +1,50 @@
+name: Avisar al humano
+
+on:
+  issues:
+    types: [labeled]
+  pull_request:
+    types: [opened, ready_for_review, reopened]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+
+jobs:
+  notify:
+    if: >-
+      ${{ vars.REVIEWER_GITHUB != '' &&
+          ((github.event_name == 'issues' && github.event.label.name == 'needs-human') ||
+           (github.event_name == 'pull_request' && !github.event.pull_request.draft)) }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mencionar al responsable desde GitHub Actions
+        uses: actions/github-script@v7
+        env:
+          REVIEWER_GITHUB: ${{ vars.REVIEWER_GITHUB }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const reviewer = process.env.REVIEWER_GITHUB || '';
+            if (!/^[a-zA-Z0-9-]{1,39}$/.test(reviewer)) {
+              core.setFailed('Variable REVIEWER_GITHUB no válida');
+              return;
+            }
+            const { owner, repo } = context.repo;
+            const issue = context.issue.number;
+            if (context.eventName === 'pull_request') {
+              const title = context.payload.pull_request.title || '';
+              if (!/\[COL-\d{3}\]/.test(title)) {
+                core.info('PR sin identificador COL: omitida');
+                return;
+              }
+            }
+            const reason = context.eventName === 'issues'
+              ? 'Se necesita una decisión o intervención humana. Revisa la pregunta en esta Issue.'
+              : 'Entrega de Codex lista para revisión. Comprueba código, tests y criterios antes de aprobar.';
+            await github.rest.issues.createComment({
+              owner, repo, issue_number: issue,
+              body: `🔔 @${reviewer} — ${reason}\n\nLa IA no continuará esta decisión ni fusionará la PR sin autorización.`
+            });

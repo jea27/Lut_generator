@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="Hoja de ruta y control de calidad de LumaForge: investigación, desarrollo, revisión y entregas." />
+<meta name="theme-color" content="#0e111a" />
+<title>LumaForge · Centro de proyecto</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar" aria-label="Navegación">
+    <div class="brand"><div class="brand-mark">L<span>·</span></div><div><strong>LumaForge</strong><small>PROJECT OS <i>·</i> v0.1</small></div></div>
+    <p class="s-label">ESPACIO DE TRABAJO</p>
+    <nav class="nav" id="main-nav">
+      <button data-view="overview" class="active"><span class="nav-ico">◫</span> Visión general</button>
+      <button data-view="roadmap"><span class="nav-ico">☷</span> Hoja de ruta <span id="nav-count" class="nav-count">42</span></button>
+      <button data-view="market"><span class="nav-ico">◎</span> Estudio de mercado</button>
+      <button data-view="architecture"><span class="nav-ico">⌘</span> Arquitectura</button>
+      <button data-view="decisions"><span class="nav-ico">◇</span> Decisiones y riesgos</button>
+      <button data-view="operations"><span class="nav-ico">↔</span> IA y revisiones</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="side-divider"></div>
+      <div class="sync-card"><div class="sync-head"><span class="pulse"></span> <span id="sync-status">Plan inicial sin conectar</span></div><small id="sync-time">El progreso real aparecerá cuando se conecte GitHub.</small></div>
+      <div class="brand-footer">DE REFERENCIA A RESULTADO<span> · FOTO / VÍDEO</span></div>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="mobile-brand">LumaForge <span>Project OS</span></div><div class="crumb" id="breadcrumb">Proyecto <span>/</span> Visión general</div><div class="top-actions"><div class="tag">ROADMAP v0.1</div><a id="repo-link" class="btn btn-light" href="https://github.com" target="_blank" rel="noopener noreferrer" title="Conectar un repositorio siguiendo el README">Repositorio ↗</a></div></header>
+    <div class="page" id="app" role="main"><div class="loading">Cargando plan del proyecto…</div></div>
+    <footer class="footer"><span>Plan de producto · 30/10/2026 · estimaciones sujetas a validación</span><span>El estado aprobado requiere revisión humana.</span></footer>
+  </main>
+</div>
+<div class="mobile-nav" id="mobile-nav"><button data-view="overview">Inicio</button><button data-view="roadmap">Roadmap</button><button data-view="market">Mercado</button><button data-view="operations">IA</button><button data-view="decisions">Riesgos</button></div>
+<div class="modal-overlay" id="modal" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button class="modal-close" id="close-modal" aria-label="Cerrar">×</button><div id="modal-body"></div></div></div>
+<script src="data/fallback.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
