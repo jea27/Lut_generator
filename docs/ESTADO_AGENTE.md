@@ -30,8 +30,11 @@ sus archivos. La carpeta contenedora se excluye solo en .git/info/exclude.
 ## Pruebas y cambios pendientes
 
 Base integrada: 21 unittest ya comprobadas. No repetir sin cambios relevantes.
-Se preparan validadores de evidencia, protocolos y avisos con el formato nuevo;
-registrar aquí los resultados reales al terminar cada punto de control.
+Checkpoint 1: avisos con título/campos obligatorios, deduplicación por PR y
+petición de Issue; modo manual con target validado. 27 unittest raíz OK.
+COL-004 tiene manifiesto de 20 slots y validador de integridad, 30 unittest OK
+(incluye 9 nuevas). Faltan medios: 0 pares listos. Publicación todavía pendiente.
+Siguiente trabajo independiente: registro de actas COL-002 y protocolo COL-003.
 
 ## Bloqueos humanos
 

@@ -2,7 +2,7 @@
 
 ## ¿Qué actualiza el dashboard realmente?
 
-`publish-roadmap.yml` valida las PR sin desplegar desde su ref y publica después de un push a main validado. La propuesta local `sync-roadmap.yml` añade refrescos desde main al cambiar Issues, terminar la validación de una PR, cada 30 minutos y por ejecución manual. Comparte la cola de Pages y no ejecuta código ni artefactos de PR. La web consulta el JSON cada 60 segundos. Los eventos nuevos solo estarán activos después de revisión, autorización de publicación e integración humana; no son una conexión ya validada. Los workflows publican estado, no implementan código.
+`publish-roadmap.yml` valida las PR sin desplegar desde su ref y publica tras push validado a main. `sync-roadmap.yml`, ya integrado y comprobado, refresca desde main en eventos de Issues, al terminar CI de PR, cada 30 minutos o por ejecución manual. Comparte la cola Pages y no ejecuta código ni artefactos de PR. La web consulta el JSON cada 60 segundos. Solo los workflows actualizan estados publicados; no editarlos para simular progreso.
 
 No hay agente de desarrollo conectado de forma predeterminada. Para automatizar programación debes activar por separado Codex en tu IDE o un agente GitHub que pueda recibir issues. El repositorio jea27/Lut_generator y Pages se verificaron el 30-10-2026; no hay un agente remoto de desarrollo configurado por estos workflows.
 
