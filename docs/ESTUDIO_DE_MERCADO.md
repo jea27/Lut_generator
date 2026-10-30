@@ -72,6 +72,7 @@ Otra encuesta de Adobe Express a 384 creadores de vídeo de EE. UU. comunica que
 - **Qué vendemos:** del fotograma de inspiración a un estilo ajustable y reutilizable, en varios editores, con procesamiento local.
 - **No vendemos:** copia exacta del preset original de un tercero, reconstrucción de máscaras de un LUT o colorimetría profesional completa desde la primera versión.
 - **Diferenciador a probar:** receta portable + LUT + adaptación contextual y corrección humana en una sola UX.
+- **Ampliación de producto propuesta:** distinguir Color Match (color y tono global) de Look Match (acabado visual/efectos); el objetivo comercial v1.0 debe recuperar el acabado de referencia además de sus colores. No está implementado en el MVP v0.1 ni validado con usuarios. Ver [requisito y mapa competitivo de Look Match](LOOK_MATCH_REQUIREMENTS.md).
 - **No competir solo por precio**: fylm.ai y opciones gratuitas ponen techo a la utilidad de una herramienta superficial.
 
 ## Modelo de ingresos — pruebas, no precios definitivos
