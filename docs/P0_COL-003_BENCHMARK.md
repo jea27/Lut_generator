@@ -4,6 +4,11 @@ Issue #17. Fecha de consulta: 2026-10-30. **Cero productos ejecutados y cero
 resultados de matching medidos**. Esta entrega no satisface todavía «probar
 cinco competidores con la misma muestra». No se implementa motor de color.
 
+Continuación: `P0_CANONCGT.md` añade un sexto candidato documental sin cambiar
+los cinco casos requeridos. `P0_METRICAS.md` y `scripts/benchmark_metrics.py`
+preparan mediciones offline; los controles de infraestructura no son resultados
+de productos ni validación de mercado.
+
 ## Candidatos y evidencia primaria
 
 | Candidato | Declaración documental consultada | Qué falta comprobar ejecutándolo |
