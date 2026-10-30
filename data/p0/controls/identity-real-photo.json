@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "evidence_type": "metric_measurement_only",
+  "research_validated": false,
+  "measured_utc": "2026-10-30T17:06:22.130464+00:00",
+  "alignment_record": "SELF-IDENTITY-CONTROL-NOT-RESEARCH",
+  "output": {
+    "sha256": "d23e0db0afa94b44f1b4adfb3a8e168d7877266103bcc1365622f149dff15e32",
+    "profile": "sRGB IEC61966-2.1",
+    "oriented_size": [
+      4928,
+      3264
+    ]
+  },
+  "target": {
+    "sha256": "d23e0db0afa94b44f1b4adfb3a8e168d7877266103bcc1365622f149dff15e32",
+    "profile": "sRGB IEC61966-2.1",
+    "oriented_size": [
+      4928,
+      3264
+    ]
+  },
+  "measurement_size": [
+    512,
+    339
+  ],
+  "max_side": 512,
+  "preprocess": "EXIF orientation; ICC to sRGB relative-colorimetric; Lanczos thumbnail",
+  "numpy": "2.3.5",
+  "pillow": "13.0.0",
+  "metrics": {
+    "mse_encoded_srgb": 0.0,
+    "psnr_db": null,
+    "psnr_infinite": true,
+    "delta_e76_d65_mean": 0.0,
+    "delta_e76_d65_p95": 0.0,
+    "ssim_uniform7_luma_valid_samplecov": 0.9999999999992265,
+    "gradient_correlation": 0.9999999999999998,
+    "output_endpoint_channel_fraction": 0.07117671460176991
+  },
+  "measurement_wall_seconds": 0.8518909000013082,
+  "model_inference_seconds": null,
+  "lpips": null
+}
