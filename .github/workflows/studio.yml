@@ -1,7 +1,7 @@
 name: Compilar Color Studio
 on:
   pull_request:
-    branches: [main, 'codex/COL-007-mvp-color-local']
+    branches: [main, 'codex/**']
   push:
     branches: [main]
 permissions:

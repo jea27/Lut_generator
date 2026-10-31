@@ -1,0 +1,14 @@
+{
+  "source": "f8788dbbcdab619aafdfd7f1e6ddaee52573f311",
+  "windows_clean_install": "not_tested",
+  "sha256": "c1798ece22b9a8f38b6c7042a59630c16800b7a7ca295ee4119a8c157d092a4a",
+  "version": "0.2.0-beta.1",
+  "rust": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "file": "Color Studio Beta_0.2.0-beta.1_x64-setup.exe",
+  "python": "Python 3.12.14",
+  "bytes": 266193722,
+  "signature": "NotSigned",
+  "node": "v26.13.0",
+  "status": "candidate_not_approved",
+  "dirty": true
+}

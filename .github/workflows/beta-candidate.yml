@@ -1,0 +1,32 @@
+name: Compilar candidato beta Windows
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  candidate:
+    runs-on: windows-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.14'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: |
+          python -m venv .venv-mvp
+          ./.venv-mvp/Scripts/python.exe -m pip install -r requirements-mvp.txt -r requirements-build.txt
+          npm ci --prefix apps/web
+      - run: ./scripts/build_beta.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: color-studio-windows-candidate
+          path: |
+            apps/desktop/src-tauri/target/release/bundle/nsis/*setup.exe
+            .lumaforge-local/beta-artifact.json
+          retention-days: 7
+# No release, signing credentials, token generation, deployment or auto-approval.

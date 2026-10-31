@@ -5,18 +5,23 @@ import os
 import threading
 import time
 import uuid
+import secrets
+import hmac
+import sys
 from contextlib import contextmanager
 from pathlib import Path
 from urllib.parse import urlparse
 
 import psutil
-from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi import FastAPI, File, HTTPException, UploadFile, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import FileResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 from PIL import Image, UnidentifiedImageError
 from packages.colour_core import engine, image_io
+from .storage import atomic_json, atomic_bytes
+from .jobs import Jobs
 
 ROOT=Path(__file__).resolve().parents[2]
 LOCK=threading.Lock()
@@ -37,6 +42,21 @@ class Fit(BaseModel):
 class Preset(BaseModel):
     name: str = Field(min_length=1,max_length=80)
     recipe: engine.Recipe
+    group: str = Field(default='',max_length=40)
+
+
+class Batch(BaseModel):
+    model_config=ConfigDict(extra='forbid')
+    source_ids: list[str] = Field(min_length=1,max_length=16)
+    recipe: engine.Recipe
+    format: str = Field(default='png',pattern='^(png|jpg)$')
+
+
+class Preferences(BaseModel):
+    model_config=ConfigDict(extra='forbid')
+    language: str=Field(default='es',pattern='^(es|en)$')
+    welcome_seen: bool=False
+    export_format: str=Field(default='png',pattern='^(png|jpg)$')
 
 
 @contextmanager
@@ -55,19 +75,30 @@ def measurement():
 
 
 def create_app(data_dir=None):
-    app=FastAPI(title='LumaForge local',version='0.1.0')
-    data=Path(data_dir or os.environ.get('LUMAFORGE_DATA_DIR',ROOT/'.lumaforge-local'))
+    app=FastAPI(title='Color Studio local beta',version='0.2.0-beta.1')
+    default_data=Path(os.environ.get('LOCALAPPDATA',str(Path.home())))/'ColorStudioBetaData' if getattr(sys,'frozen',False) else ROOT/'.lumaforge-local'
+    data=Path(data_dir or os.environ.get('LUMAFORGE_DATA_DIR',default_data))
     images=data/'images'; presets=data/'presets'
     images.mkdir(parents=True,exist_ok=True); presets.mkdir(parents=True,exist_ok=True)
+    session=secrets.token_urlsafe(32)
+    jobs=Jobs(data/'jobs',LOCK)
+    def same_origin(request):
+        origin=request.headers.get('origin')
+        if origin and origin.rstrip('/')!=str(request.base_url).rstrip('/'):return False
+        return request.headers.get('sec-fetch-site','none') in ('same-origin','none')
 
     @app.middleware('http')
     async def local_only(request, call_next):
         host=request.headers.get('host','').split(':')[0]
         if host not in ('localhost','127.0.0.1'):
             return JSONResponse({'detail':'Loopback host required'},status_code=403)
+        if request.url.path.startswith('/api/') and request.url.path not in ('/api/health','/api/session'):
+            cookie=request.cookies.get('color_studio_session','')
+            if not same_origin(request) or not hmac.compare_digest(cookie,session):
+                return JSONResponse({'detail':'LOCAL_SESSION_REQUIRED'},status_code=403)
         if request.method not in ('GET','HEAD','OPTIONS'):
             origin=request.headers.get('origin')
-            if request.headers.get('x-lumaforge-local')!='1' or (origin and urlparse(origin).hostname not in ('localhost','127.0.0.1')):
+            if request.headers.get('x-lumaforge-local')!='1' or not same_origin(request) or not hmac.compare_digest(request.headers.get('x-color-studio-token',''),session):
                 return JSONResponse({'detail':'Local application header/origin required'},status_code=403)
             limit=33*1024*1024 if request.url.path=='/api/images' else 64*1024
             length=request.headers.get('content-length')
@@ -112,21 +143,39 @@ def create_app(data_dir=None):
         return image_io.decode(path_for(identifier,images,'.png').read_bytes(),max_side=size)
 
     @app.get('/api/health')
-    def health(): return {'version':'0.1.0','offline_processing':True,'domain':'encoded-sRGB-D65'}
+    def health(): return {'version':'0.2.0-beta.1','offline_processing':True,'domain':'encoded-sRGB-D65'}
+
+    @app.get('/api/session')
+    def bootstrap(request:Request):
+        if not same_origin(request):raise HTTPException(403,'Same origin required')
+        response=JSONResponse({'csrf':session})
+        response.set_cookie('color_studio_session',session,httponly=True,samesite='strict',path='/api')
+        return response
 
     @app.post('/api/images')
     def upload(file: UploadFile=File(...)):
         with LOCK,measurement() as stats:
             payload=file.file.read(32*1024*1024+1)
             if len(payload)>32*1024*1024: raise HTTPException(413,'Maximum upload 32 MiB')
-            if len(list(images.glob('*.png')))>=8: raise HTTPException(409,'8 local images maximum; clear temporary images first')
+            if len(list(images.glob('*.png')))>=32: raise HTTPException(409,'32 local images maximum; clear temporary images first')
             rgb,alpha,notes=image_io.decode(payload)
             analysis=engine.analyze(rgb,alpha)
             identifier=str(uuid.uuid4())
-            (images/(identifier+'.png')).write_bytes(image_io.encode(rgb,alpha))
+            atomic_bytes(images/(identifier+'.png'),image_io.encode(rgb,alpha))
             result={'id':identifier,'width':rgb.shape[1],'height':rgb.shape[0],'has_alpha':alpha is not None,
                     'notes':notes,'analysis':analysis,'preview_url':f'/api/images/{identifier}/preview'}
         return {**result,'metrics':stats}
+
+    @app.post('/api/demo/load')
+    def demo():
+        directory=ROOT/'apps/demo'
+        if not (directory/'credits.json').is_file():raise HTTPException(503,'Demo files are not bundled')
+        result={}
+        for role in ('source','reference'):
+            payload=(directory/(role+'.jpg')).read_bytes()
+            result[role]=upload(UploadFile(file=io.BytesIO(payload),filename=role+'.jpg'))
+        result['credits']=json.loads((directory/'credits.json').read_bytes())
+        return result
 
     @app.get('/api/images/{identifier}/preview')
     def original_preview(identifier:str):
@@ -167,16 +216,71 @@ def create_app(data_dir=None):
     @app.get('/api/presets')
     def list_presets():
         with LOCK:
-            return [json.loads(p.read_text('utf-8')) for p in sorted(presets.glob('*.json'))]
+            records=[]
+            for p in sorted(presets.glob('*.json')):
+                try:
+                    record=json.loads(p.read_bytes());record['recipe']=engine.validate_recipe(record['recipe']).model_dump();record.setdefault('group','');records.append(record)
+                except (ValueError,KeyError,OSError):continue
+            return records
 
     @app.post('/api/presets')
     def save_preset(body:Preset):
         with LOCK:
             if len(list(presets.glob('*.json')))>=100: raise HTTPException(409,'100 presets maximum')
             recipe=engine.validate_recipe(body.recipe)
-            identifier=str(uuid.uuid4()); record={'id':identifier,'name':body.name,'recipe':recipe.model_dump()}
-            (presets/(identifier+'.json')).write_text(json.dumps(record,ensure_ascii=False,indent=2),encoding='utf-8')
+            identifier=str(uuid.uuid4()); record={'id':identifier,'name':body.name.strip(),'group':body.group.strip(),'recipe':recipe.model_dump()}
+            if not record['name']:raise ValueError('Preset name cannot be empty')
+            atomic_json(presets/(identifier+'.json'),record)
         return record
+
+    @app.put('/api/presets/{identifier}')
+    def edit_preset(identifier:str,body:Preset):
+        with LOCK:
+            path=path_for(identifier,presets,'.json')
+            if not body.name.strip():raise ValueError('Preset name cannot be empty')
+            record={'id':identifier,'name':body.name.strip(),'group':body.group.strip(),'recipe':engine.validate_recipe(body.recipe).model_dump()}
+            atomic_json(path,record)
+            return record
+
+    @app.get('/api/preferences')
+    def preferences():
+        try:return Preferences.model_validate_json((data/'preferences.json').read_bytes()).model_dump()
+        except (OSError,ValueError):return Preferences().model_dump()
+
+    @app.put('/api/preferences')
+    def save_preferences(body:Preferences):
+        with LOCK:atomic_json(data/'preferences.json',body.model_dump())
+        return body
+
+    @app.post('/api/jobs')
+    def start_batch(body:Batch):
+        if len(set(body.source_ids))!=len(body.source_ids):raise ValueError('Duplicate batch input')
+        with LOCK:
+            for identifier in body.source_ids:path_for(identifier,images,'.png')
+            return jobs.start(body.source_ids,body.recipe,body.format,lambda identifier:path_for(identifier,images,'.png'))
+
+    @app.get('/api/jobs')
+    def list_jobs():return [jobs.get(identifier) for identifier in list(jobs.records)]
+
+    @app.get('/api/jobs/{identifier}')
+    def job_status(identifier:str):
+        try:return jobs.get(identifier)
+        except KeyError:raise HTTPException(404,'Unknown batch')
+
+    @app.post('/api/jobs/{identifier}/cancel')
+    def cancel_batch(identifier:str):
+        try:return jobs.cancel(identifier)
+        except KeyError:raise HTTPException(404,'Unknown batch')
+
+    @app.get('/api/jobs/{identifier}/files/{index}')
+    def batch_file(identifier:str,index:int):
+        try:
+            record=jobs.get(identifier)
+            item=next(i for i in record['items'] if i['index']==index and i['status']=='completed')
+        except (KeyError,StopIteration):raise HTTPException(404,'Unknown batch output')
+        output=(data/'jobs'/identifier/item['filename']).resolve()
+        if output.parent!=(data/'jobs'/identifier).resolve():raise HTTPException(404,'Invalid batch output path')
+        return FileResponse(output,filename=item['filename'])
 
     @app.post('/api/presets/validate')
     def validate_preset(body:engine.Recipe): return engine.validate_recipe(body).model_dump()
@@ -189,6 +293,7 @@ def create_app(data_dir=None):
     @app.delete('/api/images')
     def clear_images():
         with LOCK:
+            if jobs.active():raise HTTPException(409,'Cancel the active batch before clearing images')
             for path in images.glob('*.png'): path.unlink()
         return {'removed':True,'presets_preserved':True}
 

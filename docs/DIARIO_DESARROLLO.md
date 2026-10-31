@@ -163,3 +163,12 @@
 - GUI real: dos importaciones CC0, matching, intensidad0/100, comparación, exposición, guardar/aplicar preset, undo e importar receta; PNG4928x3264 y LUT33³/JSON descargados y verificados. JPG real probado por API. Captura/artefactos se mantienen locales e ignorados.
 - Iniciar-LumaForge.cmd y setup_mvp.ps1 permiten preparación/arranque Windows sin cambiar PATH ni políticas. Instalación inicial necesita Internet; procesamiento posterior no usa Internet ni tokens. No hay IA avanzada, FFmpeg, Tauri o editores externos implementados.
 - Interfaz en rama apilada sobre motor; integra también el checkpoint P0 pendiente de PR38 sin sobrescribir su contenido. No merge remoto ni approved por el agente. Revisión y límites completos en MVP_V01_WINDOWS y MVP_COLOR_CONTRACT.
+
+
+## 2026-10-31 · [COL-036] [COL-037] Candidato beta Windows
+- Con autorización explícita se instalaron Rust1.99.1, C++/SDK de Microsoft, PyInstaller6.22.3 y Tauri2; WebView2 existía. No permisos de repositorio, compras o reinstalación gh.
+- Implementación real: NSIS por usuario con frontend+motor, sesión loopback protegida, supervisión PID e instancia única, presets CRUD/grupos, ES/EN, demo CC0, lotes cancelables y escritura atómica/recuperación interrupted. Sin updater/rollback automático ni efectos Look Match.
+-23 tests MVP,91 de seguimiento tras incorporar main a7a8df8, build TS/Vite/nativo OK. Pipeline candidato manual preparado, no ejecutado remotamente ni release publicada.
+- Smoke binario real4 paisajes CC0 de16MP, exports11.4–13.7s/RSS789–804MB, lote2, ICC/dimensiones/hashes intactos, watchdog OK. Instalación/desinstalación exit0,8 archivos privados conservados por hash, sin procesos huérfanos. Codex/MSIX virtualizado, no Windows limpio.
+- PR52/53 y63/64 integradas por jea27 durante la sesión; cambios incorporados sin sobrescritura. Investigación P0 y propuesta Look Match conservadas; sin entrevistas/respuestas nuevas ni autoaprobación.
+- Inventario299 entradas/avisos incluidos; seis avisos y revisión binaria pendientes. SHA256, inputs dirty declarados y límites en BETA_02_*; no firma ni reproducibilidad bit a bit.
