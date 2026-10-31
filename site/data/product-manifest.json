@@ -495,7 +495,8 @@
       "task": "COL-036",
       "delivery_prs": [
         65,
-        70
+        70,
+        88
       ],
       "code_paths": [
         "apps/desktop/src-tauri/tauri.conf.json"
@@ -677,7 +678,8 @@
     },
     {
       "delivery_prs": [
-        86
+        86,
+        88
       ],
       "group": "Creator / Pro",
       "evidence": [
@@ -746,7 +748,8 @@
     },
     {
       "delivery_prs": [
-        86
+        86,
+        88
       ],
       "group": "Creator / Pro",
       "evidence": [
@@ -814,7 +817,8 @@
     },
     {
       "delivery_prs": [
-        86
+        86,
+        88
       ],
       "group": "Creator / Pro",
       "evidence": [

@@ -694,3 +694,17 @@ leer su CI y comentarios antes de actuar. Usar la venv compartida solo para las
 pruebas existentes; no sustituirla para otro runtime. Scripts/comandos reproducibles
 en INTEGRACION_BETA_036.md; guía para el responsable PRUEBA_CREATOR_PRO_PLANNER.md.
 No eliminar worktrees previos ni cambios ajenos. Nunca tratar aviso/merge como GO.
+
+## Publicación COL036 · PR88
+
+Rama publicada en216af93; PR88 abierta hacia main, seguimiento de #57 y #67:
+https://github.com/jea27/Lut_generator/pull/88. Primer CI remoto MVP41223288357,
+studio41223288363 y validate41223288358 correctos. Manifiesto enlaza entrega88
+con Windows/Creator/Pro/Planner sin autoaceptación. Se conserva el denominador8,
+las18 capacidades y42 tareas. Colector real con API GitHub confirma MVP técnico8/8
+frente a aceptación0/8, beta/venta NO-GO; archivos generados restaurados por bytes.
+La instantánea de rama no equivale a publicación en Pages. Las evidencias nuevas
+solo formarán parte de main tras integración humana. CI/checks finales y aviso
+canónico se consultan en PR88 y #67; no repetir needs-human para el mismo texto.
+El trabajo de código está terminado para revisión; queda validación humana,
+runtime oficial autorizado y QA limpia. No hay cambios de main o de otros agentes.
