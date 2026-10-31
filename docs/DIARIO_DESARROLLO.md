@@ -204,4 +204,3 @@ Hash del instalador beta2 recalculado sin variación. Solo cambia documentación
 de conciliación, no el runtime probado. Issue68 permanece en revisión, sin
 aceptación automática. Solicitud67 reutilizada para revisión de integración y
 recursos QA, evitando una nueva Issue/aviso para los mismos bloqueos.
-

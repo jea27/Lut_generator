@@ -1,5 +1,10 @@
 # Auditoría de beta0.3 · distribución y licencias
 
+Actualización de integración: jea27 fusionó69→COL042,65→main y66→COL037, en ese
+orden. Los cambios66/69 no alcanzaron main. PR70 hacia main reúne lo pendiente;
+CI correcta y decisión humana en67. COL026 sigue review; ningún merge equivale
+a aprobación completa. El apartado siguiente registra la auditoría inicial.
+
 31-10-2026. PR65/66 auditadas: abiertas, mergeable y checks MVP/Studio correctos
 en sus HEAD d90da2d/32278e4. No fusionadas. Issue67 sigue con solicitud humana,
 sin respuesta nueva al iniciar este ciclo. No se interpreta aviso como aceptación.

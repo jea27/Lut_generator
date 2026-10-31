@@ -1,6 +1,7 @@
 # Checkpoint vigente · conciliación de integraciones · 31-10-2026
 
-Rama actual codex/COL-026-integracion-beta2. Árbol de trabajo conservado desde
+Rama actual codex/COL-026-integracion-beta2, PR70 lista para revisión:
+https://github.com/jea27/Lut_generator/pull/70. Árbol conservado desde
 a01ed2b, sin sobrescribir datos. GitHub confirma merges humanos por jea27:
 PR69 a rama COL042 (07:59:58 UTC), PR65 a main (08:00:10), PR66 a rama
 COL037 (08:00:23). Por ese orden, origin/main=0539b9f incluye65 pero no los
@@ -12,7 +13,12 @@ approved ni done; Issue68 sigue review y COL001 pendiente de entrevistas.
 Instalador y evidencias del checkpoint siguiente siguen vigentes: source
 a452a5f y SHA256 3e3851ee4f3c67608d3802ad167572375b130eeafa57165d26379cd26797714f,
 recalculado en esta conciliación. Sin cambios de runtime posteriores al build.
-30+91 pruebas locales y CI anteriores correctas. La nueva PR tendrá CI propia.
+30+91 pruebas locales y CI anteriores correctas. CI70 correcta: MVP41184058852,
+Studio41184058873 y validate41184100896; publish omitido en PR como corresponde.
+Sync41184098485 success y JSON público leído:42 tareas, COL026 review con enlace
+real a PR70, COL001 blocked. No cambio manual de estados ni approved.
+Aviso nuevo de conciliación41184100601 success; bot6541069862 menciona jea27
+en67. Sin confirmación física nueva del iPhone; no reenviar el mismo aviso.
 Sin nuevos participantes, editor activado o Windows limpio: NO-GO externa y venta.
 No volver a notificar por permisos7-Zip o por el mismo bloqueo de QA; la nueva
 decisión de integración se consolida en67, sin crear otra Issue de acción.

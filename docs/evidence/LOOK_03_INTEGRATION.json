@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-31",
+  "human_merges_observed": [
+    {"pr": 69, "by": "jea27", "at": "2026-10-31T07:59:58Z", "base": "codex/COL-042-preparacion-comercial"},
+    {"pr": 65, "by": "jea27", "at": "2026-10-31T08:00:10Z", "base": "main"},
+    {"pr": 66, "by": "jea27", "at": "2026-10-31T08:00:23Z", "base": "codex/COL-037-beta-estabilidad"}
+  ],
+  "main_observed": "0539b9f3a817050c22a7735c3455c7c6f97044b1",
+  "pending_integration_pr": "https://github.com/jea27/Lut_generator/pull/70",
+  "base": "main",
+  "head": "codex/COL-026-integracion-beta2",
+  "ci_observed_success": {"mvp": 41184058852, "studio": 41184058873, "roadmap_validate": 41184100896},
+  "sync_success": 41184098485,
+  "public_pages_read": true,
+  "tasks": 42,
+  "col026": {"status": "review", "issue_number": 68, "pr_url": "https://github.com/jea27/Lut_generator/pull/70"},
+  "notification_success": 41184100601,
+  "bot_mention": "https://github.com/jea27/Lut_generator/issues/67#issuecomment-6541069862",
+  "new_physical_receipt_confirmed": false,
+  "agent_merged": false,
+  "approved_or_done_applied": false
+}
