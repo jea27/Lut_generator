@@ -19,6 +19,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: false
+          fetch-depth: 0
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
@@ -38,6 +39,7 @@ jobs:
         run: |
           node --check site/app.js
           node --check site/product.js
+          node --check site/reviews.js
           node --check site/data/product-fallback.js
           node --check site/data/fallback.js
           node --check research/form.js
@@ -65,6 +67,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: false
+          fetch-depth: 0
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:

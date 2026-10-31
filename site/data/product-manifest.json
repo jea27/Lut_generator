@@ -25,7 +25,33 @@
         "tests_mvp/test_engine.py"
       ],
       "evidence": [],
-      "acceptance": "Estadísticas Lab acotadas, intensidad y render mediante la misma LUT33³."
+      "acceptance": "Estadísticas Lab acotadas, intensidad y render mediante la misma LUT33³.",
+      "review": {
+        "steps": [
+          "Abrir demo local o dos fotos propias autorizadas y ejecutar Analizar y transferir.",
+          "Mover intensidad de color a0 y100: comparar la misma foto al100% y comprobar tonos/extremos."
+        ],
+        "checklist": [
+          {
+            "id": "behavior",
+            "label": "El comportamiento descrito funciona en mi prueba."
+          },
+          {
+            "id": "quality",
+            "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+          },
+          {
+            "id": "evidence",
+            "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+          }
+        ]
+      },
+      "review_paths": [
+        "apps/api/main.py",
+        "apps/web/src/App.vue",
+        "packages/colour_core/engine.py",
+        "packages/colour_core/image_io.py"
+      ]
     },
     {
       "id": "manual-look",
@@ -49,7 +75,34 @@
           "equals": true
         }
       ],
-      "acceptance": "Glow, difusión y fade manuales; no inferencia automática fiel de referencia."
+      "acceptance": "Glow, difusión y fade manuales; no inferencia automática fiel de referencia.",
+      "review": {
+        "steps": [
+          "Aplicar el acabado con y sin su interruptor, variando intensidad.",
+          "Guardar receta, volver a cargarla y exportar PNG; comprobar que LUT solo incluye color."
+        ],
+        "checklist": [
+          {
+            "id": "behavior",
+            "label": "El comportamiento descrito funciona en mi prueba."
+          },
+          {
+            "id": "quality",
+            "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+          },
+          {
+            "id": "evidence",
+            "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+          }
+        ]
+      },
+      "review_paths": [
+        "apps/api/main.py",
+        "apps/web/src/App.vue",
+        "packages/colour_core/engine.py",
+        "packages/colour_core/image_io.py",
+        "packages/colour_core/look.py"
+      ]
     },
     {
       "id": "glow",
@@ -67,7 +120,34 @@
         "tests_mvp/test_look.py"
       ],
       "evidence": [],
-      "acceptance": "Componente de Look Match: luz lineal, radio relativo, bypass e intensidad."
+      "acceptance": "Componente de Look Match: luz lineal, radio relativo, bypass e intensidad.",
+      "review": {
+        "steps": [
+          "Usar foto con altas luces. Activar solo Glow; Difusión y Fade a0.",
+          "Comparar radio e intensidad, revisar halos/bordes y desactivar para recuperar la base."
+        ],
+        "checklist": [
+          {
+            "id": "behavior",
+            "label": "El comportamiento descrito funciona en mi prueba."
+          },
+          {
+            "id": "quality",
+            "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+          },
+          {
+            "id": "evidence",
+            "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+          }
+        ]
+      },
+      "review_paths": [
+        "apps/api/main.py",
+        "apps/web/src/App.vue",
+        "packages/colour_core/engine.py",
+        "packages/colour_core/image_io.py",
+        "packages/colour_core/look.py"
+      ]
     },
     {
       "id": "diffusion",
@@ -85,7 +165,34 @@
         "tests_mvp/test_look.py"
       ],
       "evidence": [],
-      "acceptance": "Suavizado con alfa y halos entre tiles; forma parte de la receta, no LUT."
+      "acceptance": "Suavizado con alfa y halos entre tiles; forma parte de la receta, no LUT.",
+      "review": {
+        "steps": [
+          "Activar solo Difusión sobre foto con detalle fino; Glow y Fade a0.",
+          "Examinar bordes al100%, variar intensidad/radio y comprobar bypass."
+        ],
+        "checklist": [
+          {
+            "id": "behavior",
+            "label": "El comportamiento descrito funciona en mi prueba."
+          },
+          {
+            "id": "quality",
+            "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+          },
+          {
+            "id": "evidence",
+            "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+          }
+        ]
+      },
+      "review_paths": [
+        "apps/api/main.py",
+        "apps/web/src/App.vue",
+        "packages/colour_core/engine.py",
+        "packages/colour_core/image_io.py",
+        "packages/colour_core/look.py"
+      ]
     },
     {
       "id": "fade",
@@ -103,7 +210,34 @@
         "tests_mvp/test_look.py"
       ],
       "evidence": [],
-      "acceptance": "Elevación de negros y compresión acotada, conservadas en receta completa."
+      "acceptance": "Elevación de negros y compresión acotada, conservadas en receta completa.",
+      "review": {
+        "steps": [
+          "Activar solo Fade con sombras y luces visibles.",
+          "Comprobar elevación gradual de negros, ausencia de saltos y bypass."
+        ],
+        "checklist": [
+          {
+            "id": "behavior",
+            "label": "El comportamiento descrito funciona en mi prueba."
+          },
+          {
+            "id": "quality",
+            "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+          },
+          {
+            "id": "evidence",
+            "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+          }
+        ]
+      },
+      "review_paths": [
+        "apps/api/main.py",
+        "apps/web/src/App.vue",
+        "packages/colour_core/engine.py",
+        "packages/colour_core/image_io.py",
+        "packages/colour_core/look.py"
+      ]
     },
     {
       "id": "presets",
@@ -121,7 +255,34 @@
         "tests_mvp/test_beta.py"
       ],
       "evidence": [],
-      "acceptance": "Guardar, aplicar, editar, agrupar y conservar presets locales."
+      "acceptance": "Guardar, aplicar, editar, agrupar y conservar presets locales.",
+      "review": {
+        "steps": [
+          "Guardar un preset de prueba, renombrar y mover de grupo.",
+          "Cerrar/abrir la app y aplicarlo de nuevo; eliminar únicamente el preset de ensayo."
+        ],
+        "checklist": [
+          {
+            "id": "behavior",
+            "label": "El comportamiento descrito funciona en mi prueba."
+          },
+          {
+            "id": "quality",
+            "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+          },
+          {
+            "id": "evidence",
+            "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+          }
+        ]
+      },
+      "review_paths": [
+        "apps/api/main.py",
+        "apps/api/storage.py",
+        "apps/web/src/App.vue",
+        "packages/colour_core/engine.py",
+        "packages/colour_core/image_io.py"
+      ]
     },
     {
       "id": "batches",
@@ -145,7 +306,34 @@
           "equals": true
         }
       ],
-      "acceptance": "Lotes cancelables con outputs separados y recuperación interrupted."
+      "acceptance": "Lotes cancelables con outputs separados y recuperación interrupted.",
+      "review": {
+        "steps": [
+          "Con dos copias autorizadas, aplicar una receta al lote y exportar.",
+          "Comparar salida individual, cancelar otro ensayo y comprobar originales intactos."
+        ],
+        "checklist": [
+          {
+            "id": "behavior",
+            "label": "El comportamiento descrito funciona en mi prueba."
+          },
+          {
+            "id": "quality",
+            "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+          },
+          {
+            "id": "evidence",
+            "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+          }
+        ]
+      },
+      "review_paths": [
+        "apps/api/jobs.py",
+        "apps/api/main.py",
+        "apps/web/src/App.vue",
+        "packages/colour_core/engine.py",
+        "packages/colour_core/image_io.py"
+      ]
     },
     {
       "id": "lut-export",
@@ -170,7 +358,33 @@
           "equals": true
         }
       ],
-      "acceptance": "LUT33³ sRGB global; no transporta glow, difusión, fade o adaptación local."
+      "acceptance": "LUT33³ sRGB global; no transporta glow, difusión, fade o adaptación local.",
+      "review": {
+        "steps": [
+          "Exportar .cube y comprobar el aviso de solo color.",
+          "Comparar con render de color, sin esperar glow/difusión/fade dentro de LUT."
+        ],
+        "checklist": [
+          {
+            "id": "behavior",
+            "label": "El comportamiento descrito funciona en mi prueba."
+          },
+          {
+            "id": "quality",
+            "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+          },
+          {
+            "id": "evidence",
+            "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+          }
+        ]
+      },
+      "review_paths": [
+        "apps/api/main.py",
+        "apps/web/src/App.vue",
+        "packages/colour_core/engine.py",
+        "packages/colour_core/image_io.py"
+      ]
     },
     {
       "id": "image-export",
@@ -195,7 +409,33 @@
           "equals": true
         }
       ],
-      "acceptance": "Resolución original, ICC sRGB, originales intactos y acabado completo."
+      "acceptance": "Resolución original, ICC sRGB, originales intactos y acabado completo.",
+      "review": {
+        "steps": [
+          "Exportar PNG/JPG desde foto autorizada y revisar dimensiones y perfil sRGB.",
+          "Comparar al100% con la vista, preservación de originales y acabado."
+        ],
+        "checklist": [
+          {
+            "id": "behavior",
+            "label": "El comportamiento descrito funciona en mi prueba."
+          },
+          {
+            "id": "quality",
+            "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+          },
+          {
+            "id": "evidence",
+            "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+          }
+        ]
+      },
+      "review_paths": [
+        "apps/api/main.py",
+        "apps/web/src/App.vue",
+        "packages/colour_core/engine.py",
+        "packages/colour_core/image_io.py"
+      ]
     },
     {
       "id": "recipe",
@@ -219,7 +459,33 @@
           "equals": true
         }
       ],
-      "acceptance": "Receta v2 con acabado; compatible con v1 sin efectos."
+      "acceptance": "Receta v2 con acabado; compatible con v1 sin efectos.",
+      "review": {
+        "steps": [
+          "Exportar receta con efectos, cargarla y comparar los controles/resultados.",
+          "Aplicar presetv1, activar acabado y exportar JSONv2 conservando el color."
+        ],
+        "checklist": [
+          {
+            "id": "behavior",
+            "label": "El comportamiento descrito funciona en mi prueba."
+          },
+          {
+            "id": "quality",
+            "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+          },
+          {
+            "id": "evidence",
+            "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+          }
+        ]
+      },
+      "review_paths": [
+        "apps/api/main.py",
+        "apps/web/src/App.vue",
+        "packages/colour_core/engine.py",
+        "packages/colour_core/image_io.py"
+      ]
     },
     {
       "id": "windows",
@@ -244,7 +510,36 @@
           "equals": 0
         }
       ],
-      "acceptance": "Tauri/NSIS y sidecar. Verificación local; Windows limpio sigue pendiente."
+      "acceptance": "Tauri/NSIS y sidecar. Verificación local; Windows limpio sigue pendiente.",
+      "review": {
+        "steps": [
+          "Ejecutar protocolo de QA en el equipo de prueba autorizado.",
+          "Comprobar instalación, arranque, cierre, presets y actualización sin perder datos; declarar entorno probado."
+        ],
+        "checklist": [
+          {
+            "id": "behavior",
+            "label": "El comportamiento descrito funciona en mi prueba."
+          },
+          {
+            "id": "quality",
+            "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+          },
+          {
+            "id": "evidence",
+            "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+          }
+        ]
+      },
+      "review_paths": [
+        "apps/api/main.py",
+        "apps/desktop/src-tauri/tauri.conf.json",
+        "apps/web/src/App.vue",
+        "packages/colour_core/engine.py",
+        "packages/colour_core/image_io.py",
+        "apps/desktop/src-tauri/src/main.rs",
+        "apps/desktop/engine_entry.py"
+      ]
     },
     {
       "id": "adobe",
@@ -256,7 +551,27 @@
       "code_paths": [],
       "tests": [],
       "evidence": [],
-      "acceptance": "Requiere importación y comparación real en editores activados y dominio sRGB."
+      "acceptance": "Requiere importación y comparación real en editores activados y dominio sRGB.",
+      "review": {
+        "steps": [
+          "Esta capacidad todavía no tiene una entrega revisable."
+        ],
+        "checklist": [
+          {
+            "id": "behavior",
+            "label": "El comportamiento descrito funciona en mi prueba."
+          },
+          {
+            "id": "quality",
+            "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+          },
+          {
+            "id": "evidence",
+            "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+          }
+        ]
+      },
+      "review_paths": []
     },
     {
       "id": "resolve",
@@ -268,7 +583,27 @@
       "code_paths": [],
       "tests": [],
       "evidence": [],
-      "acceptance": "Requiere prueba real de LUT, interpolación, niveles y espacio de color."
+      "acceptance": "Requiere prueba real de LUT, interpolación, niveles y espacio de color.",
+      "review": {
+        "steps": [
+          "Esta capacidad todavía no tiene una entrega revisable."
+        ],
+        "checklist": [
+          {
+            "id": "behavior",
+            "label": "El comportamiento descrito funciona en mi prueba."
+          },
+          {
+            "id": "quality",
+            "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+          },
+          {
+            "id": "evidence",
+            "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+          }
+        ]
+      },
+      "review_paths": []
     },
     {
       "id": "automatic-look",
@@ -280,7 +615,27 @@
       "code_paths": [],
       "tests": [],
       "evidence": [],
-      "acceptance": "Inferir parámetros desde referencia, incertidumbre y revisión visual; posterior a beta."
+      "acceptance": "Inferir parámetros desde referencia, incertidumbre y revisión visual; posterior a beta.",
+      "review": {
+        "steps": [
+          "Esta capacidad todavía no tiene una entrega revisable."
+        ],
+        "checklist": [
+          {
+            "id": "behavior",
+            "label": "El comportamiento descrito funciona en mi prueba."
+          },
+          {
+            "id": "quality",
+            "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+          },
+          {
+            "id": "evidence",
+            "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+          }
+        ]
+      },
+      "review_paths": []
     },
     {
       "id": "halation",
@@ -292,7 +647,27 @@
       "code_paths": [],
       "tests": [],
       "evidence": [],
-      "acceptance": "Efecto espacial pendiente, independiente de LUT y controlable; posterior a beta."
+      "acceptance": "Efecto espacial pendiente, independiente de LUT y controlable; posterior a beta.",
+      "review": {
+        "steps": [
+          "Esta capacidad todavía no tiene una entrega revisable."
+        ],
+        "checklist": [
+          {
+            "id": "behavior",
+            "label": "El comportamiento descrito funciona en mi prueba."
+          },
+          {
+            "id": "quality",
+            "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+          },
+          {
+            "id": "evidence",
+            "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+          }
+        ]
+      },
+      "review_paths": []
     }
   ],
   "metrics": {
@@ -384,5 +759,36 @@
       "issue": 72,
       "pr": 74
     }
-  ]
+  ],
+  "review_demo": {
+    "id": "review-demo",
+    "title": "Demostración de revisión (sintética)",
+    "issue": 77,
+    "task": "COL-044",
+    "group": "QA",
+    "demo": true,
+    "code_paths": [
+      "site/index.html"
+    ],
+    "review_paths": [
+      "site/reviews.js"
+    ],
+    "acceptance": "Comprobar únicamente la infraestructura de revisión; no aprueba Color Studio.",
+    "review": {
+      "steps": [
+        "Comprobar que esta tarjeta está marcada como demostración sin impacto en producto.",
+        "Completar checklist y probar el comentario de aprobación o corrección en Issue77."
+      ],
+      "checklist": [
+        {
+          "id": "demo-visible",
+          "label": "La tarjeta indica que es una demostración sintética."
+        },
+        {
+          "id": "no-product",
+          "label": "Confirmo que no estoy aprobando una capacidad real."
+        }
+      ]
+    }
+  }
 }

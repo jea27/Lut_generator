@@ -1,65 +1,210 @@
 name: Sincronizar roadmap
 
+
+
 on:
+
   issues:
+
     types: [opened, edited, labeled, unlabeled, closed, reopened, deleted]
+
   pull_request_target:
+
     types: [opened, edited, synchronize, closed, reopened, ready_for_review, converted_to_draft, labeled, unlabeled]
+
   release:
+
     types: [published, edited, deleted]
+
   workflow_run:
-    workflows: [Publicar roadmap, Validar MVP local, Compilar Color Studio, Compilar candidato beta Windows]
+
+    workflows: [Publicar roadmap, Validar MVP local, Compilar Color Studio, Compilar candidato beta Windows, Validar revisión humana]
+
     types: [completed]
+
   schedule:
+
     - cron: '*/30 * * * *'
+
   workflow_dispatch:
 
+    inputs:
+
+      review_demo_comment:
+
+        description: ID de comentario sintético en Issue77 (solo QA, sin publicar Pages)
+
+        required: false
+
+        type: string
+
+
+
 permissions:
+
   contents: read
 
+
+
 jobs:
+
   sync:
+
     # Always run trusted main, never a PR ref or a PR-produced artifact.
+
     # A separate workflow prevents completion events from triggering themselves.
+
     if: ${{ github.ref == 'refs/heads/main' || github.event_name == 'pull_request_target' || github.event_name == 'release' }}
+
     runs-on: ubuntu-latest
+
     permissions:
+
       contents: read
+
       issues: read
+
       pull-requests: read
+
       pages: write
+
       id-token: write
+
     concurrency:
+
       group: roadmap-pages
+
       cancel-in-progress: false
+
     environment:
+
       name: github-pages
+
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
+
       - uses: actions/checkout@v4
+
         with:
+
           ref: main
+
           persist-credentials: false
+
+          fetch-depth: 0
+
       - uses: actions/setup-python@v5
+
         with:
+
           python-version: '3.12'
+
       - name: Verificar reglas antes de publicar
+
         run: python -m unittest discover -s tests -v
+
       - name: Consultar estado real
+
         env:
+
           GITHUB_TOKEN: ${{ github.token }}
+
           GITHUB_REPOSITORY: ${{ github.repository }}
+
         run: python scripts/sync_github.py
+
       - name: Consultar progreso real del producto
+
         env:
+
           GITHUB_TOKEN: ${{ github.token }}
+
           GITHUB_REPOSITORY: ${{ github.repository }}
+
         run: python scripts/sync_product.py
+
       - name: Preparar formulario estático sin datos
+
         run: python scripts/prepare_research_site.py
+
       - uses: actions/configure-pages@v5
+
       - uses: actions/upload-pages-artifact@v4
+
         with:
+
           path: site
+
       - uses: actions/deploy-pages@v4
+
         id: deployment
+
+
+
+  review-demo:
+
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.review_demo_comment != '' && github.actor == 'jea27' && github.actor_id == '45896918' && github.ref == 'refs/heads/codex/COL-044-human-review' }}
+
+    runs-on: ubuntu-latest
+
+    permissions:
+
+      contents: read
+
+      issues: write
+
+    concurrency:
+
+      group: human-review-77
+
+      cancel-in-progress: false
+
+    steps:
+
+      - uses: actions/checkout@v4
+
+        with:
+
+          ref: ${{ github.sha }}
+
+          fetch-depth: 0
+
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+
+        with:
+
+          python-version: '3.12'
+
+      - name: Procesar solo capacidad sintética y comentario numérico
+
+        env:
+
+          GITHUB_TOKEN: ${{ github.token }}
+
+          DEMO_COMMENT: ${{ inputs.review_demo_comment }}
+
+        run: |
+
+          python -c "import os,subprocess; raw=os.environ['DEMO_COMMENT']; assert raw.isascii() and raw.isdecimal() and 0<int(raw)<2**63; subprocess.run(['python','scripts/human_reviews.py','--demo-comment',raw],check=True)"
+
+      - name: Proyectar dashboard sin desplegarlo
+
+        env:
+
+          GITHUB_TOKEN: ${{ github.token }}
+
+          GITHUB_REPOSITORY: ${{ github.repository }}
+
+        run: python scripts/sync_product.py
+
+      - uses: actions/upload-artifact@v4
+
+        with:
+
+          name: synthetic-review-projection
+
+          path: site/data/product.json
+
