@@ -109,6 +109,25 @@ class ProductTests(unittest.TestCase):
         with patch.object(api,'get',return_value={'private':'data'}):
             with self.assertRaises(ValueError):api.pages('/issues')
 
+    def test_project_operation_reuses_canonical_issue_outside_42_tasks(self):
+        self.issues.append({'id':72,'number':72,'state':'open','labels':[{'name':'status:review'}],'html_url':BASE+'/issues/72'})
+        self.prs.append({'id':74,'number':74,'title':'[COL-043] Dashboard','state':'open','draft':False,'base':{'ref':'main'},'html_url':BASE+'/pull/74','updated_at':'2026-10-31T01:00:00Z'})
+        result=self.derive()
+        self.assertEqual(result['operations'][0]['status'],'review')
+        self.assertTrue(result['operations'][0]['excluded_from_product_metrics'])
+        self.assertEqual(result['metrics']['technical']['total'],8)
+        self.manifest['operations'][0]['id']='COL-001'
+        with self.assertRaises(ValueError):self.derive()
+
+    def test_installer_ci_pass_never_grants_distribution_or_download(self):
+        self.runs.append({'name':'Compilar candidato beta Windows','status':'completed','conclusion':'success','head_sha':'a'*40,'run_number':1,'html_url':BASE+'/actions/runs/99'})
+        result=self.derive()
+        self.assertEqual(result['installer_build']['conclusion'],'success')
+        self.assertFalse(result['readiness']['beta']['go'])
+        self.assertIsNone(result['latest_release'])
+        for url in (BASE+'/issues/67?token=private',BASE+'/issues/C%3A%5CUsers%5Cprivate',BASE+'/../private/issues/67'):
+            self.assertIsNone(product.link(url,REPO))
+
     def test_api_error_preserves_previous_output_and_private_repo_refused(self):
         with tempfile.TemporaryDirectory() as temp:
             root=Path(temp); (root/'site/data').mkdir(parents=True)

@@ -561,3 +561,16 @@ Issue19/67, PR de dashboard y scripts/sync_product.py. Fuente de verdad y reglas
 de entrega permiten al agente actualizar capacidades en su PR sin que el usuario
 edite roadmap. Estabilización de app sigue separada en PR71; runtime/QA limpia
 requieren intervención de67. No aplicar approved ni release-approved:TAG.
+
+
+### Conciliación del checkpoint de dashboard
+
+Issue canónica72 [COL043], creada por el otro chat durante la ejecución; se
+reutiliza sin duplicar. PR74: https://github.com/jea27/Lut_generator/pull/74.
+Rama publicada sigue codex/COL-006-product-dashboard; es una operación fuera
+de42 tareas y métricas. Main71 integrada por jea27(5b6a910) se incorporó a
+esta rama local, conservando ambos registros del diario. Diff contra main no
+cambia apps/ o packages/. CI inicial74 MVP41188254939, Studio41188254955 y
+validate41188254963 success, con consulta real de GitHub sin ampliar permisos.
+La nueva revisión se validará de nuevo. Coordinación73: entregar esta PR y
+checkpoint antes de que otro chat tome el worktree. No merge remoto del agente.

@@ -239,3 +239,9 @@ y error de API falla cerrado. No permisos ampliados ni merges del agente.
 visibles, filtros correctos y0 errores. Capturas versionadas; no iPhone físico
 ni despliegue en Pages antes de integración humana. Issue19 reutilizada, no
 se duplica decisión P0 ni se inventan porcentajes/aceptaciones.
+
+
+Conciliación de seguimiento: se detectó COL043#72 creada por el otro chat.
+Se reutiliza para la PR74, sin duplicar Issue ni cambiar42 tareas. COL006#19
+conserva su decisión P0 histórica. Main71 integrado localmente sin perder
+los dos registros del diario; aplicación igual a main. Coordinación por73.

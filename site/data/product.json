@@ -3,8 +3,8 @@
   "product": "Color Studio",
   "sync": {
     "status": "complete",
-    "observed_at": "2026-10-31T09:11:45.265524Z",
-    "main_sha": "cfb6d11bb705ca5a6f313aad8bc177627a50cafd"
+    "observed_at": "2026-10-31T09:30:32.388771Z",
+    "main_sha": "5b6a910cfa5f67e060a00337d3db39b2404d81c7"
   },
   "source_version": "0.3.0-beta.2",
   "candidate": {
@@ -465,12 +465,20 @@
   },
   "pull_requests": [
     {
+      "number": 74,
+      "title": "[COL-043] Centro de control automático del progreso real de Color Studio",
+      "state": "draft",
+      "url": "https://github.com/jea27/Lut_generator/pull/74",
+      "base": "main",
+      "updated_at": "2026-10-31T09:23:27Z"
+    },
+    {
       "number": 71,
       "title": "[COL-013] Estabilizar QA de beta0.3 y bloquear procedencia binaria no conciliada",
-      "state": "open",
+      "state": "merged",
       "url": "https://github.com/jea27/Lut_generator/pull/71",
       "base": "main",
-      "updated_at": "2026-10-31T09:09:11Z"
+      "updated_at": "2026-10-31T09:20:16Z"
     },
     {
       "number": 70,
@@ -551,43 +559,44 @@
       "url": "https://github.com/jea27/Lut_generator/pull/37",
       "base": "main",
       "updated_at": "2026-10-30T20:31:20Z"
-    },
-    {
-      "number": 36,
-      "title": "[COL-004] Preparar guía de permisos y consentimiento fotográfico",
-      "state": "merged",
-      "url": "https://github.com/jea27/Lut_generator/pull/36",
-      "base": "main",
-      "updated_at": "2026-10-30T20:31:01Z"
     }
   ],
   "ci": [
     {
       "name": "Sincronizar roadmap",
       "branch": "main",
-      "sha": "cfb6d11bb705ca5a6f313aad8bc177627a50cafd",
+      "sha": "5b6a910cfa5f67e060a00337d3db39b2404d81c7",
       "status": "completed",
       "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41187521698",
-      "updated_at": "2026-10-31T09:09:52Z"
-    },
-    {
-      "name": "Publicar roadmap",
-      "branch": "codex/COL-013-estabilizacion-beta3",
-      "sha": "bc778e882bdeba94e811688d7bce27718680f392",
-      "status": "completed",
-      "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41187501718",
-      "updated_at": "2026-10-31T09:09:28Z"
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41188660847",
+      "updated_at": "2026-10-31T09:26:32Z"
     },
     {
       "name": "Publicar roadmap",
       "branch": "main",
-      "sha": "cfb6d11bb705ca5a6f313aad8bc177627a50cafd",
+      "sha": "5b6a910cfa5f67e060a00337d3db39b2404d81c7",
       "status": "completed",
       "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41184668038",
-      "updated_at": "2026-10-31T08:27:49Z"
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41188285576",
+      "updated_at": "2026-10-31T09:20:57Z"
+    },
+    {
+      "name": "Publicar roadmap",
+      "branch": "codex/COL-006-product-dashboard",
+      "sha": "d3b8d92eaff3413f055b6d4aab2b2b0b31e24cc9",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41188254963",
+      "updated_at": "2026-10-31T09:20:16Z"
+    },
+    {
+      "name": "Publicar roadmap",
+      "branch": "codex/COL-013-estabilizacion-beta3",
+      "sha": "e20c34b9e4cb06f369c5a693581389d977dda19f",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41187873807",
+      "updated_at": "2026-10-31T09:14:34Z"
     },
     {
       "name": "Publicar roadmap",
@@ -599,40 +608,58 @@
       "updated_at": "2026-10-31T08:20:26Z"
     },
     {
-      "name": "Validar MVP local",
-      "branch": "codex/COL-013-estabilizacion-beta3",
-      "sha": "bc778e882bdeba94e811688d7bce27718680f392",
-      "status": "completed",
-      "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41186741670",
-      "updated_at": "2026-10-31T08:59:06Z"
-    },
-    {
       "name": "Compilar Color Studio",
-      "branch": "codex/COL-013-estabilizacion-beta3",
-      "sha": "bc778e882bdeba94e811688d7bce27718680f392",
+      "branch": "main",
+      "sha": "5b6a910cfa5f67e060a00337d3db39b2404d81c7",
       "status": "completed",
       "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41186741616",
-      "updated_at": "2026-10-31T08:59:12Z"
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41188285564",
+      "updated_at": "2026-10-31T09:21:03Z"
     },
     {
       "name": "Validar MVP local",
       "branch": "main",
-      "sha": "cfb6d11bb705ca5a6f313aad8bc177627a50cafd",
+      "sha": "5b6a910cfa5f67e060a00337d3db39b2404d81c7",
       "status": "completed",
       "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41184668054",
-      "updated_at": "2026-10-31T08:27:54Z"
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41188285547",
+      "updated_at": "2026-10-31T09:21:06Z"
     },
     {
       "name": "Compilar Color Studio",
-      "branch": "main",
-      "sha": "cfb6d11bb705ca5a6f313aad8bc177627a50cafd",
+      "branch": "codex/COL-006-product-dashboard",
+      "sha": "d3b8d92eaff3413f055b6d4aab2b2b0b31e24cc9",
       "status": "completed",
       "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41184667971",
-      "updated_at": "2026-10-31T08:27:55Z"
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41188254955",
+      "updated_at": "2026-10-31T09:20:33Z"
+    },
+    {
+      "name": "Validar MVP local",
+      "branch": "codex/COL-006-product-dashboard",
+      "sha": "d3b8d92eaff3413f055b6d4aab2b2b0b31e24cc9",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41188254939",
+      "updated_at": "2026-10-31T09:20:40Z"
+    },
+    {
+      "name": "Validar MVP local",
+      "branch": "codex/COL-013-estabilizacion-beta3",
+      "sha": "e20c34b9e4cb06f369c5a693581389d977dda19f",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41187873868",
+      "updated_at": "2026-10-31T09:15:04Z"
+    },
+    {
+      "name": "Compilar Color Studio",
+      "branch": "codex/COL-013-estabilizacion-beta3",
+      "sha": "e20c34b9e4cb06f369c5a693581389d977dda19f",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41187873803",
+      "updated_at": "2026-10-31T09:15:02Z"
     },
     {
       "name": "Compilar Color Studio",
@@ -642,42 +669,16 @@
       "conclusion": "success",
       "url": "https://github.com/jea27/Lut_generator/actions/runs/41184186164",
       "updated_at": "2026-10-31T08:21:07Z"
-    },
-    {
-      "name": "Validar MVP local",
-      "branch": "codex/COL-026-integracion-beta2",
-      "sha": "4920cf0e38bac165147158d4bd6e4c09ceedb913",
-      "status": "completed",
-      "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41184186135",
-      "updated_at": "2026-10-31T08:21:14Z"
-    },
-    {
-      "name": "Compilar Color Studio",
-      "branch": "codex/COL-042-preparacion-comercial",
-      "sha": "da72c51c3044b35f2a1d67fa4e4d0b4f24eb69cc",
-      "status": "completed",
-      "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41182781262",
-      "updated_at": "2026-10-31T08:00:41Z"
-    },
-    {
-      "name": "Validar MVP local",
-      "branch": "codex/COL-042-preparacion-comercial",
-      "sha": "da72c51c3044b35f2a1d67fa4e4d0b4f24eb69cc",
-      "status": "completed",
-      "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41182781254",
-      "updated_at": "2026-10-31T08:00:52Z"
     }
   ],
+  "installer_build": null,
   "installer_artifacts": [],
   "human_requests": [
     {
       "number": 73,
       "title": "[LUMAFORGE] ACCIÓN REQUERIDA — Coordinar worktree de dashboard",
       "url": "https://github.com/jea27/Lut_generator/issues/73",
-      "updated_at": "2026-10-31T09:05:40Z"
+      "updated_at": "2026-10-31T09:28:57Z"
     },
     {
       "number": 67,
@@ -762,6 +763,16 @@
       "title": "[COL-001] Revisión humana de PR #4",
       "url": "https://github.com/jea27/Lut_generator/issues/5",
       "updated_at": "2026-10-30T15:22:28Z"
+    }
+  ],
+  "operations": [
+    {
+      "id": "COL-043",
+      "title": "Dashboard real de producto y sincronización GitHub",
+      "status": "progress",
+      "excluded_from_product_metrics": true,
+      "issue_url": "https://github.com/jea27/Lut_generator/issues/72",
+      "pr_url": "https://github.com/jea27/Lut_generator/pull/74"
     }
   ],
   "privacy": "Solo metadatos públicos permitidos; no cuerpos, logs, fotos, datos de participantes o rutas locales."

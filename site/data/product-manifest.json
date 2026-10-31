@@ -376,5 +376,13 @@
         "issue": 62
       }
     ]
-  }
+  },
+  "operations": [
+    {
+      "id": "COL-043",
+      "title": "Dashboard real de producto y sincronización GitHub",
+      "issue": 72,
+      "pr": 74
+    }
+  ]
 }

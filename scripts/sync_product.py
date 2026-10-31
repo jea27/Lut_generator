@@ -37,7 +37,9 @@ def link(value, repo):
     base = 'https://github.com/'+repo+'/'
     if isinstance(value, str) and value.startswith(base) and not SECRET.search(value):
         u = urllib.parse.urlsplit(value)
-        if u.hostname == 'github.com' and not u.username and not u.password: return value
+        route=urllib.parse.unquote(u.path).removeprefix('/'+repo+'/')
+        if u.hostname == 'github.com' and not u.username and not u.password and not u.query and not u.fragment and re.fullmatch(
+                r'(?:issues/[1-9]\d*|pull/[1-9]\d*|actions/runs/\d+|releases/tag/[A-Za-z0-9._/-]+|commit/[a-f0-9]{40})',route): return value
     return None
 
 
@@ -118,6 +120,10 @@ def validate(manifest, root):
         for value in f['code_paths']+f['tests']+[e['path'] for e in f['evidence']]: path(root,value)
     for members in manifest['metrics'].values():
         if len(members)!=len(set(members)) or not set(members)<=ids: raise ValueError('Invalid metric denominator')
+    legacy={t['id'] for t in json.loads((root/'site/data/roadmap.json').read_bytes())['tasks']}
+    operations=manifest.get('operations',[])
+    if len({op['id'] for op in operations})!=len(operations) or any(op['id'] in legacy for op in operations):
+        raise ValueError('Project operations must not duplicate historical tasks')
     path(root,manifest['version_source'])
 
 
@@ -206,14 +212,26 @@ def derive(manifest, root, repo, issues, pulls, runs, main_sha, releases, artifa
                               'status':text(r.get('status')),'conclusion':text(r.get('conclusion')) or None,'url':link(r.get('html_url'),repo),'updated_at':timestamp(r.get('updated_at'))}
     public_artifacts = [{'id':a['id'],'name':text(a.get('name')),'expired':bool(a.get('expired')),'created_at':timestamp(a.get('created_at'))}
                         for a in artifacts if a.get('name')=='color-studio-windows-candidate' and type(a.get('id')) is int]
+    build_runs=[r for r in runs if r.get('name')=='Compilar candidato beta Windows']
+    build_run=max(build_runs,key=lambda r:(r.get('run_number',0),r.get('run_attempt',0)),default=None)
+    installer_build=({'status':text(build_run.get('status')),'conclusion':text(build_run.get('conclusion')) or None,
+                      'url':link(build_run.get('html_url'),repo),'sha':sha(build_run.get('head_sha')),
+                      'updated_at':timestamp(build_run.get('updated_at'))} if build_run else None)
     human = [{'number':i['number'],'title':text(i.get('title')),'url':link(i.get('html_url'),repo),'updated_at':timestamp(i.get('updated_at'))}
              for i in issue_by.values() if i.get('state')=='open' and 'needs-human' in labels(i)]
     human.sort(key=lambda i:i.get('updated_at') or '',reverse=True)
+    operations=[]
+    for op in manifest.get('operations',[]):
+        issue=issue_by.get(op['issue']);pull=pr_by.get(op['pr'])
+        accepted=approved(issue) and bool(pull and pull.get('merged_at') and pull.get('base',{}).get('ref')=='main')
+        state='blocked' if blocked(issue) else 'approved' if accepted else 'review' if pull and not pull.get('draft') else 'progress' if pull or 'status:in-progress' in labels(issue) else 'planned'
+        operations.append({'id':op['id'],'title':text(op['title']),'status':state,'excluded_from_product_metrics':True,
+                           'issue_url':link((issue or {}).get('html_url'),repo),'pr_url':link((pull or {}).get('html_url'),repo)})
     return {'schema_version':1,'product':manifest['product'],'sync':{'status':'complete','observed_at':observed_at,'main_sha':main_sha},
             'source_version':version,'candidate':candidate,'latest_release':release,'versions':builds,'features':features,'metrics':metrics,'readiness':gates,
             'pull_requests':[{'number':p['number'],'title':text(p.get('title')),'state':'merged' if p.get('merged_at') else 'draft' if p.get('draft') else p.get('state'),
                              'url':link(p.get('html_url'),repo),'base':text(p.get('base',{}).get('ref')),'updated_at':timestamp(p.get('updated_at'))} for p in recent_prs],
-            'ci':list(workflows.values())[:12],'installer_artifacts':public_artifacts,'human_requests':human,
+            'ci':list(workflows.values())[:12],'installer_build':installer_build,'installer_artifacts':public_artifacts,'human_requests':human,'operations':operations,
             'privacy':'Solo metadatos públicos permitidos; no cuerpos, logs, fotos, datos de participantes o rutas locales.'}
 
 
@@ -227,11 +245,12 @@ def main():
     issues, pulls = api.pages('/issues'), api.pages('/pulls')
     runs = api.get('/actions/runs',{'per_page':100})['workflow_runs']
     main_runs = api.get('/actions/runs',{'branch':'main','per_page':100})['workflow_runs']
+    candidate_runs = api.get('/actions/workflows/beta-candidate.yml/runs',{'per_page':1})['workflow_runs']
     releases = api.pages('/releases')
     artifacts = api.get('/actions/artifacts',{'per_page':100})['artifacts']
     sha = api.get('/commits/main')['sha']
     if not re.fullmatch('[a-f0-9]{40}',sha): raise ValueError('Invalid main revision')
-    result = derive(json.loads((ROOT/'site/data/product-manifest.json').read_bytes()),ROOT,repo,issues,pulls,runs+main_runs,sha,releases,artifacts,
+    result = derive(json.loads((ROOT/'site/data/product-manifest.json').read_bytes()),ROOT,repo,issues,pulls,runs+main_runs+candidate_runs,sha,releases,artifacts,
                     datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00','Z'))
     encoded = json.dumps(result,ensure_ascii=False,indent=2)+'\n'
     out = ROOT/'site/data/product.json'

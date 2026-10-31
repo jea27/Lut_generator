@@ -1,6 +1,6 @@
 # Centro de control de Color Studio
 
-Entrega de seguimiento relacionada con COL006#19; no modifica la decisión P0,
+Entrega COL043#72/PR74; operación independiente, no modifica la decisión P0,
 las42 tareas o código de apps/packages. Worktree independiente. Auditoría inicial:
 sync_github.py publica un estado, Issue y PR principal por tarea; no catalogaba
 capacidades, versiones, instalador, CI, puertas de entrega o aceptación separada.
@@ -90,3 +90,10 @@ fuera. No se renombra una versión arbitraria de un ZIP para llamarla verificada
 Comprobar tras cada integración: run de sync/publicación success; HTTP de
 data/product.json con source_version, main_sha, contadores y enlaces reales.
 Si falta API o evidencia, conservar Sin datos y corregir la causa.
+
+COL043 fue creada por el otro chat durante esta sesión y se reutiliza como
+operación canónica. Su estado se consulta por Issue72/PR74, fuera de las42
+tareas y denominadores. La rama conserva su nombre publicado COL006 para
+preservar commits/enlaces; no se crea otra Issue equivalente. Coordinación
+en73: no tomar el worktree mientras este chat esté activo; al terminar quedan
+commits protegidos para comparar/completar únicamente huecos.
