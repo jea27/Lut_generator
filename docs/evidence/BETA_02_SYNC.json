@@ -1,0 +1,16 @@
+{
+  "tasks": 42,
+  "live_pages_verified": true,
+  "statuses": {
+    "COL-001": "blocked",
+    "COL-036": "review",
+    "COL-037": "review",
+    "COL-038": "blocked",
+    "COL-040": "review",
+    "COL-041": "blocked",
+    "COL-042": "review"
+  },
+  "sync_run": 41176446357,
+  "conclusion": "success",
+  "note": "GitHub-derived states, no manual roadmap edits; no task approved by agent"
+}

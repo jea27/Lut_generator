@@ -34,8 +34,9 @@ Ninguna PR fusionada por el agente ni tarea aprobada.
 Acción única67: bot6540038578 menciona @jea27, aviso observado; no afirmar
 recepción física de este aviso nuevo. Marcadores65/66 evitaron duplicados al
 activar ready. Notificaciones de revisión41176358165/41176358957 success.
-Issues57/58/60/62 en revisión;59/61 blocked por QA externa. Sync de Pages en
-curso al guardar este bloque, consultar ejecución más reciente antes de afirmarlo.
+Issues57/58/60/62 en revisión;59/61 blocked por QA externa. Sync Pages41176446357 success; JSON público leído y comprobado:42 tareas,
+COL001 blocked;036/037/040/042 review;038/041 blocked. Última CI observada
+de66 en15d6f08: MVP41176457682, Studio41176457662 y aviso41176457661 success.
 No editar manualmente estados JSON. COL001 y P0 comercial pendientes.
 QA landing HTTP200, JS válido, vistas390x844/1280x900 y slider70% verificados.
 Landing local apps/landing con captura real, CC0, comparador y descarga pública

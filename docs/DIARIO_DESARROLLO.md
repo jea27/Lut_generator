@@ -178,3 +178,5 @@
 - PR65 beta y PR66 landing/borradores listas para revisión; no merge. CI MVP/Studio correctas en ambas. Estados57/58/60/62 review,59/61 blocked; ninguna tarea aprobada.
 - Landing independiente local HTTP200, vistas390/1280, comparador70% funcional, captura auténtica y derivadosCC0 con hashes; descarga pública pendiente. Sin despliegue/cobros. Borradores legal/privacidad/EULA/soporte, estrategia código público/marca/firma/pago sin activación. Conserva P0_COMERCIAL_ESPANA_UE y LOOK_MATCH_REQUIREMENTS integrados.
 - Notificación única Issue67, comentario bot6540038578 menciona jea27; recepción nueva no confirmada. Marcadores PR65/66 previos a ready evitaron avisos duplicados. Runs41176358165/41176358957 success. Reinstalación comprobada,8 archivos privados intactos; checkpoint ESTADO_AGENTE actualizado.
+
+- Sync final41176446357 success; JSON público42 tareas verificado (BETA_02_SYNC.json). CI66 en15d6f08: MVP41176457682/Studio41176457662/aviso41176457661 success. Advertencias Actions de migración Node20/Ubuntu26 observadas, sin fallos ni permisos nuevos.
