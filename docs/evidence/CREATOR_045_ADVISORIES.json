@@ -1,0 +1,52 @@
+{
+  "schema": "lumaforge-dependency-advisories-v1",
+  "observed_at": "2026-10-31T10:54:03.001446+00:00",
+  "service": "https://api.osv.dev/v1/querybatch",
+  "package_versions_queried": 566,
+  "inputs": {
+    "requirements-mvp.txt": "2f9706145fb66a91d915d994b560bf7ca49b3df6d0bf2e7d19cba0ae1bd99db9",
+    "apps/web/package-lock.json": "79d4a9f32e06e4236e9bb335b4aa80d3c6d9e14aeb738e338b67a93f75ce935d",
+    "apps/desktop/src-tauri/Cargo.lock": "549dbe4dbe4da351d63f7a109809bbaac1d015e03b8fe875eb96c0914aee1381"
+  },
+  "findings": [
+    {
+      "package": {
+        "ecosystem": "crates.io",
+        "name": "glib"
+      },
+      "version": "0.18.5",
+      "advisories": [
+        "GHSA-wrw7-89jp-8q8g",
+        "RUSTSEC-2024-0429"
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "crates.io",
+        "name": "proc-macro-error"
+      },
+      "version": "1.0.4",
+      "advisories": [
+        "RUSTSEC-2024-0370"
+      ]
+    }
+  ],
+  "reported_advisories_absent": false,
+  "redistribution_approved": false,
+  "limits": "Database match only, including build dependencies; no guarantee of absence of vulnerabilities or unknown versions. No binaries, runtime, licenses or clean-Windows test attested.",
+  "windows_target_analysis": {
+    "target": "x86_64-pc-windows-msvc",
+    "method": "cargo tree --locked --offline --target x86_64-pc-windows-msvc --prefix none --format {p}",
+    "unique_package_versions": 223,
+    "advisory_packages_in_resolved_tree": [],
+    "scope": "Resolved Windows build graph only, not inspection of installer or licensing approval"
+  },
+  "npm_audit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  }
+}

@@ -601,3 +601,50 @@ no afirmar ya activado en Pages. Tras merge humano, repetir únicamente demo y
 comprobar evento real+sync+HTTP público. No merge para forzar una prueba.
 Reanudar: git status en esta rama; gh pr checks79; leer Issue76 y PR79. Conservar
 worktrees/documentación anteriores. No emitir approve sobre capacidades reales.
+
+## Checkpoint vigente · COL045/046/047 · 31-10-2026
+
+Tarea: primera entrega Creator/Pro/Shot Planner con seguridad local. Rama
+codex/COL-045-creator-pro, worktree COL-045-creator-pro desde main8674566.
+Issues81/82/83. No tocar raíz codex/COL-013-estabilizacion-beta3 ni otros worktrees.
+Project OS/COL048 se está tratando en otro chat; no modificar su código web.
+
+Completado para revisión técnica: modos guiado/técnico sobre motor compartido,
+catálogo de capacidades/proveedor local, preview obligatoria de receta actual,
+acabado manual conservado, plan local con límites/fuentes/diagrama/JSON. No hay
+recuperación fiel del rodaje ni aprobación visual/profesional. Se mantienen las
+42 tareas y los denominadores MVP8/beta/venta;18 capacidades en el catálogo.
+
+Pruebas:58 unittest API/motor,128 seguimiento,3 Node y build Vue/TS correctos.
+Ocho tests de planner se repitieron tras añadir etiquetas, ya incluidos en58.
+QA funcional de navegador y seis medidas móviles/pequeñas más escritorio,
+0 errores de consola; feedback local con CSP permitido. PNG/JSON descargados
+se verificaron en privado, sin datos personales. Capturas y hashes en
+CREATOR_045_QA.json y SHOT_PLANNER_047_*.jpg. Fuentes y uso en
+CREATOR_PRO_SHOT_PLANNER.md. Plan JSON se exporta pero no se reimporta todavía.
+
+Dos fotos CC0 de16MP perfiladas; DSC0106 coincide con input/receta/PNG previo,
+16.912s esta vez. DSC0181 22.097s es otro input. No promedio o mejora universal;
+ni tile mayor ni cambio de matemática adoptados. Perfiles/scope versionados.
+OSV566 y npm audit:2 paquetes Cargo con avisos globales, ninguno en árbol
+Windows223. No se ocultan ni se sustituyen paquetes sin comprobar plataforma.
+
+Pendiente inmediato: commit/PR, enlazar su número real en manifiesto, CI remota,
+solicitud humana única de revisión. No merge/aprobación del agente. La producción
+de Mis revisiones (#79) sí fue activada y validada tras el merge de jea27:
+https://github.com/jea27/Lut_generator/issues/76#issuecomment-6542238759.
+
+Bloqueos humanos: #67, preparar runtime oficial aislado requiere autorización
+expresa pendiente; Windows10/11 limpio y Adobe/Resolve activados requieren entorno
+real. No reinstalar herramientas ni instalar virtualización para sortearlo.
+Autoría/consentimiento/canal del piloto siguen pendientes. Ningún nuevo NSIS,
+release, venta o participante. No inferir que un merge aprueba esas puertas.
+
+Reanudar desde este worktree: git status --short; leer Issues81/82/83 y PR
+asociada; comprobar CI antes de modificar. Python disponible en el entorno MVP
+compartido, Node existente mediante junction node_modules ignorada. Para preview:
+`& ../../.venv-mvp/Scripts/python.exe -m uvicorn apps.api.main:app --host 127.0.0.1 --port 8817 --no-access-log --no-proxy-headers`.
+El servidor solo sirve esta rama y usa datos ignorados propios.
+Leer el protocolo y las evidencias antes de ampliar funciones. Próximo paso:
+revisión de esta entrega y resolver #67; después validar el plan con escena y
+medios autorizados reales, sin afirmar que la demo rural reconstruye un rodaje.

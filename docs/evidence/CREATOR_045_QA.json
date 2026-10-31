@@ -1,0 +1,80 @@
+{
+  "schema": "lumaforge-creator-pro-qa-v1",
+  "observed_at": "2026-10-31T14:17:33.458805+00:00",
+  "scope": "Actual local browser workflow using existing authorized CC0 demo; not a participant, editor, clean Windows or aesthetic validation",
+  "viewports": [
+    {
+      "view": "planner",
+      "height": 844,
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "view": "planner",
+      "height": 568,
+      "scrollWidth": 305,
+      "width": 320
+    },
+    {
+      "view": "planner",
+      "height": 390,
+      "scrollWidth": 844,
+      "width": 844
+    },
+    {
+      "view": "creator",
+      "height": 568,
+      "scrollWidth": 305,
+      "width": 320
+    },
+    {
+      "view": "creator",
+      "height": 844,
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "view": "creator",
+      "height": 390,
+      "scrollWidth": 844,
+      "width": 844
+    },
+    {
+      "view": "creator",
+      "height": 720,
+      "scrollWidth": 1280,
+      "width": 1280
+    }
+  ],
+  "console_errors": 0,
+  "creator_ui_workflow_checked": true,
+  "planner_ui_checked": true,
+  "pro_state_retained": true,
+  "stale_plan_blocks_export": true,
+  "feedback_iframe_under_csp": true,
+  "private_participants": 0,
+  "human_quality_approved": false,
+  "creator_png_download_checked": true,
+  "creator_png_dimensions": [
+    1024,
+    678
+  ],
+  "creator_png_srgb_icc": true,
+  "creator_png_exif_absent": true,
+  "creator_png_sha256": "cb778ff9fe396e0b54abcb8013dcca31ae519731f734b89b3cbe08d9d8c06aca",
+  "planner_json_download_checked": true,
+  "planner_json_sha256": "def4cf97b7037a2fc64666d23ca771b893a40502f1c172e532ec14375fa27c0d",
+  "planner_diagram_edit_in_download": true,
+  "planner_fps30_exposure_seconds": 0.016666666666666666,
+  "same_input_recipe_and_png_pixels_as_previous_profile": true,
+  "sources": "apps/demo/credits.json; Sergej Majboroda / Poly Haven CC0",
+  "new_installer_built": false,
+  "external_distribution_authorized": false,
+  "automated_tests": {
+    "mvp": 58,
+    "tracking": 128,
+    "web_node": 3,
+    "frontend_build": "passed",
+    "scope": "Synthetic/unit regression and local browser QA, not human acceptance"
+  }
+}

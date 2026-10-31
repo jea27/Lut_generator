@@ -668,6 +668,184 @@
         ]
       },
       "review_paths": []
+    },
+    {
+      "delivery_prs": [],
+      "group": "Creator / Pro",
+      "evidence": [
+        {
+          "path": "docs/evidence/CREATOR_045_QA.json",
+          "field": "creator_ui_workflow_checked",
+          "equals": true
+        }
+      ],
+      "id": "creator",
+      "title": "Creator guiado",
+      "issue": 81,
+      "task": "COL-045",
+      "code_paths": [
+        "apps/web/src/App.vue",
+        "apps/web/src/preferences.ts",
+        "apps/api/limits.py"
+      ],
+      "tests": [
+        "tests_mvp/test_security.py",
+        "apps/web/tests/workspace.test.ts"
+      ],
+      "review_paths": [
+        "apps/web/src/App.vue",
+        "apps/web/src/BetaPanel.vue",
+        "apps/web/src/LookPanel.vue",
+        "apps/web/src/preferences.ts",
+        "apps/web/src/workspace.ts",
+        "apps/web/src/style.css",
+        "apps/api/main.py",
+        "apps/api/limits.py",
+        "packages/colour_core/image_io.py",
+        "apps/api/storage.py",
+        "apps/web/src/api.ts",
+        "packages/colour_core/engine.py",
+        "packages/colour_core/look.py",
+        "packages/colour_core/__init__.py"
+      ],
+      "acceptance": "Flujo guiado con PNG/JPG, acabado manual, preview actual obligatoria y protecciones locales; no detección automática del acabado.",
+      "review": {
+        "steps": [
+          "Abrir demo CC0 en Creator; transferir color, ajustar intensidad/acabado y comparar.",
+          "Exportar PNG y cambiar Creator/Pro: comprobar que receta, originales y resolución se conservan."
+        ],
+        "checklist": [
+          {
+            "id": "flow",
+            "label": "Puedo terminar el recorrido guiado y exportar el resultado que estoy viendo."
+          },
+          {
+            "id": "unchanged",
+            "label": "Cambiar Creator/Pro conserva mis ajustes y no modifica originales."
+          },
+          {
+            "id": "limits",
+            "label": "Entiendo los límites sRGB/SDR y que el acabado se ajusta manualmente."
+          }
+        ]
+      }
+    },
+    {
+      "delivery_prs": [],
+      "group": "Creator / Pro",
+      "evidence": [
+        {
+          "path": "docs/evidence/CREATOR_045_QA.json",
+          "field": "creator_ui_workflow_checked",
+          "equals": true
+        }
+      ],
+      "id": "pro-workspace",
+      "title": "Espacio Pro y capacidades",
+      "issue": 82,
+      "task": "COL-046",
+      "code_paths": [
+        "apps/api/capabilities.py",
+        "apps/web/src/App.vue",
+        "apps/web/src/preferences.ts"
+      ],
+      "tests": [
+        "tests_mvp/test_planner.py",
+        "apps/web/tests/workspace.test.ts"
+      ],
+      "review_paths": [
+        "apps/api/capabilities.py",
+        "apps/api/main.py",
+        "apps/web/src/App.vue",
+        "apps/web/src/BetaPanel.vue",
+        "apps/web/src/preferences.ts",
+        "apps/api/storage.py",
+        "apps/api/limits.py",
+        "apps/web/src/api.ts",
+        "packages/colour_core/engine.py",
+        "packages/colour_core/image_io.py",
+        "packages/colour_core/look.py",
+        "packages/colour_core/__init__.py",
+        "apps/api/jobs.py"
+      ],
+      "acceptance": "Controles técnicos, LUT/receta/lotes y preferencias sobre el mismo motor; catálogo distingue experimental y previsto, sin pagos.",
+      "review": {
+        "steps": [
+          "Cambiar a Pro; comprobar método, análisis, controles, LUT, receta y lotes.",
+          "Volver a Creator con ajustes Pro y reabrir Pro; comprobar advertencia y conservación, sin anunciar RAW/Log/vídeo como disponibles."
+        ],
+        "checklist": [
+          {
+            "id": "shared-engine",
+            "label": "Los ajustes y el resultado se conservan al cambiar de modo."
+          },
+          {
+            "id": "advanced-controls",
+            "label": "Las herramientas Pro disponibles se pueden abrir y usar."
+          },
+          {
+            "id": "availability",
+            "label": "Distingo funciones actuales, experimentales y futuras; no hay cobros activos."
+          }
+        ]
+      }
+    },
+    {
+      "delivery_prs": [],
+      "group": "Creator / Pro",
+      "evidence": [
+        {
+          "path": "docs/evidence/CREATOR_045_QA.json",
+          "field": "planner_json_download_checked",
+          "equals": true
+        }
+      ],
+      "id": "shot-planner",
+      "title": "Shot Planner local inicial",
+      "issue": 83,
+      "task": "COL-047",
+      "code_paths": [
+        "packages/shot_planner/planner.py",
+        "apps/web/src/ShotPlanner.vue"
+      ],
+      "tests": [
+        "tests_mvp/test_planner.py"
+      ],
+      "review_paths": [
+        "packages/shot_planner/planner.py",
+        "apps/web/src/ShotPlanner.vue",
+        "apps/api/main.py",
+        "apps/api/capabilities.py",
+        "apps/api/storage.py",
+        "apps/api/limits.py",
+        "apps/web/src/api.ts",
+        "packages/colour_core/engine.py",
+        "packages/colour_core/image_io.py",
+        "packages/colour_core/look.py",
+        "packages/colour_core/__init__.py",
+        "packages/shot_planner/__init__.py"
+      ],
+      "acceptance": "Propuesta dirigida por el usuario con medidas SDR, incertidumbre, diagrama editable, fuentes y JSON; no reconstrucción del rodaje ni validación profesional.",
+      "review": {
+        "steps": [
+          "En Pro abrir Shot Planner con demo CC0; elegir propuesta y generarla. Revisar qué es medido, elegido o incierto.",
+          "Mover Key X/Y, volver al editor y regresar; descargar JSON. Cambiar fps y comprobar bloqueo por propuesta desactualizada."
+        ],
+        "checklist": [
+          {
+            "id": "uncertainty",
+            "label": "No presenta óptica, cámara o luces originales como hechos deducidos de la foto."
+          },
+          {
+            "id": "diagram-json",
+            "label": "Puedo editar el diagrama y guardar plan/receta sin fotos o datos privados."
+          },
+          {
+            "id": "sources",
+            "label": "Las fuentes, fórmulas y límites están accesibles; acepto solo este alcance experimental."
+          }
+        ]
+      }
     }
   ],
   "metrics": {

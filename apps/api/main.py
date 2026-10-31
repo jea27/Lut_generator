@@ -20,8 +20,11 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 from PIL import Image, UnidentifiedImageError
 from packages.colour_core import engine, image_io
-from .storage import atomic_json, atomic_bytes
+from .storage import atomic_json, atomic_bytes, private_path, read_record
 from .jobs import Jobs
+from .limits import RequestLimits
+from .capabilities import catalogue
+from packages.shot_planner.planner import Setup, generate
 
 ROOT=Path(__file__).resolve().parents[2]
 LOCK=threading.Lock()
@@ -57,6 +60,15 @@ class Preferences(BaseModel):
     language: str=Field(default='es',pattern='^(es|en)$')
     welcome_seen: bool=False
     export_format: str=Field(default='png',pattern='^(png|jpg)$')
+    workspace: str=Field(default='creator',pattern='^(creator|pro)$')
+
+
+class Plan(BaseModel):
+    model_config=ConfigDict(extra='forbid')
+    reference_id: str
+    setup: Setup=Field(default_factory=Setup)
+    recipe: engine.Recipe | None=None
+    provider: str=Field(default='local-rules-v1',pattern='^local-rules-v1$')
 
 
 @contextmanager
@@ -75,13 +87,15 @@ def measurement():
 
 
 def create_app(data_dir=None):
-    app=FastAPI(title='Color Studio local beta',version='0.3.0-beta.2')
+    app=FastAPI(title='Color Studio local beta',version='0.3.0-beta.2',
+                docs_url=None,redoc_url=None,openapi_url=None)
     default_data=Path(os.environ.get('LOCALAPPDATA',str(Path.home())))/'ColorStudioBetaData' if getattr(sys,'frozen',False) else ROOT/'.lumaforge-local'
-    data=Path(data_dir or os.environ.get('LUMAFORGE_DATA_DIR',default_data))
-    images=data/'images'; presets=data/'presets'
+    data=Path(data_dir or os.environ.get('LUMAFORGE_DATA_DIR',default_data)).resolve()
+    images=private_path(data,'images'); presets=private_path(data,'presets')
     images.mkdir(parents=True,exist_ok=True); presets.mkdir(parents=True,exist_ok=True)
     session=secrets.token_urlsafe(32)
-    jobs=Jobs(data/'jobs',LOCK)
+    jobs=Jobs(private_path(data,'jobs'),LOCK)
+    app.add_middleware(RequestLimits)
     def same_origin(request):
         origin=request.headers.get('origin')
         if origin and origin.rstrip('/')!=str(request.base_url).rstrip('/'):return False
@@ -100,17 +114,15 @@ def create_app(data_dir=None):
             origin=request.headers.get('origin')
             if request.headers.get('x-lumaforge-local')!='1' or not same_origin(request) or not hmac.compare_digest(request.headers.get('x-color-studio-token',''),session):
                 return JSONResponse({'detail':'Local application header/origin required'},status_code=403)
-            limit=33*1024*1024 if request.url.path=='/api/images' else 64*1024
-            length=request.headers.get('content-length')
-            if length is None and request.method=='DELETE':length='0'
-            if length is None:return JSONResponse({'detail':'Content-Length required'},status_code=411)
-            try: size=int(length)
-            except ValueError:return JSONResponse({'detail':'Invalid Content-Length'},status_code=400)
-            if size>limit:return JSONResponse({'detail':'Request exceeds local size limit'},status_code=413)
         response=await call_next(request)
         response.headers['Cache-Control']='no-store'
         response.headers['X-Content-Type-Options']='nosniff'
         response.headers['Referrer-Policy']='no-referrer'
+        response.headers['X-Frame-Options']='SAMEORIGIN'
+        response.headers['Content-Security-Policy']=("default-src 'self'; script-src 'self'; "
+            "style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self' data:; "
+            "connect-src 'self'; frame-src 'self'; frame-ancestors 'self'; object-src 'none'; "
+            "base-uri 'none'; form-action 'self'")
         return response
 
     @app.exception_handler(ValueError)
@@ -135,7 +147,8 @@ def create_app(data_dir=None):
         try:
             if str(uuid.UUID(identifier))!=identifier: raise ValueError()
         except ValueError: raise HTTPException(404,'Unknown local asset')
-        path=directory/(identifier+suffix)
+        try:path=private_path(data,directory.relative_to(data),identifier+suffix)
+        except ValueError:raise HTTPException(404,'Unknown local asset')
         if not path.is_file(): raise HTTPException(404,'Unknown local asset')
         return path
 
@@ -144,6 +157,16 @@ def create_app(data_dir=None):
 
     @app.get('/api/health')
     def health(): return {'version':'0.3.0-beta.2','offline_processing':True,'domain':'encoded-sRGB-D65'}
+
+    @app.get('/api/capabilities')
+    def capabilities():return catalogue()
+
+    @app.post('/api/planner')
+    def plan(body:Plan):
+        with LOCK,measurement() as stats:
+            rgb,alpha,_=pixels(body.reference_id,512)
+            result=generate(rgb,body.setup,alpha,body.recipe,body.provider)
+        return {'plan':result,'metrics':stats}
 
     @app.get('/api/session')
     def bootstrap(request:Request):
@@ -161,7 +184,7 @@ def create_app(data_dir=None):
             rgb,alpha,notes=image_io.decode(payload)
             analysis=engine.analyze(rgb,alpha)
             identifier=str(uuid.uuid4())
-            atomic_bytes(images/(identifier+'.png'),image_io.encode(rgb,alpha))
+            atomic_bytes(private_path(data,'images',identifier+'.png'),image_io.encode(rgb,alpha))
             result={'id':identifier,'width':rgb.shape[1],'height':rgb.shape[0],'has_alpha':alpha is not None,
                     'notes':notes,'analysis':analysis,'preview_url':f'/api/images/{identifier}/preview'}
         return {**result,'metrics':stats}
@@ -219,8 +242,13 @@ def create_app(data_dir=None):
             records=[]
             for p in sorted(presets.glob('*.json')):
                 try:
-                    record=json.loads(p.read_bytes());record['recipe']=engine.validate_recipe(record['recipe']).model_dump();record.setdefault('group','');records.append(record)
-                except (ValueError,KeyError,OSError):continue
+                    record=read_record(data,'presets',p.name)
+                    if record['id']!=p.stem or str(uuid.UUID(p.stem))!=p.stem:raise ValueError('Invalid private preset identity')
+                    value=Preset.model_validate(record)
+                    if not value.name.strip():raise ValueError('Invalid preset name')
+                    records.append({'id':p.stem,**value.model_dump(),
+                                    'recipe':engine.validate_recipe(value.recipe).model_dump()})
+                except (ValueError,KeyError,TypeError,OSError):continue
             return records
 
     @app.post('/api/presets')
@@ -230,7 +258,7 @@ def create_app(data_dir=None):
             recipe=engine.validate_recipe(body.recipe)
             identifier=str(uuid.uuid4()); record={'id':identifier,'name':body.name.strip(),'group':body.group.strip(),'recipe':recipe.model_dump()}
             if not record['name']:raise ValueError('Preset name cannot be empty')
-            atomic_json(presets/(identifier+'.json'),record)
+            atomic_json(private_path(data,'presets',identifier+'.json'),record)
         return record
 
     @app.put('/api/presets/{identifier}')
@@ -244,12 +272,12 @@ def create_app(data_dir=None):
 
     @app.get('/api/preferences')
     def preferences():
-        try:return Preferences.model_validate_json((data/'preferences.json').read_bytes()).model_dump()
+        try:return Preferences.model_validate(read_record(data,'preferences.json')).model_dump()
         except (OSError,ValueError):return Preferences().model_dump()
 
     @app.put('/api/preferences')
     def save_preferences(body:Preferences):
-        with LOCK:atomic_json(data/'preferences.json',body.model_dump())
+        with LOCK:atomic_json(private_path(data,'preferences.json'),body.model_dump())
         return body
 
     @app.post('/api/jobs')
@@ -278,8 +306,9 @@ def create_app(data_dir=None):
             record=jobs.get(identifier)
             item=next(i for i in record['items'] if i['index']==index and i['status']=='completed')
         except (KeyError,StopIteration):raise HTTPException(404,'Unknown batch output')
-        output=(data/'jobs'/identifier/item['filename']).resolve()
-        if output.parent!=(data/'jobs'/identifier).resolve():raise HTTPException(404,'Invalid batch output path')
+        try:output=private_path(data,'jobs',identifier,item['filename'])
+        except ValueError:raise HTTPException(404,'Invalid batch output path')
+        if output.parent!=data/'jobs'/identifier:raise HTTPException(404,'Invalid batch output path')
         return FileResponse(output,filename=item['filename'])
 
     @app.post('/api/presets/validate')
@@ -294,7 +323,7 @@ def create_app(data_dir=None):
     def clear_images():
         with LOCK:
             if jobs.active():raise HTTPException(409,'Cancel the active batch before clearing images')
-            for path in images.glob('*.png'): path.unlink()
+            for path in images.glob('*.png'): private_path(data,'images',path.name).unlink()
         return {'removed':True,'presets_preserved':True}
 
     dist=ROOT/'apps/web/dist'

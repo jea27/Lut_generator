@@ -9,6 +9,8 @@ SRGB=ImageCms.ImageCmsProfile(ImageCms.createProfile('sRGB'))
 
 
 def decode(payload, max_side=None):
+    if not isinstance(payload,bytes) or len(payload)>100*1024*1024:
+        raise ValueError('Encoded image exceeds safe local size limit')
     if payload.startswith(b'\x89PNG\r\n\x1a\n') and len(payload)>24 and payload[24]!=8:
         raise ValueError('MVP supports 8-bit PNG only; prepare an SDR sRGB copy first')
     with warnings.catch_warnings():
@@ -20,6 +22,11 @@ def decode(payload, max_side=None):
                 raise ValueError('Maximum 24 megapixels and 12000 pixels per side')
             if original.mode not in ('RGB','RGBA','L','LA','P'):
                 raise ValueError('Only 8-bit SDR RGB/grayscale PNG/JPEG; CMYK/16-bit/RAW unsupported')
+            # Check PNG chunk CRCs/truncation before processing pixels. JPEG
+            # decoding below remains strict (LOAD_TRUNCATED_IMAGES is not enabled).
+            try: original.verify()
+            except (OSError,SyntaxError) as error: raise ValueError('Invalid or truncated image data') from error
+        with Image.open(io.BytesIO(payload)) as original:
             image=ImageOps.exif_transpose(original)
             if max_side: image.thumbnail((max_side,max_side),Image.Resampling.LANCZOS)
             rgba=image.convert('RGBA')
