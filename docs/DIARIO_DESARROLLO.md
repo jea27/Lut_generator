@@ -333,3 +333,12 @@ universal. No NSIS nuevo ni autorización externa. Plan de build PSF3.14.10 con
 23 pins/wheels compatibles por metadatos solamente; no instalado ni probado.
 Se necesita respuesta concreta en67 y operador Windows limpio/editor activado.
 Auditoría y comandos en INTEGRACION_BETA_036.md; beta y venta siguen NO-GO.
+
+31-10-2026 · Cierre verificable COL036: PR88 lista para revisión, código60958b4.
+Historial corregido con prueba unitaria y UI;7 Node,61 MVP/API/harness y128
+seguimiento. MVP41223999971, studio41224000016, validate41223999953 y
+sync41223998116 correctos. Colector real + Pages documentados,42 tareas y18
+capacidades intactas,0/8 aceptación del MVP. Aviso único67 comprobado en
+41224150508 y comentario6546679381 (@jea27), no recepción/aprobación supuesta.
+Beta/venta NO-GO; no nuevo setup ni modificaciones de main. Reanudación y gates
+pendientes en ESTADO_AGENTE.md y solicitud67.

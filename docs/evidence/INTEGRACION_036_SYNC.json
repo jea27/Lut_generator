@@ -1,10 +1,10 @@
 {
   "schema": "color-studio-integration-sync-v1",
-  "checked_at": "2026-10-31T17:12:35.887244+00:00",
-  "scope": "Read-only live GitHub collection using candidate manifest; generated files restored byte-for-byte, not a Pages publication",
+  "checked_at": "2026-10-31T17:22:34.129685+00:00",
+  "scope": "Read-only live GitHub collection with candidate manifest; generated files restored byte-for-byte. Published Pages observed separately.",
   "roadmap_tasks": 42,
   "features": 18,
-  "main_sha": null,
+  "main_sha": "5799531731c41057ae15ed159c25c89725709b55",
   "metrics": {
     "technical": {
       "passed": 8,
@@ -32,7 +32,7 @@
       "implemented": true,
       "technically_verified": true,
       "human_approved": false,
-      "pr_url": "https://github.com/jea27/Lut_generator/pull/86"
+      "pr_url": "https://github.com/jea27/Lut_generator/pull/88"
     },
     "pro-workspace": {
       "status": "review",
@@ -126,5 +126,51 @@
       },
       "go": false
     }
+  },
+  "public_pages": {
+    "url": "https://jea27.github.io/Lut_generator/data/product.json",
+    "observed_at": "2026-10-31T17:21:19.487297Z",
+    "main_sha": "5799531731c41057ae15ed159c25c89725709b55",
+    "features_checked": {
+      "windows": {
+        "status": "needs_review",
+        "human_approved": false,
+        "pr_url": "https://github.com/jea27/Lut_generator/pull/88"
+      },
+      "creator": {
+        "status": "progress",
+        "human_approved": false,
+        "pr_url": "https://github.com/jea27/Lut_generator/pull/88"
+      },
+      "pro-workspace": {
+        "status": "progress",
+        "human_approved": false,
+        "pr_url": "https://github.com/jea27/Lut_generator/pull/88"
+      },
+      "shot-planner": {
+        "status": "progress",
+        "human_approved": false,
+        "pr_url": "https://github.com/jea27/Lut_generator/pull/88"
+      }
+    },
+    "metrics": {
+      "technical": {
+        "passed": 8,
+        "total": 8,
+        "unknown": 0,
+        "percent": 100
+      },
+      "human": {
+        "passed": 0,
+        "total": 8,
+        "unknown": 0,
+        "percent": 0
+      }
+    },
+    "readiness": {
+      "beta": false,
+      "commercial": false
+    },
+    "latest_release": null
   }
 }

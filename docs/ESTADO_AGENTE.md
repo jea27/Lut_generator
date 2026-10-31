@@ -708,3 +708,42 @@ solo formarán parte de main tras integración humana. CI/checks finales y aviso
 canónico se consultan en PR88 y #67; no repetir needs-human para el mismo texto.
 El trabajo de código está terminado para revisión; queda validación humana,
 runtime oficial autorizado y QA limpia. No hay cambios de main o de otros agentes.
+
+## Checkpoint final de integración · PR88 · 31-10-2026
+
+Tarea actual: COL036/Issue57, rama codex/COL-036-qa-integracion. PR88 abierta,
+lista para revisión hacia main; código final60958b4. Sin merge ni approved.
+Se corrigió también el historial de preset/importación/reset:7 Node correctos,
+undo/redo real en el congelado (preset0.05↔0.1, reset0↔0.05, import0.4↔0.05).
+61 tests motor/API/harness y128 seguimiento conservados. Build Vue/TS correcto.
+CI del código final: MVP41223999971, studio41224000016, validate41223999953,
+sync41223998116 success. Sync anterior cancelado sin steps fue recuperado en
+41223541881 intento2, sin cambios de permisos. CI del checkpoint documental se
+consulta en PR88/checks; el último comentario de Issue57 guarda su resultado.
+
+Evidencia: INTEGRACION_036_QA.json (hashes fuente/bundle, fases reales y límites),
+INTEGRACION_036_SYNC.json (colector GitHub + lectura separada de Pages). Los cuatro
+archivos generados fueron restaurados byte a byte.42 tareas:8 bloqueadas,
+17 en revisión,1 en progreso y16 planificadas en la consulta17:22Z.18 capacidades,
+MVP técnico8/8 y aceptación0/8, beta/venta NO-GO. Los cuatro enlaces Windows,
+Creator/Pro/Planner apuntan a PR88. La lectura pública17:21:19Z todavía precedía
+ready_for_review; no se presenta como actualización instantánea. Los workflows
+posteriores publican desde main; evidencias nuevas de rama esperan merge humano.
+
+Aviso único canónico verificado: workflow41224150508 success, comentario
+https://github.com/jea27/Lut_generator/issues/67#issuecomment-6546679381 menciona
+@jea27. ready_for_review41224148591 reconoció la solicitud existente sin otra
+Issue/aviso. No hay confirmación nueva de recepción física ni aprobación implícita.
+
+Cambios pendientes de código: ninguno local. Solo aceptación/revisión de PR88,
+autorización runtime aislado y QA real de distribución. No hay nuevo instalador.
+44 DLL y27 archivos con cadenas upstream siguen sujetos a revisión; no hay
+prueba Windows limpio ni Adobe/Resolve. COL001/P0 comercial siguen pendientes.
+Los servidores temporales y su pestaña de QA se cerraron; datos/resultados
+internos permanecen ignorados en .lumaforge-local. Raíz y otros worktrees intactos.
+
+Próximo trabajo elegible: tras respuesta RUNTIME3.14.10 en67, preparar build aislado
+sin sustituir la venv compartida; después W01–W09 con operador autorizado y
+E01–E05 en editor activado. Sin esa decisión no sortear el gate ni ampliar
+capacidades. Para reanudar: abrir este worktree, git status --short, gh pr view88,
+gh pr checks88 y leer67/57; comandos exactos en INTEGRACION_BETA_036.md.
