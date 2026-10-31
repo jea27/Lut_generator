@@ -75,7 +75,7 @@ def measurement():
 
 
 def create_app(data_dir=None):
-    app=FastAPI(title='Color Studio local beta',version='0.3.0-beta.1')
+    app=FastAPI(title='Color Studio local beta',version='0.3.0-beta.2')
     default_data=Path(os.environ.get('LOCALAPPDATA',str(Path.home())))/'ColorStudioBetaData' if getattr(sys,'frozen',False) else ROOT/'.lumaforge-local'
     data=Path(data_dir or os.environ.get('LUMAFORGE_DATA_DIR',default_data))
     images=data/'images'; presets=data/'presets'
@@ -143,7 +143,7 @@ def create_app(data_dir=None):
         return image_io.decode(path_for(identifier,images,'.png').read_bytes(),max_side=size)
 
     @app.get('/api/health')
-    def health(): return {'version':'0.3.0-beta.1','offline_processing':True,'domain':'encoded-sRGB-D65'}
+    def health(): return {'version':'0.3.0-beta.2','offline_processing':True,'domain':'encoded-sRGB-D65'}
 
     @app.get('/api/session')
     def bootstrap(request:Request):
