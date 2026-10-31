@@ -1,0 +1,8 @@
+{
+  "existing_files_preserved": 8,
+  "from_version": "0.2.0-beta.1",
+  "clean_windows": false,
+  "to_version": "0.3.0-beta.1",
+  "context": "Codex MSIX developer machine",
+  "exit_code": 0
+}

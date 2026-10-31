@@ -59,6 +59,12 @@ def main():
         if pkg.get('license_file'):
             p=directory/pkg['license_file']
             if p not in [x[1] for x in files]:files.append((pkg['license_file'],p))
+        upstream=OUT/'upstream'/(pkg['name']+'.txt')
+        if not files and upstream.is_file():
+            sources=json.loads((OUT/'upstream/sources.json').read_bytes())
+            source=next(x for x in sources if x['package']==pkg['name'])
+            if hashlib.sha256(upstream.read_bytes()).hexdigest()!=source['sha256']:raise ValueError('Upstream notice hash mismatch')
+            files.append(('pinned-upstream-license',upstream))
         add('cargo-resolved-including-build',pkg['name'],pkg['version'],pkg.get('license',''),files)
     python_license=Path(sys.base_prefix)/'LICENSE.txt'
     add('runtime','CPython',sys.version.split()[0],'PSF-2.0 and bundled third-party notices',[('LICENSE.txt',python_license)])

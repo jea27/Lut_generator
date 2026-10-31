@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "role": "source",
+      "file": "source.jpg",
+      "sha256": "c45f876097b42968568cf595b268b0600a83b0728c1edf8105ffccfea9cb9e5d",
+      "original_sha256": "d23e0db0afa94b44f1b4adfb3a8e168d7877266103bcc1365622f149dff15e32",
+      "original_url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/rural_landscape/jpg_plain/DSC_0106.jpg",
+      "derivation": "Pillow orientation/ICC to sRGB, max side1024, JPEG95, no EXIF",
+      "author": "Sergej Majboroda",
+      "provider": "Poly Haven",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license"
+    },
+    {
+      "role": "reference",
+      "file": "reference.jpg",
+      "sha256": "5005bfe36f98fd65e89673be1cc09d5f532f09482fd3e8a57de075022c13493c",
+      "original_sha256": "92586431b8358502c888af0c6a8b128964361ff1066c843b1d80b5355754c36c",
+      "original_url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Backplates/rural_landscape/jpg_pretty/DSC_0181.jpg",
+      "derivation": "Pillow orientation/ICC to sRGB, max side1024, JPEG95, no EXIF",
+      "author": "Sergej Majboroda",
+      "provider": "Poly Haven",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license"
+    }
+  ],
+  "research_validated": false,
+  "comparison": {
+    "recipe": {
+      "version": 1,
+      "domain": "encoded-sRGB-D65",
+      "method": "lab-statistics",
+      "scale": [
+        0.8,
+        1.2,
+        1.2
+      ],
+      "offset": [
+        12.0,
+        -2.32299747467041,
+        -4.274798083305359
+      ],
+      "intensity": 1.0,
+      "exposure": 0.0,
+      "contrast": 1.0,
+      "saturation": 1.0,
+      "temperature": 0.0
+    },
+    "after_sha256": "2c14d8d24eeaf274408cce096450d8a302da9b6829543d91f64b368ded5cdd25",
+    "meaning": "Actual beta global transform, not commercial validation"
+  }
+}
