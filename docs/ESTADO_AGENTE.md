@@ -1,4 +1,29 @@
-# Checkpoint vigente · Look Match y QA externa · 31-10-2026
+# Checkpoint vigente · conciliación de integraciones · 31-10-2026
+
+Rama actual codex/COL-026-integracion-beta2. Árbol de trabajo conservado desde
+a01ed2b, sin sobrescribir datos. GitHub confirma merges humanos por jea27:
+PR69 a rama COL042 (07:59:58 UTC), PR65 a main (08:00:10), PR66 a rama
+COL037 (08:00:23). Por ese orden, origin/main=0539b9f incluye65 pero no los
+cambios de66/69. Nueva PR de integración hacia main reúne landing, Look Match,
+auditoría y clasificación final; no repetir implementación ni auto-fusionar.
+Los HEAD de ramas intermedias no demuestran integración en main. No se aplican
+approved ni done; Issue68 sigue review y COL001 pendiente de entrevistas.
+
+Instalador y evidencias del checkpoint siguiente siguen vigentes: source
+a452a5f y SHA256 3e3851ee4f3c67608d3802ad167572375b130eeafa57165d26379cd26797714f,
+recalculado en esta conciliación. Sin cambios de runtime posteriores al build.
+30+91 pruebas locales y CI anteriores correctas. La nueva PR tendrá CI propia.
+Sin nuevos participantes, editor activado o Windows limpio: NO-GO externa y venta.
+No volver a notificar por permisos7-Zip o por el mismo bloqueo de QA; la nueva
+decisión de integración se consolida en67, sin crear otra Issue de acción.
+
+Reanudar: git status; gh pr list --state open; leer Issue67 y revisar la PR de
+codex/COL-026-integracion-beta2 hacia main. Tras integración humana comprobar
+ancestría de main y sync real antes de afirmar despliegue. No inferir aprobación
+de producto de los merges. Los apartados siguientes conservan evidencia histórica.
+
+---
+# Checkpoint previo · Look Match y QA externa · 31-10-2026
 
 Rama codex/COL-026-look-match-beta, Issue68; base32278e4 de PR66, sobre PR65.
 PR65/66 auditadas abiertas y checks correctos; no merges. PR69 nueva entrega

@@ -194,3 +194,14 @@
 - Premiere intentado: selector de suscripción; sin compra/prueba activada. Photoshop sin editor accesible. Importación externa pendiente. PR69 nueva, CI30MVP/Studio correctas en a452a5f, no merges; acción67 se reutiliza para revisión y recursos de QA.
 
 - Cierre del seguimiento: etiqueta roadmap faltante de Issue68 corregida. Sync41183485906 success y JSON público42 tareas confirmado, COL026 review/COL001 blocked; pr_url de69 apilada espera base main según política existente (enlace real en Issue68). Aviso67 run41182721936 success, bot6540890455 menciona jea27 sin nueva confirmación de recepción; marcadores evitan duplicados. Clasificación de27 patrones completada con hashes,0 desconocidos; quedan QA limpia y términos/recursos humanos, no datos inventados.
+# Conciliación final de ramas · 31-10-2026
+
+Consulta real de GitHub: jea27 integró69 en COL042, luego65 en main y después66
+en COL037. Main0539b9f conserva65 pero no incorpora66/69 por el orden de las
+ramas apiladas. Conservado a01ed2b en codex/COL-026-integracion-beta2 y preparada
+PR hacia main para todo lo pendiente; no se hizo merge ni push directo a main.
+Hash del instalador beta2 recalculado sin variación. Solo cambia documentación
+de conciliación, no el runtime probado. Issue68 permanece en revisión, sin
+aceptación automática. Solicitud67 reutilizada para revisión de integración y
+recursos QA, evitando una nueva Issue/aviso para los mismos bloqueos.
+
