@@ -29,9 +29,9 @@ Auditoría: corregidas155 rutas compilación nativas mediante remap Rust;0 en
 nuevo exe. Corregido hash/version builder que elegía primer instalador del glob.
 299 entradas con licencia declarada y avisos,6 faltantes recuperados con hashes.
 Payload Python/PYZ+nativo enumerado;0 local-profile/secret/dev findings, pero27
-archivos/módulos con patrones de rutas proveedor/ejemplos pendientes clasificación.
-NO decir instalador totalmente limpio. NSIS/WebView2/VC/UCRT y términos concretos
-requieren conciliación final; no editar DLL firmadas ni autoaprobar auditoría legal.
+archivos/módulos con rutas proveedor/ejemplos, ya clasificados y ligados a hashes.
+NO decir instalador totalmente limpio. NSIS176 extraído, WebView2 firmado y plugin contrastado; los términos
+Microsoft/VC/UCRT requieren revisión final; no editar DLL firmadas ni autoaprobar auditoría legal.
 
 Preparado plan limpio/preflight no invasivo y5 perfiles sin asignar B01–05.
 Formulario QA00 descargado, synthetic/unverified/counts_as_interview=false;
@@ -40,7 +40,7 @@ Bundle LUT lossless CC0 en .lumaforge-local/look03-qa/LUT-Editor-QA-CC0.zip.
 7-Zip26.05 portátil autorizado/preparado/verificado; no volver a pedir permiso.
 176 entradas NSIS extraídas/auditadas, WebView2 Microsoft firma válida y plugin
 Tauri0.5.3 hash idéntico a release oficial.0 patrón local/token/dev,27 rutas
-proveedor/ejemplo (2 genéricas,25 pendientes). Copias privadas/raw no publicar.
+proveedor/ejemplo (27 genéricas/ejemplos,0 desconocidas). Copias privadas/raw no publicar.
 Avisos complementarios NSIS/Tauri en packaging/notices/upstream.
 Photoshop no ofrece editor verificable en nueva inspección; último bloqueo
 confirmado fue login. No afirmar login resuelto o importación real; Premiere muestra selección de suscripción, no se activó ni compró nada;
@@ -58,7 +58,7 @@ corregido popup y migración de presetv1 antes de activar efectos (JSONv2 GUI pr
 Servidor QA propio26292/puerto8794 y landing8792 si activos; no interfaces externas.
 Build ./scripts/build_beta.ps1; tests ./.venv-mvp/Scripts/python.exe -m unittest
 discover -s tests_mvp -v; audit scripts/audit_beta_artifact.py (exit2 esperado
-mientras existan findings). Siguiente: clasificación proveedor/NSIS y QA limpia
+mientras existan findings). Siguiente: derechos Microsoft y QA limpia
 cuando el usuario aporte entorno. CI69 en a452a5f: MVP41181274271 y Studio41181274272 success.
 Notificación y sync finales: consultar67/Actions antes de repetir avisos.
 
@@ -436,3 +436,13 @@ Python explícito del runtime (comandos arriba) y p0_status --github --ready.
 Para rerun de controles usar --media-root .research-media/polyhaven-rural, reporte
 nuevo; no sobrescribir el informe original ni rellenar benchmark.json con controles.
 No publicar JSON de respuestas, fotos, permisos firmados, contactos ni EXIF privado.
+
+
+Actualización final de clasificación: las27 coincidencias de rutas se han
+resuelto técnicamente como cuentas genéricas de compilación de proveedor o
+placeholders/ejemplos de documentación (incluido ntpath.splitroot).0 perfiles de
+origen sin clasificar. Hashes de cada archivo/contenedor cotejados con el NSIS
+completo en LOOK_03_PATH_CLASSIFICATION.json. El scanner bruto conserva sus27
+hallazgos y no se ocultan ni alteran DLL; no son rutas del perfil local, secretos
+o datos de clientes. No constituye aprobación de COL040 ni prueba universal de
+privacidad. Siguen las puertas de Windows limpio y derechos/condiciones Microsoft.

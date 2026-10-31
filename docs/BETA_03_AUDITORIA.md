@@ -111,3 +111,13 @@ Upgrade a beta2 exit0, mismos8 archivos de datos preservados. No Windows limpio.
 Premiere intentado: muestra selector de suscripción; no se contrató ni se
 activó prueba. Photoshop no ofreció documento/editor verificable. Importación
 real de LUT externa sigue pendiente en equipo con editor ya activado.
+
+
+Actualización final de clasificación: las27 coincidencias de rutas se han
+resuelto técnicamente como cuentas genéricas de compilación de proveedor o
+placeholders/ejemplos de documentación (incluido ntpath.splitroot).0 perfiles de
+origen sin clasificar. Hashes de cada archivo/contenedor cotejados con el NSIS
+completo en LOOK_03_PATH_CLASSIFICATION.json. El scanner bruto conserva sus27
+hallazgos y no se ocultan ni alteran DLL; no son rutas del perfil local, secretos
+o datos de clientes. No constituye aprobación de COL040 ni prueba universal de
+privacidad. Siguen las puertas de Windows limpio y derechos/condiciones Microsoft.

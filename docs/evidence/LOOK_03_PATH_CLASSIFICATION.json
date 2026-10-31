@@ -4,191 +4,223 @@
     {
       "file": "PYZ/click.utils",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 2
+      "matches": 2,
+      "container_sha256": "184d5489f0d24201c48446c3ec7ee09bcfe5f7e784aee854e77a19abced85465"
     },
     {
       "file": "PYZ/numpy.__config__",
       "categories": [
-        "generic_build_or_documentation_account"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 3
+      "matches": 3,
+      "container_sha256": "184d5489f0d24201c48446c3ec7ee09bcfe5f7e784aee854e77a19abced85465"
     },
     {
       "file": "_internal/_asyncio.pyd",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 1
+      "matches": 1,
+      "sha256": "a6459c1880cf0c77138bd8bde60db1dead5c6dfa404ef08673f1191bcea13d9d"
     },
     {
       "file": "_internal/_bz2.pyd",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 1
+      "matches": 1,
+      "sha256": "b677b1373cb1864e2bdf352556f1acbd518ae8dd894d1b48aaadf9486c1848c3"
     },
     {
       "file": "_internal/_ctypes.pyd",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 1
+      "matches": 1,
+      "sha256": "85db4d28b7bdb6e4341db9f6fc0e1ddbeabecdd7e94fc9c4e5f73f7ab1517fae"
     },
     {
       "file": "_internal/_decimal.pyd",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 4
+      "matches": 4,
+      "sha256": "98d4623a6f04fa97816ba46d8870c372784db957018ca62ab39d4beedd225036"
     },
     {
       "file": "_internal/_elementtree.pyd",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 1
+      "matches": 1,
+      "sha256": "f7ae9ec8a1f8dbd5e9097f7fef4c7ffaea9ec51ee25eda67d84203664eb9b8e1"
     },
     {
       "file": "_internal/_hashlib.pyd",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 1
+      "matches": 1,
+      "sha256": "782ab8030efb6899b713ae31864f2fad1a6ab066c82798602b3b76e72ba109e1"
     },
     {
       "file": "_internal/_lzma.pyd",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 1
+      "matches": 1,
+      "sha256": "a3aa8daae23817693db0da9573d9ee7997b14870a529048e194181d242458197"
     },
     {
       "file": "_internal/_multiprocessing.pyd",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 1
+      "matches": 1,
+      "sha256": "8bfb0977997d4945706735b0d96e220827a1b026b7d80362cd84f89ea670b15a"
     },
     {
       "file": "_internal/_overlapped.pyd",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 1
+      "matches": 1,
+      "sha256": "f0b6eebbec89db7a03aa65b8d1a9ce8a6084cdfe8097630906da4a66cb62574e"
     },
     {
       "file": "_internal/_queue.pyd",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 1
+      "matches": 1,
+      "sha256": "6414e0dc9410f75ad1950983df982883af812e187314f3bb7f3519db3931ffff"
     },
     {
       "file": "_internal/_socket.pyd",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 1
+      "matches": 1,
+      "sha256": "284af152ae1fd7813fa3208dcb4c8093023a8cfb2560c8fe4b802b0d69d324fe"
     },
     {
       "file": "_internal/_ssl.pyd",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 2
+      "matches": 2,
+      "sha256": "790dfa622e067a9a638a92916d4cd192ba26653fa059121b3b68dc789650f966"
     },
     {
       "file": "_internal/_uuid.pyd",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 1
+      "matches": 1,
+      "sha256": "b6cf6a145a669590bdc5be2abfd1f370d5bba7d03ae96e892f2614fa478cabce"
     },
     {
       "file": "_internal/_wmi.pyd",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 1
+      "matches": 1,
+      "sha256": "c565773b72a24719a3925e898e269b588276bd49be4a34d9c74646454f471ad3"
     },
     {
       "file": "_internal/_zoneinfo.pyd",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 1
+      "matches": 1,
+      "sha256": "600b1b0e216ee0c7ba385fa8ca4559cb612f0d4f230c224a17f4cc3d6e9c7620"
     },
     {
       "file": "_internal/base_library.zip",
       "categories": [
-        "unclassified_upstream_profile"
+        "false_positive_from_CPython_ntpath_splitroot_documentation"
       ],
-      "matches": 1
+      "matches": 1,
+      "sha256": "ca4480cd7aae6946a605bb63359745d127dee4e4c5f13d077692c0126407e32a"
     },
     {
       "file": "_internal/libcrypto-3-x64.dll",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 7
+      "matches": 7,
+      "sha256": "74c1e4ed2b820f62fd2c66d6f19d2ef7fa5091e54f7dce14e25827febff14cb0"
     },
     {
       "file": "_internal/libffi-8.dll",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 1
+      "matches": 1,
+      "sha256": "e8342a9c96954e6dd96f9c73e768574a0892eca220ad1e3a80d975fd4a4f9f53"
     },
     {
       "file": "_internal/libssl-3-x64.dll",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 3
+      "matches": 3,
+      "sha256": "c1d753cc22270083b26f8cea7776a2e0bcefa7609a10e5ae6f6e05f16784c807"
     },
     {
       "file": "_internal/pydantic_core/_pydantic_core.cp312-win_amd64.pyd",
       "categories": [
-        "generic_build_or_documentation_account"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 135
+      "matches": 135,
+      "sha256": "b48ed9341b05b9562b78041651fb6146f26af6b1967f711027988437e3dd46c1"
     },
     {
       "file": "_internal/pyexpat.pyd",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 2
+      "matches": 2,
+      "sha256": "6644806ed9582193e632e93218599f6fc938b9f2dc3862c1de51555895db977e"
     },
     {
       "file": "_internal/python3.dll",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 1
+      "matches": 1,
+      "sha256": "1e341777e65f6b33405f89d243c9e05fb47af69e48f06a96e8479135599337d1"
     },
     {
       "file": "_internal/python312.dll",
       "categories": [
-        "unclassified_upstream_profile"
+        "false_positive_from_CPython_ntpath_splitroot_documentation",
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 35
+      "matches": 35,
+      "sha256": "83b6722af52dd243a6729867b0adaa40de5e64e5847d971a61c313568c265640"
     },
     {
       "file": "_internal/select.pyd",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 1
+      "matches": 1,
+      "sha256": "e3b0892b597a0d2fc130a86008d8e50ab06e8bc7edaee626ab5757bad13a808d"
     },
     {
       "file": "_internal/unicodedata.pyd",
       "categories": [
-        "unclassified_upstream_profile"
+        "generic_vendor_build_or_documentation_account"
       ],
-      "matches": 1
+      "matches": 1,
+      "sha256": "a287cead618406777f79e15f0ae11cb43bfaf64fa56cc6ea6481895e554c91ff"
     }
-  ]
+  ],
+  "unclassified_files": 0,
+  "classification_only_not_task_approval": true,
+  "evidence": "Generic vendor build accounts and placeholders. CPython Lib/ntpath.py:187 splitroot documentation produces invalid-username regex fragments; click.utils placeholders and numpy.__config__ build metadata inspected. Hashes bind review. No task approval or universal PII assertion.",
+  "bound_full_nsis_sha256": "3e3851ee4f3c67608d3802ad167572375b130eeafa57165d26379cd26797714f"
 }
