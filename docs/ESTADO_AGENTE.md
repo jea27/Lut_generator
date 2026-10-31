@@ -664,3 +664,99 @@ como si fueran el dashboard real. El código y la evidencia quedan publicados en
 de CI/PR y el único aviso de revisión se registran en el último comentario
 de Issue81 y en PR86; consultarlos antes de actuar. No asumir un merge o
 aprobación humana a partir de este checkpoint histórico.
+# Checkpoint vigente · COL036 · integración posterior a PR86 · 31-10-2026
+
+Rama `codex/COL-036-qa-integracion`, worktree `COL-036-beta-qa`, desde main5799531.
+PR86 ya integrada por jea27; no confundirlo con aprobación de Creator/Pro/Planner.
+Issue57 es la tarea;67 el único bloqueo canónico de distribución. Raíz y trabajo
+anterior conservados; ProjectOS/COL048 en otro chat, sin cambios de su código.
+
+Completado localmente: correcciones de carrera al cargar modo/preferencias,
+controles durante operaciones, confirmación del Planner y aviso de borrado;
+guía manual no técnica y smoke del congelado aislando PATH/cwd/módulos.
+61 tests MVP,128 seguimiento,6 Node y build correctos; QA real con demo/fotos CC0,
+cuatro exportaciones ~16MP a resolución completa, modo/receta/imágenes/plan
+conservados. Evidencia INTEGRACION_036_QA.json y capturas. Detalles y límites
+en INTEGRACION_BETA_036.md. Snapshot del congelado anterior a commit identificado
+por base+hashes fuente; no es otro setup0.3.0-beta.2 ni release.
+
+Pendiente en este checkpoint: publicar rama/PR de seguimiento, vincular manifiesto
+y verificar CI/sync. La última sección de publicación prevalece cuando exista.
+Bloqueos humanos:67 requiere autorización del runtime PSF aislado propuesto,
+Windows10/11 limpio/operador y editor activado.44 DLL y27 rutas upstream pendientes;
+beta/venta NO-GO, sin nueva VM/runtime/NSIS, invitaciones, pagos, merge o approved.
+COL001 y P0 comercial siguen pendientes de evidencia real. Próxima tarea técnica:
+reconstruir con runtime oficial solo tras autorización; ejecutar W01–W09 y E01–E05
+con entornos reales. No iniciar nuevas capacidades para evitar esas puertas.
+
+Reanudar: `git status --short`; consultar PR86, Issue57/67 y última PR de esta rama;
+leer su CI y comentarios antes de actuar. Usar la venv compartida solo para las
+pruebas existentes; no sustituirla para otro runtime. Scripts/comandos reproducibles
+en INTEGRACION_BETA_036.md; guía para el responsable PRUEBA_CREATOR_PRO_PLANNER.md.
+No eliminar worktrees previos ni cambios ajenos. Nunca tratar aviso/merge como GO.
+
+## Publicación COL036 · PR88
+
+Rama publicada en216af93; PR88 abierta hacia main, seguimiento de #57 y #67:
+https://github.com/jea27/Lut_generator/pull/88. Primer CI remoto MVP41223288357,
+studio41223288363 y validate41223288358 correctos. Manifiesto enlaza entrega88
+con Windows/Creator/Pro/Planner sin autoaceptación. Se conserva el denominador8,
+las18 capacidades y42 tareas. Colector real con API GitHub confirma MVP técnico8/8
+frente a aceptación0/8, beta/venta NO-GO; archivos generados restaurados por bytes.
+La instantánea de rama no equivale a publicación en Pages. Las evidencias nuevas
+solo formarán parte de main tras integración humana. CI/checks finales y aviso
+canónico se consultan en PR88 y #67; no repetir needs-human para el mismo texto.
+El trabajo de código está terminado para revisión; queda validación humana,
+runtime oficial autorizado y QA limpia. No hay cambios de main o de otros agentes.
+
+## Checkpoint final de integración · PR88 · 31-10-2026
+
+Tarea actual: COL036/Issue57, rama codex/COL-036-qa-integracion. PR88 abierta,
+lista para revisión hacia main; código final60958b4. Sin merge ni approved.
+Se corrigió también el historial de preset/importación/reset:7 Node correctos,
+undo/redo real en el congelado (preset0.05↔0.1, reset0↔0.05, import0.4↔0.05).
+61 tests motor/API/harness y128 seguimiento conservados. Build Vue/TS correcto.
+CI del código final: MVP41223999971, studio41224000016, validate41223999953,
+sync41223998116 success. Sync anterior cancelado sin steps fue recuperado en
+41223541881 intento2, sin cambios de permisos. CI del checkpoint documental se
+consulta en PR88/checks; el último comentario de Issue57 guarda su resultado.
+
+Evidencia: INTEGRACION_036_QA.json (hashes fuente/bundle, fases reales y límites),
+INTEGRACION_036_SYNC.json (colector GitHub + lectura separada de Pages). Los cuatro
+archivos generados fueron restaurados byte a byte.42 tareas:8 bloqueadas,
+17 en revisión,1 en progreso y16 planificadas en la consulta17:22Z.18 capacidades,
+MVP técnico8/8 y aceptación0/8, beta/venta NO-GO. Los cuatro enlaces Windows,
+Creator/Pro/Planner apuntan a PR88. La lectura pública17:21:19Z todavía precedía
+ready_for_review; no se presenta como actualización instantánea. Los workflows
+posteriores publican desde main; evidencias nuevas de rama esperan merge humano.
+
+Aviso único canónico verificado: workflow41224150508 success, comentario
+https://github.com/jea27/Lut_generator/issues/67#issuecomment-6546679381 menciona
+@jea27. ready_for_review41224148591 reconoció la solicitud existente sin otra
+Issue/aviso. No hay confirmación nueva de recepción física ni aprobación implícita.
+
+Cambios pendientes de código: ninguno local. Solo aceptación/revisión de PR88,
+autorización runtime aislado y QA real de distribución. No hay nuevo instalador.
+44 DLL y27 archivos con cadenas upstream siguen sujetos a revisión; no hay
+prueba Windows limpio ni Adobe/Resolve. COL001/P0 comercial siguen pendientes.
+Los servidores temporales y su pestaña de QA se cerraron; datos/resultados
+internos permanecen ignorados en .lumaforge-local. Raíz y otros worktrees intactos.
+
+Próximo trabajo elegible: tras respuesta RUNTIME3.14.10 en67, preparar build aislado
+sin sustituir la venv compartida; después W01–W09 con operador autorizado y
+E01–E05 en editor activado. Sin esa decisión no sortear el gate ni ampliar
+capacidades. Para reanudar: abrir este worktree, git status --short, gh pr view88,
+gh pr checks88 y leer67/57; comandos exactos en INTEGRACION_BETA_036.md.
+
+### Última comprobación Creator
+
+El último commit de PR88 separa transferencia realizada de preview neutra:
+importar ambas fotos y comparar sin fit mantiene «Detectar color» pendiente;
+fit real avanza a «Ajustar». Comparar avanza a «Comparar», cambiar receta vuelve
+a pedir comparación. Siete Node/build correctos y secuencia real en congelado,
+0 warnings/errores, captura INTEGRACION_GUIA_036.jpg. API/matemática sin cambios;
+no repetir benchmark16MP para flags UI. Hashes/fases en INTEGRACION_036_QA.json.
+Payload final conserva158/27,0 hallazgos de perfil local/secretos/desarrollo según
+patrones. Sin cambios de autorización67 ni avisos duplicados. Pruebas CI del
+head final y estado publicado se registran en el comentario de57; sigue PR88
+lista para revisión, worktree conservado y sin cambios pendientes al publicar.

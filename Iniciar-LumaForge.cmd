@@ -12,5 +12,5 @@ if not exist "apps\web\dist\index.html" (
 )
 echo LumaForge local: http://127.0.0.1:8790
 echo Abre esa direccion en tu navegador. Ctrl+C para detener.
-".venv-mvp\Scripts\python.exe" -m uvicorn apps.api.main:app --host 127.0.0.1 --port 8790 --no-access-log
+".venv-mvp\Scripts\python.exe" -m uvicorn apps.api.main:app --host 127.0.0.1 --port 8790 --no-access-log --no-proxy-headers
 pause

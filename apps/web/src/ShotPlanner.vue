@@ -1,22 +1,34 @@
 <script setup lang="ts">
 import {computed,ref,watch} from 'vue'
+import {useQuasar} from 'quasar'
 import {api,jsonPost} from './api'
 import {tx} from './i18n'
 const props=defineProps<{referenceId:string|null;referenceUrl:string;recipe:unknown}>()
 const emit=defineEmits(['back'])
+const q=useQuasar()
 type Node={id:string;label:string;x:number;y:number;enabled:boolean}
 type Plan={schema:string;setup:unknown;diagram:{nodes:Node[]};sections:Record<string,{kind:string;title:string;detail:string;source_ids:string[];uncertainty:string|null}[]>;equipment:Record<string,string[]>;checklist:{id:string;text:string;checked:boolean}[];sources:{id:string;title:string;url:string;verified_on:string}[];limits:string[];recipe:unknown}
 const setup=ref({shot:'medium',key_side:'left',softness:'soft',contrast:'medium',sensor_width_mm:36,focal_mm:null as number|null,aperture:4,fps:25,shutter_angle:180,white_balance_k:5600,camera_height_m:1.5,movement:'locked'})
 const report=ref<Plan|null>(null),busy=ref(false),error=ref(''),selected=ref('key'),stale=ref(false),elapsed=ref(0)
 const selectedNode=computed(()=>report.value?.diagram.nodes.find(n=>n.id===selected.value))
+const editsKey=()=>JSON.stringify({diagram:report.value?.diagram,checklist:report.value?.checklist})
+let initialEdits=''
 const kindLabel:Record<string,string>={observation:'Observación medida',estimate:'Estimación / sin confirmar',recommendation:'Recomendación de LumaForge',source_confirmed:'Cálculo con fuente técnica'}
 const sectionLabel:Record<string,string>={composition:'Composición',lighting:'Iluminación',camera:'Cámara',postproduction:'Postproducción'}
 const position=(v:number)=>250+v*40
 async function generate(){
- if(!props.referenceId)return
+ if(busy.value||!props.referenceId)return
+ if(report.value&&initialEdits!==editsKey()){
+  q.dialog({title:tx('¿Regenerar la propuesta?','Regenerate proposal?'),message:tx('Se reiniciarán tus cambios del diagrama y la checklist. Cancela para guardar el plan JSON antes de continuar.','Your diagram and checklist edits will be reset. Cancel to save the plan JSON before continuing.'),cancel:true,persistent:true}).onOk(()=>generateConfirmed())
+  return
+ }
+ await generateConfirmed()
+}
+async function generateConfirmed(){
+ if(busy.value||!props.referenceId)return
  const key=JSON.stringify({reference:props.referenceId,setup:setup.value,recipe:props.recipe})
  busy.value=true;error.value=''
- try{const response=await(await api('/planner',jsonPost({reference_id:props.referenceId,setup:setup.value,recipe:props.recipe}))).json();report.value=response.plan;elapsed.value=response.metrics.wall_ms;stale.value=key!==JSON.stringify({reference:props.referenceId,setup:setup.value,recipe:props.recipe})}
+ try{const response=await(await api('/planner',jsonPost({reference_id:props.referenceId,setup:setup.value,recipe:props.recipe}))).json();report.value=response.plan;initialEdits=editsKey();elapsed.value=response.metrics.wall_ms;stale.value=key!==JSON.stringify({reference:props.referenceId,setup:setup.value,recipe:props.recipe})}
  catch(e){error.value=(e as Error).message}finally{busy.value=false}
 }
 function download(){

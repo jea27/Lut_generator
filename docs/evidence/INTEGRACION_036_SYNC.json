@@ -1,0 +1,176 @@
+{
+  "schema": "color-studio-integration-sync-v1",
+  "checked_at": "2026-10-31T17:22:34.129685+00:00",
+  "scope": "Read-only live GitHub collection with candidate manifest; generated files restored byte-for-byte. Published Pages observed separately.",
+  "roadmap_tasks": 42,
+  "features": 18,
+  "main_sha": "5799531731c41057ae15ed159c25c89725709b55",
+  "metrics": {
+    "technical": {
+      "passed": 8,
+      "total": 8,
+      "unknown": 0,
+      "percent": 100
+    },
+    "human": {
+      "passed": 0,
+      "total": 8,
+      "unknown": 0,
+      "percent": 0
+    }
+  },
+  "features_checked": {
+    "windows": {
+      "status": "needs_review",
+      "implemented": true,
+      "technically_verified": true,
+      "human_approved": false,
+      "pr_url": "https://github.com/jea27/Lut_generator/pull/88"
+    },
+    "creator": {
+      "status": "review",
+      "implemented": true,
+      "technically_verified": true,
+      "human_approved": false,
+      "pr_url": "https://github.com/jea27/Lut_generator/pull/88"
+    },
+    "pro-workspace": {
+      "status": "review",
+      "implemented": true,
+      "technically_verified": true,
+      "human_approved": false,
+      "pr_url": "https://github.com/jea27/Lut_generator/pull/88"
+    },
+    "shot-planner": {
+      "status": "review",
+      "implemented": true,
+      "technically_verified": true,
+      "human_approved": false,
+      "pr_url": "https://github.com/jea27/Lut_generator/pull/88"
+    }
+  },
+  "readiness": {
+    "beta": {
+      "checks": [
+        {
+          "id": "candidate",
+          "title": "Candidato versionado y hash verificable",
+          "passed": true,
+          "issue_url": null
+        },
+        {
+          "id": "clean-windows",
+          "title": "Instalación en Windows limpio",
+          "passed": false,
+          "issue_url": null
+        },
+        {
+          "id": "licenses",
+          "title": "Derechos de redistribución y privacidad",
+          "passed": false,
+          "issue_url": "https://github.com/jea27/Lut_generator/issues/60"
+        },
+        {
+          "id": "pilot",
+          "title": "Piloto externo y soporte aceptados",
+          "passed": false,
+          "issue_url": "https://github.com/jea27/Lut_generator/issues/61"
+        },
+        {
+          "id": "distribution",
+          "title": "Autorización expresa de entrega",
+          "passed": false,
+          "issue_url": null
+        }
+      ],
+      "metric": {
+        "passed": 1,
+        "total": 5,
+        "unknown": 0,
+        "percent": 20
+      },
+      "go": false
+    },
+    "commercial": {
+      "checks": [
+        {
+          "id": "p0",
+          "title": "Decisión humana P0",
+          "passed": false,
+          "issue_url": "https://github.com/jea27/Lut_generator/issues/19"
+        },
+        {
+          "id": "licenses",
+          "title": "Auditoría legal aceptada",
+          "passed": false,
+          "issue_url": "https://github.com/jea27/Lut_generator/issues/60"
+        },
+        {
+          "id": "beta",
+          "title": "Beta aceptada por usuarios",
+          "passed": false,
+          "issue_url": "https://github.com/jea27/Lut_generator/issues/61"
+        },
+        {
+          "id": "launch",
+          "title": "Lanzamiento y condiciones",
+          "passed": false,
+          "issue_url": "https://github.com/jea27/Lut_generator/issues/62"
+        }
+      ],
+      "metric": {
+        "passed": 0,
+        "total": 4,
+        "unknown": 0,
+        "percent": 0
+      },
+      "go": false
+    }
+  },
+  "public_pages": {
+    "url": "https://jea27.github.io/Lut_generator/data/product.json",
+    "observed_at": "2026-10-31T17:21:19.487297Z",
+    "main_sha": "5799531731c41057ae15ed159c25c89725709b55",
+    "features_checked": {
+      "windows": {
+        "status": "needs_review",
+        "human_approved": false,
+        "pr_url": "https://github.com/jea27/Lut_generator/pull/88"
+      },
+      "creator": {
+        "status": "progress",
+        "human_approved": false,
+        "pr_url": "https://github.com/jea27/Lut_generator/pull/88"
+      },
+      "pro-workspace": {
+        "status": "progress",
+        "human_approved": false,
+        "pr_url": "https://github.com/jea27/Lut_generator/pull/88"
+      },
+      "shot-planner": {
+        "status": "progress",
+        "human_approved": false,
+        "pr_url": "https://github.com/jea27/Lut_generator/pull/88"
+      }
+    },
+    "metrics": {
+      "technical": {
+        "passed": 8,
+        "total": 8,
+        "unknown": 0,
+        "percent": 100
+      },
+      "human": {
+        "passed": 0,
+        "total": 8,
+        "unknown": 0,
+        "percent": 0
+      }
+    },
+    "readiness": {
+      "beta": false,
+      "commercial": false
+    },
+    "latest_release": null
+  }
+}
