@@ -84,7 +84,8 @@ class WindowsPreservationTests(unittest.TestCase):
             self.assertEqual(self.invoke('-Mode','Snapshot','-DataDirectory',data,'-Baseline',baseline).returncode, 0)
             (data/'new.json').write_text('new')
             report = root/'ok.json'
-            self.assertEqual(self.invoke('-Mode','Verify','-DataDirectory',data,'-Baseline',baseline,'-Report',report).returncode, 0)
+            verified = self.invoke('-Mode','Verify','-DataDirectory',data,'-Baseline',baseline,'-Report',report)
+            self.assertEqual(verified.returncode, 0, verified.stderr.decode(errors='replace'))
             self.assertTrue(json.loads(report.read_text(encoding='utf-8-sig'))['passed'])
             (data/'preset.json').write_text('changed'); (data/'original.png').unlink()
             report = root/'failed.json'
