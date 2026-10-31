@@ -296,3 +296,18 @@ sigue pendiente de runtime/procedencia oficial autorizada, Windows limpio,
 editores activados y derechos/operativa del piloto. COL001 sin entrevistas reales.
 Publicación en rama/PR y CI se registrará al terminar; ninguna aprobación real
 emitida por el agente. Las capacidades nuevas requieren revisión individual.
+
+### PR86 y sincronización real
+
+https://github.com/jea27/Lut_generator/pull/86 (borrador durante comprobaciones).
+Commit de código3761999, CI remota MVP41210911012/Studio41210911018/validación
+41210911004/sync41210911087 correctas. Se han enlazado las3 capacidades a PR86.
+El colector se ejecutó con lecturas reales autenticadas de GitHub:18 capacidades,
+3 entregas en progreso sin marcar implementadas/aprobadas por estar aún sin
+integrar, MVP8 y42 tareas intactas, beta/venta NO-GO. Se restauraron por bytes
+los2 archivos de seguimiento generados; no hay estados simulados publicados.
+Evidencia CREATOR_045_SYNC.json distingue checkout candidato de producción.
+Las aceptaciones previas de Color Match/lotes/receta/Windows requieren nueva
+revisión en el candidato por cambios relacionados de UI/API; no se borraron
+recibos ni se emitieron nuevas decisiones humanas. CI final de metadatos y
+solicitud de revisión se comprobarán antes de marcar lista la PR.

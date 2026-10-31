@@ -629,8 +629,9 @@ ni tile mayor ni cambio de matemática adoptados. Perfiles/scope versionados.
 OSV566 y npm audit:2 paquetes Cargo con avisos globales, ninguno en árbol
 Windows223. No se ocultan ni se sustituyen paquetes sin comprobar plataforma.
 
-Pendiente inmediato: commit/PR, enlazar su número real en manifiesto, CI remota,
-solicitud humana única de revisión. No merge/aprobación del agente. La producción
+PR86 en borrador: https://github.com/jea27/Lut_generator/pull/86.
+Rama publicada, tres capacidades enlazadas a esta entrega. Pendiente: CI final,
+comprobación de sincronización real y solicitud humana única de revisión. No merge/aprobación del agente. La producción
 de Mis revisiones (#79) sí fue activada y validada tras el merge de jea27:
 https://github.com/jea27/Lut_generator/issues/76#issuecomment-6542238759.
 
@@ -648,3 +649,15 @@ El servidor solo sirve esta rama y usa datos ignorados propios.
 Leer el protocolo y las evidencias antes de ampliar funciones. Próximo paso:
 revisión de esta entrega y resolver #67; después validar el plan con escena y
 medios autorizados reales, sin afirmar que la demo rural reconstruye un rodaje.
+
+### Recuperación de publicación — PR86
+
+Código3761999 publicado, CI41210911012/41210911018/41210911004 y sincronización
+41210911087 success. Manifiesto enlaza las3 capacidades nuevas a PR86 sin
+presentarlas como implementadas en main. Colector real de GitHub validado en
+lectura; evidencia CREATOR_045_SYNC.json, archivos generados originales restaurados
+por bytes. Revisión de Color Match/lotes/receta/Windows queda obsoleta en el
+candidato por huellas relacionadas, conservando historial previo. Producción
+sigue en main8674566 hasta integración humana. No publicar porcentajes locales
+como si fueran el dashboard real. Siguiente: push final de esta evidencia,
+comprobar CI y marcar PR lista, con un único aviso de revisión de PR86.
