@@ -630,8 +630,9 @@ OSV566 y npm audit:2 paquetes Cargo con avisos globales, ninguno en árbol
 Windows223. No se ocultan ni se sustituyen paquetes sin comprobar plataforma.
 
 PR86 en borrador: https://github.com/jea27/Lut_generator/pull/86.
-Rama publicada, tres capacidades enlazadas a esta entrega. Pendiente: CI final,
-comprobación de sincronización real y solicitud humana única de revisión. No merge/aprobación del agente. La producción
+Rama publicada, tres capacidades enlazadas a esta entrega. Trabajo local
+completado para revisión; consultar borrador/lista y últimos checks en PR86.
+La aceptación humana y las puertas de distribución siguen pendientes. No merge/aprobación del agente. La producción
 de Mis revisiones (#79) sí fue activada y validada tras el merge de jea27:
 https://github.com/jea27/Lut_generator/issues/76#issuecomment-6542238759.
 
@@ -659,5 +660,7 @@ lectura; evidencia CREATOR_045_SYNC.json, archivos generados originales restaura
 por bytes. Revisión de Color Match/lotes/receta/Windows queda obsoleta en el
 candidato por huellas relacionadas, conservando historial previo. Producción
 sigue en main8674566 hasta integración humana. No publicar porcentajes locales
-como si fueran el dashboard real. Siguiente: push final de esta evidencia,
-comprobar CI y marcar PR lista, con un único aviso de revisión de PR86.
+como si fueran el dashboard real. El código y la evidencia quedan publicados en la rama. El estado final
+de CI/PR y el único aviso de revisión se registran en el último comentario
+de Issue81 y en PR86; consultarlos antes de actuar. No asumir un merge o
+aprobación humana a partir de este checkpoint histórico.
