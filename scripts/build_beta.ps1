@@ -2,6 +2,7 @@ $ErrorActionPreference='Stop'
 $lfRoot=Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $lfRoot
 $env:PATH="$env:USERPROFILE\.cargo\bin;$env:PATH"
+$env:CARGO_ENCODED_RUSTFLAGS="--remap-path-prefix=$env:USERPROFILE=/build-user"+[char]31+"--remap-path-prefix=$lfRoot=/src"
 & ./.venv-mvp/Scripts/python.exe scripts/audit_beta_licenses.py
 if($LASTEXITCODE -ne 0){throw 'Dependency notice inventory failed'}
 & ./.venv-mvp/Scripts/python.exe -m unittest discover -s tests_mvp -v
@@ -30,7 +31,7 @@ try {
 $lfInstaller=Get-ChildItem -LiteralPath (Join-Path $lfRoot 'apps/desktop/src-tauri/target/release/bundle/nsis') -Filter '*setup.exe' | Select-Object -First 1
 if(-not $lfInstaller){throw 'Installer artifact not found'}
 $lfArtifact=@{
- version='0.2.0-beta.1'; file=$lfInstaller.Name; bytes=$lfInstaller.Length
+ version='0.3.0-beta.1'; file=$lfInstaller.Name; bytes=$lfInstaller.Length
  sha256=(Get-FileHash -LiteralPath $lfInstaller.FullName -Algorithm SHA256).Hash.ToLower()
  signature=(Get-AuthenticodeSignature -LiteralPath $lfInstaller.FullName).Status.ToString()
  source=(git rev-parse HEAD); dirty=[bool](git status --porcelain)

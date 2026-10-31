@@ -3,6 +3,7 @@ import cv2
 import numpy as np
 from functools import lru_cache
 from pydantic import BaseModel, ConfigDict, Field
+from .look import Look
 
 M = np.array([[.4124564,.3575761,.1804375],[.2126729,.7151522,.0721750],
               [.0193339,.1191920,.9503041]], dtype=np.float32)
@@ -11,7 +12,8 @@ WHITE = np.array([.95047,1.,1.08883], dtype=np.float32)
 
 class Recipe(BaseModel):
     model_config = ConfigDict(extra='forbid', allow_inf_nan=False)
-    version: int = Field(default=1, ge=1, le=1)
+    version: int = Field(default=2, ge=1, le=2)
+    look: Look = Field(default_factory=Look)
     domain: str = Field(default='encoded-sRGB-D65', pattern='^encoded-sRGB-D65$')
     method: str = Field(default='lab-statistics', pattern='^(lab-statistics|mean-only)$')
     scale: list[float] = Field(default_factory=lambda:[1.,1.,1.], min_length=3, max_length=3)
@@ -25,6 +27,8 @@ class Recipe(BaseModel):
 
 def validate_recipe(recipe):
     r = Recipe.model_validate(recipe)
+    if r.version==1 and r.look != Look():
+        raise ValueError('Spatial effects require recipe version 2')
     if any(not .8 <= x <= 1.2 for x in r.scale) or any(abs(x)>12 for x in r.offset):
         raise ValueError('Recipe statistics outside conservative bounds')
     return r
@@ -164,14 +168,18 @@ def transform(rgb, recipe):
 class ProcessingCancelled(Exception):pass
 
 
-def render(rgb, recipe, cancel=None, progress=None):
+def render(rgb, recipe, cancel=None, progress=None, alpha=None):
     # Bound working arrays independently of full-resolution file size.
+    recipe=validate_recipe(recipe)
     output=np.empty_like(rgb,dtype=np.float32)
     for y in range(0,rgb.shape[0],64):
         if cancel and cancel():raise ProcessingCancelled()
         output[y:y+64]=transform(rgb[y:y+64],recipe)
-        if progress:progress(min(1,(y+64)/rgb.shape[0]))
-    return output
+        if progress:progress(.5*min(1,(y+64)/rgb.shape[0]))
+    from .look import apply
+    result=apply(output,recipe.look,alpha,cancel,lambda x:progress(.5+.5*x) if progress else None)
+    if progress:progress(1)
+    return result
 
 
 def cube(recipe, size=33):
@@ -179,6 +187,7 @@ def cube(recipe, size=33):
     if size!=33: raise ValueError('MVP exports 33^3 only')
     values=lut_grid(r.model_dump_json()).reshape(-1,3)
     header=['# LumaForge v0.1: fixed global encoded sRGB -> encoded sRGB D65',
+            '# Color only. Spatial glow, diffusion and fade are excluded; use recipe v2 and image render.',
             '# Not an input LUT, not Rec.709/Log/HDR. No masks or adaptive per-image steps.',
             'TITLE "LumaForge global look"','LUT_3D_SIZE 33','DOMAIN_MIN 0.0 0.0 0.0','DOMAIN_MAX 1.0 1.0 1.0']
     return '\n'.join(header+['%.7f %.7f %.7f'%tuple(row) for row in values])+'\n'

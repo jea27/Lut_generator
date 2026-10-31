@@ -2,14 +2,15 @@
 import { computed, nextTick, onMounted, onBeforeUnmount, reactive, ref, watch } from 'vue'
 import { useQuasar } from 'quasar'
 import BetaPanel from './BetaPanel.vue'
+import LookPanel,{type Look} from './LookPanel.vue'
 import {api,jsonPost} from './api'
 import {tx} from './i18n'
-type Recipe={version:number;domain:string;method:string;scale:number[];offset:number[];intensity:number;exposure:number;contrast:number;saturation:number;temperature:number}
+type Recipe={look:Look;version:number;domain:string;method:string;scale:number[];offset:number[];intensity:number;exposure:number;contrast:number;saturation:number;temperature:number}
 type Analysis={histograms:number[][];dominant:{hex:string;fraction:number}[];luminance_mean:number;contrast_p95_p05:number}
 type ImageAsset={id:string;width:number;height:number;notes:string[];has_alpha:boolean;preview_url:string;analysis:Analysis;name:string}
 type Preset={id:string;name:string;recipe:Recipe}
 const q=useQuasar()
-const neutral=():Recipe=>({version:1,domain:'encoded-sRGB-D65',method:'lab-statistics',scale:[1,1,1],offset:[0,0,0],intensity:1,exposure:0,contrast:1,saturation:1,temperature:0})
+const neutral=():Recipe=>({version:2,look:{enabled:false,strength:1,glow:0,diffusion:0,fade:0,radius:.008,threshold:.7},domain:'encoded-sRGB-D65',method:'lab-statistics',scale:[1,1,1],offset:[0,0,0],intensity:1,exposure:0,contrast:1,saturation:1,temperature:0})
 const recipe=reactive<Recipe>(neutral()), source=ref<ImageAsset|null>(null), reference=ref<ImageAsset|null>(null)
 const online=ref(false),busy=ref(false),previewing=ref(false),error=ref(''),resultUrl=ref(''),split=ref(50),zoom=ref(1)
 const presets=ref<Preset[]>([]),presetName=ref(''),timing=ref(0),memory=ref(0),method=ref('lab-statistics')
@@ -18,7 +19,7 @@ let restoring=false,timer:ReturnType<typeof setTimeout>|undefined,controller:Abo
 const clone=(value:Recipe):Recipe=>JSON.parse(JSON.stringify(value))
 function revoke() { if(resultUrl.value)URL.revokeObjectURL(resultUrl.value);resultUrl.value='' }
 async function assignRecipe(value:Recipe,reset=false) {
-  restoring=true;Object.assign(recipe,clone(value));await nextTick();restoring=false
+  restoring=true;Object.assign(recipe,clone({...neutral(),...value,look:{...neutral().look,...value.look}}));await nextTick();restoring=false
   if(reset){history.value=[clone(value)];historyIndex.value=0}
 }
 async function upload(event:Event,kind:'source'|'reference') {
@@ -42,7 +43,7 @@ async function match() {
   busy.value=true;error.value=''
   try {
     const response=await api('/fit',jsonPost({source_id:source.value.id,reference_id:reference.value.id,method:method.value}))
-    const data=await response.json();await assignRecipe(data.recipe,true);await renderPreview()
+    const data=await response.json();await assignRecipe({...data.recipe,look:clone(recipe).look,version:2},true);await renderPreview()
   }catch(e){error.value=(e as Error).message}finally{busy.value=false}
 }
 async function renderPreview() {
@@ -97,7 +98,7 @@ onBeforeUnmount(()=>{controller?.abort();clearTimeout(timer);revoke()})
   <header class="topbar"><div class="brand"><span class="brand-mark">◈</span>Color<span>Studio</span><small>BETA</small></div>
    <div class="project-title">{{tx('Sesión de color','Colour session')}} <span>/</span> {{ source?.name??tx('Sin título','Untitled') }}</div>
    <BetaPanel :recipe="recipe" :presets="presets" @recipe="assignRecipe" @refresh="loadPresets" @demo="loadDemo"/>
-   <div class="local-status"><i :class="{ready:online}"></i>{{online?tx('LOCAL · SIN API EXTERNA','LOCAL · NO IMAGE API'):tx('CONECTANDO','CONNECTING')}}<span class="version">0.2 β</span></div>
+   <div class="local-status"><i :class="{ready:online}"></i>{{online?tx('LOCAL · SIN API EXTERNA','LOCAL · NO IMAGE API'):tx('CONECTANDO','CONNECTING')}}<span class="version">0.3 β</span></div>
   </header>
   <q-linear-progress v-if="busy||previewing" indeterminate color="primary" class="activity"/>
   <div class="workspace">
@@ -154,11 +155,12 @@ onBeforeUnmount(()=>{controller?.abort();clearTimeout(timer);revoke()})
      <q-slider :model-value="Number(recipe[control.key as keyof Recipe])" @update:model-value="(v)=>{(recipe as any)[control.key]=v}" :min="control.min" :max="control.max" :step="control.step" color="grey-5" :aria-label="tx(control.label,({exposure:'Exposure',contrast:'Contrast',saturation:'Saturation',temperature:'Temperature'} as any)[control.key])" :disable="!source"/>
     </div>
     <q-btn flat no-caps class="reset-button" :label="tx('Restablecer ajustes','Reset adjustments')" icon="restart_alt" :disable="!source" @click="assignRecipe(neutral())"/>
+    <LookPanel :model-value="recipe.look" :disabled="!source||busy"/>
     <div class="domain-note"><q-icon name="verified_user" size="19px"/><span>{{tx('Procesamiento local. Sin IA generativa ni servicios de imagen.','Local processing. No generative AI or image services.')}}</span></div>
    </aside>
   </div>
   <footer class="export-bar"><div class="process-status"><i :class="{ready:online}"></i><span>{{busy?tx('Procesando…','Processing…'):previewing?tx('Previsualizando…','Previewing…'):tx('Listo para crear','Ready to create')}}<small>{{timing?`${timing} ms · ${tx('RSS pico muestreado','sampled peak RSS')} ${memory} MB`:tx('Tus imágenes se quedan en este equipo','Your images stay on this computer')}}</small></span></div>
-   <div class="export-actions"><q-btn flat no-caps :label="tx('Receta JSON','Recipe JSON')" icon="data_object" :disable="!source||busy||previewing" @click="download('json')"/><q-btn outline no-caps label="LUT .cube" icon="grid_on" :disable="!source||busy||previewing" @click="download('cube')"/><q-btn unelevated no-caps color="primary" text-color="dark" :label="tx('Exportar PNG','Export PNG')" icon="download" :disable="!source||busy||previewing" @click="download('png')"/><q-btn flat no-caps label="JPG" :disable="!source||busy||previewing" @click="download('jpg')"/></div>
+   <div class="export-actions"><q-btn flat no-caps :label="tx('Receta JSON','Recipe JSON')" icon="data_object" :disable="!source||busy||previewing" @click="download('json')"/><q-btn outline no-caps label="LUT .cube" icon="grid_on" :disable="!source||busy||previewing" @click="q.dialog({title:tx('LUT: solo color','LUT: color only'),message:tx('Glow, difusión y fade se guardan en la receta JSON y en PNG/JPG, pero se omiten en .cube.','Glow, diffusion and fade are saved in recipe JSON and PNG/JPG but excluded from .cube.'),cancel:true}).onOk(()=>download('cube'))"/><q-btn unelevated no-caps color="primary" text-color="dark" :label="tx('Exportar PNG','Export PNG')" icon="download" :disable="!source||busy||previewing" @click="download('png')"/><q-btn flat no-caps label="JPG" :disable="!source||busy||previewing" @click="download('jpg')"/></div>
   </footer>
  </div>
 </template>
