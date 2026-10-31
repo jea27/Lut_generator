@@ -1,6 +1,72 @@
+# Checkpoint vigente · Look Match y QA externa · 31-10-2026
+
+Rama codex/COL-026-look-match-beta, Issue68; base32278e4 de PR66, sobre PR65.
+PR65/66 auditadas abiertas y checks correctos; no merges. PR69 nueva entrega
+https://github.com/jea27/Lut_generator/pull/69, base rama de PR66; revisar65→66→69. Autorización explícita
+actual permite acabado manual glow/difusión/fade y preparación de beta privada;
+no cobros, beta general, certificados, virtualización o contacto de participantes.
+
+Candidato0.3.0-beta.2 construido desdea452a5f, dirty=false. Archivo266211731 bytes,
+SHA256 3e3851ee4f3c67608d3802ad167572375b130eeafa57165d26379cd26797714f.
+Ruta ignorada apps/desktop/src-tauri/target/release/bundle/nsis/. Sin firma ni
+release. Manifest en LOOK_03_ARTIFACT_B2.json; no confundir con0.2 ni glob de archivos.
+
+Implementado: Look manual v1 (receta v2) con intensidad/bypass independientes,
+color primero, glow/difusión lineales por tiles con halos/alfa y fade limitado.
+Presets, JSON, PNG/JPG y lotes conservan efectos. LUT solo Color Match con aviso.
+V1 sin acabado compatible; halation, microcontraste dedicado e inferencia del
+acabado desde referencia NO implementados. No transferencia fiel demostrada.
+Paneles desktop independientes conservan el comparador; feedback offline incluido.
+
+30 tests MVP y91 tracking locales OK, TS/Vite/build nativo OK. Binario congelado:
+demo realCC0, JSONv2/LUT, lote2 y PNG idéntico byte a byte al export individual.
+Benchmark16MP32.4s con PNG/RSS815MB; preview0.729s, MAE preview/export reducido
+0.00476 yP95 0.01455. No validación de piel/mercado. Evidencias LOOK_03_*.
+Upgrade local0.2→0.3beta1→beta2 exit0,8 archivos existentes conservados por hash; arranque
+nativo0.3 muestra preset previo y preferenciasEN. No Windows limpio (MSIX Codex).
+
+Auditoría: corregidas155 rutas compilación nativas mediante remap Rust;0 en
+nuevo exe. Corregido hash/version builder que elegía primer instalador del glob.
+299 entradas con licencia declarada y avisos,6 faltantes recuperados con hashes.
+Payload Python/PYZ+nativo enumerado;0 local-profile/secret/dev findings, pero27
+archivos/módulos con patrones de rutas proveedor/ejemplos pendientes clasificación.
+NO decir instalador totalmente limpio. NSIS/WebView2/VC/UCRT y términos concretos
+requieren conciliación final; no editar DLL firmadas ni autoaprobar auditoría legal.
+
+Preparado plan limpio/preflight no invasivo y5 perfiles sin asignar B01–05.
+Formulario QA00 descargado, synthetic/unverified/counts_as_interview=false;
+solo en .research-private/beta/qa. Nadie contactado ni respuestas reales.
+Bundle LUT lossless CC0 en .lumaforge-local/look03-qa/LUT-Editor-QA-CC0.zip.
+7-Zip26.05 portátil autorizado/preparado/verificado; no volver a pedir permiso.
+176 entradas NSIS extraídas/auditadas, WebView2 Microsoft firma válida y plugin
+Tauri0.5.3 hash idéntico a release oficial.0 patrón local/token/dev,27 rutas
+proveedor/ejemplo (2 genéricas,25 pendientes). Copias privadas/raw no publicar.
+Avisos complementarios NSIS/Tauri en packaging/notices/upstream.
+Photoshop no ofrece editor verificable en nueva inspección; último bloqueo
+confirmado fue login. No afirmar login resuelto o importación real; Premiere muestra selección de suscripción, no se activó ni compró nada;
+Resolve sin prueba. Acción67 reutilizable, no repetir bloqueo sin novedad.
+
+NO-GO beta privada externa y venta, por separado en BETA_QA_EXTERNA.md y
+BETA_03_AUDITORIA.md. Pendientes Windows10/11 limpio, payload completo/términos,
+editores activados, retratos autorizados, responsable/canal/plazo y revisión.
+COL001/P0 siguen pendientes. Las cinco pruebas no cumplen10–20 de COL041.
+
+Reanudar: git status; consultar PR65/66 y nueva PR de esta rama/Issue68; leer67
+antes de notificar. Datos beta persistentes en LocalAppData/ColorStudioBetaData.
+No borrar .lumaforge-local, imágenes, presets o worktrees. App nativa0.3-beta2 abierta. Feedback interno verificado en WebView2;
+corregido popup y migración de presetv1 antes de activar efectos (JSONv2 GUI probado).
+Servidor QA propio26292/puerto8794 y landing8792 si activos; no interfaces externas.
+Build ./scripts/build_beta.ps1; tests ./.venv-mvp/Scripts/python.exe -m unittest
+discover -s tests_mvp -v; audit scripts/audit_beta_artifact.py (exit2 esperado
+mientras existan findings). Siguiente: clasificación proveedor/NSIS y QA limpia
+cuando el usuario aporte entorno. CI69 en a452a5f: MVP41181274271 y Studio41181274272 success.
+Notificación y sync finales: consultar67/Actions antes de repetir avisos.
+
+---
 # Checkpoint vigente · beta Windows · 31-10-2026
 
-Rama codex/COL-037-beta-estabilidad, Issues COL036#57/COL037#58.
+Rama raíz actual codex/COL-042-preparacion-comercial; base técnica conservada
+en codex/COL-037-beta-estabilidad, Issues COL036#57/COL037#58.
 Candidato0.2.0-beta.1 construido e instalado; NSIS266193722 bytes, SHA256
 c1798ece22b9a8f38b6c7042a59630c16800b7a7ca295ee4119a8c157d092a4a.
 Sin firma ni release pública. Herramientas autorizadas ya instaladas; no repetir
@@ -24,7 +90,20 @@ públicas saneadas en docs/evidence/BETA_02_*. Datos QA privados .lumaforge-loca
 Inventario299 paquetes + avisos incluidos,6 avisos/conciliación binaria pendientes.
 Sin original privado, respuestas, credenciales ni fotografías privadas publicadas.
 
-Pendiente: revisar PR beta y comercial; CI remota por consultar en GitHub.
+PR65: https://github.com/jea27/Lut_generator/pull/65 (beta, base main).
+PR66: https://github.com/jea27/Lut_generator/pull/66 (landing/comercial, base rama
+beta; revisar después de65 y cambiar destino tras integración humana).
+CI observada: MVP41176292962 y Studio41176292989 correctas en65;
+MVP41176295996 y Studio41176295970 correctas en66. Validación roadmap65 OK.
+Ninguna PR fusionada por el agente ni tarea aprobada.
+Acción única67: bot6540038578 menciona @jea27, aviso observado; no afirmar
+recepción física de este aviso nuevo. Marcadores65/66 evitaron duplicados al
+activar ready. Notificaciones de revisión41176358165/41176358957 success.
+Issues57/58/60/62 en revisión;59/61 blocked por QA externa. Sync Pages41176446357 success; JSON público leído y comprobado:42 tareas,
+COL001 blocked;036/037/040/042 review;038/041 blocked. Última CI observada
+de66 en15d6f08: MVP41176457682, Studio41176457662 y aviso41176457661 success.
+No editar manualmente estados JSON. COL001 y P0 comercial pendientes.
+QA landing HTTP200, JS válido, vistas390x844/1280x900 y slider70% verificados.
 Landing local apps/landing con captura real, CC0, comparador y descarga pública
 pendiente; borradores BETA_COMERCIAL en entrega separada. Publicar ramas/PR está
 autorizado, no main/merge/approved/releases/visibilidad/gastos.
@@ -35,6 +114,8 @@ GO solo demostración técnica local; NO-GO beta general y venta.
 
 Reanudar: git status; gh pr list --repo jea27/Lut_generator; leer solicitud humana
 beta y sus comentarios antes de avisar; no repetir bloqueo ya notificado.
+Landing local http://127.0.0.1:8792 mientras servidor propio activo; app nativa
+reinstalada y abierta,8 archivos conservados también tras reinstalar.
 Build: ./scripts/build_beta.ps1. Tests: ./.venv-mvp/Scripts/python.exe -m unittest
 discover -s tests_mvp -v. Smoke empaquetado: scripts/smoke_beta.py requiere piloto
 CC0 existente y escribe carpeta privada nueva. No borrar datos/worktrees históricos.

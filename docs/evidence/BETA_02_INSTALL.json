@@ -3,5 +3,7 @@
   "native_exe_removed": true,
   "sidecar_closed": true,
   "preserved_files": 8,
-  "uninstall_exit": 0
+  "uninstall_exit": 0,
+  "reinstalled": true,
+  "preserved_after_reinstall": true
 }

@@ -49,7 +49,7 @@ class Jobs:
                             rgb,alpha,_=image_io.decode(resolve(source).read_bytes())
                             def progress(fraction):
                                 with self.mutex:record['progress']=round((index+fraction)/len(ids)*100,1)
-                            output=engine.render(rgb,recipe,cancel=event.is_set,progress=progress)
+                            output=engine.render(rgb,recipe,cancel=event.is_set,progress=progress,alpha=alpha)
                             payload=image_io.encode(output,alpha,'PNG' if format=='png' else 'JPEG')
                             if event.is_set():raise engine.ProcessingCancelled()
                             filename=f'batch-{index+1:03d}.{format}';destination=self.root/identifier/filename

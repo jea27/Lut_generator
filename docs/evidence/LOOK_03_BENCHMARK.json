@@ -1,0 +1,44 @@
+{
+  "scope": "Actual manual effects on licensed rural photo; no reference-fidelity, skin or market validation",
+  "input_sha256": "d23e0db0afa94b44f1b4adfb3a8e168d7877266103bcc1365622f149dff15e32",
+  "original_unchanged": true,
+  "dimensions": [
+    4928,
+    3264
+  ],
+  "preview_seconds": 0.729108500003349,
+  "full_render_png_seconds": 32.392018099999405,
+  "rss_sampled_peak_mb": 815.37890625,
+  "resized_full_vs_preview_mean_absolute_rgb": 0.004760406445711851,
+  "resized_full_vs_preview_p95_absolute_rgb": 0.014546871185302734,
+  "recipe": {
+    "version": 2,
+    "look": {
+      "enabled": true,
+      "strength": 0.7,
+      "glow": 0.55,
+      "diffusion": 0.35,
+      "fade": 0.3,
+      "radius": 0.008,
+      "threshold": 0.7
+    },
+    "domain": "encoded-sRGB-D65",
+    "method": "lab-statistics",
+    "scale": [
+      0.8,
+      1.2,
+      1.2
+    ],
+    "offset": [
+      12.0,
+      -2.32299747467041,
+      -4.274798083305359
+    ],
+    "intensity": 1.0,
+    "exposure": 0.0,
+    "contrast": 1.0,
+    "saturation": 1.0,
+    "temperature": 0.0
+  },
+  "output_sha256": "5a5646c5796db3458f79b7ac345212fe4ea97fccb9ef4f0ea48cc5f60846ac85"
+}

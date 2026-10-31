@@ -940,8 +940,13 @@
       "name": "alloc-stdlib",
       "version": "0.3.0",
       "declared_license": "BSD-3-Clause",
-      "notices": [],
-      "review": "manual_review_required"
+      "notices": [
+        {
+          "file": "pinned-upstream-license",
+          "sha256": "c0c56f26d9c051cac4d200c34c84e7ae9aaa853e01a982a1df08b09931e518ae"
+        }
+      ],
+      "review": "notice_captured_not_legal_approval"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2792,8 +2797,13 @@
       "name": "plist",
       "version": "1.10.3",
       "declared_license": "MIT",
-      "notices": [],
-      "review": "manual_review_required"
+      "notices": [
+        {
+          "file": "pinned-upstream-license",
+          "sha256": "5b0ae40d1a35f7ae6591a28e44771240e6a88cb03a66c9189a45b9681639b466"
+        }
+      ],
+      "review": "notice_captured_not_legal_approval"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3133,8 +3143,13 @@
       "name": "selectors",
       "version": "0.38.0",
       "declared_license": "MPL-2.0",
-      "notices": [],
-      "review": "manual_review_required"
+      "notices": [
+        {
+          "file": "pinned-upstream-license",
+          "sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04"
+        }
+      ],
+      "review": "notice_captured_not_legal_approval"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4298,24 +4313,39 @@
       "name": "webview2-com",
       "version": "0.39.1",
       "declared_license": "MIT",
-      "notices": [],
-      "review": "manual_review_required"
+      "notices": [
+        {
+          "file": "pinned-upstream-license",
+          "sha256": "0dcf41516e608bbcb6cdc5229feb7b86fe4a643b85e7df251133c93408fdac73"
+        }
+      ],
+      "review": "notice_captured_not_legal_approval"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
       "name": "webview2-com-macros",
       "version": "0.8.1",
       "declared_license": "MIT",
-      "notices": [],
-      "review": "manual_review_required"
+      "notices": [
+        {
+          "file": "pinned-upstream-license",
+          "sha256": "0dcf41516e608bbcb6cdc5229feb7b86fe4a643b85e7df251133c93408fdac73"
+        }
+      ],
+      "review": "notice_captured_not_legal_approval"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
       "name": "webview2-com-sys",
       "version": "0.39.1",
       "declared_license": "MIT",
-      "notices": [],
-      "review": "manual_review_required"
+      "notices": [
+        {
+          "file": "pinned-upstream-license",
+          "sha256": "0dcf41516e608bbcb6cdc5229feb7b86fe4a643b85e7df251133c93408fdac73"
+        }
+      ],
+      "review": "notice_captured_not_legal_approval"
     },
     {
       "ecosystem": "cargo-resolved-including-build",

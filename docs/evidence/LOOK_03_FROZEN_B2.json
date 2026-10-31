@@ -1,0 +1,11 @@
+{
+  "version": "0.3.0-beta.2",
+  "packaged_effects_png": true,
+  "json_preserves_look": true,
+  "cube_color_only": true,
+  "batch_outputs": 2,
+  "batch_matches_single_png_byte_for_byte": true,
+  "feedback_bundled": true,
+  "photo_source": "CC0 demo, not real participants",
+  "output_sha256": "b8ecadd699146c56e4f9415f0d9710c27c46595ac81c15190bf71224f4701e51"
+}

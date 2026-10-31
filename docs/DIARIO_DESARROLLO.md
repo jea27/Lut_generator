@@ -172,3 +172,23 @@
 - Smoke binario real4 paisajes CC0 de16MP, exports11.4–13.7s/RSS789–804MB, lote2, ICC/dimensiones/hashes intactos, watchdog OK. Instalación/desinstalación exit0,8 archivos privados conservados por hash, sin procesos huérfanos. Codex/MSIX virtualizado, no Windows limpio.
 - PR52/53 y63/64 integradas por jea27 durante la sesión; cambios incorporados sin sobrescritura. Investigación P0 y propuesta Look Match conservadas; sin entrevistas/respuestas nuevas ni autoaprobación.
 - Inventario299 entradas/avisos incluidos; seis avisos y revisión binaria pendientes. SHA256, inputs dirty declarados y límites en BETA_02_*; no firma ni reproducibilidad bit a bit.
+
+
+## 2026-10-31 · [COL-040] [COL-042] Revisión y preparación comercial
+- PR65 beta y PR66 landing/borradores listas para revisión; no merge. CI MVP/Studio correctas en ambas. Estados57/58/60/62 review,59/61 blocked; ninguna tarea aprobada.
+- Landing independiente local HTTP200, vistas390/1280, comparador70% funcional, captura auténtica y derivadosCC0 con hashes; descarga pública pendiente. Sin despliegue/cobros. Borradores legal/privacidad/EULA/soporte, estrategia código público/marca/firma/pago sin activación. Conserva P0_COMERCIAL_ESPANA_UE y LOOK_MATCH_REQUIREMENTS integrados.
+- Notificación única Issue67, comentario bot6540038578 menciona jea27; recepción nueva no confirmada. Marcadores PR65/66 previos a ready evitaron avisos duplicados. Runs41176358165/41176358957 success. Reinstalación comprobada,8 archivos privados intactos; checkpoint ESTADO_AGENTE actualizado.
+
+- Sync final41176446357 success; JSON público42 tareas verificado (BETA_02_SYNC.json). CI66 en15d6f08: MVP41176457682/Studio41176457662/aviso41176457661 success. Advertencias Actions de migración Node20/Ubuntu26 observadas, sin fallos ni permisos nuevos.
+
+## 2026-10-31 · [COL-026] Acabado manual, auditoría de candidato y QA externa
+- PR65/66 auditadas abiertas con CI correcta; Issue67 sin nueva autorización. Rama independiente/Issue68, sin completar P3 ni P0 comercial.
+- Look manual: glow/difusión/fade, receta v2 compatible con v1 sin efectos, bypass/intensidades separadas, render/lotes/JSON y LUT solo color con aviso. Halation y análisis automático pendientes.
+-30 tests MVP/91 tracking y build TS/nativo OK. Smoke empaquetado: efectos, lote2, PNG byte-identical y feedback incluido. Foto CC0 de16MP:32.392s con PNG/RSS815.4MB, originales intactos. No benchmark de piel/usuarios.
+- Corregidas rutas nativas (155→0), selección incorrecta de hash por glob y desplazamiento de paneles. Inventario299/0 avisos ausentes; payload27 patrones proveedor/ejemplos aún sin clasificación, scope NSIS/condiciones Microsoft pendiente. No declarar ausencia universal de PII.
+- Setup0.3 limpio desde396a508, SHA256 ae47f44e6f9382810e20a7a98b0b46bf6d53411e7f1c8b0fb2e9c7acf595ac21,266203035 bytes. Upgrade local exit0/8 archivos conservados y arranque nativo. No VM limpia, firma ni release.
+- Preparados preflight, guía, cinco recorridos, feedback offline y bundle lossless de LUT. QA00 sintético descargado/separado; ningún participante contactado. Photoshop sin documento/editor verificable; no compatibilidad real afirmada. GO/NO-GO privado y venta separados.
+
+- Cierre beta2: feedback nativo con iframe (sin popup ni pérdida de sesión), migración GUI de presetsv1→v2 con glow/exportJSON verificada. Candidato limpio a452a5f,266211731 bytes, SHA256 3e3851ee4f3c67608d3802ad167572375b130eeafa57165d26379cd26797714f. Upgrade preserva8 archivos.
+-7-Zip portátil oficial autorizado: extracción segura del SFX como archivo, sin ejecutar instalador/MSI. NSIS176 entradas auditadas; WebView2 firma Microsoft válida; pluginTauri0.5.3 coincide SHA oficial. Diferencia nativo empaquetado3 bytes UNK→NSS validada contra fuenteTauri.27 patrones de rutas proveedor/ejemplo (2 genéricos/25 pendientes),0 perfiles locales/tokens/dev. Avisos NSIS/plugin preparados como acompañantes; licencias Microsoft/privacidad no autoaprobadas.
+- Premiere intentado: selector de suscripción; sin compra/prueba activada. Photoshop sin editor accesible. Importación externa pendiente. PR69 nueva, CI30MVP/Studio correctas en a452a5f, no merges; acción67 se reutiliza para revisión y recursos de QA.
