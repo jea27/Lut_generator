@@ -484,3 +484,25 @@ completo en LOOK_03_PATH_CLASSIFICATION.json. El scanner bruto conserva sus27
 hallazgos y no se ocultan ni alteran DLL; no son rutas del perfil local, secretos
 o datos de clientes. No constituye aprobación de COL040 ni prueba universal de
 privacidad. Siguen las puertas de Windows limpio y derechos/condiciones Microsoft.
+
+
+## Checkpoint independiente del dashboard · 31-10-2026
+
+Rama codex/COL-006-product-dashboard en worktree propio, relacionada con Issue19;
+la decisión P0 permanece bloqueada y las42 tareas originales intactas. No se
+modifica apps/ ni packages/. Reglas/contrato en DASHBOARD_PRODUCTO.md.
+Panel Color Studio con15 capacidades/8 entregables núcleo, ejes técnicos y
+humanos separados, puertas beta/comercial, PR/CI, versiones y acciones humanas.
+Snapshot GitHub real:8/8 alcance técnico acotado,0/8 humano,1/5 beta,0/4 venta;
+ninguna release publicada o descarga autorizada. No significa producto terminado.
+107 tests locales de seguimiento OK; suite de aplicación no tocada. QA navegador
+1280,390,320,430 y844 sin overflow; filtros y42 tareas conservadas comprobados,
+0 errores de consola. Capturas y PRODUCT_QA.json. No iPhone físico ni despliegue
+de esta rama. Se conserva Pages actual hasta integración humana.
+Siguiente: CI/PR de esta rama, revisar sin merge del agente; después de merge
+humano verificar workflows y JSON público. Un nuevo fallo conserva snapshot
+anterior y muestra antigüedad, nunca inventa éxito. Reanudar leyendo esta sección,
+Issue19/67, PR de dashboard y scripts/sync_product.py. Fuente de verdad y reglas
+de entrega permiten al agente actualizar capacidades en su PR sin que el usuario
+edite roadmap. Estabilización de app sigue separada en PR71; runtime/QA limpia
+requieren intervención de67. No aplicar approved ni release-approved:TAG.

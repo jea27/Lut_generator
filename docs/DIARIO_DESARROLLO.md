@@ -204,3 +204,17 @@ Hash del instalador beta2 recalculado sin variación. Solo cambia documentación
 de conciliación, no el runtime probado. Issue68 permanece en revisión, sin
 aceptación automática. Solicitud67 reutilizada para revisión de integración y
 recursos QA, evitando una nueva Issue/aviso para los mismos bloqueos.
+
+
+## 2026-10-31 · [COL-006] Dashboard real de producto
+
+Worktree independiente desde maincfb6d11; sin cambios en código de Color Studio
+ni estados/criterios de42 tareas. Colector público y contrato versionado separan
+15 capacidades/8 entregables, verificación técnica, aprobación humana y puertas
+de beta/venta. PR, CI, releases y artefactos se consultan automáticamente.
+Sin descargar/ejecutar artefactos, cuerpos de Issues o logs; metadatos permitidos
+y error de API falla cerrado. No permisos ampliados ni merges del agente.
+107 pruebas locales y QA real de navegador en5 tamaños: sin overflow,42 tareas
+visibles, filtros correctos y0 errores. Capturas versionadas; no iPhone físico
+ni despliegue en Pages antes de integración humana. Issue19 reutilizada, no
+se duplica decisión P0 ni se inventan porcentajes/aceptaciones.

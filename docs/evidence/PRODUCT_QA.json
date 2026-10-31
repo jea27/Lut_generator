@@ -1,0 +1,56 @@
+{
+  "scope": "Actual browser preview of dashboard worktree; not deployed Pages or a physical iPhone test",
+  "github_snapshot_at": "2026-10-31T09:11:45.265524Z",
+  "source_main_sha": "cfb6d11bb705ca5a6f313aad8bc177627a50cafd",
+  "feature_count": 15,
+  "historical_tasks_dom_count": 42,
+  "viewports": [
+    {
+      "width": 1280,
+      "height": 900,
+      "scroll_width": 1265
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scroll_width": 375
+    },
+    {
+      "width": 320,
+      "height": 740,
+      "scroll_width": 305
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "scroll_width": 415
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scroll_width": 829
+    }
+  ],
+  "filters_tested": {
+    "blocked": [
+      "adobe",
+      "resolve"
+    ],
+    "planned": [
+      "automatic-look",
+      "halation"
+    ],
+    "all": 15
+  },
+  "filter_button_min_height": 44,
+  "issue_links_dom": 29,
+  "pr_links_dom": 25,
+  "browser_console_errors": [],
+  "screenshots": {
+    "PRODUCT_DESKTOP.jpg": "164b146a9acf6e24148358d4b20b62349febba227a271696f9ac25a45d4d34b9",
+    "PRODUCT_MOBILE.jpg": "f73b41037071125d22e4bd4fcee3342ace5f1b4b395ea02b47f118416c70d073"
+  },
+  "agent_modified_application_code": false,
+  "published_to_pages": false,
+  "human_approval_inferred": false
+}

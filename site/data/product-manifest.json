@@ -1,0 +1,380 @@
+{
+  "schema_version": 1,
+  "product": "Color Studio",
+  "version_source": "apps/desktop/src-tauri/tauri.conf.json",
+  "approval_issue": 62,
+  "required_ci": [
+    "Validar MVP local",
+    "Compilar Color Studio"
+  ],
+  "features": [
+    {
+      "id": "color-match",
+      "title": "Color Match",
+      "group": "MVP",
+      "issue": 43,
+      "task": "COL-011",
+      "delivery_prs": [
+        52,
+        70
+      ],
+      "code_paths": [
+        "packages/colour_core/engine.py"
+      ],
+      "tests": [
+        "tests_mvp/test_engine.py"
+      ],
+      "evidence": [],
+      "acceptance": "Estadísticas Lab acotadas, intensidad y render mediante la misma LUT33³."
+    },
+    {
+      "id": "manual-look",
+      "title": "Look Match manual",
+      "group": "MVP",
+      "issue": 68,
+      "task": "COL-026",
+      "delivery_prs": [
+        70
+      ],
+      "code_paths": [
+        "packages/colour_core/look.py"
+      ],
+      "tests": [
+        "tests_mvp/test_look.py"
+      ],
+      "evidence": [
+        {
+          "path": "docs/evidence/LOOK_03_FROZEN_B2.json",
+          "field": "packaged_effects_png",
+          "equals": true
+        }
+      ],
+      "acceptance": "Glow, difusión y fade manuales; no inferencia automática fiel de referencia."
+    },
+    {
+      "id": "glow",
+      "title": "Glow en altas luces",
+      "group": "Componente",
+      "issue": 68,
+      "task": "COL-026",
+      "delivery_prs": [
+        70
+      ],
+      "code_paths": [
+        "packages/colour_core/look.py"
+      ],
+      "tests": [
+        "tests_mvp/test_look.py"
+      ],
+      "evidence": [],
+      "acceptance": "Componente de Look Match: luz lineal, radio relativo, bypass e intensidad."
+    },
+    {
+      "id": "diffusion",
+      "title": "Difusión",
+      "group": "Componente",
+      "issue": 68,
+      "task": "COL-026",
+      "delivery_prs": [
+        70
+      ],
+      "code_paths": [
+        "packages/colour_core/look.py"
+      ],
+      "tests": [
+        "tests_mvp/test_look.py"
+      ],
+      "evidence": [],
+      "acceptance": "Suavizado con alfa y halos entre tiles; forma parte de la receta, no LUT."
+    },
+    {
+      "id": "fade",
+      "title": "Fade",
+      "group": "Componente",
+      "issue": 68,
+      "task": "COL-026",
+      "delivery_prs": [
+        70
+      ],
+      "code_paths": [
+        "packages/colour_core/look.py"
+      ],
+      "tests": [
+        "tests_mvp/test_look.py"
+      ],
+      "evidence": [],
+      "acceptance": "Elevación de negros y compresión acotada, conservadas en receta completa."
+    },
+    {
+      "id": "presets",
+      "title": "Biblioteca de presets",
+      "group": "MVP",
+      "issue": 50,
+      "task": "COL-018",
+      "delivery_prs": [
+        65
+      ],
+      "code_paths": [
+        "apps/api/main.py"
+      ],
+      "tests": [
+        "tests_mvp/test_beta.py"
+      ],
+      "evidence": [],
+      "acceptance": "Guardar, aplicar, editar, agrupar y conservar presets locales."
+    },
+    {
+      "id": "batches",
+      "title": "Procesamiento por lotes",
+      "group": "MVP",
+      "issue": 58,
+      "task": "COL-037",
+      "delivery_prs": [
+        65
+      ],
+      "code_paths": [
+        "apps/api/jobs.py"
+      ],
+      "tests": [
+        "tests_mvp/test_beta.py"
+      ],
+      "evidence": [
+        {
+          "path": "docs/evidence/LOOK_03_FROZEN_B2.json",
+          "field": "batch_matches_single_png_byte_for_byte",
+          "equals": true
+        }
+      ],
+      "acceptance": "Lotes cancelables con outputs separados y recuperación interrupted."
+    },
+    {
+      "id": "lut-export",
+      "title": "Exportación LUT de color",
+      "group": "MVP",
+      "issue": 44,
+      "task": "COL-012",
+      "delivery_prs": [
+        52,
+        70
+      ],
+      "code_paths": [
+        "packages/colour_core/engine.py"
+      ],
+      "tests": [
+        "tests_mvp/test_engine.py"
+      ],
+      "evidence": [
+        {
+          "path": "docs/evidence/LOOK_03_FROZEN_B2.json",
+          "field": "cube_color_only",
+          "equals": true
+        }
+      ],
+      "acceptance": "LUT33³ sRGB global; no transporta glow, difusión, fade o adaptación local."
+    },
+    {
+      "id": "image-export",
+      "title": "Exportación PNG/JPG",
+      "group": "MVP",
+      "issue": 51,
+      "task": "COL-019",
+      "delivery_prs": [
+        53,
+        70
+      ],
+      "code_paths": [
+        "packages/colour_core/image_io.py"
+      ],
+      "tests": [
+        "tests_mvp/test_api.py"
+      ],
+      "evidence": [
+        {
+          "path": "docs/evidence/LOOK_03_FROZEN_B2.json",
+          "field": "packaged_effects_png",
+          "equals": true
+        }
+      ],
+      "acceptance": "Resolución original, ICC sRGB, originales intactos y acabado completo."
+    },
+    {
+      "id": "recipe",
+      "title": "Receta JSON versionada",
+      "group": "MVP",
+      "issue": 50,
+      "task": "COL-018",
+      "delivery_prs": [
+        70
+      ],
+      "code_paths": [
+        "packages/colour_core/engine.py"
+      ],
+      "tests": [
+        "tests_mvp/test_look.py"
+      ],
+      "evidence": [
+        {
+          "path": "docs/evidence/LOOK_03_FROZEN_B2.json",
+          "field": "json_preserves_look",
+          "equals": true
+        }
+      ],
+      "acceptance": "Receta v2 con acabado; compatible con v1 sin efectos."
+    },
+    {
+      "id": "windows",
+      "title": "Aplicación Windows",
+      "group": "MVP",
+      "issue": 57,
+      "task": "COL-036",
+      "delivery_prs": [
+        65,
+        70
+      ],
+      "code_paths": [
+        "apps/desktop/src-tauri/tauri.conf.json"
+      ],
+      "tests": [
+        "tests_mvp/test_beta.py"
+      ],
+      "evidence": [
+        {
+          "path": "docs/evidence/LOOK_03_INSTALL_B2.json",
+          "field": "exit_code",
+          "equals": 0
+        }
+      ],
+      "acceptance": "Tauri/NSIS y sidecar. Verificación local; Windows limpio sigue pendiente."
+    },
+    {
+      "id": "adobe",
+      "title": "Compatibilidad Photoshop / Premiere",
+      "group": "Integración",
+      "issue": 59,
+      "task": "COL-038",
+      "delivery_prs": [],
+      "code_paths": [],
+      "tests": [],
+      "evidence": [],
+      "acceptance": "Requiere importación y comparación real en editores activados y dominio sRGB."
+    },
+    {
+      "id": "resolve",
+      "title": "Compatibilidad DaVinci Resolve",
+      "group": "Integración",
+      "issue": 59,
+      "task": "COL-038",
+      "delivery_prs": [],
+      "code_paths": [],
+      "tests": [],
+      "evidence": [],
+      "acceptance": "Requiere prueba real de LUT, interpolación, niveles y espacio de color."
+    },
+    {
+      "id": "automatic-look",
+      "title": "Detección automática del acabado",
+      "group": "Futuro",
+      "issue": 68,
+      "task": "COL-026",
+      "delivery_prs": [],
+      "code_paths": [],
+      "tests": [],
+      "evidence": [],
+      "acceptance": "Inferir parámetros desde referencia, incertidumbre y revisión visual; posterior a beta."
+    },
+    {
+      "id": "halation",
+      "title": "Halation",
+      "group": "Futuro",
+      "issue": 68,
+      "task": "COL-026",
+      "delivery_prs": [],
+      "code_paths": [],
+      "tests": [],
+      "evidence": [],
+      "acceptance": "Efecto espacial pendiente, independiente de LUT y controlable; posterior a beta."
+    }
+  ],
+  "metrics": {
+    "technical": [
+      "color-match",
+      "manual-look",
+      "presets",
+      "batches",
+      "lut-export",
+      "image-export",
+      "recipe",
+      "windows"
+    ],
+    "human": [
+      "color-match",
+      "manual-look",
+      "presets",
+      "batches",
+      "lut-export",
+      "image-export",
+      "recipe",
+      "windows"
+    ]
+  },
+  "readiness": {
+    "beta": [
+      {
+        "id": "candidate",
+        "title": "Candidato versionado y hash verificable",
+        "kind": "candidate"
+      },
+      {
+        "id": "clean-windows",
+        "title": "Instalación en Windows limpio",
+        "kind": "evidence",
+        "path": "docs/evidence/LOOK_03_INSTALL_B2.json",
+        "field": "clean_windows",
+        "equals": true
+      },
+      {
+        "id": "licenses",
+        "title": "Derechos de redistribución y privacidad",
+        "kind": "approval",
+        "issue": 60
+      },
+      {
+        "id": "pilot",
+        "title": "Piloto externo y soporte aceptados",
+        "kind": "approval",
+        "issue": 61
+      },
+      {
+        "id": "distribution",
+        "title": "Autorización expresa de entrega",
+        "kind": "release"
+      }
+    ],
+    "commercial": [
+      {
+        "id": "p0",
+        "title": "Decisión humana P0",
+        "kind": "approval",
+        "issue": 19
+      },
+      {
+        "id": "licenses",
+        "title": "Auditoría legal aceptada",
+        "kind": "approval",
+        "issue": 60
+      },
+      {
+        "id": "beta",
+        "title": "Beta aceptada por usuarios",
+        "kind": "approval",
+        "issue": 61
+      },
+      {
+        "id": "launch",
+        "title": "Lanzamiento y condiciones",
+        "kind": "approval",
+        "issue": 62
+      }
+    ]
+  }
+}
