@@ -1,3 +1,5 @@
+Estado de estabilización: ver ESTABILIZACION_03.md y GO_NO_GO_03.md. Microsoft WebView2 tiene diagnósticos/actualizaciones propios; «sin telemetría» se limita al código de LumaForge. El setup beta2 existente todavía contiene el texto anterior. No hay candidato nuevo ni autorización externa.
+
 > Vigente:0.3.0-beta.2 desde a452a5f (clean),266211731 bytes.
 > SHA256 3e3851ee4f3c67608d3802ad167572375b130eeafa57165d26379cd26797714f.
 > Corrige feedback nativo y migración UI de presets v1. NOTAS beta1 conservadas
@@ -75,7 +77,7 @@ también requieren sesión y origen. El bootstrap de sesión solo sirve el mismo
 origen; la UI puede renovarla tras reinicio. No se envía el secreto por stdout,
 URLs o archivos. Defensa frente a páginas web ajenas, **no** aislamiento contra
 otros procesos del mismo usuario, malware o extensiones con acceso privilegiado.
-El HTTP loopback no cifra entre procesos locales. No hay cuentas, telemetría,
+El HTTP loopback no cifra entre procesos locales. No hay cuentas, telemetría propia,
 actualizador automático, pagos ni APIs externas de imagen.
 
 No hay actualización silenciosa/rollback transaccional: revisión e instalación
