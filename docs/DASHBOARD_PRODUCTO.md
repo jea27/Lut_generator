@@ -28,8 +28,10 @@ pipeline con datos reales, nunca prueba de despliegue de esta PR en Pages.
   evidencia. Es verificación de alcance declarado; no calidad estética total.
 - **Para revisar:** entrega implementada sin aceptación explícita. Borrador
   nuevo o status:in-progress muestra trabajo activo sin borrar baseline previo.
-- **Aprobado:** Issue cerrada con approved, sin blocked/needs-human y entrega
-  integrada requerida. CI/merge por sí solos nunca otorgan aprobación.
+- **Aprobado (capacidad):** comentario autenticado de jea27 y recibo Actions para
+  ese ID y huella de código. Ni cerrar una Issue compartida ni su etiqueta approved
+  aprueban capacidades. Las42 tareas mantienen sus reglas históricas de aceptación.
+  Ver REVISIONES_HUMANAS.md.
 - **Bloqueado:** etiquetas reales de la Issue tienen precedencia; los ejes
   implementado/verificado siguen visibles. Futuro permanece pendiente aunque
   comparta Issue con el acabado manual aceptado.

@@ -127,7 +127,7 @@ def validate(manifest, root):
     path(root,manifest['version_source'])
 
 
-def derive(manifest, root, repo, issues, pulls, runs, main_sha, releases, artifacts, observed_at):
+def derive(manifest, root, repo, issues, pulls, runs, main_sha, releases, artifacts, observed_at, reviews=None):
     validate(manifest, root)
     if any(type(x.get('number')) is not int or x['number']<=0 for x in issues+pulls): raise ValueError('Invalid issue/PR number')
     issue_by = {x['number']:x for x in issues if 'pull_request' not in x}
@@ -148,7 +148,8 @@ def derive(manifest, root, repo, issues, pulls, runs, main_sha, releases, artifa
         implemented = bool(f['code_paths'] and merged and all(path(root,p).is_file() for p in f['code_paths']))
         proofs = [evidence(root,e) for e in f['evidence']]
         verified = (None if any(v is None for v in proofs) else ci_pass and all(v is True for v in proofs) and bool(f['tests']) and all(path(root,p).is_file() for p in f['tests'])) if implemented else False
-        accepted = None if issue is None else approved(issue) and merged and f['group'] not in ('Futuro','Integración')
+        review=(reviews or {}).get(f['id'],{'state':'pending','context':None,'history':[],'latest':None})
+        accepted = bool(implemented and review['state']=='approved')
         state = 'planned'
         if implemented: state = 'implemented'
         if verified: state = 'verified'
@@ -158,13 +159,17 @@ def derive(manifest, root, repo, issues, pulls, runs, main_sha, releases, artifa
         if not implemented and 'status:in-progress' in labels(issue) and f['group']!='Futuro': state = 'progress'
         if accepted: state = 'approved'
         if blocked(issue) and f['group']!='Futuro': state = 'blocked'
+        if implemented and review['state'] in ('changes_requested','needs_review'):state=review['state']
+        if accepted:state='approved'
         links = [{'label':'Prueba','url':f'https://github.com/{repo}/blob/main/{p}'} for p in f['tests']]
         links += [{'label':'Evidencia','url':f'https://github.com/{repo}/blob/main/{e["path"]}'} for e in f['evidence']]
         features.append({'id':f['id'],'title':f['title'],'group':f['group'],'task':f['task'],'acceptance':f['acceptance'],
                          'status':state,'implemented':implemented,'technically_verified':verified,'human_approved':accepted,
                          'blocked':blocked(issue) and f['group']!='Futuro','issue_url':link((issue or {}).get('html_url'),repo),
                          'pr_url':link((latest or (baseline[-1] if baseline else {})).get('html_url'),repo),
-                         'evidence':links,'verification_scope':'Tests de main y evidencia versionada; no aceptación estética ni Windows limpio'})
+                         'evidence':links,'review':review,'review_steps':f.get('review',{}).get('steps',[]),
+                         'checklist':f.get('review',{}).get('checklist',[]),
+                         'verification_scope':'Tests de main y evidencia versionada; no aceptación estética ni Windows limpio'})
     # Versioned artifact allowlist. Never copy filenames/local paths or arbitrary fields.
     builds = []
     for p in sorted((root/'docs/evidence').glob('*ARTIFACT*.json')):
@@ -250,8 +255,20 @@ def main():
     artifacts = api.get('/actions/artifacts',{'per_page':100})['artifacts']
     sha = api.get('/commits/main')['sha']
     if not re.fullmatch('[a-f0-9]{40}',sha): raise ValueError('Invalid main revision')
-    result = derive(json.loads((ROOT/'site/data/product-manifest.json').read_bytes()),ROOT,repo,issues,pulls,runs+main_runs+candidate_runs,sha,releases,artifacts,
-                    datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00','Z'))
+    manifest=json.loads((ROOT/'site/data/product-manifest.json').read_bytes())
+    try:from .human_reviews import catalog,projection
+    except ImportError:from human_reviews import catalog,projection
+    comments={n:api.pages(f'/issues/{n}/comments') for n in sorted({f['issue'] for f in catalog(manifest)})}
+    reviews={f['id']:projection(comments[f['issue']],f['issue'],f,manifest,ROOT) for f in catalog(manifest)}
+    result = derive(manifest,ROOT,repo,issues,pulls,runs+main_runs+candidate_runs,sha,releases,artifacts,
+                    datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00','Z'),reviews)
+    demo=manifest['review_demo']
+    import subprocess
+    result['reviews_active']=subprocess.run(['git','cat-file','-e',sha+':.github/workflows/human-review.yml'],cwd=ROOT,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL).returncode==0
+    result['review_demo']={**{k:demo[k] for k in ('id','title','task','acceptance','demo')},'implemented':True,
+                          'human_approved':reviews[demo['id']]['state']=='approved','technically_verified':True,
+                          'review':reviews[demo['id']],'review_steps':demo['review']['steps'],'checklist':demo['review']['checklist'],
+                          'issue_url':f'https://github.com/{repo}/issues/{demo["issue"]}','evidence':[], 'pr_url':None}
     encoded = json.dumps(result,ensure_ascii=False,indent=2)+'\n'
     out = ROOT/'site/data/product.json'
     temp = out.with_suffix('.json.tmp'); temp.write_text(encoded,encoding='utf-8'); temp.replace(out)

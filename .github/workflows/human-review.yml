@@ -1,0 +1,32 @@
+name: Validar revisión humana
+on:
+  issue_comment:
+    types: [created, edited, deleted]
+permissions:
+  contents: read
+jobs:
+  review:
+    if: >-
+      ${{ !github.event.issue.pull_request &&
+          github.event.comment.user.login == 'jea27' &&
+          github.event.comment.user.id == 45896918 }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    concurrency:
+      group: human-review-${{ github.event.issue.number }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validar actor, versión y checklist; registrar una sola vez
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/human_reviews.py

@@ -43,7 +43,7 @@ class ProductTests(unittest.TestCase):
 
     def test_merge_and_ci_are_not_human_approval_and_blocked_overrides(self):
         i=self.issue(43); i.update(state='closed',labels=[{'name':'approved'}])
-        self.assertEqual(self.derive()['metrics']['human']['passed'],1)
+        self.assertEqual(self.derive()['metrics']['human']['passed'],0)
         i['labels'].append({'name':'blocked'})
         f=next(f for f in self.derive()['features'] if f['id']=='color-match')
         self.assertTrue(f['implemented']); self.assertTrue(f['technically_verified'])
@@ -60,6 +60,15 @@ class ProductTests(unittest.TestCase):
         for f in self.derive()['features']:
             if f['group']=='Futuro':
                 self.assertFalse(f['implemented']);self.assertFalse(f['human_approved']);self.assertEqual(f['status'],'planned')
+
+    def test_capability_receipts_are_individual_and_do_not_approve_parent(self):
+        decisions={'glow':{'state':'approved'},'diffusion':{'state':'changes_requested'}}
+        result=product.derive(self.manifest,ROOT,REPO,self.issues,self.prs,self.runs,'a'*40,[],[],'2026-10-31T00:00:00Z',decisions)
+        by={f['id']:f for f in result['features']}
+        self.assertEqual(by['glow']['status'],'approved');self.assertTrue(by['glow']['human_approved'])
+        self.assertEqual(by['diffusion']['status'],'changes_requested');self.assertFalse(by['diffusion']['human_approved'])
+        self.assertFalse(by['fade']['human_approved']);self.assertFalse(by['manual-look']['human_approved'])
+        self.assertEqual(result['metrics']['human']['passed'],0)
 
     def test_missing_ci_and_wrong_head_cannot_verify(self):
         self.runs[0]['head_sha']='b'*40
@@ -166,7 +175,7 @@ class ProductTests(unittest.TestCase):
         d=self.derive();d['features'][0]['title']='<img src=x onerror=alert(1)>'
         d['features'][0]['issue_url']='javascript:alert(1)'
         js='global.window={INITIAL_PRODUCT:'+json.dumps(d)+'};global.document={querySelectorAll:()=>[]};global.location={protocol:"file:"};'+(ROOT/'site/product.js').read_text()+';process.stdout.write(window.LumaForgeProduct.render());'
-        rendered=subprocess.check_output(['node','-e',js],encoding='utf-8')
+        rendered=subprocess.run(['node'],input=js,encoding='utf-8',capture_output=True,check=True).stdout
         self.assertIn('&lt;img',rendered);self.assertNotIn('<img src=x',rendered)
         self.assertNotIn('href="javascript:',rendered);self.assertNotIn('Descarga autorizada',rendered)
         self.assertIn('Ninguna release publicada',rendered)
@@ -175,9 +184,9 @@ class ProductTests(unittest.TestCase):
     def test_render_missing_data_and_refresh_failure_keep_last_snapshot(self):
         source=(ROOT/'site/product.js').read_text()
         js='global.window={};global.document={querySelectorAll:()=>[]};global.location={protocol:"https:"};global.fetch=async()=>({ok:true,json:async()=>({schema_version:1,features:[],metrics:{}})});'+source+';window.LumaForgeProduct.refresh(()=>process.stdout.write(window.LumaForgeProduct.render()));'
-        self.assertIn('Sin datos',subprocess.check_output(['node','-e',js],encoding='utf-8'))
+        self.assertIn('Sin datos',subprocess.run(['node'],input=js,encoding='utf-8',capture_output=True,check=True).stdout)
         js='global.window={INITIAL_PRODUCT:'+json.dumps(self.derive())+'};global.document={querySelectorAll:()=>[]};global.location={protocol:"https:"};global.fetch=async()=>{throw Error("offline")};'+source+';window.LumaForgeProduct.refresh(()=>process.stdout.write(window.LumaForgeProduct.render()));'
-        result=subprocess.check_output(['node','-e',js],encoding='utf-8')
+        result=subprocess.run(['node'],input=js,encoding='utf-8',capture_output=True,check=True).stdout
         self.assertIn('Color Match',result);self.assertIn('Snapshot anterior',result)
 
 

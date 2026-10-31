@@ -55,6 +55,17 @@ actualizar el dashboard. CI/merge no aprueban producto ni distribución. Reglas
 del colector y etiqueta específica de release en docs/DASHBOARD_PRODUCTO.md.
 No aplicar approved o release-approved:TAG por el agente.
 
+## Aceptación individual de capacidades
+
+Las capacidades usan comentarios autenticados y recibos por feature/revision,
+no etiquetas o cierre de Issue compartida. Ver docs/REVISIONES_HUMANAS.md.
+Al reanudar, consultar Mis revisiones y agent-action-required: arreglar solo
+capacidades solicitadas, enlazar evidencia y pedir nueva prueba de esa versión.
+No emitir comentarios approve sobre capacidades reales con la cuenta jea27.
+La demo review-demo/Issue77 es la única excepción autorizada para probar el
+procesador y nunca cuenta en producto, entrevistas o beta. No confundir una
+cola persistente de GitHub con un agente activo automáticamente.
+
 ## Autorización explícita MVP v0.1 (2026-10-30)
 
 ### Ampliación beta Windows (2026-10-30)

@@ -3,8 +3,8 @@ window.INITIAL_PRODUCT = {
   "product": "Color Studio",
   "sync": {
     "status": "complete",
-    "observed_at": "2026-10-31T09:30:32.388771Z",
-    "main_sha": "5b6a910cfa5f67e060a00337d3db39b2404d81c7"
+    "observed_at": "2026-10-31T10:06:42.993325Z",
+    "main_sha": "448a1015c1f0b424a9ed85a50a52a542d7e03acd"
   },
   "source_version": "0.3.0-beta.2",
   "candidate": {
@@ -70,6 +70,34 @@ window.INITIAL_PRODUCT = {
           "url": "https://github.com/jea27/Lut_generator/blob/main/tests_mvp/test_engine.py"
         }
       ],
+      "review": {
+        "state": "pending",
+        "context": {
+          "commit": "015fc895f56e684daff7527290123e2233a7d30c",
+          "version": "0.3.0-beta.2",
+          "revision": "2b3706b7d54d421506ca1a991605f21f17552a6b9cfe6915c3aeccce2d8aea06"
+        },
+        "history": [],
+        "latest": null
+      },
+      "review_steps": [
+        "Abrir demo local o dos fotos propias autorizadas y ejecutar Analizar y transferir.",
+        "Mover intensidad de color a0 y100: comparar la misma foto al100% y comprobar tonos/extremos."
+      ],
+      "checklist": [
+        {
+          "id": "behavior",
+          "label": "El comportamiento descrito funciona en mi prueba."
+        },
+        {
+          "id": "quality",
+          "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+        },
+        {
+          "id": "evidence",
+          "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+        }
+      ],
       "verification_scope": "Tests de main y evidencia versionada; no aceptación estética ni Windows limpio"
     },
     {
@@ -95,6 +123,34 @@ window.INITIAL_PRODUCT = {
           "url": "https://github.com/jea27/Lut_generator/blob/main/docs/evidence/LOOK_03_FROZEN_B2.json"
         }
       ],
+      "review": {
+        "state": "pending",
+        "context": {
+          "commit": "015fc895f56e684daff7527290123e2233a7d30c",
+          "version": "0.3.0-beta.2",
+          "revision": "9806827f40df0204cb6ba22dd050e1b5182e0e9ba55882ed2115d22a1d67c4e4"
+        },
+        "history": [],
+        "latest": null
+      },
+      "review_steps": [
+        "Aplicar el acabado con y sin su interruptor, variando intensidad.",
+        "Guardar receta, volver a cargarla y exportar PNG; comprobar que LUT solo incluye color."
+      ],
+      "checklist": [
+        {
+          "id": "behavior",
+          "label": "El comportamiento descrito funciona en mi prueba."
+        },
+        {
+          "id": "quality",
+          "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+        },
+        {
+          "id": "evidence",
+          "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+        }
+      ],
       "verification_scope": "Tests de main y evidencia versionada; no aceptación estética ni Windows limpio"
     },
     {
@@ -114,6 +170,34 @@ window.INITIAL_PRODUCT = {
         {
           "label": "Prueba",
           "url": "https://github.com/jea27/Lut_generator/blob/main/tests_mvp/test_look.py"
+        }
+      ],
+      "review": {
+        "state": "pending",
+        "context": {
+          "commit": "015fc895f56e684daff7527290123e2233a7d30c",
+          "version": "0.3.0-beta.2",
+          "revision": "8950eceb49fcd4b0145d4c0597c80abb5a9d308285ee3727114ec77d2908d38c"
+        },
+        "history": [],
+        "latest": null
+      },
+      "review_steps": [
+        "Usar foto con altas luces. Activar solo Glow; Difusión y Fade a0.",
+        "Comparar radio e intensidad, revisar halos/bordes y desactivar para recuperar la base."
+      ],
+      "checklist": [
+        {
+          "id": "behavior",
+          "label": "El comportamiento descrito funciona en mi prueba."
+        },
+        {
+          "id": "quality",
+          "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+        },
+        {
+          "id": "evidence",
+          "label": "He comprobado versión, evidencias y limitaciones de la entrega."
         }
       ],
       "verification_scope": "Tests de main y evidencia versionada; no aceptación estética ni Windows limpio"
@@ -137,6 +221,34 @@ window.INITIAL_PRODUCT = {
           "url": "https://github.com/jea27/Lut_generator/blob/main/tests_mvp/test_look.py"
         }
       ],
+      "review": {
+        "state": "pending",
+        "context": {
+          "commit": "015fc895f56e684daff7527290123e2233a7d30c",
+          "version": "0.3.0-beta.2",
+          "revision": "a9e9a11f8a999c4443a98e4695685e63f497c5b3ea9ffad1005fecc6f88cf682"
+        },
+        "history": [],
+        "latest": null
+      },
+      "review_steps": [
+        "Activar solo Difusión sobre foto con detalle fino; Glow y Fade a0.",
+        "Examinar bordes al100%, variar intensidad/radio y comprobar bypass."
+      ],
+      "checklist": [
+        {
+          "id": "behavior",
+          "label": "El comportamiento descrito funciona en mi prueba."
+        },
+        {
+          "id": "quality",
+          "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+        },
+        {
+          "id": "evidence",
+          "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+        }
+      ],
       "verification_scope": "Tests de main y evidencia versionada; no aceptación estética ni Windows limpio"
     },
     {
@@ -158,6 +270,34 @@ window.INITIAL_PRODUCT = {
           "url": "https://github.com/jea27/Lut_generator/blob/main/tests_mvp/test_look.py"
         }
       ],
+      "review": {
+        "state": "pending",
+        "context": {
+          "commit": "015fc895f56e684daff7527290123e2233a7d30c",
+          "version": "0.3.0-beta.2",
+          "revision": "09054ba6a6d7677255182ed2cd65c6d2bf5244e73221ff00d8554a3e28165d03"
+        },
+        "history": [],
+        "latest": null
+      },
+      "review_steps": [
+        "Activar solo Fade con sombras y luces visibles.",
+        "Comprobar elevación gradual de negros, ausencia de saltos y bypass."
+      ],
+      "checklist": [
+        {
+          "id": "behavior",
+          "label": "El comportamiento descrito funciona en mi prueba."
+        },
+        {
+          "id": "quality",
+          "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+        },
+        {
+          "id": "evidence",
+          "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+        }
+      ],
       "verification_scope": "Tests de main y evidencia versionada; no aceptación estética ni Windows limpio"
     },
     {
@@ -177,6 +317,34 @@ window.INITIAL_PRODUCT = {
         {
           "label": "Prueba",
           "url": "https://github.com/jea27/Lut_generator/blob/main/tests_mvp/test_beta.py"
+        }
+      ],
+      "review": {
+        "state": "pending",
+        "context": {
+          "commit": "015fc895f56e684daff7527290123e2233a7d30c",
+          "version": "0.3.0-beta.2",
+          "revision": "ae5da8f7c9de4976022e88669f0b4641e6ae5540623858fb9229bdd0614ac8a9"
+        },
+        "history": [],
+        "latest": null
+      },
+      "review_steps": [
+        "Guardar un preset de prueba, renombrar y mover de grupo.",
+        "Cerrar/abrir la app y aplicarlo de nuevo; eliminar únicamente el preset de ensayo."
+      ],
+      "checklist": [
+        {
+          "id": "behavior",
+          "label": "El comportamiento descrito funciona en mi prueba."
+        },
+        {
+          "id": "quality",
+          "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+        },
+        {
+          "id": "evidence",
+          "label": "He comprobado versión, evidencias y limitaciones de la entrega."
         }
       ],
       "verification_scope": "Tests de main y evidencia versionada; no aceptación estética ni Windows limpio"
@@ -204,6 +372,34 @@ window.INITIAL_PRODUCT = {
           "url": "https://github.com/jea27/Lut_generator/blob/main/docs/evidence/LOOK_03_FROZEN_B2.json"
         }
       ],
+      "review": {
+        "state": "pending",
+        "context": {
+          "commit": "015fc895f56e684daff7527290123e2233a7d30c",
+          "version": "0.3.0-beta.2",
+          "revision": "a617db0f24655b6f546d7e9bf53bf989d3bdaeb8aa3b63dfc1b412f21e0e3b15"
+        },
+        "history": [],
+        "latest": null
+      },
+      "review_steps": [
+        "Con dos copias autorizadas, aplicar una receta al lote y exportar.",
+        "Comparar salida individual, cancelar otro ensayo y comprobar originales intactos."
+      ],
+      "checklist": [
+        {
+          "id": "behavior",
+          "label": "El comportamiento descrito funciona en mi prueba."
+        },
+        {
+          "id": "quality",
+          "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+        },
+        {
+          "id": "evidence",
+          "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+        }
+      ],
       "verification_scope": "Tests de main y evidencia versionada; no aceptación estética ni Windows limpio"
     },
     {
@@ -227,6 +423,34 @@ window.INITIAL_PRODUCT = {
         {
           "label": "Evidencia",
           "url": "https://github.com/jea27/Lut_generator/blob/main/docs/evidence/LOOK_03_FROZEN_B2.json"
+        }
+      ],
+      "review": {
+        "state": "pending",
+        "context": {
+          "commit": "015fc895f56e684daff7527290123e2233a7d30c",
+          "version": "0.3.0-beta.2",
+          "revision": "6eb9baa80448a574f05fc4aa51655c59d2ac6da230ba3ae51b4fbf40d9cb7894"
+        },
+        "history": [],
+        "latest": null
+      },
+      "review_steps": [
+        "Exportar .cube y comprobar el aviso de solo color.",
+        "Comparar con render de color, sin esperar glow/difusión/fade dentro de LUT."
+      ],
+      "checklist": [
+        {
+          "id": "behavior",
+          "label": "El comportamiento descrito funciona en mi prueba."
+        },
+        {
+          "id": "quality",
+          "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+        },
+        {
+          "id": "evidence",
+          "label": "He comprobado versión, evidencias y limitaciones de la entrega."
         }
       ],
       "verification_scope": "Tests de main y evidencia versionada; no aceptación estética ni Windows limpio"
@@ -254,6 +478,34 @@ window.INITIAL_PRODUCT = {
           "url": "https://github.com/jea27/Lut_generator/blob/main/docs/evidence/LOOK_03_FROZEN_B2.json"
         }
       ],
+      "review": {
+        "state": "pending",
+        "context": {
+          "commit": "015fc895f56e684daff7527290123e2233a7d30c",
+          "version": "0.3.0-beta.2",
+          "revision": "1ebe1f3fbe91ae0d20589afee93342719dd164e5a9191add14546110d94b1fa5"
+        },
+        "history": [],
+        "latest": null
+      },
+      "review_steps": [
+        "Exportar PNG/JPG desde foto autorizada y revisar dimensiones y perfil sRGB.",
+        "Comparar al100% con la vista, preservación de originales y acabado."
+      ],
+      "checklist": [
+        {
+          "id": "behavior",
+          "label": "El comportamiento descrito funciona en mi prueba."
+        },
+        {
+          "id": "quality",
+          "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+        },
+        {
+          "id": "evidence",
+          "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+        }
+      ],
       "verification_scope": "Tests de main y evidencia versionada; no aceptación estética ni Windows limpio"
     },
     {
@@ -277,6 +529,34 @@ window.INITIAL_PRODUCT = {
         {
           "label": "Evidencia",
           "url": "https://github.com/jea27/Lut_generator/blob/main/docs/evidence/LOOK_03_FROZEN_B2.json"
+        }
+      ],
+      "review": {
+        "state": "pending",
+        "context": {
+          "commit": "015fc895f56e684daff7527290123e2233a7d30c",
+          "version": "0.3.0-beta.2",
+          "revision": "75cdb0a1f03e16d03882c393f086dc6f146d18506ebf8f9eb2a22792f0d984e6"
+        },
+        "history": [],
+        "latest": null
+      },
+      "review_steps": [
+        "Exportar receta con efectos, cargarla y comparar los controles/resultados.",
+        "Aplicar presetv1, activar acabado y exportar JSONv2 conservando el color."
+      ],
+      "checklist": [
+        {
+          "id": "behavior",
+          "label": "El comportamiento descrito funciona en mi prueba."
+        },
+        {
+          "id": "quality",
+          "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+        },
+        {
+          "id": "evidence",
+          "label": "He comprobado versión, evidencias y limitaciones de la entrega."
         }
       ],
       "verification_scope": "Tests de main y evidencia versionada; no aceptación estética ni Windows limpio"
@@ -304,6 +584,34 @@ window.INITIAL_PRODUCT = {
           "url": "https://github.com/jea27/Lut_generator/blob/main/docs/evidence/LOOK_03_INSTALL_B2.json"
         }
       ],
+      "review": {
+        "state": "pending",
+        "context": {
+          "commit": "015fc895f56e684daff7527290123e2233a7d30c",
+          "version": "0.3.0-beta.2",
+          "revision": "06d10e0663b864bd772c4412e8ccd368d6813204265fe0bd3457d23dab09b2e5"
+        },
+        "history": [],
+        "latest": null
+      },
+      "review_steps": [
+        "Ejecutar protocolo de QA en el equipo de prueba autorizado.",
+        "Comprobar instalación, arranque, cierre, presets y actualización sin perder datos; declarar entorno probado."
+      ],
+      "checklist": [
+        {
+          "id": "behavior",
+          "label": "El comportamiento descrito funciona en mi prueba."
+        },
+        {
+          "id": "quality",
+          "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+        },
+        {
+          "id": "evidence",
+          "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+        }
+      ],
       "verification_scope": "Tests de main y evidencia versionada; no aceptación estética ni Windows limpio"
     },
     {
@@ -320,6 +628,29 @@ window.INITIAL_PRODUCT = {
       "issue_url": "https://github.com/jea27/Lut_generator/issues/59",
       "pr_url": null,
       "evidence": [],
+      "review": {
+        "state": "pending",
+        "context": null,
+        "history": [],
+        "latest": null
+      },
+      "review_steps": [
+        "Esta capacidad todavía no tiene una entrega revisable."
+      ],
+      "checklist": [
+        {
+          "id": "behavior",
+          "label": "El comportamiento descrito funciona en mi prueba."
+        },
+        {
+          "id": "quality",
+          "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+        },
+        {
+          "id": "evidence",
+          "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+        }
+      ],
       "verification_scope": "Tests de main y evidencia versionada; no aceptación estética ni Windows limpio"
     },
     {
@@ -336,6 +667,29 @@ window.INITIAL_PRODUCT = {
       "issue_url": "https://github.com/jea27/Lut_generator/issues/59",
       "pr_url": null,
       "evidence": [],
+      "review": {
+        "state": "pending",
+        "context": null,
+        "history": [],
+        "latest": null
+      },
+      "review_steps": [
+        "Esta capacidad todavía no tiene una entrega revisable."
+      ],
+      "checklist": [
+        {
+          "id": "behavior",
+          "label": "El comportamiento descrito funciona en mi prueba."
+        },
+        {
+          "id": "quality",
+          "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+        },
+        {
+          "id": "evidence",
+          "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+        }
+      ],
       "verification_scope": "Tests de main y evidencia versionada; no aceptación estética ni Windows limpio"
     },
     {
@@ -352,6 +706,29 @@ window.INITIAL_PRODUCT = {
       "issue_url": "https://github.com/jea27/Lut_generator/issues/68",
       "pr_url": "https://github.com/jea27/Lut_generator/pull/70",
       "evidence": [],
+      "review": {
+        "state": "pending",
+        "context": null,
+        "history": [],
+        "latest": null
+      },
+      "review_steps": [
+        "Esta capacidad todavía no tiene una entrega revisable."
+      ],
+      "checklist": [
+        {
+          "id": "behavior",
+          "label": "El comportamiento descrito funciona en mi prueba."
+        },
+        {
+          "id": "quality",
+          "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+        },
+        {
+          "id": "evidence",
+          "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+        }
+      ],
       "verification_scope": "Tests de main y evidencia versionada; no aceptación estética ni Windows limpio"
     },
     {
@@ -368,6 +745,29 @@ window.INITIAL_PRODUCT = {
       "issue_url": "https://github.com/jea27/Lut_generator/issues/68",
       "pr_url": "https://github.com/jea27/Lut_generator/pull/70",
       "evidence": [],
+      "review": {
+        "state": "pending",
+        "context": null,
+        "history": [],
+        "latest": null
+      },
+      "review_steps": [
+        "Esta capacidad todavía no tiene una entrega revisable."
+      ],
+      "checklist": [
+        {
+          "id": "behavior",
+          "label": "El comportamiento descrito funciona en mi prueba."
+        },
+        {
+          "id": "quality",
+          "label": "He comparado el resultado y no encuentro un fallo bloqueante en este alcance."
+        },
+        {
+          "id": "evidence",
+          "label": "He comprobado versión, evidencias y limitaciones de la entrega."
+        }
+      ],
       "verification_scope": "Tests de main y evidencia versionada; no aceptación estética ni Windows limpio"
     }
   ],
@@ -465,12 +865,28 @@ window.INITIAL_PRODUCT = {
   },
   "pull_requests": [
     {
+      "number": 79,
+      "title": "[COL-044] Revisiones humanas individuales desde el dashboard",
+      "state": "draft",
+      "url": "https://github.com/jea27/Lut_generator/pull/79",
+      "base": "main",
+      "updated_at": "2026-10-31T10:00:53Z"
+    },
+    {
+      "number": 70,
+      "title": "[COL-026] Integrar beta2, Look Match y auditoría pendientes en main",
+      "state": "merged",
+      "url": "https://github.com/jea27/Lut_generator/pull/70",
+      "base": "main",
+      "updated_at": "2026-10-31T09:38:10Z"
+    },
+    {
       "number": 74,
       "title": "[COL-043] Centro de control automático del progreso real de Color Studio",
-      "state": "draft",
+      "state": "merged",
       "url": "https://github.com/jea27/Lut_generator/pull/74",
       "base": "main",
-      "updated_at": "2026-10-31T09:23:27Z"
+      "updated_at": "2026-10-31T09:33:06Z"
     },
     {
       "number": 71,
@@ -479,14 +895,6 @@ window.INITIAL_PRODUCT = {
       "url": "https://github.com/jea27/Lut_generator/pull/71",
       "base": "main",
       "updated_at": "2026-10-31T09:20:16Z"
-    },
-    {
-      "number": 70,
-      "title": "[COL-026] Integrar beta2, Look Match y auditoría pendientes en main",
-      "state": "merged",
-      "url": "https://github.com/jea27/Lut_generator/pull/70",
-      "base": "main",
-      "updated_at": "2026-10-31T08:51:17Z"
     },
     {
       "number": 69,
@@ -551,43 +959,62 @@ window.INITIAL_PRODUCT = {
       "url": "https://github.com/jea27/Lut_generator/pull/38",
       "base": "main",
       "updated_at": "2026-10-30T20:31:35Z"
-    },
-    {
-      "number": 37,
-      "title": "[COL-003] Preparar experimentos y ejecutar controles CC0",
-      "state": "merged",
-      "url": "https://github.com/jea27/Lut_generator/pull/37",
-      "base": "main",
-      "updated_at": "2026-10-30T20:31:20Z"
     }
   ],
   "ci": [
     {
       "name": "Sincronizar roadmap",
+      "branch": "codex/COL-044-human-review",
+      "sha": "015fc895f56e684daff7527290123e2233a7d30c",
+      "status": "queued",
+      "conclusion": null,
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41191386973",
+      "updated_at": "2026-10-31T10:06:28Z"
+    },
+    {
+      "name": "Sincronizar roadmap",
       "branch": "main",
-      "sha": "5b6a910cfa5f67e060a00337d3db39b2404d81c7",
+      "sha": "448a1015c1f0b424a9ed85a50a52a542d7e03acd",
       "status": "completed",
       "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41188660847",
-      "updated_at": "2026-10-31T09:26:32Z"
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41191053395",
+      "updated_at": "2026-10-31T10:02:15Z"
+    },
+    {
+      "name": "Sincronizar roadmap",
+      "branch": "codex/COL-006-product-dashboard",
+      "sha": "5733a3b93fecc80c447e847a856fba5681b560e2",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41189158382",
+      "updated_at": "2026-10-31T09:33:44Z"
+    },
+    {
+      "name": "Publicar roadmap",
+      "branch": "codex/COL-044-human-review",
+      "sha": "015fc895f56e684daff7527290123e2233a7d30c",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41190994499",
+      "updated_at": "2026-10-31T10:01:20Z"
     },
     {
       "name": "Publicar roadmap",
       "branch": "main",
-      "sha": "5b6a910cfa5f67e060a00337d3db39b2404d81c7",
+      "sha": "448a1015c1f0b424a9ed85a50a52a542d7e03acd",
       "status": "completed",
-      "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41188285576",
-      "updated_at": "2026-10-31T09:20:57Z"
+      "conclusion": "cancelled",
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41189148832",
+      "updated_at": "2026-10-31T09:33:44Z"
     },
     {
       "name": "Publicar roadmap",
       "branch": "codex/COL-006-product-dashboard",
-      "sha": "d3b8d92eaff3413f055b6d4aab2b2b0b31e24cc9",
+      "sha": "5733a3b93fecc80c447e847a856fba5681b560e2",
       "status": "completed",
       "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41188254963",
-      "updated_at": "2026-10-31T09:20:16Z"
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41189097370",
+      "updated_at": "2026-10-31T09:32:51Z"
     },
     {
       "name": "Publicar roadmap",
@@ -599,104 +1026,83 @@ window.INITIAL_PRODUCT = {
       "updated_at": "2026-10-31T09:14:34Z"
     },
     {
-      "name": "Publicar roadmap",
-      "branch": "codex/COL-026-integracion-beta2",
-      "sha": "4920cf0e38bac165147158d4bd6e4c09ceedb913",
+      "name": "Validar MVP local",
+      "branch": "codex/COL-044-human-review",
+      "sha": "015fc895f56e684daff7527290123e2233a7d30c",
       "status": "completed",
       "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41184186206",
-      "updated_at": "2026-10-31T08:20:26Z"
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41190994497",
+      "updated_at": "2026-10-31T10:01:42Z"
+    },
+    {
+      "name": "Compilar Color Studio",
+      "branch": "codex/COL-044-human-review",
+      "sha": "015fc895f56e684daff7527290123e2233a7d30c",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41190994486",
+      "updated_at": "2026-10-31T10:01:37Z"
     },
     {
       "name": "Compilar Color Studio",
       "branch": "main",
-      "sha": "5b6a910cfa5f67e060a00337d3db39b2404d81c7",
+      "sha": "448a1015c1f0b424a9ed85a50a52a542d7e03acd",
       "status": "completed",
       "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41188285564",
-      "updated_at": "2026-10-31T09:21:03Z"
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41189148771",
+      "updated_at": "2026-10-31T09:33:41Z"
     },
     {
       "name": "Validar MVP local",
       "branch": "main",
-      "sha": "5b6a910cfa5f67e060a00337d3db39b2404d81c7",
+      "sha": "448a1015c1f0b424a9ed85a50a52a542d7e03acd",
       "status": "completed",
       "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41188285547",
-      "updated_at": "2026-10-31T09:21:06Z"
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41189148708",
+      "updated_at": "2026-10-31T09:33:49Z"
     },
     {
       "name": "Compilar Color Studio",
       "branch": "codex/COL-006-product-dashboard",
-      "sha": "d3b8d92eaff3413f055b6d4aab2b2b0b31e24cc9",
+      "sha": "5733a3b93fecc80c447e847a856fba5681b560e2",
       "status": "completed",
       "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41188254955",
-      "updated_at": "2026-10-31T09:20:33Z"
-    },
-    {
-      "name": "Validar MVP local",
-      "branch": "codex/COL-006-product-dashboard",
-      "sha": "d3b8d92eaff3413f055b6d4aab2b2b0b31e24cc9",
-      "status": "completed",
-      "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41188254939",
-      "updated_at": "2026-10-31T09:20:40Z"
-    },
-    {
-      "name": "Validar MVP local",
-      "branch": "codex/COL-013-estabilizacion-beta3",
-      "sha": "e20c34b9e4cb06f369c5a693581389d977dda19f",
-      "status": "completed",
-      "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41187873868",
-      "updated_at": "2026-10-31T09:15:04Z"
-    },
-    {
-      "name": "Compilar Color Studio",
-      "branch": "codex/COL-013-estabilizacion-beta3",
-      "sha": "e20c34b9e4cb06f369c5a693581389d977dda19f",
-      "status": "completed",
-      "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41187873803",
-      "updated_at": "2026-10-31T09:15:02Z"
-    },
-    {
-      "name": "Compilar Color Studio",
-      "branch": "codex/COL-026-integracion-beta2",
-      "sha": "4920cf0e38bac165147158d4bd6e4c09ceedb913",
-      "status": "completed",
-      "conclusion": "success",
-      "url": "https://github.com/jea27/Lut_generator/actions/runs/41184186164",
-      "updated_at": "2026-10-31T08:21:07Z"
+      "url": "https://github.com/jea27/Lut_generator/actions/runs/41189083924",
+      "updated_at": "2026-10-31T09:32:53Z"
     }
   ],
   "installer_build": null,
   "installer_artifacts": [],
   "human_requests": [
     {
+      "number": 15,
+      "title": "[LUMAFORGE] ACCIÓN REQUERIDA — Aceptar o corregir documentación COL-005",
+      "url": "https://github.com/jea27/Lut_generator/issues/15",
+      "updated_at": "2026-10-31T09:51:08Z"
+    },
+    {
+      "number": 21,
+      "title": "[LUMAFORGE] ACCIÓN REQUERIDA — Revisar [COL-006] PR #20",
+      "url": "https://github.com/jea27/Lut_generator/issues/21",
+      "updated_at": "2026-10-31T09:51:02Z"
+    },
+    {
+      "number": 75,
+      "title": "[LUMAFORGE] ACCIÓN REQUERIDA — Revisar [COL-043] PR #74",
+      "url": "https://github.com/jea27/Lut_generator/issues/75",
+      "updated_at": "2026-10-31T09:49:09Z"
+    },
+    {
       "number": 73,
       "title": "[LUMAFORGE] ACCIÓN REQUERIDA — Coordinar worktree de dashboard",
       "url": "https://github.com/jea27/Lut_generator/issues/73",
-      "updated_at": "2026-10-31T09:28:57Z"
+      "updated_at": "2026-10-31T09:42:25Z"
     },
     {
       "number": 67,
       "title": "[LUMAFORGE] ACCIÓN REQUERIDA — Resolver procedencia del runtime y ejecutar QA limpia",
       "url": "https://github.com/jea27/Lut_generator/issues/67",
       "updated_at": "2026-10-31T08:51:10Z"
-    },
-    {
-      "number": 21,
-      "title": "[LUMAFORGE] ACCIÓN REQUERIDA — Revisar [COL-006] PR #20",
-      "url": "https://github.com/jea27/Lut_generator/issues/21",
-      "updated_at": "2026-10-30T20:51:01Z"
-    },
-    {
-      "number": 15,
-      "title": "[LUMAFORGE] ACCIÓN REQUERIDA — Aceptar o corregir documentación COL-005",
-      "url": "https://github.com/jea27/Lut_generator/issues/15",
-      "updated_at": "2026-10-30T20:50:59Z"
     },
     {
       "number": 56,
@@ -717,12 +1123,6 @@ window.INITIAL_PRODUCT = {
       "updated_at": "2026-10-30T19:27:17Z"
     },
     {
-      "number": 3,
-      "title": "[COL-000] Prueba real de aviso a GitHub Mobile",
-      "url": "https://github.com/jea27/Lut_generator/issues/3",
-      "updated_at": "2026-10-30T19:24:54Z"
-    },
-    {
       "number": 27,
       "title": "[LUMAFORGE] ACCIÓN REQUERIDA — Revisar [COL-003] PR #26",
       "url": "https://github.com/jea27/Lut_generator/issues/27",
@@ -739,41 +1139,103 @@ window.INITIAL_PRODUCT = {
       "title": "[LUMAFORGE] ACCIÓN REQUERIDA — Revisar [COL-004] PR #22",
       "url": "https://github.com/jea27/Lut_generator/issues/24",
       "updated_at": "2026-10-30T16:22:08Z"
-    },
-    {
-      "number": 12,
-      "title": "[COL-001] Revisión humana de PR #11",
-      "url": "https://github.com/jea27/Lut_generator/issues/12",
-      "updated_at": "2026-10-30T15:33:29Z"
-    },
-    {
-      "number": 10,
-      "title": "[COL-001] Revisión humana de PR #9",
-      "url": "https://github.com/jea27/Lut_generator/issues/10",
-      "updated_at": "2026-10-30T15:30:43Z"
-    },
-    {
-      "number": 8,
-      "title": "[COL-001] Revisión humana de PR #7",
-      "url": "https://github.com/jea27/Lut_generator/issues/8",
-      "updated_at": "2026-10-30T15:28:26Z"
-    },
-    {
-      "number": 5,
-      "title": "[COL-001] Revisión humana de PR #4",
-      "url": "https://github.com/jea27/Lut_generator/issues/5",
-      "updated_at": "2026-10-30T15:22:28Z"
     }
   ],
   "operations": [
     {
       "id": "COL-043",
       "title": "Dashboard real de producto y sincronización GitHub",
-      "status": "progress",
+      "status": "review",
       "excluded_from_product_metrics": true,
       "issue_url": "https://github.com/jea27/Lut_generator/issues/72",
       "pr_url": "https://github.com/jea27/Lut_generator/pull/74"
     }
   ],
-  "privacy": "Solo metadatos públicos permitidos; no cuerpos, logs, fotos, datos de participantes o rutas locales."
+  "privacy": "Solo metadatos públicos permitidos; no cuerpos, logs, fotos, datos de participantes o rutas locales.",
+  "reviews_active": false,
+  "review_demo": {
+    "id": "review-demo",
+    "title": "Demostración de revisión (sintética)",
+    "task": "COL-044",
+    "acceptance": "Comprobar únicamente la infraestructura de revisión; no aprueba Color Studio.",
+    "demo": true,
+    "implemented": true,
+    "human_approved": false,
+    "technically_verified": true,
+    "review": {
+      "state": "changes_requested",
+      "context": {
+        "commit": "015fc895f56e684daff7527290123e2233a7d30c",
+        "version": "0.3.0-beta.2",
+        "revision": "f6a33b34aa383b6eb03ee384be9bce77c9b8161b0965350cf7d55560a59c3708"
+      },
+      "history": [
+        {
+          "feature": "review-demo",
+          "revision": "f6a33b34aa383b6eb03ee384be9bce77c9b8161b0965350cf7d55560a59c3708",
+          "commit": "015fc895f56e684daff7527290123e2233a7d30c",
+          "version": "0.3.0-beta.2",
+          "decision": "approve",
+          "checklist": [
+            "demo-visible",
+            "no-product"
+          ],
+          "reviewer": "jea27",
+          "at": "2026-10-31T10:01:36Z",
+          "comment_id": 6541989840,
+          "notes_present": false,
+          "demo": true,
+          "source_valid": true,
+          "url": "https://github.com/jea27/Lut_generator/issues/77#issuecomment-6541989840"
+        },
+        {
+          "feature": "review-demo",
+          "revision": "f6a33b34aa383b6eb03ee384be9bce77c9b8161b0965350cf7d55560a59c3708",
+          "commit": "015fc895f56e684daff7527290123e2233a7d30c",
+          "version": "0.3.0-beta.2",
+          "decision": "changes",
+          "checklist": [],
+          "reviewer": "jea27",
+          "at": "2026-10-31T10:05:25Z",
+          "comment_id": 6542024460,
+          "notes_present": true,
+          "demo": true,
+          "source_valid": true,
+          "url": "https://github.com/jea27/Lut_generator/issues/77#issuecomment-6542024460"
+        }
+      ],
+      "latest": {
+        "feature": "review-demo",
+        "revision": "f6a33b34aa383b6eb03ee384be9bce77c9b8161b0965350cf7d55560a59c3708",
+        "commit": "015fc895f56e684daff7527290123e2233a7d30c",
+        "version": "0.3.0-beta.2",
+        "decision": "changes",
+        "checklist": [],
+        "reviewer": "jea27",
+        "at": "2026-10-31T10:05:25Z",
+        "comment_id": 6542024460,
+        "notes_present": true,
+        "demo": true,
+        "source_valid": true,
+        "url": "https://github.com/jea27/Lut_generator/issues/77#issuecomment-6542024460"
+      }
+    },
+    "review_steps": [
+      "Comprobar que esta tarjeta está marcada como demostración sin impacto en producto.",
+      "Completar checklist y probar el comentario de aprobación o corrección en Issue77."
+    ],
+    "checklist": [
+      {
+        "id": "demo-visible",
+        "label": "La tarjeta indica que es una demostración sintética."
+      },
+      {
+        "id": "no-product",
+        "label": "Confirmo que no estoy aprobando una capacidad real."
+      }
+    ],
+    "issue_url": "https://github.com/jea27/Lut_generator/issues/77",
+    "evidence": [],
+    "pr_url": null
+  }
 };

@@ -245,3 +245,19 @@ Conciliación de seguimiento: se detectó COL043#72 creada por el otro chat.
 Se reutiliza para la PR74, sin duplicar Issue ni cambiar42 tareas. COL006#19
 conserva su decisión P0 histórica. Main71 integrado localmente sin perder
 los dos registros del diario; aplicación igual a main. Coordinación por73.
+
+
+## 2026-10-31 · [COL-044] Revisiones individuales por versión
+
+Worktree separado, Issue76/PR79. Mis revisiones, checklist e instrucciones con
+comentario autenticado y sin secretos en navegador. Validación por cuenta+ID,
+Issue/commit/huella, checklist e inmutabilidad; recibo bot idempotente y historial.
+Aprobación aislada de Glow/Difusión/Fade y resto, sin cerrar/aprobar tareas.
+Correcciones dejan cola por capacidad; no se inventa un agente24/7. Huella de
+blobs/criterios invalida cambios relacionados, conservando aceptación anterior.
+126 tests+37 MVP OK. QA real de navegador en5 anchuras, sin overflow ni errores.
+Demo77 en Actions: aprobación, cambios y replay (runs41191045868/41191317941/
+41191386973) correctos, sin Pages y0 aprobaciones reales. Copy/open de GitHub
+probado; observaciones quedan en comentario público, no se copian al dashboard.
+Activación por issue_comment en main pendiente de integración humana, sin merge
+ni altas de autenticación/servicios por agente. Capturas/informe versionados.
