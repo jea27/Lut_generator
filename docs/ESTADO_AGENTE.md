@@ -1,5 +1,12 @@
 # Checkpoint vigente · estabilización y procedencia binaria · 31-10-2026
 
+PR71 lista para revisión: https://github.com/jea27/Lut_generator/pull/71.
+CI de bc778e8: MVP41186741670, Studio41186741616 y validate41186741589 success.
+Corregido en PS5.1 el caso de rutas cortas/proveedor detectado por CI, manteniendo
+rechazo de escape de directorio. El primer fallo de CI no se ocultó ni omitió.
+Prioridad siguiente del usuario: dashboard automático en rama/worktree independiente
+codex/COL-006-product-dashboard; no toca código de la aplicación de esta rama.
+
 Tarea COL013#45, rama codex/COL-013-estabilizacion-beta3 desde origin/main
 cfb6d11. PR70 ya integrada por jea27 a las08:27:11 UTC. Árbol de main idéntico
 a HEAD4920cf0 de70;65/66/69 son ancestros. Escaneo69 blobs cambiados sin
