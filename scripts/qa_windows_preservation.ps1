@@ -7,7 +7,7 @@ param(
 # Run with Color Studio closed. Baseline is private: relative filenames may identify data.
 # Read-only for application data; no installation, registry or privilege changes.
 $ErrorActionPreference='Stop'
-$lfRoot=(Resolve-Path -LiteralPath $DataDirectory).Path.TrimEnd('\')
+$lfRoot=[IO.Path]::GetFullPath((Resolve-Path -LiteralPath $DataDirectory).ProviderPath).TrimEnd('\')
 $lfPrefix=$lfRoot+'\'
 $lfBaseline=[IO.Path]::GetFullPath($Baseline)
 if($lfBaseline.StartsWith($lfPrefix,[StringComparison]::OrdinalIgnoreCase)){throw 'Store private baseline outside the data directory'}
@@ -16,7 +16,7 @@ if(Get-ChildItem -LiteralPath $lfRoot -Force -Recurse | Where-Object {$_.Attribu
 if($Mode -eq 'Snapshot'){
  if(Test-Path -LiteralPath $lfBaseline){throw 'Refusing to overwrite an existing baseline'}
  $lfFiles=@(Get-ChildItem -LiteralPath $lfRoot -File -Recurse -Force | Sort-Object FullName | ForEach-Object {
-  @{relative=$_.FullName.Substring($lfPrefix.Length);sha256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLower();bytes=$_.Length}
+  @{relative=([IO.Path]::GetFullPath($_.FullName)).Substring($lfPrefix.Length);sha256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLower();bytes=$_.Length}
  })
  if($lfFiles.Count -eq 0){throw 'Empty directory is not evidence of data preservation'}
  @{schema='color-studio-private-data-baseline-v1';files=$lfFiles;privacy='private_do_not_publish'} | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $lfBaseline -Encoding UTF8
