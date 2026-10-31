@@ -449,7 +449,7 @@
       "category": "ia-local",
       "executor": "ia",
       "phase": "P3",
-      "acceptance": "Receta no destructiva; advertencia al exportar solo LUT global.",
+      "acceptance": "Receta no destructiva; advertencia al exportar solo LUT global. Ampliación posterior a esta beta: detección automática de parámetros de acabado desde referencia y halation, con controles independientes, métricas y revisión visual. No implementados ni incluidos en la aceptación del acabado manual inicial.",
       "priority": "Media",
       "status": "planned",
       "issue_url": null,

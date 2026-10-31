@@ -11,6 +11,8 @@ if($LASTEXITCODE -ne 0){throw 'Beta tests failed'}
 if($LASTEXITCODE -ne 0){throw 'Frontend build failed'}
 & ./.venv-mvp/Scripts/python.exe -m PyInstaller --noconfirm --distpath .lumaforge-local/beta-build --workpath .lumaforge-local/beta-work packaging/ColorEngine.spec
 if($LASTEXITCODE -ne 0){throw 'Engine bundle failed'}
+& ./.venv-mvp/Scripts/python.exe scripts/audit_beta_binary_origins.py .lumaforge-local/beta-work/ColorEngine/Analysis-00.toc .lumaforge-local/beta-build/ColorEngine .lumaforge-local/beta-build-origin-audit.json
+if($LASTEXITCODE -ne 0){throw 'Binary input provenance gate failed; review report before creating a distributable installer'}
 $lfBinaries=Join-Path $lfRoot 'apps/desktop/src-tauri/binaries'
 if(Test-Path -LiteralPath $lfBinaries){
  if(-not (Test-Path -LiteralPath (Join-Path $lfBinaries '.generated-by-color-studio'))){

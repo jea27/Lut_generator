@@ -1,0 +1,79 @@
+{
+  "pr": 70,
+  "merged_by_human": "jea27",
+  "merged_at": "2026-10-31T08:27:11Z",
+  "base_before": "0539b9f3a817050c22a7735c3455c7c6f97044b1",
+  "head": "4920cf0e38bac165147158d4bd6e4c09ceedb913",
+  "main_observed": "cfb6d11bb705ca5a6f313aad8bc177627a50cafd",
+  "main_tree_equals_pr_head": true,
+  "intermediate_source_ancestors_in_main": {
+    "65": true,
+    "66": true,
+    "69": true
+  },
+  "changed_files": 69,
+  "findings": [],
+  "images": [
+    {
+      "file": "apps/landing/assets/after.jpg",
+      "sha256": "2c14d8d24eeaf274408cce096450d8a302da9b6829543d91f64b368ded5cdd25",
+      "dimensions": [
+        1024,
+        678
+      ],
+      "exif_entries": 0,
+      "basis": "Authorized CC0 rural derivative or application QA capture reviewed in previous checkpoint; no new private photo"
+    },
+    {
+      "file": "apps/landing/assets/before.jpg",
+      "sha256": "c45f876097b42968568cf595b268b0600a83b0728c1edf8105ffccfea9cb9e5d",
+      "dimensions": [
+        1024,
+        678
+      ],
+      "exif_entries": 0,
+      "basis": "Authorized CC0 rural derivative or application QA capture reviewed in previous checkpoint; no new private photo"
+    },
+    {
+      "file": "apps/landing/assets/studio.jpg",
+      "sha256": "f7d4ab66fcb26c97e1368983b777c8d90ff1f96d87833807b8e39462084f275c",
+      "dimensions": [
+        1265,
+        889
+      ],
+      "exif_entries": 0,
+      "basis": "Authorized CC0 rural derivative or application QA capture reviewed in previous checkpoint; no new private photo"
+    },
+    {
+      "file": "docs/evidence/LOOK_03_COLOR.jpg",
+      "sha256": "3de3599afdbd277e7d2662258352f932a0e6ac35953d2d08eca38cb003840019",
+      "dimensions": [
+        1024,
+        678
+      ],
+      "exif_entries": 0,
+      "basis": "Authorized CC0 rural derivative or application QA capture reviewed in previous checkpoint; no new private photo"
+    },
+    {
+      "file": "docs/evidence/LOOK_03_FINISH.jpg",
+      "sha256": "67275e183a0244e712554cb8d18a2597b129f3dbdf8b6ee100ca9936aab21c5a",
+      "dimensions": [
+        1024,
+        678
+      ],
+      "exif_entries": 0,
+      "basis": "Authorized CC0 rural derivative or application QA capture reviewed in previous checkpoint; no new private photo"
+    },
+    {
+      "file": "docs/evidence/LOOK_03_GUI.jpg",
+      "sha256": "e30308240ca1032385bd8bd3938d9d4bd8a9835acfb2b78683c756f14578762b",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "exif_entries": 0,
+      "basis": "Authorized CC0 rural derivative or application QA capture reviewed in previous checkpoint; no new private photo"
+    }
+  ],
+  "scope": "Changed tracked blobs and image EXIF only; pattern scan is not universal secret detection or historical Git identity removal"
+}

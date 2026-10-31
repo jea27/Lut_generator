@@ -1,3 +1,5 @@
+Estado de estabilización: ver ESTABILIZACION_03.md y GO_NO_GO_03.md. Microsoft WebView2 tiene diagnósticos/actualizaciones propios; «sin telemetría» se limita al código de LumaForge. El setup beta2 existente todavía contiene el texto anterior. No hay candidato nuevo ni autorización externa.
+
 # Preparación comercial · borrador para revisión
 
 30-10-2026. **NO-GO venta / NO-GO beta pública general.** El instalador es un
@@ -152,7 +154,7 @@ No activar aceptación electrónica hasta revisar texto y registrar su versión.
 ## Borrador de privacidad
 
 Editor: JPG/PNG y presets procesados localmente; copias sRGB y resultados en
-%LOCALAPPDATA%/ColorStudioBetaData. Sin cuenta, anuncios, telemetría, subida de
+%LOCALAPPDATA%/ColorStudioBetaData. Sin cuenta, anuncios, telemetría propia, subida de
 fotos o API externa. El proceso loopback atiende solo el equipo local. Borrar
 temporales desde la aplicación requiere confirmación y no borra originales;
 desinstalar conserva datos privados para evitar pérdida. Informar cómo localizar
