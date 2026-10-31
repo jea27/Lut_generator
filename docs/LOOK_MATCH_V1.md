@@ -61,3 +61,11 @@ Primera revisión externa: comparar al100%, escenas luminosas/oscuras, piel,
 bordes de alto contraste y ruido; registrar aceptabilidad, halos/bleeding,
 clipping y tiempos. Desactivar cualquier efecto perjudicial, mantener NO-GO
 promesas de transferencia fiel. Ver BETA_QA_EXTERNA.md para cinco pruebas.
+
+
+QA GUI adicional: preset v1 de fixture aplicado a foto CC0, acabado activado y
+JSONv2 descargado, comprobados version2/enabled/glow1; no había migración de
+versión suficiente en UI inicialmente y se corrigió. Advertencia .cube visible.
+Feedback corregido con diálogo incrustado (conserva imagen/URL) y visible en la
+app nativa beta2. QA00 únicamente sintética, B01–B05 sin asignar. Formulario de
+feedback en español; interfaz principal ES/EN, sin afirmar feedback multilingüe.

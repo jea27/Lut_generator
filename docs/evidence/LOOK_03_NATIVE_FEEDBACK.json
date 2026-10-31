@@ -1,0 +1,11 @@
+{
+  "version": "0.3.0-beta.2",
+  "native_webview_feedback_form_visible": true,
+  "local_frame_visible": true,
+  "no_external_browser_popup_required": true,
+  "browser_preserves_image_and_editor_url": true,
+  "external_editor_import_tested": false,
+  "premiere_observed_block": "subscription selection",
+  "photoshop_observed_block": "no accessible document workspace",
+  "no_purchase_or_trial_activated": true
+}

@@ -33,11 +33,25 @@ clasificar esas rutas con hashes, cerrar consentimiento/obligaciones si procede
 y completar inspección NSIS. El escáner deliberadamente no los autoacepta.
 No modificar DLL de Microsoft/terceros para ocultar datos o invalidar firmas.
 
-El NSIS integra WebView2 offline y plugins/launcher propios de NSIS. El informe
-del staging no extrae por sí solo todo el NSIS ni demuestra qué instalará en un
-Windows sin runtime. No hay7zip disponible; no se instala otra herramienta sin
-explicar/aprobar. Inspección del script NSIS generado y hashes de sus inputs son
-evidencia complementaria, no sustituto del ensayo limpio ni análisis antimalware.
+Con autorización posterior se preparó7-Zip26.05 portátil oficial y se extrajeron
+las176 entradas del NSIS: plugins, uninstaller y WebView2 offline incluidos.
+7zr/Extra/SFX se verificaron contra SHA256 del release oficial; el SFX se abrió
+como archivo, sin ejecutar un instalador o usar MSI. Herramienta privada en
+.lumaforge-local/tools/7zip/full/7z.exe, no se redistribuye con LumaForge.
+La extracción completa mantiene27 findings solo de rutas proveedor/ejemplo;
+0 local-profile/token/dev en ese scope. WebView2 offline firmado Microsoft
+válidamente; conserva hash62863f...249b y copia en .lumaforge-local/vendor-pins.
+El interior comprimido del instalador Microsoft no fue expandido/ejecutado.
+No equivale a prueba limpia ni análisis antimalware o ausencia universal de PII.
+
+El exe extraído difiere3 bytes del target/release: Tauri cambia el marcador
+__TAURI_BUNDLE_TYPE_VAR_UNK a NSS durante empaquetado. Verificado contra fuente
+local tauri-utils2.10.2/platform.rs y normalización exacta, sin descartar otras
+diferencias. LOOK_03_NSIS.json enumera176 hashes y registra esa comprobación.
+Plugin nsis_tauri_utils0.5.3 coincide SHA256 con release oficial; textos Apache2
+/MIT y NSIS3.13 COPYING preparados como avisos acompañantes. Condiciones
+Microsoft y25 perfiles de origen aún sin clasificar;2 son cuentas/ejemplos genéricos.
+No se alteran DLL firmadas ni se autoaprueba la redistribución.
 
 ## Inventario y derechos
 
@@ -82,3 +96,18 @@ counts_as_interview=false, separado en .research-private/beta/qa.
 
 No se publican release general o cobros. Los cinco recorridos preparados son un
 piloto futuro, no cinco pruebas realizadas ni cumplimiento de COL041 completo.
+
+
+## Correcciones finales beta2
+
+Candidato vigente0.3.0-beta.2, source a452a5f, dirty=false,266211731 bytes.
+SHA256 3e3851ee4f3c67608d3802ad167572375b130eeafa57165d26379cd26797714f.
+Conservado beta1 como evidencia histórica. Se corrigió el enlace de feedback que
+no abría nueva ventana en Tauri: diálogo iframe local ahora visible en WebView2,
+sin salir del editor; browser confirma misma imagen/URL. También se fuerza
+migración UI de presets v1 a receta v2 antes de activar efectos: preset v1 real
+de QA aplicado, glow activado y JSONv2 descargado/validado. No es respuesta real.
+Upgrade a beta2 exit0, mismos8 archivos de datos preservados. No Windows limpio.
+Premiere intentado: muestra selector de suscripción; no se contrató ni se
+activó prueba. Photoshop no ofreció documento/editor verificable. Importación
+real de LUT externa sigue pendiente en equipo con editor ya activado.

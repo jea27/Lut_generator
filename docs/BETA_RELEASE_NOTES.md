@@ -1,3 +1,9 @@
+> Vigente:0.3.0-beta.2 desde a452a5f (clean),266211731 bytes.
+> SHA256 3e3851ee4f3c67608d3802ad167572375b130eeafa57165d26379cd26797714f.
+> Corrige feedback nativo y migración UI de presets v1. NOTAS beta1 conservadas
+> debajo como historial. Sin firma/release, NO-GO distribución externa/venta.
+> Hashes y auditoría ampliada en LOOK_03_ARTIFACT_B2/NSIS/VENDOR_INPUTS.json.
+
 # 0.3.0-beta.1 · candidato local, sin release publicada
 
 31-10-2026. Source396a508, dirty=false; SHA256

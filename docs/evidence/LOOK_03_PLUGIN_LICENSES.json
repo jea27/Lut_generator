@@ -1,0 +1,17 @@
+{
+  "plugin_matches_official_release_sha256": true,
+  "license_files": [
+    {
+      "file": "nsis-tauri-utils-0.5.3-LICENSE_APACHE-2.0.txt",
+      "source": "https://raw.githubusercontent.com/tauri-apps/nsis-tauri-utils/nsis_tauri_utils-v0.5.3/LICENSE_APACHE-2.0",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+    },
+    {
+      "file": "nsis-tauri-utils-0.5.3-LICENSE_MIT.txt",
+      "source": "https://raw.githubusercontent.com/tauri-apps/nsis-tauri-utils/nsis_tauri_utils-v0.5.3/LICENSE_MIT",
+      "sha256": "1c1020fa10a6bf318717e82c911bcc54ebdfb9bb280460ae332bcb2f82f57fbe"
+    }
+  ],
+  "nsis_license": "packaging/notices/upstream/nsis-3.13-COPYING.txt",
+  "note": "Companion notices for review/distribution packet; not automatically legal approval"
+}

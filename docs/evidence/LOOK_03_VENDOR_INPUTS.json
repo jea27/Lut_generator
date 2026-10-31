@@ -1,0 +1,9 @@
+{
+  "full_nsis_entries": 176,
+  "microsoft_offline_runtime_signature": "Valid Microsoft Corporation, Authenticode checked",
+  "nsis_license_file": "packaging/notices/upstream/nsis-3.13-COPYING.txt",
+  "nsis_license_sha256": "388357c1215ff403c5ebde3a5ecd273e68f8b79a579996775245d1ee65442aba",
+  "runtime_sha256": "62863f0f0611a16ccf124b4f15650c3b66624504eba74d7cde1e2ae5d951249b",
+  "plugin_sha256": "5ba143b5db4a87d32d6e7802e033330aae56cbceabe0d1e3ba41948385ad4709",
+  "redistribution_approval": false
+}
