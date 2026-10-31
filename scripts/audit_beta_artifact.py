@@ -4,7 +4,7 @@ from pathlib import Path
 from PyInstaller.archive.readers import CArchiveReader
 
 
-def audit(directory):
+def audit(directory,native=None):
     root=Path(directory);files=[];findings=[]
     profile=os.environ.get('USERPROFILE','').encode()
     patterns=[('upstream_or_example_user_path',re.compile(rb'(?i)[A-Z]:[\\/]Users[\\/][^\\/\x00\r\n]{1,80}[\\/]')),
@@ -24,6 +24,9 @@ def audit(directory):
             while chunk:=stream.read(4*1024*1024):
                 digest.update(chunk);inspect(relative,tail+chunk);tail=chunk[-1024:]
         files.append({'file':relative,'bytes':path.stat().st_size,'sha256':digest.hexdigest()})
+    if native:
+        path=Path(native);inspect('native/'+path.name,path.read_bytes())
+        files.append({'file':'native/'+path.name,'bytes':path.stat().st_size,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()})
     archive=CArchiveReader(str(root/'ColorEngine.exe'))
     def code(label,obj):
         if isinstance(obj,types.CodeType):
@@ -42,7 +45,7 @@ def audit(directory):
 
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser();parser.add_argument('directory');parser.add_argument('report');args=parser.parse_args()
-    report=audit(args.directory);Path(args.report).write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+    parser=argparse.ArgumentParser();parser.add_argument('directory');parser.add_argument('report');parser.add_argument('--native');args=parser.parse_args()
+    report=audit(args.directory,args.native);Path(args.report).write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({'files':len(report['files']),'findings':len(report['findings']),'passed':report['passed']}))
     raise SystemExit(0 if report['passed'] else 2)

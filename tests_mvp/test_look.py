@@ -56,6 +56,24 @@ class LookTests(unittest.TestCase):
         np.testing.assert_array_equal(engine.render(self.rgb,effect),engine.render(self.rgb,roundtrip))
         self.assertGreater(float(np.abs(engine.render(self.rgb,effect)-engine.render(self.rgb,base)).mean()),.001)
 
+    def test_api_recipe_preset_and_image_export_keep_finish(self):
+        import tempfile
+        from fastapi.testclient import TestClient
+        from apps.api.main import create_app
+        with tempfile.TemporaryDirectory() as directory,TestClient(create_app(directory),base_url='http://127.0.0.1') as client:
+            csrf=client.get('/api/session').json()['csrf'];client.headers.update({'X-LumaForge-Local':'1','X-Color-Studio-Token':csrf})
+            raw=image_io.encode(self.rgb);source=client.post('/api/images',files={'file':('qa.png',raw,'image/png')}).json()['id']
+            recipe=engine.Recipe(look=Look(enabled=True,diffusion=.3,fade=.4)).model_dump()
+            body={'source_id':source,'recipe':recipe}
+            exported=client.post('/api/export/png',json=body);self.assertEqual(exported.status_code,200)
+            normalized,alpha,_=image_io.decode(raw)
+            expected=image_io.encode(engine.render(normalized,recipe,alpha=alpha),alpha)
+            with Image.open(io.BytesIO(expected)) as a,Image.open(io.BytesIO(exported.content)) as b:np.testing.assert_array_equal(a,b)
+            exported_json=client.post('/api/export/json',json=body).json();self.assertEqual(exported_json['look'],recipe['look'])
+            saved=client.post('/api/presets',json={'name':'QA finish','recipe':exported_json});self.assertEqual(saved.status_code,200)
+            self.assertEqual(client.get('/api/presets').json()[0]['recipe']['look'],recipe['look'])
+            self.assertIn('excluded',client.post('/api/export/cube',json=body).text)
+
     def test_fade_monotonic_and_cancel_is_cooperative(self):
         ramp=np.repeat(np.linspace(0,1,100,dtype=np.float32)[None,:,None],3,axis=2)
         out=apply(ramp,Look(enabled=True,fade=1))
