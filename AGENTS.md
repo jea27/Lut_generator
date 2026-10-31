@@ -94,3 +94,16 @@ El usuario autoriza una primera implementación manual de glow, difusión y fade
 receta propia y pruebas, en COL026. No autoriza inferencia fiel del acabado,
 completar P3, contactar personas, habilitar virtualización, pagos, beta general,
 merges o certificados. Preparar cinco recorridos no acredita usuarios reales.
+
+## Creator, Pro y Shot Planner — autorización 31-10-2026
+
+La petición del usuario autoriza la evolución incremental de la beta existente:
+Creator y Pro sobre un motor, capacidades para futuras licencias sin cobros y
+Shot Planner local con propuestas/diagrama, sin recuperar como hechos ajustes
+originales desconocidos. COL045/046/047 se registran como entregas de producto
+fuera de las42 tareas históricas. No completar P0 ni P3 por esta ampliación.
+La frase del starter sobre ausencia de motor es contexto histórico: comprobar
+apps/, packages/ y evidencias actuales. Distinguir disponibilidad técnica,
+validación visual y aceptación humana por capacidad/huella.
+Continuar respetando NO-GO de distribución en #67, sin nuevos runtimes,
+virtualización, derechos supuestos, pagos, contacto de participantes o merges.

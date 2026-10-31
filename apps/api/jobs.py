@@ -5,7 +5,7 @@ import threading
 import uuid
 from pathlib import Path
 from packages.colour_core import engine, image_io
-from .storage import atomic_json
+from .storage import atomic_json, private_path, read_record
 
 
 class Jobs:
@@ -14,14 +14,24 @@ class Jobs:
         self.processing_lock=processing_lock;self.mutex=threading.RLock();self.records={};self.cancel_events={}
         for path in self.root.glob('*/job.json'):
             try:
-                record=json.loads(path.read_bytes())
+                record=read_record(self.root,path.parent.name,'job.json')
+                if str(uuid.UUID(path.parent.name))!=path.parent.name or record['id']!=path.parent.name:
+                    raise ValueError('Invalid private job identity')
+                if record['status'] not in ('queued','running','cancelling','completed','completed_with_errors','interrupted','failed','cancelled'):
+                    raise ValueError('Invalid private job state')
+                if not isinstance(record['items'],list) or len(record['items'])>16 or any(
+                    not isinstance(item,dict) or type(item.get('index')) is not int or not 0<=item['index']<16 or
+                    item.get('status') not in ('completed','failed') or
+                    (item['status']=='completed' and item.get('filename') not in
+                     (f"batch-{item['index']+1:03d}.png",f"batch-{item['index']+1:03d}.jpg")) for item in record['items']):
+                    raise ValueError('Invalid private job outputs')
                 if record['status'] in ('queued','running','cancelling'):
                     record.update(status='interrupted',message='Previous operation was interrupted; retry creates a new batch')
                     atomic_json(path,record)
                 self.records[record['id']]=record
-            except (ValueError,KeyError,OSError):continue
+            except (ValueError,KeyError,TypeError,OSError):continue
 
-    def save(self,record):atomic_json(self.root/record['id']/'job.json',record)
+    def save(self,record):atomic_json(private_path(self.root,record['id'],'job.json'),record)
 
     def get(self,identifier):
         with self.mutex:
@@ -52,7 +62,7 @@ class Jobs:
                             output=engine.render(rgb,recipe,cancel=event.is_set,progress=progress,alpha=alpha)
                             payload=image_io.encode(output,alpha,'PNG' if format=='png' else 'JPEG')
                             if event.is_set():raise engine.ProcessingCancelled()
-                            filename=f'batch-{index+1:03d}.{format}';destination=self.root/identifier/filename
+                            filename=f'batch-{index+1:03d}.{format}';destination=private_path(self.root,identifier,filename)
                             temporary=destination.with_suffix(destination.suffix+'.part')
                             try:
                                 with temporary.open('xb') as stream:stream.write(payload)

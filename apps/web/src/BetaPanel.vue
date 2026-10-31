@@ -3,13 +3,13 @@ import {ref,onMounted,onBeforeUnmount} from 'vue'
 import {useQuasar} from 'quasar'
 import {api,jsonPost} from './api'
 import {language,tx} from './i18n'
-const props=defineProps<{recipe:unknown;presets:any[]}>()
+import {preferences,loadPreferences,savePreferences as persistPreferences} from './preferences'
+const props=defineProps<{recipe:unknown;presets:any[];pro:boolean}>()
 const emit=defineEmits(['recipe','refresh','demo'])
 const q=useQuasar(),welcome=ref(false),help=ref(false),feedback=ref(false),library=ref(false),batch=ref(false),search=ref(''),groupFilter=ref('')
-const preferences=ref({language:'es',welcome_seen:false,export_format:'png'})
 const error=ref(''),selected=ref<any>(null),name=ref(''),group=ref(''),busy=ref(false),job=ref<any>(null),batchIds=ref<string[]>([])
 let poll:ReturnType<typeof setInterval>|undefined
-async function savePreferences(){try{preferences.value.language=language.value;await api('/preferences',jsonPost(preferences.value,'PUT'))}catch(e){error.value=(e as Error).message}}
+async function savePreferences(){try{await persistPreferences()}catch(e){error.value=(e as Error).message}}
 async function closeWelcome(){preferences.value.welcome_seen=true;await savePreferences();welcome.value=false}
 async function demo(){busy.value=true;error.value='';try{const data=await(await api('/demo/load',jsonPost({}))).json();emit('demo',data);await closeWelcome()}catch(e){error.value=(e as Error).message}finally{busy.value=false}}
 function edit(preset:any){selected.value=preset;name.value=preset.name;group.value=preset.group??''}
@@ -26,13 +26,13 @@ async function startBatch(){busy.value=true;error.value='';try{job.value=await(a
 async function cancel(){try{job.value=await(await api('/jobs/'+job.value.id+'/cancel',jsonPost({}))).json()}catch(e){error.value=(e as Error).message}}
 function openLibrary(){library.value=true}
 defineExpose({openLibrary})
-onMounted(async()=>{try{preferences.value=await(await api('/preferences')).json();language.value=preferences.value.language==='en'?'en':'es';welcome.value=!preferences.value.welcome_seen;const jobs=await(await api('/jobs')).json();job.value=jobs.at(-1)??null}catch(e){error.value=(e as Error).message}poll=setInterval(()=>{if(job.value&&['running','queued','cancelling'].includes(job.value.status))refreshJob()},700)})
+onMounted(async()=>{try{await loadPreferences();welcome.value=!preferences.value.welcome_seen;const jobs=await(await api('/jobs')).json();job.value=jobs.at(-1)??null}catch(e){error.value=(e as Error).message}poll=setInterval(()=>{if(job.value&&['running','queued','cancelling'].includes(job.value.status))refreshJob()},700)})
 onBeforeUnmount(()=>clearInterval(poll))
 </script>
 <template>
  <div class="beta-tools">
   <q-btn flat dense icon="collections_bookmark" :label="tx('Biblioteca','Library')" @click="library=true"/>
-  <q-btn flat dense icon="photo_library" :label="tx('Lotes','Batch')" @click="batch=true"/>
+  <q-btn v-if="pro" flat dense icon="photo_library" :label="tx('Lotes','Batch')" @click="batch=true"/>
   <q-btn flat dense icon="help_outline" :aria-label="tx('Ayuda y preferencias','Help and preferences')" @click="help=true"/>
  </div>
  <q-dialog v-model="welcome" persistent><q-card class="beta-dialog"><q-card-section><span class="small-kicker">COLOR STUDIO · BETA 0.3</span><h2>{{tx('Tu estilo, en tu equipo.','Your style, on your computer.')}}</h2><p>{{tx('Referencia → fotografía → analizar → ajustar → preset → exportar. Sin cuenta, telemetría propia ni servicios de imagen.','Reference → photo → analyze → adjust → preset → export. No account, application telemetry or image services.')}}</p><p>{{tx('La interfaz Windows utiliza Microsoft WebView2, sujeto a sus diagnósticos y actualizaciones. El procesamiento de imágenes es local.','The Windows interface uses Microsoft WebView2, subject to its diagnostics and updates. Image processing is local.')}}</p><p>{{tx('La demo usa fotografías CC0 de Sergej Majboroda / Poly Haven. No son resultados de investigación comercial.','The demo uses CC0 photographs by Sergej Majboroda / Poly Haven. These are not commercial research results.')}}</p><p>{{tx('Beta técnica sin firma: la calidad y el instalador siguen sujetos a validación.','Unsigned technical beta: quality and installer validation remain pending.')}}</p><q-select v-model="language" :options="['es','en']" :label="tx('Idioma','Language')"/></q-card-section><q-card-actions align="right"><q-btn flat :label="tx('Usar mis fotos','Use my photos')" @click="closeWelcome"/><q-btn color="primary" text-color="dark" :loading="busy" :label="tx('Probar demo local','Try local demo')" @click="demo"/></q-card-actions><q-banner v-if="error">{{error}}</q-banner></q-card></q-dialog>

@@ -46,7 +46,7 @@ class BetaTests(unittest.TestCase):
         self.assertEqual(self.client.get('/api/presets').json(),[])
 
     def test_preferences_persist_without_session_secrets(self):
-        value={'language':'en','welcome_seen':True,'export_format':'jpg'}
+        value={'language':'en','welcome_seen':True,'export_format':'jpg','workspace':'pro'}
         self.assertEqual(self.client.put('/api/preferences',json=value).status_code,200)
         self.assertEqual(self.client.get('/api/preferences').json(),value)
         self.assertNotIn('csrf',(self.root/'preferences.json').read_text())
@@ -74,7 +74,7 @@ class BetaTests(unittest.TestCase):
 
     def test_cancel_cooperative_and_recovery_never_claims_completion(self):
         with self.assertRaises(engine.ProcessingCancelled):engine.render(np.zeros((128,64,3),dtype='float32'),engine.Recipe(),cancel=lambda:True)
-        identifier='abc';directory=self.root/'jobs'/identifier;directory.mkdir(parents=True)
+        identifier='b0659a20-1a04-4577-bb03-c01af381b079';directory=self.root/'jobs'/identifier;directory.mkdir(parents=True)
         atomic_json(directory/'job.json',{'id':identifier,'status':'running','items':[]})
         jobs=Jobs(self.root/'jobs',threading.Lock())
         self.assertEqual(jobs.get(identifier)['status'],'interrupted')

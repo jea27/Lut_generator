@@ -1,0 +1,46 @@
+{
+  "schema": "lumaforge-candidate-live-sync-check-v1",
+  "scope": "Candidate checkout with PR86 metadata and live public GitHub reads; not a production dashboard deployment or approval",
+  "github_reads_only": true,
+  "passed": true,
+  "observed_at": "2026-10-31T14:38:10.283031Z",
+  "github_main_sha": "86745660ed8110e02b9bcfa365cceca993df556e",
+  "candidate_code_commit": "3761999f117affe614606bd7220fb8418432a993",
+  "candidate_manifest_sha256": "616b33799fda508ce7de3efb03e38a2c48a38e7393c8cc82ed4f6d8ea6223552",
+  "features": 18,
+  "historical_tasks": 42,
+  "mvp_denominator": 8,
+  "new_capabilities": {
+    "creator": {
+      "status": "progress",
+      "implemented": false,
+      "human_approved": false,
+      "issue_url": "https://github.com/jea27/Lut_generator/issues/81",
+      "pr_url": "https://github.com/jea27/Lut_generator/pull/86"
+    },
+    "pro-workspace": {
+      "status": "progress",
+      "implemented": false,
+      "human_approved": false,
+      "issue_url": "https://github.com/jea27/Lut_generator/issues/82",
+      "pr_url": "https://github.com/jea27/Lut_generator/pull/86"
+    },
+    "shot-planner": {
+      "status": "progress",
+      "implemented": false,
+      "human_approved": false,
+      "issue_url": "https://github.com/jea27/Lut_generator/issues/83",
+      "pr_url": "https://github.com/jea27/Lut_generator/pull/86"
+    }
+  },
+  "review_needed_in_candidate": [
+    "color-match",
+    "batches",
+    "recipe",
+    "windows"
+  ],
+  "beta_go": false,
+  "commercial_go": false,
+  "generated_tracking_files_restored": true,
+  "remote_mutations": 0
+}

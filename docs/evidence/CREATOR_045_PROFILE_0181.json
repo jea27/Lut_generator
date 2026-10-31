@@ -1,0 +1,200 @@
+{
+  "schema": "color-studio-export-profile-v1",
+  "scope": "Actual local source pipeline, not clean Windows or aesthetic validation",
+  "input_sha256": "707d5e1a109a9018af848db60e5c5a1aedf4218ab353e24e308a5acf2a2d61a1",
+  "recipe": {
+    "version": 2,
+    "look": {
+      "enabled": true,
+      "strength": 0.7,
+      "glow": 0.55,
+      "diffusion": 0.35,
+      "fade": 0.3,
+      "radius": 0.008,
+      "threshold": 0.7
+    },
+    "domain": "encoded-sRGB-D65",
+    "method": "lab-statistics",
+    "scale": [
+      0.8,
+      1.2,
+      1.2
+    ],
+    "offset": [
+      12.0,
+      -2.32299747467041,
+      -4.274798083305359
+    ],
+    "intensity": 1.0,
+    "exposure": 0.0,
+    "contrast": 1.0,
+    "saturation": 1.0,
+    "temperature": 0.0
+  },
+  "original_unchanged": true,
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.5.4",
+    "opencv": "5.0.0",
+    "pillow": "13.0.0",
+    "opencv_threads": 16,
+    "logical_cpus": 16
+  },
+  "runs": [
+    {
+      "tile_rows": 128,
+      "timings": {
+        "decode_icc_seconds": 0.6185572999966098,
+        "color_lut_seconds": 11.582389000002877,
+        "finishing_seconds": 8.008613500001957,
+        "render_seconds": 19.66004790000443,
+        "quantize_png_seconds": 1.8178195000073174,
+        "pipeline_seconds": 22.096844300001976
+      },
+      "png_pixels_sha256": "a6296bdcae4586c5fad55ab8ec6479113ce933ebce281ef5888b63330fbf72c7",
+      "dimensions": [
+        4928,
+        3264
+      ],
+      "profile": [
+        {
+          "module": "engine.py",
+          "function": "render",
+          "calls": 1,
+          "self_seconds": 0.0597591,
+          "cumulative_seconds": 19.6510673
+        },
+        {
+          "module": "profile_export.py",
+          "function": "color",
+          "calls": 51,
+          "self_seconds": 0.061510600000000006,
+          "cumulative_seconds": 11.5826253
+        },
+        {
+          "module": "engine.py",
+          "function": "transform",
+          "calls": 51,
+          "self_seconds": 10.136812200000001,
+          "cumulative_seconds": 11.5209048
+        },
+        {
+          "module": "profile_export.py",
+          "function": "effects",
+          "calls": 1,
+          "self_seconds": 0.00205,
+          "cumulative_seconds": 8.0086235
+        },
+        {
+          "module": "look.py",
+          "function": "apply",
+          "calls": 1,
+          "self_seconds": 3.1420226,
+          "cumulative_seconds": 8.0065705
+        },
+        {
+          "module": "look.py",
+          "function": "blur",
+          "calls": 78,
+          "self_seconds": 0.0005273000000000001,
+          "cumulative_seconds": 2.3736262000000004
+        },
+        {
+          "module": "~",
+          "function": "<GaussianBlur>",
+          "calls": 78,
+          "self_seconds": 2.3730989,
+          "cumulative_seconds": 2.3730989
+        },
+        {
+          "module": "engine.py",
+          "function": "linear",
+          "calls": 26,
+          "self_seconds": 1.5551826000000002,
+          "cumulative_seconds": 1.5552346000000001
+        },
+        {
+          "module": "~",
+          "function": "<method 'reduce' of 'numpy.ufunc' objects>",
+          "calls": 561,
+          "self_seconds": 1.2281672000000001,
+          "cumulative_seconds": 1.2281672000000001
+        },
+        {
+          "module": "fromnumeric.py",
+          "function": "prod",
+          "calls": 408,
+          "self_seconds": 0.005783900000000001,
+          "cumulative_seconds": 1.222469
+        },
+        {
+          "module": "fromnumeric.py",
+          "function": "_wrapreduction",
+          "calls": 408,
+          "self_seconds": 0.0086872,
+          "cumulative_seconds": 1.2166851
+        },
+        {
+          "module": "engine.py",
+          "function": "encoded",
+          "calls": 26,
+          "self_seconds": 0.7507737000000001,
+          "cumulative_seconds": 0.7508236
+        },
+        {
+          "module": "fromnumeric.py",
+          "function": "clip",
+          "calls": 129,
+          "self_seconds": 0.0019291000000000002,
+          "cumulative_seconds": 0.1995567
+        },
+        {
+          "module": "fromnumeric.py",
+          "function": "_wrapfunc",
+          "calls": 129,
+          "self_seconds": 0.0007075,
+          "cumulative_seconds": 0.19762760000000001
+        },
+        {
+          "module": "~",
+          "function": "<method 'clip' of 'numpy.ndarray' objects>",
+          "calls": 129,
+          "self_seconds": 0.0008647,
+          "cumulative_seconds": 0.19662100000000002
+        },
+        {
+          "module": "_methods.py",
+          "function": "_clip",
+          "calls": 129,
+          "self_seconds": 0.19575630000000002,
+          "cumulative_seconds": 0.19575630000000002
+        },
+        {
+          "module": "~",
+          "function": "<method 'astype' of 'numpy.ndarray' objects>",
+          "calls": 51,
+          "self_seconds": 0.047897100000000005,
+          "cumulative_seconds": 0.047897100000000005
+        },
+        {
+          "module": "numeric.py",
+          "function": "ones",
+          "calls": 26,
+          "self_seconds": 0.031456200000000004,
+          "cumulative_seconds": 0.0324023
+        }
+      ]
+    }
+  ],
+  "median_seconds": {
+    "decode_icc_seconds": 0.6185572999966098,
+    "color_lut_seconds": 11.582389000002877,
+    "finishing_seconds": 8.008613500001957,
+    "render_seconds": 19.66004790000443,
+    "quantize_png_seconds": 1.8178195000073174,
+    "pipeline_seconds": 22.096844300001976
+  },
+  "repeat_pixels_equal": true,
+  "tile_experiments_not_shipped": [],
+  "human_quality_approved": false
+}

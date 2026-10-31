@@ -261,3 +261,53 @@ Demo77 en Actions: aprobación, cambios y replay (runs41191045868/41191317941/
 probado; observaciones quedan en comentario público, no se copian al dashboard.
 Activación por issue_comment en main pendiente de integración humana, sin merge
 ni altas de autenticación/servicios por agente. Capturas/informe versionados.
+
+## 2026-10-31 · COL045/046/047 — Creator, Pro y Shot Planner local inicial
+
+Worktree nuevo COL-045-creator-pro desde main8674566, raíz y worktrees anteriores
+preservados. Issues81/82/83 diferenciadas y vinculadas;42 tareas intactas. Otra
+sesión desarrolla Project OS/COL048; aquí no se modifican site UI ni sync code,
+solo el catálogo versionado y dos regresiones del contrato de producto.
+
+Creator guiado y Pro comparten motor/receta. Presets y modos conservados, ayuda
+manual explícita; exportar exige preview de receta/imagen actuales. Shot Planner
+local con observaciones SDR, decisiones del usuario, incertidumbre, fuentes
+ARRI/ASC, esquema cenital editable y JSON independiente con receta. No inferencia
+fiel, óptica/luz/cámara originales, vídeo nuevo ni validación profesional.
+
+Seguridad: cuerpo realmente contado y concurrencia limitada; PNG íntegro/JPEG
+estricto, EXIF privado ausente; UUID, contención y enlaces internos rechazados,
+registros corruptos conservados/omitidos. CSP local sin eval/CDN, docs externas
+FastAPI desactivadas, feedback iframe comprobado. Sin dependencias o instalaciones
+nuevas. OSV566 versiones:2 paquetes con avisos conservados; ausentes del árbol
+Windows223 paquetes únicos. npm audit0 avisos reportados. No auditoría universal
+ni aprobación jurídica/redistribución del runtime.
+
+58 tests API/motor,128 seguimiento y3 cliente correctos. Build Vue/TypeScript OK.
+QA navegador CC0: PNG1024x678 ICC sin EXIF, efectos manuales, diagrama conservado,
+JSON y aviso/bloqueo por plan desactualizado, feedback local bajo CSP;0 errores y
+320/390/844/1280 sin overflow observado. Fixtures no cuentan como participantes.
+DSC0106 16MP/receta anterior:16.912s, píxeles SHA256 idénticos y original intacto;
+DSC0181:22.097s, otro input, sin comparación de mejora. Una ejecución por foto,
+no aceleración general ni prueba del instalador. Evidencia CREATOR_045_*.
+
+Se conserva el candidato existente; no se reconstruye ni distribuye otro. #67
+sigue pendiente de runtime/procedencia oficial autorizada, Windows limpio,
+editores activados y derechos/operativa del piloto. COL001 sin entrevistas reales.
+Publicación en rama/PR y CI se registrará al terminar; ninguna aprobación real
+emitida por el agente. Las capacidades nuevas requieren revisión individual.
+
+### PR86 y sincronización real
+
+https://github.com/jea27/Lut_generator/pull/86 (borrador durante comprobaciones).
+Commit de código3761999, CI remota MVP41210911012/Studio41210911018/validación
+41210911004/sync41210911087 correctas. Se han enlazado las3 capacidades a PR86.
+El colector se ejecutó con lecturas reales autenticadas de GitHub:18 capacidades,
+3 entregas en progreso sin marcar implementadas/aprobadas por estar aún sin
+integrar, MVP8 y42 tareas intactas, beta/venta NO-GO. Se restauraron por bytes
+los2 archivos de seguimiento generados; no hay estados simulados publicados.
+Evidencia CREATOR_045_SYNC.json distingue checkout candidato de producción.
+Las aceptaciones previas de Color Match/lotes/receta/Windows requieren nueva
+revisión en el candidato por cambios relacionados de UI/API; no se borraron
+recibos ni se emitieron nuevas decisiones humanas. CI final de metadatos y
+solicitud de revisión se comprobarán antes de marcar lista la PR.

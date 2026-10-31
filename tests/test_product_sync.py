@@ -39,7 +39,35 @@ class ProductTests(unittest.TestCase):
         self.assertEqual(a['metrics']['human']['passed'],0)
         self.assertFalse(a['readiness']['beta']['go'])
         self.assertFalse(a['readiness']['commercial']['go'])
-        self.assertEqual(len(a['features']),15)
+        self.assertEqual({f['id'] for f in a['features']},{f['id'] for f in self.manifest['features']})
+        self.assertEqual(len(a['features']),len({f['id'] for f in a['features']}))
+
+    def test_creator_pro_and_planner_do_not_inflate_original_mvp_or_beta(self):
+        additions={'creator','pro-workspace','shot-planner'}
+        self.assertTrue(additions<={f['id'] for f in self.manifest['features']})
+        self.assertFalse({'COL-045','COL-046','COL-047'}&{op['id'] for op in self.manifest['operations']})
+        for members in self.manifest['metrics'].values():self.assertFalse(additions&set(members))
+        result=self.derive()
+        self.assertEqual(result['metrics']['technical']['total'],8)
+        self.assertEqual(result['metrics']['human']['passed'],0)
+        self.assertFalse(result['readiness']['beta']['go'])
+        self.assertEqual(len(json.loads((ROOT/'site/data/roadmap.json').read_bytes())['tasks']),42)
+
+    def test_new_capability_needs_own_receipt_even_after_delivery_and_issue_label(self):
+        creator=next(f for f in self.manifest['features'] if f['id']=='creator')
+        creator['delivery_prs']=[9999]
+        self.prs.append({'id':9999,'number':9999,'state':'closed','title':'[COL-045] Creator',
+            'merged_at':'2026-10-31T00:00:00Z','base':{'ref':'main'},'html_url':BASE+'/pull/9999'})
+        self.issue(81).update(state='closed',labels=[{'name':'approved'}])
+        feature=next(f for f in self.derive()['features'] if f['id']=='creator')
+        self.assertTrue(feature['implemented']);self.assertTrue(feature['technically_verified'])
+        self.assertFalse(feature['human_approved']);self.assertEqual(feature['status'],'review')
+        result=product.derive(self.manifest,ROOT,REPO,self.issues,self.prs,self.runs,'a'*40,[],[],
+            '2026-10-31T00:00:00Z',{'creator':{'state':'approved'}})
+        by={f['id']:f for f in result['features']}
+        self.assertTrue(by['creator']['human_approved'])
+        self.assertFalse(by['pro-workspace']['human_approved']);self.assertFalse(by['shot-planner']['human_approved'])
+        self.assertEqual(result['metrics']['human']['passed'],0)
 
     def test_merge_and_ci_are_not_human_approval_and_blocked_overrides(self):
         i=self.issue(43); i.update(state='closed',labels=[{'name':'approved'}])

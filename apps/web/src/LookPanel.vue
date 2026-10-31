@@ -6,7 +6,7 @@ const controls=[['strength','Intensidad del acabado','Finish strength'],['glow',
 </script>
 <template>
  <section class="look-panel">
-  <div class="section-heading">LOOK MATCH · v1 <q-toggle v-model="modelValue.enabled" :disable="disabled" :aria-label="tx('Activar acabado','Enable finish')"/></div>
+  <div class="section-heading">{{tx('ACABADO MANUAL','MANUAL FINISH')}} <q-toggle v-model="modelValue.enabled" :disable="disabled" :aria-label="tx('Activar acabado','Enable finish')"/></div>
   <p>{{tx('Acabado manual experimental. La extracción automática del look de una referencia está pendiente.','Experimental manual finishing. Automatic extraction of a reference look is pending.')}}</p>
   <div v-for="control in controls" :key="control[0]" class="manual-control">
    <div class="control-label"><span>{{tx(control[1],control[2])}}</span><output>{{Math.round(modelValue[control[0]]*100)}}%</output></div>
