@@ -7,7 +7,7 @@ import {api,jsonPost} from './api'
 import {tx} from './i18n'
 import ShotPlanner from './ShotPlanner.vue'
 import {preferences,loadPreferences,setWorkspace,type Workspace} from './preferences'
-import {creatorSteps,hasProAdjustments,previewIdentity,currentPreview} from './workspace'
+import {creatorSteps,hasProAdjustments,previewIdentity,currentPreview,recordEdit} from './workspace'
 type Recipe={look:Look;version:number;domain:string;method:string;scale:number[];offset:number[];intensity:number;exposure:number;contrast:number;saturation:number;temperature:number}
 type Analysis={histograms:number[][];dominant:{hex:string;fraction:number}[];luminance_mean:number;contrast_p95_p05:number}
 type ImageAsset={id:string;width:number;height:number;notes:string[];has_alpha:boolean;preview_url:string;analysis:Analysis;name:string}
@@ -83,16 +83,15 @@ async function renderPreview() {
   }catch(e){if((e as Error).name!=='AbortError')error.value=(e as Error).message}
   finally{if(current===serial)previewing.value=false}
 }
+function rememberRecipe(){const next=recordEdit(history.value,historyIndex.value,recipe);history.value=next.entries;historyIndex.value=next.index}
 watch(recipe,()=>{
   exported.value=false
-  if(!restoring){const value=clone(recipe);if(JSON.stringify(value)!==JSON.stringify(history.value[historyIndex.value])){
-    history.value=history.value.slice(0,historyIndex.value+1);history.value.push(value);if(history.value.length>30)history.value.shift();historyIndex.value=history.value.length-1
-  }}
+  if(!restoring)rememberRecipe()
   if(source.value)previewing.value=true
   clearTimeout(timer);timer=setTimeout(renderPreview,300)
 },{deep:true})
 async function undo(delta:number){if(busy.value)return;const index=historyIndex.value+delta;if(index<0||index>=history.value.length)return;historyIndex.value=index;await assignRecipe(history.value[index]!)}
-function applyUserRecipe(value:Recipe){if(!busy.value)return assignRecipe(value)}
+async function applyUserRecipe(value:Recipe){if(busy.value)return;await assignRecipe(value);rememberRecipe()}
 async function download(format:string) {
   if(busy.value||!source.value||!exportReady.value||previewing.value)return;busy.value=true;error.value=''
   try{
@@ -113,7 +112,7 @@ async function importRecipe(event:Event){
   const input=event.target as HTMLInputElement,file=input.files?.[0];if(!file)return
   if(busy.value){input.value='';return}
   busy.value=true
-  try{if(file.size>64000)throw Error(tx('Receta JSON demasiado grande','Recipe JSON is too large'));const value=JSON.parse(await file.text());const valid=await(await api('/presets/validate',jsonPost(value))).json();await assignRecipe(valid)}catch(e){error.value=(e as Error).message}finally{input.value='';busy.value=false}
+  try{if(file.size>64000)throw Error(tx('Receta JSON demasiado grande','Recipe JSON is too large'));const value=JSON.parse(await file.text());const valid=await(await api('/presets/validate',jsonPost(value))).json();await assignRecipe(valid);rememberRecipe()}catch(e){error.value=(e as Error).message}finally{input.value='';busy.value=false}
 }
 function clearImages(){if(busy.value)return;q.dialog({title:tx('Eliminar imágenes temporales','Clear temporary images'),message:tx('Se eliminarán las copias locales y se reiniciarán los ajustes y el plan no guardados. Guarda antes tu preset, receta y plan JSON. Los originales y presets guardados se conservan.','This removes local copies and resets unsaved adjustments and plan. Save your preset, recipe and plan JSON first. Originals and saved presets are preserved.'),cancel:true,persistent:true}).onOk(async()=>{
   if(busy.value)return
@@ -196,7 +195,7 @@ onBeforeUnmount(()=>{controller?.abort();clearTimeout(timer);revoke()})
      <div class="control-label"><span>{{tx(control.label,({exposure:'Exposure',contrast:'Contrast',saturation:'Saturation',temperature:'Temperature'} as any)[control.key])}}</span><output>{{Number(recipe[control.key as keyof Recipe]).toFixed(2)}}</output></div>
      <q-slider :model-value="Number(recipe[control.key as keyof Recipe])" @update:model-value="(v)=>{(recipe as any)[control.key]=v}" :min="control.min" :max="control.max" :step="control.step" color="grey-5" :aria-label="tx(control.label,({exposure:'Exposure',contrast:'Contrast',saturation:'Saturation',temperature:'Temperature'} as any)[control.key])" :disable="!source||busy"/>
     </div></template>
-    <q-btn flat no-caps class="reset-button" :label="tx('Restablecer ajustes','Reset adjustments')" icon="restart_alt" :disable="!source||busy" @click="assignRecipe(neutral())"/>
+    <q-btn flat no-caps class="reset-button" :label="tx('Restablecer ajustes','Reset adjustments')" icon="restart_alt" :disable="!source||busy" @click="applyUserRecipe(neutral())"/>
     <LookPanel :model-value="recipe.look" :disabled="!source||busy"/>
     <details v-if="isPro" class="future-capabilities"><summary>{{tx('Capacidades previstas','Planned capabilities')}}</summary><p>{{tx('No disponibles ni incluidas en la beta actual.','Unavailable and not included in the current beta.')}}</p><ul><li v-for="capability in capabilities.filter(c=>c.status==='planned')" :key="capability.id">{{tx(capability.title?.es??capability.id,capability.title?.en??capability.id)}}</li></ul></details>
     <div class="domain-note"><q-icon name="verified_user" size="19px"/><span>{{tx('Procesamiento local. Sin IA generativa ni servicios de imagen.','Local processing. No generative AI or image services.')}}</span></div>

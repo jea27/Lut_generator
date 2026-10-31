@@ -319,7 +319,7 @@ Corregidas carrera de preferencias al arrancar, mutaciones durante operaciones
 y pérdida silenciosa de ediciones del Planner. Guía no técnica Creator/Pro/Planner
 en PRUEBA_CREATOR_PRO_PLANNER.md. Sin nuevos efectos o matemática de color.
 
-61 tests MVP/API/harness,128 seguimiento,6 Node y build Vue correctos. QA real
+61 tests MVP/API/harness,128 seguimiento,7 Node y build Vue correctos. QA real
 del motor congelado interno con PATH Windows/cwd vacío;71 módulos de bundle/SO,
 ninguna herramienta de desarrollo encontrada en PATH del hijo. Modos preservan
 PNG/receta/imágenes; plan conserva ediciones y confirma regeneración. Navegador

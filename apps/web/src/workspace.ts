@@ -11,3 +11,11 @@ export function previewIdentity(source:string|undefined,recipe:unknown){
 export function currentPreview(rendered:string,source:string|undefined,recipe:unknown){
  return !!source&&rendered===previewIdentity(source,recipe)
 }
+export function recordEdit<T>(entries:T[],index:number,value:T){
+ const encoded=JSON.stringify(value)
+ if(encoded===JSON.stringify(entries[index]))return {entries,index}
+ const next=entries.slice(0,index+1)
+ next.push(JSON.parse(encoded))
+ if(next.length>30)next.splice(0,next.length-30)
+ return {entries:next,index:next.length-1}
+}

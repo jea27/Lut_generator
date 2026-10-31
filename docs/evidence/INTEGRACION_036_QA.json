@@ -310,14 +310,15 @@
     "packaging/ColorEngine.spec": "02bc59309d85df5d9af8fe128d6f58bfeb82e74cfeb5d8dd8dcf1ea4adb749a4"
   },
   "final_source_files_sha256": {
-    "apps/web/src/App.vue": "46d4ec0aa9dbec04b4ca1a30aba47001f4cbc2652a410b1cb53efe3a2493fba6",
+    "apps/web/src/App.vue": "5790e075e18cabe380eb1b3cdcde221f5e1101731f5ed523339f0ac7d70f10e8",
     "apps/web/src/BetaPanel.vue": "198b653cdd95fc57fd64eca80c4a706b733ba397a226668113253dea10f41786",
     "apps/web/src/ShotPlanner.vue": "6a3d24b09ef7c7e2d7d636b8ef943811af845c799a8b758be60e5f6850fbe4b3",
     "apps/web/src/preferences.ts": "ee79ef21f6930913aac3e96de54ec16fb419a31b5c1455e5242eb5c0db81b96d",
-    "packaging/ColorEngine.spec": "02bc59309d85df5d9af8fe128d6f58bfeb82e74cfeb5d8dd8dcf1ea4adb749a4"
+    "packaging/ColorEngine.spec": "02bc59309d85df5d9af8fe128d6f58bfeb82e74cfeb5d8dd8dcf1ea4adb749a4",
+    "apps/web/src/workspace.ts": "34af8bdaf67191781594e5ed71b072f389c9c6a416cfe18fa15fe061f7ca3fe5"
   },
   "final_frontend_bundle_sha256": {
-    "index-CemmXTv-.js": "ce21f7090389c50c0ab0edacadffa0eaa5319ddc89d726d4f0e41c36badc0961"
+    "index-CqE7EkcQ.js": "e44feac50ea536c9cc2d41bf3f829943548d7cfa0aba022d9442519579d3864d"
   },
   "packaged_api_final": {
     "version": "0.3.0-beta.2",
@@ -373,7 +374,7 @@
     "cube_sha256": "4fb41b679e1f2a2363b22a57f3780ea87ff9ccf06ad718cc0eefaf7f3f48d331",
     "parent_death_watchdog": "passed"
   },
-  "final_followup": "Only frontend change after initial UI/high-resolution probes: wait for successful DELETE before aborting preview/resetting local state. Final frozen smoke repeated with demo; high-resolution rendering engine unchanged.",
+  "final_followup": "Frontend-only followups after first UI/16MP probes: successful DELETE before resetting session; preset/import/reset recorded in undo history. Final frozen UI history checks executed, final payload scan repeated. API/engine code and executable SHA256 unchanged; high-resolution probe not needlessly repeated.",
   "final_browser_followup": {
     "clear_confirm_removes_local_images": true,
     "clear_cancel_preserves_images": true,
@@ -389,5 +390,15 @@
     "INTEGRACION_CREATOR_MOVIL_036.jpg": "d08b399803473d3d255552e8bebd1d80ea57a4fe9149ff98ee47aa884e67b0f2",
     "INTEGRACION_PLANNER_036.jpg": "96131f6b8b4c2c5f44a2752db5c0ffd0f961faeec452331d8494f85f89d9fd6a",
     "INTEGRACION_PLANNER_MOVIL_036.jpg": "46c65ca2d898c02ce682417bd318db7f8cea7ecea0f4e3a22768586956754f82"
+  },
+  "history_ui": {
+    "after_preset": "0.05",
+    "undo_preset": "0.1",
+    "redo_preset": "0.05",
+    "after_reset": "0",
+    "undo_reset": "0.05",
+    "after_import": "0.4",
+    "undo_import": "0.05",
+    "redo_import": "0.4"
   }
 }

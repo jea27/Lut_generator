@@ -18,7 +18,7 @@ en41212113424; no se oculta como fallo de código. Revisión humana sigue separa
 | Riesgo encontrado | Corrección/evidencia |
 |---|---|
 | Un cambio de modo antes del primer GET podía perderse y guardar preferencias por defecto. | Hidratar antes de cambiar, PUTs ordenados y pruebas del módulo real con GET/PUT retrasados y fallidos. |
-| Preset, deshacer, importación o borrado podían competir con fit/export. | Guardas de operación y controles deshabilitados, también en biblioteca; comprobación real durante exportación. |
+| Presets/importación/reset no registraban historial, y algunas acciones podían competir con fit/export. | Historial común acotado, undo/redo de preset/importación/reset comprobado en navegador; guardas y controles deshabilitados, también en biblioteca, comprobados durante exportación. |
 | Regenerar el Planner descartaba diagrama/checklist editados sin preguntar. | Confirmación; cancelar conserva, aceptar reinicia. JSON antes/después de cambiar modos idéntico. |
 | El borrado de imágenes no explicaba pérdida de ajustes/plan no guardados. | Aviso explícito y bloqueo mientras hay operación; originales y presets guardados se conservan. |
 | El smoke antiguo heredaba PATH/cwd y podía esperar stdout sin límite. | Entorno del hijo limitado a Windows, cwd vacío propio, inicio acotado, validación estricta del puerto y auditoría de módulos cargados. No cambia el entorno del equipo. |
@@ -33,7 +33,7 @@ acabados, vídeo, licencias de pago ni servicios externos.
 
 ## Pruebas ejecutadas y límites
 
-- 61 unittest motor/API/harness,128 de seguimiento y6 Node correctos; build Vue/TS
+- 61 unittest motor/API/harness,128 de seguimiento y7 Node correctos; build Vue/TS
   correcto. Los tests sintéticos son infraestructura, nunca entrevistas ni QA externa.
 - Motor congelado construido con las herramientas existentes para **QA interna**,
   usando UI de esta entrega. No se ejecutó el builder NSIS ni se creó release.
