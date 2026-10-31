@@ -1,3 +1,25 @@
+# 0.3.0-beta.1 · candidato local, sin release publicada
+
+31-10-2026. Source396a508, dirty=false; SHA256
+ ae47f44e6f9382810e20a7a98b0b46bf6d53411e7f1c8b0fb2e9c7acf595ac21.
+266203035 bytes. Sin firma; NO-GO entrega externa/venta hasta completar QA y
+auditoría de payload/NSIS y condiciones Microsoft.
+
+- Acabado manual experimental: glow de altas luces, difusión y fade; receta v2
+  compatible con v1 sin efectos, intensidades/bypass independientes.
+- PNG/JPG y lotes incluyen acabado; LUT solo color con aviso y JSON conserva receta.
+- Paneles desplazables manteniendo comparador visible; ayuda y feedback offline.
+- Remapeo de rutas de compilación Rust y manifiesto ligado a versión exacta.
+-299 entradas de licencia con avisos, seis textos recuperados y fuentes fijadas.
+-30 tests MVP y91 tracking; smoke congelado de efectos/JSON/LUT/lote byte-identical.
+
+Pendientes:27 patrones de rutas de terceros/ejemplos por clasificar, inspección
+completa NSIS/runtime, Windows limpio/editores activados/piel y revisión humana.
+No halation ni extracción automática del acabado. Rendimiento real16MP y
+límites de preview en LOOK_MATCH_V1.md. Notas0.2 conservadas a continuación.
+
+---
+
 # Release preparada · 0.2.0-beta.1 (sin publicar)
 
 Candidato técnico Windows x64; nombre provisional Color Studio Beta. Esta nota

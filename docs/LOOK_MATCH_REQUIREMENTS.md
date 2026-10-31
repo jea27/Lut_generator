@@ -1,3 +1,9 @@
+> Actualización31-10-2026: COL026#68 implementa manualmente glow/difusión/fade
+> y receta v2, con bypass independiente y LUT solo color. Ver LOOK_MATCH_V1.md.
+> La tabla siguiente conserva el corte documental anterior: no describe el
+> estado actual de esa implementación. Halation/extracción automática siguen
+> pendientes, sin validación de fidelidad ni aprobación comercial.
+
 # COL-005 · Look Match: requisito comercial y mapa competitivo
 
 **Corte:** 30 de octubre de 2026. **Tipo de evidencia:** investigación de

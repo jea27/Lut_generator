@@ -1,3 +1,25 @@
+# Candidato vigente0.3.0-beta.1 · 31-10-2026
+
+Instalador exacto Color Studio Beta_0.3.0-beta.1_x64-setup.exe (266203035 bytes).
+SHA256 ae47f44e6f9382810e20a7a98b0b46bf6d53411e7f1c8b0fb2e9c7acf595ac21.
+Build desde396a508, dirty=false. No firmado, distribución bloqueada por QA y
+payload pendiente. Conservado0.2 como referencia histórica, no recomendado
+para distribuir por rutas de compilación. Ver BETA_03_AUDITORIA.md.
+
+Primeros pasos: instalar→demo o dos fotos autorizadas→Color Match→ajustes→
+activar Look Match y ajustar glow/difusión/fade→guardar preset/JSONv2→PNG/JPG.
+El acabado es manual experimental y tiene bypass/intensidad independientes.
+LUT .cube solo color, confirmación explícita al exportar; no conserva acabado.
+Feedback incluido desde ayuda o /feedback/: JSON local por canal privado,
+sin fotos/telemetría. Guardar presets antes de salir. No hay cuentas ni pagos.
+
+Procedimiento limpio, cinco recorridos y paquete de LUT lossless:
+BETA_QA_EXTERNA.md. Demo CC0 ya incorporada con créditos. Fotos privadas nunca
+se adjuntan a Issues. Los detalles siguientes conservan la guía0.2; los límites
+JPG/PNG8/24MP/32MiB y custodia de datos siguen vigentes.
+
+---
+
 # Color Studio 0.2.0-beta.1 · Windows
 
 Nombre provisional. Candidato técnico sin firma, no licencia comercial ni

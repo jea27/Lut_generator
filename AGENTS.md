@@ -67,3 +67,9 @@ investigación y el dashboard; aplicaciones en apps/ y motor en packages/.
 - Nuevas funciones: añadir pruebas apropiadas, comprobar espacios de color, gestión de gamma, gamut clipping y reproducción consistente entre plataformas.
 - Nada de fotos personales de clientes en Git ni de recursos descargados sin licencia.
 - Al finalizar responde: tarea e Issue; rama/PR y enlace; cambios; tests con evidencia; limitaciones; decisión humana solicitada; siguiente tarea propuesta (sin iniciarla sin permiso).
+
+## Autorización Look Match y QA externa · 31-10-2026
+El usuario autoriza una primera implementación manual de glow, difusión y fade,
+receta propia y pruebas, en COL026. No autoriza inferencia fiel del acabado,
+completar P3, contactar personas, habilitar virtualización, pagos, beta general,
+merges o certificados. Preparar cinco recorridos no acredita usuarios reales.

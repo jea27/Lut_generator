@@ -312,14 +312,14 @@
       "sha256": "4a4dbc62fa335e411b94a532be091c58c0c0c4fa731339f11722577d3cf6443b"
     },
     {
-      "file": "_internal/apps/web/dist/assets/index-BMkRxRG7.css",
-      "bytes": 226520,
-      "sha256": "27fd48a5981a3bc979c799abb8879f16b0339ea776d4737b12baf80fbf2d77bd"
+      "file": "_internal/apps/web/dist/assets/index-BysPJQPk.css",
+      "bytes": 226753,
+      "sha256": "38f30880a1737811da85ecf29b59a83b8a484e13c9af2f3fd2cda18fac5d375a"
     },
     {
-      "file": "_internal/apps/web/dist/assets/index-Cv7XuMPb.js",
+      "file": "_internal/apps/web/dist/assets/index-D_RDnKlv.js",
       "bytes": 293130,
-      "sha256": "bf987618d26d0a4e5adfdb8c8517eb207dde72ac4c451256398894861283bdd2"
+      "sha256": "9a64bc68b1cab27635c1a1dc469ecd5f90adf6f103f555aed5db99bada00b4b9"
     },
     {
       "file": "_internal/apps/web/dist/feedback/feedback.js",
@@ -334,12 +334,12 @@
     {
       "file": "_internal/apps/web/dist/index.html",
       "bytes": 411,
-      "sha256": "6602ebffe87da91a86fab68551f836266c7ca6ed55e460fb2aa069e9884caf7d"
+      "sha256": "e139555bf016833db02086fc6b359d038be115d0fa5e1570643ac2adc68f82e8"
     },
     {
       "file": "_internal/base_library.zip",
       "bytes": 1333490,
-      "sha256": "db3f7b88de46df01b6c74b1db411783c81f1ccc14e816eccd386e9f69dd11b77"
+      "sha256": "fb54b17dcabf60818aa4e284a6db239c4111d4c5786a93d8d3dda2bf4e5d919a"
     },
     {
       "file": "_internal/click-8.5.0.dist-info/INSTALLER",
@@ -794,24 +794,12 @@
     {
       "file": "native/color-studio-beta.exe",
       "bytes": 8032256,
-      "sha256": "5d29711c924636714e3d927a21e5b8a71b7191a21645f9afaa6f3f6d203b536e"
+      "sha256": "fb5f108d8469137504bd3b8ac85dc098ae0de9254fe296407d4361b2523b5e03"
     }
   ],
   "findings": [
     {
-      "file": "_internal/pyexpat.pyd",
-      "reason": "upstream_or_example_user_path"
-    },
-    {
-      "file": "_internal/_socket.pyd",
-      "reason": "upstream_or_example_user_path"
-    },
-    {
-      "file": "_internal/_asyncio.pyd",
-      "reason": "upstream_or_example_user_path"
-    },
-    {
-      "file": "PYZ/numpy.__config__",
+      "file": "_internal/libcrypto-3-x64.dll",
       "reason": "upstream_or_example_user_path"
     },
     {
@@ -819,51 +807,7 @@
       "reason": "upstream_or_example_user_path"
     },
     {
-      "file": "_internal/python312.dll",
-      "reason": "upstream_or_example_user_path"
-    },
-    {
-      "file": "_internal/_ssl.pyd",
-      "reason": "upstream_or_example_user_path"
-    },
-    {
-      "file": "_internal/python3.dll",
-      "reason": "upstream_or_example_user_path"
-    },
-    {
-      "file": "_internal/_uuid.pyd",
-      "reason": "upstream_or_example_user_path"
-    },
-    {
-      "file": "_internal/select.pyd",
-      "reason": "upstream_or_example_user_path"
-    },
-    {
-      "file": "_internal/_zoneinfo.pyd",
-      "reason": "upstream_or_example_user_path"
-    },
-    {
-      "file": "_internal/_elementtree.pyd",
-      "reason": "upstream_or_example_user_path"
-    },
-    {
-      "file": "_internal/base_library.zip",
-      "reason": "upstream_or_example_user_path"
-    },
-    {
-      "file": "_internal/_decimal.pyd",
-      "reason": "upstream_or_example_user_path"
-    },
-    {
-      "file": "_internal/_hashlib.pyd",
-      "reason": "upstream_or_example_user_path"
-    },
-    {
-      "file": "_internal/_overlapped.pyd",
-      "reason": "upstream_or_example_user_path"
-    },
-    {
-      "file": "_internal/libcrypto-3-x64.dll",
+      "file": "_internal/_socket.pyd",
       "reason": "upstream_or_example_user_path"
     },
     {
@@ -871,27 +815,7 @@
       "reason": "upstream_or_example_user_path"
     },
     {
-      "file": "PYZ/click.utils",
-      "reason": "upstream_or_example_user_path"
-    },
-    {
-      "file": "_internal/_wmi.pyd",
-      "reason": "upstream_or_example_user_path"
-    },
-    {
-      "file": "_internal/libssl-3-x64.dll",
-      "reason": "upstream_or_example_user_path"
-    },
-    {
-      "file": "_internal/libffi-8.dll",
-      "reason": "upstream_or_example_user_path"
-    },
-    {
-      "file": "_internal/unicodedata.pyd",
-      "reason": "upstream_or_example_user_path"
-    },
-    {
-      "file": "_internal/_queue.pyd",
+      "file": "_internal/_hashlib.pyd",
       "reason": "upstream_or_example_user_path"
     },
     {
@@ -903,7 +827,83 @@
       "reason": "upstream_or_example_user_path"
     },
     {
+      "file": "_internal/_overlapped.pyd",
+      "reason": "upstream_or_example_user_path"
+    },
+    {
+      "file": "_internal/_asyncio.pyd",
+      "reason": "upstream_or_example_user_path"
+    },
+    {
+      "file": "_internal/_wmi.pyd",
+      "reason": "upstream_or_example_user_path"
+    },
+    {
+      "file": "_internal/_zoneinfo.pyd",
+      "reason": "upstream_or_example_user_path"
+    },
+    {
+      "file": "_internal/_elementtree.pyd",
+      "reason": "upstream_or_example_user_path"
+    },
+    {
+      "file": "_internal/select.pyd",
+      "reason": "upstream_or_example_user_path"
+    },
+    {
+      "file": "_internal/_queue.pyd",
+      "reason": "upstream_or_example_user_path"
+    },
+    {
+      "file": "_internal/_ssl.pyd",
+      "reason": "upstream_or_example_user_path"
+    },
+    {
+      "file": "_internal/python3.dll",
+      "reason": "upstream_or_example_user_path"
+    },
+    {
+      "file": "PYZ/numpy.__config__",
+      "reason": "upstream_or_example_user_path"
+    },
+    {
+      "file": "_internal/base_library.zip",
+      "reason": "upstream_or_example_user_path"
+    },
+    {
+      "file": "_internal/pyexpat.pyd",
+      "reason": "upstream_or_example_user_path"
+    },
+    {
+      "file": "_internal/libssl-3-x64.dll",
+      "reason": "upstream_or_example_user_path"
+    },
+    {
+      "file": "_internal/libffi-8.dll",
+      "reason": "upstream_or_example_user_path"
+    },
+    {
       "file": "_internal/_ctypes.pyd",
+      "reason": "upstream_or_example_user_path"
+    },
+    {
+      "file": "PYZ/click.utils",
+      "reason": "upstream_or_example_user_path"
+    },
+    {
+      "file": "_internal/unicodedata.pyd",
+      "reason": "upstream_or_example_user_path"
+    },
+    {
+      "file": "_internal/_uuid.pyd",
+      "reason": "upstream_or_example_user_path"
+    },
+    {
+      "file": "_internal/_decimal.pyd",
+      "reason": "upstream_or_example_user_path"
+    },
+    {
+      "file": "_internal/python312.dll",
       "reason": "upstream_or_example_user_path"
     }
   ],

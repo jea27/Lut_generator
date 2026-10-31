@@ -95,14 +95,14 @@ a GitHub/Pages. Plazo y eliminación los decide el responsable, todavía pendien
 
 ## LUT: prueba real de editores preparada
 
-Paquete local .lumaforge-local/look03-qa: before.jpg, color.jpg, finish.jpg,
+Paquete local .lumaforge-local/look03-qa: before.png, color.png, finish.png,
 color-only.cube y recipe.json; fotografías CC0, no target humano aprobado.
 Photoshop2026 pide inicio de sesión y Premiere está instalado sin prueba real;
 Resolve ausente al último inventario. El titular debe activar sesión/licencia.
 
-En Photoshop abrir before.jpg en sRGB, añadir Consulta de colores/Color Lookup,
+En Photoshop abrir before.png en sRGB, añadir Consulta de colores/Color Lookup,
 cargar color-only.cube al100%, sin otros ajustes; guardar copiaPNG con ICC.
-Comparar con color.jpg (no con finish.jpg); cuantizar/dithering/interpolación
+Comparar con color.png (no con finish.png); cuantizar/dithering/interpolación
 pueden diferir, documentar antes de aceptar tolerancia. El acabado solo se
 reproduce importando receta en LumaForge y exportando imagen. No anunciar que
 la LUT conserva difusión/glow/fade. En Premiere usar clip SDR interpretado

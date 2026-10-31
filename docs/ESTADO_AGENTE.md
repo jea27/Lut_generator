@@ -1,3 +1,60 @@
+# Checkpoint vigente · Look Match y QA externa · 31-10-2026
+
+Rama codex/COL-026-look-match-beta, Issue68; base32278e4 de PR66, sobre PR65.
+PR65/66 auditadas abiertas y checks correctos; no merges. Autorización explícita
+actual permite acabado manual glow/difusión/fade y preparación de beta privada;
+no cobros, beta general, certificados, virtualización o contacto de participantes.
+
+Candidato0.3.0-beta.1 construido desde396a508, dirty=false. Archivo266203035 bytes,
+SHA256 ae47f44e6f9382810e20a7a98b0b46bf6d53411e7f1c8b0fb2e9c7acf595ac21.
+Ruta ignorada apps/desktop/src-tauri/target/release/bundle/nsis/. Sin firma ni
+release. Manifest en LOOK_03_ARTIFACT.json; no confundir con0.2 ni glob de archivos.
+
+Implementado: Look manual v1 (receta v2) con intensidad/bypass independientes,
+color primero, glow/difusión lineales por tiles con halos/alfa y fade limitado.
+Presets, JSON, PNG/JPG y lotes conservan efectos. LUT solo Color Match con aviso.
+V1 sin acabado compatible; halation, microcontraste dedicado e inferencia del
+acabado desde referencia NO implementados. No transferencia fiel demostrada.
+Paneles desktop independientes conservan el comparador; feedback offline incluido.
+
+30 tests MVP y91 tracking locales OK, TS/Vite/build nativo OK. Binario congelado:
+demo realCC0, JSONv2/LUT, lote2 y PNG idéntico byte a byte al export individual.
+Benchmark16MP32.4s con PNG/RSS815MB; preview0.729s, MAE preview/export reducido
+0.00476 yP95 0.01455. No validación de piel/mercado. Evidencias LOOK_03_*.
+Upgrade local0.2→0.3 exit0,8 archivos existentes conservados por hash; arranque
+nativo0.3 muestra preset previo y preferenciasEN. No Windows limpio (MSIX Codex).
+
+Auditoría: corregidas155 rutas compilación nativas mediante remap Rust;0 en
+nuevo exe. Corregido hash/version builder que elegía primer instalador del glob.
+299 entradas con licencia declarada y avisos,6 faltantes recuperados con hashes.
+Payload Python/PYZ+nativo enumerado;0 local-profile/secret/dev findings, pero27
+archivos/módulos con patrones de rutas proveedor/ejemplos pendientes clasificación.
+NO decir instalador totalmente limpio. NSIS/WebView2/VC/UCRT y términos concretos
+requieren conciliación final; no editar DLL firmadas ni autoaprobar auditoría legal.
+
+Preparado plan limpio/preflight no invasivo y5 perfiles sin asignar B01–05.
+Formulario QA00 descargado, synthetic/unverified/counts_as_interview=false;
+solo en .research-private/beta/qa. Nadie contactado ni respuestas reales.
+Bundle LUT lossless CC0 en .lumaforge-local/look03-qa/LUT-Editor-QA-CC0.zip.
+Photoshop no ofrece editor verificable en nueva inspección; último bloqueo
+confirmado fue login. No afirmar login resuelto o importación real; Premiere y
+Resolve sin prueba. Acción67 reutilizable, no repetir bloqueo sin novedad.
+
+NO-GO beta privada externa y venta, por separado en BETA_QA_EXTERNA.md y
+BETA_03_AUDITORIA.md. Pendientes Windows10/11 limpio, payload completo/términos,
+editores activados, retratos autorizados, responsable/canal/plazo y revisión.
+COL001/P0 siguen pendientes. Las cinco pruebas no cumplen10–20 de COL041.
+
+Reanudar: git status; consultar PR65/66 y nueva PR de esta rama/Issue68; leer67
+antes de notificar. Datos beta persistentes en LocalAppData/ColorStudioBetaData.
+No borrar .lumaforge-local, imágenes, presets o worktrees. App nativa0.3 abierta.
+Servidor QA propio26292/puerto8794 y landing8792 si activos; no interfaces externas.
+Build ./scripts/build_beta.ps1; tests ./.venv-mvp/Scripts/python.exe -m unittest
+discover -s tests_mvp -v; audit scripts/audit_beta_artifact.py (exit2 esperado
+mientras existan findings). Siguiente: clasificación proveedor/NSIS y QA limpia
+cuando el usuario aporte entorno. No afirmar CI nueva hasta consultarla.
+
+---
 # Checkpoint vigente · beta Windows · 31-10-2026
 
 Rama raíz actual codex/COL-042-preparacion-comercial; base técnica conservada

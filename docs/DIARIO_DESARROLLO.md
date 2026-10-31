@@ -180,3 +180,11 @@
 - Notificación única Issue67, comentario bot6540038578 menciona jea27; recepción nueva no confirmada. Marcadores PR65/66 previos a ready evitaron avisos duplicados. Runs41176358165/41176358957 success. Reinstalación comprobada,8 archivos privados intactos; checkpoint ESTADO_AGENTE actualizado.
 
 - Sync final41176446357 success; JSON público42 tareas verificado (BETA_02_SYNC.json). CI66 en15d6f08: MVP41176457682/Studio41176457662/aviso41176457661 success. Advertencias Actions de migración Node20/Ubuntu26 observadas, sin fallos ni permisos nuevos.
+
+## 2026-10-31 · [COL-026] Acabado manual, auditoría de candidato y QA externa
+- PR65/66 auditadas abiertas con CI correcta; Issue67 sin nueva autorización. Rama independiente/Issue68, sin completar P3 ni P0 comercial.
+- Look manual: glow/difusión/fade, receta v2 compatible con v1 sin efectos, bypass/intensidades separadas, render/lotes/JSON y LUT solo color con aviso. Halation y análisis automático pendientes.
+-30 tests MVP/91 tracking y build TS/nativo OK. Smoke empaquetado: efectos, lote2, PNG byte-identical y feedback incluido. Foto CC0 de16MP:32.392s con PNG/RSS815.4MB, originales intactos. No benchmark de piel/usuarios.
+- Corregidas rutas nativas (155→0), selección incorrecta de hash por glob y desplazamiento de paneles. Inventario299/0 avisos ausentes; payload27 patrones proveedor/ejemplos aún sin clasificación, scope NSIS/condiciones Microsoft pendiente. No declarar ausencia universal de PII.
+- Setup0.3 limpio desde396a508, SHA256 ae47f44e6f9382810e20a7a98b0b46bf6d53411e7f1c8b0fb2e9c7acf595ac21,266203035 bytes. Upgrade local exit0/8 archivos conservados y arranque nativo. No VM limpia, firma ni release.
+- Preparados preflight, guía, cinco recorridos, feedback offline y bundle lossless de LUT. QA00 sintético descargado/separado; ningún participante contactado. Photoshop sin documento/editor verificable; no compatibilidad real afirmada. GO/NO-GO privado y venta separados.
