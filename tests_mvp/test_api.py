@@ -12,6 +12,8 @@ H={'X-LumaForge-Local':'1'}
 class ApiTests(unittest.TestCase):
     def setUp(self):
         self.directory=tempfile.TemporaryDirectory();self.client=TestClient(create_app(self.directory.name),base_url='http://127.0.0.1')
+        token=self.client.get('/api/session').json()['csrf']
+        self.client.headers.update({**H,'X-Color-Studio-Token':token})
         rgb=np.random.default_rng(3).integers(0,255,(32,48,3),dtype='uint8')
         buf=io.BytesIO();Image.fromarray(rgb).save(buf,format='PNG');self.payload=buf.getvalue()
 
@@ -41,7 +43,7 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(self.client.get('/api/images/'+a['id']+'/preview').status_code,404)
 
     def test_loopback_and_origin_guards(self):
-        self.assertEqual(self.client.post('/api/images').status_code,403)
+        self.assertEqual(self.client.post('/api/images',headers={'X-Color-Studio-Token':''}).status_code,403)
         self.assertEqual(self.client.post('/api/images',headers={**H,'Origin':'https://untrusted.example'}).status_code,403)
         self.assertEqual(self.client.get('/api/health',headers={'Host':'untrusted.example'}).status_code,403)
 

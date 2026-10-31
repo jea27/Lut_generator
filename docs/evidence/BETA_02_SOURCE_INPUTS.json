@@ -1,0 +1,129 @@
+{
+  "meaning": "Post-build snapshot of application/build inputs, before first beta source commit. Artifact records dirty=true; no bit-identical claim.",
+  "files": [
+    {
+      "file": "apps/api/jobs.py",
+      "sha256": "593a8f18564c99def79146d642bf98f11277afb905a2214d730473469d11f3a9"
+    },
+    {
+      "file": "apps/api/main.py",
+      "sha256": "71ce0770771de2bb2bc4b2307bbeec36ecd093d92f360688c304664eea0b24d0"
+    },
+    {
+      "file": "apps/api/storage.py",
+      "sha256": "5fac98feeb2855d2321d4d41b7fd367cf2db3dadb4f0916d88181371b07dbb9a"
+    },
+    {
+      "file": "apps/demo/credits.json",
+      "sha256": "31f185f7aa969fb9f5a24b552555bbaa63cc071bf34c99638fb235dc4b0016ca"
+    },
+    {
+      "file": "apps/demo/reference.jpg",
+      "sha256": "5005bfe36f98fd65e89673be1cc09d5f532f09482fd3e8a57de075022c13493c"
+    },
+    {
+      "file": "apps/demo/source.jpg",
+      "sha256": "c45f876097b42968568cf595b268b0600a83b0728c1edf8105ffccfea9cb9e5d"
+    },
+    {
+      "file": "apps/desktop/engine_entry.py",
+      "sha256": "a8adc1a13d1b275467d6a69248f54e3d989608ac5e8096bddd7bef46fb397f9d"
+    },
+    {
+      "file": "apps/desktop/src-tauri/Cargo.lock",
+      "sha256": "b900ee13b5d867a93b2969218152f438a73f01500ccd22c78e3e2319184774cb"
+    },
+    {
+      "file": "apps/desktop/src-tauri/Cargo.toml",
+      "sha256": "ca44e08cf3800f75654c8ebbca9c1c687d6a17bdc40dba8967a3aba9af265ac4"
+    },
+    {
+      "file": "apps/desktop/src-tauri/rust-toolchain.toml",
+      "sha256": "5603e3c06800e871a37abb95f97b3ac063e66a9a4a0eb3efd432007c63b8abe9"
+    },
+    {
+      "file": "apps/desktop/src-tauri/src/main.rs",
+      "sha256": "d989871da4aa0dcd100ffa678c60f4a272e6ed60a8881403370324c3d08f7545"
+    },
+    {
+      "file": "apps/desktop/src-tauri/tauri.conf.json",
+      "sha256": "a450f13f35dec7749037c91d5c3bb99455b4a0e148cf7f6f021e916cba7990c6"
+    },
+    {
+      "file": "apps/web/index.html",
+      "sha256": "478819281c3eaa59201d7b8c3d011a2de43c316a4b84cceab98ab8a765e3b68e"
+    },
+    {
+      "file": "apps/web/package-lock.json",
+      "sha256": "277558a5eaa4a0ba8df8a8a6f5bfaace8044c695371064bc787382078b90bccd"
+    },
+    {
+      "file": "apps/web/package.json",
+      "sha256": "f3faebd94a72ef0bc736db1881cee3ec8846a356b4f697d597da9fdc3c38e648"
+    },
+    {
+      "file": "apps/web/src/api.ts",
+      "sha256": "d859265b679a5d17ac01c221e7a0d8acdbbe0aaef3dddb1c66908506813dc791"
+    },
+    {
+      "file": "apps/web/src/App.vue",
+      "sha256": "0d548f6c12aea85bdaf54e6efa01d96f977acce8129ebdbf35ac24d2a2432fb5"
+    },
+    {
+      "file": "apps/web/src/BetaPanel.vue",
+      "sha256": "ee060fbe8e0d84ca2feda4fd55c3dc59c99ff247604131e5ab7aac625018030b"
+    },
+    {
+      "file": "apps/web/src/i18n.ts",
+      "sha256": "c7e31d9997fece16b0bf5100c5e70240a4cbd81dadaa2c21be91ff1573a27930"
+    },
+    {
+      "file": "apps/web/src/main.ts",
+      "sha256": "81803a8c711f114ca5a1951a27e6a9a6b6107ff9fdd632823ee5967d28a049ff"
+    },
+    {
+      "file": "apps/web/src/style.css",
+      "sha256": "8a674695f16cd7a999c2f8f91508b98d96561737f34a89ae606e384e66adeebe"
+    },
+    {
+      "file": "apps/web/src/vite-env.d.ts",
+      "sha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5"
+    },
+    {
+      "file": "apps/web/vite.config.ts",
+      "sha256": "30690bce68b80e5ed7ecdc3869694ff9c0d5829e4763e2c39b67de04e103d624"
+    },
+    {
+      "file": "packages/colour_core/__init__.py",
+      "sha256": "2658766fda7effaa4ad805c5cf203504a202d37f5d69a15d29a0cb61ff0a8379"
+    },
+    {
+      "file": "packages/colour_core/engine.py",
+      "sha256": "c015a32bca04e7f293509285dd59f67a716aef94bfc58bf2266b26b43cf21893"
+    },
+    {
+      "file": "packages/colour_core/image_io.py",
+      "sha256": "3c86586a9b98dd73aa40f1b6bd6dbad81e8bb1ea98ba7951ddaeb85d89f4f566"
+    },
+    {
+      "file": "packaging/ColorEngine.spec",
+      "sha256": "ecd9b8edffb57502d88402e7645573b0708506a15a454a651c19e8e0169371ed"
+    },
+    {
+      "file": "packaging/notices/inventory.json",
+      "sha256": "d4a25a2c7087458f2ec6abe1f12c4f57ccb4895aca67355624b521d5f17d91fd"
+    },
+    {
+      "file": "packaging/notices/THIRD_PARTY_NOTICES.txt",
+      "sha256": "d09b9b211564e9ac17c62986cf361e56a9c9dfb97f439e43d71e683084b558d4"
+    },
+    {
+      "file": "requirements-build.txt",
+      "sha256": "56ede94816988286053b2cf72f1cdb24192edd1c457378b218c598e1535aacb3"
+    },
+    {
+      "file": "requirements-mvp.txt",
+      "sha256": "2f9706145fb66a91d915d994b560bf7ca49b3df6d0bf2e7d19cba0ae1bd99db9"
+    }
+  ]
+}

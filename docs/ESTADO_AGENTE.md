@@ -1,3 +1,48 @@
+# Checkpoint vigente · beta Windows · 31-10-2026
+
+Rama codex/COL-037-beta-estabilidad, Issues COL036#57/COL037#58.
+Candidato0.2.0-beta.1 construido e instalado; NSIS266193722 bytes, SHA256
+c1798ece22b9a8f38b6c7042a59630c16800b7a7ca295ee4119a8c157d092a4a.
+Sin firma ni release pública. Herramientas autorizadas ya instaladas; no repetir
+permiso de Rust/MSVC/C++/SDK/PyInstaller/Tauri. PR52/53 integradas por jea27,
+main a7a8df8 incorporado por fast-forward local sin sobrescribir cambios.
+Conservadas PR63/64 y docs Look Match/investigación comercial. No efectos
+espaciales implementados, no modificación de cuestionario49€, COL001 pendiente.
+
+Implementado: instalador Tauri2 con sidecar local supervisado y puerto dinámico,
+sesión cookie/token/origen, presets CRUD/grupos, preferencias ES/EN, bienvenida,
+demo CC0, arrastrar imágenes y lotes cancelables con recuperación interrupted.
+23 tests MVP y91 seguimiento locales OK; TS/Vite y build nativo OK. Prueba real
+4 CC0 de16MP, exports11.4–13.7s, RSS789–804MB; lote2 outputs verificados, ICC y
+hashes originales intactos; watchdog de muerte padre OK. No evidencia de piel.
+Instalación/desinstalación exit0:8 archivos privados conservados por hash, proceso
+auxiliar cerrado. Reinstalado para revisión. Contexto Codex/MSIX virtualiza rutas;
+no confundir con Windows limpio. Datos en LocalAppData/ColorStudioBetaData.
+
+Artefactos ignorados: apps/desktop/src-tauri/target/release/bundle/nsis/. Evidencias
+públicas saneadas en docs/evidence/BETA_02_*. Datos QA privados .lumaforge-local.
+Inventario299 paquetes + avisos incluidos,6 avisos/conciliación binaria pendientes.
+Sin original privado, respuestas, credenciales ni fotografías privadas publicadas.
+
+Pendiente: revisar PR beta y comercial; CI remota por consultar en GitHub.
+Landing local apps/landing con captura real, CC0, comparador y descarga pública
+pendiente; borradores BETA_COMERCIAL en entrega separada. Publicar ramas/PR está
+autorizado, no main/merge/approved/releases/visibilidad/gastos.
+Bloqueos: Windows limpio10/11, calidad de retratos autorizados y hardware;
+Photoshop pide sesión Adobe, Premiere sin importación probada, Resolve ausente;
+licencias, nombre/titular/legal/fiscal/precio/código público antes de vender.
+GO solo demostración técnica local; NO-GO beta general y venta.
+
+Reanudar: git status; gh pr list --repo jea27/Lut_generator; leer solicitud humana
+beta y sus comentarios antes de avisar; no repetir bloqueo ya notificado.
+Build: ./scripts/build_beta.ps1. Tests: ./.venv-mvp/Scripts/python.exe -m unittest
+discover -s tests_mvp -v. Smoke empaquetado: scripts/smoke_beta.py requiere piloto
+CC0 existente y escribe carpeta privada nueva. No borrar datos/worktrees históricos.
+Siguiente tarea elegible: cerrar auditoría de licencias binaria; QA externa solo
+tras acceso a entorno limpio/Adobe/medios autorizados. Sin aprobación automática.
+
+---
+
 # Estado del agente · LumaForge MVP v0.1 · 2026-10-30
 
 ## Checkpoint vigente · P1/P2 autorizado

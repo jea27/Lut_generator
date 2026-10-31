@@ -47,6 +47,15 @@ Construir un motor de transferencia de look desde referencias para foto y vídeo
 
 ## Autorización explícita MVP v0.1 (2026-10-30)
 
+### Ampliación beta Windows (2026-10-30)
+La petición COLOR STUDIO autoriza estabilización y distribución técnica, tareas
+COL036–042 de preparación, lotes y presets, demo CC0 y landing local. Tauri2,
+Rust/MSVC, Visual Studio C++/SDK y PyInstaller fueron expresamente autorizados
+y ya instalados. Se permite probar nuestro instalador por usuario. No confundir
+prioridad técnica P0 de beta con la validación comercial P0 aún pendiente.
+Continúan prohibidos merges, approved, releases comerciales, compras y cambios
+de permisos/visibilidad. No repetir la autorización de estas herramientas.
+
 El usuario autoriza comenzar P1 y P2 aunque P0 comercial siga incompleta.
 Esta excepción sustituye la condición anterior de salida P0 para desarrollo
 técnico. Autoriza preparar dependencias locales, implementar y probar el MVP,

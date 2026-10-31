@@ -161,10 +161,16 @@ def transform(rgb, recipe):
     return np.clip(output.reshape(a.shape),0,1)
 
 
-def render(rgb, recipe):
+class ProcessingCancelled(Exception):pass
+
+
+def render(rgb, recipe, cancel=None, progress=None):
     # Bound working arrays independently of full-resolution file size.
     output=np.empty_like(rgb,dtype=np.float32)
-    for y in range(0,rgb.shape[0],64): output[y:y+64]=transform(rgb[y:y+64],recipe)
+    for y in range(0,rgb.shape[0],64):
+        if cancel and cancel():raise ProcessingCancelled()
+        output[y:y+64]=transform(rgb[y:y+64],recipe)
+        if progress:progress(min(1,(y+64)/rgb.shape[0]))
     return output
 
 

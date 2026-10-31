@@ -1,0 +1,55 @@
+{
+  "version": "0.2.0-beta.1",
+  "environment": "Existing Windows developer machine; not clean VM",
+  "scope": "Real licensed rural photographs only; no portrait/skin/market validation",
+  "packaged_runtime": true,
+  "runtime_required_from_user": false,
+  "samples": [
+    {
+      "input_sha256": "d23e0db0afa94b44f1b4adfb3a8e168d7877266103bcc1365622f149dff15e32",
+      "dimensions": [
+        4928,
+        3264
+      ],
+      "export_ms": 11410.4,
+      "sampled_process_peak_rss_mb": 797.2,
+      "original_unchanged": true
+    },
+    {
+      "input_sha256": "1e3bb248bd900639242f554ddf0275fd2450efa5a98d7a6d819d784fa1c8dbe2",
+      "dimensions": [
+        4891,
+        3255
+      ],
+      "export_ms": 12577.4,
+      "sampled_process_peak_rss_mb": 801.4,
+      "original_unchanged": true
+    },
+    {
+      "input_sha256": "707d5e1a109a9018af848db60e5c5a1aedf4218ab353e24e308a5acf2a2d61a1",
+      "dimensions": [
+        4928,
+        3264
+      ],
+      "export_ms": 12107.8,
+      "sampled_process_peak_rss_mb": 788.6,
+      "original_unchanged": true
+    },
+    {
+      "input_sha256": "92586431b8358502c888af0c6a8b128964361ff1066c843b1d80b5355754c36c",
+      "dimensions": [
+        4928,
+        3264
+      ],
+      "export_ms": 13707.6,
+      "sampled_process_peak_rss_mb": 803.9,
+      "original_unchanged": true
+    }
+  ],
+  "batch_status": "completed",
+  "batch_outputs_verified": 2,
+  "demo_originals_unchanged": true,
+  "ffmpeg_binary_present": false,
+  "cube_sha256": "22ea4b0a44df0ab015ae1ddda8153fc3094c95620f3fa659feebf38d48e38015",
+  "parent_death_watchdog": "passed"
+}
