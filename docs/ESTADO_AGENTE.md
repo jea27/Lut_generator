@@ -574,3 +574,30 @@ cambia apps/ o packages/. CI inicial74 MVP41188254939, Studio41188254955 y
 validate41188254963 success, con consulta real de GitHub sin ampliar permisos.
 La nueva revisión se validará de nuevo. Coordinación73: entregar esta PR y
 checkpoint antes de que otro chat tome el worktree. No merge remoto del agente.
+
+
+## Checkpoint COL044 · revisión humana individual · 31-10-2026
+
+Worktree propio COL-044-human-review, rama codex/COL-044-human-review, Issue76,
+PR79: https://github.com/jea27/Lut_generator/pull/79. No apps/packages modificados,
+42 tareas intactas, ninguna capacidad real aprobada, sin merge del agente.
+Mis revisiones con11 capacidades reales pendientes, checklist/pasos/versión/
+evidencias y observaciones en memoria. Copiar/abrir Issue y publicar conjea27;
+no token en Pages. Protocolo/autenticación/límites en REVISIONES_HUMANAS.md.
+Recibos por ID+huella, revocación al editar/borrar, cambios relacionados requieren
+nueva revisión; labels/merges nunca aprueban capacidades. Historial de GitHub
+conservado; notas no se copian al JSON público. Cola para agente sin prometer24/7.
+
+126 tests de seguimiento+37 MVP locales OK, JS válido, demo real en Issue77:
+approval6541989840 → Actions41191045868 → estado QA aprobado; cambios6542024460
+→ Actions41191317941 → Correcciones solicitadas; replay41191386973 no reactivó
+aceptación ni duplicó recibos(2). Los3 jobs de Pages quedaron omitidos. Artefactos
+reales verifican0 aprobaciones de producto. HUMAN_REVIEW_DEMO.json/capturas5
+anchos sin overflow y0 errores. No iPhone físico ni nueva beta/instalación.
+
+Pendiente: CI final/revisión humana de PR79. issue_comment y publicación del
+nuevo flujo necesitan integración humana en main; solo demo de rama validada,
+no afirmar ya activado en Pages. Tras merge humano, repetir únicamente demo y
+comprobar evento real+sync+HTTP público. No merge para forzar una prueba.
+Reanudar: git status en esta rama; gh pr checks79; leer Issue76 y PR79. Conservar
+worktrees/documentación anteriores. No emitir approve sobre capacidades reales.

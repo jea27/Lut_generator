@@ -1,0 +1,73 @@
+{
+  "scope": "Actual GitHub comments + branch-isolated Actions + local browser. issue_comment/Pages activation pending human merge.",
+  "demo_issue": 77,
+  "demo_feature": "review-demo",
+  "runs": [
+    {
+      "run": 41191045868,
+      "state": "approved",
+      "history_count": 1,
+      "real_human_approvals": 0,
+      "projection_sha256": "cb7b639b1421897215d4529eeda843dc7e06f1f103fc38c6b4e461b94b6466bb"
+    },
+    {
+      "run": 41191317941,
+      "state": "changes_requested",
+      "history_count": 2,
+      "real_human_approvals": 0,
+      "projection_sha256": "024f3cfd347feb7631e1c44cf282e73b7a0e50046bc9685f89b44bedb46613cc"
+    },
+    {
+      "run": 41191386973,
+      "state": "changes_requested",
+      "history_count": 2,
+      "real_human_approvals": 0,
+      "projection_sha256": "019241719de247cd5ca3fb35ed46afc3bc86d94fe479750b476dbcff4d348063"
+    }
+  ],
+  "approve_comment": 6541989840,
+  "changes_comment": 6542024460,
+  "only_synthetic_capability": true,
+  "pages_job_skipped": true,
+  "no_real_approvals": true,
+  "receipts_not_duplicated": true,
+  "browser": {
+    "scope": "IAB real, responsive emulation; no physical iPhone test",
+    "sizes": [
+      {
+        "width": 1280,
+        "scroll_width": 1265
+      },
+      {
+        "width": 390,
+        "scroll_width": 375
+      },
+      {
+        "width": 320,
+        "scroll_width": 305
+      },
+      {
+        "width": 430,
+        "scroll_width": 415
+      },
+      {
+        "width": 844,
+        "scroll_width": 829
+      }
+    ],
+    "modal_390": {
+      "width": 347,
+      "client": 330,
+      "scroll": 330
+    },
+    "pending_real_capabilities": 11,
+    "checklist_gate_tested": true,
+    "changes_require_notes_tested": true,
+    "copy_and_open_issue_tested": true,
+    "console_errors": []
+  },
+  "screenshots": {
+    "REVIEW_DESKTOP.jpg": "ef81287be8aae9c470279ca2485ec408b427ea2214f856fb7822fe2a85596d66",
+    "REVIEW_MOBILE.jpg": "462361b999f2cb09970455b4aafded88f60634b666999b1b50f16643b3e541dd"
+  }
+}

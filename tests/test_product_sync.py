@@ -61,6 +61,15 @@ class ProductTests(unittest.TestCase):
             if f['group']=='Futuro':
                 self.assertFalse(f['implemented']);self.assertFalse(f['human_approved']);self.assertEqual(f['status'],'planned')
 
+    def test_capability_receipts_are_individual_and_do_not_approve_parent(self):
+        decisions={'glow':{'state':'approved'},'diffusion':{'state':'changes_requested'}}
+        result=product.derive(self.manifest,ROOT,REPO,self.issues,self.prs,self.runs,'a'*40,[],[],'2026-10-31T00:00:00Z',decisions)
+        by={f['id']:f for f in result['features']}
+        self.assertEqual(by['glow']['status'],'approved');self.assertTrue(by['glow']['human_approved'])
+        self.assertEqual(by['diffusion']['status'],'changes_requested');self.assertFalse(by['diffusion']['human_approved'])
+        self.assertFalse(by['fade']['human_approved']);self.assertFalse(by['manual-look']['human_approved'])
+        self.assertEqual(result['metrics']['human']['passed'],0)
+
     def test_missing_ci_and_wrong_head_cannot_verify(self):
         self.runs[0]['head_sha']='b'*40
         self.assertIsNone(self.derive()['metrics']['technical']['percent'])

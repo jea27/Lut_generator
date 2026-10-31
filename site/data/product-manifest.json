@@ -758,6 +758,12 @@
       "title": "Dashboard real de producto y sincronización GitHub",
       "issue": 72,
       "pr": 74
+    },
+    {
+      "id": "COL-044",
+      "title": "Revisión humana por capacidad y versión",
+      "issue": 76,
+      "pr": 79
     }
   ],
   "review_demo": {

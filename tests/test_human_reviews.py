@@ -96,6 +96,22 @@ class Reviews(unittest.TestCase):
         c=self.comment();b=self.acknowledged(c)
         self.assertEqual(len(self.project([c,b,b])['history']),1)
 
+    def test_approving_one_capability_does_not_clear_sibling_corrections(self):
+        a=self.comment();fa=next(f for f in self.manifest['features'] if f['id']=='diffusion')
+        b=self.comment(101,'changes',fa)
+        br={'id':1101,'user':h.BOT,'body':h.RECEIPT+json.dumps(h.receipt(b,fa['issue'],fa,self.manifest))+'\n```'}
+        records=[a,self.acknowledged(a),b,br]
+        class API:
+            def pages(self,endpoint):return records
+            def get(self,endpoint):return {'labels':[{'name':'agent-action-required'}]}
+        with patch.object(h,'post') as write:
+            h.reconcile_queue(API(),self.f['issue'],self.manifest)
+            write.assert_not_called()
+        records.remove(b)
+        with patch.object(h,'post') as write:
+            h.reconcile_queue(API(),self.f['issue'],self.manifest)
+            self.assertEqual(write.call_args.kwargs['method'],'DELETE')
+
     def test_processor_replay_and_demo_guard_no_write(self):
         c=self.comment();records=[c,self.acknowledged(c)]
         class API:
