@@ -1,0 +1,725 @@
+{
+  "schema": "color-studio-build-origin-audit-v1",
+  "files": [
+    {
+      "file": "python312.dll",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "83b6722af52dd243a6729867b0adaa40de5e64e5847d971a61c313568c265640",
+      "frozen_sha256": "83b6722af52dd243a6729867b0adaa40de5e64e5847d971a61c313568c265640",
+      "byte_identical": true
+    },
+    {
+      "file": "numpy.libs/libscipy_openblas64_-ed4f167a5330424524f45258e7ca2c8d.dll",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "ed4f167a5330424524f45258e7ca2c8d7f03c0cba1f30ee4985553ac1f88ecf8",
+      "frozen_sha256": "ed4f167a5330424524f45258e7ca2c8d7f03c0cba1f30ee4985553ac1f88ecf8",
+      "byte_identical": true
+    },
+    {
+      "file": "numpy.libs/msvcp140-a4c2229bdc2a2a630acdc095b4d86008.dll",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "a4c2229bdc2a2a630acdc095b4d86008e5c3e3bc7773174354f3da4f5beb9cde",
+      "frozen_sha256": "a4c2229bdc2a2a630acdc095b4d86008e5c3e3bc7773174354f3da4f5beb9cde",
+      "byte_identical": true
+    },
+    {
+      "file": "_decimal.pyd",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "98d4623a6f04fa97816ba46d8870c372784db957018ca62ab39d4beedd225036",
+      "frozen_sha256": "98d4623a6f04fa97816ba46d8870c372784db957018ca62ab39d4beedd225036",
+      "byte_identical": true
+    },
+    {
+      "file": "_hashlib.pyd",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "782ab8030efb6899b713ae31864f2fad1a6ab066c82798602b3b76e72ba109e1",
+      "frozen_sha256": "782ab8030efb6899b713ae31864f2fad1a6ab066c82798602b3b76e72ba109e1",
+      "byte_identical": true
+    },
+    {
+      "file": "unicodedata.pyd",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "a287cead618406777f79e15f0ae11cb43bfaf64fa56cc6ea6481895e554c91ff",
+      "frozen_sha256": "a287cead618406777f79e15f0ae11cb43bfaf64fa56cc6ea6481895e554c91ff",
+      "byte_identical": true
+    },
+    {
+      "file": "_lzma.pyd",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "a3aa8daae23817693db0da9573d9ee7997b14870a529048e194181d242458197",
+      "frozen_sha256": "a3aa8daae23817693db0da9573d9ee7997b14870a529048e194181d242458197",
+      "byte_identical": true
+    },
+    {
+      "file": "_bz2.pyd",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "b677b1373cb1864e2bdf352556f1acbd518ae8dd894d1b48aaadf9486c1848c3",
+      "frozen_sha256": "b677b1373cb1864e2bdf352556f1acbd518ae8dd894d1b48aaadf9486c1848c3",
+      "byte_identical": true
+    },
+    {
+      "file": "_socket.pyd",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "284af152ae1fd7813fa3208dcb4c8093023a8cfb2560c8fe4b802b0d69d324fe",
+      "frozen_sha256": "284af152ae1fd7813fa3208dcb4c8093023a8cfb2560c8fe4b802b0d69d324fe",
+      "byte_identical": true
+    },
+    {
+      "file": "select.pyd",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "e3b0892b597a0d2fc130a86008d8e50ab06e8bc7edaee626ab5757bad13a808d",
+      "frozen_sha256": "e3b0892b597a0d2fc130a86008d8e50ab06e8bc7edaee626ab5757bad13a808d",
+      "byte_identical": true
+    },
+    {
+      "file": "_overlapped.pyd",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "f0b6eebbec89db7a03aa65b8d1a9ce8a6084cdfe8097630906da4a66cb62574e",
+      "frozen_sha256": "f0b6eebbec89db7a03aa65b8d1a9ce8a6084cdfe8097630906da4a66cb62574e",
+      "byte_identical": true
+    },
+    {
+      "file": "_ssl.pyd",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "790dfa622e067a9a638a92916d4cd192ba26653fa059121b3b68dc789650f966",
+      "frozen_sha256": "790dfa622e067a9a638a92916d4cd192ba26653fa059121b3b68dc789650f966",
+      "byte_identical": true
+    },
+    {
+      "file": "_queue.pyd",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "6414e0dc9410f75ad1950983df982883af812e187314f3bb7f3519db3931ffff",
+      "frozen_sha256": "6414e0dc9410f75ad1950983df982883af812e187314f3bb7f3519db3931ffff",
+      "byte_identical": true
+    },
+    {
+      "file": "_ctypes.pyd",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "85db4d28b7bdb6e4341db9f6fc0e1ddbeabecdd7e94fc9c4e5f73f7ab1517fae",
+      "frozen_sha256": "85db4d28b7bdb6e4341db9f6fc0e1ddbeabecdd7e94fc9c4e5f73f7ab1517fae",
+      "byte_identical": true
+    },
+    {
+      "file": "_multiprocessing.pyd",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "8bfb0977997d4945706735b0d96e220827a1b026b7d80362cd84f89ea670b15a",
+      "frozen_sha256": "8bfb0977997d4945706735b0d96e220827a1b026b7d80362cd84f89ea670b15a",
+      "byte_identical": true
+    },
+    {
+      "file": "pyexpat.pyd",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "6644806ed9582193e632e93218599f6fc938b9f2dc3862c1de51555895db977e",
+      "frozen_sha256": "6644806ed9582193e632e93218599f6fc938b9f2dc3862c1de51555895db977e",
+      "byte_identical": true
+    },
+    {
+      "file": "_asyncio.pyd",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "a6459c1880cf0c77138bd8bde60db1dead5c6dfa404ef08673f1191bcea13d9d",
+      "frozen_sha256": "a6459c1880cf0c77138bd8bde60db1dead5c6dfa404ef08673f1191bcea13d9d",
+      "byte_identical": true
+    },
+    {
+      "file": "_wmi.pyd",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "c565773b72a24719a3925e898e269b588276bd49be4a34d9c74646454f471ad3",
+      "frozen_sha256": "c565773b72a24719a3925e898e269b588276bd49be4a34d9c74646454f471ad3",
+      "byte_identical": true
+    },
+    {
+      "file": "PIL/_webp.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "bb9c64d38a6e4857bd3358e14dbe6cf3a4593b1efcd1185fdba1ef8931550896",
+      "frozen_sha256": "bb9c64d38a6e4857bd3358e14dbe6cf3a4593b1efcd1185fdba1ef8931550896",
+      "byte_identical": true
+    },
+    {
+      "file": "numpy/_core/_multiarray_tests.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "f09f60242eaed510e1af6384284f53ff56ae42770a62e630bd415bc2b6854d66",
+      "frozen_sha256": "f09f60242eaed510e1af6384284f53ff56ae42770a62e630bd415bc2b6854d66",
+      "byte_identical": true
+    },
+    {
+      "file": "numpy/_core/_multiarray_umath.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "9c10617e66e992b5ac6d9f78fe7cedd0011618e1c2f89d09a185bb63073e2c90",
+      "frozen_sha256": "9c10617e66e992b5ac6d9f78fe7cedd0011618e1c2f89d09a185bb63073e2c90",
+      "byte_identical": true
+    },
+    {
+      "file": "numpy/linalg/_umath_linalg.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "03bc9de2d6d8e2d9ea3ec781f3c16bcbc9960095cc02ca588f4229cd1560c661",
+      "frozen_sha256": "03bc9de2d6d8e2d9ea3ec781f3c16bcbc9960095cc02ca588f4229cd1560c661",
+      "byte_identical": true
+    },
+    {
+      "file": "numpy/random/mtrand.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "e8bdaf22830ceaabc596854a816d39d96d1d60e96c2e12a9a17950b624d480a1",
+      "frozen_sha256": "e8bdaf22830ceaabc596854a816d39d96d1d60e96c2e12a9a17950b624d480a1",
+      "byte_identical": true
+    },
+    {
+      "file": "numpy/random/bit_generator.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "c7f637df1fa0db9fe4bba6c05dac680d89aed245401423f1ffd16d93366a35a7",
+      "frozen_sha256": "c7f637df1fa0db9fe4bba6c05dac680d89aed245401423f1ffd16d93366a35a7",
+      "byte_identical": true
+    },
+    {
+      "file": "numpy/random/_sfc64.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "20c551734cd2b2be2425c8773b795f1e92de8826ebbe6c1103cd0fa6b5c94408",
+      "frozen_sha256": "20c551734cd2b2be2425c8773b795f1e92de8826ebbe6c1103cd0fa6b5c94408",
+      "byte_identical": true
+    },
+    {
+      "file": "numpy/random/_philox.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "cc0c03e2c1443e8981300ddb9cc5ceb504e7f8494323d4ec0a1ad95ae16fbf75",
+      "frozen_sha256": "cc0c03e2c1443e8981300ddb9cc5ceb504e7f8494323d4ec0a1ad95ae16fbf75",
+      "byte_identical": true
+    },
+    {
+      "file": "numpy/random/_pcg64.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "8eb5569b221d40884093def83d897376bddd99c9279f182b9db3145b9b897d34",
+      "frozen_sha256": "8eb5569b221d40884093def83d897376bddd99c9279f182b9db3145b9b897d34",
+      "byte_identical": true
+    },
+    {
+      "file": "numpy/random/_mt19937.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "e6938df4dd3a193b7d9171d3e192702be3a70de2ebe866cf6fcd92f9e368349d",
+      "frozen_sha256": "e6938df4dd3a193b7d9171d3e192702be3a70de2ebe866cf6fcd92f9e368349d",
+      "byte_identical": true
+    },
+    {
+      "file": "numpy/random/_generator.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "0fa509dcf5ae21910cb2b3c74271977d0fac7fab15ffd5f32017e08b97e71de6",
+      "frozen_sha256": "0fa509dcf5ae21910cb2b3c74271977d0fac7fab15ffd5f32017e08b97e71de6",
+      "byte_identical": true
+    },
+    {
+      "file": "numpy/random/_common.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "712a7bb4b2d3e56548cdf255eb4e6c1ca0737d7d81d76f09bdccebb0703ae572",
+      "frozen_sha256": "712a7bb4b2d3e56548cdf255eb4e6c1ca0737d7d81d76f09bdccebb0703ae572",
+      "byte_identical": true
+    },
+    {
+      "file": "numpy/random/_bounded_integers.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "927c1673ba698a85e6253b4d8d2223eb019b021792c54604489767c694d2ab93",
+      "frozen_sha256": "927c1673ba698a85e6253b4d8d2223eb019b021792c54604489767c694d2ab93",
+      "byte_identical": true
+    },
+    {
+      "file": "numpy/fft/_pocketfft_umath.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "4f008612d6b9e2ab3820ee17a1c758c499e45e80a36764c9dfb7bf304b066f03",
+      "frozen_sha256": "4f008612d6b9e2ab3820ee17a1c758c499e45e80a36764c9dfb7bf304b066f03",
+      "byte_identical": true
+    },
+    {
+      "file": "PIL/_imagingtk.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "e1c87f73e96d2269395624d03b3808300f4b0f795f5fad1ecc3d1492e5dcc7c2",
+      "frozen_sha256": "e1c87f73e96d2269395624d03b3808300f4b0f795f5fad1ecc3d1492e5dcc7c2",
+      "byte_identical": true
+    },
+    {
+      "file": "PIL/_imagingmorph.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "e74547cf128ee13d81d7c4ef6d5be079f230062b5a8e9ec648afdc9ce228af39",
+      "frozen_sha256": "e74547cf128ee13d81d7c4ef6d5be079f230062b5a8e9ec648afdc9ce228af39",
+      "byte_identical": true
+    },
+    {
+      "file": "PIL/_imagingmath.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "01c6f9de6f0d6ed46d1df1d4a9cdf47e399306870453f26a5326368f7db0b3ad",
+      "frozen_sha256": "01c6f9de6f0d6ed46d1df1d4a9cdf47e399306870453f26a5326368f7db0b3ad",
+      "byte_identical": true
+    },
+    {
+      "file": "PIL/_imagingft.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "985228f6086171978abb5d04f2f625c489fdc9d7f0a92f2077a621ff184a599e",
+      "frozen_sha256": "985228f6086171978abb5d04f2f625c489fdc9d7f0a92f2077a621ff184a599e",
+      "byte_identical": true
+    },
+    {
+      "file": "PIL/_imagingcms.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "2640857cace64d69735bdcaa3987e9ad70f85168abc1a8662079c77ac44b5301",
+      "frozen_sha256": "2640857cace64d69735bdcaa3987e9ad70f85168abc1a8662079c77ac44b5301",
+      "byte_identical": true
+    },
+    {
+      "file": "PIL/_imaging.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "7140f56d38dd6cd51512f8122386bcb914c5df2a82eb5f719c973527d9213cee",
+      "frozen_sha256": "7140f56d38dd6cd51512f8122386bcb914c5df2a82eb5f719c973527d9213cee",
+      "byte_identical": true
+    },
+    {
+      "file": "PIL/_avif.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "3c31d65c8b3b4c91ac2838d5c843a6b2479d775b6904fe654d60b56d41772411",
+      "frozen_sha256": "3c31d65c8b3b4c91ac2838d5c843a6b2479d775b6904fe654d60b56d41772411",
+      "byte_identical": true
+    },
+    {
+      "file": "_elementtree.pyd",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "f7ae9ec8a1f8dbd5e9097f7fef4c7ffaea9ec51ee25eda67d84203664eb9b8e1",
+      "frozen_sha256": "f7ae9ec8a1f8dbd5e9097f7fef4c7ffaea9ec51ee25eda67d84203664eb9b8e1",
+      "byte_identical": true
+    },
+    {
+      "file": "_uuid.pyd",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "b6cf6a145a669590bdc5be2abfd1f370d5bba7d03ae96e892f2614fa478cabce",
+      "frozen_sha256": "b6cf6a145a669590bdc5be2abfd1f370d5bba7d03ae96e892f2614fa478cabce",
+      "byte_identical": true
+    },
+    {
+      "file": "cv2/cv2.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "eefedf6ee006a84bbc7d3df5ec66046429b8c95dbfd5f8f8f98c5772b91d6d48",
+      "frozen_sha256": "eefedf6ee006a84bbc7d3df5ec66046429b8c95dbfd5f8f8f98c5772b91d6d48",
+      "byte_identical": true
+    },
+    {
+      "file": "_zoneinfo.pyd",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "600b1b0e216ee0c7ba385fa8ca4559cb612f0d4f230c224a17f4cc3d6e9c7620",
+      "frozen_sha256": "600b1b0e216ee0c7ba385fa8ca4559cb612f0d4f230c224a17f4cc3d6e9c7620",
+      "byte_identical": true
+    },
+    {
+      "file": "pydantic_core/_pydantic_core.cp312-win_amd64.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "b48ed9341b05b9562b78041651fb6146f26af6b1967f711027988437e3dd46c1",
+      "frozen_sha256": "b48ed9341b05b9562b78041651fb6146f26af6b1967f711027988437e3dd46c1",
+      "byte_identical": true
+    },
+    {
+      "file": "psutil/_psutil_windows.pyd",
+      "origin_class": "installed_wheel_subject_to_notices",
+      "source_sha256": "0035450801bd7d938e9e146c5ec28e619cb5a5f4a18cdc53ac7e9734c7f94f78",
+      "frozen_sha256": "0035450801bd7d938e9e146c5ec28e619cb5a5f4a18cdc53ac7e9734c7f94f78",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-crt-string-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "fcf12466cc12fd3b73611fc0763a5a1f9d44e90349513c34a0c83b0f36421793",
+      "frozen_sha256": "fcf12466cc12fd3b73611fc0763a5a1f9d44e90349513c34a0c83b0f36421793",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-crt-locale-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "6c68648e524187e03c4ad9aaa4a99113c6ee9f29fb39cc0ed93f951975138e63",
+      "frozen_sha256": "6c68648e524187e03c4ad9aaa4a99113c6ee9f29fb39cc0ed93f951975138e63",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-crt-runtime-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "72adc1b3677e0814d9c4ebf0964000e84bb2acf67336c8963061665e44f78029",
+      "frozen_sha256": "72adc1b3677e0814d9c4ebf0964000e84bb2acf67336c8963061665e44f78029",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-crt-conio-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "54ee5ec719a051496ff60aa00dbeaa94b9a7d2cdac27fe9b7317f1a666b6a2aa",
+      "frozen_sha256": "54ee5ec719a051496ff60aa00dbeaa94b9a7d2cdac27fe9b7317f1a666b6a2aa",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-crt-environment-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "39e5929593709e8af3bc9e0a75ec1155778d6f4a247f4cdfc58928ad6db88434",
+      "frozen_sha256": "39e5929593709e8af3bc9e0a75ec1155778d6f4a247f4cdfc58928ad6db88434",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-crt-math-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "d4fbcccbe29371cbce431e43b2eb4f7ba9a6f04a3d740a071f02457a505e9dc8",
+      "frozen_sha256": "d4fbcccbe29371cbce431e43b2eb4f7ba9a6f04a3d740a071f02457a505e9dc8",
+      "byte_identical": true
+    },
+    {
+      "file": "VCRUNTIME140.dll",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "d5e4d9a3e835fa679450145d6a7d94e36573a509317111904d9b3712c30d9066",
+      "frozen_sha256": "d5e4d9a3e835fa679450145d6a7d94e36573a509317111904d9b3712c30d9066",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-crt-time-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "886e57c4a6adb299b38f02945369f590a67da4e79a798359fc60aaa067212d7c",
+      "frozen_sha256": "886e57c4a6adb299b38f02945369f590a67da4e79a798359fc60aaa067212d7c",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-crt-stdio-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "900afc3989673c9bb1a687ed38c192f46db9e6ba6d11a668898a539e7fc23798",
+      "frozen_sha256": "900afc3989673c9bb1a687ed38c192f46db9e6ba6d11a668898a539e7fc23798",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-crt-process-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "47c1935942e3ac0812e4dcf18c0e265e565f0194a3349111c299712f5565f7ac",
+      "frozen_sha256": "47c1935942e3ac0812e4dcf18c0e265e565f0194a3349111c299712f5565f7ac",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-crt-heap-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "c71080cbcb43bf1f8f3e391deb12a582eb0abefc80946f340675a2c616e4feb4",
+      "frozen_sha256": "c71080cbcb43bf1f8f3e391deb12a582eb0abefc80946f340675a2c616e4feb4",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-crt-filesystem-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "5a8ecebac32edf4e1f3c5c6c1c8ea1a1add6cda4f9c9cb26f752fb295bea6865",
+      "frozen_sha256": "5a8ecebac32edf4e1f3c5c6c1c8ea1a1add6cda4f9c9cb26f752fb295bea6865",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-crt-convert-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "8b94662429171019fcd63c70bbf2095a075170599704a5e7dcdbe3da13f3a429",
+      "frozen_sha256": "8b94662429171019fcd63c70bbf2095a075170599704a5e7dcdbe3da13f3a429",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-crt-private-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "29bf3d90617d3781d19b332d6ceb9f20ba5ce082ec74bf6c34d5d4aee56e48a1",
+      "frozen_sha256": "29bf3d90617d3781d19b332d6ceb9f20ba5ce082ec74bf6c34d5d4aee56e48a1",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-crt-utility-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "5f8f26b216ade615b67a41f6fbbb910972fc6153315a65bb8f09912be50215b1",
+      "frozen_sha256": "5f8f26b216ade615b67a41f6fbbb910972fc6153315a65bb8f09912be50215b1",
+      "byte_identical": true
+    },
+    {
+      "file": "VCRUNTIME140_1.dll",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "1f2d41c4aa5db0bc33ebf7b66d72943a817d7ce6cbe880502a9403823633093f",
+      "frozen_sha256": "1f2d41c4aa5db0bc33ebf7b66d72943a817d7ce6cbe880502a9403823633093f",
+      "byte_identical": true
+    },
+    {
+      "file": "libcrypto-3-x64.dll",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "74c1e4ed2b820f62fd2c66d6f19d2ef7fa5091e54f7dce14e25827febff14cb0",
+      "frozen_sha256": "74c1e4ed2b820f62fd2c66d6f19d2ef7fa5091e54f7dce14e25827febff14cb0",
+      "byte_identical": true
+    },
+    {
+      "file": "libssl-3-x64.dll",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "c1d753cc22270083b26f8cea7776a2e0bcefa7609a10e5ae6f6e05f16784c807",
+      "frozen_sha256": "c1d753cc22270083b26f8cea7776a2e0bcefa7609a10e5ae6f6e05f16784c807",
+      "byte_identical": true
+    },
+    {
+      "file": "libffi-8.dll",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "e8342a9c96954e6dd96f9c73e768574a0892eca220ad1e3a80d975fd4a4f9f53",
+      "frozen_sha256": "e8342a9c96954e6dd96f9c73e768574a0892eca220ad1e3a80d975fd4a4f9f53",
+      "byte_identical": true
+    },
+    {
+      "file": "python3.dll",
+      "origin_class": "installed_python_runtime_supply_chain_review_required",
+      "source_sha256": "1e341777e65f6b33405f89d243c9e05fb47af69e48f06a96e8479135599337d1",
+      "frozen_sha256": "1e341777e65f6b33405f89d243c9e05fb47af69e48f06a96e8479135599337d1",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-synch-l1-2-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "f6482bbec5612c39ecb4822787a333f2b7570f7a5f922a4059be41ba957bb372",
+      "frozen_sha256": "f6482bbec5612c39ecb4822787a333f2b7570f7a5f922a4059be41ba957bb372",
+      "byte_identical": true
+    },
+    {
+      "file": "ucrtbase.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "3239227d27667ba20d10a880751924e5719de0078f9fce232d149d383f7681f6",
+      "frozen_sha256": "3239227d27667ba20d10a880751924e5719de0078f9fce232d149d383f7681f6",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-console-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "015bd08815c7b934a8952c3a7578e9ce59f21136e8a880d42bbd414bec2c6058",
+      "frozen_sha256": "015bd08815c7b934a8952c3a7578e9ce59f21136e8a880d42bbd414bec2c6058",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-processthreads-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "d8030b777617c71f0f94564607699dbf7561487d779db9756aed378c5675213f",
+      "frozen_sha256": "d8030b777617c71f0f94564607699dbf7561487d779db9756aed378c5675213f",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-sysinfo-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "272d02765fdd3582618236c2d309abba069642f9bc1062ede069d0c144e17007",
+      "frozen_sha256": "272d02765fdd3582618236c2d309abba069642f9bc1062ede069d0c144e17007",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-debug-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "837d2b1b2cd03e03fc6ccb050698b6b5763af17c201304872342a5eae9e0a2d2",
+      "frozen_sha256": "837d2b1b2cd03e03fc6ccb050698b6b5763af17c201304872342a5eae9e0a2d2",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-libraryloader-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "48786fb88b001dcd1f63acea903d3ca9cc0b3060d5a325e3f2f3cbc3bfd53166",
+      "frozen_sha256": "48786fb88b001dcd1f63acea903d3ca9cc0b3060d5a325e3f2f3cbc3bfd53166",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-namedpipe-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "97145ef89c44949fcf0f04ac834a8bc7d687ef49ee73ae9fc32f3c11136b7201",
+      "frozen_sha256": "97145ef89c44949fcf0f04ac834a8bc7d687ef49ee73ae9fc32f3c11136b7201",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-profile-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "f023d47e44d3eea6b0743580f57e8c6ba81e79d5ebfa7da26250076c647b980e",
+      "frozen_sha256": "f023d47e44d3eea6b0743580f57e8c6ba81e79d5ebfa7da26250076c647b980e",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-interlocked-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "f8129710188e407bb0e6f46d30aeba277d67b947ece5fe09e883fde2323f3ae6",
+      "frozen_sha256": "f8129710188e407bb0e6f46d30aeba277d67b947ece5fe09e883fde2323f3ae6",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-sysinfo-l1-2-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "8a0900788859d0eb51c2f48f50cc6ed376a120b518100fa20e11d7702ccde260",
+      "frozen_sha256": "8a0900788859d0eb51c2f48f50cc6ed376a120b518100fa20e11d7702ccde260",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-heap-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "c70f9644d8377fa39c5b71f2e9734c1400d7598904fdeb772e8502099982dcb7",
+      "frozen_sha256": "c70f9644d8377fa39c5b71f2e9734c1400d7598904fdeb772e8502099982dcb7",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-rtlsupport-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "9746d8930704153578a628c010638a5f818ffe5a927e25591b108e256dc6afca",
+      "frozen_sha256": "9746d8930704153578a628c010638a5f818ffe5a927e25591b108e256dc6afca",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-localization-l1-2-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "9ec3898f7eba91faa28b51616c211a2689e3a13aeef8de6e13cb674e49d689eb",
+      "frozen_sha256": "9ec3898f7eba91faa28b51616c211a2689e3a13aeef8de6e13cb674e49d689eb",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-file-l2-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "914bf26a298713119477ea0a8e7bd43171b91344ebe24fb47ad77c49686e3d87",
+      "frozen_sha256": "914bf26a298713119477ea0a8e7bd43171b91344ebe24fb47ad77c49686e3d87",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-handle-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "ab5489955e371b15f77906c08ec3c7affe2c7a46a08c514ca628768b4478974b",
+      "frozen_sha256": "ab5489955e371b15f77906c08ec3c7affe2c7a46a08c514ca628768b4478974b",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-processenvironment-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "8bc7c10b1851aea644e9c9f381cdb935e091fee6b0be3d3aedc6fffaac96adb7",
+      "frozen_sha256": "8bc7c10b1851aea644e9c9f381cdb935e091fee6b0be3d3aedc6fffaac96adb7",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-processthreads-l1-1-1.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "f5e676713340f73a03a3d41a6ec9883b431da7d16c7f07bd0a920fb80e6c0753",
+      "frozen_sha256": "f5e676713340f73a03a3d41a6ec9883b431da7d16c7f07bd0a920fb80e6c0753",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-file-l1-2-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "ae14079a114733f60ce87b92cba42acd8083c2cd67594e53bc37dc0b97a4b465",
+      "frozen_sha256": "ae14079a114733f60ce87b92cba42acd8083c2cd67594e53bc37dc0b97a4b465",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-fibers-l1-1-1.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "5ef70308bcca628ce6b0e2856b15b1c7ae340c3f9bbbc4c1071d8c191a34a5c3",
+      "frozen_sha256": "5ef70308bcca628ce6b0e2856b15b1c7ae340c3f9bbbc4c1071d8c191a34a5c3",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-string-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "7c53ae24c982d16ffd1bf7f918d115b11b7f30e57bc7feaa18cb9781e4abb926",
+      "frozen_sha256": "7c53ae24c982d16ffd1bf7f918d115b11b7f30e57bc7feaa18cb9781e4abb926",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-memory-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "3a6cbc524c99e1cd80d5368f5601402a37ad602528b1ab628093573ef638eb3b",
+      "frozen_sha256": "3a6cbc524c99e1cd80d5368f5601402a37ad602528b1ab628093573ef638eb3b",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-fibers-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "3cebc45bf479ad74cfabf2c6bfd4994d7ad639ed1221025981d19cedf9ce0416",
+      "frozen_sha256": "3cebc45bf479ad74cfabf2c6bfd4994d7ad639ed1221025981d19cedf9ce0416",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-synch-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "56d9d62ca5dba79a6581b8d574a7d8b2a64a5ecb71e47dcf06ed0285708b1859",
+      "frozen_sha256": "56d9d62ca5dba79a6581b8d574a7d8b2a64a5ecb71e47dcf06ed0285708b1859",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-util-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "191ef3e98641a57296f19d572d8eb62489470ff1ef6030d136af170c2f835173",
+      "frozen_sha256": "191ef3e98641a57296f19d572d8eb62489470ff1ef6030d136af170c2f835173",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-datetime-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "5534812cdbdae94ba45cb216e5eb9af686b853948df54365103555abbbaf9d9a",
+      "frozen_sha256": "5534812cdbdae94ba45cb216e5eb9af686b853948df54365103555abbbaf9d9a",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-errorhandling-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "de43b165f568c276c00e95acd454e3092f352a18e95874595f4f4658c06d2ec7",
+      "frozen_sha256": "de43b165f568c276c00e95acd454e3092f352a18e95874595f4f4658c06d2ec7",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-file-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "250ac829f2617bcac1c6e5b8c4f630462e20765863ba573526a3e11bbfb94a9a",
+      "frozen_sha256": "250ac829f2617bcac1c6e5b8c4f630462e20765863ba573526a3e11bbfb94a9a",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-timezone-l1-1-0.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "ff35de6c03812b332e140f17dade25c5dd4775156da9eeb1eaae3fddd27236ec",
+      "frozen_sha256": "ff35de6c03812b332e140f17dade25c5dd4775156da9eeb1eaae3fddd27236ec",
+      "byte_identical": true
+    },
+    {
+      "file": "api-ms-win-core-kernel32-legacy-l1-1-1.dll",
+      "origin_class": "external_tool_native_cache_requires_provenance",
+      "source_sha256": "5200b16cb2ddc61cfc07373a9a84aa85a3ab50806ca96c879c883275832944c1",
+      "frozen_sha256": "5200b16cb2ddc61cfc07373a9a84aa85a3ab50806ca96c879c883275832944c1",
+      "byte_identical": true
+    }
+  ],
+  "excluded_not_shipped": [
+    {
+      "file": "cv2/opencv_videoio_ffmpeg500_64.dll",
+      "reason": "video_codec_intentionally_not_redistributed"
+    }
+  ],
+  "blocked_files": [
+    "api-ms-win-crt-string-l1-1-0.dll",
+    "api-ms-win-crt-locale-l1-1-0.dll",
+    "api-ms-win-crt-runtime-l1-1-0.dll",
+    "api-ms-win-crt-conio-l1-1-0.dll",
+    "api-ms-win-crt-environment-l1-1-0.dll",
+    "api-ms-win-crt-math-l1-1-0.dll",
+    "api-ms-win-crt-time-l1-1-0.dll",
+    "api-ms-win-crt-stdio-l1-1-0.dll",
+    "api-ms-win-crt-process-l1-1-0.dll",
+    "api-ms-win-crt-heap-l1-1-0.dll",
+    "api-ms-win-crt-filesystem-l1-1-0.dll",
+    "api-ms-win-crt-convert-l1-1-0.dll",
+    "api-ms-win-crt-private-l1-1-0.dll",
+    "api-ms-win-crt-utility-l1-1-0.dll",
+    "api-ms-win-core-synch-l1-2-0.dll",
+    "ucrtbase.dll",
+    "api-ms-win-core-console-l1-1-0.dll",
+    "api-ms-win-core-processthreads-l1-1-0.dll",
+    "api-ms-win-core-sysinfo-l1-1-0.dll",
+    "api-ms-win-core-debug-l1-1-0.dll",
+    "api-ms-win-core-libraryloader-l1-1-0.dll",
+    "api-ms-win-core-namedpipe-l1-1-0.dll",
+    "api-ms-win-core-profile-l1-1-0.dll",
+    "api-ms-win-core-interlocked-l1-1-0.dll",
+    "api-ms-win-core-sysinfo-l1-2-0.dll",
+    "api-ms-win-core-heap-l1-1-0.dll",
+    "api-ms-win-core-rtlsupport-l1-1-0.dll",
+    "api-ms-win-core-localization-l1-2-0.dll",
+    "api-ms-win-core-file-l2-1-0.dll",
+    "api-ms-win-core-handle-l1-1-0.dll",
+    "api-ms-win-core-processenvironment-l1-1-0.dll",
+    "api-ms-win-core-processthreads-l1-1-1.dll",
+    "api-ms-win-core-file-l1-2-0.dll",
+    "api-ms-win-core-fibers-l1-1-1.dll",
+    "api-ms-win-core-string-l1-1-0.dll",
+    "api-ms-win-core-memory-l1-1-0.dll",
+    "api-ms-win-core-fibers-l1-1-0.dll",
+    "api-ms-win-core-synch-l1-1-0.dll",
+    "api-ms-win-core-util-l1-1-0.dll",
+    "api-ms-win-core-datetime-l1-1-0.dll",
+    "api-ms-win-core-errorhandling-l1-1-0.dll",
+    "api-ms-win-core-file-l1-1-0.dll",
+    "api-ms-win-core-timezone-l1-1-0.dll",
+    "api-ms-win-core-kernel32-legacy-l1-1-1.dll"
+  ],
+  "build_origin_gate_passed": false,
+  "redistribution_approved": false,
+  "scope": "PyInstaller PE build inputs only; hashes do not grant license rights. CPython/wheels/Microsoft terms still require owner review."
+}

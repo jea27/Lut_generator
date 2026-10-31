@@ -204,3 +204,25 @@ Hash del instalador beta2 recalculado sin variación. Solo cambia documentación
 de conciliación, no el runtime probado. Issue68 permanece en revisión, sin
 aceptación automática. Solicitud67 reutilizada para revisión de integración y
 recursos QA, evitando una nueva Issue/aviso para los mismos bloqueos.
+
+## 2026-10-31 · [COL-013] Estabilización0.3, revisión70 y procedencia
+
+- Merge70 ya realizado por jea27, maincfb6d11 coincide por árbol; fuentes65/66/69
+  incorporadas.69 blobs revisados,0 patrones de secreto/perfil local/archivos
+  privados y6 JPEG CC0/QA sin EXIF. No merge del agente ni autoaprobación.
+-37 MVP+91 seguimiento OK y TS/Vite OK. Nuevas pruebas cubren conservación de
+  datos (cambio/ausencia/nuevos), bloqueo de path traversal, oráculo LUT, ICC/
+  dimensiones, perfil sin alterar píxeles y gate de procedencia/tampering.
+- Perfil real16MP: mediana17,376s en fuente local; LUT9,005, acabado6,267 y
+  PNG1,445.3 pasadas iguales, original intacto. Diferente entorno al binario
+  histórico32,392s: no se anuncia optimización entregada. Tiles256/512 ensayados
+  sin aplicar, mismos píxeles en1 fotografía; memoria/cancelación pendientes.
+- Nuevo hallazgo:44 DLL UCRT/API-set desde caché nativa de herramientas.95 PE
+  cotejados por hash con TOC y NSIS. Firma/origen de bytes no concede derechos.
+  Build bloquea ahora entradas de esa clase; no se genera nuevo instalador ni
+  se modifican dependencias del candidato. CPython requiere cadena de suministro.
+- Corrección de textos fuente sobre diagnósticos/SmartScreen WebView2; beta2
+  existente no cambia. Protocolos W01–09/E01–05 y GO/NO-GO separados. No VM
+  accesible o editor real nuevo; no instalaciones, participantes o entrevistas.
+- COL026 amplía planificación de inferencia de acabado/halation posteriores a
+  beta, manteniendo42 IDs y estados sin simular progreso. Solicitud67 reutilizada.

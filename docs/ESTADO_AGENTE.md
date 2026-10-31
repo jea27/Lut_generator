@@ -1,4 +1,52 @@
-# Checkpoint vigente · conciliación de integraciones · 31-10-2026
+# Checkpoint vigente · estabilización y procedencia binaria · 31-10-2026
+
+Tarea COL013#45, rama codex/COL-013-estabilizacion-beta3 desde origin/main
+cfb6d11. PR70 ya integrada por jea27 a las08:27:11 UTC. Árbol de main idéntico
+a HEAD4920cf0 de70;65/66/69 son ancestros. Escaneo69 blobs cambiados sin
+hallazgos de secretos/perfil local/archivos privados,6 JPEG sin EXIF de origen
+CC0 o QA ya revisado. Ver STAB_03_PR70_REVIEW.json y ESTABILIZACION_03.md.
+
+Trabajo: profiler reproducible sin modificar motor; bundle/editor comparador
+con oráculo LUT escalar; verificador PS5.1 de hashes antes/después sin borrar
+datos; protocolo limpio W01–09 y editores E01–05. Roadmap conserva42 tareas y
+estados: ampliación futura de COL026 añade inferencia de acabado y halation,
+explícitamente sin implementar ni retrasar beta. Fuente UI/landing corrige
+«sin telemetría» para diferenciar WebView2/SmartScreen. No APIs/efectos nuevos.
+
+Pruebas locales37 MVP+91 seguimiento sin omisiones, TypeScript/Vite OK.
+Se corrigió solo el entorno de módulos del proceso hijo PowerShell en el test,
+sin cambiar políticas ni configuración global. Pipeline16MP3 pasadas mediana
+17,376s: LUT9,005/acabado6,267/PNG1,445. No mejora entregada sobre32,392s del
+binario histórico; entornos distintos. Tiles256/512 experimentales conservan
+píxeles en1 foto; no aplicados ni medidos RAM/cancelación. LUT textual vs oráculo
+error1,091e-7 en262 puntos: infraestructura, no prueba de editor real.
+
+Bloqueo NUEVO:95 DLL/PYD cotejados contra TOC y NSIS,44 UCRT/API-set proceden de
+caché nativa de herramientas. UCRT firmado pero hash diferente al SDK REDIST
+local; no presume derechos. Gate en builder detiene nuevos builds antes del
+staging/NSIS; ejecutado realmente,44 bloqueos esperados. CPython también exige
+conciliar proveedor/build del runtime de herramientas. Ver LICENCIAS_BINARIAS_BETA.
+No se instala/sustituye Python ni se edita/elimina DLL firmada. El candidato
+beta2 y su hash3e3851ee…14f permanecen intactos, retenidos solo para QA interna.
+NO existe instalador beta3: rama prepara estabilización, no nuevo artefacto.
+Texto UI corregido y avisos complementarios requieren siguiente candidato,
+versión/hash nuevos cuando la procedencia esté resuelta. No afirmar corrección
+retroactiva del NSIS beta2. Paquete QA nuevo separado, sin instalador ni datos privados.
+
+Sin VM accesible: Get-VM/vmms, VBoxManage/vmrun, procesosVM y Sandbox no presentes
+en inventario. No virtualización habilitada. Windows limpio y editores reales
+siguen not_run; no contactos o respuestas reales. Beta externa/venta NO-GO,
+puertas separadas GO_NO_GO_03.md. Solicitud67 se reutiliza para procedencia,
+entorno limpio/editor y revisión, sin volver a pedir7-Zip.
+
+Reanudar: git status; gh pr list; leer Issue67,45,60. Revisar nuevo informe y
+PR de esta rama. Resolver procedencia del runtime antes de build_beta.ps1;
+no ocultar gate fallido. Con VM/PC ya autorizado ejecutar W01–09; con editor
+activado E01–05, mantener datos crudos privados. No merge/approved/cobros/
+entrega externa del agente. COL001 continúa pendiente. Historial debajo.
+
+---
+# Checkpoint anterior · conciliación de integraciones · 31-10-2026
 
 Rama actual codex/COL-026-integracion-beta2, PR70 lista para revisión:
 https://github.com/jea27/Lut_generator/pull/70. Árbol conservado desde

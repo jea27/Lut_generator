@@ -1,5 +1,9 @@
 # Beta privada · procedimiento reproducible y cinco pruebas
 
+Estado vigente: PR70 integrada por jea27; main verificado cfb6d11. Nuevo bloqueo
+de procedencia44 DLL en LICENCIAS_BINARIAS_BETA.md. No hay nuevo instalador ni
+prueba limpia. Los apartados fechados siguientes conservan contexto histórico.
+
 31-10-2026. Preparado, no ejecutado en Windows limpio. PR65/66 abiertas y
 checks correctos al auditarlas; no merge del agente. COL026#68 añade acabado
 manual experimental. No es una inferencia fiel de efectos de referencia.
@@ -109,3 +113,46 @@ la LUT conserva difusión/glow/fade. En Premiere usar clip SDR interpretado
 correctamente, LUT creativa al100% sin doble conversión, exportar frame sRGB
 documentado y comparar. Registrar versión y configuración, no solo que abre.
 No instalar otro editor ni comprar licencia para esquivar el bloqueo.
+
+## Matriz operable de Windows limpio
+
+Cuatro snapshots independientes: W10-SIN-WV, W10-CON-WV, W11-SIN-WV y W11-CON-WV,
+x64, cuenta estándar,8GB mínimo a evaluar, sin herramientas de desarrollo. No
+desinstalar WebView2 del host compartido. Registrar edición/build, RAM, versión
+WebView2 y hash del candidato, sin usuario/host/serial. El inventario actual no
+encontró Get-VM/vmms, VBoxManage, vmrun, procesos de VM ni Windows Sandbox;
+no hay sesión de VM accesible/autorizada. No se habilitó virtualización.
+
+| Caso | Acción exacta | Evidencia/aceptación requerida | Estado actual |
+|---|---|---|---|
+| W01 | Snapshot, preflight y hash antes de instalar | Hash exacto, herramientas ausentes y snapshot identificado por código privado | not_run |
+| W02 | Red de VM desconectada; instalar por usuario | Exit/diálogo real, sin descargar dependencias; no bypass SmartScreen/Defender | not_run |
+| W03 | Inicio→Color Studio, repetir apertura | Bienvenida, versión, una instancia, motor supervisado; nada en interfaces públicas | not_run |
+| W04 | Demo CC0→analizar→ajustar→PNG/JPG/JSON/LUT | Dimensiones/ICC/hash del original; LUT aviso solo color, receta conserva acabado | not_run |
+| W05 | Guardar preset/preferencias; cerrar y reabrir | Datos persistentes, sin Internet, sin depender de Python/Node del host | not_run |
+| W06 | Instalar0.2, guardar presetv1 y foto sentinela; actualizar a candidato | Snapshot/Verify de archivos y migración funcional v1→v2; registrar cambios esperados separadamente | not_run |
+| W07 | Lote2, cancelación y cierre forzado de la app de ensayo | No corromper originales, estado interrupted honesto, ningún sidecar huérfano | not_run |
+| W08 | Desinstalar cerrado, reiniciar; reinstalar | Binarios/atajos retirados, hashes privados conservados, no autostart inesperado | not_run |
+| W09 | Feedback offline y error con entrada corrupta/16bit | JSON local sin envío; error claro; sin respuesta real inventada | not_run |
+
+Para conservar datos, ejecutar en la máquina de ensayo con app cerrada. En
+PowerShell5.1 nativo (sin perfil) no hace falta Python ni alterar políticas:
+
+```powershell
+./qa_windows_preservation.ps1 -Mode Snapshot -DataDirectory "$env:LOCALAPPDATA/ColorStudioBetaData" -Baseline ./datos-antes-privado.json
+# Actualizar o desinstalar, siguiendo W06/W08; cerrar de nuevo la app.
+./qa_windows_preservation.ps1 -Mode Verify -DataDirectory "$env:LOCALAPPDATA/ColorStudioBetaData" -Baseline ./datos-antes-privado.json -Report ./preservacion-resumen.json
+```
+
+Copiar los dos scripts desde scripts/ junto a setup y hash por canal privado.
+Snapshot no sobrescribe baseline ni acepta directorio vacío/reparse points.
+Verify permite archivos nuevos y falla con exit2 si falta/cambia un hash previo;
+no borra/restaura nada. Baseline contiene nombres relativos: **privado, nunca Git**.
+Solo el resumen sin nombres puede publicarse tras revisión. Una preferencia o
+registro de job modificado legítimamente sigue siendo cambio: documentarlo y
+conservar baseline; no regenerarlo para ocultar diferencias.
+
+Guardar registro por caso PASS/FAIL/BLOCKED con fecha real, hash, versión,
+configuración y evidencia privada. not_run nunca se convierte a PASS por script,
+ausencia de errores, fixture o ejecución en el equipo de desarrollo. Si un
+caso crítico falla, bloquear entrega y registrar Issue67 con resumen saneado.
