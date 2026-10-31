@@ -342,3 +342,7 @@ capacidades intactas,0/8 aceptación del MVP. Aviso único67 comprobado en
 41224150508 y comentario6546679381 (@jea27), no recepción/aprobación supuesta.
 Beta/venta NO-GO; no nuevo setup ni modificaciones de main. Reanudación y gates
 pendientes en ESTADO_AGENTE.md y solicitud67.
+
+Comprobación final Creator: preview neutra/importar no completan detección;
+receta nueva invalida comparación previa. Unitarios y secuencia real del UI
+congelado documentados, sin cambiar motor ni repetir perfiles equivalentes.

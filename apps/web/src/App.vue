@@ -18,9 +18,9 @@ const recipe=reactive<Recipe>(neutral()), source=ref<ImageAsset|null>(null), ref
 const online=ref(false),busy=ref(false),previewing=ref(false),error=ref(''),resultUrl=ref(''),split=ref(50),zoom=ref(1)
 const presets=ref<Preset[]>([]),presetName=ref(''),timing=ref(0),memory=ref(0),method=ref('lab-statistics')
 const history=ref<Recipe[]>([neutral()]),historyIndex=ref(0)
-const tool=ref<'color'|'planner'>('color'),compared=ref(false),exported=ref(false)
+const tool=ref<'color'|'planner'>('color'),matched=ref(false),compared=ref(false),exported=ref(false)
 const isPro=computed(()=>preferences.value.workspace==='pro')
-const steps=computed(()=>creatorSteps(!!reference.value,!!source.value,!!resultUrl.value,compared.value,exported.value))
+const steps=computed(()=>creatorSteps(!!reference.value,!!source.value,matched.value,compared.value,exported.value))
 const advancedActive=computed(()=>hasProAdjustments(recipe))
 const capabilities=ref<{id:string;status:string;title?:{es:string;en:string}}[]>([])
 const renderedKey=ref('')
@@ -65,7 +65,7 @@ async function match() {
   busy.value=true;error.value=''
   try {
     const response=await api('/fit',jsonPost({source_id:source.value.id,reference_id:reference.value.id,method:isPro.value?method.value:'lab-statistics'}))
-    const data=await response.json();await assignRecipe({...data.recipe,look:clone(recipe).look,version:2},true);await renderPreview()
+    const data=await response.json();await assignRecipe({...data.recipe,look:clone(recipe).look,version:2},true);matched.value=true;await renderPreview()
   }catch(e){error.value=(e as Error).message}finally{busy.value=false}
 }
 async function renderPreview() {
@@ -85,7 +85,7 @@ async function renderPreview() {
 }
 function rememberRecipe(){const next=recordEdit(history.value,historyIndex.value,recipe);history.value=next.entries;historyIndex.value=next.index}
 watch(recipe,()=>{
-  exported.value=false
+  exported.value=false;compared.value=false
   if(!restoring)rememberRecipe()
   if(source.value)previewing.value=true
   clearTimeout(timer);timer=setTimeout(renderPreview,300)
@@ -121,7 +121,7 @@ function clearImages(){if(busy.value)return;q.dialog({title:tx('Eliminar imágen
 })}
 const histogram=computed(()=>reference.value?.analysis??source.value?.analysis)
 function histogramPath(channel:number){const data=histogram.value?.histograms[channel]??[],max=Math.max(...data,1);return data.map((x,i)=>`${i?'L':'M'}${i*4},${76-x/max*70}`).join(' ')}
-watch([source,reference],()=>{compared.value=false;exported.value=false})
+watch([source,reference],()=>{matched.value=false;compared.value=false;exported.value=false})
 onMounted(async()=>{try{online.value=(await(await api('/health')).json()).offline_processing;await loadPreferences();capabilities.value=(await(await api('/capabilities')).json()).capabilities;await loadPresets()}catch{error.value=tx('No se pudo conectar. Reinicia Color Studio. En desarrollo: Iniciar-LumaForge.cmd','Cannot connect. Restart Color Studio. Development: Iniciar-LumaForge.cmd')}})
 onBeforeUnmount(()=>{controller?.abort();clearTimeout(timer);revoke()})
 </script>

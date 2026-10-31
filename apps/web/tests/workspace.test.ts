@@ -6,6 +6,7 @@ test('Creator guides actual state without inventing successful export',()=>{
  assert.equal(creatorSteps(false,false,false,false,false).findIndex(s=>s.active),0)
  assert.equal(creatorSteps(true,false,false,false,false).findIndex(s=>s.active),1)
  assert.equal(creatorSteps(true,true,false,false,false).findIndex(s=>s.active),2)
+ assert.equal(creatorSteps(true,true,false,true,false).findIndex(s=>s.active),2,'Comparing a neutral preview is not a successful match')
  assert.equal(creatorSteps(true,true,true,false,false).filter(s=>s.done).length,3)
  assert.equal(creatorSteps(true,true,true,true,true).at(-1)?.active,true)
 })

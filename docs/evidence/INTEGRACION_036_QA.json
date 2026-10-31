@@ -119,7 +119,8 @@
       "INTEGRACION_CREATOR_036.jpg",
       "INTEGRACION_CREATOR_MOVIL_036.jpg",
       "INTEGRACION_PLANNER_036.jpg",
-      "INTEGRACION_PLANNER_MOVIL_036.jpg"
+      "INTEGRACION_PLANNER_MOVIL_036.jpg",
+      "INTEGRACION_GUIA_036.jpg"
     ]
   },
   "provenance": {
@@ -310,15 +311,15 @@
     "packaging/ColorEngine.spec": "02bc59309d85df5d9af8fe128d6f58bfeb82e74cfeb5d8dd8dcf1ea4adb749a4"
   },
   "final_source_files_sha256": {
-    "apps/web/src/App.vue": "5790e075e18cabe380eb1b3cdcde221f5e1101731f5ed523339f0ac7d70f10e8",
+    "apps/web/src/App.vue": "d3656b6967a8024eb4989b29d09f8225420d212286a4360af129fb8e232fa71d",
     "apps/web/src/BetaPanel.vue": "198b653cdd95fc57fd64eca80c4a706b733ba397a226668113253dea10f41786",
     "apps/web/src/ShotPlanner.vue": "6a3d24b09ef7c7e2d7d636b8ef943811af845c799a8b758be60e5f6850fbe4b3",
     "apps/web/src/preferences.ts": "ee79ef21f6930913aac3e96de54ec16fb419a31b5c1455e5242eb5c0db81b96d",
     "packaging/ColorEngine.spec": "02bc59309d85df5d9af8fe128d6f58bfeb82e74cfeb5d8dd8dcf1ea4adb749a4",
-    "apps/web/src/workspace.ts": "34af8bdaf67191781594e5ed71b072f389c9c6a416cfe18fa15fe061f7ca3fe5"
+    "apps/web/src/workspace.ts": "d4637c914bfe6a5bb6f2a04c821a2ea9ae8f8d3428e47ccdb0c2f534767b0e82"
   },
   "final_frontend_bundle_sha256": {
-    "index-CqE7EkcQ.js": "e44feac50ea536c9cc2d41bf3f829943548d7cfa0aba022d9442519579d3864d"
+    "index-ByEwa7T4.js": "14e2eefcf6d48d995920a318b4eafec7b78eb7d7db7fe348ad3498f9b57b4fd4"
   },
   "packaged_api_final": {
     "version": "0.3.0-beta.2",
@@ -374,7 +375,7 @@
     "cube_sha256": "4fb41b679e1f2a2363b22a57f3780ea87ff9ccf06ad718cc0eefaf7f3f48d331",
     "parent_death_watchdog": "passed"
   },
-  "final_followup": "Frontend-only followups after first UI/16MP probes: successful DELETE before resetting session; preset/import/reset recorded in undo history. Final frozen UI history checks executed, final payload scan repeated. API/engine code and executable SHA256 unchanged; high-resolution probe not needlessly repeated.",
+  "final_followup": "Frontend-only followups after first UI/16MP probes: successful DELETE before resetting session; preset/import/reset recorded in undo history. Final frozen UI history checks executed, final payload scan repeated. API/engine code and executable SHA256 unchanged; high-resolution probe not needlessly repeated. Creator progress now requires an actual fit; a new recipe invalidates the previous comparison. These two transitions were executed against the final frozen UI; engine unchanged.",
   "final_browser_followup": {
     "clear_confirm_removes_local_images": true,
     "clear_cancel_preserves_images": true,
@@ -388,6 +389,7 @@
   "screenshots_sha256": {
     "INTEGRACION_CREATOR_036.jpg": "b0ca003c8fa6d68d89d1fb6ddd576b3df0b0724bddaa06787344b261cd36cb34",
     "INTEGRACION_CREATOR_MOVIL_036.jpg": "d08b399803473d3d255552e8bebd1d80ea57a4fe9149ff98ee47aa884e67b0f2",
+    "INTEGRACION_GUIA_036.jpg": "72cb5fe5a99612ac8e708da64caa69143b36f9a4893bccd66f7c9a8d7599642f",
     "INTEGRACION_PLANNER_036.jpg": "96131f6b8b4c2c5f44a2752db5c0ffd0f961faeec452331d8494f85f89d9fd6a",
     "INTEGRACION_PLANNER_MOVIL_036.jpg": "46c65ca2d898c02ce682417bd318db7f8cea7ecea0f4e3a22768586956754f82"
   },
@@ -400,5 +402,12 @@
     "after_import": "0.4",
     "undo_import": "0.05",
     "redo_import": "0.4"
+  },
+  "creator_guide_ui": {
+    "neutral_preview_step": "3\nDetectar color",
+    "neutral_comparison_step": "3\nDetectar color",
+    "successful_fit_step": "4\nAjustar",
+    "comparison_step": "5\nComparar",
+    "new_recipe_requires_comparison_step": "4\nAjustar"
   }
 }

@@ -20,6 +20,7 @@ en41212113424; no se oculta como fallo de código. Revisión humana sigue separa
 | Un cambio de modo antes del primer GET podía perderse y guardar preferencias por defecto. | Hidratar antes de cambiar, PUTs ordenados y pruebas del módulo real con GET/PUT retrasados y fallidos. |
 | Presets/importación/reset no registraban historial, y algunas acciones podían competir con fit/export. | Historial común acotado, undo/redo de preset/importación/reset comprobado en navegador; guardas y controles deshabilitados, también en biblioteca, comprobados durante exportación. |
 | Regenerar el Planner descartaba diagrama/checklist editados sin preguntar. | Confirmación; cancelar conserva, aceptar reinicia. JSON antes/después de cambiar modos idéntico. |
+| Creator confundía preview neutra con detección y mantenía comparación de una receta anterior. | Estado de transferencia explícito; importación/comparación neutra no completan detectar. Cambiar receta pide comparar de nuevo; transiciones probadas en navegador. |
 | El borrado de imágenes no explicaba pérdida de ajustes/plan no guardados. | Aviso explícito y bloqueo mientras hay operación; originales y presets guardados se conservan. |
 | El smoke antiguo heredaba PATH/cwd y podía esperar stdout sin límite. | Entorno del hijo limitado a Windows, cwd vacío propio, inicio acotado, validación estricta del puerto y auditoría de módulos cargados. No cambia el entorno del equipo. |
 
@@ -50,7 +51,7 @@ acabados, vídeo, licencias de pago ni servicios externos.
   Creator/Planner a390×844 sin desbordamiento horizontal; no iPhone físico,
   Safari ni nueva prueba nativa de WebView2.
 
-Evidencia saneada: `evidence/INTEGRACION_036_QA.json` y cuatro capturas reales.
+Evidencia saneada: `evidence/INTEGRACION_036_QA.json` y cinco capturas reales.
 El ejecutable interno conserva la etiqueta0.3.0-beta.2 del código base; el informe
 registra hash y archivos fuente exactos de la integración, **no otro candidato
 con el mismo número**. No confundirlo con el setup beta2 antiguo. El próximo

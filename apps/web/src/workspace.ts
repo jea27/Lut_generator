@@ -1,5 +1,5 @@
-export function creatorSteps(reference:boolean,source:boolean,result:boolean,compared:boolean,exported:boolean){
- const active=!reference?0:!source?1:!result?2:!compared?3:!exported?4:5
+export function creatorSteps(reference:boolean,source:boolean,matched:boolean,compared:boolean,exported:boolean){
+ const active=!reference?0:!source?1:!matched?2:!compared?3:!exported?4:5
  return ['Referencia','Mi imagen','Detectar color','Ajustar','Comparar','Exportar'].map((label,index)=>({label,active:index===active,done:index<active}))
 }
 export function hasProAdjustments(recipe:{exposure:number;contrast:number;saturation:number;temperature:number}){

@@ -747,3 +747,16 @@ sin sustituir la venv compartida; después W01–W09 con operador autorizado y
 E01–E05 en editor activado. Sin esa decisión no sortear el gate ni ampliar
 capacidades. Para reanudar: abrir este worktree, git status --short, gh pr view88,
 gh pr checks88 y leer67/57; comandos exactos en INTEGRACION_BETA_036.md.
+
+### Última comprobación Creator
+
+El último commit de PR88 separa transferencia realizada de preview neutra:
+importar ambas fotos y comparar sin fit mantiene «Detectar color» pendiente;
+fit real avanza a «Ajustar». Comparar avanza a «Comparar», cambiar receta vuelve
+a pedir comparación. Siete Node/build correctos y secuencia real en congelado,
+0 warnings/errores, captura INTEGRACION_GUIA_036.jpg. API/matemática sin cambios;
+no repetir benchmark16MP para flags UI. Hashes/fases en INTEGRACION_036_QA.json.
+Payload final conserva158/27,0 hallazgos de perfil local/secretos/desarrollo según
+patrones. Sin cambios de autorización67 ni avisos duplicados. Pruebas CI del
+head final y estado publicado se registran en el comentario de57; sigue PR88
+lista para revisión, worktree conservado y sin cambios pendientes al publicar.
