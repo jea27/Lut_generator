@@ -2,6 +2,11 @@
 
 ## Beta privada: NO-GO actual
 
+Actualización posterior a PR86: `INTEGRACION_BETA_036.md` aporta pruebas de motor
+congelado con PATH aislado y regresión Creator/Pro/Planner. No es Windows limpio
+ni setup nuevo: las44 DLL y27 archivos con cadenas de rutas upstream requieren
+revisión. No cambia ninguna puerta pendiente de esta lista.
+
 - [x] Integración70 en main comprobada por árbol y ancestros.
 - [x] Candidato beta2 con hash/versión y pruebas locales trazables, sin originales modificados.
 - [x] Fixtures offline, guías, feedback sin envío propio y protocolo de datos preparados.

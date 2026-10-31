@@ -311,3 +311,25 @@ Las aceptaciones previas de Color Match/lotes/receta/Windows requieren nueva
 revisión en el candidato por cambios relacionados de UI/API; no se borraron
 recibos ni se emitieron nuevas decisiones humanas. CI final de metadatos y
 solicitud de revisión se comprobarán antes de marcar lista la PR.
+# 31-10-2026 · COL036 · auditoría posterior a PR86 y preparación de beta
+
+PR86 integrada por jea27 en5799531; se preservan rama y worktrees anteriores.
+Continuación aislada codex/COL-036-qa-integracion, Issue57/#67, sin autoaprobación.
+Corregidas carrera de preferencias al arrancar, mutaciones durante operaciones
+y pérdida silenciosa de ediciones del Planner. Guía no técnica Creator/Pro/Planner
+en PRUEBA_CREATOR_PRO_PLANNER.md. Sin nuevos efectos o matemática de color.
+
+61 tests MVP/API/harness,128 seguimiento,6 Node y build Vue correctos. QA real
+del motor congelado interno con PATH Windows/cwd vacío;71 módulos de bundle/SO,
+ninguna herramienta de desarrollo encontrada en PATH del hijo. Modos preservan
+PNG/receta/imágenes; plan conserva ediciones y confirma regeneración. Navegador
+escritorio y390×844,0 warnings/errores. Cuatro JPG CC0 ~16MP,15.601–16.181s,
+RSS muestreado794.1–846.8MB, sin pérdida de resolución/originales; no benchmark
+comparativo ni aceptación visual/Windows limpio. INTEGRACION_036_QA.json.
+
+Gate95 PE mantiene44 DLL bloqueadas. Payload158 archivos,27 hallazgos de cadenas
+de rutas upstream;0 perfil local/secretos/development según escáner, no garantía
+universal. No NSIS nuevo ni autorización externa. Plan de build PSF3.14.10 con
+23 pins/wheels compatibles por metadatos solamente; no instalado ni probado.
+Se necesita respuesta concreta en67 y operador Windows limpio/editor activado.
+Auditoría y comandos en INTEGRACION_BETA_036.md; beta y venta siguen NO-GO.

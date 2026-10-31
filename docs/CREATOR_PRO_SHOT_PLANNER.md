@@ -4,6 +4,9 @@ COL-045 (#81), COL-046 (#82), COL-047 (#83). Código de desarrollo sobre la beta
 existente; no sustituye ni distribuye un instalador candidato. Las 42 tareas
 históricas y las puertas independientes de beta/venta se conservan.
 
+Guía para el responsable sin programar: [recorrido de prueba manual](PRUEBA_CREATOR_PRO_PLANNER.md).
+Auditoría posterior a la integración humana de PR86: [COL036](INTEGRACION_BETA_036.md).
+
 ## Qué se puede usar
 
 Creator guía referencia → imagen → color → intensidad → comparación → PNG/JPG.

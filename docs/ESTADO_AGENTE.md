@@ -664,3 +664,33 @@ como si fueran el dashboard real. El código y la evidencia quedan publicados en
 de CI/PR y el único aviso de revisión se registran en el último comentario
 de Issue81 y en PR86; consultarlos antes de actuar. No asumir un merge o
 aprobación humana a partir de este checkpoint histórico.
+# Checkpoint vigente · COL036 · integración posterior a PR86 · 31-10-2026
+
+Rama `codex/COL-036-qa-integracion`, worktree `COL-036-beta-qa`, desde main5799531.
+PR86 ya integrada por jea27; no confundirlo con aprobación de Creator/Pro/Planner.
+Issue57 es la tarea;67 el único bloqueo canónico de distribución. Raíz y trabajo
+anterior conservados; ProjectOS/COL048 en otro chat, sin cambios de su código.
+
+Completado localmente: correcciones de carrera al cargar modo/preferencias,
+controles durante operaciones, confirmación del Planner y aviso de borrado;
+guía manual no técnica y smoke del congelado aislando PATH/cwd/módulos.
+61 tests MVP,128 seguimiento,6 Node y build correctos; QA real con demo/fotos CC0,
+cuatro exportaciones ~16MP a resolución completa, modo/receta/imágenes/plan
+conservados. Evidencia INTEGRACION_036_QA.json y capturas. Detalles y límites
+en INTEGRACION_BETA_036.md. Snapshot del congelado anterior a commit identificado
+por base+hashes fuente; no es otro setup0.3.0-beta.2 ni release.
+
+Pendiente en este checkpoint: publicar rama/PR de seguimiento, vincular manifiesto
+y verificar CI/sync. La última sección de publicación prevalece cuando exista.
+Bloqueos humanos:67 requiere autorización del runtime PSF aislado propuesto,
+Windows10/11 limpio/operador y editor activado.44 DLL y27 rutas upstream pendientes;
+beta/venta NO-GO, sin nueva VM/runtime/NSIS, invitaciones, pagos, merge o approved.
+COL001 y P0 comercial siguen pendientes de evidencia real. Próxima tarea técnica:
+reconstruir con runtime oficial solo tras autorización; ejecutar W01–W09 y E01–E05
+con entornos reales. No iniciar nuevas capacidades para evitar esas puertas.
+
+Reanudar: `git status --short`; consultar PR86, Issue57/67 y última PR de esta rama;
+leer su CI y comentarios antes de actuar. Usar la venv compartida solo para las
+pruebas existentes; no sustituirla para otro runtime. Scripts/comandos reproducibles
+en INTEGRACION_BETA_036.md; guía para el responsable PRUEBA_CREATOR_PRO_PLANNER.md.
+No eliminar worktrees previos ni cambios ajenos. Nunca tratar aviso/merge como GO.

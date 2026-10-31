@@ -6,7 +6,7 @@ import LookPanel,{type Look} from './LookPanel.vue'
 import {api,jsonPost} from './api'
 import {tx} from './i18n'
 import ShotPlanner from './ShotPlanner.vue'
-import {preferences,loadPreferences,savePreferences,type Workspace} from './preferences'
+import {preferences,loadPreferences,setWorkspace,type Workspace} from './preferences'
 import {creatorSteps,hasProAdjustments,previewIdentity,currentPreview} from './workspace'
 type Recipe={look:Look;version:number;domain:string;method:string;scale:number[];offset:number[];intensity:number;exposure:number;contrast:number;saturation:number;temperature:number}
 type Analysis={histograms:number[][];dominant:{hex:string;fraction:number}[];luminance_mean:number;contrast_p95_p05:number}
@@ -27,10 +27,9 @@ const renderedKey=ref('')
 const previewKey=()=>previewIdentity(source.value?.id,recipe)
 const exportReady=computed(()=>currentPreview(renderedKey.value,source.value?.id,recipe))
 async function workspace(value:Workspace){
- preferences.value.workspace=value
- if(value==='creator')tool.value='color'
- try{await savePreferences()}catch(e){error.value=(e as Error).message}
+ try{await setWorkspace(value)}catch(e){error.value=(e as Error).message}
 }
+watch(isPro,value=>{if(!value)tool.value='color'})
 let restoring=false,timer:ReturnType<typeof setTimeout>|undefined,controller:AbortController|undefined,serial=0
 const clone=(value:Recipe):Recipe=>JSON.parse(JSON.stringify(value))
 function revoke() { if(resultUrl.value)URL.revokeObjectURL(resultUrl.value);resultUrl.value='' }
@@ -44,6 +43,7 @@ async function upload(event:Event,kind:'source'|'reference') {
   await uploadFile(file,kind);input.value=''
 }
 async function uploadFile(file:File,kind:'source'|'reference') {
+  if(busy.value)return
   busy.value=true;error.value=''
   try {
     const form=new FormData();form.append('file',file)
@@ -91,9 +91,10 @@ watch(recipe,()=>{
   if(source.value)previewing.value=true
   clearTimeout(timer);timer=setTimeout(renderPreview,300)
 },{deep:true})
-async function undo(delta:number){const index=historyIndex.value+delta;if(index<0||index>=history.value.length)return;historyIndex.value=index;await assignRecipe(history.value[index]!)}
+async function undo(delta:number){if(busy.value)return;const index=historyIndex.value+delta;if(index<0||index>=history.value.length)return;historyIndex.value=index;await assignRecipe(history.value[index]!)}
+function applyUserRecipe(value:Recipe){if(!busy.value)return assignRecipe(value)}
 async function download(format:string) {
-  if(!source.value||!exportReady.value||previewing.value)return;busy.value=true;error.value=''
+  if(busy.value||!source.value||!exportReady.value||previewing.value)return;busy.value=true;error.value=''
   try{
     const response=await api('/export/'+format,jsonPost({source_id:source.value.id,recipe}))
     const blob=await response.blob(),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='lumaforge.'+format;a.click();setTimeout(()=>URL.revokeObjectURL(url),60000)
@@ -104,15 +105,20 @@ async function download(format:string) {
 }
 async function loadPresets(){presets.value=await(await api('/presets')).json()}
 async function savePreset(){
-  if(!presetName.value.trim())return
-  try{await api('/presets',jsonPost({name:presetName.value.trim(),recipe}));presetName.value='';await loadPresets()}catch(e){error.value=(e as Error).message}
+  if(busy.value||!presetName.value.trim())return
+  busy.value=true
+  try{await api('/presets',jsonPost({name:presetName.value.trim(),recipe}));presetName.value='';await loadPresets()}catch(e){error.value=(e as Error).message}finally{busy.value=false}
 }
 async function importRecipe(event:Event){
   const input=event.target as HTMLInputElement,file=input.files?.[0];if(!file)return
-  try{if(file.size>64000)throw Error(tx('Receta JSON demasiado grande','Recipe JSON is too large'));const value=JSON.parse(await file.text());const valid=await(await api('/presets/validate',jsonPost(value))).json();await assignRecipe(valid)}catch(e){error.value=(e as Error).message}finally{input.value=''}
+  if(busy.value){input.value='';return}
+  busy.value=true
+  try{if(file.size>64000)throw Error(tx('Receta JSON demasiado grande','Recipe JSON is too large'));const value=JSON.parse(await file.text());const valid=await(await api('/presets/validate',jsonPost(value))).json();await assignRecipe(valid)}catch(e){error.value=(e as Error).message}finally{input.value='';busy.value=false}
 }
-function clearImages(){q.dialog({title:tx('Eliminar imágenes temporales','Clear temporary images'),message:tx('Se eliminarán las copias locales de esta sesión. Los originales y presets se conservan.','This removes local session copies. Originals and presets are preserved.'),cancel:true,persistent:true}).onOk(async()=>{
-  try{controller?.abort();clearTimeout(timer);++serial;await api('/images',{method:'DELETE'});source.value=null;reference.value=null;revoke();previewing.value=false;await assignRecipe(neutral(),true)}catch(e){error.value=(e as Error).message}
+function clearImages(){if(busy.value)return;q.dialog({title:tx('Eliminar imágenes temporales','Clear temporary images'),message:tx('Se eliminarán las copias locales y se reiniciarán los ajustes y el plan no guardados. Guarda antes tu preset, receta y plan JSON. Los originales y presets guardados se conservan.','This removes local copies and resets unsaved adjustments and plan. Save your preset, recipe and plan JSON first. Originals and saved presets are preserved.'),cancel:true,persistent:true}).onOk(async()=>{
+  if(busy.value)return
+  busy.value=true
+  try{await api('/images',{method:'DELETE'});controller?.abort();clearTimeout(timer);++serial;source.value=null;reference.value=null;revoke();previewing.value=false;await assignRecipe(neutral(),true)}catch(e){error.value=(e as Error).message}finally{busy.value=false}
 })}
 const histogram=computed(()=>reference.value?.analysis??source.value?.analysis)
 function histogramPath(channel:number){const data=histogram.value?.histograms[channel]??[],max=Math.max(...data,1);return data.map((x,i)=>`${i?'L':'M'}${i*4},${76-x/max*70}`).join(' ')}
@@ -125,7 +131,7 @@ onBeforeUnmount(()=>{controller?.abort();clearTimeout(timer);revoke()})
  <div class="studio">
   <header class="topbar"><div class="brand"><span class="brand-mark">◈</span>Color<span>Studio</span><small>BETA</small></div>
    <div class="project-title">{{tx('Sesión de color','Colour session')}} <span>/</span> {{ source?.name??tx('Sin título','Untitled') }}</div>
-   <BetaPanel :recipe="recipe" :presets="presets" :pro="isPro" @recipe="assignRecipe" @refresh="loadPresets" @demo="loadDemo"/>
+   <BetaPanel :recipe="recipe" :presets="presets" :pro="isPro" :editor-busy="busy" @recipe="applyUserRecipe" @refresh="loadPresets" @demo="loadDemo"/>
    <div class="local-status"><i :class="{ready:online}"></i>{{online?tx('LOCAL · SIN API EXTERNA','LOCAL · NO IMAGE API'):tx('CONECTANDO','CONNECTING')}}<span class="version">0.3 β</span></div>
   </header>
   <q-linear-progress v-if="busy||previewing" indeterminate color="primary" class="activity"/>
@@ -151,10 +157,10 @@ onBeforeUnmount(()=>{controller?.abort();clearTimeout(timer);revoke()})
     <p v-if="!isPro" class="creator-tip">{{!reference?tx('1. Elige una imagen cuyo color te guste.','1. Choose an image whose colour you like.'):!source?tx('2. Añade tu fotografía. Conservaremos el original.','2. Add your photograph. We preserve the original.'):tx('Prueba la transferencia, baja intensidad si es necesario y compara antes de exportar.','Try matching, reduce intensity if needed and compare before exporting.')}}</p>
     <div class="section-heading library-heading">{{tx('MIS PRESETS','MY PRESETS')}} <span>{{presets.length.toString().padStart(2,'0')}}</span></div>
     <div v-if="!presets.length" class="no-presets">{{tx('Tu biblioteca empieza con el primer look que guardes.','Your library starts with the first look you save.')}}</div>
-    <button v-for="preset in presets" :key="preset.id" class="preset-row" @click="assignRecipe(preset.recipe)"><span class="preset-dot"></span>{{preset.name}}<q-icon name="chevron_right"/></button>
-    <div class="preset-save"><q-input v-model="presetName" dense outlined :label="tx('Nombre del preset','Preset name')" maxlength="80"/><q-btn flat dense icon="add" :aria-label="tx('Guardar preset','Save preset')" :disable="!source||!presetName.trim()" @click="savePreset"/></div>
-    <label v-if="isPro" class="import-recipe">{{tx('Importar receta JSON','Import recipe JSON')}}<input type="file" accept="application/json,.json" :aria-label="tx('Importar receta JSON','Import recipe JSON')" @change="importRecipe"></label>
-    <button class="clear-button" @click="clearImages"><q-icon name="delete_outline"/>{{tx('Eliminar imágenes temporales','Clear temporary images')}}</button>
+    <button v-for="preset in presets" :key="preset.id" class="preset-row" :disabled="busy" @click="applyUserRecipe(preset.recipe)"><span class="preset-dot"></span>{{preset.name}}<q-icon name="chevron_right"/></button>
+    <div class="preset-save"><q-input v-model="presetName" dense outlined :label="tx('Nombre del preset','Preset name')" maxlength="80"/><q-btn flat dense icon="add" :aria-label="tx('Guardar preset','Save preset')" :disable="busy||!source||!presetName.trim()" @click="savePreset"/></div>
+    <label v-if="isPro" class="import-recipe">{{tx('Importar receta JSON','Import recipe JSON')}}<input type="file" accept="application/json,.json" :aria-label="tx('Importar receta JSON','Import recipe JSON')" :disabled="busy" @change="importRecipe"></label>
+    <button class="clear-button" :disabled="busy" @click="clearImages"><q-icon name="delete_outline"/>{{tx('Eliminar imágenes temporales','Clear temporary images')}}</button>
    </aside>
    <main class="main-panel">
     <div class="viewer-toolbar"><div><span class="active-tab">{{tx('Comparar','Compare')}}</span><span class="secondary-tab">{{source?tx('Previsualización · lado máx. 1280 px','Preview · max side 1280 px'):tx('Espacio de trabajo','Workspace')}}</span></div>
@@ -184,7 +190,7 @@ onBeforeUnmount(()=>{controller?.abort();clearTimeout(timer);revoke()})
     <div class="palette"><span v-for="color in histogram?.dominant??[]" :key="color.hex" :style="{background:color.hex}" :title="color.hex"></span></div>
     </template>
     <p v-if="!isPro&&advancedActive" class="creator-tip">{{tx('Hay ajustes Pro activos. Cambiar de modo conserva tu receta; abre Pro para verlos o restablece los ajustes.','Pro adjustments are active. Switching modes keeps your recipe; open Pro to inspect them or reset adjustments.')}}</p>
-    <div class="section-heading edit-heading">{{tx('AJUSTES','ADJUSTMENTS')}} <div><q-btn flat round dense icon="undo" :aria-label="tx('Deshacer ajuste','Undo adjustment')" :disable="historyIndex===0" @click="undo(-1)"/><q-btn flat round dense icon="redo" :aria-label="tx('Rehacer ajuste','Redo adjustment')" :disable="historyIndex>=history.length-1" @click="undo(1)"/></div></div>
+    <div class="section-heading edit-heading">{{tx('AJUSTES','ADJUSTMENTS')}} <div><q-btn flat round dense icon="undo" :aria-label="tx('Deshacer ajuste','Undo adjustment')" :disable="busy||historyIndex===0" @click="undo(-1)"/><q-btn flat round dense icon="redo" :aria-label="tx('Rehacer ajuste','Redo adjustment')" :disable="busy||historyIndex>=history.length-1" @click="undo(1)"/></div></div>
     <div class="intensity-control"><div class="control-label"><span>{{tx('Intensidad del look','Look strength')}}</span><output>{{Math.round(recipe.intensity*100)}}%</output></div><q-slider v-model="recipe.intensity" :min="0" :max="1" :step=".01" color="primary" :aria-label="tx('Intensidad del look','Look strength')" :disable="!source||busy"/></div>
     <template v-if="isPro"><div v-for="control in [{key:'exposure',label:'Exposición',min:-2,max:2,step:.05},{key:'contrast',label:'Contraste',min:.6,max:1.4,step:.01},{key:'saturation',label:'Saturación',min:0,max:2,step:.01},{key:'temperature',label:'Temperatura',min:-1,max:1,step:.01}]" :key="control.key" class="manual-control">
      <div class="control-label"><span>{{tx(control.label,({exposure:'Exposure',contrast:'Contrast',saturation:'Saturation',temperature:'Temperature'} as any)[control.key])}}</span><output>{{Number(recipe[control.key as keyof Recipe]).toFixed(2)}}</output></div>

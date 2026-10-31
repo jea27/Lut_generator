@@ -18,3 +18,10 @@ export function savePreferences(){
  saving=operation
  return operation
 }
+// Hydrate before changing modes: a slow first GET must not replace a user's
+// choice or persist default language/export settings over their saved values.
+export async function setWorkspace(workspace:Workspace){
+ await loadPreferences()
+ preferences.value.workspace=workspace
+ await savePreferences()
+}

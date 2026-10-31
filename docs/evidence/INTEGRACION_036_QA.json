@@ -1,0 +1,393 @@
+{
+  "schema": "color-studio-integration-qa-v1",
+  "checked_at": "2026-10-31T17:01:49.951541+00:00",
+  "task": "COL-036",
+  "issue": 57,
+  "distribution_blocker": 67,
+  "audited_pr": 86,
+  "audited_pr_state": "merged_by_jea27",
+  "base_commit": "5799531731c41057ae15ed159c25c89725709b55",
+  "frozen_source_context": "base commit plus the following uncommitted file bytes; internal QA only, no NSIS/release/version bump",
+  "packaged_api": {
+    "version": "0.3.0-beta.2",
+    "environment": "Existing Windows developer machine; not clean VM",
+    "scope": "Real licensed rural photographs only; no portrait/skin/market validation",
+    "packaged_runtime": true,
+    "executable_sha256": "0ed4bb9b4b1c2476e5d08c9784b1f9c161e81a4d6b7d07390575c0daabd6ae16",
+    "developer_tools_found_in_child_path": {
+      "python": false,
+      "node": false,
+      "cargo": false,
+      "git": false
+    },
+    "cwd_empty_directory": true,
+    "module_audit": {
+      "observed_pe_modules": 71,
+      "unexpected_module_names": [],
+      "python_dll_loaded_from_bundle": true,
+      "scope": "Snapshot after all API operations, not a clean OS certification"
+    },
+    "modes_preserve_export_bytes": true,
+    "plan_privacy_and_claim_types": "passed",
+    "recipe_preset_optics_roundtrip": "passed",
+    "session_guard": "passed",
+    "clean_windows_verified": false,
+    "redistribution_approved": false,
+    "samples": [
+      {
+        "input_sha256": "d23e0db0afa94b44f1b4adfb3a8e168d7877266103bcc1365622f149dff15e32",
+        "dimensions": [
+          4928,
+          3264
+        ],
+        "export_ms": 16181.4,
+        "sampled_process_peak_rss_mb": 816.6,
+        "original_unchanged": true
+      },
+      {
+        "input_sha256": "1e3bb248bd900639242f554ddf0275fd2450efa5a98d7a6d819d784fa1c8dbe2",
+        "dimensions": [
+          4891,
+          3255
+        ],
+        "export_ms": 16009.5,
+        "sampled_process_peak_rss_mb": 794.1,
+        "original_unchanged": true
+      },
+      {
+        "input_sha256": "707d5e1a109a9018af848db60e5c5a1aedf4218ab353e24e308a5acf2a2d61a1",
+        "dimensions": [
+          4928,
+          3264
+        ],
+        "export_ms": 15947.7,
+        "sampled_process_peak_rss_mb": 846.8,
+        "original_unchanged": true
+      },
+      {
+        "input_sha256": "92586431b8358502c888af0c6a8b128964361ff1066c843b1d80b5355754c36c",
+        "dimensions": [
+          4928,
+          3264
+        ],
+        "export_ms": 15601.0,
+        "sampled_process_peak_rss_mb": 824.8,
+        "original_unchanged": true
+      }
+    ],
+    "batch_status": "completed",
+    "batch_outputs_verified": 2,
+    "demo_originals_unchanged": true,
+    "ffmpeg_binary_present": false,
+    "cube_sha256": "4fb41b679e1f2a2363b22a57f3780ea87ff9ccf06ad718cc0eefaf7f3f48d331",
+    "parent_death_watchdog": "passed"
+  },
+  "browser": {
+    "engine": "same internal frozen executable via loopback in in-app Chromium",
+    "creator_pro_recipe_json_bytes_equal": true,
+    "source_reference_urls_unchanged": true,
+    "pro_exposure": 0.05,
+    "look": {
+      "enabled": true,
+      "glow": 0.01,
+      "diffusion": 0.01,
+      "fade": 0.01
+    },
+    "plan_survives_modes_bytes_equal": true,
+    "regenerate_cancel_preserves_key_x": -1.9,
+    "regenerate_cancel_preserves_check": true,
+    "regenerate_confirm_resets_key_x": -2,
+    "regenerate_confirm_resets_check": false,
+    "export_busy_guards_disabled": [
+      "clear-images",
+      "undo",
+      "import-recipe",
+      "apply-preset"
+    ],
+    "png_downloaded": true,
+    "warnings": 0,
+    "console_errors": 0,
+    "viewport_probe": {
+      "width": 390,
+      "height": 844,
+      "document_scroll_width": 375,
+      "creator_no_horizontal_overflow": true,
+      "planner_no_horizontal_overflow": true
+    },
+    "physical_iphone_tested": false,
+    "screenshots": [
+      "INTEGRACION_CREATOR_036.jpg",
+      "INTEGRACION_CREATOR_MOVIL_036.jpg",
+      "INTEGRACION_PLANNER_036.jpg",
+      "INTEGRACION_PLANNER_MOVIL_036.jpg"
+    ]
+  },
+  "provenance": {
+    "pe_files": 95,
+    "blocked_files": [
+      "api-ms-win-crt-process-l1-1-0.dll",
+      "api-ms-win-crt-string-l1-1-0.dll",
+      "api-ms-win-crt-filesystem-l1-1-0.dll",
+      "api-ms-win-crt-time-l1-1-0.dll",
+      "api-ms-win-crt-math-l1-1-0.dll",
+      "api-ms-win-crt-environment-l1-1-0.dll",
+      "api-ms-win-crt-stdio-l1-1-0.dll",
+      "api-ms-win-crt-runtime-l1-1-0.dll",
+      "api-ms-win-crt-conio-l1-1-0.dll",
+      "api-ms-win-crt-heap-l1-1-0.dll",
+      "api-ms-win-crt-locale-l1-1-0.dll",
+      "api-ms-win-crt-convert-l1-1-0.dll",
+      "api-ms-win-crt-utility-l1-1-0.dll",
+      "api-ms-win-crt-private-l1-1-0.dll",
+      "api-ms-win-core-synch-l1-2-0.dll",
+      "ucrtbase.dll",
+      "api-ms-win-core-handle-l1-1-0.dll",
+      "api-ms-win-core-localization-l1-2-0.dll",
+      "api-ms-win-core-sysinfo-l1-2-0.dll",
+      "api-ms-win-core-processenvironment-l1-1-0.dll",
+      "api-ms-win-core-util-l1-1-0.dll",
+      "api-ms-win-core-console-l1-1-0.dll",
+      "api-ms-win-core-processthreads-l1-1-1.dll",
+      "api-ms-win-core-fibers-l1-1-1.dll",
+      "api-ms-win-core-rtlsupport-l1-1-0.dll",
+      "api-ms-win-core-processthreads-l1-1-0.dll",
+      "api-ms-win-core-timezone-l1-1-0.dll",
+      "api-ms-win-core-synch-l1-1-0.dll",
+      "api-ms-win-core-libraryloader-l1-1-0.dll",
+      "api-ms-win-core-string-l1-1-0.dll",
+      "api-ms-win-core-memory-l1-1-0.dll",
+      "api-ms-win-core-heap-l1-1-0.dll",
+      "api-ms-win-core-interlocked-l1-1-0.dll",
+      "api-ms-win-core-fibers-l1-1-0.dll",
+      "api-ms-win-core-sysinfo-l1-1-0.dll",
+      "api-ms-win-core-file-l2-1-0.dll",
+      "api-ms-win-core-debug-l1-1-0.dll",
+      "api-ms-win-core-kernel32-legacy-l1-1-1.dll",
+      "api-ms-win-core-errorhandling-l1-1-0.dll",
+      "api-ms-win-core-profile-l1-1-0.dll",
+      "api-ms-win-core-file-l1-1-0.dll",
+      "api-ms-win-core-namedpipe-l1-1-0.dll",
+      "api-ms-win-core-file-l1-2-0.dll",
+      "api-ms-win-core-datetime-l1-1-0.dll"
+    ],
+    "build_origin_gate_passed": false,
+    "redistribution_approved": false
+  },
+  "payload": {
+    "scanned_files": 158,
+    "passed": false,
+    "findings": [
+      {
+        "file": "PYZ/click.utils",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "PYZ/numpy.__config__",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/_asyncio.pyd",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/_bz2.pyd",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/_ctypes.pyd",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/_decimal.pyd",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/_elementtree.pyd",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/_hashlib.pyd",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/_lzma.pyd",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/_multiprocessing.pyd",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/_overlapped.pyd",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/_queue.pyd",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/_socket.pyd",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/_ssl.pyd",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/_uuid.pyd",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/_wmi.pyd",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/_zoneinfo.pyd",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/base_library.zip",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/libcrypto-3-x64.dll",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/libffi-8.dll",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/libssl-3-x64.dll",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/pydantic_core/_pydantic_core.cp312-win_amd64.pyd",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/pyexpat.pyd",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/python3.dll",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/python312.dll",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/select.pyd",
+        "reason": "upstream_or_example_user_path"
+      },
+      {
+        "file": "_internal/unicodedata.pyd",
+        "reason": "upstream_or_example_user_path"
+      }
+    ],
+    "local_private_profile_path_findings": 0,
+    "secret_pattern_findings": 0,
+    "development_or_private_file_findings": 0,
+    "qualification": "Pattern scan of staging/Python archives; not proof of absence of every secret. Upstream/example paths require review; no NSIS/plugins audited anew."
+  },
+  "acceptance": {
+    "clean_windows": false,
+    "external_editors": false,
+    "human_capabilities_approved_by_agent": false,
+    "private_beta_go": false,
+    "commercial_go": false
+  },
+  "creator_mode_preservation_checked": true,
+  "planner_regeneration_checked": true,
+  "frozen_api_restricted_path_passed": true,
+  "windows_clean": false,
+  "source_files_sha256_at_first_ui_and_16mp": {
+    "apps/web/src/App.vue": "b0490dff1b21580b7649a675c4884b62dc7b5496899d17022ee55fd0231039a8",
+    "apps/web/src/BetaPanel.vue": "198b653cdd95fc57fd64eca80c4a706b733ba397a226668113253dea10f41786",
+    "apps/web/src/ShotPlanner.vue": "6a3d24b09ef7c7e2d7d636b8ef943811af845c799a8b758be60e5f6850fbe4b3",
+    "apps/web/src/preferences.ts": "ee79ef21f6930913aac3e96de54ec16fb419a31b5c1455e5242eb5c0db81b96d",
+    "packaging/ColorEngine.spec": "02bc59309d85df5d9af8fe128d6f58bfeb82e74cfeb5d8dd8dcf1ea4adb749a4"
+  },
+  "final_source_files_sha256": {
+    "apps/web/src/App.vue": "46d4ec0aa9dbec04b4ca1a30aba47001f4cbc2652a410b1cb53efe3a2493fba6",
+    "apps/web/src/BetaPanel.vue": "198b653cdd95fc57fd64eca80c4a706b733ba397a226668113253dea10f41786",
+    "apps/web/src/ShotPlanner.vue": "6a3d24b09ef7c7e2d7d636b8ef943811af845c799a8b758be60e5f6850fbe4b3",
+    "apps/web/src/preferences.ts": "ee79ef21f6930913aac3e96de54ec16fb419a31b5c1455e5242eb5c0db81b96d",
+    "packaging/ColorEngine.spec": "02bc59309d85df5d9af8fe128d6f58bfeb82e74cfeb5d8dd8dcf1ea4adb749a4"
+  },
+  "final_frontend_bundle_sha256": {
+    "index-CemmXTv-.js": "ce21f7090389c50c0ab0edacadffa0eaa5319ddc89d726d4f0e41c36badc0961"
+  },
+  "packaged_api_final": {
+    "version": "0.3.0-beta.2",
+    "environment": "Existing Windows developer machine; not clean VM",
+    "scope": "Real licensed rural photographs only; no portrait/skin/market validation",
+    "packaged_runtime": true,
+    "executable_sha256": "0ed4bb9b4b1c2476e5d08c9784b1f9c161e81a4d6b7d07390575c0daabd6ae16",
+    "developer_tools_found_in_child_path": {
+      "python": false,
+      "node": false,
+      "cargo": false,
+      "git": false
+    },
+    "cwd_empty_directory": true,
+    "module_audit": {
+      "observed_pe_modules": 71,
+      "unexpected_module_names": [],
+      "python_dll_loaded_from_bundle": true,
+      "scope": "Snapshot after all API operations, not a clean OS certification"
+    },
+    "modes_preserve_export_bytes": true,
+    "plan_privacy_and_claim_types": "passed",
+    "recipe_preset_optics_roundtrip": "passed",
+    "session_guard": "passed",
+    "clean_windows_verified": false,
+    "redistribution_approved": false,
+    "samples": [
+      {
+        "input_sha256": "5005bfe36f98fd65e89673be1cc09d5f532f09482fd3e8a57de075022c13493c",
+        "dimensions": [
+          1024,
+          678
+        ],
+        "export_ms": 557.0,
+        "sampled_process_peak_rss_mb": 124.7,
+        "original_unchanged": true
+      },
+      {
+        "input_sha256": "c45f876097b42968568cf595b268b0600a83b0728c1edf8105ffccfea9cb9e5d",
+        "dimensions": [
+          1024,
+          678
+        ],
+        "export_ms": 554.9,
+        "sampled_process_peak_rss_mb": 125.3,
+        "original_unchanged": true
+      }
+    ],
+    "batch_status": "completed",
+    "batch_outputs_verified": 2,
+    "demo_originals_unchanged": true,
+    "ffmpeg_binary_present": false,
+    "cube_sha256": "4fb41b679e1f2a2363b22a57f3780ea87ff9ccf06ad718cc0eefaf7f3f48d331",
+    "parent_death_watchdog": "passed"
+  },
+  "final_followup": "Only frontend change after initial UI/high-resolution probes: wait for successful DELETE before aborting preview/resetting local state. Final frozen smoke repeated with demo; high-resolution rendering engine unchanged.",
+  "final_browser_followup": {
+    "clear_confirm_removes_local_images": true,
+    "clear_cancel_preserves_images": true,
+    "saved_presets_preserved": true,
+    "batch_real_cc0_png_status": "completed",
+    "batch_real_cc0_png_completed": 2,
+    "console_errors": 0,
+    "warnings": 0,
+    "ui_concurrent_delete_rejection": "not_reproduced_before_batch_completed; server guard automated test passes"
+  },
+  "screenshots_sha256": {
+    "INTEGRACION_CREATOR_036.jpg": "b0ca003c8fa6d68d89d1fb6ddd576b3df0b0724bddaa06787344b261cd36cb34",
+    "INTEGRACION_CREATOR_MOVIL_036.jpg": "d08b399803473d3d255552e8bebd1d80ea57a4fe9149ff98ee47aa884e67b0f2",
+    "INTEGRACION_PLANNER_036.jpg": "96131f6b8b4c2c5f44a2752db5c0ffd0f961faeec452331d8494f85f89d9fd6a",
+    "INTEGRACION_PLANNER_MOVIL_036.jpg": "46c65ca2d898c02ce682417bd318db7f8cea7ecea0f4e3a22768586956754f82"
+  }
+}

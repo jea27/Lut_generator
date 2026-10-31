@@ -501,13 +501,19 @@
         "apps/desktop/src-tauri/tauri.conf.json"
       ],
       "tests": [
-        "tests_mvp/test_beta.py"
+        "tests_mvp/test_beta.py",
+        "tests_mvp/test_packaged_qa.py"
       ],
       "evidence": [
         {
           "path": "docs/evidence/LOOK_03_INSTALL_B2.json",
           "field": "exit_code",
           "equals": 0
+        },
+        {
+          "path": "docs/evidence/INTEGRACION_036_QA.json",
+          "field": "frozen_api_restricted_path_passed",
+          "equals": true
         }
       ],
       "acceptance": "Tauri/NSIS y sidecar. Verificación local; Windows limpio sigue pendiente.",
@@ -679,6 +685,11 @@
           "path": "docs/evidence/CREATOR_045_QA.json",
           "field": "creator_ui_workflow_checked",
           "equals": true
+        },
+        {
+          "path": "docs/evidence/INTEGRACION_036_QA.json",
+          "field": "creator_mode_preservation_checked",
+          "equals": true
         }
       ],
       "id": "creator",
@@ -692,7 +703,8 @@
       ],
       "tests": [
         "tests_mvp/test_security.py",
-        "apps/web/tests/workspace.test.ts"
+        "apps/web/tests/workspace.test.ts",
+        "apps/web/tests/preferences.test.ts"
       ],
       "review_paths": [
         "apps/web/src/App.vue",
@@ -742,6 +754,11 @@
           "path": "docs/evidence/CREATOR_045_QA.json",
           "field": "creator_ui_workflow_checked",
           "equals": true
+        },
+        {
+          "path": "docs/evidence/INTEGRACION_036_QA.json",
+          "field": "creator_mode_preservation_checked",
+          "equals": true
         }
       ],
       "id": "pro-workspace",
@@ -755,7 +772,8 @@
       ],
       "tests": [
         "tests_mvp/test_planner.py",
-        "apps/web/tests/workspace.test.ts"
+        "apps/web/tests/workspace.test.ts",
+        "apps/web/tests/preferences.test.ts"
       ],
       "review_paths": [
         "apps/api/capabilities.py",
@@ -803,6 +821,11 @@
         {
           "path": "docs/evidence/CREATOR_045_QA.json",
           "field": "planner_json_download_checked",
+          "equals": true
+        },
+        {
+          "path": "docs/evidence/INTEGRACION_036_QA.json",
+          "field": "planner_regeneration_checked",
           "equals": true
         }
       ],

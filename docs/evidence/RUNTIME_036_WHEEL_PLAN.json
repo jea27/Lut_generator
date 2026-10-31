@@ -1,0 +1,309 @@
+{
+  "schema": "color-studio-runtime-wheel-plan-v1",
+  "checked_at": "2026-10-31T16:58:26.118364+00:00",
+  "target": "CPython 3.14.10 Windows AMD64, regular GIL build",
+  "status": "metadata_only_not_installed_not_resolved_not_tested",
+  "runtime_source": "https://www.python.org/downloads/release/python-31410/",
+  "all_pinned_packages_have_compatible_wheel": true,
+  "packages": [
+    {
+      "name": "annotated-doc",
+      "version": "0.0.5",
+      "requires_python": ">=3.9",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "annotated_doc-0.0.5-py3-none-any.whl",
+          "sha256": "117bac03a25ede5df5440e855b32d556049ca169ead221505badf432fed4b101"
+        }
+      ],
+      "source": "https://pypi.org/pypi/annotated-doc/0.0.5/json"
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.8.0",
+      "requires_python": ">=3.10",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "annotated_types-0.8.0-py3-none-any.whl",
+          "sha256": "f072f4d804ea359e4eaf198b1af7a8b0943881a87f31bb764f8bf219bb9419e0"
+        }
+      ],
+      "source": "https://pypi.org/pypi/annotated-types/0.8.0/json"
+    },
+    {
+      "name": "anyio",
+      "version": "4.15.1",
+      "requires_python": ">=3.10",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "anyio-4.15.1-py3-none-any.whl",
+          "sha256": "6152fdbbf9a77fdec97731721bebf7c4c44f7c29b424b0065826173efc7ed101"
+        }
+      ],
+      "source": "https://pypi.org/pypi/anyio/4.15.1/json"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.10.23",
+      "requires_python": ">=3.7",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "certifi-2026.10.23-py3-none-any.whl",
+          "sha256": "e9b54de76e530bb6cf0ccd036787103acb58fd42ba930ea8bf948ddbaa2f61d1"
+        }
+      ],
+      "source": "https://pypi.org/pypi/certifi/2026.10.23/json"
+    },
+    {
+      "name": "click",
+      "version": "8.5.0",
+      "requires_python": ">=3.10",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "click-8.5.0-py3-none-any.whl",
+          "sha256": "255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360"
+        }
+      ],
+      "source": "https://pypi.org/pypi/click/8.5.0/json"
+    },
+    {
+      "name": "fastapi",
+      "version": "0.162.0",
+      "requires_python": ">=3.10",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "fastapi-0.162.0-py3-none-any.whl",
+          "sha256": "3785963de305dd09912426cb81f2d230fce98ab3521cdfe97265c8d14983128c"
+        }
+      ],
+      "source": "https://pypi.org/pypi/fastapi/0.162.0/json"
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0",
+      "requires_python": ">=3.8",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "h11-0.16.0-py3-none-any.whl",
+          "sha256": "63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86"
+        }
+      ],
+      "source": "https://pypi.org/pypi/h11/0.16.0/json"
+    },
+    {
+      "name": "httpcore",
+      "version": "1.0.9",
+      "requires_python": ">=3.8",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "httpcore-1.0.9-py3-none-any.whl",
+          "sha256": "2d400746a40668fc9dec9810239072b40b4484b640a8c38fd654a024c7a1bf55"
+        }
+      ],
+      "source": "https://pypi.org/pypi/httpcore/1.0.9/json"
+    },
+    {
+      "name": "httpx",
+      "version": "0.28.1",
+      "requires_python": ">=3.8",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "httpx-0.28.1-py3-none-any.whl",
+          "sha256": "d909fcccc110f8c7faf814ca82a9a4d816bc5a6dbfea25d6591d6985b8ba59ad"
+        }
+      ],
+      "source": "https://pypi.org/pypi/httpx/0.28.1/json"
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "requires_python": ">=3.9",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "idna-3.20-py3-none-any.whl",
+          "sha256": "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c"
+        }
+      ],
+      "source": "https://pypi.org/pypi/idna/3.20/json"
+    },
+    {
+      "name": "numpy",
+      "version": "2.5.4",
+      "requires_python": ">=3.12",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "numpy-2.5.4-cp314-cp314-win_amd64.whl",
+          "sha256": "2ca144f15135b6212a5c47b1e2aeca6e412f102f95a2d5d88d8aec77eb255de3"
+        }
+      ],
+      "source": "https://pypi.org/pypi/numpy/2.5.4/json"
+    },
+    {
+      "name": "opencv-python-headless",
+      "version": "5.0.0.93",
+      "requires_python": ">=3.6",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "opencv_python_headless-5.0.0.93-cp37-abi3-win_amd64.whl",
+          "sha256": "829717b6a95554f273e49e357cee3b3a2a26b6f4842fbc1bed2b45bdd8f87e0e"
+        }
+      ],
+      "source": "https://pypi.org/pypi/opencv-python-headless/5.0.0.93/json"
+    },
+    {
+      "name": "opentelemetry-api",
+      "version": "1.45.2",
+      "requires_python": ">=3.10",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "opentelemetry_api-1.45.2-py3-none-any.whl",
+          "sha256": "2cbd737377e710ee740d261c94e93fa0f08e6d037c18f17513cc0a2d94479a34"
+        }
+      ],
+      "source": "https://pypi.org/pypi/opentelemetry-api/1.45.2/json"
+    },
+    {
+      "name": "pillow",
+      "version": "13.0.0",
+      "requires_python": ">=3.11",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "pillow-13.0.0-cp314-cp314-win_amd64.whl",
+          "sha256": "f7cbb7a64e7ec664775195e4f81923bc8a93d9451b963f844e59118f63147a7a"
+        }
+      ],
+      "source": "https://pypi.org/pypi/pillow/13.0.0/json"
+    },
+    {
+      "name": "psutil",
+      "version": "7.2.2",
+      "requires_python": ">=3.6",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "psutil-7.2.2-cp37-abi3-win_amd64.whl",
+          "sha256": "eb7e81434c8d223ec4a219b5fc1c47d0417b12be7ea866e24fb5ad6e84b3d988"
+        }
+      ],
+      "source": "https://pypi.org/pypi/psutil/7.2.2/json"
+    },
+    {
+      "name": "pydantic",
+      "version": "2.14.2",
+      "requires_python": ">=3.10",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "pydantic-2.14.2-py3-none-any.whl",
+          "sha256": "7efbf7507b937931cd32a5755acb00ea1cf5ccb1d4e8067a5850d5069e382118"
+        }
+      ],
+      "source": "https://pypi.org/pypi/pydantic/2.14.2/json"
+    },
+    {
+      "name": "pydantic_core",
+      "version": "2.50.2",
+      "requires_python": ">=3.10",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "pydantic_core-2.50.2-cp314-cp314-win_amd64.whl",
+          "sha256": "b62c89545d21d930c333208fd548e7b4f262228ba3a322fd75c987a75ab11f31"
+        }
+      ],
+      "source": "https://pypi.org/pypi/pydantic_core/2.50.2/json"
+    },
+    {
+      "name": "python-multipart",
+      "version": "0.0.32",
+      "requires_python": ">=3.10",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "python_multipart-0.0.32-py3-none-any.whl",
+          "sha256": "ff6d3f776f16878c894e52e107296ffc890e913c611b1a4ec6c44e2821fe2e23"
+        }
+      ],
+      "source": "https://pypi.org/pypi/python-multipart/0.0.32/json"
+    },
+    {
+      "name": "starlette",
+      "version": "1.10.0",
+      "requires_python": ">=3.11",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "starlette-1.10.0-py3-none-any.whl",
+          "sha256": "478c0ab3b4ced6e82719849c118fa406f0278a3499c1a898cd15cd31bdc38ce4"
+        }
+      ],
+      "source": "https://pypi.org/pypi/starlette/1.10.0/json"
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.4",
+      "requires_python": ">=3.10",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "typing_inspection-0.4.4-py3-none-any.whl",
+          "sha256": "65b8397ba37ccbce054456aaccddfc91e6e3083c92824df348d96ca832f3f147"
+        }
+      ],
+      "source": "https://pypi.org/pypi/typing-inspection/0.4.4/json"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "requires_python": ">=3.9",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "typing_extensions-4.16.0-py3-none-any.whl",
+          "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+        }
+      ],
+      "source": "https://pypi.org/pypi/typing_extensions/4.16.0/json"
+    },
+    {
+      "name": "uvicorn",
+      "version": "0.54.0",
+      "requires_python": ">=3.10",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "uvicorn-0.54.0-py3-none-any.whl",
+          "sha256": "505bdb0f318731d45f1f712071fc781a8981f6847a31c902c9f5e652d4f67faf"
+        }
+      ],
+      "source": "https://pypi.org/pypi/uvicorn/0.54.0/json"
+    },
+    {
+      "name": "pyinstaller",
+      "version": "6.22.3",
+      "requires_python": "<3.16,>=3.8",
+      "python_version_allowed": true,
+      "compatible_wheels": [
+        {
+          "file": "pyinstaller-6.22.3-py3-none-win_amd64.whl",
+          "sha256": "500bd58c7bf7e584a8435adccbd763a0b918d5c12b08d74ff50fd79b2915458b"
+        }
+      ],
+      "source": "https://pypi.org/pypi/pyinstaller/6.22.3/json"
+    }
+  ]
+}
