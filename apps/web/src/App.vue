@@ -19,8 +19,9 @@ let restoring=false,timer:ReturnType<typeof setTimeout>|undefined,controller:Abo
 const clone=(value:Recipe):Recipe=>JSON.parse(JSON.stringify(value))
 function revoke() { if(resultUrl.value)URL.revokeObjectURL(resultUrl.value);resultUrl.value='' }
 async function assignRecipe(value:Recipe,reset=false) {
-  restoring=true;Object.assign(recipe,clone({...neutral(),...value,look:{...neutral().look,...value.look}}));await nextTick();restoring=false
-  if(reset){history.value=[clone(value)];historyIndex.value=0}
+  const normalized=clone({...neutral(),...value,version:2,look:{...neutral().look,...value.look}})
+  restoring=true;Object.assign(recipe,normalized);await nextTick();restoring=false
+  if(reset){history.value=[clone(normalized)];historyIndex.value=0}
 }
 async function upload(event:Event,kind:'source'|'reference') {
   const input=event.target as HTMLInputElement,file=input.files?.[0];if(!file)return

@@ -1,0 +1,194 @@
+{
+  "classification_only_not_approval": true,
+  "files": [
+    {
+      "file": "PYZ/click.utils",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 2
+    },
+    {
+      "file": "PYZ/numpy.__config__",
+      "categories": [
+        "generic_build_or_documentation_account"
+      ],
+      "matches": 3
+    },
+    {
+      "file": "_internal/_asyncio.pyd",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 1
+    },
+    {
+      "file": "_internal/_bz2.pyd",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 1
+    },
+    {
+      "file": "_internal/_ctypes.pyd",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 1
+    },
+    {
+      "file": "_internal/_decimal.pyd",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 4
+    },
+    {
+      "file": "_internal/_elementtree.pyd",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 1
+    },
+    {
+      "file": "_internal/_hashlib.pyd",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 1
+    },
+    {
+      "file": "_internal/_lzma.pyd",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 1
+    },
+    {
+      "file": "_internal/_multiprocessing.pyd",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 1
+    },
+    {
+      "file": "_internal/_overlapped.pyd",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 1
+    },
+    {
+      "file": "_internal/_queue.pyd",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 1
+    },
+    {
+      "file": "_internal/_socket.pyd",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 1
+    },
+    {
+      "file": "_internal/_ssl.pyd",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 2
+    },
+    {
+      "file": "_internal/_uuid.pyd",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 1
+    },
+    {
+      "file": "_internal/_wmi.pyd",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 1
+    },
+    {
+      "file": "_internal/_zoneinfo.pyd",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 1
+    },
+    {
+      "file": "_internal/base_library.zip",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 1
+    },
+    {
+      "file": "_internal/libcrypto-3-x64.dll",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 7
+    },
+    {
+      "file": "_internal/libffi-8.dll",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 1
+    },
+    {
+      "file": "_internal/libssl-3-x64.dll",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 3
+    },
+    {
+      "file": "_internal/pydantic_core/_pydantic_core.cp312-win_amd64.pyd",
+      "categories": [
+        "generic_build_or_documentation_account"
+      ],
+      "matches": 135
+    },
+    {
+      "file": "_internal/pyexpat.pyd",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 2
+    },
+    {
+      "file": "_internal/python3.dll",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 1
+    },
+    {
+      "file": "_internal/python312.dll",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 35
+    },
+    {
+      "file": "_internal/select.pyd",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 1
+    },
+    {
+      "file": "_internal/unicodedata.pyd",
+      "categories": [
+        "unclassified_upstream_profile"
+      ],
+      "matches": 1
+    }
+  ]
+}
