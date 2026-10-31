@@ -1,6 +1,7 @@
 # Checkpoint vigente · beta Windows · 31-10-2026
 
-Rama codex/COL-037-beta-estabilidad, Issues COL036#57/COL037#58.
+Rama raíz actual codex/COL-042-preparacion-comercial; base técnica conservada
+en codex/COL-037-beta-estabilidad, Issues COL036#57/COL037#58.
 Candidato0.2.0-beta.1 construido e instalado; NSIS266193722 bytes, SHA256
 c1798ece22b9a8f38b6c7042a59630c16800b7a7ca295ee4119a8c157d092a4a.
 Sin firma ni release pública. Herramientas autorizadas ya instaladas; no repetir
@@ -24,7 +25,19 @@ públicas saneadas en docs/evidence/BETA_02_*. Datos QA privados .lumaforge-loca
 Inventario299 paquetes + avisos incluidos,6 avisos/conciliación binaria pendientes.
 Sin original privado, respuestas, credenciales ni fotografías privadas publicadas.
 
-Pendiente: revisar PR beta y comercial; CI remota por consultar en GitHub.
+PR65: https://github.com/jea27/Lut_generator/pull/65 (beta, base main).
+PR66: https://github.com/jea27/Lut_generator/pull/66 (landing/comercial, base rama
+beta; revisar después de65 y cambiar destino tras integración humana).
+CI observada: MVP41176292962 y Studio41176292989 correctas en65;
+MVP41176295996 y Studio41176295970 correctas en66. Validación roadmap65 OK.
+Ninguna PR fusionada por el agente ni tarea aprobada.
+Acción única67: bot6540038578 menciona @jea27, aviso observado; no afirmar
+recepción física de este aviso nuevo. Marcadores65/66 evitaron duplicados al
+activar ready. Notificaciones de revisión41176358165/41176358957 success.
+Issues57/58/60/62 en revisión;59/61 blocked por QA externa. Sync de Pages en
+curso al guardar este bloque, consultar ejecución más reciente antes de afirmarlo.
+No editar manualmente estados JSON. COL001 y P0 comercial pendientes.
+QA landing HTTP200, JS válido, vistas390x844/1280x900 y slider70% verificados.
 Landing local apps/landing con captura real, CC0, comparador y descarga pública
 pendiente; borradores BETA_COMERCIAL en entrega separada. Publicar ramas/PR está
 autorizado, no main/merge/approved/releases/visibilidad/gastos.
@@ -35,6 +48,8 @@ GO solo demostración técnica local; NO-GO beta general y venta.
 
 Reanudar: git status; gh pr list --repo jea27/Lut_generator; leer solicitud humana
 beta y sus comentarios antes de avisar; no repetir bloqueo ya notificado.
+Landing local http://127.0.0.1:8792 mientras servidor propio activo; app nativa
+reinstalada y abierta,8 archivos conservados también tras reinstalar.
 Build: ./scripts/build_beta.ps1. Tests: ./.venv-mvp/Scripts/python.exe -m unittest
 discover -s tests_mvp -v. Smoke empaquetado: scripts/smoke_beta.py requiere piloto
 CC0 existente y escribe carpeta privada nueva. No borrar datos/worktrees históricos.

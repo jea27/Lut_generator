@@ -172,3 +172,9 @@
 - Smoke binario real4 paisajes CC0 de16MP, exports11.4–13.7s/RSS789–804MB, lote2, ICC/dimensiones/hashes intactos, watchdog OK. Instalación/desinstalación exit0,8 archivos privados conservados por hash, sin procesos huérfanos. Codex/MSIX virtualizado, no Windows limpio.
 - PR52/53 y63/64 integradas por jea27 durante la sesión; cambios incorporados sin sobrescritura. Investigación P0 y propuesta Look Match conservadas; sin entrevistas/respuestas nuevas ni autoaprobación.
 - Inventario299 entradas/avisos incluidos; seis avisos y revisión binaria pendientes. SHA256, inputs dirty declarados y límites en BETA_02_*; no firma ni reproducibilidad bit a bit.
+
+
+## 2026-10-31 · [COL-040] [COL-042] Revisión y preparación comercial
+- PR65 beta y PR66 landing/borradores listas para revisión; no merge. CI MVP/Studio correctas en ambas. Estados57/58/60/62 review,59/61 blocked; ninguna tarea aprobada.
+- Landing independiente local HTTP200, vistas390/1280, comparador70% funcional, captura auténtica y derivadosCC0 con hashes; descarga pública pendiente. Sin despliegue/cobros. Borradores legal/privacidad/EULA/soporte, estrategia código público/marca/firma/pago sin activación. Conserva P0_COMERCIAL_ESPANA_UE y LOOK_MATCH_REQUIREMENTS integrados.
+- Notificación única Issue67, comentario bot6540038578 menciona jea27; recepción nueva no confirmada. Marcadores PR65/66 previos a ready evitaron avisos duplicados. Runs41176358165/41176358957 success. Reinstalación comprobada,8 archivos privados intactos; checkpoint ESTADO_AGENTE actualizado.
