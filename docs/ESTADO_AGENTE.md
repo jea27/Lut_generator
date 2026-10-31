@@ -60,7 +60,14 @@ Build ./scripts/build_beta.ps1; tests ./.venv-mvp/Scripts/python.exe -m unittest
 discover -s tests_mvp -v; audit scripts/audit_beta_artifact.py (exit2 esperado
 mientras existan findings). Siguiente: derechos Microsoft y QA limpia
 cuando el usuario aporte entorno. CI69 en a452a5f: MVP41181274271 y Studio41181274272 success.
-Notificación y sync finales: consultar67/Actions antes de repetir avisos.
+Notificación69 consolidada en67: run41182721936 success y comentario bot
+6540890455 menciona jea27; recepción física nueva no confirmada, no reenviar.
+Sync41183485906 success: JSON público42 tareas, COL026 review/001 blocked.
+Corregida etiqueta roadmap ausente de68. PR69 apilada no se enlaza como pr_url
+hasta base main por política actual del sync; enlace en Issue68 y PR directa.
+CI de código y documentos observada: MVP41182631211/Studio41182631230 success.
+Paquete local de revisión en .lumaforge-local/beta03-review/ con setup, guías,
+avisos, QA CC0 y SHA256SUMS; no entregar externamente antes de puertas/decisión.
 
 ---
 # Checkpoint vigente · beta Windows · 31-10-2026

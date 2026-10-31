@@ -1,0 +1,17 @@
+{
+  "tasks": 42,
+  "public_pages_read": true,
+  "statuses": {
+    "COL-001": "blocked",
+    "COL-026": "review",
+    "COL-036": "review",
+    "COL-037": "review",
+    "COL-038": "blocked",
+    "COL-040": "review",
+    "COL-041": "blocked",
+    "COL-042": "review"
+  },
+  "sync_run": 41183485906,
+  "no_manual_state_edits": true,
+  "note": "Issue68 now carries required roadmap label. Existing sync links only PRs targeting main; stacked PR69 remains linked in Issue68 until retargeted after human integration."
+}

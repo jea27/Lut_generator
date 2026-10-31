@@ -28,9 +28,9 @@ Informes LOOK_03_PAYLOAD y manifest final: revisar antes de distribuir.
 No encontró patrón de secreto, perfil **local** ni archivo privado/desarrollo
 en ese scope; persisten27 archivos/módulos con patrones de rutas de proveedor
 o ejemplos de C:\Users\..., incluidos DLL/stdlib/Pydantic/NumPy/Click.
-No se declaran limpios ni datos personales ausentes universalmente: hay que
-clasificar esas rutas con hashes, cerrar consentimiento/obligaciones si procede
-y completar inspección NSIS. El escáner deliberadamente no los autoacepta.
+Las27 coincidencias se clasificaron con hashes: cuentas genéricas de build o
+ejemplos de documentación,0 desconocidas. Se completó extracción NSIS; no se
+afirma ausencia universal de PII ni se altera el scanner bruto conservador.
 No modificar DLL de Microsoft/terceros para ocultar datos o invalidar firmas.
 
 Con autorización posterior se preparó7-Zip26.05 portátil oficial y se extrajeron
@@ -50,7 +50,8 @@ local tauri-utils2.10.2/platform.rs y normalización exacta, sin descartar otras
 diferencias. LOOK_03_NSIS.json enumera176 hashes y registra esa comprobación.
 Plugin nsis_tauri_utils0.5.3 coincide SHA256 con release oficial; textos Apache2
 /MIT y NSIS3.13 COPYING preparados como avisos acompañantes. Condiciones
-Microsoft y25 perfiles de origen aún sin clasificar;2 son cuentas/ejemplos genéricos.
+Microsoft pendientes de revisión; las27 rutas son cuentas genéricas/ejemplos
+ya clasificados, sin perfil local o datos de clientes detectados.
 No se alteran DLL firmadas ni se autoaprueba la redistribución.
 
 ## Inventario y derechos
