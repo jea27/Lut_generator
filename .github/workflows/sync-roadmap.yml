@@ -3,8 +3,12 @@ name: Sincronizar roadmap
 on:
   issues:
     types: [opened, edited, labeled, unlabeled, closed, reopened, deleted]
+  pull_request_target:
+    types: [opened, edited, synchronize, closed, reopened, ready_for_review, converted_to_draft, labeled, unlabeled]
+  release:
+    types: [published, edited, deleted]
   workflow_run:
-    workflows: [Publicar roadmap]
+    workflows: [Publicar roadmap, Validar MVP local, Compilar Color Studio, Compilar candidato beta Windows]
     types: [completed]
   schedule:
     - cron: '*/30 * * * *'
@@ -17,10 +21,7 @@ jobs:
   sync:
     # Always run trusted main, never a PR ref or a PR-produced artifact.
     # A separate workflow prevents completion events from triggering themselves.
-    if: >-
-      ${{ github.ref == 'refs/heads/main' &&
-          (github.event_name != 'workflow_run' ||
-           github.event.workflow_run.event == 'pull_request') }}
+    if: ${{ github.ref == 'refs/heads/main' || github.event_name == 'pull_request_target' || github.event_name == 'release' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -49,6 +50,11 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python scripts/sync_github.py
+      - name: Consultar progreso real del producto
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python scripts/sync_product.py
       - name: Preparar formulario estático sin datos
         run: python scripts/prepare_research_site.py
       - uses: actions/configure-pages@v5

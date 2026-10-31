@@ -29,9 +29,16 @@ jobs:
           node-version: '22'
       - name: Ejecutar pruebas
         run: python -m unittest discover -s tests -v
+      - name: Probar colector público sin ampliar permisos
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python scripts/sync_product.py
       - name: Validar JavaScript y datos
         run: |
           node --check site/app.js
+          node --check site/product.js
+          node --check site/data/product-fallback.js
           node --check site/data/fallback.js
           node --check research/form.js
           python -m json.tool site/data/roadmap.json > /dev/null
@@ -67,6 +74,11 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python scripts/sync_github.py
+      - name: Consultar progreso real del producto
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python scripts/sync_product.py
       - name: Preparar formulario estático sin datos
         run: python scripts/prepare_research_site.py
       - name: Configurar GitHub Pages

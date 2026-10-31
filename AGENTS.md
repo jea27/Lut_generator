@@ -45,6 +45,16 @@ Construir un motor de transferencia de look desde referencias para foto y vídeo
 
 ## Verificaciones técnicas
 
+## Seguimiento de Color Studio
+
+Las entregas de producto mantienen site/data/product-manifest.json: reutilizar
+ID de capacidad/Issue, criterio, tests, evidencia saneada y PR hacia main. No
+editar a mano product.json/porcentajes/estados de roadmap para fingir progreso.
+Una capacidad nueva se cataloga en la entrega de código; no requiere al usuario
+actualizar el dashboard. CI/merge no aprueban producto ni distribución. Reglas
+del colector y etiqueta específica de release en docs/DASHBOARD_PRODUCTO.md.
+No aplicar approved o release-approved:TAG por el agente.
+
 ## Autorización explícita MVP v0.1 (2026-10-30)
 
 ### Ampliación beta Windows (2026-10-30)
