@@ -12,12 +12,20 @@ bootstrapper oficial Microsoft fijado/firmado, sin ejecutarlo ni instalar Evergr
 Preparado candidato correctivo beta.4: extracción a stage nuevo, ledger SHA fijado,
 mutex de app y lock de transacción, backup completo, rollback de errores de rename,
 diario recuperable sin borrado automático y logs de fases sanitizados. Código en
-apps/desktop/installer_helper.py y packaging/nsis/installer.nsi. No hay aún un
-instalador beta4 validado: siguiente paso construir y probar el paquete nativo.
+apps/desktop/installer_helper.py y packaging/nsis/installer.nsi. PR90 borrador: https://github.com/jea27/Lut_generator/pull/90. Nativo y NSIS ya
+compilan; auditoría manual completa951 archivos/924 runtime,0 hallazgos, SHA del
+probe5a6a1648…4227 (fuente d3eef7f). No ejecutado. El pipeline detectó un import
+incorrecto al ejecutar el auditor como script; corregido con carga exacta del
+validador y regresión aislada. Se reconstruye desde fuente limpia antes de elegir
+el candidato final y probar actualización/rollback nativos. Probe anterior privado
+conservado; beta2 y beta3 intactos.
 
-Tests iniciales:101 MVP,3 symlink omitidos por privilegios; después se añadieron2
-casos de HTTPS/cache que deben incluirse en la siguiente ejecución. No se cambiaron
-permisos para ejecutar tests. Tracking/frontend se verifican antes de publicar.
+Pruebas:130 seguimiento y7 frontend pasan. Runtime embebido103 tests pasan
+(3 symlink omitidos por permisos), aislamiento y smoke CC0 de2 fotos correctos;
+71 módulos nativos observados, ninguno inesperado. Después se añadieron un caso
+de journal malformado y uno de import CLI: siguiente suite completa105. CI de
+PR90/d3eef7f: MVP41346633128, Studio41346633108 y validate41346633292 success;
+sync41346633137 success. Ninguna aprobación humana derivada de esos checks.
 
 Bloqueos reales: Hyper-V gestión no habilitado, elevación740 y RAM libre~5GB;
 Resolve no instalado/registro personal pendiente. Guías QA_WINDOWS11_VM y

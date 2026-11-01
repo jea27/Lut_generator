@@ -4,6 +4,7 @@
 the public report contains relative names/hashes only. Clean Windows is a separate gate.
 """
 import argparse
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -69,6 +70,14 @@ def launcher_match(built,installed):
     raise ValueError('Native launcher hash mismatch outside documented bundle marker')
 
 
+def installer_validator():
+    # A direct `python scripts/audit_nsis_payload.py` has only scripts/ on sys.path.
+    # Load this exact repository source, without importing a host `apps` package.
+    spec=importlib.util.spec_from_file_location('color_studio_installer_validation',ROOT/'apps/desktop/installer_helper.py')
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+    return module.verify
+
+
 def prepare_archive(offline=False):
     lock=json.loads((ROOT/'packaging/nsis-toolchain.lock.json').read_text(encoding='utf-8'))['nsis']
     expected=f"https://github.com/tauri-apps/binary-releases/releases/download/nsis-{lock['version']}/nsis-{lock['version']}.zip"
@@ -124,8 +133,7 @@ def audit(installer,seven_zip,native,nsis_zip,nsis_cache):
     if actual!=expected_files(runtime,notices,lock['files'],transactional=True):raise ValueError('Unexpected or missing installer files')
     ledger=ROOT/'apps/desktop/src-tauri/binaries/installer-manifest.json'
     if (private/'installer-manifest.json').read_bytes()!=ledger.read_bytes():raise ValueError('Installer ledger differs from generated pinned input')
-    from apps.desktop.installer_helper import verify
-    verify(private,digest(ledger.read_bytes()),personal_extras=True) # exact extraction set already checked above
+    installer_validator()(private,digest(ledger.read_bytes()),personal_extras=True) # exact extraction set already checked above
     webview=json.loads((ROOT/'packaging/webview2.lock.json').read_bytes())
     bootstrapper=private/'$PLUGINSDIR/MicrosoftEdgeWebview2Setup.exe'
     if digest(bootstrapper.read_bytes())!=webview['sha256'] or bootstrapper.stat().st_size!=webview['bytes']:raise ValueError('Embedded bootstrapper differs from official pinned input')
