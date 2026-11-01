@@ -1,0 +1,111 @@
+{
+  "scope": "Local branch projection with real read-only GitHub metadata; not deployed branch code",
+  "branch": "codex/COL-036-runtime-oficial",
+  "source_version": "0.3.0-beta.3",
+  "task_count": 42,
+  "task_states": {
+    "blocked": 8,
+    "review": 16,
+    "progress": 2,
+    "planned": 16
+  },
+  "COL-001": "blocked",
+  "COL-036": "progress",
+  "windows_pr": "https://github.com/jea27/Lut_generator/pull/89",
+  "technical": {
+    "passed": 8,
+    "total": 8,
+    "unknown": 0,
+    "percent": 100
+  },
+  "human": {
+    "passed": 0,
+    "total": 8,
+    "unknown": 0,
+    "percent": 0
+  },
+  "readiness": {
+    "beta": {
+      "checks": [
+        {
+          "id": "candidate",
+          "title": "Candidato versionado y hash verificable",
+          "passed": true,
+          "issue_url": null
+        },
+        {
+          "id": "clean-windows",
+          "title": "Instalación en Windows limpio",
+          "passed": false,
+          "issue_url": null
+        },
+        {
+          "id": "licenses",
+          "title": "Derechos de redistribución y privacidad",
+          "passed": false,
+          "issue_url": "https://github.com/jea27/Lut_generator/issues/60"
+        },
+        {
+          "id": "pilot",
+          "title": "Piloto externo y soporte aceptados",
+          "passed": false,
+          "issue_url": "https://github.com/jea27/Lut_generator/issues/61"
+        },
+        {
+          "id": "distribution",
+          "title": "Autorización expresa de entrega",
+          "passed": false,
+          "issue_url": null
+        }
+      ],
+      "metric": {
+        "passed": 1,
+        "total": 5,
+        "unknown": 0,
+        "percent": 20
+      },
+      "go": false
+    },
+    "commercial": {
+      "checks": [
+        {
+          "id": "p0",
+          "title": "Decisión humana P0",
+          "passed": false,
+          "issue_url": "https://github.com/jea27/Lut_generator/issues/19"
+        },
+        {
+          "id": "licenses",
+          "title": "Auditoría legal aceptada",
+          "passed": false,
+          "issue_url": "https://github.com/jea27/Lut_generator/issues/60"
+        },
+        {
+          "id": "beta",
+          "title": "Beta aceptada por usuarios",
+          "passed": false,
+          "issue_url": "https://github.com/jea27/Lut_generator/issues/61"
+        },
+        {
+          "id": "launch",
+          "title": "Lanzamiento y condiciones",
+          "passed": false,
+          "issue_url": "https://github.com/jea27/Lut_generator/issues/62"
+        }
+      ],
+      "metric": {
+        "passed": 0,
+        "total": 4,
+        "unknown": 0,
+        "percent": 0
+      },
+      "go": false
+    }
+  },
+  "public_source_version": "0.3.0-beta.2",
+  "public_observed_at": "2026-11-01T09:30:48.400062Z",
+  "public_main_sha": "05b4983d119f2cb85e224a4d95ab72113167aa8d",
+  "public_pr89_present": true,
+  "generated_files_restored_byte_for_byte": true,
+  "receipt_generated_at": "2026-11-01T09:36:19.544271+00:00"
+}

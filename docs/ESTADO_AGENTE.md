@@ -846,3 +846,13 @@ Setup: apps/desktop/src-tauri/target/release/bundle/nsis/Color Studio Beta_0.3.0
 Caches/informes privados en .lumaforge-local. No publicar exe/datos originales.
 Próximo trabajo: resolver actualización directa en Windows normal/limpio con
 operador y ejecutar W01–W09/E01–E05. No ampliar producto ni fusionar la PR.
+
+Integración final del colector: se detectó Unsupported review path por cuatro
+inputs runtime añadidos al manifiesto. Corregido con allowlist exacta en
+human_reviews.py (sin permisos nuevos),130 tests de seguimiento correctos,
+incluyendo catálogo real y cambio de pin que invalida revisión. Colector con
+GitHub real pasó en lectura:42 tareas, Windows enlaza PR89, aceptación MVP0/8,
+beta/venta NO-GO. Pages todavía publica0.3.0-beta.2 desde05b4983 y ya muestra
+PR89; beta3/recibos necesitan merge humano. Los cuatro archivos generados se
+restauraron byte a byte. Evidencia RUNTIME_036_SYNC.json identifica la proyección
+de rama y la lectura pública por separado; no se fingió publicar la rama.

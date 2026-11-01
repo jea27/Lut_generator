@@ -390,3 +390,11 @@ y ruta interactiva esperó al idioma del desinstalador previo, no accesible al
 controlador. Causa no confirmada; no se oculta con el recorrido manual correcto.
 Faltan Windows limpio, desconexión física y editores reales; NO-GO externo/venta.
 Recibos RUNTIME_036_* con fuente/hash/alcance; sin datos privados, approved o merge.
+
+El check del colector real encontró cuatro rutas nuevas no admitidas en la huella
+de revisión. Se admite únicamente runtime.lock, python314._pth y los dos builders
+exactos, leyendo hashes Git sin ejecutarlos ni ampliar permisos. Dos regresiones
+adicionales verifican el catálogo versionado completo, cambio de pin y rechazo de
+otras rutas;130 seguimiento pasan. Sync real de lectura reconoce PR89 y conserva
+aceptación MVP0/8/NO-GO. Pages mantiene beta2/main hasta merge humano; sus42 tareas
+no se editaron para simular progreso. Los cuatro archivos generados se restauran.

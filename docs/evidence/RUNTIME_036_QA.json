@@ -209,5 +209,12 @@
     "Physically disconnected processing test",
     "Real editor LUT imports or expressly limited beta scope",
     "Rights/owner/candidate review and external-delivery authorization"
-  ]
+  ],
+  "final_tracking_regression": {
+    "tests": 130,
+    "failures": 0,
+    "errors": 0,
+    "real_catalog_review_contexts_checked": true,
+    "four_runtime_inputs_only_allowlisted": true
+  }
 }
