@@ -865,3 +865,31 @@ No repetir el aviso. Los sync cancelados de la ráfaga no ejecutaron steps; su
 reintento final/estado publicado se verifica en PR89/checks y comentario final57.
 El checkpoint usa identidad no-reply por comando; la identidad anterior ya
 estaba en el historial público. No se cambió config global ni reescribió historial.
+
+## En curso · diagnóstico de actualización beta3 · 01-11-2026
+
+PR89 integrada por jea27 en918cb638; nuevo worktree COL-036-actualizacion-segura,
+rama codex/COL-036-actualizacion-segura desde main, Issue57 in-progress y67 canónica.
+Se preserva worktree runtime-oficial y candidato0350f5b4 completo. Usuario autoriza
+QA interna/VM oficial/Resolve gratuito, sin GO externo, merge o cambios del host.
+
+Preflight real: virtualización firmware/hipervisor/VBS activos, Hyper-V de gestión
+no disponible; consulta de features requiere elevación740.16GB nominales RAM y
+aprox5GB libres; disco suficiente. No se habilitó nada ni se reinició. Guía y
+script read-only preparados. Resolve no instalado; descarga oficial exige registro
+personal del operador. Adobe registrado no acredita activación. Pruebas reales
+de Windows limpio/desconexión/editores todavía no ejecutadas.
+
+Diagnóstico: candidato instrumentado privado detiene con código90 antes de copiar
+aplicación. Alcanzó Install; WebView2 presente156.0.4314.50 y sin desinstalador en
+/S. El2 histórico sigue sin atribución confirmada. No confundir con error Win32 2.
+Fixture de descarga NSISdl devuelve success pese al README antiguo. Otro fixture
+loopback muestra HTTP plano para URL https (sin ClientHello TLS): defecto de
+transporte comprobado, distinto de la causa histórica. No se ejecutó descarga.
+
+Pendiente: reproducir beta2→beta3 directo con traza completa, fallo/recuperación y
+datos/prefs; corregir casos medidos y sustituir descarga NSISdl por bootstrapper
+Evergreen oficial fijado/firmado si procede. No se ha preparado candidato correctivo
+ni se afirma que el2 esté resuelto. Logs/probes privados .lumaforge-local; nunca
+publicar exe diagnóstico, rutas crudas o datos existentes. Reanudar aquí leyendo
+este checkpoint, git status y las guías QA_WINDOWS11_VM/QA_RESOLVE_BETA3.

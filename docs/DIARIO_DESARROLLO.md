@@ -404,3 +404,19 @@ verificado en41294069249 y comentario6556221187; recepción física nueva no
 confirmada. Cola sync canceló ejecuciones sin steps durante la ráfaga de eventos;
 se comprueba reintento en reposo sin modificar permisos/concurrencia del workflow.
 Identidad Git del checkpoint no-reply por comando; ninguna reescritura remota.
+
+### COL036 · investigación de actualización y entorno QA interno
+
+Nueva autorización del usuario para beta3 interna/VM Windows11 oficial y Resolve
+gratuito. PR89 integrada por jea27 en918cb638. Se trabaja en rama/worktree propio
+COL-036-actualizacion-segura. Preflight detecta gestor Hyper-V ausente, elevación740
+y RAM disponible insuficiente para VM recomendada; no cambios de host ni reinicio.
+Registro Blackmagic requiere intervención personal; Resolve ausente, Adobe sin
+activación acreditada. Guías preparadas, sin simular ejecución de Windows/editor.
+
+El código2 histórico es aborto NSIS genérico; la traza /S actual pasa WebView2 y
+alcanza Install (parada diagnóstica90), sin lanzar desinstalador. La observación
+interactiva del idioma es otra ruta. No atribuir una causa por documentación sola:
+NSISdl aceptó HTTPS y devolvió success, pero un fixture loopback observó HTTP plano
+para URL https, sin saludo TLS. Descarga diagnóstica no ejecutada. Se conserva la
+evidencia privada y se continúa con reproducción, corrección y recuperación reales.
