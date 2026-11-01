@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "node": "26.13.0",
+  "npm": "11.20.0",
+  "rust": "1.99.1",
+  "cargo": "1.99.1",
+  "python_runtime": "3.14.10",
+  "python_build_driver": "3.12.x (not shipped)",
+  "target": "x86_64-pc-windows-msvc",
+  "qualification": "Runtime inputs hash-locked; Windows SDK/compiler versions recorded by build. No claim of bit-identical NSIS until separately measured."
+}

@@ -745,8 +745,8 @@ internos permanecen ignorados en .lumaforge-local. Raíz y otros worktrees intac
 Próximo trabajo elegible: tras respuesta RUNTIME3.14.10 en67, preparar build aislado
 sin sustituir la venv compartida; después W01–W09 con operador autorizado y
 E01–E05 en editor activado. Sin esa decisión no sortear el gate ni ampliar
-capacidades. Para reanudar: abrir este worktree, git status --short, gh pr view88,
-gh pr checks88 y leer67/57; comandos exactos en INTEGRACION_BETA_036.md.
+capacidades. Para reanudar: abrir este worktree, git status --short, gh pr view 88,
+gh pr checks 88 y leer67/57; comandos exactos en INTEGRACION_BETA_036.md.
 
 ### Última comprobación Creator
 
@@ -760,3 +760,32 @@ Payload final conserva158/27,0 hallazgos de perfil local/secretos/desarrollo seg
 patrones. Sin cambios de autorización67 ni avisos duplicados. Pruebas CI del
 head final y estado publicado se registran en el comentario de57; sigue PR88
 lista para revisión, worktree conservado y sin cambios pendientes al publicar.
+
+## En curso · COL036 runtime oficial · 01-11-2026
+
+Rama codex/COL-036-runtime-oficial, worktree COL-036-runtime-oficial. PR88 integrada
+por jea27, rama adelantada a05b4983 sin perder cambios. Usuario autoriza runtime
+oficial aislado y candidato interno; ningún permiso de beta externa, merge o venta.
+
+Preparado: lock CPython3.14.10 embeddable PSF +19 wheels runtime verificados,
+extracción con RECORD, aislamiento._pth, origen/arquitectura/imports de60 PE,
+conservación de avisos, comparación fuente y guardas ante tampering. No DLL del
+host copiadas. No instalación global. Smoke API/demo/mode/preset/plan/lote/watchdog
+real correcto con PATH Windows y módulos de bundle/SO.70 unittest ejecutados con
+Python3.14.10 y núcleo del bundle;3 extras HTTP de QA separados, nunca en producto.
+Nueve pruebas nuevas de seguridad del empaquetado; firmas PSF/Microsoft requeridas
+Valid. Scanner de fuentes/binarios/bytecode3.14:0 hallazgos bloqueantes. No GO legal.
+
+Cambios locales pendientes: builder/auditores, runnerWindows embeddable, datos
+por usuario idénticos a beta2, versión0.3.0-beta.3 y pruebas. Compilación nativa
+sin bundle terminó correctamente(4m10s); instalador final no construido todavía.
+Quedan inventario actualizado, builder NSIS, reproducibilidad de payload, GUI,
+instalación/upgrade/uninstall locales y auditoría de todo el NSIS. No Windows
+limpio ejecutado; no herramientas de VM presentes al último inventario. Adobe/
+Resolve quedan pendientes. #67 es solicitud canónica, no repetir permiso runtime.
+
+Reanudar desde este worktree: git status --short; leer log privado
+.lumaforge-local/native-build.log y artefactos runtime-build-3. Build Python de
+herramientas existente en ../../.venv-mvp; no usar sus DLL en producto. Los19
+wheels y ZIP se guardan en .lumaforge-local/downloads; builder puede validar
+--offline. No borrar worktrees, datos privados ni staging sin comprobar su marca.

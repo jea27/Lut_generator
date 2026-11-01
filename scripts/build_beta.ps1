@@ -1,51 +1,75 @@
+param([string]$BuildPython='.venv-mvp/Scripts/python.exe',[switch]$Offline,[switch]$AllowDirtyInternal)
 $ErrorActionPreference='Stop'
 $lfRoot=Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $lfRoot
-$env:PATH="$env:USERPROFILE\.cargo\bin;$env:PATH"
-$env:CARGO_ENCODED_RUSTFLAGS="--remap-path-prefix=$env:USERPROFILE=/build-user"+[char]31+"--remap-path-prefix=$lfRoot=/src"
-& ./.venv-mvp/Scripts/python.exe scripts/audit_beta_licenses.py
-if($LASTEXITCODE -ne 0){throw 'Dependency notice inventory failed'}
-& ./.venv-mvp/Scripts/python.exe -m unittest discover -s tests_mvp -v
-if($LASTEXITCODE -ne 0){throw 'Beta tests failed'}
-& npm.cmd --prefix apps/web run build
-if($LASTEXITCODE -ne 0){throw 'Frontend build failed'}
-& ./.venv-mvp/Scripts/python.exe -m PyInstaller --noconfirm --distpath .lumaforge-local/beta-build --workpath .lumaforge-local/beta-work packaging/ColorEngine.spec
-if($LASTEXITCODE -ne 0){throw 'Engine bundle failed'}
-& ./.venv-mvp/Scripts/python.exe scripts/audit_beta_binary_origins.py .lumaforge-local/beta-work/ColorEngine/Analysis-00.toc .lumaforge-local/beta-build/ColorEngine .lumaforge-local/beta-build-origin-audit.json
-if($LASTEXITCODE -ne 0){throw 'Binary input provenance gate failed; review report before creating a distributable installer'}
-$lfBinaries=Join-Path $lfRoot 'apps/desktop/src-tauri/binaries'
-if(Test-Path -LiteralPath $lfBinaries){
- if(-not (Test-Path -LiteralPath (Join-Path $lfBinaries '.generated-by-color-studio'))){
-   throw 'Refusing to replace unmarked binary staging directory'
- }
- if([IO.Path]::GetFullPath($lfBinaries) -ne [IO.Path]::GetFullPath((Join-Path $lfRoot 'apps/desktop/src-tauri/binaries'))){throw 'Unsafe staging path'}
- Remove-Item -LiteralPath $lfBinaries -Recurse -Force
-}
-New-Item -ItemType Directory -Force $lfBinaries | Out-Null
-Set-Content -LiteralPath (Join-Path $lfBinaries '.generated-by-color-studio') -Value 'Generated binary staging only'
-Copy-Item -LiteralPath '.lumaforge-local/beta-build/ColorEngine/ColorEngine.exe' -Destination (Join-Path $lfBinaries 'ColorEngine-x86_64-pc-windows-msvc.exe') -Force
-Copy-Item -LiteralPath '.lumaforge-local/beta-build/ColorEngine/_internal' -Destination $lfBinaries -Recurse -Force
-Push-Location apps/desktop
+$lfPython=(Resolve-Path -LiteralPath $BuildPython).Path
+$lfTools=Get-Content -LiteralPath packaging/build-environment.json -Raw | ConvertFrom-Json
+if((node --version).Trim() -ne ('v'+$lfTools.node)){throw 'Use the recorded Node version; no automatic local tool installation'}
+$lfDirty=[bool](git status --porcelain --untracked-files=normal)
+if($lfDirty -and -not $AllowDirtyInternal){throw 'Commit reviewable sources first, or explicitly choose an internal dirty build'}
+$lfOldPath=$env:PATH;$lfOldFlags=$env:CARGO_ENCODED_RUSTFLAGS;$lfOldJobs=$env:CARGO_BUILD_JOBS
 try {
- & ../../apps/web/node_modules/.bin/tauri.cmd build
- if($LASTEXITCODE -ne 0){throw 'Native installer build failed'}
-} finally {Pop-Location}
-$lfConfig=Get-Content -LiteralPath (Join-Path $lfRoot 'apps/desktop/src-tauri/tauri.conf.json') -Raw | ConvertFrom-Json
-$lfExpectedName=$lfConfig.productName+'_'+$lfConfig.version+'_x64-setup.exe'
-$lfInstaller=Get-Item -LiteralPath (Join-Path $lfRoot ('apps/desktop/src-tauri/target/release/bundle/nsis/'+$lfExpectedName))
-if(-not $lfInstaller){throw 'Installer artifact not found'}
-$lfArtifact=@{
- version=$lfConfig.version; file=$lfInstaller.Name; bytes=$lfInstaller.Length
- sha256=(Get-FileHash -LiteralPath $lfInstaller.FullName -Algorithm SHA256).Hash.ToLower()
- signature=(Get-AuthenticodeSignature -LiteralPath $lfInstaller.FullName).Status.ToString()
- source=(git rev-parse HEAD); dirty=[bool](git status --porcelain)
- python=(& ./.venv-mvp/Scripts/python.exe --version); rust=(& rustc --version); node=(& node --version)
- status='candidate_not_approved'; windows_clean_install='not_tested'
+ $env:PATH="$env:USERPROFILE\.cargo\bin;$env:PATH"
+ $env:CARGO_BUILD_JOBS='2'
+ if((rustc --version) -notlike ('rustc '+$lfTools.rust+' *')){throw 'Use the recorded Rust version; no automatic local tool installation'}
+ $env:CARGO_ENCODED_RUSTFLAGS="--remap-path-prefix=$env:USERPROFILE=/build-user"+[char]31+"--remap-path-prefix=$lfRoot=/src"
+ if(-not $Offline){
+  Push-Location apps/desktop/src-tauri
+  try { & cargo fetch --locked; if($LASTEXITCODE -ne 0){throw 'Pinned Cargo inputs unavailable'} } finally {Pop-Location}
+ }
+ & $lfPython -m unittest discover -s tests_mvp -v
+ if($LASTEXITCODE -ne 0){throw 'Beta tests failed'}
+ & npm.cmd --prefix apps/web run build
+ if($LASTEXITCODE -ne 0){throw 'Frontend build failed'}
+ $lfRuntime=Join-Path $lfRoot ('.lumaforge-local/runtime-'+[guid]::NewGuid().ToString('N'))
+ $lfBuildArgs=@('scripts/build_embedded_runtime.py',$lfRuntime)
+ if($Offline){$lfBuildArgs+='--offline'}
+ & $lfPython @lfBuildArgs
+ if($LASTEXITCODE -ne 0){throw 'Hash/architecture/dependency origin gate failed'}
+ & $lfPython scripts/audit_beta_licenses.py --runtime $lfRuntime
+ if($LASTEXITCODE -ne 0){throw 'Dependency notice inventory failed'}
+ & "$PSScriptRoot/audit_runtime_signatures.ps1" -Runtime $lfRuntime -Report .lumaforge-local/runtime-signatures.json
+ & $lfPython scripts/audit_embedded_payload.py $lfRuntime .lumaforge-local/runtime-payload.json
+ if($LASTEXITCODE -ne 0){throw 'Embedded payload privacy gate failed'}
+ $lfBinaries=Join-Path $lfRoot 'apps/desktop/src-tauri/binaries'
+ if(Test-Path -LiteralPath $lfBinaries){
+  if([IO.Path]::GetFullPath($lfBinaries) -ne [IO.Path]::GetFullPath((Join-Path $lfRoot 'apps/desktop/src-tauri/binaries'))){throw 'Unsafe staging path'}
+  if((Get-Item -LiteralPath $lfBinaries -Force).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Refusing linked staging'}
+  if(-not(Test-Path -LiteralPath (Join-Path $lfBinaries '.generated-by-color-studio'))){throw 'Refusing unmarked staging'}
+  if(Get-ChildItem -LiteralPath $lfBinaries -Force | Where-Object {$_.Name -notin @('.generated-by-color-studio','runtime')}){throw 'Unexpected staging files; preserve and inspect'}
+  if(Get-ChildItem -LiteralPath $lfBinaries -Force -Recurse | Where-Object {$_.Attributes -band [IO.FileAttributes]::ReparsePoint}){throw 'Refusing linked staging contents'}
+  & $lfPython -c 'from pathlib import Path; from scripts.build_embedded_runtime import verify_bundle; import sys; verify_bundle(Path(sys.argv[1]))' (Join-Path $lfBinaries 'runtime')
+  if($LASTEXITCODE -ne 0){throw 'Existing staging changed; preserve it instead of replacing'}
+  # Only this resolved, marked, fully verified generated tree is replaced.
+  Remove-Item -LiteralPath $lfBinaries -Recurse -Force
+ }
+ New-Item -ItemType Directory -Path $lfBinaries | Out-Null
+ Set-Content -LiteralPath (Join-Path $lfBinaries '.generated-by-color-studio') -Value 'Verified embedded runtime staging only'
+ Copy-Item -LiteralPath $lfRuntime -Destination (Join-Path $lfBinaries 'runtime') -Recurse
+ Push-Location apps/desktop
+ try {
+  & ../../apps/web/node_modules/.bin/tauri.cmd build --bundles nsis -- --locked --offline
+  if($LASTEXITCODE -ne 0){throw 'Native installer build failed'}
+ } finally {Pop-Location}
+ & $lfPython scripts/audit_embedded_payload.py $lfRuntime .lumaforge-local/beta-payload-audit.json --native apps/desktop/src-tauri/target/release/color-studio-beta.exe
+ if($LASTEXITCODE -ne 0){throw 'Native/payload privacy or import gate failed'}
+ $lfConfig=Get-Content -LiteralPath apps/desktop/src-tauri/tauri.conf.json -Raw | ConvertFrom-Json
+ $lfExpectedName=$lfConfig.productName+'_'+$lfConfig.version+'_x64-setup.exe'
+ $lfInstaller=Get-Item -LiteralPath (Join-Path $lfRoot ('apps/desktop/src-tauri/target/release/bundle/nsis/'+$lfExpectedName))
+ $lfArtifact=@{
+  version=$lfConfig.version;file=$lfInstaller.Name;bytes=$lfInstaller.Length
+  sha256=(Get-FileHash -LiteralPath $lfInstaller.FullName -Algorithm SHA256).Hash.ToLower()
+  signature=(Get-AuthenticodeSignature -LiteralPath $lfInstaller.FullName).Status.ToString()
+  source=(git rev-parse HEAD);dirty=$lfDirty
+  python_runtime='PSF CPython3.14.10 embedded';build_python=(& $lfPython --version);rust=(& rustc --version);node=(& node --version)
+  runtime_manifest_sha256=(Get-FileHash -LiteralPath (Join-Path $lfRuntime 'runtime-manifest.json') -Algorithm SHA256).Hash.ToLower()
+  build_origin_gate_passed=$true;payload_audit_passed=$true
+  webview2='Evergreen downloaded officially if absent; first install then requires Internet'
+  status='internal_candidate_not_approved';windows_clean_install='not_tested'
+  nsis_full_audit='pending';distribution_status='NO-GO_pending_NSIS_QA_clean_Windows_and_owner_review'
+ }
+ $lfArtifact | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath .lumaforge-local/beta-artifact.json -Encoding UTF8
+ Write-Output 'Internal candidate built. Do not distribute: NSIS/clean-Windows/editor/owner gates remain.'
+} finally {
+ $env:PATH=$lfOldPath;$env:CARGO_ENCODED_RUSTFLAGS=$lfOldFlags;$env:CARGO_BUILD_JOBS=$lfOldJobs
 }
-& ./.venv-mvp/Scripts/python.exe scripts/audit_beta_artifact.py .lumaforge-local/beta-build/ColorEngine .lumaforge-local/beta-payload-audit.json --native apps/desktop/src-tauri/target/release/color-studio-beta.exe
-$lfPayload=Get-Content .lumaforge-local/beta-payload-audit.json -Raw | ConvertFrom-Json
-$lfArtifact['payload_audit_passed']=$lfPayload.passed
-$lfArtifact['distribution_status']='blocked_pending_QA_and_payload_review'
-if($lfPayload.findings | Where-Object {$_.reason -in @('local_private_profile_path','secret_pattern','development_or_private_file')}){throw 'Payload contains a blocking private/development finding'}
-$lfArtifact | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $lfRoot '.lumaforge-local/beta-artifact.json') -Encoding UTF8
-Write-Output 'Candidate installer built. This is not approval for distribution or sale.'

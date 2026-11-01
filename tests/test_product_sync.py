@@ -118,8 +118,10 @@ class ProductTests(unittest.TestCase):
         self.issue(62)['labels']=[{'name':'release-approved:v0.3.0-beta.2'}]
         self.assertTrue(self.derive()['latest_release']['authorized'])
         self.assertIsNone(self.derive()['latest_release']['download_url'])
-        candidate=self.derive()['candidate']
-        self.releases[0]['assets']=[{'state':'uploaded','name':'installer.exe','digest':'sha256:'+candidate['sha256']}]
+        # A historical authorized release is independent of a newer source
+        # version whose candidate has not been built. Never fabricate one.
+        release_build=next(b for b in self.derive()['versions'] if b['version']==self.releases[0]['tag_name'].removeprefix('v') and b['dirty'] is False)
+        self.releases[0]['assets']=[{'state':'uploaded','name':'installer.exe','digest':'sha256:'+release_build['sha256']}]
         self.assertIsNotNone(self.derive()['latest_release']['download_url'])
         self.assertEqual(self.derive()['metrics']['human']['passed'],0)
 

@@ -13,10 +13,17 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12.14'
+          python-version: '3.12'
       - uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: '26.13.0'
+      - name: Use the recorded Rust compiler when the runner differs
+        shell: pwsh
+        run: |
+          if ((rustc --version) -notlike 'rustc 1.99.1 *') {
+            rustup toolchain install 1.99.1 --profile minimal
+            rustup default 1.99.1
+          }
       - run: |
           python -m venv .venv-mvp
           ./.venv-mvp/Scripts/python.exe -m pip install -r requirements-mvp.txt -r requirements-build.txt
@@ -26,7 +33,9 @@ jobs:
         with:
           name: color-studio-windows-candidate
           path: |
-            apps/desktop/src-tauri/target/release/bundle/nsis/*setup.exe
             .lumaforge-local/beta-artifact.json
+            .lumaforge-local/beta-payload-audit.json
+            .lumaforge-local/runtime-signatures.json
           retention-days: 7
+# Sanitized audit reports only. No installer upload from this public repository.
 # No release, signing credentials, token generation, deployment or auto-approval.

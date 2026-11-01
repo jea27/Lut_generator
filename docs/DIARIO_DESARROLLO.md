@@ -346,3 +346,15 @@ pendientes en ESTADO_AGENTE.md y solicitud67.
 Comprobación final Creator: preview neutra/importar no completan detección;
 receta nueva invalida comparación previa. Unitarios y secuencia real del UI
 congelado documentados, sin cambiar motor ni repetir perfiles equivalentes.
+
+## 01-11-2026 · COL036 · runtime embebible oficial
+
+Autorización expresa registrada en67, comentario6547117844. PR88 integrada por
+jea27 en05b4983. Nueva rama aislada preserva su trabajo. CPython3.14.10 PSF y19
+wheels fijados, hashes/RECORD/60 PE AMD64 verificados; importaciones nativas,
+firmas requeridas y primeros recorridosAPI reales correctos.70 tests reales con
+intérprete3.14 y núcleo del bundle; extrasQA aislados. Se mantiene dataroot beta2.
+Scanner corrige falsos positivos de prefijosURL/bytes comprimidos, con tests sin
+relajar detección de perfiles/secretos. Cero hallazgos bloqueantes; no permisos
+nuevos, instalaciones globales o DLL de otras aplicaciones. Native release
+compilado sin installer; falta preparar NSIS/QA completa y Windows limpio.

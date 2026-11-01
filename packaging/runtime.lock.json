@@ -1,0 +1,213 @@
+{
+  "schema": "color-studio-embedded-runtime-lock-v1",
+  "python": {
+    "version": "3.14.10",
+    "filename": "python-3.14.10-embed-amd64.zip",
+    "url": "https://www.python.org/ftp/python/3.14.10/python-3.14.10-embed-amd64.zip",
+    "sha256": "90905e64a840557d8c1bc4f5b74db3d7ee85e3ffb217611cac1c7813acea4159",
+    "source": "https://www.python.org/downloads/release/python-31410/",
+    "sbom_url": "https://www.python.org/ftp/python/3.14.10/python-3.14.10-embed-amd64.zip.spdx.json"
+  },
+  "target": "cp314-win_amd64",
+  "packages": [
+    {
+      "name": "annotated-doc",
+      "version": "0.0.5",
+      "filename": "annotated_doc-0.0.5-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/3e/30/e900b21425a860e195f32e37657aa1f7c7f2b1bfb26f03ca209b90933c06/annotated_doc-0.0.5-py3-none-any.whl",
+      "sha256": "117bac03a25ede5df5440e855b32d556049ca169ead221505badf432fed4b101",
+      "license_expression": "MIT",
+      "dependencies": []
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.8.0",
+      "filename": "annotated_types-0.8.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/99/91/8acff4f5e50511b911bbccb72b8628a49c68ce14148cd9f6431094859a90/annotated_types-0.8.0-py3-none-any.whl",
+      "sha256": "f072f4d804ea359e4eaf198b1af7a8b0943881a87f31bb764f8bf219bb9419e0",
+      "license_expression": "MIT",
+      "dependencies": []
+    },
+    {
+      "name": "anyio",
+      "version": "4.15.1",
+      "filename": "anyio-4.15.1-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/12/b8/4bd346e22b28902df4d651910f5242c28d84e4a5c2435ca5c3f797ed7e2e/anyio-4.15.1-py3-none-any.whl",
+      "sha256": "6152fdbbf9a77fdec97731721bebf7c4c44f7c29b424b0065826173efc7ed101",
+      "license_expression": "MIT",
+      "dependencies": [
+        "idna>=2.8",
+        "typing_extensions>=4.16.0; python_version < \"3.15\""
+      ]
+    },
+    {
+      "name": "click",
+      "version": "8.5.0",
+      "filename": "click-8.5.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/58/50/6c0d534c5f134586a8e1ba4e330569e32f057e33372ae556463212fb4cd3/click-8.5.0-py3-none-any.whl",
+      "sha256": "255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360",
+      "license_expression": "BSD-3-Clause",
+      "dependencies": []
+    },
+    {
+      "name": "fastapi",
+      "version": "0.162.0",
+      "filename": "fastapi-0.162.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/b4/4f/3f2c25c9b43970b5e9a08beb5e04776247edea684ddc0930f4f02f0bb6cb/fastapi-0.162.0-py3-none-any.whl",
+      "sha256": "3785963de305dd09912426cb81f2d230fce98ab3521cdfe97265c8d14983128c",
+      "license_expression": "MIT",
+      "dependencies": [
+        "starlette>=0.46.0",
+        "pydantic>=2.9.0",
+        "typing-extensions>=4.8.0",
+        "typing-inspection>=0.4.2",
+        "annotated-doc>=0.0.2",
+        "opentelemetry-api>=1.44.0"
+      ]
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0",
+      "filename": "h11-0.16.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/04/4b/29cac41a4d98d144bf5f6d33995617b185d14b22401f75ca86f384e87ff1/h11-0.16.0-py3-none-any.whl",
+      "sha256": "63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86",
+      "license_expression": null,
+      "dependencies": []
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "filename": "idna-3.20-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/58/a2/bb081bab032533a855d44de1d56f8e8426114ff1ba5d1f07a438a0a654f8/idna-3.20-py3-none-any.whl",
+      "sha256": "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c",
+      "license_expression": "BSD-3-Clause",
+      "dependencies": []
+    },
+    {
+      "name": "numpy",
+      "version": "2.5.4",
+      "filename": "numpy-2.5.4-cp314-cp314-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/52/9a/e1e512ebc948d5b9dd33b08736760f0ebbed2848fd4eda1f553088a6dcee/numpy-2.5.4-cp314-cp314-win_amd64.whl",
+      "sha256": "2ca144f15135b6212a5c47b1e2aeca6e412f102f95a2d5d88d8aec77eb255de3",
+      "license_expression": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+      "dependencies": []
+    },
+    {
+      "name": "opencv-python-headless",
+      "version": "5.0.0.93",
+      "filename": "opencv_python_headless-5.0.0.93-cp37-abi3-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/b8/88/763b967f7efd7226b82c9fae16d560cba049b1f0c036647e65c610fd636e/opencv_python_headless-5.0.0.93-cp37-abi3-win_amd64.whl",
+      "sha256": "829717b6a95554f273e49e357cee3b3a2a26b6f4842fbc1bed2b45bdd8f87e0e",
+      "license_expression": null,
+      "dependencies": [
+        "numpy>=2; python_version >= \"3.9\""
+      ]
+    },
+    {
+      "name": "opentelemetry-api",
+      "version": "1.45.2",
+      "filename": "opentelemetry_api-1.45.2-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/a9/2d/610db864d7513158cebb8f36cc88e67e73bd6c7aa1905ef18d89e1281c81/opentelemetry_api-1.45.2-py3-none-any.whl",
+      "sha256": "2cbd737377e710ee740d261c94e93fa0f08e6d037c18f17513cc0a2d94479a34",
+      "license_expression": "Apache-2.0",
+      "dependencies": [
+        "typing-extensions>=4.5.0"
+      ]
+    },
+    {
+      "name": "pillow",
+      "version": "13.0.0",
+      "filename": "pillow-13.0.0-cp314-cp314-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/50/e2/7ad17747517e4c813dca78257d6bb593466f8231baf1384bc98d92745edb/pillow-13.0.0-cp314-cp314-win_amd64.whl",
+      "sha256": "f7cbb7a64e7ec664775195e4f81923bc8a93d9451b963f844e59118f63147a7a",
+      "license_expression": "MIT-CMU",
+      "dependencies": []
+    },
+    {
+      "name": "psutil",
+      "version": "7.2.2",
+      "filename": "psutil-7.2.2-cp37-abi3-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/b4/90/e2159492b5426be0c1fef7acba807a03511f97c5f86b3caeda6ad92351a7/psutil-7.2.2-cp37-abi3-win_amd64.whl",
+      "sha256": "eb7e81434c8d223ec4a219b5fc1c47d0417b12be7ea866e24fb5ad6e84b3d988",
+      "license_expression": null,
+      "dependencies": []
+    },
+    {
+      "name": "pydantic",
+      "version": "2.14.2",
+      "filename": "pydantic-2.14.2-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/97/01/c71a71258b58659c72504e5fd65b451f6e36e34dc931d0b237ded213c814/pydantic-2.14.2-py3-none-any.whl",
+      "sha256": "7efbf7507b937931cd32a5755acb00ea1cf5ccb1d4e8067a5850d5069e382118",
+      "license_expression": "MIT",
+      "dependencies": [
+        "annotated-types>=0.6.0",
+        "pydantic-core==2.50.2",
+        "typing-extensions>=4.16.0",
+        "typing-inspection>=0.4.4"
+      ]
+    },
+    {
+      "name": "pydantic-core",
+      "version": "2.50.2",
+      "filename": "pydantic_core-2.50.2-cp314-cp314-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/a3/5f/dcd3df20ab2a7279d42a8415fc184e8e77bcf9aa3c9ac3e938c1300a242c/pydantic_core-2.50.2-cp314-cp314-win_amd64.whl",
+      "sha256": "b62c89545d21d930c333208fd548e7b4f262228ba3a322fd75c987a75ab11f31",
+      "license_expression": "MIT",
+      "dependencies": [
+        "typing-extensions>=4.16.0"
+      ]
+    },
+    {
+      "name": "python-multipart",
+      "version": "0.0.32",
+      "filename": "python_multipart-0.0.32-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/e1/04/e8135ebd1ad02c56ec633277529b2602ff99ff634be76cdba5744cf554fd/python_multipart-0.0.32-py3-none-any.whl",
+      "sha256": "ff6d3f776f16878c894e52e107296ffc890e913c611b1a4ec6c44e2821fe2e23",
+      "license_expression": "Apache-2.0",
+      "dependencies": []
+    },
+    {
+      "name": "starlette",
+      "version": "1.10.0",
+      "filename": "starlette-1.10.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/88/2e/947cfe02def9371c07cd5bf5b6b61c829e9aecb9904db02a66cfafbc1eec/starlette-1.10.0-py3-none-any.whl",
+      "sha256": "478c0ab3b4ced6e82719849c118fa406f0278a3499c1a898cd15cd31bdc38ce4",
+      "license_expression": "BSD-3-Clause",
+      "dependencies": [
+        "anyio<5,>=4.0.0"
+      ]
+    },
+    {
+      "name": "typing-extensions",
+      "version": "4.16.0",
+      "filename": "typing_extensions-4.16.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl",
+      "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+      "license_expression": "PSF-2.0",
+      "dependencies": []
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.4",
+      "filename": "typing_inspection-0.4.4-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/67/81/4add07e5172b7ac40d8ed5ff580409a7801a4fe26d529bdd915401dabfbe/typing_inspection-0.4.4-py3-none-any.whl",
+      "sha256": "65b8397ba37ccbce054456aaccddfc91e6e3083c92824df348d96ca832f3f147",
+      "license_expression": "MIT",
+      "dependencies": [
+        "typing-extensions>=4.15.0"
+      ]
+    },
+    {
+      "name": "uvicorn",
+      "version": "0.54.0",
+      "filename": "uvicorn-0.54.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/38/0c/b54a4fdd7f90a3af8b02ebc9ce6712c2c208b7926a2f7bad95c33ebbe943/uvicorn-0.54.0-py3-none-any.whl",
+      "sha256": "505bdb0f318731d45f1f712071fc781a8981f6847a31c902c9f5e652d4f67faf",
+      "license_expression": "BSD-3-Clause",
+      "dependencies": [
+        "click>=7.0",
+        "h11>=0.8"
+      ]
+    }
+  ]
+}
