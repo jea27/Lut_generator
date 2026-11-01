@@ -28,9 +28,11 @@ fn main() {
     #[cfg(windows)] let _instance = match Instance::acquire() {Some(value)=>value,None=>return};
     let application=tauri::Builder::default()
         .setup(|app| {
-            let executable=std::env::current_exe()?.parent().unwrap().join("ColorEngine.exe");
-            let mut command=Command::new(executable);
-            command.arg("--parent").arg(std::process::id().to_string())
+            let runtime=app.path().resource_dir()?.join("runtime");
+            let mut command=Command::new(runtime.join("python.exe"));
+            command.args(["-I","-S","-B","-u"])
+                .arg(runtime.join("app/apps/desktop/engine_entry.py"))
+                .arg("--parent").arg(std::process::id().to_string())
                 .stdout(Stdio::piped()).stderr(Stdio::null());
             #[cfg(windows)] {
                 use std::os::windows::process::CommandExt;
@@ -42,7 +44,7 @@ fn main() {
             let (sender,receiver)=mpsc::channel();
             std::thread::spawn(move || {
                 let mut line=String::new();
-                let result=BufReader::new(stdout).read_line(&mut line).map(|_|line);
+                let result=std::io::Read::take(BufReader::new(stdout),4096).read_line(&mut line).map(|_|line);
                 let _=sender.send(result);
             });
             let line=match receiver.recv_timeout(Duration::from_secs(45)) {

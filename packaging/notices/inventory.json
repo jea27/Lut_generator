@@ -1,546 +1,382 @@
 {
   "scope": "Conservative locked input inventory, not a complete binary SBOM or legal approval",
-  "excluded_binary": "opencv_videoio_ffmpeg: filtered from PyInstaller binaries; verify output tree",
+  "excluded_binary": "opencv_videoio_ffmpeg: excluded from embedded runtime",
   "manual_gates": [
     "Microsoft WebView2/VC runtime redistribution terms",
     "Binary-to-source reconciliation and third-party code inside wheels",
-    "PyInstaller bootloader exception",
     "License selection for own public source",
     "Trademark and commercial terms"
   ],
+  "runtime_distribution": "PSF official embeddable; host/build packages not shipped",
   "packages": [
     {
-      "ecosystem": "python",
-      "name": "altgraph",
-      "version": "0.17.5",
-      "declared_license": "MIT",
-      "notices": [
-        {
-          "file": "altgraph-0.17.5.dist-info/LICENSE",
-          "sha256": "6c194d6db0c64d45535d10c95142b9b0cda7b7dcc7f1ddee302b3d536f3dbe46"
-        }
-      ],
-      "review": "notice_captured_not_legal_approval"
-    },
-    {
-      "ecosystem": "python",
+      "ecosystem": "python-embedded-runtime",
       "name": "annotated-doc",
       "version": "0.0.5",
       "declared_license": "MIT",
       "notices": [
         {
-          "file": "annotated_doc-0.0.5.dist-info/licenses/LICENSE",
+          "file": "vendor/annotated_doc-0.0.5.dist-info/licenses/LICENSE",
           "sha256": "fff170779a6acbf65abdb405c087f1cee1786691e4a96a4034517e4a504a0cdf"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://files.pythonhosted.org/packages/3e/30/e900b21425a860e195f32e37657aa1f7c7f2b1bfb26f03ca209b90933c06/annotated_doc-0.0.5-py3-none-any.whl",
+      "archive_sha256": "117bac03a25ede5df5440e855b32d556049ca169ead221505badf432fed4b101"
     },
     {
-      "ecosystem": "python",
+      "ecosystem": "python-embedded-runtime",
       "name": "annotated-types",
       "version": "0.8.0",
       "declared_license": "MIT",
       "notices": [
         {
-          "file": "annotated_types-0.8.0.dist-info/licenses/LICENSE",
+          "file": "vendor/annotated_types-0.8.0.dist-info/licenses/LICENSE",
           "sha256": "fe1049884b1a0d9342901e88e07f32925d24b3121d9972b6a6805fb9824b095d"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://files.pythonhosted.org/packages/99/91/8acff4f5e50511b911bbccb72b8628a49c68ce14148cd9f6431094859a90/annotated_types-0.8.0-py3-none-any.whl",
+      "archive_sha256": "f072f4d804ea359e4eaf198b1af7a8b0943881a87f31bb764f8bf219bb9419e0"
     },
     {
-      "ecosystem": "python",
+      "ecosystem": "python-embedded-runtime",
       "name": "anyio",
       "version": "4.15.1",
       "declared_license": "MIT",
       "notices": [
         {
-          "file": "anyio-4.15.1.dist-info/licenses/LICENSE",
+          "file": "vendor/anyio-4.15.1.dist-info/licenses/LICENSE",
           "sha256": "5361ac9dc58f2ef5fd2e9b09c68297c17f04950909bbc8023bdb82eacf22c2b0"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://files.pythonhosted.org/packages/12/b8/4bd346e22b28902df4d651910f5242c28d84e4a5c2435ca5c3f797ed7e2e/anyio-4.15.1-py3-none-any.whl",
+      "archive_sha256": "6152fdbbf9a77fdec97731721bebf7c4c44f7c29b424b0065826173efc7ed101"
     },
     {
-      "ecosystem": "python",
-      "name": "certifi",
-      "version": "2026.10.23",
-      "declared_license": "MPL-2.0",
-      "notices": [
-        {
-          "file": "certifi-2026.10.23.dist-info/licenses/LICENSE",
-          "sha256": "e93716da6b9c0d5a4a1df60fe695b370f0695603d21f6f83f053e42cfc10caf7"
-        }
-      ],
-      "review": "notice_captured_not_legal_approval"
-    },
-    {
-      "ecosystem": "python",
+      "ecosystem": "python-embedded-runtime",
       "name": "click",
       "version": "8.5.0",
       "declared_license": "BSD-3-Clause",
       "notices": [
         {
-          "file": "click-8.5.0.dist-info/licenses/LICENSE.txt",
+          "file": "vendor/click-8.5.0.dist-info/licenses/LICENSE.txt",
           "sha256": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://files.pythonhosted.org/packages/58/50/6c0d534c5f134586a8e1ba4e330569e32f057e33372ae556463212fb4cd3/click-8.5.0-py3-none-any.whl",
+      "archive_sha256": "255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360"
     },
     {
-      "ecosystem": "python",
+      "ecosystem": "python-embedded-runtime",
       "name": "fastapi",
       "version": "0.162.0",
       "declared_license": "MIT",
       "notices": [
         {
-          "file": "fastapi-0.162.0.dist-info/licenses/LICENSE",
+          "file": "vendor/fastapi-0.162.0.dist-info/licenses/LICENSE",
           "sha256": "4ec89ffc81485b97fec584b2d4a961032eeffe834453894fd9c1274906cc744e"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://files.pythonhosted.org/packages/b4/4f/3f2c25c9b43970b5e9a08beb5e04776247edea684ddc0930f4f02f0bb6cb/fastapi-0.162.0-py3-none-any.whl",
+      "archive_sha256": "3785963de305dd09912426cb81f2d230fce98ab3521cdfe97265c8d14983128c"
     },
     {
-      "ecosystem": "python",
+      "ecosystem": "python-embedded-runtime",
       "name": "h11",
       "version": "0.16.0",
       "declared_license": "MIT",
       "notices": [
         {
-          "file": "h11-0.16.0.dist-info/licenses/LICENSE.txt",
+          "file": "vendor/h11-0.16.0.dist-info/licenses/LICENSE.txt",
           "sha256": "37db5bb85926db28a427a25867f10b1232003aea1be69ccb851138adb8e6f361"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://files.pythonhosted.org/packages/04/4b/29cac41a4d98d144bf5f6d33995617b185d14b22401f75ca86f384e87ff1/h11-0.16.0-py3-none-any.whl",
+      "archive_sha256": "63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86"
     },
     {
-      "ecosystem": "python",
-      "name": "httpcore",
-      "version": "1.0.9",
-      "declared_license": "BSD-3-Clause",
-      "notices": [
-        {
-          "file": "httpcore-1.0.9.dist-info/licenses/LICENSE.md",
-          "sha256": "fdcb59154c74cbaba16a11242f7740bea9f23d6feb5547917d8c5f94a80392a5"
-        }
-      ],
-      "review": "notice_captured_not_legal_approval"
-    },
-    {
-      "ecosystem": "python",
-      "name": "httpx",
-      "version": "0.28.1",
-      "declared_license": "BSD-3-Clause",
-      "notices": [
-        {
-          "file": "httpx-0.28.1.dist-info/licenses/LICENSE.md",
-          "sha256": "4ec59d544f12b5f539a3a716fd321ac58ccd8030b465221f2c880200cdf28d8d"
-        }
-      ],
-      "review": "notice_captured_not_legal_approval"
-    },
-    {
-      "ecosystem": "python",
+      "ecosystem": "python-embedded-runtime",
       "name": "idna",
       "version": "3.20",
       "declared_license": "BSD-3-Clause",
       "notices": [
         {
-          "file": "idna-3.20.dist-info/licenses/LICENSE.md",
+          "file": "vendor/idna-3.20.dist-info/licenses/LICENSE.md",
           "sha256": "1a9a4f0e3d479a27240ddd59a9137a66ab4a0f9dfdc8ca6188cc0bfd85187f04"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://files.pythonhosted.org/packages/58/a2/bb081bab032533a855d44de1d56f8e8426114ff1ba5d1f07a438a0a654f8/idna-3.20-py3-none-any.whl",
+      "archive_sha256": "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c"
     },
     {
-      "ecosystem": "python",
+      "ecosystem": "python-embedded-runtime",
       "name": "numpy",
       "version": "2.5.4",
       "declared_license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
       "notices": [
         {
-          "file": "numpy-2.5.4.dist-info/licenses/LICENSE.txt",
+          "file": "vendor/numpy/ma/LICENSE",
+          "sha256": "d78dbb208b80d92b4d333e41a4baae50d12444f46e53199fa7726a91de6e2da7"
+        },
+        {
+          "file": "vendor/numpy/random/LICENSE.md",
+          "sha256": "b4bc2f4fa1c95778f1ed3dd8f14706bece399475b978f9f34b5d3cd72521b48a"
+        },
+        {
+          "file": "vendor/numpy/_core/include/numpy/random/LICENSE.txt",
+          "sha256": "d544761558b510866c21f7e8a2d5716fca76e0b98117e3b6b86314db7244d150"
+        },
+        {
+          "file": "vendor/numpy-2.5.4.dist-info/licenses/LICENSE.txt",
           "sha256": "a804dff0ead9fadc5293456410bcbfc32bf024be9c4513459663fb7b442d2341"
         },
         {
-          "file": "numpy-2.5.4.dist-info/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt",
-          "sha256": "d544761558b510866c21f7e8a2d5716fca76e0b98117e3b6b86314db7244d150"
-        },
-        {
-          "file": "numpy-2.5.4.dist-info/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING",
-          "sha256": "aea41976c720f91bd19725c16916a1ace40eb1ea42620d340e587a5de4bbcea0"
-        },
-        {
-          "file": "numpy-2.5.4.dist-info/licenses/numpy/_core/src/highway/LICENSE",
-          "sha256": "d208152e2777ffd0126eacc1bd21c0320d69e4e6b622d21a2a12a47e8ef73763"
-        },
-        {
-          "file": "numpy-2.5.4.dist-info/licenses/numpy/_core/src/npysort/x86-simd-sort/LICENSE.md",
-          "sha256": "a732977853530066790c42817087f4829b518dd98d340c916acbfd227e39d3cb"
-        },
-        {
-          "file": "numpy-2.5.4.dist-info/licenses/numpy/_core/src/umath/svml/LICENSE",
-          "sha256": "585483905b13d4b42f800c55ba99e89d6e2e33ccd5f503e201c07531d148ff41"
-        },
-        {
-          "file": "numpy-2.5.4.dist-info/licenses/numpy/fft/pocketfft/LICENSE.md",
+          "file": "vendor/numpy-2.5.4.dist-info/licenses/numpy/fft/pocketfft/LICENSE.md",
           "sha256": "8db000e158c162e7249787852d8c69764706502ccee725c06641b31c1e95c8af"
         },
         {
-          "file": "numpy-2.5.4.dist-info/licenses/numpy/linalg/lapack_lite/LICENSE.txt",
+          "file": "vendor/numpy-2.5.4.dist-info/licenses/numpy/linalg/lapack_lite/LICENSE.txt",
           "sha256": "19060ef465e1797d682ee0fc3081bd25ab1395e995e43d25c9d13c95d9a3cd6b"
         },
         {
-          "file": "numpy-2.5.4.dist-info/licenses/numpy/ma/LICENSE",
+          "file": "vendor/numpy-2.5.4.dist-info/licenses/numpy/ma/LICENSE",
           "sha256": "d78dbb208b80d92b4d333e41a4baae50d12444f46e53199fa7726a91de6e2da7"
         },
         {
-          "file": "numpy-2.5.4.dist-info/licenses/numpy/random/LICENSE.md",
+          "file": "vendor/numpy-2.5.4.dist-info/licenses/numpy/random/LICENSE.md",
           "sha256": "b4bc2f4fa1c95778f1ed3dd8f14706bece399475b978f9f34b5d3cd72521b48a"
         },
         {
-          "file": "numpy-2.5.4.dist-info/licenses/numpy/random/src/distributions/LICENSE.md",
+          "file": "vendor/numpy-2.5.4.dist-info/licenses/numpy/random/src/distributions/LICENSE.md",
           "sha256": "cf5619f25b112d5ce7c896efffc8e610bcb345dfadcc19f2c1460aa48fff2c9e"
         },
         {
-          "file": "numpy-2.5.4.dist-info/licenses/numpy/random/src/mt19937/LICENSE.md",
+          "file": "vendor/numpy-2.5.4.dist-info/licenses/numpy/random/src/mt19937/LICENSE.md",
           "sha256": "92c10699884321f1c2947fe2a70ab23b0fbf1507f756d89dd08f38c61fc3d4fa"
         },
         {
-          "file": "numpy-2.5.4.dist-info/licenses/numpy/random/src/pcg64/LICENSE.md",
+          "file": "vendor/numpy-2.5.4.dist-info/licenses/numpy/random/src/pcg64/LICENSE.md",
           "sha256": "41190663b77bee5302386495a07b7eabfbfa571aa0ae2f11da6764162062fc4f"
         },
         {
-          "file": "numpy-2.5.4.dist-info/licenses/numpy/random/src/philox/LICENSE.md",
+          "file": "vendor/numpy-2.5.4.dist-info/licenses/numpy/random/src/philox/LICENSE.md",
           "sha256": "322ac46d870c8aeead6c53adcccc839296fb3c8e456eae155081297daf7f8013"
         },
         {
-          "file": "numpy-2.5.4.dist-info/licenses/numpy/random/src/sfc64/LICENSE.md",
+          "file": "vendor/numpy-2.5.4.dist-info/licenses/numpy/random/src/sfc64/LICENSE.md",
           "sha256": "28cad82ce1379dc529df30da78ec012d7d0d1d576b03ddcb93388aee53659f59"
         },
         {
-          "file": "numpy-2.5.4.dist-info/licenses/numpy/random/src/splitmix64/LICENSE.md",
+          "file": "vendor/numpy-2.5.4.dist-info/licenses/numpy/random/src/splitmix64/LICENSE.md",
           "sha256": "454ec7350e478e037061850b67395753b425b1cb0a34bbc26290b020bf89d763"
         },
         {
-          "file": "numpy/_core/include/numpy/random/LICENSE.txt",
+          "file": "vendor/numpy-2.5.4.dist-info/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt",
           "sha256": "d544761558b510866c21f7e8a2d5716fca76e0b98117e3b6b86314db7244d150"
         },
         {
-          "file": "numpy/ma/LICENSE",
-          "sha256": "d78dbb208b80d92b4d333e41a4baae50d12444f46e53199fa7726a91de6e2da7"
+          "file": "vendor/numpy-2.5.4.dist-info/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING",
+          "sha256": "aea41976c720f91bd19725c16916a1ace40eb1ea42620d340e587a5de4bbcea0"
         },
         {
-          "file": "numpy/random/LICENSE.md",
-          "sha256": "b4bc2f4fa1c95778f1ed3dd8f14706bece399475b978f9f34b5d3cd72521b48a"
+          "file": "vendor/numpy-2.5.4.dist-info/licenses/numpy/_core/src/highway/LICENSE",
+          "sha256": "d208152e2777ffd0126eacc1bd21c0320d69e4e6b622d21a2a12a47e8ef73763"
+        },
+        {
+          "file": "vendor/numpy-2.5.4.dist-info/licenses/numpy/_core/src/npysort/x86-simd-sort/LICENSE.md",
+          "sha256": "a732977853530066790c42817087f4829b518dd98d340c916acbfd227e39d3cb"
+        },
+        {
+          "file": "vendor/numpy-2.5.4.dist-info/licenses/numpy/_core/src/umath/svml/LICENSE",
+          "sha256": "585483905b13d4b42f800c55ba99e89d6e2e33ccd5f503e201c07531d148ff41"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://files.pythonhosted.org/packages/52/9a/e1e512ebc948d5b9dd33b08736760f0ebbed2848fd4eda1f553088a6dcee/numpy-2.5.4-cp314-cp314-win_amd64.whl",
+      "archive_sha256": "2ca144f15135b6212a5c47b1e2aeca6e412f102f95a2d5d88d8aec77eb255de3"
     },
     {
-      "ecosystem": "python",
+      "ecosystem": "python-embedded-runtime",
       "name": "opencv-python-headless",
       "version": "5.0.0.93",
       "declared_license": "Apache 2.0",
       "notices": [
         {
-          "file": "cv2/LICENSE-3RD-PARTY.txt",
+          "file": "vendor/cv2/LICENSE-3RD-PARTY.txt",
           "sha256": "c1d60169b55cee56452b227c2fd2a7b9ddda3dd3741065f1c6201072be73fadb"
         },
         {
-          "file": "cv2/LICENSE.txt",
+          "file": "vendor/cv2/LICENSE.txt",
           "sha256": "edef0fac1eb08d29d34563f724742e078da2513e196133a12c6ad9ff01e26107"
         },
         {
-          "file": "opencv_python_headless-5.0.0.93.dist-info/LICENSE-3RD-PARTY.txt",
+          "file": "vendor/opencv_python_headless-5.0.0.93.dist-info/LICENSE-3RD-PARTY.txt",
           "sha256": "c1d60169b55cee56452b227c2fd2a7b9ddda3dd3741065f1c6201072be73fadb"
         },
         {
-          "file": "opencv_python_headless-5.0.0.93.dist-info/LICENSE.txt",
+          "file": "vendor/opencv_python_headless-5.0.0.93.dist-info/LICENSE.txt",
           "sha256": "edef0fac1eb08d29d34563f724742e078da2513e196133a12c6ad9ff01e26107"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://files.pythonhosted.org/packages/b8/88/763b967f7efd7226b82c9fae16d560cba049b1f0c036647e65c610fd636e/opencv_python_headless-5.0.0.93-cp37-abi3-win_amd64.whl",
+      "archive_sha256": "829717b6a95554f273e49e357cee3b3a2a26b6f4842fbc1bed2b45bdd8f87e0e"
     },
     {
-      "ecosystem": "python",
+      "ecosystem": "python-embedded-runtime",
       "name": "opentelemetry-api",
       "version": "1.45.2",
       "declared_license": "Apache-2.0",
       "notices": [
         {
-          "file": "opentelemetry_api-1.45.2.dist-info/licenses/LICENSE",
+          "file": "vendor/opentelemetry_api-1.45.2.dist-info/licenses/LICENSE",
           "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://files.pythonhosted.org/packages/a9/2d/610db864d7513158cebb8f36cc88e67e73bd6c7aa1905ef18d89e1281c81/opentelemetry_api-1.45.2-py3-none-any.whl",
+      "archive_sha256": "2cbd737377e710ee740d261c94e93fa0f08e6d037c18f17513cc0a2d94479a34"
     },
     {
-      "ecosystem": "python",
-      "name": "packaging",
-      "version": "26.3",
-      "declared_license": "Apache-2.0 OR BSD-2-Clause",
-      "notices": [
-        {
-          "file": "packaging-26.3.dist-info/licenses/LICENSE",
-          "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48"
-        },
-        {
-          "file": "packaging-26.3.dist-info/licenses/LICENSE.APACHE",
-          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
-        },
-        {
-          "file": "packaging-26.3.dist-info/licenses/LICENSE.BSD",
-          "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5"
-        }
-      ],
-      "review": "notice_captured_not_legal_approval"
-    },
-    {
-      "ecosystem": "python",
-      "name": "pefile",
-      "version": "2024.8.26",
-      "declared_license": "MIT",
-      "notices": [
-        {
-          "file": "pefile-2024.8.26.dist-info/LICENSE",
-          "sha256": "b44409c067c6da52bfb54bb6624fb11a7b52157c3a13ae1400232f8196e86ad3"
-        }
-      ],
-      "review": "notice_captured_not_legal_approval"
-    },
-    {
-      "ecosystem": "python",
+      "ecosystem": "python-embedded-runtime",
       "name": "pillow",
       "version": "13.0.0",
       "declared_license": "MIT-CMU",
       "notices": [
         {
-          "file": "pillow-13.0.0.dist-info/licenses/LICENSE",
+          "file": "vendor/pillow-13.0.0.dist-info/licenses/LICENSE",
           "sha256": "988ffe8ab3480b0f4e9a0ab2702bffd73d9fb6b47198043fb3ba101a62fac236"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://files.pythonhosted.org/packages/50/e2/7ad17747517e4c813dca78257d6bb593466f8231baf1384bc98d92745edb/pillow-13.0.0-cp314-cp314-win_amd64.whl",
+      "archive_sha256": "f7cbb7a64e7ec664775195e4f81923bc8a93d9451b963f844e59118f63147a7a"
     },
     {
-      "ecosystem": "python",
+      "ecosystem": "python-embedded-runtime",
       "name": "psutil",
       "version": "7.2.2",
       "declared_license": "BSD-3-Clause",
       "notices": [
         {
-          "file": "psutil-7.2.2.dist-info/LICENSE",
+          "file": "vendor/psutil-7.2.2.dist-info/LICENSE",
           "sha256": "c7adc4d5d1337a548b967421f1fbe258b93033a0417708fd6f4e38f8ecbceb80"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://files.pythonhosted.org/packages/b4/90/e2159492b5426be0c1fef7acba807a03511f97c5f86b3caeda6ad92351a7/psutil-7.2.2-cp37-abi3-win_amd64.whl",
+      "archive_sha256": "eb7e81434c8d223ec4a219b5fc1c47d0417b12be7ea866e24fb5ad6e84b3d988"
     },
     {
-      "ecosystem": "python",
+      "ecosystem": "python-embedded-runtime",
       "name": "pydantic",
       "version": "2.14.2",
       "declared_license": "MIT",
       "notices": [
         {
-          "file": "pydantic-2.14.2.dist-info/licenses/LICENSE",
+          "file": "vendor/pydantic-2.14.2.dist-info/licenses/LICENSE",
           "sha256": "a9e186f3ca16b5eef84318e7a701721351a00cb7b8ae3a4394b67b49e3529ef3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://files.pythonhosted.org/packages/97/01/c71a71258b58659c72504e5fd65b451f6e36e34dc931d0b237ded213c814/pydantic-2.14.2-py3-none-any.whl",
+      "archive_sha256": "7efbf7507b937931cd32a5755acb00ea1cf5ccb1d4e8067a5850d5069e382118"
     },
     {
-      "ecosystem": "python",
-      "name": "pydantic_core",
+      "ecosystem": "python-embedded-runtime",
+      "name": "pydantic-core",
       "version": "2.50.2",
       "declared_license": "MIT",
       "notices": [
         {
-          "file": "pydantic_core-2.50.2.dist-info/licenses/LICENSE",
+          "file": "vendor/pydantic_core-2.50.2.dist-info/licenses/LICENSE",
           "sha256": "fbe7f615f18d135c07000e5a86325db27f42c7729699ef166ac1f7a3f4586bf4"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://files.pythonhosted.org/packages/a3/5f/dcd3df20ab2a7279d42a8415fc184e8e77bcf9aa3c9ac3e938c1300a242c/pydantic_core-2.50.2-cp314-cp314-win_amd64.whl",
+      "archive_sha256": "b62c89545d21d930c333208fd548e7b4f262228ba3a322fd75c987a75ab11f31"
     },
     {
-      "ecosystem": "python",
-      "name": "pyinstaller",
-      "version": "6.22.3",
-      "declared_license": "GPLv2-or-later with a special exception which allows to use PyInstaller to build and distribute non-free programs (including commercial ones)",
-      "notices": [
-        {
-          "file": "pyinstaller-6.22.3.dist-info/licenses/COPYING.txt",
-          "sha256": "0598064c7d2718e38d7914a7d08343b2fa008e3bea9ebba2aa7a6ffa5900dd64"
-        }
-      ],
-      "review": "notice_captured_not_legal_approval"
-    },
-    {
-      "ecosystem": "python",
-      "name": "pyinstaller-hooks-contrib",
-      "version": "2026.9",
-      "declared_license": "License :: OSI Approved :: Apache Software License; License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
-      "notices": [
-        {
-          "file": "pyinstaller_hooks_contrib-2026.9.dist-info/licenses/LICENSE",
-          "sha256": "91d0baaff00773038e72c0a1fc9d5d2d38706b7a2b9c04f34296608f931b9cd0"
-        }
-      ],
-      "review": "notice_captured_not_legal_approval"
-    },
-    {
-      "ecosystem": "python",
+      "ecosystem": "python-embedded-runtime",
       "name": "python-multipart",
       "version": "0.0.32",
       "declared_license": "Apache-2.0",
       "notices": [
         {
-          "file": "python_multipart-0.0.32.dist-info/licenses/LICENSE.txt",
+          "file": "vendor/python_multipart-0.0.32.dist-info/licenses/LICENSE.txt",
           "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://files.pythonhosted.org/packages/e1/04/e8135ebd1ad02c56ec633277529b2602ff99ff634be76cdba5744cf554fd/python_multipart-0.0.32-py3-none-any.whl",
+      "archive_sha256": "ff6d3f776f16878c894e52e107296ffc890e913c611b1a4ec6c44e2821fe2e23"
     },
     {
-      "ecosystem": "python",
-      "name": "pywin32-ctypes",
-      "version": "0.2.3",
-      "declared_license": "BSD-3-Clause",
-      "notices": [
-        {
-          "file": "pywin32_ctypes-0.2.3.dist-info/LICENSE.txt",
-          "sha256": "dfa83b3e2709adfcdb838d9ad55823ca674abb780e60563d9dd9544ccbf785e9"
-        }
-      ],
-      "review": "notice_captured_not_legal_approval"
-    },
-    {
-      "ecosystem": "python",
-      "name": "setuptools",
-      "version": "84.2.1",
-      "declared_license": "MIT",
-      "notices": [
-        {
-          "file": "setuptools-84.2.1.dist-info/licenses/LICENSE",
-          "sha256": "86da0f01aeae46348a3c3d465195dc1ceccde79f79e87769a64b8da04b2a4741"
-        },
-        {
-          "file": "setuptools/_vendor/autocommand-2.2.2.dist-info/LICENSE",
-          "sha256": "ade78d04982d69972d444a8e14a94f87a2334dd3855cc80348ea8e240aa0df2d"
-        },
-        {
-          "file": "setuptools/_vendor/backports.tarfile-1.2.0.dist-info/LICENSE",
-          "sha256": "86da0f01aeae46348a3c3d465195dc1ceccde79f79e87769a64b8da04b2a4741"
-        },
-        {
-          "file": "setuptools/_vendor/importlib_metadata-8.7.1.dist-info/licenses/LICENSE",
-          "sha256": "458502e12d97bbf64438606a20044aa85eb05fb0a8a807bb35dbec253fd1fc04"
-        },
-        {
-          "file": "setuptools/_vendor/jaraco.text-4.0.0.dist-info/LICENSE",
-          "sha256": "86da0f01aeae46348a3c3d465195dc1ceccde79f79e87769a64b8da04b2a4741"
-        },
-        {
-          "file": "setuptools/_vendor/jaraco_context-6.1.0.dist-info/licenses/LICENSE",
-          "sha256": "9755a18519666e5f0f4cae3daad3d7012bcae48a600b31237d75e9fe134e6683"
-        },
-        {
-          "file": "setuptools/_vendor/jaraco_functools-4.4.0.dist-info/licenses/LICENSE",
-          "sha256": "5a57cb4db85e2a2dd88c290628908add57e3451449e0a9a71fdfb38776fd759d"
-        },
-        {
-          "file": "setuptools/_vendor/more_itertools-10.8.0.dist-info/licenses/LICENSE",
-          "sha256": "09f1c8c9e941af3e584d59641ea9b87d83c0cb0fd007eb5ef391a7e2643c1a46"
-        },
-        {
-          "file": "setuptools/_vendor/packaging-26.3.dist-info/licenses/LICENSE",
-          "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48"
-        },
-        {
-          "file": "setuptools/_vendor/packaging-26.3.dist-info/licenses/LICENSE.APACHE",
-          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
-        },
-        {
-          "file": "setuptools/_vendor/packaging-26.3.dist-info/licenses/LICENSE.BSD",
-          "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5"
-        },
-        {
-          "file": "setuptools/_vendor/platformdirs-4.4.0.dist-info/licenses/LICENSE",
-          "sha256": "29e0fd62e929850e86eb28c3fdccf0cefdf4fa94879011cffb3d0d4bed6d4db6"
-        },
-        {
-          "file": "setuptools/_vendor/tomli-2.4.0.dist-info/licenses/LICENSE",
-          "sha256": "b80816b0d530b8accb4c2211783790984a6e3b61922c2b5ee92f3372ab2742fe"
-        },
-        {
-          "file": "setuptools/_vendor/wheel-0.46.3.dist-info/licenses/LICENSE.txt",
-          "sha256": "30c23618679108f3e8ea1d2a658c7ca417bdfc891c98ef1a89fa4ff0c9828654"
-        },
-        {
-          "file": "setuptools/_vendor/zipp-3.23.0.dist-info/licenses/LICENSE",
-          "sha256": "5a57cb4db85e2a2dd88c290628908add57e3451449e0a9a71fdfb38776fd759d"
-        },
-        {
-          "file": "setuptools/config/NOTICE",
-          "sha256": "2dddf08818297a3b89d43d95ff659d8da85741108c9136dfa3a4d856c0623bd8"
-        },
-        {
-          "file": "setuptools/config/_validate_pyproject/NOTICE",
-          "sha256": "09c9bcea95ca086f8bc5bed174e40bc835b297d40fb5f86bbbb570fe0a5581a7"
-        }
-      ],
-      "review": "notice_captured_not_legal_approval"
-    },
-    {
-      "ecosystem": "python",
+      "ecosystem": "python-embedded-runtime",
       "name": "starlette",
       "version": "1.10.0",
       "declared_license": "BSD-3-Clause",
       "notices": [
         {
-          "file": "starlette-1.10.0.dist-info/licenses/LICENSE.md",
+          "file": "vendor/starlette-1.10.0.dist-info/licenses/LICENSE.md",
           "sha256": "dcb95677a02240243187e964f941847d19b17821cf99e5afae684fab328c19bf"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://files.pythonhosted.org/packages/88/2e/947cfe02def9371c07cd5bf5b6b61c829e9aecb9904db02a66cfafbc1eec/starlette-1.10.0-py3-none-any.whl",
+      "archive_sha256": "478c0ab3b4ced6e82719849c118fa406f0278a3499c1a898cd15cd31bdc38ce4"
     },
     {
-      "ecosystem": "python",
+      "ecosystem": "python-embedded-runtime",
+      "name": "typing-extensions",
+      "version": "4.16.0",
+      "declared_license": "PSF-2.0",
+      "notices": [
+        {
+          "file": "vendor/typing_extensions-4.16.0.dist-info/licenses/LICENSE",
+          "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+        }
+      ],
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl",
+      "archive_sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+    },
+    {
+      "ecosystem": "python-embedded-runtime",
       "name": "typing-inspection",
       "version": "0.4.4",
       "declared_license": "MIT",
       "notices": [
         {
-          "file": "typing_inspection-0.4.4.dist-info/licenses/LICENSE",
+          "file": "vendor/typing_inspection-0.4.4.dist-info/licenses/LICENSE",
           "sha256": "804b59b25f2c31bd278f9202a19ae49a3945aa2664387e2d0a128c7cacc61ec3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://files.pythonhosted.org/packages/67/81/4add07e5172b7ac40d8ed5ff580409a7801a4fe26d529bdd915401dabfbe/typing_inspection-0.4.4-py3-none-any.whl",
+      "archive_sha256": "65b8397ba37ccbce054456aaccddfc91e6e3083c92824df348d96ca832f3f147"
     },
     {
-      "ecosystem": "python",
-      "name": "typing_extensions",
-      "version": "4.16.0",
-      "declared_license": "PSF-2.0",
-      "notices": [
-        {
-          "file": "typing_extensions-4.16.0.dist-info/licenses/LICENSE",
-          "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
-        }
-      ],
-      "review": "notice_captured_not_legal_approval"
-    },
-    {
-      "ecosystem": "python",
+      "ecosystem": "python-embedded-runtime",
       "name": "uvicorn",
       "version": "0.54.0",
       "declared_license": "BSD-3-Clause",
       "notices": [
         {
-          "file": "uvicorn-0.54.0.dist-info/licenses/LICENSE.md",
+          "file": "vendor/uvicorn-0.54.0.dist-info/licenses/LICENSE.md",
           "sha256": "efe1acf3e62fb99c288b0ec73e5a773b7268ef4320fe757ea994214e4b63c371"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://files.pythonhosted.org/packages/38/0c/b54a4fdd7f90a3af8b02ebc9ce6712c2c208b7926a2f7bad95c33ebbe943/uvicorn-0.54.0-py3-none-any.whl",
+      "archive_sha256": "505bdb0f318731d45f1f712071fc781a8981f6847a31c902c9f5e652d4f67faf"
     },
     {
       "ecosystem": "npm",
@@ -553,7 +389,9 @@
           "sha256": "117da2af0d4ce0fe1c8e19b5cff9dcd806adf973d328d27b11d4448c4ff24f76"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/@babel/helper-string-parser/-/helper-string-parser-7.29.11.tgz",
+      "archive_integrity": "sha512-snZbO7MEDOof+hvNa97EjEY7qD7h2kwvQr5AJC3ZhQudKW5dnej6k3kP9NQV88hJwaS8vDqRLFo9rivLEhle2g=="
     },
     {
       "ecosystem": "npm",
@@ -566,7 +404,9 @@
           "sha256": "117da2af0d4ce0fe1c8e19b5cff9dcd806adf973d328d27b11d4448c4ff24f76"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/@babel/helper-validator-identifier/-/helper-validator-identifier-7.29.7.tgz",
+      "archive_integrity": "sha512-qehxGkRj55h/ff8EMaJ+cYhyaKlHIxqYDn682wQD7RNp9UujOQsHog2uS0r2vzr4pW+sXf90NeeayjcNaX3fFg=="
     },
     {
       "ecosystem": "npm",
@@ -579,7 +419,9 @@
           "sha256": "2e97627cb278aa7556fb9e8817368302301a595b6c7582512b8d74c57b773652"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/@babel/parser/-/parser-7.29.12.tgz",
+      "archive_integrity": "sha512-WJ7JBp/Q4+z/ImydtI7jS6NVco5++632ExBemSX+Ysb+G1lCwQ5BVo3SY+jGGOcZXI4ZccbZSUSJLNBW6eEpJg=="
     },
     {
       "ecosystem": "npm",
@@ -592,7 +434,9 @@
           "sha256": "117da2af0d4ce0fe1c8e19b5cff9dcd806adf973d328d27b11d4448c4ff24f76"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/@babel/types/-/types-7.29.11.tgz",
+      "archive_integrity": "sha512-WCsemW40Cpc6gouC1SrY6PBaZ+oLRlEVY9XBvZBI7il/HyUrb2nJ505wE1MHEFyDZNnrWDEuy4jL50WVHfTTSQ=="
     },
     {
       "ecosystem": "npm",
@@ -605,7 +449,9 @@
           "sha256": "769d154fbde32a915af110b1123650bc79f4cbe675acc66e005265bf069c6c6c"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.6.0.tgz",
+      "archive_integrity": "sha512-T7jf+5zgsZHwNJ4lvQ7/aezbyk0nNX+zJVWpmHA7VYsEx7a7qr5Rg5IbtJFqkgze5Y2sruq1RUY8Q837Od7iFw=="
     },
     {
       "ecosystem": "npm",
@@ -622,7 +468,9 @@
           "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/@quasar/extras/-/extras-2.1.0.tgz",
+      "archive_integrity": "sha512-WCqHXr3loA9bP1DUuzmCwuNXnHa9GKosAtjwJnr1DpngO68a0JoiyVuoXzc760tCBArdFLD/YAUHvItPbk6V2Q=="
     },
     {
       "ecosystem": "npm",
@@ -635,7 +483,9 @@
           "sha256": "1bb85cc9b13b81ef41c81c51866172fc345e0503c86726a6755b796590b70175"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/@vue/compiler-core/-/compiler-core-3.5.44.tgz",
+      "archive_integrity": "sha512-k34nCytbK8PQ1gR2mGROYOw6Pnv/mumqIdrZ3x2tbyXZDWm7ViKGLTfdB+DRrWqEQsLgGJvn0WN9jBif5zCTLQ=="
     },
     {
       "ecosystem": "npm",
@@ -648,7 +498,9 @@
           "sha256": "1bb85cc9b13b81ef41c81c51866172fc345e0503c86726a6755b796590b70175"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/@vue/compiler-dom/-/compiler-dom-3.5.44.tgz",
+      "archive_integrity": "sha512-W5AoBFWdw1lQAKiHowkfgFKFab82oSRT6sGsPfw/q1GRjsy/ZJFLHGhJyBRIFN9APLTUduDH9U2JAiPOIyKuYg=="
     },
     {
       "ecosystem": "npm",
@@ -661,7 +513,9 @@
           "sha256": "1bb85cc9b13b81ef41c81c51866172fc345e0503c86726a6755b796590b70175"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/@vue/compiler-sfc/-/compiler-sfc-3.5.44.tgz",
+      "archive_integrity": "sha512-dzHmQ4jXTpdr5FjIQUeykVakN/uzqFbUo9/C5ikBFg3a3PeM6uRxeczx1ZbXBML0/zJstEh3ygYipzR5Z7b2Pw=="
     },
     {
       "ecosystem": "npm",
@@ -674,7 +528,9 @@
           "sha256": "1bb85cc9b13b81ef41c81c51866172fc345e0503c86726a6755b796590b70175"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/@vue/compiler-ssr/-/compiler-ssr-3.5.44.tgz",
+      "archive_integrity": "sha512-xr5gb1JVHlfXJwSlRz1FeP6uxoazdzHuMTVLE7up+4Vrqxk219CvxLPxD9NXBt47yvZW7+p4DXfyp4O1fkByIA=="
     },
     {
       "ecosystem": "npm",
@@ -687,7 +543,9 @@
           "sha256": "1bb85cc9b13b81ef41c81c51866172fc345e0503c86726a6755b796590b70175"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/@vue/reactivity/-/reactivity-3.5.44.tgz",
+      "archive_integrity": "sha512-u+QJdKeBBEADkPdevsL+6E12QlYVfBD8Zcw5qjDQKtamI6l14KyqazJMobhCKelhWN5zpyKUiEDoTyHE93cqWw=="
     },
     {
       "ecosystem": "npm",
@@ -700,7 +558,9 @@
           "sha256": "1bb85cc9b13b81ef41c81c51866172fc345e0503c86726a6755b796590b70175"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/@vue/runtime-core/-/runtime-core-3.5.44.tgz",
+      "archive_integrity": "sha512-uEa/ndwjhrrhnOfb2p+sZy6zeoamJOISqaLSJGk/8R6nABT1ZldpzcJoPzKj+zHVomVBPcmQYyC2r4LtvDV6CQ=="
     },
     {
       "ecosystem": "npm",
@@ -713,7 +573,9 @@
           "sha256": "1bb85cc9b13b81ef41c81c51866172fc345e0503c86726a6755b796590b70175"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/@vue/runtime-dom/-/runtime-dom-3.5.44.tgz",
+      "archive_integrity": "sha512-3fc4ARcXVhVBaJ3ujWiNZJARD6pkyRcwG+ZYhMzjKtKUp7MAY0HLwr7r3Smep3Li6ZaWT6ewdmx8XqdaD5oNZg=="
     },
     {
       "ecosystem": "npm",
@@ -726,7 +588,9 @@
           "sha256": "1bb85cc9b13b81ef41c81c51866172fc345e0503c86726a6755b796590b70175"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/@vue/server-renderer/-/server-renderer-3.5.44.tgz",
+      "archive_integrity": "sha512-R4S1UoH4h5Frrauv8Z5XE5TxV9oBiUSgWIC4TyVK1FK+RocRnOLwFA5Xcmo2011RlgJp+AbZCnw6afrhlgRuUQ=="
     },
     {
       "ecosystem": "npm",
@@ -739,7 +603,9 @@
           "sha256": "1bb85cc9b13b81ef41c81c51866172fc345e0503c86726a6755b796590b70175"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/@vue/shared/-/shared-3.5.44.tgz",
+      "archive_integrity": "sha512-H82XLH0DjmSOdbEwO15x3QTo1f5PWEtv237eLpYKc0mqLu+B8hnq16lFWmuBmNurkeiG3wr+oM1FhOll/YVFRg=="
     },
     {
       "ecosystem": "npm",
@@ -752,7 +618,9 @@
           "sha256": "11d55bd4541c75ee7879547ac49089c489163dae49551389713c3d026cab383e"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/csstype/-/csstype-3.2.3.tgz",
+      "archive_integrity": "sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ=="
     },
     {
       "ecosystem": "npm",
@@ -765,7 +633,9 @@
           "sha256": "cb992345949ccd6e8394b2cd6c465f7b897c864f845937dbf64e8997f389e164"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/entities/-/entities-7.0.1.tgz",
+      "archive_integrity": "sha512-TWrgLOFUQTH994YUyl1yT4uyavY5nNB5muff+RtWaqNVCAK408b5ZnnbNAUEWLTCpum9w6arT70i1XdQ4UeOPA=="
     },
     {
       "ecosystem": "npm",
@@ -778,7 +648,9 @@
           "sha256": "8a6dcbabe7179f9c8489c08a7d874d0f1e093ae7449e03756ccf87cb9d0e296e"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/estree-walker/-/estree-walker-2.0.2.tgz",
+      "archive_integrity": "sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w=="
     },
     {
       "ecosystem": "npm",
@@ -791,7 +663,9 @@
           "sha256": "1cbe51b907662f6cb1492b16c359384a595180bf0e4d101603ed525e75c4e484"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/magic-string/-/magic-string-0.30.21.tgz",
+      "archive_integrity": "sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ=="
     },
     {
       "ecosystem": "npm",
@@ -804,7 +678,9 @@
           "sha256": "da4db1480d9beea3483a2eda5c53b22238d0827d57da162b48f122e04d2d9987"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/nanoid/-/nanoid-3.3.20.tgz",
+      "archive_integrity": "sha512-uKdg2G3GNCKQn9byYOpxbGqrT2fGO5KRt5J/8b3pok8rT6qxGWF6hxMyJiEYtAf+FVyYuD9hRaDqX5uPFYJ4ZQ=="
     },
     {
       "ecosystem": "npm",
@@ -817,7 +693,9 @@
           "sha256": "6582629e2979466878f6014313dcc2f3756c9616148682227ce3063dde310750"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz",
+      "archive_integrity": "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA=="
     },
     {
       "ecosystem": "npm",
@@ -830,7 +708,9 @@
           "sha256": "5be1f3465bba68a626777f984878814aaf35e7ef8e9fd314d469bcf887050fb8"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/postcss/-/postcss-8.5.32.tgz",
+      "archive_integrity": "sha512-LJlKCCAUFKOuZxipUdYw1NzIITEsPcgyOG9LkvRJvuKj/bRzbuRY0ARXvL0pWGpsZvn8jku+LMep2eU0seHp8g=="
     },
     {
       "ecosystem": "npm",
@@ -843,7 +723,9 @@
           "sha256": "5eb081f51dbc5ac932691ad6be2a177cae80a8f5167ded6f55d683ba83914098"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/quasar/-/quasar-2.35.2.tgz",
+      "archive_integrity": "sha512-zxX7yojl3usZDDD8fk03U6JYyCefxxEhYtFJT8iDjsNoW+Y3Zmet2io1pNsnSB060HwduJuoBJhKgIPv8WD10A=="
     },
     {
       "ecosystem": "npm",
@@ -856,7 +738,9 @@
           "sha256": "6cb0631f71c7749763fd3dd1d5bee52dd1070ec17f2edc1710079ad070bd2fbd"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.2.tgz",
+      "archive_integrity": "sha512-KGj/8Y43x35aZVDtt+J4mK1hoLGHULMYfSkODJNQjNDC3oW1PqPoxMwo0pLUsWM/UEGzON/NxeHywEfNXNP3Vw=="
     },
     {
       "ecosystem": "npm",
@@ -869,7 +753,9 @@
           "sha256": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/typescript/-/typescript-6.0.3.tgz",
+      "archive_integrity": "sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw=="
     },
     {
       "ecosystem": "npm",
@@ -882,7 +768,9 @@
           "sha256": "1bb85cc9b13b81ef41c81c51866172fc345e0503c86726a6755b796590b70175"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://registry.npmjs.org/vue/-/vue-3.5.44.tgz",
+      "archive_integrity": "sha512-dvvmaOCG7lAMkJTPqPwWeGMsPS6DIsFsfZDUgBp9V6mHf9b3+/wyVwYR4Es+WV6uJC0FKRxp81Obcq0ZwUcGFQ=="
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -903,7 +791,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "320119579fcad9c21884f5c4861d16174d0e06250625266f50fe6898340abefa"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -920,7 +810,9 @@
           "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "c982642fa9e8606056828ee9a8505737230110bb1099153c79efe865c59d12ba"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -933,7 +825,9 @@
           "sha256": "c0c56f26d9c051cac4d200c34c84e7ae9aaa853e01a982a1df08b09931e518ae"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "c2fb6cfd47bf496ff64095c20eaba0c201404ee38714d4142fcfa1dc334fcc7a"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -946,7 +840,9 @@
           "sha256": "c0c56f26d9c051cac4d200c34c84e7ae9aaa853e01a982a1df08b09931e518ae"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "0b5c1865780388bfa186411ab5f247819487fc4864c6e9c3106611fa347586e1"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -963,7 +859,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "330a5ed07fa54e4702c9d6c4174f74427fc0ef6e214bbd677ae50a5099946470"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -980,7 +878,9 @@
           "sha256": "27995d58ad5c1145c1a8cd86244ce844886958a35eb2b78c6b772748669999ac"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "f2032f911046de80f0a198e0901378627c33f59ea0ac00e363d481118bd70a53"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -997,7 +897,9 @@
           "sha256": "ab499c75a0f0da8e0fe83bf9ba3a27e5c39705310f07107c6c66b69958d2401c"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "ac07cdecf99051d9a5238b80f35af32cdeba5b336e55d957b318b50137e18da5"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1014,7 +916,9 @@
           "sha256": "f51ac2c59a222f7476ce507ca879960e2b64ea64bb2786eefdbeb7b0b538d1b7"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "08807e080ed7f9d5433fa9b275196cfc35414f66a0c79d864dc51a0d825231a3"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1031,7 +935,9 @@
           "sha256": "f51ac2c59a222f7476ce507ca879960e2b64ea64bb2786eefdbeb7b0b538d1b7"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "5e764a1d40d510daf35e07be9eb06e75770908c27d411ee6c92109c9840eaaf7"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1048,7 +954,9 @@
           "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1065,7 +973,9 @@
           "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "3ded4057c258ba199e2d26386d3af3780957ecaee6c4ef4041c6b4b8b97c0b06"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1082,7 +992,9 @@
           "sha256": "d5c22aa3118d240e877ad41c5d9fa232f9c77d757d4aac0c2f943afc0a95e0ef"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "3078c7629b62d3f0439517fa394996acacc5cbc91c5a20d8c658e77abd503a71"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1099,7 +1011,9 @@
           "sha256": "3d180008e36922a4e8daec11c34c7af264fed5962d07924aea928c38e8663c94"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "627b7cfb0578f0eafce087a90fcd40add1231900b69e4d4de2d456260a4f5d81"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1112,7 +1026,9 @@
           "sha256": "c0c56f26d9c051cac4d200c34c84e7ae9aaa853e01a982a1df08b09931e518ae"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "34c6783f42c21c952ad7112b354f0ba2f10760e9decea5b1b60523d6e270faaf"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1129,7 +1045,9 @@
           "sha256": "42d3bf7e7d4d49d72c0555d14ed99c3ee7ce9ce3cbffbc38bbafe8c103f50969"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "bf88ba1141d185c399bee5288d850d63b8369520c1eafc32a0430b5b6c287bf4"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1146,7 +1064,9 @@
           "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "1fd0f2584146f6f2ef48085050886acf353beff7305ebd1ae69500e27c67f64b"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1159,7 +1079,9 @@
           "sha256": "45f522cacecb1023856e46df79ca625dfc550c94910078bd8aec6e02880b3d42"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "fc652a48c352aef3ea3aed32080501cf3ef6ed5da78602a020c991775b0aff04"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1176,7 +1098,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "bbbad30e4b4c14a39e3cc8aed085a12a327257c316619c93581e017bc52be591"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1193,7 +1117,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "e35af189006b9c0f00a064685c727031e3ed2d8020f7ba284d78cc2671bd36ea"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1206,7 +1132,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "dd5eb614ed4c27c5d706420e4320fbe3216ab31fa1c33cd8246ac36dae4479ba"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1219,7 +1147,9 @@
           "sha256": "ee874098519e956c23a3c5c7e20581f8e9b1d70aa05eb178f983be9775090a2f"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "82f4b26e751e711a5302649417f2da046dce6391b2ea30a4820f37462314f0b9"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1236,7 +1166,9 @@
           "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "86e055fa6e3e40ad6187ba25b6855eeb635d5271f8e0f0e1e9a5826b8d75bea0"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1249,7 +1181,9 @@
           "sha256": "ebaac853b53fec0ed475796f533ce676912a4df9ad9d8a621fa76d5060591e10"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "a347dcabdae9c31b0825fd6a8bed285ec9c2acb89c47827126d52fa4f59cece3"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1266,7 +1200,9 @@
           "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "4e7648175b45a9a48536d676f68d918270699102aa8dab5496df06904c914600"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1279,7 +1215,9 @@
           "sha256": "946c9835d8034d24404f8cfec5f4654cee5dad17e944afc3d06d742cf2882831"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "1aa79e62e7697b8e29b513a68abacf485adcd1fe8284a4316c5ae868e6633327"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1296,7 +1234,9 @@
           "sha256": "f28420c1906af38be726cd7842798f0194b27c41d6051c0d1e9ee348b8a4a0ea"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "1a373e3602691c3cdea496d2f0ee5935151e6168fe87739483c463db1b2f2f87"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1313,7 +1253,9 @@
           "sha256": "ae9baa7beea910273c2f384c2a6b721fb7bd02bda3436074a1072e4ee689f985"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "59ed5838eebb26a2bb2e58f6d5b5316989ae9d08bab10e0e6d103e656d1b0280"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1330,7 +1272,9 @@
           "sha256": "61d383b05b87d78f94d2937e2580cce47226d17823c0430fbcad09596537efcf"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "0ba106e844045ddc02c20768ac4b0b7cb45f2cc2ecbd833ac9f5dacb183c2055"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1351,7 +1295,9 @@
           "sha256": "b16db96b93b1d7cf7bea533f572091ec6bca3234fbe0a83038be772ff391a44c"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "98b0cc327b5bc766e7fda9c9260cc0fa81b43a8e240440422dff70788e3f9ef1"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1368,7 +1314,9 @@
           "sha256": "5734ed989dfca1f625b40281ee9f4530f91b2411ec01cb748223e7eb87e201ab"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "a31eee39dddec8330830986fcd7625edb5a24ec90ea038215273bbc3adb08ac6"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1385,7 +1333,9 @@
           "sha256": "3521672491a3479422d5fe1aca6645dd2984090f85da6e5205abfb18fb7a6897"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "78c8292055d1c1df0cce5d180393dc8cce0abec0a7102adb6c7b1eef6016d60a"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1398,7 +1348,9 @@
           "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "8c9cdaae01d5ed7882b04d795e7f752f46ff52d2fa3b50a20d28c464510bba98"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1411,7 +1363,9 @@
           "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "d045de693cb712d0b22c6a64be5b953f67b3ce00ab5ad3dd5d8b441886ab8e1a"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1428,7 +1382,9 @@
           "sha256": "bccaa8b6c09f94e81f06696e179dbe058464bbdfbc823b6d49cada1d71e84ac3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "914a755b7c2d4af2bdcff7ce1739e2db9a1b81a9b07123d8015786ae03c0980d"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1441,7 +1397,9 @@
           "sha256": "8ea93490d74a5a1b1af3ff71d786271b3f1e5f0bea79ac16e02ec533cef040d6"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "ed17f5901b6630b993ca003def43f2f8ef4014fc13b047b57aad617ff32bc2ec"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1454,7 +1412,9 @@
           "sha256": "8ea93490d74a5a1b1af3ff71d786271b3f1e5f0bea79ac16e02ec533cef040d6"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "6837e2cf7485aaae18f86181d2f0e9a7ed297a025e220aeabf63fdebd3a2ddff"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1467,7 +1427,9 @@
           "sha256": "8ea93490d74a5a1b1af3ff71d786271b3f1e5f0bea79ac16e02ec533cef040d6"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "2ac7135c3ef02b2f7833bbeb1be5ba7f966dcde8a87c6b87f65a778d71a02785"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1484,7 +1446,9 @@
           "sha256": "2710a622a896bba67356913d4d0492cab5465f61b2ecce6d880aeb483834fb50"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "e4a0795ac740cb54d7b3775c9c17345f6aaecf884c01733b39d6017738e0e3e1"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1501,7 +1465,9 @@
           "sha256": "2710a622a896bba67356913d4d0492cab5465f61b2ecce6d880aeb483834fb50"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "840bb056bd99c495c9188198a258ab787c79f306d864db3e6e8451442d6d8366"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1518,7 +1484,9 @@
           "sha256": "2710a622a896bba67356913d4d0492cab5465f61b2ecce6d880aeb483834fb50"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "71958f69fb2de856c5dd51ac9377e986ca1aa5919f931bf5395a807277f889a0"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1535,7 +1503,9 @@
           "sha256": "231c837c45eb53f108fb48929e488965bc4fcc14e9ea21d35f50e6b99d98685b"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "9e9de72ce2ad1f90dc62fa25f0f430ef85eb4b0d8fa0be4f30373bc40a21d28e"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1548,7 +1518,9 @@
           "sha256": "8a35369f3ca263b3c62fbb5032947e53b6bfebc6c8a4d1bb982de1c069f6fba5"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "d751e9e49156b02b44f9c1815bcb94b984cdcc4396ecc32521c739452808b134"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1561,7 +1533,9 @@
           "sha256": "8a35369f3ca263b3c62fbb5032947e53b6bfebc6c8a4d1bb982de1c069f6fba5"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "799a97264921d8623a957f6c3b9011f3b5492f557bbb7a5a19b7fa6d06ba8dcb"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1578,7 +1552,9 @@
           "sha256": "9e0dfd2dd4173a530e238cb6adb37aa78c34c6bc7444e0e10c1ab5d8881f63ba"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "9ed9a281f7bc9b7576e61468ba615a66a5c8cfdff42420a70aa82701a3b1e292"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1595,7 +1571,9 @@
           "sha256": "6a2e0ade09a7d5f816f11566fee2b151b32235a7fad52b41d49cce96f833c1a9"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "8d57d423b3c82e89b9a24ca3091fee61f456a26edbd28d26c65906f4bc1dcd8f"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1612,7 +1590,9 @@
           "sha256": "6a2e0ade09a7d5f816f11566fee2b151b32235a7fad52b41d49cce96f833c1a9"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "e01a3366d27ee9890022452ee61b2b63a67e6f13f58900b651ff5665f0bb1fab"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1629,7 +1609,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "c6232dd377dcc64799954cbd3a9bb882e9cdc1308ccd87b1c098f1fb2eaf82a8"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1642,7 +1624,9 @@
           "sha256": "7554701d1e74fc434f68c522b1dd743c8c16d816a4b761b5213f367b898884c8"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "fac5fca71e65e94cc718a6e2af65d6e0f9c6027751c2aa562fbb5087fda639bc"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1659,7 +1643,9 @@
           "sha256": "9eff396a99bafd208e7126602420d6864f6066c08b84485a5b032320a9c01997"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "d8b14ccef22fc6f5a8f4d7d768562a182c04ce9a3b3157b91390b52ddfdf1a76"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1676,7 +1662,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "4c3cf4824e2d5f025c7b531afcb2325364084a16806f6d47fbc1f5fbd9960590"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1689,7 +1677,9 @@
           "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "cd1511a7b6a56299bd043a9c167a6d2bfb37bf84a6dfceaba651168adfb43c87"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1702,7 +1692,9 @@
           "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "92773504d58c093f6de2459af4af33faa518c13451eb8f2b5698ed3d36e7c813"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1719,7 +1711,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "d0881ea181b1df73ff77ffaaf9c7544ecc11e82fba9b5f27b262a3c73a332555"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1732,7 +1726,9 @@
           "sha256": "1abdbbd4e3f95e56c79d4a8af190254c23ddb14db34aadadfafef9c3af041113"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "6168487b5e7eb2673e6efe1200b1848016e436a6ca0b8031bf04bd9d493a249f"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1749,7 +1745,9 @@
           "sha256": "7365cc8878a1d7ce155a58c4ca09c3d7a6be413efa5334a80ea842912b669349"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "00d174d5400e5e8fd687ad1049e2f578285fa914201b1af7e8b112a4546bd826"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1766,7 +1764,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "1e59b668157f32d3459d4bd634861a06ffa2503a461ca5f0916b9f0252605e66"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1783,7 +1783,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "da7c62ceae207dd37ea5b845da6a0696c799f85e97da1ab5b7910be3c1c80223"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1800,7 +1802,9 @@
           "sha256": "c77a4cf9da729987d0fe7ccd811e3bd27393914ddf3d23467c18cc22954513b3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "1e6853b52649d4ac5c0bd02320cddc5ba956bdb407c4b75a2c6b75bf51500f8c"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1817,7 +1821,9 @@
           "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "1c66915cc5391097de7a2b0b972e8505aa33c0df401fd3a6811dbdb32881ba48"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1834,7 +1840,9 @@
           "sha256": "025436edff4cfcdde17a5811fdea78892d8482efd1abdec5a17872d07a4f2112"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "6e634e2e0ebac1ee034020da1ca582e17ffe4e0f5e985823721e168928136dcb"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1851,7 +1859,9 @@
           "sha256": "65fdb6c76cd61612070c066eec9ecdb30ee74fb27859d0d9af58b9f499fd0c3e"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1864,7 +1874,9 @@
           "sha256": "b1181a40b2a7b25cf66fd01481713bc1005df082c53ef73e851e55071b102744"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "77ce24cb58228fbb8aa041425bb1050850ac19177686ea6e0f41a70416f56fdb"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1881,7 +1893,9 @@
           "sha256": "20c7855c364d57ea4c97889a5e8d98470a9952dade37bd9248b9a54431670e5e"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "cb4cb245038516f5f85277875cdaa4f7d2c9a0fa0468de06ed190163b1581fcf"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1894,7 +1908,9 @@
           "sha256": "c09aae9d3c77b531f56351a9947bc7446511d6b025b3255312d3e3442a9a7583"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "85649ca51fd72272d7821adaf274ad91c288277713d9c18820d8499a7ff69e9a"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1911,7 +1927,9 @@
           "sha256": "29e9fe5074bd27e0e5d5d110394fbbcd841baee2651a3c4b4560a632702cede4"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "899def5c37c4fd7b2664648c28120ecec138e4d395b459e5ca34f9cce2dd77fd"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1928,7 +1946,9 @@
           "sha256": "523a42c25d245dde9c015f882cec7f4555aad883382a6cf19b4b7d9b2cd5419b"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "300e883d756b2e4ec94e02791f39b04b522276138852cfc41d9fb7e904106099"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1945,7 +1965,9 @@
           "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "e4eba85ea1d0a966a983acd07deee566e67395d2d96b6fb39e62b5a833f1eb0b"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1962,7 +1984,9 @@
           "sha256": "ff8f68cb076caf8cefe7a6430d4ac086ce6af2ca8ce2c4e5a2004d4552ef52a2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "8a9ee70c43aaf417c914396645a0fa852624801b24ebb7ae78fe8272889ac888"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1979,7 +2003,9 @@
           "sha256": "ff8f68cb076caf8cefe7a6430d4ac086ce6af2ca8ce2c4e5a2004d4552ef52a2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -1996,7 +2022,9 @@
           "sha256": "7b63ecd5f1902af1b63729947373683c32745c16a10e8e6292e2e2dcd7e90ae0"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2013,7 +2041,9 @@
           "sha256": "f7bdb3426d045cd50efd4953026e3eb5a83d0199f458a075602611b9344da5b9"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2030,7 +2060,9 @@
           "sha256": "86dd7f026f916daf7511e39951ad8ea8cf55a8db67ae64060dacf829761c18f3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "46a1761807faccc9a19e86944bbf40610014066306f96edcdedc2fb714bcb7b8"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2047,7 +2079,9 @@
           "sha256": "dc91f8200e4b2a1f9261035d4c18c33c246911a6c0f7b543d75347e61b249cff"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "918d3568bebf352712bc2ef3d46a8bcf1a75b373be6539de198e9105cbbf9ce0"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2060,7 +2094,9 @@
           "sha256": "41ca90213441b294e7517d5858f0cc85bc12e19ec044001b45bc213de461d33b"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "d75e94d66081e4d8dcd098bd8dc5254800fea14a26389b298410158d834de167"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2073,7 +2109,9 @@
           "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "fe090a42a0d3140fed8c63263ed1fecc02422cb2f4bfe55cd8de2de1b8e105dd"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2086,7 +2124,9 @@
           "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "25d29b57c17c6528d0dc4c2141cfa2d08200465acb537a3909c8b9b8a4a984c0"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2099,7 +2139,9 @@
           "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "404a3b8c486f205c87fe7f23ab6894d84a4ad76d6e4671ae1981ba7def87c599"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2112,7 +2154,9 @@
           "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "20f0088bfb7441f7a37fa0c9e20cb1e9cba1cac6b9ce8cd2a6dc44294f8e8cbc"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2125,7 +2169,9 @@
           "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "2ea83d991c56158f7cf898bf86436c1dfe7c07ee82fe88951f2695c9f37a379f"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2138,7 +2184,9 @@
           "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "b98f29af82d02b163fe50161388350e743bb3107cc8e8c2f7314cb505faddfcf"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2151,7 +2199,9 @@
           "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "413099315636c588ee8f011190b329b971a09a8fae9d157e01dcae8379468514"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2164,7 +2214,9 @@
           "sha256": "508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "b9e0384b61958566e926dc50660321d12159025e767c18e043daf26b70104c39"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2181,7 +2233,9 @@
           "sha256": "b38f11f6096706e6de553dabe2a7ed142d59b6fa8c97e290c67496154745cdd5"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "3b0875f23caa03898994f6ddc501886a45c7d3d62d04d2d90788d47be1b1e4de"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2198,7 +2252,9 @@
           "sha256": "8b43ce8accd61e9d370b5ca9e9c4f953279b5c239926c62315b40e24df51b726"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "cb68373c0d6620ef8105e855e7745e18b0d00d3bdb07fb532e434244cdb9a714"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2215,7 +2271,9 @@
           "sha256": "ecc269ef87fd38a1d98e30bfac9ba964a9dbd9315c3770fed98d4d7cb5882055"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "bd070e393353796e801d209ad339e89596eb4c8d430d18ede6a1cced8fafbd99"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2232,7 +2290,9 @@
           "sha256": "ecc269ef87fd38a1d98e30bfac9ba964a9dbd9315c3770fed98d4d7cb5882055"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "cc4e190f5d26ca7051642629da2c52fc03bde85a03197c99408dcd291734c855"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2245,7 +2305,9 @@
           "sha256": "270b0d81891aa44c7e8726cf9432dade9556a01c848bacd2f3ef839c9c1a1859"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "f4200d433cbd5178df7797c9c2e75b348b728e39631cf14520d1e2fc424201f4"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2262,7 +2324,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c869c684d7777685682"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2279,7 +2343,9 @@
           "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "b2b005715dcbeb0089a3c0dab99f2ff1cc3b2525323552703d648585d342a383"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2296,7 +2362,9 @@
           "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "5e52fe76043ccecc9005d2305ebaadf7d7fc0cc89ca6baa10a94d6bc68c7128c"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2313,7 +2381,9 @@
           "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "fa8377070c6bae868759445e5a77f66d84f0b72f3a054bfb00e6d038b8282da7"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2330,7 +2400,9 @@
           "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "875a5a69ac2bab1a891711cf5eccbec1ce0341ea805560dcd90b7a2e925132e8"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2347,7 +2419,9 @@
           "sha256": "87f7527b1066337751f7f4d717089bf514ff8f7ee7d66c4c5b891b09e744ec11"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "7421438de105a0827e44fadd05377727847d717c80ce29a229f85fd04c427b72"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2364,7 +2438,9 @@
           "sha256": "2bc107bdc18a74263d20bdefdb8073e17bc1a01b6b374dc5835683a33ee5ba7d"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "a5a3cc660ba5d72bce0b3bb295bf20847ccbb40fd423f3f05b61273672e561fe"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2381,7 +2457,9 @@
           "sha256": "31dbbab009f1b2e59a1622d5955dfafc38ebe834000215b49d954c6f85fe927c"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "0fbe853b403ae61a04233030ae8a79d94975281ed9770a1f9e246732b534b28d"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2398,7 +2476,9 @@
           "sha256": "123a331b5dbf04c30097fa43b8f858bc85df671fe776de498d01f3d6b7c1f69e"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "65cd87c9a6d60536580b316ad985726104730a5151c99845f2490428ef91240a"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2411,7 +2491,9 @@
           "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "47d9d19d1d6efa0109d2f65ff4c85cddd50bd572e5a00127ab10987290bcefae"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2428,7 +2510,9 @@
           "sha256": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "224399e74b87b5f3557511d98dff8b14089b3dadafcab6bb93eab67d3aace965"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2445,7 +2529,9 @@
           "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "f9f8bd3e56ce4dfc153cf470fffbfa98c7620958b312ca5c3a4b8d5181fd13c6"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2462,7 +2548,9 @@
           "sha256": "86dd7f026f916daf7511e39951ad8ea8cf55a8db67ae64060dacf829761c18f3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "7122d987ec5f704ee56f6e5b41a7d93722e9aae27ae07cafa4036c4d3f9757de"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2479,7 +2567,9 @@
           "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2496,7 +2586,9 @@
           "sha256": "df9cfd06d8a44d9a671eadd39ffd97f166481da015a30f45dfd27886209c5922"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "6877bb514081ee2a7ff5ef9de3281f14a4dd4bceac4c09388074a6b5df8a139a"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2521,7 +2613,9 @@
           "sha256": "0a54e647fe54104658b5e563c04c6f9edf251710e47bce692e0bd990a4ddaa39"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "1fa76a2c86f704bdb222d66965fb3d63269ce38518b83cb0575fca855ebb6316"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2546,7 +2640,9 @@
           "sha256": "0a54e647fe54104658b5e563c04c6f9edf251710e47bce692e0bd990a4ddaa39"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "b63fbc4a50860e98e7b2aa7804ded1db5cbc3aff9193adaff57a6931bf7c4b4c"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2559,7 +2655,9 @@
           "sha256": "07919255c7e04793d8ea760d6c2ce32d19f9ff02bdbdde3ce90b1e1880929a9b"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "1788edb87fdc09c7e26304471e2f5be8cdefb1b6930d6e3985fc02ff53bf86ee"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2580,7 +2678,9 @@
           "sha256": "b99f9d43803f2ac979c50949df630bd8eeaf2fcd1b9fdb9093710d70f5dfb63d"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "cca139e57da4383727f189e43e66e84fa372347027fc996f9f1a007ec0a37996"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2593,7 +2693,9 @@
           "sha256": "f7715d38a3fa1b4ac97c5729740752505a39cb92ee83ab5b102aeb5eaa7cdea4"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "650eef8c711430f1a879fdd01d4745a7deea475becfb90269c06775983bbf086"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2610,7 +2712,9 @@
           "sha256": "e2e245f2b566d0bfafb0f6a04c16b82d710c4e6e7d799e39bb4ef6e541b85b98"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "521739c6d2bac4aa25192232afe6841231376b2b26d4d9fae5ecf8ca5772e441"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2627,7 +2731,9 @@
           "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "071dfc062690e90b734c0b2273ce72ad0ffa95f0c74596bc250dcfd960262841"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2644,7 +2750,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2657,7 +2765,9 @@
           "sha256": "66a3107d5ad6a058aab753eaac2047ccb2ed0e39465dd0fe5844da3e300d5172"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "04744f49eae99ab78e0d5c0b603ab218f515ea8cfe5a456d7629ad883a3b6e7d"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2674,7 +2784,9 @@
           "sha256": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "93857453250e3077bd71ff98b6a65ea6621a19bb0f559a85248955ac12c45a1a"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2691,7 +2803,9 @@
           "sha256": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "2621685985a2ebf1c516881c026032ac7deafcda1a2c9b7850dc81e3dfcb64c1"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2708,7 +2822,9 @@
           "sha256": "b38f11f6096706e6de553dabe2a7ed142d59b6fa8c97e290c67496154745cdd5"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "9b4f627cb1b25917193a259e49bdad08f671f8d9708acfd5fe0a8c1455d87220"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2721,7 +2837,9 @@
           "sha256": "0ab4d106b6faac07fb6a051815fd1b4d862d730895e2d7d7358c2f13565e7a38"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "c1562dc717473dbaa4c1f85a36410e03c047b2e7df7f45ee938fbef64ae7fadf"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2734,7 +2852,9 @@
           "sha256": "0ab4d106b6faac07fb6a051815fd1b4d862d730895e2d7d7358c2f13565e7a38"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "49aa7f9d80421bca176ca8dbfebe668cc7a2684708594ec9f3c0db0805d5d6e1"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2747,7 +2867,9 @@
           "sha256": "0ab4d106b6faac07fb6a051815fd1b4d862d730895e2d7d7358c2f13565e7a38"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "135ace3a761e564ec88c03a77317a7c6b80bb7f7135ef2544dbe054243b89737"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2760,7 +2882,9 @@
           "sha256": "0ab4d106b6faac07fb6a051815fd1b4d862d730895e2d7d7358c2f13565e7a38"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "812f032b54b1e759ccd5f8b6677695d5268c588701effba24601f6932f8269ef"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2773,7 +2897,9 @@
           "sha256": "0ab4d106b6faac07fb6a051815fd1b4d862d730895e2d7d7358c2f13565e7a38"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "e57fef6bc5981e38c2ce2d63bfa546861309f875b8a75f092d1d54ae2d64f266"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2790,7 +2916,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "a89322df9ebe1c1578d689c92318e070967d1042b512afbe49518723f4e6d5cd"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2803,7 +2931,9 @@
           "sha256": "5b0ae40d1a35f7ae6591a28e44771240e6a88cb03a66c9189a45b9681639b466"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "327a4cb2ad49dc48adfdc9da89e22c64d488b508c67a044d71ba729e4521a285"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2820,7 +2950,9 @@
           "sha256": "eaf40297c75da471f7cda1f3458e8d91b4b2ec866e609527a13acfa93b638652"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "60769b8b31b2a9f263dae2776c37b1b28ae246943cf719eb6946a1db05128a61"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2833,7 +2965,9 @@
           "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "d83eb9bc6d8e5cf568e7a1101d60ee05e81ed50ea106026f3d18deeb046d7661"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2850,7 +2984,9 @@
           "sha256": "070dbc7dda03a29296f2d58bdb9b7331af90f2abc9f31df22875d1eabaf29852"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "4a6394b9e965e73d0a289ee54f589087e2c676aedf60885baf52c76b771e4958"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2863,7 +2999,9 @@
           "sha256": "7ca6700600dfa9c9497bf5556365067daa802c871ea78239f129309c7a2048f7"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "925383efa346730478fb4838dbe9137d2a47675ad789c546d150a6e1dd4ab31c"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2880,7 +3018,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2893,7 +3033,9 @@
           "sha256": "f0cf9b1c62bbe3bd3a69f5f79c7158f513f612b4940a0a812d1db39d605318bc"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "41b1177fdf999d2321d3fb46ff47159d9c1fb9ad66a4879f8c50a0b504615e9b"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2910,7 +3052,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "1fbf4db142a473a8d80c26bbf18454ed458bf8d26c8219c331daecfdbd079001"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2931,7 +3075,9 @@
           "sha256": "ae895c8576e682f310fb70d93d9f99b1dd82872094c54a8f6cdfe2ca5c2d6ecb"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "20675572f6f24e9e76ef639bc5552774ed45f1c30e2951e1e99c59888861c539"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2948,7 +3094,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "7e440fb4e4b4147295338efb76001ab9e4efc0e5839df2c47fc5ac2381d365c3"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2965,7 +3113,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "92ecd8964f8453721699a1ed72037b0db49ce2f5a5138486ee89bed6f67cdf3a"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2982,7 +3132,9 @@
           "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "f020237b6c8eed93db2e2cb53c00c60a8e1bc73da7d073199a1180401450218d"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -2999,7 +3151,9 @@
           "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "ad8553b9b26413251cbf30e620595c7a41b3887f03da04579c0e6b0d6a06b4b2"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3016,7 +3170,9 @@
           "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3033,7 +3189,9 @@
           "sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "6b1e7f9a428571be2dc5bc0505c13fb6bf936822b894ec87abf8a08a4e51742d"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3050,7 +3208,9 @@
           "sha256": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "cfcb3a22ef46e85b45de6ee7e79d063319ebb6594faafcf1c225ea92ab6e9b92"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3067,7 +3227,9 @@
           "sha256": "cb3c929a05e6cbc9de9ab06a4c57eeb60ca8c724bef6c138c87d3a577e27aa14"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "93fc1dc3aaa9bfed95e02e6eadabb4baf7e3078b0bd1b4d7b6b0b68378900502"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3080,7 +3242,9 @@
           "sha256": "1954992a2b32e8a2af24a4c11b726902e344c1934b947a77f04d404908f8db30"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "3fbf2ae1b8bc8e02df939598064d22402220cd5bbcca1c76f7d6a310974d5615"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3093,7 +3257,9 @@
           "sha256": "1954992a2b32e8a2af24a4c11b726902e344c1934b947a77f04d404908f8db30"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "4cd191f9397d57d581cddd31014772520aa448f65ef991055d7f61582c65165f"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3106,7 +3272,9 @@
           "sha256": "1954992a2b32e8a2af24a4c11b726902e344c1934b947a77f04d404908f8db30"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "ab508826f74a77ca9d5aba6ff19b522583ee3eaf28a19384ff3d0e5835fadf6e"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3119,7 +3287,9 @@
           "sha256": "1954992a2b32e8a2af24a4c11b726902e344c1934b947a77f04d404908f8db30"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "32e265784ad618884abaea0600a9adf15393368d840e0222d101a072f3f7534d"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3136,7 +3306,9 @@
           "sha256": "fb77f0a9c53e473abe5103c8632ef9f0f2874d4fb3f17cb2d8c661aab9cee9d7"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3149,7 +3321,9 @@
           "sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "8adfa1c298912827b8a28b223b3b874357397ae706e6190acd9bf28cee99114d"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3166,7 +3340,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "8a7852d02fc848982e0c167ef163aaff9cd91dc640ba85e263cb1ce46fae51cd"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3183,7 +3359,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "4148590afebada386688f18773da617792bf2ef03ffc1e4cbd2b1d45b023e0ba"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3200,7 +3378,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "f9faf48a4a2d2693be24c6289dbe26552776eb7737074e6722891fadbe6c5058"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3217,7 +3397,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "67dca2c9c51e58a4791a4b1ed58308b39c64224d349a935ab5039aa360942a48"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3234,7 +3416,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "e7a5d71263a5a7d47b41f6b3f06ba276f10cc18b0931f1799f710578e2309348"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3251,7 +3435,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "18d26a20a969b9e3fdf2fc2d9f21eda6c40e2de84c9408bb5d3b05d499aae711"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3268,7 +3454,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "e7e9cc8b1b85264074fbcc02a88680c4096b1e47df8f739dceb03bf482f04bd6"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3285,7 +3473,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "8d3b1629de253c70a0508c3899572da79ca359fdab27c7920ff00406df418906"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3302,7 +3492,9 @@
           "sha256": "6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "4e7523beb55eece201a2356bee0bbca0d1ab466c14c07703b2e0ee6d42cb0c2c"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3319,7 +3511,9 @@
           "sha256": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "df9adc193c780ef8f159aee8b61e2d5801aaa555e6eb0947fe45530ec506296f"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3336,7 +3530,9 @@
           "sha256": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "3e17bbc68e28663bbbb90df47e058aa7eda4fb445b89fe70457bb94fbccf6e49"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3353,7 +3549,9 @@
           "sha256": "e53a7165e8bc3ced5e5628404b3d2d28ecc14ad720f1c09ba28385d5151ecf93"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "04f3666a07a197cdb77cdf306c32be9b7f598d7060d50cfd4d5aa04bfd92f6c5"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3370,7 +3568,9 @@
           "sha256": "e53a7165e8bc3ced5e5628404b3d2d28ecc14ad720f1c09ba28385d5151ecf93"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "772ee033c0916d670af7860b6e1ef7d658a4629a6d0b4c8c3e67f09b3765b75d"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3387,7 +3587,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "170fb83ab34de17dc69aa7c67482b22218ddb85da56546f9bd6b929e32a05930"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3404,7 +3606,9 @@
           "sha256": "b4eb00df6e2a4d22518fcaa6a2b4646f249b3a3c9814509b22bd2091f1392ff1"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "a7507d819769d01a365ab707794a4084392c824f54a7a6a7862f8c3d0892b283"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3421,7 +3625,9 @@
           "sha256": "4455bf75a91154108304cb283e0fea9948c14f13e20d60887cf2552449dea3b1"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "f8fadd59c855ef2080decdef8ff161eb6661b86933c9d82e5ba29dc602a55aba"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3434,7 +3640,9 @@
           "sha256": "42a35170233e83e18856792e748de4c1ce4a63b2afce9a370c89ef3fe23f9f2d"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "3a219298ac11a56ea9a6d2120044824d6f01aeb034955e7af7bc16858527deea"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3455,7 +3663,9 @@
           "sha256": "f9c4c77baa3828004ee54b8a4f2db2e88ed44a6237a493965bf551fac0fcb62d"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "33f4fe9184a62d842c9ef383018f3306d8ba224fd9d836f56d7288308847c256"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3472,7 +3682,9 @@
           "sha256": "0b28172679e0009b655da42797c03fd163a3379d5cfa67ba1f1655e974a2a1a9"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "d0d5d4b1981b8bbbb7aed204cae5726d683d5d6ac7e74ec54122ea28f315e7c8"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3489,7 +3701,9 @@
           "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "c3d1e2c7f27f8d4cb10542a02c49005dbd6e93095799d6f3be745fae9f8fedd4"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3506,7 +3720,9 @@
           "sha256": "0463bfa47d6d763d8c824333efb0e6d6df3946c13c3b077c78ed9f23ca50d0f2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "aac18da81ebbf05109ab275b157c22a653bb3c12cf884450179942f81bcbf6c3"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3523,7 +3739,9 @@
           "sha256": "5e05b024f653a5ce199e77cbbbd42fb5553562ec714b819421ed0c3e552a75d7"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "6ce2be8dc25455e1f91df71bfa12ad37d7af1092ae736f3a6cd0e37bc7810596"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3548,7 +3766,9 @@
           "sha256": "c1ff532091cac33bdecedf7268ff4f9bc3ddcffba494249fb723033e9e782f1a"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "ff7589a1859b09232522bb9edf076ca7fcf14ded96685d3fa629db73023ffbb7"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3565,7 +3785,9 @@
           "sha256": "62065228e42caebca7e7d7db1204cbb867033de5982ca4009928915e4095f3a3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "a18596f8c785a729f2819c0f6a7eae6ebeebdfffbfe4214ae6b087f690e31901"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3582,7 +3804,9 @@
           "sha256": "62065228e42caebca7e7d7db1204cbb867033de5982ca4009928915e4095f3a3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "585635e46db231059f76c5849798146164652513eb9e8ab2685939dd90f29b69"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3595,7 +3819,9 @@
           "sha256": "1e697ce8d21401fbf1bddd9b5c3fd4c4c79ae1e3bdf51f81761c85e11d5a89cd"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "7da8b5736845d9f2fcb837ea5d9e2628564b3b043a70948a3f0b778838c5fb4f"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3612,7 +3838,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "872831b642d1a07999a962a351ed35b955ea2cfc8f3862091e2a240a84f17297"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3629,7 +3857,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "d78c8dee4c7bf0e14673097256fed6142ce9d3b85a408189d07482442145823b"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3642,7 +3872,9 @@
           "sha256": "219920e865eee70b7dcfc948a86b099e7f4fe2de01bcca2ca9a20c0a033f2b59"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "901704edd0dfe137f1987838ee4f259e4e063c31371bdb423f7ae38ec6f77f02"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3659,7 +3891,9 @@
           "sha256": "02b6448337b757772d90e5f31caaa0f9e6afaad2221c01771d0a3deaa4d4196c"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "d5777b06fe6435126ae8d816eba269e050e1e10d302cf5461e9c49eccabc3548"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3676,7 +3910,9 @@
           "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "5fb0244332cfb9cee7e2a568bf5da29a36ed8fdbd717f6f47a66b6b7b358c072"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3693,7 +3929,9 @@
           "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "adddb0e648752aaac5da9c3c3c6a68e1e87cab55e3b757b18a9441ef8c3ac614"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3710,7 +3948,9 @@
           "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "fb37631cf71dab5e8ab55e1bdd701e18a52653d90b78e71d0e5598b1e0a61316"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3727,7 +3967,9 @@
           "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "0cc38db58854c10fb5f91a887ed8bf82d3239bb92b5d8db86eda09e96d9963d1"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3744,7 +3986,9 @@
           "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "7c55766d99cea69055904d1735b93c2049302b2e09effd462120deb5581d78e9"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3761,7 +4005,9 @@
           "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "e1aa9d8b7a120f879f44fdc1053f7b7dbf416bf0bbc6a72b714dec46b782b52f"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3778,7 +4024,9 @@
           "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "362ab21cd4cc713f2a02b1a9b5688198b1541cfb6907c4281e9190e0f0ef4aa3"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3791,7 +4039,9 @@
           "sha256": "d9fa6b0e6fed50d4961b9c931587af6bd127df13e9473418d3e324f427db4f06"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "c52bb6904475a6ca662f15ef787f18ade61d5740a1ee12c45d3b748efdb6f796"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3808,7 +4058,9 @@
           "sha256": "60a7062291b01ba068f300612cdbdc20382ac1d4934f07bcdd7167c15299f309"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "5fed54709c5b3a53d09bb1c113ea4f5ceafd1e772ddcb0030a82e1d56c087b08"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3825,7 +4077,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "09e52cb86a36cede5cb101bf8908837b3e4c6e5e59fe7fd85c23fb56200d189e"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3842,7 +4096,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "fe5197923287db20a58125f0bc85c062f7f2c892de97b18c356f9efb14b28524"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3859,7 +4115,9 @@
           "sha256": "2537228d9a1b44a5dc595241349cae7090b326c8de165aaf89bfddef4a00d0fc"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "cdb87b95ec50ddfa440816d227a17b2ccbdda963a316a727fda0fc4334f7d134"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3876,7 +4134,9 @@
           "sha256": "2537228d9a1b44a5dc595241349cae7090b326c8de165aaf89bfddef4a00d0fc"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "9e1c906769ad99c88eaa54e728060edef082f8e358ff32030cb7c7d315e81109"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3893,7 +4153,9 @@
           "sha256": "2537228d9a1b44a5dc595241349cae7090b326c8de165aaf89bfddef4a00d0fc"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "7e689342a48d2ea927c87ea50cabf8594854bf940e9310208848d680d668ed85"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3906,7 +4168,9 @@
           "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "abc840c238154d58f9e86b2792261edfde565a17696e1cda1a449de27979801a"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3927,7 +4191,9 @@
           "sha256": "84b34dd7608f7fb9b17bd588a6bf392bf7de504e2716f024a77d89f1b145a151"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "fd3ca314f692efd6c868f8408f53fe444634a845f96c028b97d35f6a1f79f0ee"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3940,7 +4206,9 @@
           "sha256": "253cd04c6714889df2d32f3f64d669179a1c95c76ac43c40882c52eb06bc3552"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "b52fd3255258d26fac7264ab5a76b53c13367136dc011d3d6ad4f8ed070396a3"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3957,7 +4225,9 @@
           "sha256": "6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "20489e00e4d8741d6be680764cc12e270655e375a20d1011e844a9c3379e678d"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3974,7 +4244,9 @@
           "sha256": "6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "2b86d767906c6c42421dcba507eb9d203e779497710a47782a224bb871653053"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -3991,7 +4263,9 @@
           "sha256": "6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "baa693a8032d7e1cada7d0041e96126df243179ff061456783ac7f12bda4744c"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4008,7 +4282,9 @@
           "sha256": "6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "06bdbd8cfc056b8d2e2e85f29b56a3bdbecb527cef81eb39e3e7b98af4652770"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4021,7 +4297,9 @@
           "sha256": "898b1ae9821e98daf8964c8d6c7f61641f5f5aa78ad500020771c0939ee0dea1"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "63e71662fa4b2a2c3a26f570f037eb95bb1f85397f3cd8076caed2f026a6d100"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4034,7 +4312,9 @@
           "sha256": "898b1ae9821e98daf8964c8d6c7f61641f5f5aa78ad500020771c0939ee0dea1"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "db97caf9d906fbde555dd62fa95ddba9eecfd14cb388e4f491a66d74cd5fb79a"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4055,7 +4335,9 @@
           "sha256": "6c1e5d0ccf5e8951401cb964036ae664d52fc8d1148173b53bc54fc534f5d404"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "b2b9c52859a94554803ccd4a24b98f74148ebc73b90676d783f3490b1bff9d72"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4072,7 +4354,9 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "bc7d623258602320d5c55d1bc22793b57daff0ec7efc270ea7d55ce1d5f5471c"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4093,7 +4377,9 @@
           "sha256": "a825bd853ab71619a4923d7b4311221427848070ff44d990da39b0b274c1683f"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "b6f5e870be6c3b371b77fe0ee0bafb859fa4964b4404c27de1d380043c4dda20"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4114,7 +4400,9 @@
           "sha256": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "a2c754d6c33795a1c324727428e5a7dedb5b06195f9890bdbcba760d3e246563"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4131,7 +4419,9 @@
           "sha256": "7b63ecd5f1902af1b63729947373683c32745c16a10e8e6292e2e2dcd7e90ae0"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "c6f5d3c3b1bf09027a88a6bc961fc00497d651009560b5463668dc81b0fa87a8"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4148,7 +4438,9 @@
           "sha256": "b38f11f6096706e6de553dabe2a7ed142d59b6fa8c97e290c67496154745cdd5"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "ff67a8a4397373c3ef660812acab3268222035010ab8680ec4215f38ba3d0eed"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4161,7 +4453,9 @@
           "sha256": "5cf1c9dc617e4cad7fa03181ff893601ad5243aa3be527ef39034e1cd6377676"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "df16f50ef4cc145211879a3867ba757076b25dfee812040dcb0658bd9ae7904b"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4178,7 +4472,9 @@
           "sha256": "3fa4ca83dcc9237839b1bdeb2e6d16bdfb5ec0c5ce42b24694d8bbf0dcbef72c"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "af3bd9d3e571c26fcce9d033b87ea5ab061b8d2ffe9b7a5675d810d68f03edf0"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4195,7 +4491,9 @@
           "sha256": "3fa4ca83dcc9237839b1bdeb2e6d16bdfb5ec0c5ce42b24694d8bbf0dcbef72c"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "3a3b425286980a367278453f3b6d28cdcb134b574e5a35824a6ff5eebad50bb6"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4212,7 +4510,9 @@
           "sha256": "436bc5a105d8e57dcd8778730f3754f7bf39c14d2f530e4cde4bd2d17a83ec3d"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "4a0e2d11620c50695fe12bbbfde96b3477fe606e7284c22d505c12ce51214514"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4229,7 +4529,9 @@
           "sha256": "b7e650f3fce5c53249d1cdc608b54df156a97edd636cf9d23498d0cfe7aec63e"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4242,7 +4544,9 @@
           "sha256": "b9b7e5d4bf8857061fbecab39ef1923644eba639337af22d7ad0bb9b3ce59c49"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "be979b7f07507105799e854203b470ff7c78a1639e330a58f183b5fea574608b"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4255,7 +4559,9 @@
           "sha256": "b9b7e5d4bf8857061fbecab39ef1923644eba639337af22d7ad0bb9b3ce59c49"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "fb067e4cbd1ff067d1df46c9194b5de0e98efd2810bbc95c5d5e5f25a3231150"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4272,7 +4578,9 @@
           "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "29790946404f91d9c5d06f9874efddea1dc06c5efe94541a7d6863108e3a5e4b"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4289,7 +4597,9 @@
           "sha256": "f428305bbf2e70fbd807af0f3c7ac1b7acfb95311640f451e9d2e48db6d7e96b"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "5a6580f308b1fad9207618087a65c04e7a10bc77e02c8e84e9b00dd4b12fa0bb"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4306,7 +4616,9 @@
           "sha256": "86dd7f026f916daf7511e39951ad8ea8cf55a8db67ae64060dacf829761c18f3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "ba8b815c1b593dc0baf78dd0f4fc8fdb2de53198fb1163738093e9a311c33fb3"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4319,7 +4631,9 @@
           "sha256": "0dcf41516e608bbcb6cdc5229feb7b86fe4a643b85e7df251133c93408fdac73"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "3f89fca7a704cee10dcb3654c1dbb8941d1783132f1917358af75bec37a7d7e6"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4332,7 +4646,9 @@
           "sha256": "0dcf41516e608bbcb6cdc5229feb7b86fe4a643b85e7df251133c93408fdac73"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "67a921c1b6914c367b2b823cd4cde6f96beec77d30a939c8199bb377cf9b9b54"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4345,7 +4661,9 @@
           "sha256": "0dcf41516e608bbcb6cdc5229feb7b86fe4a643b85e7df251133c93408fdac73"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "b3a07132775117d6065853d9d1178157b8c90e228de47129d6bce2c7edebedfb"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4362,7 +4680,9 @@
           "sha256": "cb3c929a05e6cbc9de9ab06a4c57eeb60ca8c724bef6c138c87d3a577e27aa14"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "c2a7b1c03c876122aa43f3020e6c3c3ee5c05081c9a00739faf7503aeba10d22"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4383,7 +4703,9 @@
           "sha256": "7ccef0d35e8507fa02d7e904a5277d62723f9ec576d52f6a865cab7b4dbf12ad"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "111e51caca442cafd9bab396628ac4d814880eaea4e63dfd76a12e9f342b5580"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4400,7 +4722,9 @@
           "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "527fadee13e0c05939a6a05d5bd6eec6cd2e3dbd648b9f8e447c6518133d8580"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4417,7 +4741,9 @@
           "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "23b2d95af1a8a14a3c7367e1ed4fc9c20e0a26e79551b1454d72583c97cc6610"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4434,7 +4760,9 @@
           "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "b8e83a14d34d0623b51dce9581199302a221863196a1dde71a7663a4c2be9deb"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4451,7 +4779,9 @@
           "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "e1d6f90251fe18a279739e78025bd6ddc52a7e22f921070ccdc67dde84c605cb"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4468,7 +4798,9 @@
           "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "053e2e040ab57b9dc951b72c264860db7eb3b0200ba345b4e4c3b14f67855ddf"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4485,7 +4817,9 @@
           "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "3f316c4a2570ba26bbec722032c4099d8c8bc095efccdc15688708623367e358"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4502,7 +4836,9 @@
           "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4519,7 +4855,9 @@
           "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "6e2e40844ac143cdb44aead537bbf727de9b044e107a0f1220392177d15b0f26"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4536,7 +4874,9 @@
           "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "7781fa89eaf60850ac3d2da7af8e5242a5ea78d1a11c49bf2910bb5a73853eb5"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4553,7 +4893,9 @@
           "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "7837d08f69c77cf6b07689544538e017c1bfcf57e34b4c0ff58e6c2cd3b37091"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4570,7 +4912,9 @@
           "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "ae137229bcbd6cdf0f7b80a31df61766145077ddf49416a728b02cb3921ff3fc"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4587,7 +4931,9 @@
           "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "3949bd5b99cafdf1c7ca86b43ca564028dfe27d66958f2470940f73d86d75b37"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4604,7 +4950,9 @@
           "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "e4060a1da109b9d0326b7262c8e12c84df67cc0dbc9e33cf49e01ccc2eb63631"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4617,7 +4965,9 @@
           "sha256": "cb5aedb296c5246d1f22e9099f925a65146f9f0d6b4eebba97fd27a6cdbbab2d"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "23b97319f7b8343df12cc98938e5c3eb436064524c8d2b4e30a1d3a36eecdf81"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4630,7 +4980,9 @@
           "sha256": "ea021d8c6383c84d19c15ce90d3b1602cf448fdcc0bf3772c98e43c7bf1bf1d1"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "7d6f32a0ff4a9f6f01231eb2059cc85479330739333e0e58cadf03b6af2cca10"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4643,7 +4995,9 @@
           "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "3ad82d2a33cdc9674dc7465672f271e096168fcdbe0f799d9e6db8c5892679dc"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4664,7 +5018,9 @@
           "sha256": "26235c41e314fb0da35b33b2bb5bcbc4dd523839f8eeca52efcd43586f441fb5"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "759c50ddad0ef9913bb5496cb9d509a50433a3b78cb0238d61105526589cf0e9"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4677,7 +5033,9 @@
           "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "417ef3fcf6c300b7dbd25c85531a746931c02ad536f3cf4786ed1e88223340b3"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4690,7 +5048,9 @@
           "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "ec8ebde2db3681e8c9980cc27822030e68752690ddfa9473e739aeb4dbde6d71"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4703,7 +5063,9 @@
           "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "0ec05a11813ea801ff6d75110ad09cd0824ddba17dfe17128ea0d5f68e6c5272"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4716,7 +5078,9 @@
           "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "f75b4683f6c7f45248d4d64056a24298c6281e0993356d7d1b4a1a962ef10d4a"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4729,7 +5093,9 @@
           "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "4ea269c3bd32f0a32c321907a2ae912ba6f4649bb0fc764a15627e99a7095a3f"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4742,7 +5108,9 @@
           "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "f58a2799cfe9a1670c7ea8edbd52ef8edb93cb37a7f83bf31ba9e35d9dae6a40"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4755,7 +5123,9 @@
           "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "c3743ddbf47738d929cd1ae2e199d40d0162979dfe31aef8ae646d2bf00bf97a"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4768,7 +5138,9 @@
           "sha256": "e72111c52b7d96ebe25348dee19f0744f444d3c95ae6b1ecb6ccaecc5bce05ba"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "b268e58e7c693d7c271f93ffc4ba3b380412554231c85bf61ca7af91042a4112"
     },
     {
       "ecosystem": "cargo-resolved-including-build",
@@ -4781,20 +5153,24 @@
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_registry": "registry+https://github.com/rust-lang/crates.io-index",
+      "crate_archive_sha256": "29666d0abbfad1e3dc4dcf6144730dd3a3ab225bbbdac83319345b1b44ccfc1b"
     },
     {
       "ecosystem": "runtime",
       "name": "CPython",
-      "version": "3.12.14",
+      "version": "3.14.10",
       "declared_license": "PSF-2.0 and bundled third-party notices",
       "notices": [
         {
           "file": "LICENSE.txt",
-          "sha256": "886a0ead2d89030ee62dbff52b04e47ab91998341295bb9c56fb952b4e081c7a"
+          "sha256": "935cf13e19f8c31b497d20b05d73623431a226b230c3599bc30fa3348979bc68"
         }
       ],
-      "review": "notice_captured_not_legal_approval"
+      "review": "notice_captured_not_legal_approval",
+      "source_url": "https://www.python.org/ftp/python/3.14.10/python-3.14.10-embed-amd64.zip",
+      "archive_sha256": "90905e64a840557d8c1bc4f5b74db3d7ee85e3ffb217611cac1c7813acea4159"
     }
   ]
 }

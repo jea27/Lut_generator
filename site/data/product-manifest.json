@@ -496,28 +496,26 @@
       "delivery_prs": [
         65,
         70,
-        88
+        88,
+        89
       ],
       "code_paths": [
         "apps/desktop/src-tauri/tauri.conf.json"
       ],
       "tests": [
         "tests_mvp/test_beta.py",
-        "tests_mvp/test_packaged_qa.py"
+        "tests_mvp/test_packaged_qa.py",
+        "tests_mvp/test_embedded_runtime.py",
+        "tests_mvp/test_nsis_audit.py"
       ],
       "evidence": [
         {
-          "path": "docs/evidence/LOOK_03_INSTALL_B2.json",
-          "field": "exit_code",
-          "equals": 0
-        },
-        {
-          "path": "docs/evidence/INTEGRACION_036_QA.json",
-          "field": "frozen_api_restricted_path_passed",
+          "path": "docs/evidence/RUNTIME_036_QA.json",
+          "field": "technical_preparation_passed",
           "equals": true
         }
       ],
-      "acceptance": "Tauri/NSIS y sidecar. Verificación local; Windows limpio sigue pendiente.",
+      "acceptance": "Tauri/NSIS con Python oficial aislado, fuentes/hash y pruebas locales verificables. Windows limpio y actualización directa pendientes; no autoriza distribución.",
       "review": {
         "steps": [
           "Ejecutar protocolo de QA en el equipo de prueba autorizado.",
@@ -545,7 +543,11 @@
         "packages/colour_core/engine.py",
         "packages/colour_core/image_io.py",
         "apps/desktop/src-tauri/src/main.rs",
-        "apps/desktop/engine_entry.py"
+        "apps/desktop/engine_entry.py",
+        "packaging/runtime.lock.json",
+        "packaging/python314._pth",
+        "scripts/build_embedded_runtime.py",
+        "scripts/build_beta.ps1"
       ]
     },
     {
@@ -914,7 +916,7 @@
         "id": "clean-windows",
         "title": "Instalación en Windows limpio",
         "kind": "evidence",
-        "path": "docs/evidence/LOOK_03_INSTALL_B2.json",
+        "path": "docs/evidence/RUNTIME_036_QA.json",
         "field": "clean_windows",
         "equals": true
       },

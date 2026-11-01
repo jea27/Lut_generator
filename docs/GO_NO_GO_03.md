@@ -1,17 +1,22 @@
-# Puertas separadas de distribución · 31-10-2026
+# Puertas separadas de distribución · 01-11-2026
 
 ## Beta privada: NO-GO actual
 
-Actualización posterior a PR86: `INTEGRACION_BETA_036.md` aporta pruebas de motor
-congelado con PATH aislado y regresión Creator/Pro/Planner. No es Windows limpio
-ni setup nuevo: las44 DLL y27 archivos con cadenas de rutas upstream requieren
-revisión. No cambia ninguna puerta pendiente de esta lista.
+PR89 aporta candidato interno0.3.0-beta.3, hash y manifiesto de fuentes limpias
+cf1d451.945 archivos NSIS conciliados;923 runtime/60 PE,19 wheels oficiales
+fijados, sin copiar DLL del equipo. No contiene las44 DLL de caché de beta2.
+`RUNTIME_036_QA.json` separa pruebas reales de pendientes: actualización directa
+falló en Codex; desinstalar/instalar y conservar preset/datos sí pasó allí.
+No se extrapola a Windows limpio ni a una cuenta normal fuera de MSIX.
 
 - [x] Integración70 en main comprobada por árbol y ancestros.
 - [x] Candidato beta2 con hash/versión y pruebas locales trazables, sin originales modificados.
 - [x] Fixtures offline, guías, feedback sin envío propio y protocolo de datos preparados.
-- [ ] Procedencia/derechos de44 DLL de caché y runtime Python conciliados; gate real falla.
-- [ ] Próximo candidato con textos de privacidad corregidos y avisos acompañantes incorporados, nueva versión/hash.
+- [x] Procedencia técnica del nuevo runtime/NSIS conciliada con archivos oficiales, hashes, arquitectura y avisos; DLL del setup viejo no reutilizadas.
+- [x] Candidato beta3 con privacidad corregida, avisos incorporados, nueva versión/hash y pruebas locales.
+- [ ] Derechos/condiciones de redistribución aceptados por el titular (#60); la procedencia y una firma válida no sustituyen este gate.
+- [ ] Actualización directa beta2→beta3 superada fuera de Codex; fallo local de código2/diálogo previo pendiente de conciliar.
+- [ ] Procesamiento con red físicamente desconectada en entorno objetivo; PATH restringido no demuestra ese caso.
 - [ ] W01–W09 ejecutados en Windows10/11 limpio, con/sin WebView2, offline; upgrade/uninstall sin pérdida.
 - [ ] E01–E03 en editores reales acordados, o alcance de beta explícitamente limitado por el titular sin promesa de compatibilidad.
 - [ ] Calidad visual aceptada sobre medios autorizados, incluidos retratos si se anuncian.

@@ -142,13 +142,40 @@ class Reviews(unittest.TestCase):
         c=self.comment();records=[c,self.acknowledged(c)];new={**self.context,'revision':'b'*64}
         with patch.object(h,'context',return_value=new):self.assertEqual(self.project(records)['state'],'needs_review')
 
+    def test_current_catalog_has_valid_review_contexts(self):
+        # Exercise real versioned manifest, not only per-test feature fixtures.
+        for feature in h.catalog(self.manifest):
+            with self.subTest(feature=feature['id']):
+                context=h.context(ROOT,feature,self.manifest)
+                if feature.get('review_paths',feature['code_paths']):
+                    self.assertRegex(context['revision'],r'^[a-f0-9]{64}$')
+                else:self.assertIsNone(context)
+
+    def test_runtime_lock_change_invalidates_review_without_accepting_other_paths(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp);(root/'apps').mkdir();(root/'packaging').mkdir()
+            (root/'apps/version.json').write_text('{"version":"0.3.0-beta.3"}')
+            lock=root/'packaging/runtime.lock.json';lock.write_text('{"pin":"one"}')
+            def git(*args):return subprocess.check_output(['git',*args],cwd=root,stderr=subprocess.DEVNULL)
+            git('init');git('config','user.name','QA');git('config','user.email','qa@example.invalid')
+            git('add','.');git('commit','-m','initial')
+            manifest={'version_source':'apps/version.json'}
+            feature={'id':'windows','code_paths':[],'review_paths':['packaging/runtime.lock.json'],
+                     'acceptance':'runtime','review':{'checklist':[{'id':'check','label':'test'}]}}
+            before=h.context(root,feature,manifest)['revision'];lock.write_text('{"pin":"two"}')
+            git('add','.');git('commit','-m','changed runtime')
+            self.assertNotEqual(before,h.context(root,feature,manifest)['revision'])
+            for path in ('packaging/private.env','scripts/other.py','packaging/../secrets','C:/private'):
+                feature['review_paths']=[path]
+                with self.subTest(path=path),self.assertRaises(ValueError):h.context(root,feature,manifest)
+
     def test_workflow_auth_trusted_main_minimal_permissions_and_refresh(self):
-        workflow=(ROOT/'.github/workflows/human-review.yml').read_text()
+        workflow=(ROOT/'.github/workflows/human-review.yml').read_text(encoding='utf-8')
         for expected in ('issue_comment:','created, edited, deleted','ref: main','issues: write','45896918'):
             self.assertIn(expected,workflow)
         self.assertNotIn('contents: write',workflow);self.assertNotIn('pull_request_target',workflow)
         self.assertNotIn('github.event.comment.body }}',workflow)
-        self.assertIn('Validar revisión humana',(ROOT/'.github/workflows/sync-roadmap.yml').read_text())
+        self.assertIn('Validar revisión humana',(ROOT/'.github/workflows/sync-roadmap.yml').read_text(encoding='utf-8'))
 
 
 if __name__=='__main__':unittest.main()

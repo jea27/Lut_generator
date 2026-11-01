@@ -1,0 +1,487 @@
+{
+  "schema": "color-studio-native-signatures-v1",
+  "files": [
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "c833cfdab82da58163acdada02cdb2b92d42bc543e1b5519dbcbe4d3805a98fc",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "_asyncio.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "9590a3f4b7c0801cd379341d40bb89b5dc9a4e232c9498b6f3bc6b5e99d4ae7f",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "_bz2.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "adf71d85781a2fe937fcc44c0961498e2cf30849f9863ff7b5f7510817cea952",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "_ctypes.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "9605f332fb52636d77a3125abc7e42ba22b3838dcf136d81f37fe5875cbd62d6",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "_decimal.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "77707cb19dc91eb634d70f31b21022ee4c6ea5ce834c6952bc56ba00c6fd644d",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "_elementtree.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "9052a85ac9947afbbdfdd62b0cad7501b668e6107832cefaa4b76377d710dae0",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "_hashlib.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "9ff9f63ad79f161722106e029b4c3afc6494848fd73f9bcc2ed5434a15c71bde",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "_lzma.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "7606f4044ffc923eac208f5bc5acb1dea14fe8edf2efe08a63e11177f4c7a016",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "_multiprocessing.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "8f35ff35e76a2308ce0a50200fb01b55569f30952098239f7e000f3da1393a61",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "_overlapped.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "51a3d8e40b061db4fc77f9a3b18e6c2f912c4edf467e46c95ac325d35f2be4df",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "_queue.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "d4351e7236bd94e0a3242fdb6f26b914b9629b567ab63ec5f2a3661bcc1b7041",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "_remote_debugging.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "11f2ace2a37e59bf0f2fcfcc2523307408fa2e7f0aec561bc7531a8db130a83c",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "_socket.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "33e91d0de7924180012c86efb17611ec589b93f90b321ed9ec3c2f4c99fae5be",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "_sqlite3.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "56fdbe70896e4b3c6d4e8897fad1d011129354172566832371289edca0d85a21",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "_ssl.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "ad949327a9730feefc7f2c14db9b1b43f4351df1aad3688dc1e68e4a23f7e81c",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "_uuid.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "c8f6705d2da1be12b10050a1311b7c865fd79f11404cfad1a70b3f8962051056",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "_wmi.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "cbc875a462df36415e17c1ef182e50b541697e4d5ef9199c38737888de4317ad",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "_zoneinfo.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "7a7b50c580428daf3d43c87b121988d2e8c7af9533fa2195f1aef8652fc2c489",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "_zstd.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.5.9",
+      "required_publisher": "",
+      "sha256": "75495fe0e079ab00d49be740d3c710a0b94e3f74f9648cb7cc9f768fc7f52319",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "libcrypto-3.dll"
+    },
+    {
+      "status": "Valid",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "eff52743773eb550fcc6ce3efc37c85724502233b6b002a35496d828bd7b280a",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "libffi-8.dll"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.5.9",
+      "required_publisher": "",
+      "sha256": "8957182a9c385bfd9f3f790921de2ddc614cf91f99edbed4e9e5446a46504e32",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "libssl-3.dll"
+    },
+    {
+      "status": "Valid",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "b1834c6e5a2789cff054bafe96d6c96db18b3a9d72c4df88711ef9c7c8bc45d9",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "libtommath.dll"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "87b0f7401749bd19bddf8872c17965a99142928fdefab0b513ded9c116f3da6b",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "pyexpat.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "Python Software Foundation",
+      "sha256": "d718435b892db4ad5b547d12fec61be7baa7faf7a58d857ea58053be24c7a000",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "python.exe"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "Python Software Foundation",
+      "sha256": "7bb0a7df2d5cb829319dd8d122039843e2a762361bb5a61bb5d24ca34f4040b5",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "python3.dll"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "Python Software Foundation",
+      "sha256": "d8a06cc6ca3348925ea29e343e1c5c5895fe0bb433ff913e1cee44caf358aa6a",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "python314.dll"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "Python Software Foundation",
+      "sha256": "36392dade900489423a15686340bf5f95a64d661d9322bb4c0e0f1d4e6a84cb7",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "pythonw.exe"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "0da869c017fd3231cfc1c1e4c4bef1bb7bf5cba38236e6d7bf1630c3507c5a1d",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "select.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.50.4.0",
+      "required_publisher": "",
+      "sha256": "679cac0aa7dc1f9ba3c188565884c29a954b64f8bfbcc3b0e2163ee05b492b45",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "sqlite3.dll"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "4c4e9f9e71e299a7e0093830e79f955f2b12b4eb0a6bb45003d42256b6e5985d",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "unicodedata.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "14.51.36247.0",
+      "required_publisher": "Microsoft",
+      "sha256": "d1f4225df2cd877dbf130d5668a021dce3f94118455ff5ec952061c30afc9ce7",
+      "publisher": "CN=Microsoft Windows Software Compatibility Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+      "file": "vcruntime140.dll"
+    },
+    {
+      "status": "Valid",
+      "file_version": "14.51.36247.0",
+      "required_publisher": "Microsoft",
+      "sha256": "a7146c08f89fe5b04541ab507cdb59ff7b44534d4ba3c668a426c6450a03434e",
+      "publisher": "CN=Microsoft Windows Software Compatibility Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+      "file": "vcruntime140_1.dll"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "5a11e1e5a381572355e3ecbcf65ff5a9f4a9876f65c7264a530a3b4d08fbe9e6",
+      "publisher": null,
+      "file": "vendor/PIL/_avif.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "9ca27b1a45178437d9b57e0d3024ed535226f5150ff16fd2363d90171856f0d8",
+      "publisher": null,
+      "file": "vendor/PIL/_imaging.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "358c2378268f96e283c590e45a4c8864df0f5400814f1b84e555336a15484ee3",
+      "publisher": null,
+      "file": "vendor/PIL/_imagingcms.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "c999b975a2504bd79543167d9bf3b777041983296c49ab2b8b69328c2a002fe9",
+      "publisher": null,
+      "file": "vendor/PIL/_imagingft.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "6741c4567501c127f78b41814e4bb9f748f4883c9bba4e1d536bae91df239746",
+      "publisher": null,
+      "file": "vendor/PIL/_imagingmath.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "8a37f56a4eac2d1f8b34b6a62935b4701b7165b9a4237bc63a1cc01b802c224c",
+      "publisher": null,
+      "file": "vendor/PIL/_imagingmorph.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "b4e95439db8008cdede934b11ae8984b48ebf658140cb243d48fe5751dd7b96e",
+      "publisher": null,
+      "file": "vendor/PIL/_imagingtk.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "0a52c832b08413721f0bb09b7bdd496ef7b10e5e22a27e64a756f7daa184b425",
+      "publisher": null,
+      "file": "vendor/PIL/_webp.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "eefedf6ee006a84bbc7d3df5ec66046429b8c95dbfd5f8f8f98c5772b91d6d48",
+      "publisher": null,
+      "file": "vendor/cv2/cv2.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "ed4f167a5330424524f45258e7ca2c8d7f03c0cba1f30ee4985553ac1f88ecf8",
+      "publisher": null,
+      "file": "vendor/numpy.libs/libscipy_openblas64_-ed4f167a5330424524f45258e7ca2c8d.dll"
+    },
+    {
+      "status": "Valid",
+      "file_version": "14.40.33810.0",
+      "required_publisher": "Microsoft",
+      "sha256": "a4c2229bdc2a2a630acdc095b4d86008e5c3e3bc7773174354f3da4f5beb9cde",
+      "publisher": "CN=Microsoft Windows Software Compatibility Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+      "file": "vendor/numpy.libs/msvcp140-a4c2229bdc2a2a630acdc095b4d86008.dll"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "71521656365044a41c155d5e7c2caa47cef75a5e120e93afb82c928484aa82a7",
+      "publisher": null,
+      "file": "vendor/numpy/_core/_multiarray_umath.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "c7aafc9c574b75318aad03091aa0379b818d318f298bed57f2720903673c1d71",
+      "publisher": null,
+      "file": "vendor/numpy/_core/_simd.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "3095ab2b0c0196fe435de9c9c2a8536b12caa6937438fa63cdbab29fc5d618d9",
+      "publisher": null,
+      "file": "vendor/numpy/fft/_pocketfft_umath.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "e14722dde128b4874187c15226b7d4c76d84fd64b12ac91118ec1da5b7b8d348",
+      "publisher": null,
+      "file": "vendor/numpy/linalg/_umath_linalg.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "88c58fd95a753f56085d88138ec941e06aa76a17e441d528e80861aa21c06e74",
+      "publisher": null,
+      "file": "vendor/numpy/linalg/lapack_lite.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "f63474f66effdc5cb6355acacc5f7423c8fd651652a07a350e88bcc34e33a7f1",
+      "publisher": null,
+      "file": "vendor/numpy/random/_bounded_integers.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "d1c777c6b38a9255dba20b460a5b684a3916e3c83d51fe97002bda71d8b53d19",
+      "publisher": null,
+      "file": "vendor/numpy/random/_common.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "e0cfaf44041fc7a9dcde062fb2221164aabe1e786a165d70789eb1980a5223b0",
+      "publisher": null,
+      "file": "vendor/numpy/random/_generator.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "77099b56ac2f069a3a22f607a188c541aef81f625fbc42c1c37d02a07d0b95ec",
+      "publisher": null,
+      "file": "vendor/numpy/random/_mt19937.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "4bea0fe391eff0213a19f51d03a9559708317ecbedefb713fe216cb60c0e7eb4",
+      "publisher": null,
+      "file": "vendor/numpy/random/_pcg64.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "9abcc695e6c61b34276bc5e2e8d50e609a61b86d9b443a68e3b6f32bd1e71e7f",
+      "publisher": null,
+      "file": "vendor/numpy/random/_philox.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "c396c4730f284139193812d8a77fa63cbe2bf9cf6245b7e8a99998d2acf43389",
+      "publisher": null,
+      "file": "vendor/numpy/random/_sfc64.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "ca27546ab7bbf1c001f797e5c810e9044a5d3e763ed53646bc3e39d685f5d6fc",
+      "publisher": null,
+      "file": "vendor/numpy/random/bit_generator.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "c57e7639c8006409861585235b5475b7cc4bb17e836da63f1530f3ddf5d7cca4",
+      "publisher": null,
+      "file": "vendor/numpy/random/mtrand.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "0035450801bd7d938e9e146c5ec28e619cb5a5f4a18cdc53ac7e9734c7f94f78",
+      "publisher": null,
+      "file": "vendor/psutil/_psutil_windows.pyd"
+    },
+    {
+      "status": "NotSigned",
+      "file_version": null,
+      "required_publisher": "",
+      "sha256": "77ff30b0af5970cffcd804ffa666b5801bb3b9f7bb3840c40787f03a91bd9169",
+      "publisher": null,
+      "file": "vendor/pydantic_core/_pydantic_core.cp314-win_amd64.pyd"
+    },
+    {
+      "status": "Valid",
+      "file_version": "3.14.10",
+      "required_publisher": "",
+      "sha256": "df409ab34d986e3379b55a42f88e3879f903be7dc952cf8c066f704b69511723",
+      "publisher": "CN=Python Software Foundation, O=Python Software Foundation, L=Beaverton, S=Oregon, C=US",
+      "file": "winsound.pyd"
+    }
+  ],
+  "required_signatures_passed": true,
+  "unsigned_wheels": "Hash/origin verified separately; no claim that every upstream wheel is signed"
+}

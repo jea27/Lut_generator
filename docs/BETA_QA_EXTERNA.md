@@ -1,8 +1,11 @@
 # Beta privada · procedimiento reproducible y cinco pruebas
 
-Estado vigente: PR70 integrada por jea27; main verificado cfb6d11. Nuevo bloqueo
-de procedencia44 DLL en LICENCIAS_BINARIAS_BETA.md. No hay nuevo instalador ni
-prueba limpia. Los apartados fechados siguientes conservan contexto histórico.
+Estado vigente01-11-2026: PR88 integrada por jea27; PR89 prepara candidato interno
+0.3.0-beta.3 con runtime oficial aislado y NSIS auditado. Las44 DLL de caché del
+setup anterior no se copian al nuevo candidato. QA de Windows limpio sigue sin
+ejecutarse y la actualización directa falló en el contexto de Codex. El recorrido
+manual desinstalar→instalar conserva datos locales de QA, sin conceder GO externo.
+Los apartados fechados siguientes conservan contexto histórico.
 
 31-10-2026. Preparado, no ejecutado en Windows limpio. PR65/66 abiertas y
 checks correctos al auditarlas; no merge del agente. COL026#68 añade acabado
@@ -29,13 +32,15 @@ limpio, usar cuenta estándar, sin Python/Node/Rust/VS instalados. Dos variantes
 WebView2 ausente y ya presente; no desinstalar runtime compartido del equipo real.
 Registrar build Windows, RAM y variante, sin nombre de equipo/usuario/seriales.
 
-1. Copiar setup0.2 y candidato nuevo, SHA256SUMS y guía por canal acordado.
+1. Copiar setup0.3.0-beta.2 conocido y candidato beta3, hash y guía por canal acordado.
    Comparar hash publicado en PR con Get-FileHash. Ejecutar preflight:
    `./scripts/qa_windows_clean.ps1 -Installer RUTA -ExpectedSha256 HASH -Output preflight.json`.
    No ejecuta instalador ni prueba funciones. Alias WindowsApps no acredita Python.
 2. Desconectar red en la VM mediante el operador. La aplicación debe completar
    demo, análisis, efectos, preset, lotes y exports offline. Si el instalador
-   necesita WebView2, debe utilizar el runtime offline incluido. No sortear
+   necesita WebView2, conectar primero para instalar Evergreen oficialmente o
+   preparar antes su instalador offline oficial con el operador. El nuevo setup
+   no incluye un WebView2 standalone. Registrar ambas variantes. No sortear
    SmartScreen ni desactivar Defender; cualquier bloqueo es evidencia y requiere
    intervención del titular, no aprobación automática.
 3. Instalar por usuario desde Explorador, comprobar atajo Inicio, versión y ruta

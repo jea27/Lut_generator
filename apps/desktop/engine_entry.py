@@ -2,11 +2,16 @@
 import argparse
 import json
 import os
+from pathlib import Path
 import socket
 import threading
 import time
 import uvicorn
 import psutil
+
+# Both the official embedded interpreter and the legacy frozen entry use the
+# same private per-user data location. Never write session data into the bundle.
+os.environ.setdefault('LUMAFORGE_DATA_DIR',str(Path(os.environ.get('LOCALAPPDATA',str(Path.home())))/'ColorStudioBetaData'))
 from apps.api.main import app
 
 
@@ -29,7 +34,7 @@ def main():
                 os._exit(0)
     threading.Thread(target=supervise,daemon=True).start()
     # Only public connection metadata: session secrets are never written to stdout.
-    print(json.dumps({'port':port,'version':'0.3.0-beta.2'}),flush=True)
+    print(json.dumps({'port':port,'version':'0.3.0-beta.3'}),flush=True)
     try:server.run(sockets=[listener])
     finally:listener.close()
 

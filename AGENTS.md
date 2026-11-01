@@ -107,3 +107,19 @@ apps/, packages/ y evidencias actuales. Distinguir disponibilidad técnica,
 validación visual y aceptación humana por capacidad/huella.
 Continuar respetando NO-GO de distribución en #67, sin nuevos runtimes,
 virtualización, derechos supuestos, pagos, contacto de participantes o merges.
+
+## Runtime oficial e instalador interno · autorización 01-11-2026
+
+La autorización expresa de COL036/#67 permite descargar/verificar el Python
+embebible oficial y dependencias fijadas, vendorizarlas de manera aislada y
+construir/probar un nuevo candidato interno tras conciliar procedencia. Sustituye
+el bloqueo anterior de «sin nuevos runtimes» para este trabajo. No copiar DLL
+del SO, Python personal u otros programas; solo archivos de artefactos oficiales
+con SHA comprobado. No pip dentro del embeddable, no instalación global/PATH ni
+protecciones de Windows desactivadas. Usar WebView2 Evergreen oficial.
+
+PR88 consta integrada por jea27 en05b4983; no supone aceptación de capacidades.
+Continuación aislada codex/COL-036-runtime-oficial. No fusionar, approved, beta
+externa/pública, venta, compras ni habilitar virtualización. Una VM limpia puede
+usarse si está disponible y autorizada; de lo contrario preparar pasos humanos.
+Edición real Adobe/Resolve y GO externos siguen pendientes de pruebas efectivas.

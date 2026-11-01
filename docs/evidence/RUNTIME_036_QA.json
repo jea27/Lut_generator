@@ -1,0 +1,220 @@
+{
+  "schema": "color-studio-runtime-qa-v1",
+  "observed_at": "2026-11-01T09:20:40.000019+00:00",
+  "version": "0.3.0-beta.3",
+  "source": "cf1d451b68fb72d8010a04fb1a8aab28723b8007",
+  "installer_sha256": "0350f5b44be2850f828a148debc4174b8f134953b080d895bbbca8620576b5cd",
+  "runtime_manifest_sha256": "2b3a92e6024e03965cb55e358a21c32db9c1b7a1fa5709f20ac8d83d81073605",
+  "build_source_clean": true,
+  "build_test_count": 73,
+  "local_regression": {
+    "host_tests": 78,
+    "embedded_tests": 78,
+    "errors": 0,
+    "failures": 0,
+    "tracking_tests": 128,
+    "client_tests": 7,
+    "frontend_build": "passed"
+  },
+  "ci_current_regression": {
+    "source": "36fbb789fa81308e3ef175d920db0df8e4584e34",
+    "host_tests": 79,
+    "embedded_tests": 79,
+    "failures": 0,
+    "errors": 0,
+    "url": "https://github.com/jea27/Lut_generator/actions/runs/41292429730"
+  },
+  "isolation": {
+    "isolated": 1,
+    "ignore_environment": 1,
+    "no_site": 1,
+    "no_user_site": 1,
+    "modules_and_search_path_within_bundle": true,
+    "loaded_modules": {
+      "observed_pe_modules": 71,
+      "unexpected_module_names": [],
+      "python_dll_loaded_from_bundle": true,
+      "payload_module_hashes_checked": true,
+      "scope": "Snapshot after all API operations, not a clean OS certification"
+    },
+    "schema": "color-studio-embedded-isolation-v1",
+    "default_data_location_preserved": true,
+    "preferences_and_preset_survive_restart": true,
+    "poisoned_cwd_and_python_environment_ignored": true,
+    "installation_tree_unchanged": true,
+    "clean_windows": false
+  },
+  "reproducibility": {
+    "schema": "runtime-reproducibility-v1",
+    "source": "cf1d451b68fb72d8010a04fb1a8aab28723b8007",
+    "candidate_source_dirty": false,
+    "second_assembly_source_dirty": true,
+    "files": 923,
+    "all_payload_hashes_identical": true,
+    "manifest_differing_fields": [
+      "dirty"
+    ],
+    "scope": "Two local assemblies; audit-only untracked files explain dirty metadata. No claim of bit-identical NSIS."
+  },
+  "licensed_pilot_api": {
+    "version": "0.3.0-beta.3",
+    "environment": "Existing Windows developer machine; not clean VM",
+    "scope": "Real licensed rural photographs only; no portrait/skin/market validation",
+    "packaged_runtime": true,
+    "executable_sha256": "d718435b892db4ad5b547d12fec61be7baa7faf7a58d857ea58053be24c7a000",
+    "runtime_manifest_sha256": "2b3a92e6024e03965cb55e358a21c32db9c1b7a1fa5709f20ac8d83d81073605",
+    "developer_tools_found_in_child_path": {
+      "python": false,
+      "node": false,
+      "cargo": false,
+      "git": false
+    },
+    "cwd_empty_directory": true,
+    "module_audit": {
+      "observed_pe_modules": 71,
+      "unexpected_module_names": [],
+      "python_dll_loaded_from_bundle": true,
+      "payload_module_hashes_checked": true,
+      "scope": "Snapshot after all API operations, not a clean OS certification"
+    },
+    "modes_preserve_export_bytes": true,
+    "plan_privacy_and_claim_types": "passed",
+    "recipe_preset_optics_roundtrip": "passed",
+    "session_guard": "passed",
+    "clean_windows_verified": false,
+    "redistribution_approved": false,
+    "samples": [
+      {
+        "input_sha256": "d23e0db0afa94b44f1b4adfb3a8e168d7877266103bcc1365622f149dff15e32",
+        "dimensions": [
+          4928,
+          3264
+        ],
+        "export_ms": 15153.9,
+        "sampled_process_peak_rss_mb": 816.1,
+        "original_unchanged": true
+      },
+      {
+        "input_sha256": "1e3bb248bd900639242f554ddf0275fd2450efa5a98d7a6d819d784fa1c8dbe2",
+        "dimensions": [
+          4891,
+          3255
+        ],
+        "export_ms": 16587.7,
+        "sampled_process_peak_rss_mb": 844.9,
+        "original_unchanged": true
+      },
+      {
+        "input_sha256": "707d5e1a109a9018af848db60e5c5a1aedf4218ab353e24e308a5acf2a2d61a1",
+        "dimensions": [
+          4928,
+          3264
+        ],
+        "export_ms": 15500.9,
+        "sampled_process_peak_rss_mb": 848.6,
+        "original_unchanged": true
+      },
+      {
+        "input_sha256": "92586431b8358502c888af0c6a8b128964361ff1066c843b1d80b5355754c36c",
+        "dimensions": [
+          4928,
+          3264
+        ],
+        "export_ms": 15112.8,
+        "sampled_process_peak_rss_mb": 836.5,
+        "original_unchanged": true
+      }
+    ],
+    "batch_status": "completed",
+    "batch_outputs_verified": 2,
+    "demo_originals_unchanged": true,
+    "ffmpeg_binary_present": false,
+    "cube_sha256": "4fb41b679e1f2a2363b22a57f3780ea87ff9ccf06ad718cc0eefaf7f3f48d331",
+    "parent_death_watchdog": "passed"
+  },
+  "installed": {
+    "schema": "color-studio-installed-qa-v1",
+    "version": "0.3.0-beta.3",
+    "installer_sha256": "0350f5b44be2850f828a148debc4174b8f134953b080d895bbbca8620576b5cd",
+    "environment": "Existing Windows developer machine, executed from Codex/MSIX context; not a clean standard-user Windows test",
+    "automatic_upgrade_exit": 2,
+    "automatic_upgrade_verified": false,
+    "interactive_upgrade": "Blocked in previous uninstaller language dialog; owned diagnostic processes stopped without discarding user files",
+    "explicit_beta2_uninstall_exit": 0,
+    "beta3_install_exit": 0,
+    "beta3_uninstall_exit": 0,
+    "beta3_reinstall_exit": 0,
+    "beta2_preset_preserved": true,
+    "real_existing_data_unchanged": true,
+    "existing_data_files": 9,
+    "qa_data_files_preserved_on_uninstall": 6,
+    "synthetic_personal_file_in_install_dir_preserved": true,
+    "qa_sentinel_removed_after_reinstall": true,
+    "native_creator_pro_planner_opened": true,
+    "native_processing_and_exports": {
+      "png": {
+        "bytes": 959630,
+        "sha256": "713cb2dee8a045033f3f0f53f10006c6eda7f13d11356f3a8470d6b147ad8ed4",
+        "dimensions": [
+          1024,
+          678
+        ],
+        "icc_present": true,
+        "exif_entries": 0
+      },
+      "jpg": {
+        "bytes": 278604,
+        "sha256": "af8e1b7555b599e0e4cad228eb8a9f51b8131c35e49844a83acedadec5d685cd",
+        "dimensions": [
+          1024,
+          678
+        ],
+        "icc_present": true,
+        "exif_entries": 0
+      },
+      "cube": {
+        "bytes": 1078437,
+        "sha256": "4fb41b679e1f2a2363b22a57f3780ea87ff9ccf06ad718cc0eefaf7f3f48d331"
+      },
+      "recipe": {
+        "bytes": 459,
+        "sha256": "13132407e1853ca2895a11407ca66670768f89bf491119eca8d1eaba8626e2da",
+        "valid_json": true
+      },
+      "planner": {
+        "bytes": 10646,
+        "sha256": "9d59732e3324bb21f36cac7311d72243cb2330eec6ba5583c226813efa8dcd80",
+        "valid_json": true,
+        "human_validated": false
+      }
+    },
+    "embedded_child_used": true,
+    "loaded_pe_modules": 71,
+    "unexpected_pe_modules": [],
+    "closing_window_stopped_owned_processes": true,
+    "clean_windows": false,
+    "network_disconnected_test": false,
+    "external_editor_imports": "not_run",
+    "human_acceptance": false,
+    "external_beta": "NO-GO"
+  },
+  "technical_preparation_passed": true,
+  "clean_windows": false,
+  "human_accepted": false,
+  "beta_external": "NO-GO",
+  "commercial": "NO-GO",
+  "remaining_gates": [
+    "Clean Windows10/11 and missing-WebView2 installation",
+    "Direct upgrade failure reproduced in Codex context; ordinary Windows test required",
+    "Physically disconnected processing test",
+    "Real editor LUT imports or expressly limited beta scope",
+    "Rights/owner/candidate review and external-delivery authorization"
+  ],
+  "final_tracking_regression": {
+    "tests": 130,
+    "failures": 0,
+    "errors": 0,
+    "real_catalog_review_contexts_checked": true,
+    "four_runtime_inputs_only_allowlisted": true
+  }
+}

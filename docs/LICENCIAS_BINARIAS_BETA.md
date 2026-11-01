@@ -1,5 +1,42 @@
 # Distribución binaria0.3 · revisión específica
 
+## Candidato interno beta3 · 01-11-2026
+
+PR89 sustituye el origen del runtime, sin rehabilitar el setup beta2. Inventario
+versionado de289 entradas conservadoras, todas con textos: `packaging/notices/`.
+Fuentes/URL/hashes y60 PE del runtime en `RUNTIME_036_MANIFEST.json`; compilador,
+plugins y945 archivos extraídos del setup en `RUNTIME_036_NSIS.json`. La ausencia
+de Python del host en el producto está comprobada por origen, no solo por PATH.
+
+| Componente actual | Procedencia/condiciones específicas | Límite pendiente |
+|---|---|---|
+| CPython3.14.10, stdlib, OpenSSL/libcrypto/libffi/sqlite/zstd y extensiones aportadas por PSF | ZIP embeddable oficial fijado; LICENSE.txt íntegro conserva PSF y avisos de subcomponentes. Firmas PSF requeridas y hashes comprobados | Conservar todos los avisos y revisar condiciones completas; no atribuirles una licencia única por comodidad |
+| NumPy2.5.4/OpenBLAS, Pillow13/códecs y LittleCMS, OpenCV-headless5, psutil y pydantic_core | Wheels exactos para cp314/WindowsAMD64, RECORD y textos internos incluidos. Los avisos de bibliotecas incorporadas se conservan además de la licencia del paquete | No se presume una SBOM exhaustiva de código enlazado solo por contar DLL; FFmpeg excluido, no se promete vídeo |
+| Visual C++ app-local | vcruntime140/140_1 14.51.36247.0 del ZIP PSF; msvcp14014.40.33810.0 del wheel NumPy. Bytes originales y firmas Microsoft Valid; orígenes distintos explícitos | #60: aceptar términos aplicables y responsabilidad de actualización antes de entrega externa; una firma no otorga derechos por sí sola |
+| UCRT/API sets y Common Controls/Winsock | Dependencias del Windows objetivo. No se incluye ucrtbase ni se copian DLL del SO | Windows10/11 limpio aún no probado; no sortear una dependencia que falte copiando System32 |
+| Rust/Tauri/wry/tao/WebView2Loader y frontend | Cargo.lock y npm lock conservados; inventario con registro/checksum o URL/integrity. Loader/enlaces nativos cubiertos por avisos específicos `webview2-com*.txt`; no hay DLL WebView2Loader adicional en NSIS | Inventario incluye build/otras plataformas; no afirmar que289 paquetes están enlazados. Revisar MPL/CPL y licencia propia antes de distribución |
+| NSIS3.13 y6 plugins de32bit | Archivo oficial de Tauri `nsis-3.13.zip`, SHA-256 ba63dffc…0b3d8, comparado con su pin upstream; todos los archivos del compilador cotejados. Cinco plugins NSIS y nsis_tauri_utils0.5.3 coinciden con fuentes fijadas. COPYING y MIT/Apache2 incluidos | COPYING distingue zlib/bzip2/LZMA(CPL1.0). Mantener acceso a fuente exigible y condiciones de módulos; no presumir que todo NSIS es MIT |
+| WebView2 Evergreen | No se empaqueta runtime ni bootstrapper opaco. `downloadBootstrapper` usa mecanismo/URL oficial Microsoft si falta; servicio compartido con diagnósticos/actualizaciones propios, informado en la app | Primera instalación sin WebView2 necesita conexión; variante ausente/offline pendiente de prueba real y revisión de términos del titular |
+| Demo CC0 y capturas | Solo dos fotos de Sergej Majboroda/Poly Haven declaradas por hash, sin EXIF; capturas reales de esa demo | No son retratos ni entrevistas y no conceden derechos sobre otras fotografías |
+| Código propio | No se concede una licencia automáticamente mediante esta auditoría ni por mantener repositorio público | Decisión del titular #60, condiciones del piloto/venta y derechos propios pendientes |
+
+MPL2 en el inventario conservador: cssparser0.37.0, cssparser-macros0.7.1,
+dtoa-short0.3.5, option-ext0.2.0 y selectors0.38.0. No se modificaron sus fuentes.
+Versiones/checksums Cargo permiten obtener las fuentes exactas del registro
+crates.io; la selección real por plataforma/build debe revisarse antes de afirmar
+obligaciones satisfechas. No se usa esta lista para excluir una obligación sin prueba.
+La disponibilidad de fuente y los avisos CPL del LZMA se revisan por separado,
+partiendo del [proyecto NSIS](https://nsis.sourceforge.io/Download) y el
+[origen del bundler fijado](https://github.com/tauri-apps/tauri/blob/tauri-cli-v2.12.4/crates/tauri-bundler/src/bundle/windows/nsis/mod.rs).
+
+El gate nuevo verifica inputs NSIS y payload completo antes de emitir el recibo
+de candidato. `RUNTIME_036_SIGNATURES.json` distingue firmado/no firmado: no se
+afirma que todos los wheels lo estén. El setup y launcher propios siguen sin
+firma; no se compró certificado. **NO-GO externo/comercial**, pendiente de QA
+limpia, derechos/condiciones y autorización del titular. No hay aprobación legal.
+
+## Registro histórico del setup beta2
+
 31-10-2026. Candidato inspeccionado: beta2, SHA256
 3e3851ee4f3c67608d3802ad167572375b130eeafa57165d26379cd26797714f.
 Esta es auditoría técnica/documental; no aceptación de contratos ni autorización

@@ -346,3 +346,61 @@ pendientes en ESTADO_AGENTE.md y solicitud67.
 Comprobación final Creator: preview neutra/importar no completan detección;
 receta nueva invalida comparación previa. Unitarios y secuencia real del UI
 congelado documentados, sin cambiar motor ni repetir perfiles equivalentes.
+
+## 01-11-2026 · COL036 · runtime embebible oficial
+
+Autorización expresa registrada en67, comentario6547117844. PR88 integrada por
+jea27 en05b4983. Nueva rama aislada preserva su trabajo. CPython3.14.10 PSF y19
+wheels fijados, hashes/RECORD/60 PE AMD64 verificados; importaciones nativas,
+firmas requeridas y primeros recorridosAPI reales correctos.70 tests reales con
+intérprete3.14 y núcleo del bundle; extrasQA aislados. Se mantiene dataroot beta2.
+Scanner corrige falsos positivos de prefijosURL/bytes comprimidos, con tests sin
+relajar detección de perfiles/secretos. Cero hallazgos bloqueantes; no permisos
+nuevos, instalaciones globales o DLL de otras aplicaciones. Native release
+compilado sin installer; falta preparar NSIS/QA completa y Windows limpio.
+
+### COL036 · candidato interno oficial beta3 y QA · 01-11-2026
+
+PR89 continúa PR88 ya integrada por jea27. Candidato construido desde cf1d451
+limpio con PSF3.14.10 embeddable y19 wheels fijados;923 archivos/60 PE, sin DLL
+del host.945 archivos NSIS extraídos y cotejados, plugins x86 oficiales y launcher
+x64. Git autocrlf rompía hashes de avisos originales: se preservan como bytes con
+.gitattributes; fuentes propios del runtime usan LF canónico. Guías `.agents` y
+hooks de desarrollo de wheels excluidos sin tocar licencias. Corrigida lectura
+UTF-8 explícita en un test de revisión humana bajo Python3.12/Windows.
+
+El auditor distingue los3 bytes UNK→NSS que Tauri2.12.4 cambia temporalmente al
+empaquetar; rechaza cualquier otra diferencia del launcher. NSIS oficial completo,
+plugins, avisos, arquitectura/imports y payload son gates del builder. El workflow
+manual solo sube informes saneados; mantiene binarios internos. Inventario289 con
+avisos no se confunde con SBOM completa ni aprobación legal. Firma propia ausente.
+
+73 pruebas en build;78 host/embebido locales y79 en CI tras ampliar el auditor;
+128 seguimiento y7 Node correctos. Build remoto41292426593 success, fuentes36fbb789.
+Cuatro CC0 ~16MP15.113–16.588s, lote2, originales intactos; sin cambio de motor o
+mejora general atribuida. Aislamiento con tripwires real y71 módulos cotejados.
+Dos ensamblados finales conservan923 hashes; dirty es la única diferencia de
+manifiesto del segundo ensayo. No se declara instalador idéntico bit a bit.
+
+Instalación real en contexto Codex/MSIX: preset de beta2 conservado, Creator/Pro/
+Planner y cinco exports nativos comprobados. Desinstalar/instalar/reinstalar0;
+sentinel dentro de instalación,6 archivos QA y9 existentes preservados. Se cerró
+el ensayo y retiró solo su sentinel. Actualización directa silenciosa devolvió2
+y ruta interactiva esperó al idioma del desinstalador previo, no accesible al
+controlador. Causa no confirmada; no se oculta con el recorrido manual correcto.
+Faltan Windows limpio, desconexión física y editores reales; NO-GO externo/venta.
+Recibos RUNTIME_036_* con fuente/hash/alcance; sin datos privados, approved o merge.
+
+El check del colector real encontró cuatro rutas nuevas no admitidas en la huella
+de revisión. Se admite únicamente runtime.lock, python314._pth y los dos builders
+exactos, leyendo hashes Git sin ejecutarlos ni ampliar permisos. Dos regresiones
+adicionales verifican el catálogo versionado completo, cambio de pin y rechazo de
+otras rutas;130 seguimiento pasan. Sync real de lectura reconoce PR89 y conserva
+aceptación MVP0/8/NO-GO. Pages mantiene beta2/main hasta merge humano; sus42 tareas
+no se editaron para simular progreso. Los cuatro archivos generados se restauran.
+
+PR89 pasó a revisión y57 status:review, sin merge/approved. Aviso canónico67
+verificado en41294069249 y comentario6556221187; recepción física nueva no
+confirmada. Cola sync canceló ejecuciones sin steps durante la ráfaga de eventos;
+se comprueba reintento en reposo sin modificar permisos/concurrencia del workflow.
+Identidad Git del checkpoint no-reply por comando; ninguna reescritura remota.

@@ -11,6 +11,7 @@ import os
 from pathlib import Path
 import subprocess
 import queue
+import re
 import shutil
 import sys
 import threading
@@ -49,18 +50,33 @@ def read_ready(child,timeout=45):
 
 def loaded_modules(child,executable):
     allowed=(executable.parent.resolve(),Path(os.environ['SYSTEMROOT']).resolve())
+    manifest_path=executable.parent/'runtime-manifest.json'
+    manifest=json.loads(manifest_path.read_text(encoding='utf-8')) if manifest_path.is_file() else None
     unexpected=[];python_bundled=False;count=0
     for mapping in psutil.Process(child.pid).memory_maps():
         path=Path(mapping.path)
         if path.suffix.lower() not in ('.dll','.pyd','.exe'):continue
         count+=1;resolved=path.resolve()
         if not any(resolved.is_relative_to(base) for base in allowed):unexpected.append(path.name)
+        if manifest:
+            if resolved.is_relative_to(allowed[0]):
+                relative=resolved.relative_to(allowed[0]).as_posix()
+                assert relative in manifest['files'] and hashlib.sha256(resolved.read_bytes()).hexdigest()==manifest['files'][relative]['sha256'],'Loaded native bytes do not match runtime manifest'
+            elif re.match(r'(?:vcruntime\d|msvcp\d|python3)',path.name.lower()):
+                unexpected.append(path.name) # A globally installed redistributable must not mask an incomplete bundle.
         if path.name.lower().startswith('python') and path.suffix.lower()=='.dll':
             python_bundled=resolved.is_relative_to(executable.parent.resolve())
     assert python_bundled,'Python DLL was not loaded from the frozen bundle'
     assert not unexpected,{'unexpected_module_names':sorted(set(unexpected))}
     return {'observed_pe_modules':count,'unexpected_module_names':[],
-            'python_dll_loaded_from_bundle':True,'scope':'Snapshot after all API operations, not a clean OS certification'}
+            'python_dll_loaded_from_bundle':True,'payload_module_hashes_checked':manifest is not None,
+            'scope':'Snapshot after all API operations, not a clean OS certification'}
+
+
+def engine_command(executable,parent):
+    if (executable.parent/'runtime-manifest.json').is_file():
+        return [str(executable),'-I','-S','-B','-u',str(executable.parent/'app/apps/desktop/engine_entry.py'),'--parent',str(parent)]
+    return [str(executable),'--parent',str(parent)]
 
 
 def main():
@@ -76,7 +92,7 @@ def main():
     assert not any(tools.values()),'Developer tool found in restricted child PATH'
     before={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in (ROOT/'apps/demo').glob('*.jpg')}
     stderr=(output/'engine-stderr.log').open('wb')
-    child=subprocess.Popen([str(executable),'--parent',str(os.getpid())],stdout=subprocess.PIPE,stderr=stderr,env=env,cwd=cwd)
+    child=subprocess.Popen(engine_command(executable,os.getpid()),stdout=subprocess.PIPE,stderr=stderr,env=env,cwd=cwd)
     try:
         ready=read_ready(child);base='http://127.0.0.1:'+str(ready['port'])
         with httpx.Client(base_url=base,timeout=180,trust_env=False) as client:
@@ -87,6 +103,7 @@ def main():
                 except httpx.TransportError:time.sleep(.05)
             assert health is not None,'Packaged health endpoint did not start'
             health.raise_for_status()
+            assert ready['version']==health.json()['version'],'Startup/API version mismatch'
             assert client.get('/').status_code==200,'Packaged interface is missing'
             assert client.post('/api/demo/load',json={}).status_code==403,'Session guard missing'
             csrf=client.get('/api/session').json()['csrf']
@@ -142,6 +159,7 @@ def main():
             report={'version':health.json()['version'],'environment':'Existing Windows developer machine; not clean VM',
                     'scope':'Real licensed rural photographs only; no portrait/skin/market validation',
                     'packaged_runtime':True,'executable_sha256':hashlib.sha256(executable.read_bytes()).hexdigest(),
+                    'runtime_manifest_sha256':hashlib.sha256((executable.parent/'runtime-manifest.json').read_bytes()).hexdigest() if (executable.parent/'runtime-manifest.json').is_file() else None,
                     'developer_tools_found_in_child_path':tools,'cwd_empty_directory':True,
                     'module_audit':modules,'modes_preserve_export_bytes':True,'plan_privacy_and_claim_types':'passed',
                     'recipe_preset_optics_roundtrip':'passed','session_guard':'passed',
@@ -154,7 +172,7 @@ def main():
         stderr.close()
     # Test abnormal parent death: watchdog must terminate the packaged process.
     parent=subprocess.Popen([sys.executable,'-c','import time;time.sleep(60)'])
-    watcher=subprocess.Popen([str(executable),'--parent',str(parent.pid)],stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,env=env,cwd=cwd)
+    watcher=subprocess.Popen(engine_command(executable,parent.pid),stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,env=env,cwd=cwd)
     try:
         read_ready(watcher);parent.terminate();parent.wait(timeout=5)
         assert watcher.wait(timeout=8)==0,'Watchdog did not exit cleanly'

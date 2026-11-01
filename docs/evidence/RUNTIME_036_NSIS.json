@@ -1,0 +1,174 @@
+{
+  "schema": "color-studio-nsis-audit-v1",
+  "installer_sha256": "0350f5b44be2850f828a148debc4174b8f134953b080d895bbbca8620576b5cd",
+  "installer_bytes": 46683099,
+  "source": "cf1d451b68fb72d8010a04fb1a8aab28723b8007",
+  "dirty": false,
+  "files": 945,
+  "runtime_files": 923,
+  "runtime_manifest_sha256": "2b3a92e6024e03965cb55e358a21c32db9c1b7a1fa5709f20ac8d83d81073605",
+  "plugins_and_graphics": [
+    {
+      "file": "$PLUGINSDIR/System.dll",
+      "member": "nsis-3.13/Plugins/x86-unicode/System.dll",
+      "sha256": "afe032f942e2ed0bf7494ec08ba813f5739fb522c640bde81d30ecaf9f894432",
+      "source": "nsis",
+      "machine": "0x14c",
+      "imports": [
+        "kernel32.dll",
+        "ole32.dll",
+        "user32.dll"
+      ]
+    },
+    {
+      "file": "$PLUGINSDIR/nsDialogs.dll",
+      "member": "nsis-3.13/Plugins/x86-unicode/nsDialogs.dll",
+      "sha256": "9c76f4d53ceee2a471c936e0899688405e1009ce962d140e9acb49ed68d114cb",
+      "source": "nsis",
+      "machine": "0x14c",
+      "imports": [
+        "comdlg32.dll",
+        "gdi32.dll",
+        "kernel32.dll",
+        "ole32.dll",
+        "shell32.dll",
+        "user32.dll"
+      ]
+    },
+    {
+      "file": "$PLUGINSDIR/StartMenu.dll",
+      "member": "nsis-3.13/Plugins/x86-unicode/StartMenu.dll",
+      "sha256": "39870682e7d1c026cd2b33ca25591db28250dde17de7eb1feec404222d534ffc",
+      "source": "nsis",
+      "machine": "0x14c",
+      "imports": [
+        "gdi32.dll",
+        "kernel32.dll",
+        "ole32.dll",
+        "shell32.dll",
+        "user32.dll"
+      ]
+    },
+    {
+      "file": "$PLUGINSDIR/LangDLL.dll",
+      "member": "nsis-3.13/Plugins/x86-unicode/LangDLL.dll",
+      "sha256": "3c8b2629048c118e4fcf80188cbcdaad3a668270e49fd95d2809feccc98fe220",
+      "source": "nsis",
+      "machine": "0x14c",
+      "imports": [
+        "gdi32.dll",
+        "kernel32.dll",
+        "user32.dll"
+      ]
+    },
+    {
+      "file": "$PLUGINSDIR/NSISdl.dll",
+      "member": "nsis-3.13/Plugins/x86-unicode/NSISdl.dll",
+      "sha256": "d3e61c4df837625ac0503cea5b6765a04d37fc35399899a5503b53a3108bfbf6",
+      "source": "nsis",
+      "machine": "0x14c",
+      "imports": [
+        "advapi32.dll",
+        "kernel32.dll",
+        "user32.dll",
+        "wsock32.dll"
+      ]
+    },
+    {
+      "file": "$PLUGINSDIR/modern-wizard.bmp",
+      "member": "nsis-3.13/Contrib/Graphics/Wizard/win.bmp",
+      "sha256": "3ad2dc318056d0a2024af1804ea741146cfc18cc404649a44610cbf8b2056cf2",
+      "source": "nsis"
+    },
+    {
+      "file": "$PLUGINSDIR/nsis_tauri_utils.dll",
+      "sha256": "5ba143b5db4a87d32d6e7802e033330aae56cbceabe0d1e3ba41948385ad4709",
+      "source": "tauri-utils",
+      "machine": "0x14c",
+      "imports": [
+        "advapi32.dll",
+        "kernel32.dll",
+        "shell32.dll",
+        "user32.dll"
+      ]
+    }
+  ],
+  "nsis_source": {
+    "version": "3.13",
+    "filename": "nsis-3.13.zip",
+    "url": "https://github.com/tauri-apps/binary-releases/releases/download/nsis-3.13/nsis-3.13.zip",
+    "sha256": "ba63dffc4410ee89193e1cb5a41989991bd77c61068da17e3156d136b7b0b3d8",
+    "upstream_sha1": "db14f8af2ea346b786c6ae19343f61aaf5e09b8e"
+  },
+  "native_components": {
+    "installer": {
+      "machine": "0x14c",
+      "imports": [
+        "advapi32.dll",
+        "comctl32.dll",
+        "gdi32.dll",
+        "kernel32.dll",
+        "ole32.dll",
+        "shell32.dll",
+        "user32.dll"
+      ],
+      "sha256": "0350f5b44be2850f828a148debc4174b8f134953b080d895bbbca8620576b5cd"
+    },
+    "uninstaller": {
+      "machine": "0x14c",
+      "imports": [
+        "advapi32.dll",
+        "comctl32.dll",
+        "gdi32.dll",
+        "kernel32.dll",
+        "ole32.dll",
+        "shell32.dll",
+        "user32.dll"
+      ],
+      "sha256": "e9e6ff53c0d1875ab859b365534e37988ab95a8de762d0ffd11f7190d9bd94d3"
+    },
+    "launcher": {
+      "machine": "0x8664",
+      "imports": [
+        "advapi32.dll",
+        "api-ms-win-core-synch-l1-2-0.dll",
+        "api-ms-win-core-winrt-error-l1-1-0.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-locale-l1-1-0.dll",
+        "api-ms-win-crt-math-l1-1-0.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "bcryptprimitives.dll",
+        "combase.dll",
+        "comctl32.dll",
+        "dwmapi.dll",
+        "gdi32.dll",
+        "imm32.dll",
+        "kernel32.dll",
+        "ntdll.dll",
+        "ole32.dll",
+        "oleaut32.dll",
+        "shell32.dll",
+        "shlwapi.dll",
+        "user32.dll"
+      ],
+      "sha256": "0ee92bb92e6573f1cce3d3883a144302716c0923fd8d834e0d151998e4362742"
+    }
+  },
+  "all_payload_bytes_match_verified_inputs": true,
+  "launcher_comparison": "only_Tauri_UNK_to_NSS_bundle_marker",
+  "build_launcher_sha256": "544d981267e667ee4c33eec843e297cd4816a673f518e76117877eb4532af76f",
+  "notices_match_repository": true,
+  "privacy": {
+    "findings": [],
+    "blocking_findings": 0,
+    "passed": true
+  },
+  "webview2_runtime_or_bootstrapper_embedded": false,
+  "clean_windows_tested": false,
+  "redistribution_approved": false,
+  "external_beta": "NO-GO",
+  "scope": "NSIS full extraction, exact file set/hashes and native import audit; not installation or legal approval"
+}

@@ -14,6 +14,10 @@ REVIEWER={'login':'jea27','id':45896918,'type':'User'}
 BOT={'login':'github-actions[bot]','id':41898282,'type':'Bot'}
 PREFIX='LUMAFORGE_REVIEW_V1\n```json\n'
 RECEIPT='<!-- lumaforge-review-receipt-v1 -->\n```json\n'
+# Exact runtime inputs may invalidate Windows acceptance without changing app code.
+# Hash Git blobs only; this does not execute build scripts or expand API permissions.
+RUNTIME_REVIEW_FILES={'packaging/runtime.lock.json','packaging/python314._pth',
+                      'scripts/build_embedded_runtime.py','scripts/build_beta.ps1'}
 
 
 def canonical(value): return json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=False)
@@ -34,7 +38,7 @@ def context(root,feature,manifest,commit='HEAD'):
     if not paths: return None
     blobs={}
     for path in paths:
-        if not re.fullmatch(r'(?:apps|packages|site|tests_mvp)/[A-Za-z0-9_./-]+',path) or '..' in Path(path).parts:
+        if (path not in RUNTIME_REVIEW_FILES and not re.fullmatch(r'(?:apps|packages|site|tests_mvp)/[A-Za-z0-9_./-]+',path)) or '..' in Path(path).parts:
             raise ValueError('Unsupported review path')
         blobs[path]=git(root,'rev-parse',commit+':'+path).decode().strip()
     version=json.loads(git(root,'show',commit+':'+manifest['version_source']))['version']

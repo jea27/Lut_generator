@@ -1,0 +1,23 @@
+{
+  "webview2": "Evergreen downloaded officially if absent; first install then requires Internet",
+  "bytes": 46683099,
+  "build_origin_gate_passed": true,
+  "status": "internal_candidate_not_approved",
+  "file": "Color Studio Beta_0.3.0-beta.3_x64-setup.exe",
+  "dirty": false,
+  "version": "0.3.0-beta.3",
+  "nsis_full_audit": "passed",
+  "source": "cf1d451b68fb72d8010a04fb1a8aab28723b8007",
+  "signature": "NotSigned",
+  "rust": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "node": "v26.13.0",
+  "windows_clean_install": "not_tested",
+  "sha256": "0350f5b44be2850f828a148debc4174b8f134953b080d895bbbca8620576b5cd",
+  "python_runtime": "PSF CPython3.14.10 embedded",
+  "distribution_status": "NO-GO_clean_Windows_direct_upgrade_QA_rights_and_owner_review_pending",
+  "payload_audit_passed": true,
+  "runtime_manifest_sha256": "2b3a92e6024e03965cb55e358a21c32db9c1b7a1fa5709f20ac8d83d81073605",
+  "build_python": "Python 3.12.14",
+  "nsis_audit_evidence": "docs/evidence/RUNTIME_036_NSIS.json",
+  "approved_for_external_distribution": false
+}
