@@ -398,3 +398,9 @@ adicionales verifican el catálogo versionado completo, cambio de pin y rechazo 
 otras rutas;130 seguimiento pasan. Sync real de lectura reconoce PR89 y conserva
 aceptación MVP0/8/NO-GO. Pages mantiene beta2/main hasta merge humano; sus42 tareas
 no se editaron para simular progreso. Los cuatro archivos generados se restauran.
+
+PR89 pasó a revisión y57 status:review, sin merge/approved. Aviso canónico67
+verificado en41294069249 y comentario6556221187; recepción física nueva no
+confirmada. Cola sync canceló ejecuciones sin steps durante la ráfaga de eventos;
+se comprueba reintento en reposo sin modificar permisos/concurrencia del workflow.
+Identidad Git del checkpoint no-reply por comando; ninguna reescritura remota.

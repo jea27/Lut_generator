@@ -856,3 +856,12 @@ beta/venta NO-GO. Pages todavía publica0.3.0-beta.2 desde05b4983 y ya muestra
 PR89; beta3/recibos necesitan merge humano. Los cuatro archivos generados se
 restauraron byte a byte. Evidencia RUNTIME_036_SYNC.json identifica la proyección
 de rama y la lectura pública por separado; no se fingió publicar la rama.
+
+Cierre de revisión: PR89 no-borrador y Issue57 status:review. Código b3f261f pasó
+MVP41293860547, cliente41293860602 y validación/colector41293860581; ready-for-review
+validó otra vez en41294067005. Aviso único41294069249 success; bot mencionó a
+jea27 en67#issuecomment-6556221187. No hay confirmación nueva de recepción física.
+No repetir el aviso. Los sync cancelados de la ráfaga no ejecutaron steps; su
+reintento final/estado publicado se verifica en PR89/checks y comentario final57.
+El checkpoint usa identidad no-reply por comando; la identidad anterior ya
+estaba en el historial público. No se cambió config global ni reescribió historial.
