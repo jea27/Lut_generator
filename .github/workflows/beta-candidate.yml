@@ -37,6 +37,7 @@ jobs:
             .lumaforge-local/beta-artifact.json
             .lumaforge-local/beta-payload-audit.json
             .lumaforge-local/runtime-signatures.json
+            .lumaforge-local/beta-nsis-audit.json
           retention-days: 7
 # Sanitized audit reports only. No installer upload from this public repository.
 # No release, signing credentials, token generation, deployment or auto-approval.

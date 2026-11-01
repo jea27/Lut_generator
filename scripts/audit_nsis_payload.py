@@ -8,6 +8,7 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import urllib.request
 import uuid
 import zipfile
 if __package__:
@@ -67,9 +68,40 @@ def launcher_match(built,installed):
     raise ValueError('Native launcher hash mismatch outside documented bundle marker')
 
 
-def audit(installer,seven_zip,native,nsis_zip,nsis_cache):
+def prepare_archive(offline=False):
+    lock=json.loads((ROOT/'packaging/nsis-toolchain.lock.json').read_text(encoding='utf-8'))['nsis']
+    expected=f"https://github.com/tauri-apps/binary-releases/releases/download/nsis-{lock['version']}/nsis-{lock['version']}.zip"
+    if lock['url']!=expected or safe_member(lock['filename'])!=f"nsis-{lock['version']}.zip":
+        raise ValueError('Untrusted NSIS download source')
+    path=ROOT/'.lumaforge-local/downloads'/lock['filename'];path.parent.mkdir(parents=True,exist_ok=True)
+    if path.is_symlink():raise ValueError('Linked NSIS archive cache')
+    if not path.exists():
+        if offline:raise ValueError('Missing official NSIS archive for offline audit')
+        raw=urllib.request.urlopen(lock['url'],timeout=90).read(50*1024*1024)
+        if digest(raw)!=lock['sha256']:raise ValueError('Downloaded NSIS archive hash mismatch')
+        path.write_bytes(raw)
+    if digest(path.read_bytes())!=lock['sha256']:raise ValueError('Cached NSIS archive hash mismatch')
+    return path
+
+
+def verify_toolchain(nsis_zip,nsis_cache):
     lock=json.loads((ROOT/'packaging/nsis-toolchain.lock.json').read_text(encoding='utf-8'))
     if digest(nsis_zip.read_bytes())!=lock['nsis']['sha256']:raise ValueError('Official NSIS archive hash mismatch')
+    with zipfile.ZipFile(nsis_zip) as archive:
+        for item in archive.infolist():
+            if item.is_dir():continue
+            relative=safe_member(item.filename).removeprefix('nsis-3.13/')
+            path=nsis_cache/relative
+            if path.is_symlink() or not path.resolve().is_relative_to(nsis_cache.resolve()) or path.read_bytes()!=archive.read(item):
+                raise ValueError('NSIS toolchain differs from official archive')
+    plugin=nsis_cache/'Plugins/x86-unicode/additional/nsis_tauri_utils.dll'
+    if plugin.is_symlink() or digest(plugin.read_bytes())!=lock['tauri-utils']['sha256']:
+        raise ValueError('NSIS Tauri plugin differs from official release')
+
+
+def audit(installer,seven_zip,native,nsis_zip,nsis_cache):
+    lock=json.loads((ROOT/'packaging/nsis-toolchain.lock.json').read_text(encoding='utf-8'))
+    verify_toolchain(nsis_zip,nsis_cache)
     # Reconcile every embedded plugin/graphic against independently fetched official bytes.
     with zipfile.ZipFile(nsis_zip) as archive:
         for name,row in lock['files'].items():

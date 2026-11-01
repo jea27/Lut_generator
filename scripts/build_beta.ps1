@@ -3,6 +3,19 @@ $ErrorActionPreference='Stop'
 $lfRoot=Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $lfRoot
 $lfPython=(Resolve-Path -LiteralPath $BuildPython).Path
+$lfCommonGit=(git rev-parse --path-format=absolute --git-common-dir).Trim()
+$lfSharedRoot=Split-Path -Parent $lfCommonGit
+$lfSevenZipCandidates=@(
+ (Get-Command 7z.exe -ErrorAction SilentlyContinue).Source,
+ (Join-Path $lfRoot '.lumaforge-local/tools/7zip/full/7z.exe'),
+ (Join-Path $lfSharedRoot '.lumaforge-local/tools/7zip/full/7z.exe'),
+ 'C:/Program Files/7-Zip/7z.exe'
+)
+$lfSevenZip=$lfSevenZipCandidates | Where-Object {$_ -and (Test-Path -LiteralPath $_)} | Select-Object -First 1
+if(-not $lfSevenZip){throw 'An authorized 7-Zip extractor is required for full NSIS audit; no automatic installation'}
+$lfArchiveArgs=@('-c','from scripts.audit_nsis_payload import prepare_archive; import sys; prepare_archive(offline=sys.argv[1]=="1")', [string][int][bool]$Offline)
+& $lfPython @lfArchiveArgs
+if($LASTEXITCODE -ne 0){throw 'Pinned NSIS audit archive unavailable'}
 $lfTools=Get-Content -LiteralPath packaging/build-environment.json -Raw | ConvertFrom-Json
 if((node --version).Trim() -ne ('v'+$lfTools.node)){throw 'Use the recorded Node version; no automatic local tool installation'}
 $lfDirty=[bool](git status --porcelain --untracked-files=normal)
@@ -56,6 +69,8 @@ try {
  $lfConfig=Get-Content -LiteralPath apps/desktop/src-tauri/tauri.conf.json -Raw | ConvertFrom-Json
  $lfExpectedName=$lfConfig.productName+'_'+$lfConfig.version+'_x64-setup.exe'
  $lfInstaller=Get-Item -LiteralPath (Join-Path $lfRoot ('apps/desktop/src-tauri/target/release/bundle/nsis/'+$lfExpectedName))
+ & $lfPython scripts/audit_nsis_payload.py $lfInstaller.FullName .lumaforge-local/beta-nsis-audit.json $lfSevenZip apps/desktop/src-tauri/target/release/color-studio-beta.exe .lumaforge-local/downloads/nsis-3.13.zip (Join-Path $env:LOCALAPPDATA 'tauri/NSIS')
+ if($LASTEXITCODE -ne 0){throw 'Full NSIS provenance/architecture/privacy gate failed'}
  $lfArtifact=@{
   version=$lfConfig.version;file=$lfInstaller.Name;bytes=$lfInstaller.Length
   sha256=(Get-FileHash -LiteralPath $lfInstaller.FullName -Algorithm SHA256).Hash.ToLower()
@@ -66,10 +81,10 @@ try {
   build_origin_gate_passed=$true;payload_audit_passed=$true
   webview2='Evergreen downloaded officially if absent; first install then requires Internet'
   status='internal_candidate_not_approved';windows_clean_install='not_tested'
-  nsis_full_audit='pending';distribution_status='NO-GO_pending_NSIS_QA_clean_Windows_and_owner_review'
+  nsis_full_audit='passed';distribution_status='NO-GO_pending_clean_Windows_upgrade_QA_rights_and_owner_review'
  }
  $lfArtifact | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath .lumaforge-local/beta-artifact.json -Encoding UTF8
- Write-Output 'Internal candidate built. Do not distribute: NSIS/clean-Windows/editor/owner gates remain.'
+ Write-Output 'Internal candidate built and NSIS audited. Do not distribute: clean-Windows/upgrade/editor/rights/owner gates remain.'
 } finally {
  $env:PATH=$lfOldPath;$env:CARGO_ENCODED_RUSTFLAGS=$lfOldFlags;$env:CARGO_BUILD_JOBS=$lfOldJobs
 }

@@ -1,7 +1,10 @@
 """Synthetic hostile archive listings; not evidence of a clean Windows install."""
 from pathlib import Path
+import json
 import tempfile
 import unittest
+from unittest.mock import patch
+from scripts import audit_nsis_payload as audit
 from scripts.audit_nsis_payload import listing, expected_files, launcher_match
 
 
@@ -10,6 +13,19 @@ def archive(*rows):
 
 
 class NsisAuditTests(unittest.TestCase):
+    def test_offline_nsis_cache_is_hash_checked_without_fallback_network(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);(root/'packaging').mkdir();cache=root/'.lumaforge-local/downloads';cache.mkdir(parents=True)
+            record={'version':'3.13','filename':'nsis-3.13.zip','url':'https://github.com/tauri-apps/binary-releases/releases/download/nsis-3.13/nsis-3.13.zip','sha256':audit.digest(b'official-fixture')}
+            (root/'packaging/nsis-toolchain.lock.json').write_text(json.dumps({'nsis':record}),encoding='utf-8')
+            with patch.object(audit,'ROOT',root),patch.object(audit.urllib.request,'urlopen',side_effect=AssertionError('No network')):
+                with self.assertRaisesRegex(ValueError,'Missing'):audit.prepare_archive(offline=True)
+                (cache/record['filename']).write_bytes(b'tampered')
+                with self.assertRaisesRegex(ValueError,'hash'):audit.prepare_archive(offline=True)
+                (cache/record['filename']).write_bytes(b'official-fixture')
+                self.assertEqual(audit.prepare_archive(offline=True),cache/record['filename'])
+                record['url']='https://untrusted.example/nsis.zip';(root/'packaging/nsis-toolchain.lock.json').write_text(json.dumps({'nsis':record}),encoding='utf-8')
+                with self.assertRaisesRegex(ValueError,'source'):audit.prepare_archive()
     def test_only_documented_tauri_bundle_marker_may_differ(self):
         build=b'code__TAURI_BUNDLE_TYPE_VAR_UNKtail';package=b'code__TAURI_BUNDLE_TYPE_VAR_NSStail'
         self.assertEqual(launcher_match(build,package),'only_Tauri_UNK_to_NSS_bundle_marker')
