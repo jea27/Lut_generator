@@ -75,7 +75,7 @@ try {
  if($LASTEXITCODE -ne 0){throw 'Installer ledger generation failed'}
  Push-Location apps/desktop
  try {
-  & ../../apps/web/node_modules/.bin/tauri.cmd bundle --bundles nsis
+  & ../../apps/web/node_modules/.bin/tauri.cmd bundle --bundles nsis --config (Join-Path $lfRoot 'packaging/nsis/bundle.conf.json')
   if($LASTEXITCODE -ne 0){throw 'NSIS installer bundling failed'}
  } finally {Pop-Location}
  & $lfPython scripts/audit_embedded_payload.py $lfRuntime .lumaforge-local/beta-payload-audit.json --native apps/desktop/src-tauri/target/release/color-studio-beta.exe

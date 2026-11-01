@@ -298,6 +298,18 @@ class InstallerTransactionTests(unittest.TestCase):
         self.assertEqual(snapshot(self.target),old)
         self.assertTrue(installer.journal_path(self.target).is_file());self.assert_data_untouched()
 
+    def test_malformed_private_journal_is_retained_without_renaming_data(self):
+        old=self.old_package();expected=self.package(self.stage)
+        journal=installer.journal_path(self.target)
+        for raw in ('null','[]','{"product":"one","product":"two"}'):
+            with self.subTest(raw=raw):
+                journal.write_text(raw,encoding='utf-8')
+                with self.assertRaises(installer.InstallError) as raised:
+                    installer.commit(self.stage,self.target,expected)
+                self.assertEqual(raised.exception.phase,'invalid_manifest')
+                self.assertEqual(journal.read_text(encoding='utf-8'),raw)
+                self.assertEqual(snapshot(self.target),old);self.assert_data_untouched()
+
     def test_another_transaction_lock_blocks_update_without_modifying_either_tree(self):
         old=self.old_package();expected=self.package(self.stage);staged=snapshot(self.stage)
         with installer.target_lock(self.target):

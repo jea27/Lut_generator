@@ -438,6 +438,8 @@ Function .onInit
     Pop $R0
     ; If downgrading
     ${If} $R0 = -1
+      StrCpy $LFPhase "downgrade_blocked"
+      Call LFLogPhase
       ${If} ${Silent}
         System::Call 'kernel32::AttachConsole(i -1)i.r0'
         ${If} $0 <> 0
@@ -462,9 +464,11 @@ Section WebView2
     ReadRegStr $4 HKLM "SOFTWARE\Microsoft\EdgeUpdate\Clients\${WEBVIEW2APPGUID}" "pv"
   ${EndIf}
   ${If} $4 == ""
+  ${OrIf} $4 == "0.0.0.0"
     ReadRegStr $4 HKCU "SOFTWARE\Microsoft\EdgeUpdate\Clients\${WEBVIEW2APPGUID}" "pv"
   ${EndIf}
   ${If} $4 == ""
+  ${OrIf} $4 == "0.0.0.0"
     !if "${INSTALLWEBVIEW2MODE}" != "embedBootstrapper"
       !error "Only the pinned official Evergreen bootstrapper is supported"
     !endif
@@ -637,6 +641,16 @@ Section Install
     !insertmacro NSIS_HOOK_POSTINSTALL
   !endif
 
+  ClearErrors
+  ReadRegStr $0 SHCTX "${UNINSTKEY}" "DisplayVersion"
+  ${If} ${Errors}
+  ${OrIf} $0 != "${VERSION}"
+    StrCpy $LFPhase "registration_failed_new_package_committed"
+    Call LFLogPhase
+    SetErrorLevel 2
+    Abort "El paquete nuevo está instalado, pero falló su registro. Conserva la copia anterior y consulta el registro antes de reintentar."
+  ${EndIf}
+
   ; Auto close this page for passive mode
   ${If} $PassiveMode = 1
     SetAutoClose true
@@ -660,6 +674,18 @@ Function .onInstSuccess
 FunctionEnd
 
 Function un.onInit
+  System::Call 'kernel32::CreateMutexW(p0,i0,w "Local\ColorStudioTechnicalBetaSingleInstance") p.r0 ?e'
+  Pop $1
+  StrCpy $LFMutex $0
+  ${If} $0 = 0
+  ${OrIf} $1 = 183
+    ${If} $LFMutex != 0
+      System::Call 'kernel32::CloseHandle(p $LFMutex)'
+      StrCpy $LFMutex 0
+    ${EndIf}
+    SetErrorLevel 2
+    Abort "Cierra Color Studio y cualquier otro instalador antes de desinstalar. Tus datos no se han cambiado."
+  ${EndIf}
   !insertmacro SetContext
 
   !if "${INSTALLMODE}" == "both"
@@ -679,18 +705,20 @@ Function un.onInit
   ${EndIf}
 FunctionEnd
 
+Function un.onGUIEnd
+  ${If} $LFMutex != 0
+    System::Call 'kernel32::CloseHandle(p $LFMutex)'
+    StrCpy $LFMutex 0
+  ${EndIf}
+FunctionEnd
+
 Section Uninstall
 
   !ifmacrodef NSIS_HOOK_PREUNINSTALL
     !insertmacro NSIS_HOOK_PREUNINSTALL
   !endif
 
-  System::Call 'kernel32::OpenMutexW(i 0x100000,i0,w "Local\ColorStudioTechnicalBetaSingleInstance") p.r0'
-  ${If} $0 != 0
-    System::Call 'kernel32::CloseHandle(p r0)'
-    SetErrorLevel 2
-    Abort "Cierra Color Studio antes de desinstalar. Tus datos no se han cambiado."
-  ${EndIf}
+  ; The app/installer mutex remains held until this uninstaller exits.
 
   ; Delete the app directory and its content from disk
   ; Copy main executable

@@ -556,7 +556,8 @@
         "packaging/webview2.lock.json",
         "scripts/prepare_installer_inputs.py",
         "scripts/create_install_manifest.py",
-        "scripts/audit_nsis_payload.py"
+        "scripts/audit_nsis_payload.py",
+        "packaging/nsis/bundle.conf.json"
       ]
     },
     {

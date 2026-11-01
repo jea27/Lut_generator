@@ -20,8 +20,7 @@
     "shortDescription": "Offline colour grading technical beta",
     "resources": {
       "binaries/runtime/": "runtime/",
-      "../../../packaging/notices/": "notices/",
-      "binaries/installer-manifest.json": "installer-manifest.json"
+      "../../../packaging/notices/": "notices/"
     },
     "windows": {
       "nsis": {
@@ -32,13 +31,13 @@
         ],
         "displayLanguageSelector": true,
         "template": "../../../packaging/nsis/installer.nsi",
-        "installerHooks": "binaries/installer-vars.nsh",
-        "allowDowngrades": false
+        "installerHooks": "binaries/installer-vars.nsh"
       },
       "webviewInstallMode": {
         "type": "embedBootstrapper",
         "silent": true
-      }
+      },
+      "allowDowngrades": false
     },
     "useLocalToolsDir": true
   }
