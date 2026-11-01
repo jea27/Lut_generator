@@ -831,10 +831,14 @@ y revisión humana pendientes. Sin aprobar capacidades ni completar P0 comercial
 
 Build Windows remoto41292426593 terminó success sobre36fbb789, incluyendo NSIS
 completo y guardas de procedencia. Solo sube informes saneados, no instaladores.
-PR89 aún borrador al guardar; documentación/manifiesto esperan commit final.
-Registrar cierre de checks en PR89/57 y avisar una vez desde67, con marcador
-lumaforge-review-pr:89. Las evidencias de esta rama esperan merge humano para
-Pages; sincronizar Issues/PR desde main no publica archivos de una rama abierta.
+La documentación/manifiesto y recibos están comprometidos en6fdd593. El cierre
+de checks del último head y la solicitud humana se registran en PR89/57/67;
+consultar https://github.com/jea27/Lut_generator/pull/89/checks antes de continuar.
+El paso final es pasar PR89 a revisión y comprobar un único aviso desde67,
+con marcador lumaforge-review-pr:89; no repetir aviso para este mismo bloqueo.
+Las evidencias de esta rama esperan merge humano para Pages; sincronizar Issues/PR
+desde main no publica archivos de una rama abierta. Recibos JSON preservados
+byte a byte por .gitattributes para mantener sus hashes tras un checkout Windows.
 
 Reanudar aquí: git status --short; gh pr view 89; gh pr checks 89; leer67 y
 RUNTIME_WINDOWS_EMBEBIDO.md. Python de build ../../.venv-mvp/Scripts/python.exe.
