@@ -1,0 +1,172 @@
+{
+  "findings": [
+    {
+      "file": "stdlib/ntpath.pyc",
+      "reason": "upstream_windows_build_or_example_path",
+      "blocking": false
+    },
+    {
+      "file": "stdlib/pydoc_data/topics.pyc",
+      "reason": "upstream_windows_build_or_example_path",
+      "blocking": false
+    },
+    {
+      "file": "stdlib/tempfile.pyc",
+      "reason": "upstream_windows_build_or_example_path",
+      "blocking": false
+    },
+    {
+      "file": "stdlib/webbrowser.pyc",
+      "reason": "upstream_windows_build_or_example_path",
+      "blocking": false
+    },
+    {
+      "file": "vendor/click/utils.py",
+      "reason": "upstream_windows_build_or_example_path",
+      "blocking": false
+    },
+    {
+      "file": "vendor/numpy/__config__.py",
+      "reason": "generic_upstream_example_account",
+      "blocking": false
+    },
+    {
+      "file": "vendor/numpy/__config__.py",
+      "reason": "upstream_windows_build_or_example_path",
+      "blocking": false
+    },
+    {
+      "file": "vendor/numpy/f2py/cb_rules.py",
+      "reason": "upstream_windows_build_or_example_path",
+      "blocking": false
+    },
+    {
+      "file": "vendor/numpy/random/_examples/numba/extending_distributions.py",
+      "reason": "upstream_windows_build_or_example_path",
+      "blocking": false
+    },
+    {
+      "file": "vendor/opencv_python_headless-5.0.0.93.dist-info/METADATA",
+      "reason": "generic_upstream_example_account",
+      "blocking": false
+    },
+    {
+      "file": "vendor/psutil/_pswindows.py",
+      "reason": "upstream_windows_build_or_example_path",
+      "blocking": false
+    },
+    {
+      "file": "vendor/pydantic/v1/networks.py",
+      "reason": "upstream_windows_build_or_example_path",
+      "blocking": false
+    },
+    {
+      "file": "vendor/pydantic_core-2.50.2.dist-info/sboms/pydantic-core.cyclonedx.json",
+      "reason": "upstream_windows_build_or_example_path",
+      "blocking": false
+    },
+    {
+      "file": "vendor/pydantic_core/_pydantic_core.cp314-win_amd64.pyd",
+      "reason": "generic_upstream_example_account",
+      "blocking": false
+    },
+    {
+      "file": "vendor/uvicorn/config.py",
+      "reason": "upstream_windows_build_or_example_path",
+      "blocking": false
+    },
+    {
+      "file": "vendor/uvicorn/server.py",
+      "reason": "upstream_windows_build_or_example_path",
+      "blocking": false
+    }
+  ],
+  "blocking_findings": 0,
+  "passed": true,
+  "native_launcher": {
+    "inventory": [
+      {
+        "file": "color-studio-beta.exe",
+        "sha256": "544d981267e667ee4c33eec843e297cd4816a673f518e76117877eb4532af76f",
+        "bytes": 8040448,
+        "origin": "repository-compiled-locked-cargo",
+        "architecture": "AMD64",
+        "imports": [
+          "advapi32.dll",
+          "api-ms-win-core-synch-l1-2-0.dll",
+          "api-ms-win-core-winrt-error-l1-1-0.dll",
+          "api-ms-win-crt-convert-l1-1-0.dll",
+          "api-ms-win-crt-heap-l1-1-0.dll",
+          "api-ms-win-crt-locale-l1-1-0.dll",
+          "api-ms-win-crt-math-l1-1-0.dll",
+          "api-ms-win-crt-runtime-l1-1-0.dll",
+          "api-ms-win-crt-stdio-l1-1-0.dll",
+          "api-ms-win-crt-string-l1-1-0.dll",
+          "bcryptprimitives.dll",
+          "combase.dll",
+          "comctl32.dll",
+          "dwmapi.dll",
+          "gdi32.dll",
+          "imm32.dll",
+          "kernel32.dll",
+          "ntdll.dll",
+          "ole32.dll",
+          "oleaut32.dll",
+          "shell32.dll",
+          "shlwapi.dll",
+          "user32.dll"
+        ],
+        "windows_imports": [
+          "advapi32.dll",
+          "api-ms-win-core-synch-l1-2-0.dll",
+          "api-ms-win-core-winrt-error-l1-1-0.dll",
+          "api-ms-win-crt-convert-l1-1-0.dll",
+          "api-ms-win-crt-heap-l1-1-0.dll",
+          "api-ms-win-crt-locale-l1-1-0.dll",
+          "api-ms-win-crt-math-l1-1-0.dll",
+          "api-ms-win-crt-runtime-l1-1-0.dll",
+          "api-ms-win-crt-stdio-l1-1-0.dll",
+          "api-ms-win-crt-string-l1-1-0.dll",
+          "bcryptprimitives.dll",
+          "combase.dll",
+          "comctl32.dll",
+          "dwmapi.dll",
+          "gdi32.dll",
+          "imm32.dll",
+          "kernel32.dll",
+          "ntdll.dll",
+          "ole32.dll",
+          "oleaut32.dll",
+          "shell32.dll",
+          "shlwapi.dll",
+          "user32.dll"
+        ]
+      }
+    ],
+    "privacy": {
+      "findings": [],
+      "blocking_findings": 0,
+      "passed": true
+    },
+    "signature": "Not signed; no certificate purchased"
+  },
+  "schema": "color-studio-embedded-payload-audit-v1",
+  "files": 923,
+  "native": 60,
+  "manifest_sha256": "2b3a92e6024e03965cb55e358a21c32db9c1b7a1fa5709f20ac8d83d81073605",
+  "demo": [
+    {
+      "file": "reference.jpg",
+      "sha256": "5005bfe36f98fd65e89673be1cc09d5f532f09482fd3e8a57de075022c13493c",
+      "exif_entries": 0
+    },
+    {
+      "file": "source.jpg",
+      "sha256": "c45f876097b42968568cf595b268b0600a83b0728c1edf8105ffccfea9cb9e5d",
+      "exif_entries": 0
+    }
+  ],
+  "scope": "Pinned runtime + source + native bytes + stdlib bytecode. Pattern audit, not proof of absence of all private data.",
+  "build_origin_gate_passed": true,
+  "redistribution_approved": false
+}

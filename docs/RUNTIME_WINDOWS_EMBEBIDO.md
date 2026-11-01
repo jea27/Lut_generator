@@ -18,6 +18,10 @@ arquitecturas distintas y dependencias nativas no incluidas/no reconocidas
 como componentes del SO. Solo entran las dos fotos CC0 declaradas por hash en
 `apps/demo/credits.json`; un archivo adicional hace fallar el build.
 
+Resultado del candidato:923 archivos de runtime/60 PE,19 wheels;945 archivos
+al extraer NSIS. Las guías `.agents` y hooks `_pyinstaller` que incluían wheels
+se excluyen, sin eliminar licencias. Recibos `docs/evidence/RUNTIME_036_*`.
+
 | Componente | Evidencia/condiciones |
 |---|---|
 | CPython oficial | ZIP, hash, firmas PSF requeridas y LICENSE.txt completo, incluidos subcomponentes. No se cambia el binario. |
@@ -91,6 +95,21 @@ sí solo un NSIS idéntico bit a bit. El setup recibe versión, SHA-256 y origen
 real en beta-artifact.json. El binario se conserva localmente; el workflow del
 repositorio público solo permite subir informes saneados, nunca el instalador.
 
+En la pareja final los923 payloads coinciden byte a byte. Los manifiestos solo
+difieren en `dirty`: el segundo ensamblado incluyó auditores nuevos aún sin commit,
+que no se copian al producto. El primer candidato procede del commit limpio
+cf1d451. Una pareja previa sin esa exclusión tenía manifiestos idénticos; no se
+extrapola ese resultado al NSIS final. Los commits posteriores añaden auditores,
+evidencias/documentación sin alterar los fuentes de la aplicación empaquetada.
+
+La extracción NSIS se reproduce con `scripts/audit_nsis_payload.py`, usando7-Zip
+ya autorizado, el ZIP NSIS oficial fijado y el cache de compilación. Primero
+valida límites/rutas/collisiones/enlaces del índice; después verifica el conjunto
+exacto de archivos, hashes, notices y arquitectura/imports. El launcher dentro de
+NSIS solo difiere en el marcador documentado `__TAURI_BUNDLE_TYPE_VAR_UNK`→`NSS`;
+cualquier otro byte diferente falla. No se modifica el exe para hacerlo pasar.
+El script de build ejecuta esta auditoría antes de emitir su recibo final.
+
 ## Evidencias y límites de aceptación
 
 Las pruebas de infraestructura incluyen tripwires de PYTHONHOME/PYTHONPATH/cwd,
@@ -111,3 +130,24 @@ hasta abrir esos programas realmente: `QA_EDITORES_03.md` E01–E05. No se anunc
 como compatibilidad certificada. Beta externa y venta permanecen **NO-GO** hasta
 cerrar QA, derechos/condiciones, revisión y permiso de entrega. Los resultados
 del candidato se registran en evidencias, Issue57/67 y el checkpoint.
+
+## Instalación local realizada y fallo abierto
+
+En este PC, desde Codex/MSIX: beta2 arrancó con un preset de QA nuevo; la
+actualización directa silenciosa devolvió2. El asistente interactivo lanzó el
+desinstalador previo, cuyo diálogo de idioma no estuvo accesible al controlador.
+Se detuvieron únicamente los procesos propios de ese diagnóstico. No se afirma
+una causa raíz ni que sea un fallo reproducido fuera de este contexto.
+
+La desinstalación explícita de beta2, instalación beta3, desinstalación beta3 y
+reinstalación devolvieron0. Se conservó el preset anterior, seis archivos de QA y
+un archivo personal sintético dentro de la instalación. Los nueve archivos del
+almacén existente conservaron hashes; sus nombres/datos/hashes no se publican.
+El sentinel propio se retiró al acabar. Creator/Pro/Planner y las cinco salidas
+PNG/JPG/.cube/receta/plan se probaron desde la interfaz instalada. Capturas CC0,
+hashes y límites están en RUNTIME_036_QA; no hay aceptación de calidad humana.
+
+La actualización directa queda pendiente de reproducir/resolver en Windows
+normal y limpio. La guía humana propone desinstalar/instalar explícitamente
+para el ensayo interno, conservando copia privada y sin marcar borrar datos.
+No se declara superada la actualización automática ni el corte físico de red.

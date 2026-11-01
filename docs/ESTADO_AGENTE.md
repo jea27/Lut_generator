@@ -789,3 +789,56 @@ Reanudar desde este worktree: git status --short; leer log privado
 herramientas existente en ../../.venv-mvp; no usar sus DLL en producto. Los19
 wheels y ZIP se guardan en .lumaforge-local/downloads; builder puede validar
 --offline. No borrar worktrees, datos privados ni staging sin comprobar su marca.
+
+## Checkpoint de candidato interno · COL036 / PR89 · 01-11-2026
+
+Tarea COL036/Issue57; solicitud canónica67. Rama codex/COL-036-runtime-oficial
+en worktree COL-036-runtime-oficial. PR89 hacia main, sin merge ni approved.
+PR88 integrada por jea27 en05b4983; raíz y otros worktrees preservados.
+
+Runtime PSF3.14.10 embeddable +19 wheels oficiales fijados por lock/RECORD/hash,
+sin DLL del host.923 archivos/60 PE;945 extraídos de NSIS. Compilador/plugins y
+avisos cotejados con origen oficial; firmas requeridas PSF/MS Valid. Guías/hooks
+de desarrollo upstream excluidos. Auditoría completa integrada en el build.
+
+Candidato local0.3.0-beta.3,46683099 bytes, fuente limpia cf1d451,
+SHA2560350f5b44be2850f828a148debc4174b8f134953b080d895bbbca8620576b5cd.
+NSIS sin firma; no certificado comprado. Recibo RUNTIME_036_ARTIFACT.json. Los
+commits posteriores añaden auditores, evidencia y documentación; inputs de la
+aplicación empaquetada siguen iguales.923 payloads idénticos en dos ensamblados;
+manifiestos difieren solo en dirty del segundo, con auditores aún sin commit.
+No se afirma NSIS idéntico bit a bit ni equivalencia visual universal.
+
+Pruebas:73 al construir;78 locales host/embebido después;79 host/embebido en
+CI36fbb789 (41292429730 success),128 seguimiento y7 Node correctos; build Vue/TS
+correcto. Flags de aislamiento1; cwd/PYTHON* contaminados no alteran imports.
+71 PE cargados del bundle/SO cotejados por hash, ninguno inesperado. API con
+cuatro CC0 de16MP:15.113–16.588s, lote2 y originales intactos; no es una mejora
+general demostrada. LUT conserva hash4fb41b…8d331. Watchdog real correcto.
+
+QA instalada desde Codex/MSIX de este PC: Creator/Pro/Planner, demo y descargas
+PNG/JPG/receta/.cube/planJSON reales. PNG/JPG1024×678 con ICC; plan mantiene
+human_validated=false. Desinstalar beta2, instalar beta3, desinstalar beta3 y
+reinstalar:0; preset beta2,6 archivos QA y sentinel sintético conservados.
+9 archivos del almacén existente con hashes intactos; sus datos no se publican.
+Sentinel retirado al acabar; todos los procesos propios del ensayo cerrados.
+
+Fallo abierto: actualización directa /S devolvió2; asistente interactivo esperó
+al desinstalador previo y su idioma no resultó accesible al controlador. Causa
+raíz no confirmada. No hay VM/Windows limpio, corte físico de red ni importación
+LUT nueva en Adobe/Resolve. Beta externa y venta NO-GO; derechos/titular/piloto
+y revisión humana pendientes. Sin aprobar capacidades ni completar P0 comercial.
+
+Build Windows remoto41292426593 terminó success sobre36fbb789, incluyendo NSIS
+completo y guardas de procedencia. Solo sube informes saneados, no instaladores.
+PR89 aún borrador al guardar; documentación/manifiesto esperan commit final.
+Registrar cierre de checks en PR89/57 y avisar una vez desde67, con marcador
+lumaforge-review-pr:89. Las evidencias de esta rama esperan merge humano para
+Pages; sincronizar Issues/PR desde main no publica archivos de una rama abierta.
+
+Reanudar aquí: git status --short; gh pr view 89; gh pr checks 89; leer67 y
+RUNTIME_WINDOWS_EMBEBIDO.md. Python de build ../../.venv-mvp/Scripts/python.exe.
+Setup: apps/desktop/src-tauri/target/release/bundle/nsis/Color Studio Beta_0.3.0-beta.3_x64-setup.exe.
+Caches/informes privados en .lumaforge-local. No publicar exe/datos originales.
+Próximo trabajo: resolver actualización directa en Windows normal/limpio con
+operador y ejecutar W01–W09/E01–E05. No ampliar producto ni fusionar la PR.

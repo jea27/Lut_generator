@@ -4,21 +4,32 @@ Para el responsable, sin programar. Seguimiento: #57, #67, #81–83.
 
 ## Abrir la entrega correcta
 
-Esta entrega sigue siendo código de integración, **no un nuevo instalador**.
-El setup anterior 0.3.0-beta.2 no contiene Creator/Pro/Planner. No lo uses para
-aceptar estas capacidades. Tampoco es la web de planificación de GitHub Pages.
+01-11-2026: existe el candidato **interno0.3.0-beta.3**, con Creator/Pro/Planner
+y runtime Python incluido. Su SHA-256 es
+`0350f5b44be2850f828a148debc4174b8f134953b080d895bbbca8620576b5cd`.
+El archivo se facilita localmente por este chat; no hay release autorizada ni
+descarga pública. El setup0.3.0-beta.2 no contiene estas experiencias.
 
-En el equipo de desarrollo ya preparado, abre la carpeta de esta rama y haz
-doble clic en `Iniciar-LumaForge.cmd`; conserva la ventana abierta. Abre en tu
-navegador `http://127.0.0.1:8790`. Si otra sesión ocupa ese puerto o no aparecen
-los botones Creator/Pro, detente: no cierres procesos de otra sesión. Solicita
-la entrega correcta. Cierra con Ctrl+C en su ventana cuando acabes. No requiere
-instalar nada más en este equipo. Este recorrido **sí usa el entorno preparado**;
-la ejecución interna del motor congelado es otra evidencia, no el setup final.
+1. Guarda antes recetas/presets/planes importantes y cierra Color Studio.
+2. Comprueba versión/hash con `RUNTIME_036_ARTIFACT.json`. Si conservas beta2,
+   haz una copia privada de `%LOCALAPPDATA%/ColorStudioBetaData`. No la subas a GitHub.
+3. Para este ensayo interno utiliza la desinstalación explícita de beta2 y después
+   instala beta3, conservando los datos. No marques «Eliminar datos de la app».
+   La actualización directa automática **no está verificada**: devolvió2 en el
+   contexto de Codex y el asistente se detuvo en el idioma del desinstalador previo.
+   No ocultes ese fallo ni lo registres como PASS. Detalles en #67 y RUNTIME_036_QA.
+4. Abre Color Studio desde su acceso directo. Confirma Ayuda0.3.0-beta.3 y los
+   botones Creator/Pro. No necesitas Python, Node ni una consola para usarlo.
 
-Para probar un Windows limpio, espera al candidato auditado y autorizado de
-#67. En ese equipo el recorrido empezará desde su acceso directo instalado,
-sin ejecutar `.cmd`, Python, Node ni consola de desarrollo.
+Si falta WebView2, el instalador usa Evergreen oficial y necesita Internet para
+esa primera instalación; después hay que ejecutar la prueba offline por separado.
+No desactives protecciones ni omitas un bloqueo de SmartScreen. Registra el error
+y detente si Windows impide ejecutarlo. No se ha probado aún Windows limpio.
+
+Las pruebas locales se ejecutaron desde Codex en un PC de desarrollo, con datos
+de QA separados y redirección MSIX de archivos. No acreditan una instalación
+normal de Windows limpio ni la ubicación de tus datos fuera de ese contexto.
+Para W01–W09 sigue BETA_QA_EXTERNA; el titular debe aportar el entorno/operador.
 
 ## Recorrido de unos 15 minutos
 
