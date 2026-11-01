@@ -420,3 +420,23 @@ interactiva del idioma es otra ruta. No atribuir una causa por documentación so
 NSISdl aceptó HTTPS y devolvió success, pero un fixture loopback observó HTTP plano
 para URL https, sin saludo TLS. Descarga diagnóstica no ejecutada. Se conserva la
 evidencia privada y se continúa con reproducción, corrección y recuperación reales.
+
+
+## 01-11-2026 · COL036 · preparación transaccional de actualización
+
+PR89 integrada por jea27; nueva rama aislada desde918cb638. Se repitió actualización
+original beta2→beta3 sin desinstalación intermedia:0, preset de QA por API preservado,
+legacy runtime retenido. La línea base beta2 requirió retirada anterior únicamente
+para el experimento. No reproduce el2 histórico ni se afirma causa resuelta.
+Probe de transporte NSISdl a loopbackhttps recibió plaintextHTTP, distinto del
+histórico. Decisión material: usar bootstrapper oficial Microsoft firmado fijado por
+hash y transporte HTTPS en construcción, con licencia propietaria/gate externo
+pendiente. No copiar DLLs del host, ni desactivar protecciones.
+
+Nueva beta4 en preparación: stage hermano con ledger completo, mutex/lock, validación,
+backup/rollback y diario; antiguo desinstalador no se ejecuta para actualizar. Logs
+por fases sin rutas/datos. Extras personales de raíz se conservan; componentes
+legacy quedan en backup privado, no runtime activo ni material redistribuible.
+Interrupciones sintéticas no son cortes eléctricos. Windows limpio/Resolve/offline
+real pendientes de operador; solicitud67 única, workflow41316675082 y mención
+6559335054 comprobados. No se habilitó Hyper-V ni reinició el host. Guías preparadas.

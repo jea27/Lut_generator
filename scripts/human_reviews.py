@@ -17,7 +17,10 @@ RECEIPT='<!-- lumaforge-review-receipt-v1 -->\n```json\n'
 # Exact runtime inputs may invalidate Windows acceptance without changing app code.
 # Hash Git blobs only; this does not execute build scripts or expand API permissions.
 RUNTIME_REVIEW_FILES={'packaging/runtime.lock.json','packaging/python314._pth',
-                      'scripts/build_embedded_runtime.py','scripts/build_beta.ps1'}
+                      'scripts/build_embedded_runtime.py','scripts/build_beta.ps1',
+                      'packaging/nsis/installer.nsi','packaging/nsis-toolchain.lock.json',
+                      'packaging/webview2.lock.json','scripts/prepare_installer_inputs.py',
+                      'scripts/create_install_manifest.py','scripts/audit_nsis_payload.py'}
 
 
 def canonical(value): return json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=False)

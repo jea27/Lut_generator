@@ -1,3 +1,40 @@
+# Checkpoint vigente · COL036 actualización segura · 01-11-2026
+
+Rama `codex/COL-036-actualizacion-segura`, worktree independiente; base main918cb638
+(PR89 fusionada por jea27). Issue57 en curso,67 solicitud canónica. No se toca el
+worktree del agente principal ni se fusiona nada. Beta externa/venta siguen NO-GO.
+
+Repetición real beta2→beta3 silenciosa:0, preset QA recuperado por API, datos
+conservados. No reproduce ni explica el2 histórico. Overlay retuvo runtime antiguo.
+Probe NSISdl loopback con URL https recibió HTTP plano; transporte sustituido por
+bootstrapper oficial Microsoft fijado/firmado, sin ejecutarlo ni instalar Evergreen.
+
+Preparado candidato correctivo beta.4: extracción a stage nuevo, ledger SHA fijado,
+mutex de app y lock de transacción, backup completo, rollback de errores de rename,
+diario recuperable sin borrado automático y logs de fases sanitizados. Código en
+apps/desktop/installer_helper.py y packaging/nsis/installer.nsi. No hay aún un
+instalador beta4 validado: siguiente paso construir y probar el paquete nativo.
+
+Tests iniciales:101 MVP,3 symlink omitidos por privilegios; después se añadieron2
+casos de HTTPS/cache que deben incluirse en la siguiente ejecución. No se cambiaron
+permisos para ejecutar tests. Tracking/frontend se verifican antes de publicar.
+
+Bloqueos reales: Hyper-V gestión no habilitado, elevación740 y RAM libre~5GB;
+Resolve no instalado/registro personal pendiente. Guías QA_WINDOWS11_VM y
+QA_RESOLVE_BETA3 preparadas. Solicitud67 publicada y workflow41316675082 success,
+mención6559335054 confirmada. No nueva confirmación de entrega física al iPhone.
+No repetir aviso sobre ese bloqueo. Ninguna VM/ISO/editor/desconexión física probada.
+
+Reanudar: git status; leer ACTUALIZACION_SEGURA_WINDOWS; preparar inputs oficiales
+con scripts/prepare_installer_inputs.py; ejecutar build_beta.ps1 usando Python de
+build existente y cachés verificadas; auditar NSIS y probar actualización directa
+con store QA privado antes de crear PR correctiva de57. Conservar beta2/beta3,
+backups, logs crudos y datos privados; publicar solo recibos sanitizados. Si falla,
+identificar fase y código real, no atribuir el histórico por analogía. No GO externo,
+no merge, no approved. Trabajo independiente autorizado continúa.
+
+---
+
 # Checkpoint vigente · estabilización y procedencia binaria · 31-10-2026
 
 PR71 lista para revisión: https://github.com/jea27/Lut_generator/pull/71.

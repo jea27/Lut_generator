@@ -506,7 +506,9 @@
         "tests_mvp/test_beta.py",
         "tests_mvp/test_packaged_qa.py",
         "tests_mvp/test_embedded_runtime.py",
-        "tests_mvp/test_nsis_audit.py"
+        "tests_mvp/test_nsis_audit.py",
+        "tests_mvp/test_installer_transaction.py",
+        "tests_mvp/test_installer_inputs.py"
       ],
       "evidence": [
         {
@@ -547,7 +549,14 @@
         "packaging/runtime.lock.json",
         "packaging/python314._pth",
         "scripts/build_embedded_runtime.py",
-        "scripts/build_beta.ps1"
+        "scripts/build_beta.ps1",
+        "apps/desktop/installer_helper.py",
+        "packaging/nsis/installer.nsi",
+        "packaging/nsis-toolchain.lock.json",
+        "packaging/webview2.lock.json",
+        "scripts/prepare_installer_inputs.py",
+        "scripts/create_install_manifest.py",
+        "scripts/audit_nsis_payload.py"
       ]
     },
     {

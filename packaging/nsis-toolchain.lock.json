@@ -35,11 +35,6 @@
       "sha256": "3c8b2629048c118e4fcf80188cbcdaad3a668270e49fd95d2809feccc98fe220",
       "source": "nsis"
     },
-    "$PLUGINSDIR/NSISdl.dll": {
-      "member": "nsis-3.13/Plugins/x86-unicode/NSISdl.dll",
-      "sha256": "d3e61c4df837625ac0503cea5b6765a04d37fc35399899a5503b53a3108bfbf6",
-      "source": "nsis"
-    },
     "$PLUGINSDIR/modern-wizard.bmp": {
       "member": "nsis-3.13/Contrib/Graphics/Wizard/win.bmp",
       "sha256": "3ad2dc318056d0a2024af1804ea741146cfc18cc404649a44610cbf8b2056cf2",
@@ -48,6 +43,11 @@
     "$PLUGINSDIR/nsis_tauri_utils.dll": {
       "sha256": "5ba143b5db4a87d32d6e7802e033330aae56cbceabe0d1e3ba41948385ad4709",
       "source": "tauri-utils"
+    },
+    "$PLUGINSDIR/nsExec.dll": {
+      "member": "nsis-3.13/Plugins/x86-unicode/nsExec.dll",
+      "sha256": "1dee37f6abb2dec9e767bd022d29386b6b295bbd55bf316d2649b8d298f89e9d",
+      "source": "nsis"
     }
   }
 }
