@@ -143,12 +143,12 @@ class Reviews(unittest.TestCase):
         with patch.object(h,'context',return_value=new):self.assertEqual(self.project(records)['state'],'needs_review')
 
     def test_workflow_auth_trusted_main_minimal_permissions_and_refresh(self):
-        workflow=(ROOT/'.github/workflows/human-review.yml').read_text()
+        workflow=(ROOT/'.github/workflows/human-review.yml').read_text(encoding='utf-8')
         for expected in ('issue_comment:','created, edited, deleted','ref: main','issues: write','45896918'):
             self.assertIn(expected,workflow)
         self.assertNotIn('contents: write',workflow);self.assertNotIn('pull_request_target',workflow)
         self.assertNotIn('github.event.comment.body }}',workflow)
-        self.assertIn('Validar revisión humana',(ROOT/'.github/workflows/sync-roadmap.yml').read_text())
+        self.assertIn('Validar revisión humana',(ROOT/'.github/workflows/sync-roadmap.yml').read_text(encoding='utf-8'))
 
 
 if __name__=='__main__':unittest.main()

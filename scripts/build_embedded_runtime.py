@@ -85,6 +85,7 @@ def locked_download(item,cache,offline=False):
 def excluded(name,python=False):
     parts=PurePosixPath(name).parts
     if any(p.endswith('.dist-info') for p in parts):return None # Preserve notices/metadata, including third-party licenses.
+    if {'.agents','.github','_pyinstaller'} & set(parts):return 'upstream_development_tooling_not_runtime'
     if 'ffmpeg' in name.lower():return 'video_codec_not_a_product_feature'
     if python and name=='python314._pth':return 'replaced_by_versioned_isolation_configuration'
     if {'tests','test','benchmarks','__pycache__'} & set(parts):return 'upstream_test_or_benchmark_not_runtime'

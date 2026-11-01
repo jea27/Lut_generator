@@ -105,7 +105,7 @@ class EmbeddedRuntimeTests(unittest.TestCase):
 
     def test_licenses_survive_pruning_and_video_test_development_files_do_not(self):
         self.assertIsNone(bundle.excluded('package.dist-info/licenses/tests/LICENSE.txt'))
-        for name in ('numpy/tests/test.py','cv2/opencv_videoio_ffmpeg500_64.dll','numpy/_core/a_tests.cp314.pyd','include/headers.h'):
+        for name in ('numpy/tests/test.py','cv2/opencv_videoio_ffmpeg500_64.dll','numpy/_core/a_tests.cp314.pyd','include/headers.h','fastapi/.agents/skills/fastapi/SKILL.md','numpy/_pyinstaller/hook-numpy.py'):
             with self.subTest(name=name):self.assertIsNotNone(bundle.excluded(name))
         self.assertIsNone(bundle.excluded('numpy/_core/_multiarray_umath.cp314-win_amd64.pyd'))
 

@@ -26,7 +26,8 @@ jobs:
           }
       - run: |
           python -m venv .venv-mvp
-          ./.venv-mvp/Scripts/python.exe -m pip install -r requirements-mvp.txt -r requirements-build.txt
+          ./.venv-mvp/Scripts/python.exe -m pip install -r requirements-mvp.txt
+          ./.venv-mvp/Scripts/python.exe -m pip install --require-hashes -r requirements-runtime-build.txt
           npm ci --prefix apps/web
       - run: ./scripts/build_beta.ps1
       - uses: actions/upload-artifact@v4
