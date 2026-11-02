@@ -163,6 +163,17 @@ class NsisUninstallGuardTests(unittest.TestCase):
         self.marker(target / 'personal-sentinel.txt')
         self.run_guard(target, 0)
 
+    def test_private_store_root_aborts_before_any_resource_change(self):
+        target=self.fixture/'ColorStudioBetaData'
+        self.marker(target/'runtime/vendor/private-sentinel.txt')
+        self.marker(target/'images/private.png')
+        self.run_guard(target,2)
+
+    def test_private_store_ancestor_aborts_even_for_missing_resources(self):
+        target=self.fixture/'colorstudiobetadata'/'Nested application'
+        self.marker(target.parent/'presets/private.json')
+        self.run_guard(target,2)
+
     def test_missing_managed_directories_are_allowed_without_creating_them(self):
         target = self.fixture / 'Application with missing runtime'
         self.marker(target / 'personal-sentinel.txt')

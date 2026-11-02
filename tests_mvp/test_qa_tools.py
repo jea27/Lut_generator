@@ -98,6 +98,30 @@ class WindowsPreservationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp); data = root/'data'; data.mkdir()
             baseline = root/'private.json'; report = root/'report.json'
-            baseline.write_text(json.dumps({'schema':'color-studio-private-data-baseline-v1','files':[{'relative':'../other.txt','sha256':'0'*64}]}))
+            (data/'marker.json').write_text('{}')
+            self.assertEqual(self.invoke('-Mode','Snapshot','-DataDirectory',data,'-Baseline',baseline).returncode,0)
+            value=json.loads(baseline.read_text(encoding='utf-8-sig'));value['files'][0]['relative']='../other.txt'
+            baseline.write_text(json.dumps(value))
             self.assertNotEqual(self.invoke('-Mode','Verify','-DataDirectory',data,'-Baseline',baseline,'-Report',report).returncode, 0)
             self.assertFalse(report.exists())
+
+    def test_identical_content_in_a_different_directory_is_not_preservation(self):
+        private=Path(__file__).resolve().parents[1]/'.lumaforge-local'
+        with tempfile.TemporaryDirectory(prefix='identity-synthetic-',dir=private) as temp:
+            root=Path(temp);data=root/'data';other=root/'other';data.mkdir();other.mkdir()
+            for directory in (data,other):(directory/'preset.json').write_bytes(b'Identical synthetic bytes')
+            baseline=root/'baseline.json';report=root/'result.json'
+            self.assertEqual(self.invoke('-Mode','Snapshot','-DataDirectory',data,'-Baseline',baseline).returncode,0)
+            run=self.invoke('-Mode','Verify','-DataDirectory',other,'-Baseline',baseline,'-Report',report)
+            self.assertEqual(run.returncode,2,run.stderr.decode(errors='replace'))
+            receipt=json.loads(report.read_text(encoding='utf-8-sig'));self.assertFalse(receipt['passed'])
+            self.assertFalse(receipt['identity_verified']);self.assertEqual(receipt['reason'],'different_store_identity')
+
+    def test_legacy_baseline_without_identity_cannot_certify_preservation(self):
+        private=Path(__file__).resolve().parents[1]/'.lumaforge-local'
+        with tempfile.TemporaryDirectory(prefix='legacy-baseline-synthetic-',dir=private) as temp:
+            root=Path(temp);data=root/'data';data.mkdir();(data/'preset.json').write_bytes(b'Synthetic bytes')
+            baseline=root/'baseline.json';report=root/'result.json'
+            baseline.write_text(json.dumps({'schema':'color-studio-private-data-baseline-v1','files':[{'relative':'preset.json','sha256':'0'*64}]}))
+            self.assertNotEqual(self.invoke('-Mode','Verify','-DataDirectory',data,'-Baseline',baseline,'-Report',report).returncode,0)
+            self.assertFalse(report.exists());self.assertEqual((data/'preset.json').read_bytes(),b'Synthetic bytes')

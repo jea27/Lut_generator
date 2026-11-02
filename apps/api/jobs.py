@@ -1,11 +1,23 @@
 """One serial batch worker, durable status, cooperative cancellation, private outputs."""
 import hashlib
 import json
+import os
+import stat
 import threading
 import uuid
 from pathlib import Path
 from packages.colour_core import engine, image_io
 from .storage import atomic_json, private_path, read_record
+
+
+def remove_owned_part(path,identity):
+    """Discard only a transient file successfully created by this operation."""
+    if identity is None:return
+    try:info=path.lstat()
+    except FileNotFoundError:return  # Already committed by rename.
+    if (stat.S_ISREG(info.st_mode) and not getattr(info,'st_file_attributes',0)&0x400
+            and (info.st_dev,info.st_ino)==identity):
+        path.unlink()
 
 
 class Jobs:
@@ -46,9 +58,12 @@ class Jobs:
         with self.mutex:
             if self.active():raise ValueError('A batch is active; cancel or wait before starting another')
             identifier=str(uuid.uuid4());event=threading.Event()
+            try:private_path(self.root,identifier).mkdir()
+            except FileExistsError:raise ValueError('Existing batch directory preserved; retry with a new job') from None
             record={'id':identifier,'status':'queued','progress':0,'total':len(ids),'completed':0,
                     'format':format,'source_ids':ids,'recipe':recipe.model_dump(),'items':[], 'message':''}
-            self.records[identifier]=record;self.cancel_events[identifier]=event;self.save(record)
+            self.save(record)
+            self.records[identifier]=record;self.cancel_events[identifier]=event
         def worker():
             with self.mutex:record['status']='running';self.save(record)
             try:
@@ -64,11 +79,14 @@ class Jobs:
                             if event.is_set():raise engine.ProcessingCancelled()
                             filename=f'batch-{index+1:03d}.{format}';destination=private_path(self.root,identifier,filename)
                             temporary=destination.with_suffix(destination.suffix+'.part')
+                            created_identity=None
                             try:
-                                with temporary.open('xb') as stream:stream.write(payload)
+                                with temporary.open('xb') as stream:
+                                    info=os.fstat(stream.fileno());created_identity=(info.st_dev,info.st_ino)
+                                    stream.write(payload)
                                 if event.is_set():raise engine.ProcessingCancelled()
                                 temporary.rename(destination)
-                            finally:temporary.unlink(missing_ok=True)
+                            finally:remove_owned_part(temporary,created_identity)
                         item={'index':index,'status':'completed','filename':filename,'sha256':hashlib.sha256(payload).hexdigest()}
                     except engine.ProcessingCancelled:raise
                     except (ValueError,OSError):item={'index':index,'status':'failed','message':'Cannot process this input; verify format, size and disk space'}

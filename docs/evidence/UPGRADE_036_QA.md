@@ -1,5 +1,9 @@
 # COL036 · beta.4 interna: pruebas y bloqueo de conservación
 
+> **Evidencia histórica, superada por el incidente P0 del02-11-2026.** El setup
+> f002… queda en cuarentena. Las comparaciones inmediatas siguientes no resuelven
+> las eliminaciones NTFS. Ver [incidente abierto y contención](INCIDENT_036.md).
+
 Informe del 02-11-2026. [PR90](https://github.com/jea27/Lut_generator/pull/90),
 [tarea57](https://github.com/jea27/Lut_generator/issues/57) y
 [solicitud67](https://github.com/jea27/Lut_generator/issues/67).

@@ -38,9 +38,9 @@ class ApiTests(unittest.TestCase):
             if format=='json':self.assertEqual(response.json()['domain'],'encoded-sRGB-D65')
         p=self.client.post('/api/presets',json={'name':'Synthetic test preset','recipe':recipe},headers=H)
         self.assertEqual(p.status_code,200);self.assertEqual(len(self.client.get('/api/presets').json()),1)
-        self.assertEqual(self.client.delete('/api/images',headers=H).status_code,200)
+        self.assertEqual(self.client.delete('/api/images',headers=H).status_code,423)
         self.assertEqual(len(self.client.get('/api/presets').json()),1)
-        self.assertEqual(self.client.get('/api/images/'+a['id']+'/preview').status_code,404)
+        self.assertEqual(self.client.get('/api/images/'+a['id']+'/preview').status_code,200)
 
     def test_loopback_and_origin_guards(self):
         self.assertEqual(self.client.post('/api/images',headers={'X-Color-Studio-Token':''}).status_code,403)

@@ -178,6 +178,7 @@ def derive(manifest, root, repo, issues, pulls, runs, main_sha, releases, artifa
         if not re.fullmatch('[a-f0-9]{40}',str(d.get('source',''))) or type(d.get('bytes')) is not int or d['bytes']<=0: continue
         builds.append({'version':d['version'],'sha256':d['sha256'],'source':d['source'],'bytes':d['bytes'],
                        'dirty':d.get('dirty'),'signature':text(d.get('signature')),'clean_windows':d.get('windows_clean_install')=='passed',
+                       'quarantined':d.get('quarantined',False) is not False,
                        'evidence_url':f'https://github.com/{repo}/blob/main/{p.relative_to(root).as_posix()}'})
     def version_rank(b):
         parts = re.findall(r'\d+',b['version'])
@@ -185,18 +186,21 @@ def derive(manifest, root, repo, issues, pulls, runs, main_sha, releases, artifa
     builds.sort(key=version_rank,reverse=True)
     version = json.loads(path(root,manifest['version_source']).read_bytes())['version']
     if not VERSION.fullmatch(version): raise ValueError('Invalid source version')
-    candidate = next((b for b in builds if b['version']==version and b['dirty'] is False),None)
+    candidate = next((b for b in builds if b['version']==version and b['dirty'] is False and not b['quarantined']),None)
     published = [r for r in releases if not r.get('draft') and r.get('published_at')]
     published.sort(key=lambda r:r.get('published_at',''),reverse=True)
+    distribution_safe=(evidence(root,manifest['distribution_safety_evidence']) is True
+                       if 'distribution_safety_evidence' in manifest else True)
     release = None
     if published:
         r = published[0]; tag = text(r.get('tag_name'))
         authorized = ('release-approved:'+tag.lower()) in labels(issue_by.get(manifest['approval_issue']))
-        release_build = next((b for b in builds if b['version']==tag.removeprefix('v') and b['dirty'] is False),None)
+        release_build = next((b for b in builds if b['version']==tag.removeprefix('v') and b['dirty'] is False and not b['quarantined']),None)
         asset_verified = bool(release_build and any(a.get('state')=='uploaded' and str(a.get('name','')).endswith('.exe') and
                                       a.get('digest')=='sha256:'+release_build['sha256'] for a in r.get('assets',[])))
         release = {'tag':tag,'url':link(r.get('html_url'),repo),'published_at':timestamp(r['published_at']),'authorized':authorized,
-                   'asset_matches_manifest':asset_verified,'download_url':link(r.get('html_url'),repo) if authorized and asset_verified else None}
+                   'asset_matches_manifest':asset_verified,'safety_hold':not distribution_safe,
+                   'download_url':link(r.get('html_url'),repo) if authorized and asset_verified and distribution_safe else None}
     by_id = {f['id']:f for f in features}
     metrics = {key:metric(by_id[f]['technically_verified' if key=='technical' else 'human_approved'] for f in members) for key,members in manifest['metrics'].items()}
     gates = {}
@@ -204,7 +208,7 @@ def derive(manifest, root, repo, issues, pulls, runs, main_sha, releases, artifa
         rows = []
         for rule in rules:
             kind = rule['kind']
-            value = (candidate is not None) if kind=='candidate' else bool(release and release['authorized'] and release['asset_matches_manifest']) if kind=='release' else (approved(issue_by[rule['issue']]) if rule['issue'] in issue_by else None) if kind=='approval' else evidence(root,rule)
+            value = (candidate is not None) if kind=='candidate' else bool(release and release['authorized'] and release['asset_matches_manifest'] and not release['safety_hold']) if kind=='release' else (approved(issue_by[rule['issue']]) if rule['issue'] in issue_by else None) if kind=='approval' else evidence(root,rule)
             rows.append({'id':rule['id'],'title':rule['title'],'passed':value,'issue_url':f'https://github.com/{repo}/issues/{rule["issue"]}' if 'issue' in rule else None})
         gates[category] = {'checks':rows,'metric':metric(r['passed'] for r in rows),'go':all(r['passed'] is True for r in rows)}
     recent_prs = sorted(pulls,key=lambda p:p.get('updated_at',''),reverse=True)[:12]

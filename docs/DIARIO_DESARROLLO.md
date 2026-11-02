@@ -500,3 +500,39 @@ Issue57 blocked, sin in-progress; solicitud67 actualizada con diagnóstico concr
 Workflow41410069177 success, mención6572098610 a jea27 comprobada; no recepción
 física nueva confirmada. No repetir aviso ni aprobar por CI. CI810bf44 MVP/Studio/
 validate/sync correctos; último head consultable en checks de PR90. Checkpoint listo.
+
+## 02-11-2026 · COL036 · incidente P0 y contención de eliminaciones
+
+Recibido diagnóstico privado:4 PNG con FILE_DELETE/CLOSE; no identifica proceso.
+Se preservan originales/copias/hash y se correlaciona hora local/UTC con tareas y
+logs sin atribuir causa al instalador. El candidato final se construyó después.
+La vista externa1/9 y Codex5/9 tienen identidades de directorio distintas; otros2PNG
+y2presets siguen disponibles con hash original, copiados a evidencia privada sin
+restaurar. Baseline original no tenía identidad física. No afirmar ocho pérdidas
+globales ni que las comparaciones inmediatas resuelven el incidente.
+
+Reproducción aislada con audit hook: código anterior DELETE borra6PNG sin
+consentimiento específico; contención423 conserva9. Cleanup .part anterior borra
+un archivo preexistente tras fallar creación exclusiva; corrección lo conserva.
+PID registrado es del fixture, no del incidente. DELETE privados/UI deshabilitados,
+guard de temporales por creación/inode, reserva de lote exclusiva y estado solo tras
+persistir. Instalación/recuperación rechazan almacén privado; NSIS ya no purgaAppData.
+QA baselinev2 liga volumen/directorio y rechaza otra identidad o baseline antiguo.
+
+Probes sintéticos, host y runtime oficial embebido de contención; frontend7/build
+y seguimiento se verifican. Conteos/resultados reales en INCIDENT_036_QA.json.
+No nuevo instalador, pruebas destructivas reales, restore, cambios de permisos,
+logging, controlador o uso de Procmon. Preparados script de auditoría existente y
+protocolo Procmon de solo fixtures. Security pendiente de operador; ausencia de
+eventos no prueba ausencia de borrado. Hipótesis históricas siguen abiertas.
+
+PR90 continúa borrador. Candidato f002 en cuarentena y descargas bloqueadas por
+evidencia de seguridad faltante/no validada, incluso histórica autorización de tag.
+Manifiesto/recibo enlazan incidente; estados de las42 tareas sin edición manual.
+Beta externa/venta NO-GO, ninguna capacidad aprobada, merge ni publicación binaria.
+
+Resultados finales locales:135 MVP host y135 con Python3.14.10 embebido,0 fallos,
+3 symlinks omitidos;7 probes NSIS reales inertes. Seguimiento134, frontend7/build
+correctos. La nueva prueba de texto del hold detectó lectura por defecto cp1252 en
+el harness Windows; JS era UTF8 válido y el test ahora lee explícitamente UTF8.
+Las primeras trazas fallidas se conservan privadas; no eran pérdida de datos real.

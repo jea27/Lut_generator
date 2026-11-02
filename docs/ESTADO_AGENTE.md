@@ -1,4 +1,63 @@
-# Checkpoint vigente · beta.4 probada; conservación bloqueada · 02-11-2026
+# Checkpoint vigente · incidente crítico de datos COL036 · 02-11-2026
+
+**P0 abierto. PR90 BORRADOR. Beta externa/venta NO-GO. No instalar ni distribuir
+f002…: candidato en cuarentena. No restaurar ni limpiar el almacén real.**
+
+Tarea57, solicitud canónica67; rama codex/COL-036-actualizacion-segura, worktree
+COL-036-actualizacion-segura. Main y raíz ajenos preservados. Sin merge/aprobación.
+Último head previo a esta contención: eb3866d; consultar Git/PR90 para el actual.
+
+Evidencia privada: .lumaforge-local/incidents/COL-036-20261102/. Dos diagnósticos
+copiados/verificados, baseline e índice privados. El operador confirma4 eventos
+PNG FILE_DELETE/CLOSE del02-11-2026 07:12:44 Madrid =06:12:44Z. Actor no identificado.
+La vista externa tiene1/9; la vista/cache Codex5/9 y distintas identidades NTFS.
+Otros2PNG+2presets siguen disponibles con hashes originales, preservados junto
+a preferencias; no restaurados. No confundir ocho ausencias externas con ocho
+borrados demostrados ni mezclar identidades. No subir JSON, nombres, rutas o USN.
+
+Correlación de tareas/recibos/logs sin atribución. El build final empezó después
+de la hora del evento. Security no accesible, Sysmon no disponible, TaskScheduler
+desactivado; no se modificó logging. API anterior sin access log retrospectivo útil.
+El detalle temporal y los procesos observados quedan en informe privado.
+
+Defectos demostrados en fixtures: DELETE anterior sin consentimiento específico
+borra6PNG (9→3); contención423 conserva9. Cleanup anterior borra un .part preexistente
+cuando falla open('xb'); nueva versión lo conserva y comprueba identidad de sus
+propios temporales. Audit hooks registran el PID de reproducción, no el histórico.
+
+Cambios: DELETE imágenes/presets deshabilitados y UI protegida; directorio de lote
+exclusivo, sin trabajo fantasma ante fallo inicial; guard privado de instalación y
+recuperación; retirada purga AppData/checkbox NSIS. Baselinev2 exige volumen/NTFSID,
+rechaza otro almacén aunque tenga mismos bytes y no acepta v1 como certificación.
+Quarantined en manifiesto y hold de seguridad bloquean candidato y descargas,
+incluidas releases históricas autorizadas. Windows no queda técnicamente validado
+por el CI previo; evidencia actual data_safety_validated=false.42 tareas intactas.
+
+Pruebas/logs: host MVP, runtime embebido nuevo de contención, seguimiento y7 frontend
+con build:135 host,135 embebido,134 seguimiento correctos. Los resultados finales
+están en docs/evidence/INCIDENT_036_QA.json.
+Runtime de QA en .lumaforge-local/incident-containment-runtime (build dirty declarado,
+entradas oficiales offline); no nuevo setup ni instalación sobre datos reales.
+Probes NSIS inertes7 casos y pruebas de actualización/interrupción con9 sentinelas.
+Tres symlinks omitidos por privilegios; no se cambiaron permisos.
+
+Pendiente: atribución histórica, nueva QA nativa en entorno aislado y aceptación
+humana. No empezar más distribución ni resolver por updates verdes. Process Monitor
+solo preparado en protocolo; no descargado/cargado, no controlador instalado.
+Siguiente evidencia de menor intervención: operador lee Security existente fuera
+de Codex con scripts/collect_private_event_evidence.ps1 y hora indicada. Script
+probado sin consultar logs reales en tests; filtra objetos/handles, salida privada;
+no activa auditoría ni eleva permisos. Si no hay eventos no inferir exoneración.
+
+Reanudar: git status/branch; leer Issue67/PR90 y el informe privado. Preservar
+baseline/copies/traces y no eliminar fixtures antes de capturar Procmon si procede.
+No usar antiguos scripts nativos de install/uninstall en el host durante el incidente.
+Documentación saneada: docs/evidence/INCIDENT_036.md y reproduciones/recibo JSON.
+Datos reales completos únicamente en el directorio privado citado.
+
+---
+
+# Histórico · beta.4 probada; conservación bloqueada · 02-11-2026
 
 Tarea COL036/Issue57, solicitud canónica67; PR90 en BORRADOR. Rama
 `codex/COL-036-actualizacion-segura`, worktree COL-036-actualizacion-segura, base

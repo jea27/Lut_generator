@@ -3,6 +3,11 @@
   "product": "Color Studio",
   "version_source": "apps/desktop/src-tauri/tauri.conf.json",
   "approval_issue": 62,
+  "distribution_safety_evidence": {
+    "path": "docs/evidence/INCIDENT_036_QA.json",
+    "field": "root_cause_resolved",
+    "equals": true
+  },
   "required_ci": [
     "Validar MVP local",
     "Compilar Color Studio"
@@ -512,16 +517,17 @@
         "tests_mvp/test_installer_inputs.py",
         "tests_mvp/test_nsis_uninstall_guard.py",
         "tests_mvp/test_loader_audit.py",
-        "tests_mvp/test_private_store_diagnosis.py"
+        "tests_mvp/test_private_store_diagnosis.py",
+        "tests_mvp/test_data_preservation.py"
       ],
       "evidence": [
         {
-          "path": "docs/evidence/UPGRADE_036_QA.json",
-          "field": "technical_preparation_passed",
+          "path": "docs/evidence/INCIDENT_036_QA.json",
+          "field": "data_safety_validated",
           "equals": true
         }
       ],
-      "acceptance": "Paquete Windows con Python oficial aislado y actualización/rollback locales verificables. Windows limpio, discrepancia de temporales, derechos y aceptación humana pendientes; distribución NO-GO.",
+      "acceptance": "Paquete Windows autónomo con conservación de datos demostrada. Incidente de borrado P0 abierto; contención en PR90, candidato retirado y distribución NO-GO hasta cerrar causa, QA y revisión humana.",
       "review": {
         "steps": [
           "Ejecutar protocolo de QA en el equipo de prueba autorizado.",

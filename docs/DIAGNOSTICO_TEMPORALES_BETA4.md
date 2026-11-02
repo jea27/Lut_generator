@@ -1,5 +1,9 @@
 # COL036 · diagnóstico pendiente de cuatro temporales
 
+> Actualización02-11-2026: recibido el diagnóstico privado con USN. No repetir esta
+> petición ni aceptar conservación global. Continúa en
+> [incidente P0 y contención](evidence/INCIDENT_036.md); esta guía queda histórica.
+
 No aceptar todavía la conservación global de datos. El operador ha indicado que
 no realizó esa limpieza y pide investigar antes de aceptar. La PR90 permanece en
 borrador; beta externa y venta continúan NO-GO.

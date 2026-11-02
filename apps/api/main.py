@@ -180,7 +180,7 @@ def create_app(data_dir=None):
         with LOCK,measurement() as stats:
             payload=file.file.read(32*1024*1024+1)
             if len(payload)>32*1024*1024: raise HTTPException(413,'Maximum upload 32 MiB')
-            if len(list(images.glob('*.png')))>=32: raise HTTPException(409,'32 local images maximum; clear temporary images first')
+            if len(list(images.glob('*.png')))>=32: raise HTTPException(409,'32 local images maximum; deletion is disabled for data protection')
             rgb,alpha,notes=image_io.decode(payload)
             analysis=engine.analyze(rgb,alpha)
             identifier=str(uuid.uuid4())
@@ -316,15 +316,13 @@ def create_app(data_dir=None):
 
     @app.delete('/api/presets/{identifier}')
     def delete_preset(identifier:str):
-        with LOCK: path_for(identifier,presets,'.json').unlink()
-        return {'removed':True}
+        # Session authentication is not proof of informed deletion consent.
+        # Incident containment: no purge/cleanup bypass or automatic fallback.
+        raise HTTPException(423,'PRIVATE_DATA_DELETION_DISABLED')
 
     @app.delete('/api/images')
     def clear_images():
-        with LOCK:
-            if jobs.active():raise HTTPException(409,'Cancel the active batch before clearing images')
-            for path in images.glob('*.png'): private_path(data,'images',path.name).unlink()
-        return {'removed':True,'presets_preserved':True}
+        raise HTTPException(423,'PRIVATE_DATA_DELETION_DISABLED')
 
     dist=ROOT/'apps/web/dist'
     if dist.is_dir(): app.mount('/',StaticFiles(directory=dist,html=True),name='web')

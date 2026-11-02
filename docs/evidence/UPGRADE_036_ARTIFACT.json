@@ -18,6 +18,8 @@
   "source": "8f4c60ecbbb25a5681796f7509e20e2eebe6f144",
   "bytes": 48473370,
   "status": "internal_candidate_not_approved",
+  "quarantined": true,
+  "quarantine_evidence": "docs/evidence/INCIDENT_036_QA.json",
   "webview2_bootstrapper_signature": "Valid",
   "windows_clean_install": "not_tested",
   "signature": "NotSigned"

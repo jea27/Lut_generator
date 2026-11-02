@@ -157,7 +157,19 @@ def write_journal(path,record):
     with path.open('xb') as stream:stream.write(raw);stream.flush();os.fsync(stream.fileno())
 
 
+def refuse_private_locations(*locations):
+    private_override=os.environ.get('LUMAFORGE_DATA_DIR')
+    private=Path(private_override).resolve() if private_override else None
+    for location in locations:
+        if any(part.casefold()=='colorstudiobetadata' for part in location.absolute().parts):
+            raise InstallError('private_data_install_location')
+        resolved=location.resolve()
+        if private is not None and (resolved==private or resolved.is_relative_to(private) or private.is_relative_to(resolved)):
+            raise InstallError('private_data_install_location')
+
+
 def recover(target):
+    refuse_private_locations(target)
     path=journal_path(target)
     if not path.exists():return 'none'
     record=read_json(path)
@@ -185,6 +197,7 @@ def recover(target):
 
 
 def commit(stage,target,expected,fault=None):
+    refuse_private_locations(stage,target)
     for location in (stage.absolute(),target.absolute()):
         for part in (location,*location.parents):
             try:

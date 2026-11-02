@@ -42,8 +42,11 @@ class InstallerTransactionTests(unittest.TestCase):
         self.stage=self.root/'.lf-stage-synthetic'
         self.data=self.root/'External Data QA';self.data.mkdir()
         (self.data/'preferences.json').write_text('{"workspace":"pro","language":"en"}',encoding='utf-8')
-        (self.data/'presets.json').write_text('{"fixture":"saved recipe, not a real user"}',encoding='utf-8')
+        (self.data/'images').mkdir();(self.data/'presets').mkdir()
+        for index in range(6):(self.data/'images'/f'synthetic-{index}.png').write_bytes(b'Inert synthetic PNG sentinel '+bytes([index]))
+        for index in range(2):(self.data/'presets'/f'synthetic-{index}.json').write_bytes(b'{"fixture":"saved recipe, not a real user"}')
         self.original_data=snapshot(self.data)
+        self.assertEqual(len(self.original_data),9)
 
     def package(self,path,version='0.3.0-beta.4',legacy_files=False):
         path.mkdir()
@@ -115,6 +118,28 @@ class InstallerTransactionTests(unittest.TestCase):
         self.assertEqual(snapshot(self.target),before)
         self.assertFalse(self.stage.exists());self.assertFalse(installer.journal_path(self.target).exists())
         installer.verify(self.target,expected);self.assert_data_untouched()
+
+    def test_private_store_names_are_rejected_before_any_journal_or_recovery(self):
+        expected=self.package(self.stage)
+        for target in (self.root/'ColorStudioBetaData',self.root/'colorstudiobetadata'/'nested-app'):
+            with self.subTest(target=target.name):
+                before=snapshot(self.root)
+                with self.assertRaises(installer.InstallError) as raised:installer.commit(self.stage,target,expected)
+                self.assertEqual(raised.exception.phase,'private_data_install_location')
+                with self.assertRaises(installer.InstallError):installer.recover(target)
+                self.assertEqual(snapshot(self.root),before);self.assert_data_untouched()
+
+    def test_custom_private_store_and_its_ancestors_are_never_install_targets(self):
+        expected=self.package(self.stage)
+        private=self.root/'Custom Private Store';self.package(private)
+        before=snapshot(self.root)
+        with patch.dict(os.environ,{'LUMAFORGE_DATA_DIR':str(private)}):
+            for target in (private,private/'child',self.root):
+                with self.subTest(target=target.name),self.assertRaises(installer.InstallError) as raised:
+                    installer.commit(self.stage,target,expected)
+                self.assertEqual(raised.exception.phase,'private_data_install_location')
+            with self.assertRaises(installer.InstallError):installer.recover(private)
+        self.assertEqual(snapshot(self.root),before);self.assert_data_untouched()
 
     def test_update_keeps_complete_old_backup_personal_extras_and_external_data(self):
         old=self.old_package(extras=True);expected=self.package(self.stage)
