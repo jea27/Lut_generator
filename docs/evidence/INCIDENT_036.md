@@ -168,6 +168,49 @@ el proceso y la pila nativos de una reproducción nueva:
 
 ## Hipótesis pendientes y decisión
 
+### Continuación autorizada: escrituras y recuperación seguras
+
+El operador pidió reintentar el control de Procmon y, si no funcionaba, continuar
+el desarrollo independiente. El reintento sobre la ventana actual tampoco abrió
+Ctrl+L: sin eventos y captura desactivada. No hay nueva captura nativa; se pospone
+solo ese paso, sin repetir el aviso de la misma solicitud67.
+
+Se reprodujeron y corrigieron tres riesgos adicionales con fixtures nuevos:
+
+- La limpieza de `.pending-*` borraba por nombre un archivo sustituto, incluso
+  después de un commit correcto. Ahora exige identidad de volumen/archivo de la
+  creación propia, archivo regular y ausencia de reparse point. Antes de publicar
+  también comprueba que el temporal sigue siendo el propio. Los temporales de
+  lote reutilizan la misma protección. No es un sandbox contra sustituciones por
+  otro proceso del mismo usuario entre comprobación y operación.
+- Una colisión de UUID forzada sobrescribía la imagen o preset existente. Las
+  creaciones usan publicación sin reemplazo; devuelven409 y conservan bytes ante
+  colisión. Las ediciones explícitas de presets/preferencias conservan su guardado
+  atómico. Windows usa rename sin reemplazo; la estrategia POSIX usa link sin
+  fallback destructivo ([semántica oficial de Python3.14](https://docs.python.org/3.14/library/os.html#os.rename)).
+- Un fallo al persistir el primer estado del trabajador dejaba el lote activo
+  indefinidamente. Ahora se captura como fallo, permite reintentar y conserva
+  entradas/salidas. Si también falla persistir el error, lo indica en memoria;
+  el reinicio recupera el registro durable como interrupted, nunca completed.
+
+[Recibo de esta corrección](INCIDENT_036_STORAGE_QA.json):12 regresiones nuevas,
+147 tests host (3 omitidos por privilegios) y147 embebidos correctos. Las pruebas
+de concurrencia publican un único ganador íntegro y conservan las colisiones.
+Las pruebas de fallos conservan los9 originales sintéticos y permiten otro lote.
+Los fallos anteriores a la corrección y sus trazas quedan privados.
+
+Runtime nuevo de QA con entradas oficiales verificadas offline y cambios de
+working tree declarados; no setup ni instalación. Aislamiento/reinicio y71 módulos
+cotejados correctos. Smoke con las2 fotos demo CC0: Creator/Pro mantienen bytes,
+receta/preset/acabado, lote2, LUT y Planner correctos; originales intactos.
+No son pruebas en Windows limpio ni importación en un editor externo.
+
+El manifiesto enlaza pruebas/PR90 y añade storage a las huellas de revisión de
+lotes/Windows. No modifica estados históricos ni aprueba capacidades. El guion de
+presets ya no pide eliminar un archivo cuando esa operación está deshabilitada.
+Estos hallazgos **no atribuyen el incidente histórico** ni validan seguridad global:
+data_safety_validated=false, PR90 borrador y beta externa/venta NO-GO.
+
 Una llamada al DELETE antiguo, otra herramienta/proceso o una limpieza exterior
 podrían explicar los cuatro PNG. No existe prueba de cuál ocurrió. Para los otros
 cuatro ausentes de la vista externa, la existencia de copias en otro contexto es

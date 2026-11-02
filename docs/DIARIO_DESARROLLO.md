@@ -576,3 +576,34 @@ etiqueta. Dispatch41452456160 success y comentario6578231215 del bot con @jea27
 verificados; no afirmar recepción física nueva. JSON e invariantes NO-GO correctos,
 diff sin rutas privadas/credenciales y evidencia privada ignorada por Git. Solo
 cuatro archivos de documentación/evidencia; no repetir suites de producto sin cambio.
+
+## 02-11-2026 · COL036 · conservación atómica y recuperación de lotes
+
+El usuario pide reintentar Procmon y continuar desarrollo si falla. Ventana nueva
+localizada; Ctrl+L de nuevo sin efecto, sin eventos/captura desactivada. Se pospone
+solo la captura nativa, sin nuevos avisos por el mismo bloqueo ni cambios de permisos.
+
+Reproducción sintética previa al parche:5 tests de storage/colisión producen6
+fallos (subtests JSON/bytes),0 errores;2 tests de persistencia del trabajador fallan.
+Limpiar por nombre borraba un sustituto ajeno; UUID forzado sobrescribía un archivo
+existente; fallo inicial de save dejaba el lote activo indefinidamente. No atribuye
+ninguno de estos defectos al evento histórico. Trazas solo privadas.
+
+Parche: identidad de temporal antes de publicar/limpiar, protección compartida con
+lotes, creaciones sin reemplazo/409 y ediciones atómicas preservadas. Fallos de
+persistencia del trabajador quedan en failed/reintentables; si no se guarda ese
+estado, reinicio muestra interrupted. No fallback destructivo ni purga nueva.
+147 host y147 embebidos correctos,12 regresiones nuevas;3 omisiones host por symlink.
+Runtime QA nuevo oficial offline/dirty declarado,924 archivos/60 nativos; aislamiento
+71 módulos/reinicio y smoke2CC0 correctos, originales intactos, sin instalación.
+Recibo INCIDENT_036_STORAGE_QA.json y hashes por fuente; no confundir con Windows limpio.
+
+Manifiesto conserva IDs y estados: añade pruebas/PR90/dependencias de huella y retira
+del guion humano la eliminación de presets, actualmente bloqueada. No setup nuevo,
+aprobaciones, merge o escrituras de main. PR90 borrador; causa abierta y NO-GO.
+
+Seguimiento134 correcto tras el ajuste de manifiesto. JSON/hashes de fuentes
+probadas, enlaces de pruebas/huellas e invariantes NO-GO cotejados. Escaneo de los
+11 archivos de entrega sin credenciales/rutas privadas; trazas privadas ignoradas.
+42 tareas históricas sin cambios. Sin nuevos tests frontend al no cambiar UI;
+la CI de la PR comprobará la entrega completa. No repetir aviso del bloqueo Procmon.

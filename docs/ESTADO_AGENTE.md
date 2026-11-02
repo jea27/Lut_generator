@@ -7,6 +7,21 @@ Tarea57, solicitud canónica67; rama codex/COL-036-actualizacion-segura, worktre
 COL-036-actualizacion-segura. Main y raíz ajenos preservados. Sin merge/aprobación.
 Último head previo a esta contención: eb3866d; consultar Git/PR90 para el actual.
 
+Continuación actual autorizada: reintento Ctrl+L sin efecto, Procmon sin eventos y
+captura desactivada. Se deja pendiente esa captura y se continúa estabilización.
+Nueva corrección de storage: limpieza solo de temporal propio por identidad;
+creación de imagen/preset sin sobrescribir ante colisión (409), edición atómica
+conservada; fallos de persistencia del trabajador ya no dejan lotes activos sin
+fin. Reinicio de un fallo no persistido muestra interrupted. No nuevas funciones.
+12 regresiones añadidas,147 host/147 embebidos correctos (host3 omitidos). Runtime
+QA privado .lumaforge-local/atomic-worker-containment-runtime, source98f9ab9 dirty
+declarado, manifiesto SHA0f7095f3e1a83ffb9c27ea7247f5a453ed0f9d0f8ffc6e3347edff1165bf1c4c.
+71 módulos/aislamiento/reinicio correctos; smoke2 demo CC0 pasa Creator/Pro,
+presets/receta/acabado/lote/LUT/Planner y originales. Sin setup ni instalación.
+Recibo nuevo docs/evidence/INCIDENT_036_STORAGE_QA.json; logs fallidos/correctos
+privados. Manifiesto añade tests/PR90 y dependencias de huella, no autoaprobación.
+No hace falta otro aviso del mismo bloqueo. Causa histórica continúa abierta.
+
 Evidencia privada: .lumaforge-local/incidents/COL-036-20261102/. Dos diagnósticos
 copiados/verificados, baseline e índice privados. El operador confirma4 eventos
 PNG FILE_DELETE/CLOSE del02-11-2026 07:12:44 Madrid =06:12:44Z. Actor no identificado.
@@ -37,9 +52,10 @@ incluidas releases históricas autorizadas. Windows no queda técnicamente valid
 por el CI previo; evidencia actual data_safety_validated=false.42 tareas intactas.
 
 Pruebas/logs: host MVP, runtime embebido nuevo de contención, seguimiento y7 frontend
-con build:135 host,135 embebido,134 seguimiento correctos. Los resultados finales
+con build:147 host,147 embebido y134 seguimiento correctos tras el ajuste de manifiesto. Los resultados finales
 están en docs/evidence/INCIDENT_036_QA.json.
-Runtime de QA en .lumaforge-local/incident-containment-runtime (build dirty declarado,
+Runtime de primera contención en .lumaforge-local/incident-containment-runtime;
+el actual está en atomic-worker-containment-runtime (ambos dirty declarados,
 entradas oficiales offline); no nuevo setup ni instalación sobre datos reales.
 Probes NSIS inertes7 casos y pruebas de actualización/interrupción con9 sentinelas.
 Tres symlinks omitidos por privilegios; no se cambiaron permisos.
@@ -53,7 +69,7 @@ x64 SHA28495e64…885; recibo INCIDENT_036_TOOL_PREP.json. Binarios solo privado
 Ventana receptiva, vacía y captura desactivada. Clic y Ctrl+L automatizados sin efecto;
 solo título accesible. Tokens de solo lectura: Procmon alto/elevado, diagnóstico
 medio/no elevado; compatible con UIPI, no prueba de canal interno. No cambios de
-seguridad ni nuevas reproducciones. Siguiente paso: operador configura Path begins
+seguridad ni nuevas reproducciones Procmon. Paso de captura pendiente: operador configura Path begins
 with prefijo privado del fixture, sin otras Include, activa Drop Filtered Events e
 inicia captura. Confirmar visualmente filtro/captura; ejecutar los cuatro comandos
 del informe, pedir detener/guardar PML+CSV privados y analizar. No ejecutar pruebas

@@ -122,6 +122,46 @@ class PrivateDataPreservationTests(unittest.TestCase):
         response=self.client.post('/api/jobs',json=body);self.assertEqual(response.status_code,200)
         self.assertEqual(self.wait_job(response.json()['id'])['status'],'completed');self.assert_originals()
 
+    def test_failed_worker_initial_save_does_not_block_following_batches(self):
+        original=Jobs.save
+        def save(job_store,record):
+            if threading.current_thread().name=='color-studio-batch' and record['status']=='running':
+                raise PermissionError('Synthetic initial worker save failure')
+            return original(job_store,record)
+        with patch.object(Jobs,'save',save),patch('threading.excepthook') as uncaught:
+            response=self.client.post('/api/jobs',json={'source_ids':self.ids[:1],'recipe':engine.Recipe().model_dump()})
+            self.assertEqual(response.status_code,200)
+            self.assertEqual(self.wait_job(response.json()['id'])['status'],'failed')
+            for thread in threading.enumerate():
+                if thread.name=='color-studio-batch':thread.join(3);self.assertFalse(thread.is_alive())
+            uncaught.assert_not_called()
+        response=self.client.post('/api/jobs',json={'source_ids':self.ids[:1],'recipe':engine.Recipe().model_dump()})
+        self.assertEqual(response.status_code,200)
+        self.assertEqual(self.wait_job(response.json()['id'])['status'],'completed');self.assert_originals()
+
+    def test_persistent_worker_save_failure_remains_safe_and_retryable(self):
+        original=Jobs.save
+        def save(job_store,record):
+            if threading.current_thread().name=='color-studio-batch':
+                raise PermissionError('Synthetic persistent worker save failure')
+            return original(job_store,record)
+        with patch.object(Jobs,'save',save),patch('threading.excepthook') as uncaught:
+            response=self.client.post('/api/jobs',json={'source_ids':self.ids[:1],'recipe':engine.Recipe().model_dump()})
+            self.assertEqual(response.status_code,200)
+            record=self.wait_job(response.json()['id']);self.assertEqual(record['status'],'failed')
+            for thread in threading.enumerate():
+                if thread.name=='color-studio-batch':thread.join(3);self.assertFalse(thread.is_alive())
+            record=self.client.get('/api/jobs/'+response.json()['id']).json()
+            self.assertIn('could not be saved',record['message'])
+            uncaught.assert_not_called()
+        # The durable queued record was not rewritten while storage failed.
+        # Restart reports interrupted, never a fictitious completed batch.
+        restarted=Jobs(self.data/'jobs',threading.Lock())
+        self.assertEqual(restarted.get(response.json()['id'])['status'],'interrupted')
+        response=self.client.post('/api/jobs',json={'source_ids':self.ids[:1],'recipe':engine.Recipe().model_dump()})
+        self.assertEqual(response.status_code,200)
+        self.assertEqual(self.wait_job(response.json()['id'])['status'],'completed');self.assert_originals()
+
     def test_part_cleanup_checks_creation_and_file_identity(self):
         path=self.root/'owned.part';path.write_bytes(b'inert owned temporary')
         info=path.stat();identity=(info.st_dev,info.st_ino)
@@ -136,6 +176,19 @@ class PrivateDataPreservationTests(unittest.TestCase):
             response=self.client.put('/api/preferences',json={'workspace':'creator','language':'en'})
             self.assertEqual(response.status_code,422)
         self.assert_originals();self.assertEqual(list(self.data.glob('.pending-*')),[])
+
+    def test_new_image_identity_collision_never_overwrites_existing_image(self):
+        payload=image_io.encode(np.full((24,32,3),.8,dtype='float32'))
+        with patch('apps.api.main.uuid.uuid4',return_value=uuid.UUID(self.ids[0])):
+            response=self.client.post('/api/images',files={'file':('synthetic.png',payload,'image/png')})
+        self.assertEqual(response.status_code,409)
+        self.assert_originals()
+
+    def test_new_preset_identity_collision_never_overwrites_existing_preset(self):
+        with patch('apps.api.main.uuid.uuid4',return_value=uuid.UUID(int=7)):
+            response=self.client.post('/api/presets',json={'name':'New synthetic preset','recipe':engine.Recipe().model_dump()})
+        self.assertEqual(response.status_code,409)
+        self.assert_originals()
 
     def test_uninstall_template_cannot_purge_appdata_and_ui_cannot_issue_cleanup(self):
         template=(ROOT/'packaging/nsis/installer.nsi').read_text(encoding='utf-8')

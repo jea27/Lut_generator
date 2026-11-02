@@ -28,19 +28,22 @@
     "batch_directory_collisions_preserved": true,
     "private_install_and_recovery_targets_rejected": true,
     "uninstall_appdata_purge_removed": true,
-    "preservation_baseline_bound_to_volume_and_directory": true
+    "preservation_baseline_bound_to_volume_and_directory": true,
+    "atomic_temporary_ownership_checked": true,
+    "new_asset_collision_overwrite_prevented": true,
+    "worker_persistence_failure_retryable": true
   },
   "tests": {
-    "host_mvp": 135,
+    "host_mvp": 147,
     "host_skipped": 3,
     "frontend": 7,
     "frontend_build": "passed",
     "tracking": 134,
-    "patched_embedded_runtime": 135,
+    "patched_embedded_runtime": 147,
     "embedded_python": "3.14.10",
     "nsis_inert_guard_cases": 7
   },
-  "process_monitor": "operator_opened; capture disabled and empty; elevated UI inputs ineffective; operator filter/start pending",
+  "process_monitor": "retry ineffective; capture disabled; operator authorized continuing independent stabilization; no native trace",
   "clean_windows": false,
   "current_installer_quarantined": true,
   "external_beta": "NO-GO",
@@ -53,9 +56,9 @@
     "Containment tests do not resolve the historical deletion"
   ],
   "runtime_qa_build": {
-    "source": "eb3866dfdf9cfc605ae56859d6127dfadd43e2f7",
+    "source": "98f9ab9d178643c2f718a18be2be68858c2fd23d",
     "dirty": true,
-    "manifest_sha256": "64e136a4905f97f76f40d89d0c7162f8a6edd9cbe544a86fd6d6875204dbd71e",
+    "manifest_sha256": "0f7095f3e1a83ffb9c27ea7247f5a453ed0f9d0f8ffc6e3347edff1165bf1c4c",
     "build_origin_gate_passed": true,
     "copy_host_dlls": false,
     "installer_created": false
@@ -96,5 +99,6 @@
     "new_probes_executed": false,
     "real_store_accessed": false,
     "capture_saved": false
-  }
+  },
+  "storage_followup_evidence": "docs/evidence/INCIDENT_036_STORAGE_QA.json"
 }

@@ -1,0 +1,110 @@
+{
+  "schema": "color-studio-storage-containment-qa-v1",
+  "observed_at_utc": "2026-11-02T18:47:17.667031+00:00",
+  "task": "COL-036",
+  "issue": 57,
+  "pr": 90,
+  "incident_open": true,
+  "historical_process_identified": false,
+  "root_cause_resolved": false,
+  "data_safety_validated": false,
+  "external_beta": "NO-GO",
+  "commercial": "NO-GO",
+  "human_accepted": false,
+  "real_store_accessed_or_modified": false,
+  "procmon_capture_executed": false,
+  "pre_fix_reproduction": {
+    "atomic_tests": 5,
+    "atomic_failures": 6,
+    "atomic_errors": 0,
+    "worker_tests": 2,
+    "worker_failures": 2,
+    "worker_errors": 0,
+    "scope": "Synthetic workspace fault injection; subtest failures counted separately; not historical attribution"
+  },
+  "post_fix": {
+    "host": {
+      "tests": 147,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 3,
+      "successful": true,
+      "elapsed_seconds": 18.27,
+      "workspace_fixtures_only": true,
+      "procmon_capture": false
+    },
+    "embedded": {
+      "python": "3.14.10",
+      "tests": 147,
+      "failures": 0,
+      "errors": 0,
+      "successful": true,
+      "core_loaded_from_packaged_runtime": true,
+      "isolated": 1,
+      "no_site": 1,
+      "qa_dependencies_shipped": false,
+      "clean_windows": false
+    },
+    "isolation": {
+      "isolated": 1,
+      "ignore_environment": 1,
+      "no_site": 1,
+      "no_user_site": 1,
+      "modules_and_search_path_within_bundle": true,
+      "loaded_modules": {
+        "observed_pe_modules": 71,
+        "unexpected_module_names": [],
+        "enumeration": "PSAPI loader module paths",
+        "python_dll_loaded_from_bundle": true,
+        "payload_module_hashes_checked": true,
+        "scope": "Snapshot after all API operations, not a clean OS certification"
+      },
+      "schema": "color-studio-embedded-isolation-v1",
+      "default_data_location_preserved": true,
+      "preferences_and_preset_survive_restart": true,
+      "poisoned_cwd_and_python_environment_ignored": true,
+      "installation_tree_unchanged": true,
+      "clean_windows": false
+    },
+    "licensed_demo_smoke": {
+      "version": "0.3.0-beta.4",
+      "modes_preserve_export_bytes": true,
+      "plan_privacy_and_claim_types": "passed",
+      "recipe_preset_optics_roundtrip": "passed",
+      "session_guard": "passed",
+      "batch_status": "completed",
+      "batch_outputs_verified": 2,
+      "demo_originals_unchanged": true,
+      "parent_death_watchdog": "passed",
+      "clean_windows_verified": false,
+      "redistribution_approved": false
+    },
+    "tracking": {
+      "tests": 134,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "successful": true
+    }
+  },
+  "tested_source": {
+    "base_commit": "98f9ab9d178643c2f718a18be2be68858c2fd23d",
+    "working_tree_changes": true,
+    "file_sha256": {
+      "apps/api/storage.py": "266b758db792494ff466a3ef5397cfd277179e5308f17b3ad8c07ddb93dd5311",
+      "apps/api/jobs.py": "625d6260921db6a371fedf31469d631b5f365e69a07354dca84ac1f0a4bb1d33",
+      "apps/api/main.py": "7fc487301da9287ce5b709396a956eb6c1613d328f7a5669c57ceb71dc93d278",
+      "tests_mvp/test_atomic_storage.py": "83da64a65b230ad8fc2efb00104a15ec2798bbd757ed1607f21d8a4475ab32ae",
+      "tests_mvp/test_data_preservation.py": "e4cf8dcdab406deac52033730cdf458b230e7e555f1f717ec6d5fa75a0a4ebe5"
+    }
+  },
+  "runtime_manifest_sha256": "0f7095f3e1a83ffb9c27ea7247f5a453ed0f9d0f8ffc6e3347edff1165bf1c4c",
+  "installer_built_or_installed": false,
+  "limitations": [
+    "No native Process Monitor capture; only scoped test instrumentation and assertions",
+    "No clean Windows10/11 VM or external editor validation",
+    "Identity checks reduce accidental cleanup risk, not a sandbox against concurrent same-user filesystem tampering",
+    "POSIX link strategy exercised on local NTFS; not a Linux runtime certification",
+    "Previous installer remains quarantined; historical incident unresolved"
+  ]
+}

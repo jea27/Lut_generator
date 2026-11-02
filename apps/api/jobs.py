@@ -2,22 +2,11 @@
 import hashlib
 import json
 import os
-import stat
 import threading
 import uuid
 from pathlib import Path
 from packages.colour_core import engine, image_io
-from .storage import atomic_json, private_path, read_record
-
-
-def remove_owned_part(path,identity):
-    """Discard only a transient file successfully created by this operation."""
-    if identity is None:return
-    try:info=path.lstat()
-    except FileNotFoundError:return  # Already committed by rename.
-    if (stat.S_ISREG(info.st_mode) and not getattr(info,'st_file_attributes',0)&0x400
-            and (info.st_dev,info.st_ino)==identity):
-        path.unlink()
+from .storage import atomic_json, private_path, read_record, remove_owned_temporary as remove_owned_part
 
 
 class Jobs:
@@ -65,8 +54,8 @@ class Jobs:
             self.save(record)
             self.records[identifier]=record;self.cancel_events[identifier]=event
         def worker():
-            with self.mutex:record['status']='running';self.save(record)
             try:
+                with self.mutex:record['status']='running';self.save(record)
                 for index,source in enumerate(ids):
                     if event.is_set():raise engine.ProcessingCancelled()
                     try:
@@ -99,7 +88,12 @@ class Jobs:
             except Exception:
                 with self.mutex:record.update(status='failed',message='Batch failed; completed outputs remain available')
             finally:
-                with self.mutex:self.save(record)
+                with self.mutex:
+                    try:self.save(record)
+                    except (OSError,ValueError,TypeError):
+                        # Keep retry possible even if the disk cannot persist the
+                        # failure state. Previous durable data/outputs stay intact.
+                        record.update(status='failed',message='Batch status could not be saved; completed outputs remain available')
         threading.Thread(target=worker,daemon=True,name='color-studio-batch').start()
         return self.get(identifier)
 

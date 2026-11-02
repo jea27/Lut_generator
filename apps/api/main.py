@@ -184,7 +184,8 @@ def create_app(data_dir=None):
             rgb,alpha,notes=image_io.decode(payload)
             analysis=engine.analyze(rgb,alpha)
             identifier=str(uuid.uuid4())
-            atomic_bytes(private_path(data,'images',identifier+'.png'),image_io.encode(rgb,alpha))
+            try:atomic_bytes(private_path(data,'images',identifier+'.png'),image_io.encode(rgb,alpha),overwrite=False)
+            except FileExistsError:raise HTTPException(409,'Existing local image preserved; retry import') from None
             result={'id':identifier,'width':rgb.shape[1],'height':rgb.shape[0],'has_alpha':alpha is not None,
                     'notes':notes,'analysis':analysis,'preview_url':f'/api/images/{identifier}/preview'}
         return {**result,'metrics':stats}
@@ -258,7 +259,8 @@ def create_app(data_dir=None):
             recipe=engine.validate_recipe(body.recipe)
             identifier=str(uuid.uuid4()); record={'id':identifier,'name':body.name.strip(),'group':body.group.strip(),'recipe':recipe.model_dump()}
             if not record['name']:raise ValueError('Preset name cannot be empty')
-            atomic_json(private_path(data,'presets',identifier+'.json'),record)
+            try:atomic_json(private_path(data,'presets',identifier+'.json'),record,overwrite=False)
+            except FileExistsError:raise HTTPException(409,'Existing local preset preserved; retry save') from None
         return record
 
     @app.put('/api/presets/{identifier}')

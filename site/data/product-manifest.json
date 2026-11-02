@@ -251,20 +251,23 @@
       "issue": 50,
       "task": "COL-018",
       "delivery_prs": [
-        65
+        65,
+        90
       ],
       "code_paths": [
         "apps/api/main.py"
       ],
       "tests": [
-        "tests_mvp/test_beta.py"
+        "tests_mvp/test_beta.py",
+        "tests_mvp/test_data_preservation.py",
+        "tests_mvp/test_atomic_storage.py"
       ],
       "evidence": [],
       "acceptance": "Guardar, aplicar, editar, agrupar y conservar presets locales.",
       "review": {
         "steps": [
           "Guardar un preset de prueba, renombrar y mover de grupo.",
-          "Cerrar/abrir la app y aplicarlo de nuevo; eliminar únicamente el preset de ensayo."
+          "Cerrar/abrir la app y aplicar el preset de nuevo. Comprobar que conserva imágenes y presets; el borrado está deshabilitado durante el incidente."
         ],
         "checklist": [
           {
@@ -296,13 +299,16 @@
       "issue": 58,
       "task": "COL-037",
       "delivery_prs": [
-        65
+        65,
+        90
       ],
       "code_paths": [
         "apps/api/jobs.py"
       ],
       "tests": [
-        "tests_mvp/test_beta.py"
+        "tests_mvp/test_beta.py",
+        "tests_mvp/test_data_preservation.py",
+        "tests_mvp/test_atomic_storage.py"
       ],
       "evidence": [
         {
@@ -337,7 +343,8 @@
         "apps/api/main.py",
         "apps/web/src/App.vue",
         "packages/colour_core/engine.py",
-        "packages/colour_core/image_io.py"
+        "packages/colour_core/image_io.py",
+        "apps/api/storage.py"
       ]
     },
     {
@@ -518,7 +525,8 @@
         "tests_mvp/test_nsis_uninstall_guard.py",
         "tests_mvp/test_loader_audit.py",
         "tests_mvp/test_private_store_diagnosis.py",
-        "tests_mvp/test_data_preservation.py"
+        "tests_mvp/test_data_preservation.py",
+        "tests_mvp/test_atomic_storage.py"
       ],
       "evidence": [
         {
@@ -567,7 +575,9 @@
         "scripts/prepare_installer_inputs.py",
         "scripts/create_install_manifest.py",
         "scripts/audit_nsis_payload.py",
-        "packaging/nsis/bundle.conf.json"
+        "packaging/nsis/bundle.conf.json",
+        "apps/api/storage.py",
+        "apps/api/jobs.py"
       ]
     },
     {
