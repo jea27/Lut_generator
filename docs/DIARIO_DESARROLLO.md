@@ -536,3 +536,22 @@ Resultados finales locales:135 MVP host y135 con Python3.14.10 embebido,0 fallos
 correctos. La nueva prueba de texto del hold detectó lectura por defecto cp1252 en
 el harness Windows; JS era UTF8 válido y el test ahora lee explícitamente UTF8.
 Las primeras trazas fallidas se conservan privadas; no eran pérdida de datos real.
+
+## 02-11-2026 · COL036 · Security sin coincidencias y preparación de Procmon
+
+Recibido resultado privado del operador: consulta Security existente sin eventos
+coincidentes. Original/hash preservados; no repetir ni inferir ausencia de borrado
+o exoneración. Revisión adicional de historial propio/tres agentes sin orden de
+borrado identificada en la ventana; no prueba contra procesos en segundo plano.
+Defender/AppModel/AppX consultados sin atribución, sin cambios de configuración.
+
+Preparado ZIP oficial Process Monitor4.12 en carpeta ignorada del workspace. Hash
+ZIP477754bf…3a10, x64 SHA28495e64…885 y tres firmas Microsoft válidas. /NoConnect
+verificado en ayuda incorporada firmada. No ejecución, aceptación de EULA, carga
+de controlador ni inclusión en instalador. Captura con fixture preparada; requiere
+acción/consentimiento del operador para arranque privilegiado. No reconstruye el PID
+histórico por sí sola. Causa abierta, PR90 borrador y beta/venta NO-GO.
+
+Solo evidencia/documentación; sin nuevos cambios del producto. JSON saneados y
+diff comprobados; no se repiten suites ya verificadas135/135/134/7. CI comprobará
+el nuevo commit. El resultado privado no se adjunta a Issues/PR.

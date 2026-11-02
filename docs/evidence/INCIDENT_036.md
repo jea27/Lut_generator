@@ -94,30 +94,40 @@ sin validar. No es un bloqueo del sistema operativo ni de descargas externas a P
 La UI muestra el motivo de retirada.
 Estos cambios de dashboard están en PR90, pendientes de integración humana.
 
-## Próxima evidencia: auditoría existente y, si procede, Process Monitor
+## Auditoría existente recibida; captura controlada pendiente
 
-El operador puede consultar únicamente los eventos Security ya existentes con
-[collect_private_event_evidence.ps1](../../scripts/collect_private_event_evidence.ps1).
-Necesita su consola elevada fuera de Codex; no cambia permisos ni activa auditoría.
-Usa la hora local exacta comunicada por el chat. Filtra nombres de la instantánea
-privada y candidatos a correlación por handle/PID dentro de seis minutos. Un evento
-4660 sin ObjectName se conserva solo como candidato asociado; no atribuye por sí
-solo la causa. Una ausencia de eventos no demuestra ausencia de borrado.
+El operador completó la consulta Security existente: no aportó eventos coincidentes
+en la ventana solicitada. El original y su custodia permanecen privados. No se
+interpreta como ausencia de borrado, de auditoría en otros momentos o exoneración.
+No repetir la misma consulta ni activar auditoría para reconstruir el pasado.
+La revisión adicional del historial propio y sus tres agentes tampoco identifica
+una orden de borrado del almacén en esa ventana. No descarta procesos en segundo plano.
+Defender/AppModel/AppX existentes tampoco aportaron atribución; no se modificaron.
 
-```powershell
-.\scripts\collect_private_event_evidence.ps1 -IncidentLocalTime 'AAAA-MM-DDTHH:mm:ss'
-```
-
-El informe se comparte solo por chat privado; nunca en Issues, PR ni Pages.
-No repetir ReadUsn ni restaurar archivos mientras se investiga. El código de
+No restaurar archivos mientras se investiga. El código de
 contención en la rama no protege automáticamente procesos/versiones ya abiertos.
 
-No se ha localizado ni ejecutado Process Monitor en esta sesión. Si hace falta observar
-el proceso y la pila nativos de una nueva reproducción:
+Process Monitor oficial4.12 ya está preparado de forma privada. Sus tres firmas
+Microsoft son válidas y sus hashes/arquitecturas están en
+[recibo de preparación](INCIDENT_036_TOOL_PREP.json). No se ha ejecutado ni se ha
+cargado un controlador o aceptado la licencia por el agente. La herramienta no se
+incluye en el instalador de Color Studio ni se publica su binario.
 
-1. El operador obtiene [Process Monitor oficial](https://learn.microsoft.com/sysinternals/downloads/procmon),
-   verifica firma Microsoft, lee los términos y gestiona la elevación/controlador.
-   Codex no instala ni carga el controlador, ni cambia protecciones.
+La ayuda incorporada firmada confirma `/NoConnect`: no empieza a recopilar eventos
+al abrir. La carga privilegiada y licencia requieren al operador. Para observar
+el proceso y la pila nativos de una reproducción nueva:
+
+1. El operador revisa [Process Monitor oficial](https://learn.microsoft.com/sysinternals/downloads/procmon),
+   su EULA y el recibo verificado. Autoriza el arranque privilegiado y abre desde
+   este worktree, en su PowerShell elevada:
+
+   ```powershell
+   & ./.lumaforge-local/tools/procmon-477754bf299c9e5b/Procmon64.exe /NoConnect
+   ```
+
+   No usar `/AcceptEula`. Leer y aceptar la licencia solo si está de acuerdo.
+   Confirmar que la captura está detenida antes de preparar filtros. El agente
+   no inicia la carga del controlador automáticamente ni cambia protecciones.
 2. Detener la captura, limpiar solo la vista de Procmon y configurar Include por
    ruta que comience por el workspace + `.lumaforge-local\data-incident-repro-`.
    Excluir actividad ajena al fixture de la captura guardada. Guardar el PML solo

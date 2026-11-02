@@ -16,7 +16,10 @@ a preferencias; no restaurados. No confundir ocho ausencias externas con ocho
 borrados demostrados ni mezclar identidades. No subir JSON, nombres, rutas o USN.
 
 Correlación de tareas/recibos/logs sin atribución. El build final empezó después
-de la hora del evento. Security no accesible, Sysmon no disponible, TaskScheduler
+de la hora del evento. Security fue consultado por el operador sin coincidencias;
+original privado recibido y conservado. No repetir consulta ni exonerar procesos.
+Historial adicional de tres agentes propios revisado sin atribución; no descarta
+procesos en segundo plano. Sysmon no disponible, TaskScheduler
 desactivado; no se modificó logging. API anterior sin access log retrospectivo útil.
 El detalle temporal y los procesos observados quedan en informe privado.
 
@@ -43,11 +46,14 @@ Tres symlinks omitidos por privilegios; no se cambiaron permisos.
 
 Pendiente: atribución histórica, nueva QA nativa en entorno aislado y aceptación
 humana. No empezar más distribución ni resolver por updates verdes. Process Monitor
-solo preparado en protocolo; no descargado/cargado, no controlador instalado.
-Siguiente evidencia de menor intervención: operador lee Security existente fuera
-de Codex con scripts/collect_private_event_evidence.ps1 y hora indicada. Script
-probado sin consultar logs reales en tests; filtra objetos/handles, salida privada;
-no activa auditoría ni eleva permisos. Si no hay eventos no inferir exoneración.
+oficial4.12 descargado dentro del workspace y firmas Microsoft verificadas; no
+ejecutado, EULA no aceptada, controlador no cargado por el agente. ZIP477754bf…3a10,
+x64 SHA28495e64…885; recibo INCIDENT_036_TOOL_PREP.json. Binarios solo privados.
+Siguiente paso: consentimiento/arranque elevado del operador con /NoConnect; después
+captura exclusiva del fixture sintético. No prometer atribución retrospectiva.
+Archivo de Security recibido: .lumaforge-local/incidents/COL-036-20261102/
+received-security-empty.json; no copiarlo a GitHub. Queda cerrada solo la petición
+de consulta, no el incidente ni la autorización de distribución.
 
 Reanudar: git status/branch; leer Issue67/PR90 y el informe privado. Preservar
 baseline/copies/traces y no eliminar fixtures antes de capturar Procmon si procede.
