@@ -159,7 +159,7 @@ def derive(manifest, root, repo, issues, pulls, runs, main_sha, releases, artifa
         if not implemented and 'status:in-progress' in labels(issue) and f['group']!='Futuro': state = 'progress'
         if accepted: state = 'approved'
         if blocked(issue) and f['group']!='Futuro': state = 'blocked'
-        if implemented and review['state'] in ('changes_requested','needs_review'):state=review['state']
+        if implemented and review['state'] in ('changes_requested','needs_review') and not blocked(issue):state=review['state']
         if accepted:state='approved'
         links = [{'label':'Prueba','url':f'https://github.com/{repo}/blob/main/{p}'} for p in f['tests']]
         links += [{'label':'Evidencia','url':f'https://github.com/{repo}/blob/main/{e["path"]}'} for e in f['evidence']]

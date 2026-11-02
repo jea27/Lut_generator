@@ -36,7 +36,7 @@ Entorno: host Windows existente desde contexto Codex/MSIX. No es una VM limpia.
 | Guard de desinstalación NSIS aislado |5 casos reales: normal/ausente0, junction raíz/recurso/ancestro2; marcadores intactos |
 | Desinstalación normal | Finalización observada, carpeta/registro retirados, stores intactos. Parent0; no se capturó el exit del hijo temporal |
 | Regresión con Python embebido instalado |116 tests,0 fallos/errores,3 symlink omitidos; núcleo cargado desde paquete, QA extras separados |
-| Seguimiento y estados del dashboard |131 tests correctos, incluida puerta de conservación independiente de CI/etiquetas |
+| Seguimiento y estados del dashboard |132 tests correctos; conservación independiente de CI/etiquetas y bloqueo visible frente a revisión pendiente |
 | Aislamiento tras reinicio | Flags-I/-S, CWD/env contaminados ignorados, preferencias/preset conservados,71 módulos nativos cotejados |
 | API con2 fotografías demo CC0 | Creator/Pro exportan bytes idénticos; PNG/JPEG, receta/óptica, preset, lote2, LUT y Planner pasan; originales intactos |
 
@@ -118,3 +118,16 @@ preparación del operador según67. No se creó VM ni se habilitó virtualizaci�
 El manifiesto incorpora PR90 y una puerta de conservación global independiente del
 éxito técnico. GitHub Actions mantiene los estados; no se editan estados del roadmap.
 Ningún merge, check o notificación aprueba capacidades ni autoriza distribución.
+
+Integración con metadatos reales: [recibo del sincronizador](UPGRADE_036_SYNC.json).
+La proyección de esta PR muestra Windows bloqueado, sin aprobación humana, candidato
+beta.4 interno y conservación pendiente. La web pública consultada ya mostraba
+COL036 bloqueada y enlazaba PR90, pero conserva la versión beta.3 de main. Se detectó
+que un recibo de revisión obsoleto podía reemplazar visualmente el estado bloqueado:
+corregido en esta PR, conservando el historial y observaciones. No está desplegado.
+
+El [aviso41410069177](https://github.com/jea27/Lut_generator/actions/runs/41410069177)
+terminó correctamente y se comprobó la
+[mención del bot](https://github.com/jea27/Lut_generator/issues/67#issuecomment-6572098610).
+No se presume recepción nueva en el teléfono ni aprobación. Se reutiliza67 y no se
+retira/reaplica needs-human.

@@ -66,6 +66,16 @@ class ProductTests(unittest.TestCase):
         with patch.object(product,'evidence',return_value=None):
             self.assertFalse(self.derive()['readiness']['beta']['go'])
 
+    def test_pending_review_does_not_mask_active_blocker(self):
+        self.issue(57)['labels']=[{'name':'blocked'}]
+        for state in ('needs_review','changes_requested'):
+            with self.subTest(state=state):
+                result=product.derive(self.manifest,ROOT,REPO,self.issues,self.prs,self.runs,'a'*40,[],[],
+                    '2026-11-02T00:00:00Z',{'windows':{'state':state}})
+                windows=next(f for f in result['features'] if f['id']=='windows')
+                self.assertTrue(windows['blocked']);self.assertEqual(windows['status'],'blocked')
+                self.assertFalse(windows['human_approved']);self.assertEqual(windows['review']['state'],state)
+
     def test_new_capability_needs_own_receipt_even_after_delivery_and_issue_label(self):
         creator=next(f for f in self.manifest['features'] if f['id']=='creator')
         creator['delivery_prs']=[9999]

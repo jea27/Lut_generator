@@ -1,0 +1,30 @@
+{
+  "schema": "color-studio-upgrade-product-sync-v1",
+  "observed_at_utc": "2026-11-02T08:05:20.532292Z",
+  "source": "810bf440478ccd22e4a376293da2ae2cd23e2c68",
+  "collector_git_blob": "d5b8da812e5cc799dff7239810f27ede71279c34",
+  "working_tree_preview": true,
+  "main_source": "918cb6386553d86793df5e2a6d12a7c23046aa7e",
+  "scope": "Actual GitHub read-only metadata plus PR90 versioned manifest/collector; preview only, not deployed main",
+  "windows": {
+    "status": "blocked",
+    "implemented": true,
+    "technically_verified": true,
+    "human_approved": false,
+    "blocked": true,
+    "issue_url": "https://github.com/jea27/Lut_generator/issues/57",
+    "pr_url": "https://github.com/jea27/Lut_generator/pull/90"
+  },
+  "data_preservation_gate": {
+    "id": "data-preservation",
+    "title": "Conservación global de datos explicada",
+    "passed": false,
+    "issue_url": "https://github.com/jea27/Lut_generator/issues/57"
+  },
+  "beta_go": false,
+  "commercial_go": false,
+  "candidate_version": "0.3.0-beta.4",
+  "candidate_sha256": "f002769da0c37d8a85a8fa8bf6351053ea3608a298cbf368d0c442f164eca4bf",
+  "historical_tasks": 42,
+  "published_data_changed": false
+}

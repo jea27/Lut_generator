@@ -27,13 +27,17 @@ Aislamiento con CWD/env contaminados y reinicio de prefs/preset pasa. API con2CC
 Creator/Pro byte-idénticos, PNG/JPEG/LUT/receta/óptica/lote2/Planner y originales
 intactos. GUI/capturas/descargas reales en intermedio25c, árboles apps/packages
 idénticos a8f; no confundir con retest visual del setup final ni aceptación humana.
-Histórico2 beta3 sigue sin causa atribuida.7frontend anteriores pasan;131 tests de
-seguimiento correctos, incluida puerta de conservación independiente de CI/etiquetas.
+Histórico2 beta3 sigue sin causa atribuida.7frontend anteriores pasan;132 tests de
+seguimiento correctos: conservación independiente de CI/etiquetas y bloqueo visible
+frente a revisión obsoleta/cambios solicitados, con historial conservado.
 
 CI del paquete8f: construcción41399176754 success, MVP41399182517, Studio41399182514
 y validate41399182518 success.4JSON de CI verificados por digest; no .exe publicado.
 60PE/runtime/bootstrapper coinciden, setup CI/local no byte-idénticos. CI de los
-instrumentos QA posteriores se comprobará tras push sin reconstruir el setup.
+instrumentos QA810bf44: MVP41409829710, Studio41409829747, validate41409829738 y
+sync41409827751 success. Los siguientes cambios corrigen prioridad visual del bloqueo
+y agregan recibo de integración; consultar checks de PR90 para el último head, sin
+reconstruir el setup de8f porque apps/packaging siguen iguales.
 
 **BLOQUEO REAL:** captura privada9→5 archivos;4 imágenes temporales ausentes,5
 presentes con hashes idénticos (2 imágenes,2 presets,prefs). El usuario niega limpieza
@@ -45,6 +49,14 @@ scripts/diagnose_private_store.ps1 compara solo lectura y guarda identidades NTF
 actuales/filas coincidentes en JSON privado. Necesita operador fuera de Codex y
 consola elevada solo para USN. Resultado únicamente por chat privado, nunca GitHub.
 No aceptar conservación global por las comparaciones inmediatas o por CI.
+
+Issue57 marcada blocked, retirada status:in-progress;67 mantiene needs-human y
+marcador de PR90 para evitar solicitud duplicada. Un solo aviso nuevo para diagnóstico:
+workflow41410069177 success y comentario6572098610 con mención@jea27 verificados.
+Recepción física de este aviso no confirmada. No repetirlo. La web pública ya
+refleja COL036 bloqueada/PR90 y beta.3 de main; corrección visual de producto y
+metadatos beta.4 quedan únicamente en PR90. UPGRADE_036_SYNC.json verifica proyección
+con datos GitHub reales y puerta de conservación false, sin desplegar ni aprobar.
 
 Pendientes humanos secundarios ya notificados: Hyper-V/RAM/ISO oficial/licencia
 válida y Resolve gratuito/registro propio. Gestor VM/Resolve ausentes; sin Windows

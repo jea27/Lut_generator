@@ -510,7 +510,9 @@
         "tests_mvp/test_nsis_audit.py",
         "tests_mvp/test_installer_transaction.py",
         "tests_mvp/test_installer_inputs.py",
-        "tests_mvp/test_nsis_uninstall_guard.py"
+        "tests_mvp/test_nsis_uninstall_guard.py",
+        "tests_mvp/test_loader_audit.py",
+        "tests_mvp/test_private_store_diagnosis.py"
       ],
       "evidence": [
         {

@@ -490,3 +490,13 @@ borrado ni permisos cambiados. Guía DIAGNOSTICO_TEMPORALES_BETA4 y checkpoint.
 Manifiesto incorpora PR90/evidencia y puerta independiente de conservación;
 roadmap histórico intacto. Beta externa y venta NO-GO; Windows limpio/offline real,
 Resolve/Adobe y revisión de derechos/humana pendientes. Solicitud67 se reutiliza.
+
+Seguimiento final132 tests correctos. Consulta GitHub real con manifiesto de PR90:
+Windows bloqueado, no aprobado, conservación false y beta/venta NO-GO. Detectado y
+corregido que needs_review/changes_requested reemplazaba visualmente blocked;
+historial/observaciones conservados, regresión incluida. Pages de main consultado:
+COL036 bloqueada con PR90, versiónbeta3; mejoras de PR90 aún sin desplegar.
+Issue57 blocked, sin in-progress; solicitud67 actualizada con diagnóstico concreto.
+Workflow41410069177 success, mención6572098610 a jea27 comprobada; no recepción
+física nueva confirmada. No repetir aviso ni aprobar por CI. CI810bf44 MVP/Studio/
+validate/sync correctos; último head consultable en checks de PR90. Checkpoint listo.

@@ -343,7 +343,7 @@
   "current_regression": {
     "host_tests": 116,
     "host_skipped": 3,
-    "tracking_tests": 131,
+    "tracking_tests": 132,
     "new_loader_and_private_diagnosis_tests": 6,
     "client_tests": 7,
     "skipped_reason": "Symlink privilege unavailable; real junction guard tests pass without changing permissions"
