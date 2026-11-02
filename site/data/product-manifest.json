@@ -497,7 +497,8 @@
         65,
         70,
         88,
-        89
+        89,
+        90
       ],
       "code_paths": [
         "apps/desktop/src-tauri/tauri.conf.json"
@@ -513,12 +514,12 @@
       ],
       "evidence": [
         {
-          "path": "docs/evidence/RUNTIME_036_QA.json",
+          "path": "docs/evidence/UPGRADE_036_QA.json",
           "field": "technical_preparation_passed",
           "equals": true
         }
       ],
-      "acceptance": "Tauri/NSIS con Python oficial aislado, fuentes/hash y pruebas locales verificables. Windows limpio y actualización directa pendientes; no autoriza distribución.",
+      "acceptance": "Paquete Windows con Python oficial aislado y actualización/rollback locales verificables. Windows limpio, discrepancia de temporales, derechos y aceptación humana pendientes; distribución NO-GO.",
       "review": {
         "steps": [
           "Ejecutar protocolo de QA en el equipo de prueba autorizado.",
@@ -927,7 +928,7 @@
         "id": "clean-windows",
         "title": "Instalación en Windows limpio",
         "kind": "evidence",
-        "path": "docs/evidence/RUNTIME_036_QA.json",
+        "path": "docs/evidence/UPGRADE_036_QA.json",
         "field": "clean_windows",
         "equals": true
       },
@@ -947,6 +948,15 @@
         "id": "distribution",
         "title": "Autorización expresa de entrega",
         "kind": "release"
+      },
+      {
+        "id": "data-preservation",
+        "title": "Conservación global de datos explicada",
+        "kind": "evidence",
+        "path": "docs/evidence/UPGRADE_036_QA.json",
+        "field": "cross_session_data_preservation_accepted",
+        "equals": true,
+        "issue": 57
       }
     ],
     "commercial": [

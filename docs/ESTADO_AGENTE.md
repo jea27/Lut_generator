@@ -1,4 +1,79 @@
-# Checkpoint vigente · revisión de seguridad beta4 · 02-11-2026
+# Checkpoint vigente · beta.4 probada; conservación bloqueada · 02-11-2026
+
+Tarea COL036/Issue57, solicitud canónica67; PR90 en BORRADOR. Rama
+`codex/COL-036-actualizacion-segura`, worktree COL-036-actualizacion-segura, base
+main918cb638. Raíz y otros worktrees preservados. No merge ni aprobaciones.
+
+**Candidato seleccionado:** fuente limpia8f4c60ecbbb25a5681796f7509e20e2eebe6f144,
+0.3.0-beta.4, SHA256f002769da0c37d8a85a8fa8bf6351053ea3608a298cbf368d0c442f164eca4bf,
+48.473.370bytes. Setup en apps/desktop/src-tauri/target/release/bundle/nsis/.
+Cambios QA posteriores no cambian apps/ ni packaging/ de ese binario. Intermedio
+25c943dc queda superado y conservado; beta2/beta3/backups intactos. No distribuir.
+
+Completado: stage+ledger+mutex/lock/backup/rollback, bootstrapper Microsoft fijado
+y firmado, retirada Delete dirigido por registro y guards NSIS de junction.
+Extracción951 archivos/924runtime y privacidad sin hallazgos. Actualizaciones
+DIRECTAS beta3→beta4 exit0/8,016s y beta2→beta4 exit0/7,110s, stores inmediatos
+intactos y preset por API. Fallo real controlado Winerror32/errno13: NSIS2/hijo2,
+old_restored=true, bytes intactos, reintento0/8,438s. Registro manipulado con fixture
+propio preservado. Uninstaller final con junction aborta2 antes de borrar launcher;
+runtime restaurado byte a byte (checkpoint privado restored=true). Desinstalación
+normal finalizada sin cambiar stores; exit del hijo temporal no observado.
+
+Pruebas:116 MVP host y116 con Python embebido instalado sin fallos (3 symlink
+omitidos por privilegios);5 guards NSIS reales pasan sin elevación. Auditor loader
+PSAPI coteja71 módulos, hashes y límites: no aceptar DLL externa por bytes iguales.
+Aislamiento con CWD/env contaminados y reinicio de prefs/preset pasa. API con2CC0:
+Creator/Pro byte-idénticos, PNG/JPEG/LUT/receta/óptica/lote2/Planner y originales
+intactos. GUI/capturas/descargas reales en intermedio25c, árboles apps/packages
+idénticos a8f; no confundir con retest visual del setup final ni aceptación humana.
+Histórico2 beta3 sigue sin causa atribuida.7frontend anteriores pasan;131 tests de
+seguimiento correctos, incluida puerta de conservación independiente de CI/etiquetas.
+
+CI del paquete8f: construcción41399176754 success, MVP41399182517, Studio41399182514
+y validate41399182518 success.4JSON de CI verificados por digest; no .exe publicado.
+60PE/runtime/bootstrapper coinciden, setup CI/local no byte-idénticos. CI de los
+instrumentos QA posteriores se comprobará tras push sin reconstruir el setup.
+
+**BLOQUEO REAL:** captura privada9→5 archivos;4 imágenes temporales ausentes,5
+presentes con hashes idénticos (2 imágenes,2 presets,prefs). El usuario niega limpieza
+y exige investigar antes de aceptar. Búsquedas e historial acotado sin causa ni copias.
+Vistas actuales coinciden; captura antigua no tenía identidad de volumen/directorio.
+No atribuir a otras API: sus defaults usan su propio worktree. No restaurar/borrar.
+USN lectura devuelve5 desde Codex; no se elevaron permisos. Instrumento probado
+scripts/diagnose_private_store.ps1 compara solo lectura y guarda identidades NTFS
+actuales/filas coincidentes en JSON privado. Necesita operador fuera de Codex y
+consola elevada solo para USN. Resultado únicamente por chat privado, nunca GitHub.
+No aceptar conservación global por las comparaciones inmediatas o por CI.
+
+Pendientes humanos secundarios ya notificados: Hyper-V/RAM/ISO oficial/licencia
+válida y Resolve gratuito/registro propio. Gestor VM/Resolve ausentes; sin Windows
+limpio, desconexión física ni editor real. Beta externa y venta NO-GO. Issue60
+derechos pendiente. No permisos nuevos, reinicio, pagos, release o fotos personales.
+
+Reanudar en este worktree:
+
+```powershell
+git status --short
+git branch --show-current
+gh issue view 67 --repo jea27/Lut_generator
+# Solo el operador fuera de Codex; consola elevada para leer USN existente:
+.\scripts\diagnose_private_store.ps1 -ReadUsn
+```
+
+Conservar informe nuevo bajo .lumaforge-local; comparar identidades/contexto y
+registros sin publicar nombres/hashes/rutas privados. No inferir causa de ausencia
+de USN por retención. Después decidir siguiente investigación; no aprobar nada.
+Fuentes/evidencias: docs/evidence/UPGRADE_036_QA.md y JSON asociados; diagnóstico
+en docs/DIAGNOSTICO_TEMPORALES_BETA4.md. Manifiesto enlaza PR90 y puerta separada
+de conservación; estados publicados proceden de GitHub Actions. No quedan
+instalaciones, handles de prueba ni junctions propios a medio restaurar. Trabajo
+independiente de estabilización preparado; siguiente paso depende del diagnóstico
+del operador y del entorno limpio, no de añadir funcionalidades.
+
+---
+
+# Histórico · revisión de seguridad beta4 · 02-11-2026
 
 PR90 borrador, rama codex/COL-036-actualizacion-segura. Candidato intermedio de
 fuentee317c02, SHA25c943dc…505f construido/auditado y probado realmente. CI de

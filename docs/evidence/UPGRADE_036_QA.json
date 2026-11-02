@@ -1,0 +1,383 @@
+{
+  "schema": "color-studio-upgrade-qa-v1",
+  "user_report_date": "2026-11-02",
+  "observed_at_utc": "2026-11-02T07:43:51.912829+00:00",
+  "version": "0.3.0-beta.4",
+  "source": "8f4c60ecbbb25a5681796f7509e20e2eebe6f144",
+  "installer_sha256": "f002769da0c37d8a85a8fa8bf6351053ea3608a298cbf368d0c442f164eca4bf",
+  "environment": "Existing Windows host, with Codex MSIX filesystem context; not clean VM",
+  "technical_preparation_passed": true,
+  "native_direct_updates": [
+    {
+      "from_version": "0.3.0-beta.3",
+      "to_version": "0.3.0-beta.4",
+      "installer_exit": 0,
+      "elapsed_seconds": 8.016,
+      "existing_private_store_unchanged": true,
+      "qa_store_unchanged": true,
+      "legacy_internal_active": false,
+      "legacy_sidecar_active": false,
+      "phases": [
+        {
+          "phase": "initialization"
+        },
+        {
+          "phase": "webview2_check"
+        },
+        {
+          "phase": "copy_to_stage"
+        },
+        {
+          "phase": "validate_and_switch"
+        },
+        {
+          "phase": "helper_result",
+          "child_exit": "0"
+        },
+        {
+          "ok": true,
+          "phase": "committed",
+          "journal_retained": false,
+          "personal_top_entries_preserved": 0,
+          "data_store_modified": false
+        },
+        {
+          "phase": "register_new_version"
+        },
+        {
+          "phase": "completed"
+        }
+      ]
+    },
+    {
+      "from_version": "0.3.0-beta.2",
+      "to_version": "0.3.0-beta.4",
+      "installer_exit": 0,
+      "elapsed_seconds": 7.11,
+      "existing_private_store_unchanged": true,
+      "qa_store_unchanged": true,
+      "legacy_internal_active": false,
+      "legacy_sidecar_active": false,
+      "phases": [
+        {
+          "phase": "initialization"
+        },
+        {
+          "phase": "webview2_check"
+        },
+        {
+          "phase": "copy_to_stage"
+        },
+        {
+          "phase": "validate_and_switch"
+        },
+        {
+          "phase": "helper_result",
+          "child_exit": "0"
+        },
+        {
+          "ok": true,
+          "phase": "committed",
+          "journal_retained": false,
+          "personal_top_entries_preserved": 0,
+          "data_store_modified": false
+        },
+        {
+          "phase": "register_new_version"
+        },
+        {
+          "phase": "completed"
+        }
+      ]
+    }
+  ],
+  "controlled_fault": {
+    "installer_exit": 2,
+    "phases": [
+      {
+        "phase": "initialization"
+      },
+      {
+        "phase": "webview2_check"
+      },
+      {
+        "phase": "copy_to_stage"
+      },
+      {
+        "phase": "validate_and_switch"
+      },
+      {
+        "phase": "helper_result",
+        "child_exit": "2"
+      },
+      {
+        "ok": false,
+        "phase": "directory_switch_failed",
+        "errno": 13,
+        "winerror": 32,
+        "old_restored": true
+      },
+      {
+        "phase": "switch_failed"
+      },
+      {
+        "phase": "switch_failed"
+      }
+    ],
+    "old_installation_byte_identical": true,
+    "data_before_after_identical": true,
+    "historical_beta3_failure_reproduced": false
+  },
+  "retry_after_fault": {
+    "from_version": "0.3.0-beta.4",
+    "to_version": "0.3.0-beta.4",
+    "installer_exit": 0,
+    "elapsed_seconds": 8.438,
+    "existing_private_store_unchanged": true,
+    "qa_store_unchanged": true,
+    "legacy_internal_active": false,
+    "legacy_sidecar_active": false,
+    "phases": [
+      {
+        "phase": "initialization"
+      },
+      {
+        "phase": "webview2_check"
+      },
+      {
+        "phase": "copy_to_stage"
+      },
+      {
+        "phase": "validate_and_switch"
+      },
+      {
+        "phase": "helper_result",
+        "child_exit": "0"
+      },
+      {
+        "ok": true,
+        "phase": "committed",
+        "journal_retained": false,
+        "personal_top_entries_preserved": 0,
+        "data_store_modified": false
+      },
+      {
+        "phase": "register_new_version"
+      },
+      {
+        "phase": "completed"
+      }
+    ]
+  },
+  "registry_filename_probe": {
+    "schema": "color-studio-registry-filename-probe-v1",
+    "installer_sha256": "f002769da0c37d8a85a8fa8bf6351053ea3608a298cbf368d0c442f164eca4bf",
+    "synthetic_fixture_preserved": true,
+    "untrusted_registry_filename_not_deleted": true,
+    "app_registry_restored_by_installer": true,
+    "personal_filename_or_path_injected": false,
+    "clean_windows": false
+  },
+  "uninstall_junction_probe": {
+    "schema": "color-studio-real-uninstall-junction-probe-v1",
+    "uninstaller_sha256": "9fa60471d1c4a2b08f24f1ed44de29513e9aa196130f8e1130935bc4d334d156",
+    "direct_uninstaller_exit": 2,
+    "junction_rejected_before_launcher_deletion": true,
+    "workspace_external_fixture_unchanged": true,
+    "private_store_unchanged": true,
+    "runtime_restored_byte_identical": true,
+    "clean_windows": false
+  },
+  "normal_uninstall": [
+    {
+      "schema": "color-studio-uninstall-v1",
+      "label": "final-before-beta3-baseline",
+      "environment": "Existing host with Codex MSIX redirection; not clean VM",
+      "launch_parent_exit": 0,
+      "child_exit_directly_observed": false,
+      "uninstall_completion_observed": true,
+      "installation_directory_absent": true,
+      "private_data_unchanged": true,
+      "qa_data_unchanged": true,
+      "private_files": 5,
+      "previous_backups_retained": true,
+      "clean_windows": false
+    },
+    {
+      "schema": "color-studio-uninstall-v1",
+      "label": "final-before-beta2-baseline",
+      "environment": "Existing host with Codex MSIX redirection; not clean VM",
+      "launch_parent_exit": 0,
+      "child_exit_directly_observed": false,
+      "uninstall_completion_observed": true,
+      "installation_directory_absent": true,
+      "private_data_unchanged": true,
+      "qa_data_unchanged": true,
+      "private_files": 5,
+      "previous_backups_retained": true,
+      "clean_windows": false
+    }
+  ],
+  "runtime_regression": {
+    "python": "3.14.10",
+    "tests": 116,
+    "failures": 0,
+    "errors": 0,
+    "successful": true,
+    "core_loaded_from_packaged_runtime": true,
+    "isolated": 1,
+    "no_site": 1,
+    "qa_dependencies_shipped": false,
+    "clean_windows": false
+  },
+  "runtime_isolation": {
+    "isolated": 1,
+    "ignore_environment": 1,
+    "no_site": 1,
+    "no_user_site": 1,
+    "modules_and_search_path_within_bundle": true,
+    "loaded_modules": {
+      "observed_pe_modules": 71,
+      "unexpected_module_names": [],
+      "enumeration": "PSAPI loader module paths",
+      "python_dll_loaded_from_bundle": true,
+      "payload_module_hashes_checked": true,
+      "scope": "Snapshot after all API operations, not a clean OS certification"
+    },
+    "schema": "color-studio-embedded-isolation-v1",
+    "default_data_location_preserved": true,
+    "preferences_and_preset_survive_restart": true,
+    "poisoned_cwd_and_python_environment_ignored": true,
+    "installation_tree_unchanged": true,
+    "clean_windows": false
+  },
+  "licensed_demo_api": {
+    "version": "0.3.0-beta.4",
+    "environment": "Existing Windows developer machine; not clean VM",
+    "scope": "Real licensed rural photographs only; no portrait/skin/market validation",
+    "packaged_runtime": true,
+    "executable_sha256": "d718435b892db4ad5b547d12fec61be7baa7faf7a58d857ea58053be24c7a000",
+    "runtime_manifest_sha256": "0ca5b539dff8174eb22da886dcc6ec17f2a64ddfa096bd75168fcc7313cf67df",
+    "developer_tools_found_in_child_path": {
+      "python": false,
+      "node": false,
+      "cargo": false,
+      "git": false
+    },
+    "cwd_empty_directory": true,
+    "module_audit": {
+      "observed_pe_modules": 71,
+      "unexpected_module_names": [],
+      "enumeration": "PSAPI loader module paths",
+      "python_dll_loaded_from_bundle": true,
+      "payload_module_hashes_checked": true,
+      "scope": "Snapshot after all API operations, not a clean OS certification"
+    },
+    "modes_preserve_export_bytes": true,
+    "plan_privacy_and_claim_types": "passed",
+    "recipe_preset_optics_roundtrip": "passed",
+    "session_guard": "passed",
+    "clean_windows_verified": false,
+    "redistribution_approved": false,
+    "samples": [
+      {
+        "input_sha256": "5005bfe36f98fd65e89673be1cc09d5f532f09482fd3e8a57de075022c13493c",
+        "dimensions": [
+          1024,
+          678
+        ],
+        "export_ms": 521.9,
+        "sampled_process_peak_rss_mb": 132.1,
+        "original_unchanged": true
+      },
+      {
+        "input_sha256": "c45f876097b42968568cf595b268b0600a83b0728c1edf8105ffccfea9cb9e5d",
+        "dimensions": [
+          1024,
+          678
+        ],
+        "export_ms": 521.1,
+        "sampled_process_peak_rss_mb": 131.6,
+        "original_unchanged": true
+      }
+    ],
+    "batch_status": "completed",
+    "batch_outputs_verified": 2,
+    "demo_originals_unchanged": true,
+    "ffmpeg_binary_present": false,
+    "cube_sha256": "4fb41b679e1f2a2363b22a57f3780ea87ff9ccf06ad718cc0eefaf7f3f48d331",
+    "parent_death_watchdog": "passed"
+  },
+  "gui_evidence": {
+    "executed_installer_sha256": "25c943dc2b08832b405938920de7e0043033f5d132a536af6bde85942701505f",
+    "scope": "Earlier intermediate beta4 GUI; application source trees identical to corrected build. Corrected installer/native launch tested separately.",
+    "source_trees_unchanged": {
+      "apps": true,
+      "packages": true
+    },
+    "results": {
+      "native_ui_png_download_observed": true,
+      "dimensions": [
+        1024,
+        678
+      ],
+      "icc_embedded": true,
+      "sha256": "0a70263492bfea914641fbdad78c8d37967391fbd2e689da7f64fb152a41e06b",
+      "photo_source": "Authorized CC0 demo; not a personal photograph",
+      "human_visual_approval": false,
+      "native_ui_recipe_download": true,
+      "intensity_after_creator_to_pro": 0.6,
+      "native_ui_planner_generated_and_downloaded": true,
+      "plan_claim_kinds": [
+        "estimate",
+        "observation",
+        "recommendation",
+        "source_confirmed"
+      ],
+      "plan_contains_private_paths": false,
+      "plan_human_validated": false
+    },
+    "normal_close_and_children_stopped": true,
+    "photo_provenance": "apps/demo/credits.json; Sergej Majboroda / Poly Haven / CC0-1.0"
+  },
+  "current_regression": {
+    "host_tests": 116,
+    "host_skipped": 3,
+    "tracking_tests": 131,
+    "new_loader_and_private_diagnosis_tests": 6,
+    "client_tests": 7,
+    "skipped_reason": "Symlink privilege unavailable; real junction guard tests pass without changing permissions"
+  },
+  "data_investigation": {
+    "initial_snapshot_files": 9,
+    "current_snapshot_files": 5,
+    "missing_temporary_images": 4,
+    "changed_present_hashes": 0,
+    "operator_denies_cleanup": true,
+    "cause": "unresolved",
+    "journal_read_winerror": 5,
+    "operator_diagnosis_prepared": true,
+    "current_directory_identities_captured_privately": true,
+    "global_preservation_accepted": false,
+    "filenames_hashes_and_paths_kept_private": true
+  },
+  "historical_exit2": {
+    "cause": "unattributed",
+    "original_beta2_to_beta3_repeat_exit": 0,
+    "new_controlled_sharing_violation_is_distinct": true
+  },
+  "clean_windows": false,
+  "physical_network_disconnect_tested": false,
+  "real_editor_imports": "not_run",
+  "human_accepted": false,
+  "cross_session_data_preservation_accepted": false,
+  "external_beta": "NO-GO",
+  "commercial": "NO-GO",
+  "remaining_gates": [
+    "Explain four temporary-image snapshot differences before acceptance",
+    "Clean Windows and missing-WebView2 installation",
+    "Physically disconnected use",
+    "Real editor LUT imports",
+    "Redistribution conditions and owner review/authorization"
+  ]
+}

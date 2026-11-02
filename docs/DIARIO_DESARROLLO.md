@@ -461,3 +461,32 @@ aceptación visual humana.105 tests con Python embebido,130 seguimiento,7fronten
 se suman5 probes de guard en el próximo candidato. Codecs, fechas, rutasMSIX y
 sufijos de descarga del harness se corrigieron sin atribuirlos a defectos del producto.
 Windows limpio/desconexión/editores/licencias/aceptación siguen NO-GO/pending.
+
+## 02-11-2026 · COL036 · candidato final y conservación pendiente de diagnóstico
+
+PR90 permanece borrador. Candidato limpio8f4c60e/f002769d…ca4bf, extracción951
+archivos/924runtime y construcciónCI41399176754 correctas;60PE y bootstrapper
+coinciden CI/local, setups no idénticos, sin publicar ejecutables. Directos beta3→4
+0/8,016s y beta2→4 0/7,110s. Fallo nativo Winerror32 durante cambio de carpetas:
+NSIS2/hijo2, rollback byte-idéntico, reintento0/8,438s. No identifica2 histórico.
+Pruebas reales de registro manipulado/junction final y desinstalación preservan
+stores; runtime restaurado, sin operaciones propias a medias. GUI intermedia25c
+tiene apps/packages idénticos a8f; no se presenta como retest visual final.
+
+Se corrigió el auditor QA para leer rutas del loader PSAPI en lugar de nombres de
+secciones mapeadas que conservaban la ruta del stage renombrado. No relaja origen
+ni hashes;3 regresiones.116 MVP host y116 con Python embebido pasan,3 symlink
+omitidos; smoke2CC0 e aislamiento71módulos correctos. Instrumento de diagnóstico
+PowerShell probado con3 casos inertes y ejecutado en lectura real; no distribuye
+dependencias QA ni requiere otro setup. Capturas solo demo autorizada.
+
+Bloqueo material:9 archivos de captura inicial frente a5 actuales,4 imágenes
+temporales ausentes y0 cambios de hash entre presentes. El operador niega limpieza:
+no aceptar conservación global ni atribuirla a otra API. Comparaciones de cada
+instalación son iguales, pero no cubren el intervalo. Búsquedas/historial sin causa;
+USN lecturaAccesoDenegado5. Se prepara comparación fuera de Codex/lectura elevada
+por operador con identidades NTFS actuales, salida privada y sin restauración,
+borrado ni permisos cambiados. Guía DIAGNOSTICO_TEMPORALES_BETA4 y checkpoint.
+Manifiesto incorpora PR90/evidencia y puerta independiente de conservación;
+roadmap histórico intacto. Beta externa y venta NO-GO; Windows limpio/offline real,
+Resolve/Adobe y revisión de derechos/humana pendientes. Solicitud67 se reutiliza.

@@ -53,6 +53,19 @@ class ProductTests(unittest.TestCase):
         self.assertFalse(result['readiness']['beta']['go'])
         self.assertEqual(len(json.loads((ROOT/'site/data/roadmap.json').read_bytes())['tasks']),42)
 
+    def test_unresolved_data_preservation_is_independent_of_technical_checks_and_issue_labels(self):
+        rule=next(r for r in self.manifest['readiness']['beta'] if r['id']=='data-preservation')
+        self.assertEqual(rule['field'],'cross_session_data_preservation_accepted')
+        self.assertIs(product.evidence(ROOT,rule),False)
+        self.issue(57).update(state='closed',labels=[{'name':'approved'}])  # Synthetic API fixture only.
+        self.manifest['readiness']['beta']=[rule]
+        result=self.derive()
+        self.assertTrue(next(f for f in result['features'] if f['id']=='windows')['technically_verified'])
+        self.assertFalse(result['readiness']['beta']['checks'][0]['passed'])
+        self.assertFalse(result['readiness']['beta']['go'])
+        with patch.object(product,'evidence',return_value=None):
+            self.assertFalse(self.derive()['readiness']['beta']['go'])
+
     def test_new_capability_needs_own_receipt_even_after_delivery_and_issue_label(self):
         creator=next(f for f in self.manifest['features'] if f['id']=='creator')
         creator['delivery_prs']=[9999]
