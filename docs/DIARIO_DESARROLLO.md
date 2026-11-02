@@ -440,3 +440,24 @@ legacy quedan en backup privado, no runtime activo ni material redistribuible.
 Interrupciones sintéticas no son cortes eléctricos. Windows limpio/Resolve/offline
 real pendientes de operador; solicitud67 única, workflow41316675082 y mención
 6559335054 comprobados. No se habilitó Hyper-V ni reinició el host. Guías preparadas.
+
+
+## 02-11-2026 · COL036 · revisión independiente y defensa de archivos
+
+El candidato intermedio25c/e317 supera build/auditoría951 archivos y CI41347038273,
+pero la revisión detectó Delete de MainBinaryName del registro sin validar. Se
+retira esa limpieza; no es necesaria con stage nuevo y backup. El candidato queda
+superado antes de distribución. Se añade preflight de directorios/ancestros del
+desinstalador: rechaza reparse/junction antes del primer Delete, sin ejecutar un
+Python instalado que pudiera haberse redirigido. Prueba roja funcional encontró
+registroSystem incorrecto; corregido a r17/r18. Verde5 casos reales con NSIS
+verificado y junctions sin administrador, marcadores intactos. No permisos nuevos.
+No ejecutar uninstall.exe de backups: conservar evidencia y recuperación guiada.
+
+Evidencias intermedias: ambos updates directos0; errorWin32=32 controlado restaura
+bytes de app y datos, reintento0; aplicación abierta aborta2 antes de copiar.
+GUI real y descargasPNG/receta/PlannerJSON en25c, Creator→Pro conserva60%; no
+aceptación visual humana.105 tests con Python embebido,130 seguimiento,7frontend;
+se suman5 probes de guard en el próximo candidato. Codecs, fechas, rutasMSIX y
+sufijos de descarga del harness se corrigieron sin atribuirlos a defectos del producto.
+Windows limpio/desconexión/editores/licencias/aceptación siguen NO-GO/pending.

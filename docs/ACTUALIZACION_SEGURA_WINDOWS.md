@@ -43,6 +43,14 @@ El instalador cambia su CWD al padre antes de ejecutar Python: no mantiene abier
 el directorio que intenta renombrar. El helper puede moverse junto con su runtime;
 debe verificarse también con el candidato nativo real, no solo con fixtures.
 
+La revisión encontró una limpieza heredada que usaba `MainBinaryName` del registro
+como nombre para `Delete`: se eliminó, pues el stage nuevo no necesita esa limpieza.
+El desinstalador comprueba atributos de todos los directorios gestionados y sus
+ancestros antes del primer borrado; si detecta reparse/junction o no puede
+verificarlos, aborta. La función real se prueba con NSIS fijado y junctions locales
+sin privilegios. No se garantiza resistencia frente a manipulación concurrente
+hostil del sistema de archivos por la misma cuenta durante la desinstalación.
+
 ## Conservación y recuperación
 
 `ColorStudioBetaData` está fuera de la carpeta de instalación y no se toca. Los
@@ -51,6 +59,9 @@ extras en la raíz se copian a la nueva instalación; los que estén dentro de
 copia anterior completa, no se mezclan con el runtime aislado nuevo. La copia no
 se borra automáticamente. Consume espacio adicional y es privada: no debe
 adjuntarse a GitHub ni redistribuirse, especialmente si contiene el runtime beta.2.
+No ejecutar `uninstall.exe` dentro de una copia anterior: ese desinstalador puede
+retirar las claves de la instalación activa. La recuperación se hace verificando
+y restaurando carpetas, con el operador; no encadenando desinstaladores de backups.
 
 En el siguiente intento, un diario pendiente permite verificar la copia completa
 y restaurarla si falta el destino, o verificar el nuevo paquete si el cambio ya

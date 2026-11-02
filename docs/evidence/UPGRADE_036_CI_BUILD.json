@@ -1,0 +1,306 @@
+{
+  "schema": "color-studio-upgrade-ci-build-receipt-v1",
+  "user_report_date": "2026-11-02",
+  "record_kind": "historical_intermediate_candidate_build",
+  "superseded_candidate": true,
+  "qualification_for_final_candidate": false,
+  "corrected_run_status": "pending",
+  "superseded_reason": "Engineering review requires correcting a legacy post-commit registry-derived Delete. This intermediate build does not qualify the corrected final candidate.",
+  "github_run": {
+    "id": 41347038273,
+    "url": "https://github.com/jea27/Lut_generator/actions/runs/41347038273",
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "e317c02351dbfec42abc64738f90ff7c88b16aa3",
+    "created_at_utc": "2026-11-01T20:28:39Z",
+    "started_at_utc": "2026-11-01T20:28:39Z",
+    "updated_at_utc": "2026-11-01T20:38:07Z",
+    "timestamp_note": "UTC forensic timestamps are retained from GitHub; they are not replaced by the user's report date."
+  },
+  "verification_basis": {
+    "method": "Cross-reconciliation of the four CI JSON reports, four local JSON reports and read-only GitHub metadata. The CI artifact ZIP was inspected in memory.",
+    "ci_source_matches_github_head": true,
+    "local_source_matches_ci": true,
+    "ci_source_dirty": false,
+    "local_source_dirty": false,
+    "report_files": [
+      {
+        "file": "beta-artifact.json",
+        "ci_sha256": "82711e75dcb3a41a8e756a187aafb4e4f1ca6262a4b3a0f5bcc1706ac5564d75",
+        "local_sha256": "b79cbdaa710e57e2a95ce0c20c450c58899db9d2413b627e5512475e54137d5b",
+        "json_values_identical": false
+      },
+      {
+        "file": "beta-nsis-audit.json",
+        "ci_sha256": "f645d6271f4ca5b4d74a550b6b69551a49dd20f9241b957bca445237cedbe023",
+        "local_sha256": "becf36713ceb7e8e1e398d0c7df5329d82ab890504512883928675117bacffcc",
+        "json_values_identical": false
+      },
+      {
+        "file": "beta-payload-audit.json",
+        "ci_sha256": "48121170643dc6242f73a6f059c216d8535847666b1c501b95b61db2c186bec4",
+        "local_sha256": "5dc5e4925863813cc64a1b062d1938a0334fa5bf62316b09e00301d5fd3ce7de",
+        "json_values_identical": false
+      },
+      {
+        "file": "runtime-signatures.json",
+        "ci_sha256": "1a81f6744e760c5198c25a384cb27db44f62bb44a3c620ab4698e4ed20b2f2a0",
+        "local_sha256": "c30ce94b68141e2bfeaac2c1042eefd0ce5e4a95c8c1cb24667df9e74464b461",
+        "json_values_identical": true
+      }
+    ],
+    "uploaded_artifact": {
+      "id": 13099793684,
+      "name": "color-studio-windows-candidate",
+      "archive_sha256_verified": "03774ed19fd98f7ca6b669a3d1792b18f5adf8c7035c249e31de36b3002c8572",
+      "archive_bytes": 7838,
+      "files": [
+        "beta-artifact.json",
+        "beta-nsis-audit.json",
+        "beta-payload-audit.json",
+        "runtime-signatures.json"
+      ],
+      "exactly_four_json_files": true,
+      "provided_ci_files_match_uploaded_bytes": true,
+      "installer_uploaded": false,
+      "any_executable_uploaded": false
+    }
+  },
+  "intermediate_ci_build": {
+    "version": "0.3.0-beta.4",
+    "source": "e317c02351dbfec42abc64738f90ff7c88b16aa3",
+    "dirty": false,
+    "installer_sha256": "45e1c4b966b84740b7bf8505e6cdfca3295685a684c480497907c48738b0c787",
+    "installer_bytes": 48476234,
+    "signature": "NotSigned",
+    "build_python": "Python 3.12.10",
+    "node": "v26.13.0",
+    "rust": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+    "installer_manifest_sha256": "fd6bd574b44ee86e6e836895c4f543a4b9e0feda0741050e4167f21281ec46aa",
+    "runtime_manifest_sha256": "f74b76e3aabb2134b37dd1c687bf05aac414e55b7a25611e3985513e72020691",
+    "nsis_full_audit": "passed",
+    "windows_clean_install": "not_tested"
+  },
+  "historical_local_reference": {
+    "installer_sha256": "25c943dc2b08832b405938920de7e0043033f5d132a536af6bde85942701505f",
+    "installer_bytes": 48484430,
+    "source": "e317c02351dbfec42abc64738f90ff7c88b16aa3",
+    "dirty": false,
+    "build_python": "Python 3.12.14",
+    "installer_manifest_sha256": "e677933faf87f3b29dcf0cdfcf3e70b8d1e9ee0e4f706332a3bfe6a68bc37ec3",
+    "superseded_candidate": true,
+    "is_ci_executable": false,
+    "note": "This receipt does not replace or duplicate the selected local artifact record. Neither intermediate executable is the corrected final candidate."
+  },
+  "consistency_checks": {
+    "extracted_nsis_files_ci": 951,
+    "extracted_nsis_files_local": 951,
+    "runtime_files_ci": 924,
+    "runtime_files_local": 924,
+    "reported_runtime_manifest_identical": true,
+    "reported_runtime_manifest_sha256": "f74b76e3aabb2134b37dd1c687bf05aac414e55b7a25611e3985513e72020691",
+    "runtime_native_files_compared": 60,
+    "runtime_native_hashes_identical": true,
+    "runtime_signature_rows_identical": true,
+    "required_signature_count": 7,
+    "required_signatures_passed": true,
+    "required_signatures": [
+      {
+        "file": "python.exe",
+        "required_publisher": "Python Software Foundation",
+        "status": "Valid",
+        "file_version": "3.14.10",
+        "sha256": "d718435b892db4ad5b547d12fec61be7baa7faf7a58d857ea58053be24c7a000"
+      },
+      {
+        "file": "python3.dll",
+        "required_publisher": "Python Software Foundation",
+        "status": "Valid",
+        "file_version": "3.14.10",
+        "sha256": "7bb0a7df2d5cb829319dd8d122039843e2a762361bb5a61bb5d24ca34f4040b5"
+      },
+      {
+        "file": "python314.dll",
+        "required_publisher": "Python Software Foundation",
+        "status": "Valid",
+        "file_version": "3.14.10",
+        "sha256": "d8a06cc6ca3348925ea29e343e1c5c5895fe0bb433ff913e1cee44caf358aa6a"
+      },
+      {
+        "file": "pythonw.exe",
+        "required_publisher": "Python Software Foundation",
+        "status": "Valid",
+        "file_version": "3.14.10",
+        "sha256": "36392dade900489423a15686340bf5f95a64d661d9322bb4c0e0f1d4e6a84cb7"
+      },
+      {
+        "file": "vcruntime140.dll",
+        "required_publisher": "Microsoft",
+        "status": "Valid",
+        "file_version": "14.51.36247.0",
+        "sha256": "d1f4225df2cd877dbf130d5668a021dce3f94118455ff5ec952061c30afc9ce7"
+      },
+      {
+        "file": "vcruntime140_1.dll",
+        "required_publisher": "Microsoft",
+        "status": "Valid",
+        "file_version": "14.51.36247.0",
+        "sha256": "a7146c08f89fe5b04541ab507cdb59ff7b44534d4ba3c668a426c6450a03434e"
+      },
+      {
+        "file": "vendor/numpy.libs/msvcp140-a4c2229bdc2a2a630acdc095b4d86008.dll",
+        "required_publisher": "Microsoft",
+        "status": "Valid",
+        "file_version": "14.40.33810.0",
+        "sha256": "a4c2229bdc2a2a630acdc095b4d86008e5c3e3bc7773174354f3da4f5beb9cde"
+      }
+    ],
+    "all_runtime_signature_status_counts": {
+      "Valid": 34,
+      "NotSigned": 26
+    },
+    "unsigned_runtime_native_count": 26,
+    "signature_scope": "Required PSF/Microsoft signatures are Valid. Hash-verified unsigned wheel binaries remain unsigned; no blanket signing claim.",
+    "nsis_source": {
+      "version": "3.13",
+      "filename": "nsis-3.13.zip",
+      "url": "https://github.com/tauri-apps/binary-releases/releases/download/nsis-3.13/nsis-3.13.zip",
+      "sha256": "ba63dffc4410ee89193e1cb5a41989991bd77c61068da17e3156d136b7b0b3d8",
+      "upstream_sha1": "db14f8af2ea346b786c6ae19343f61aaf5e09b8e"
+    },
+    "nsis_origin_gate_reported_passed": true,
+    "payload_input_gate_reported_passed": true,
+    "notices_match_repository_reported": true,
+    "plugins_and_graphic_identical_to_local": true,
+    "plugins_and_graphic": [
+      {
+        "file": "$PLUGINSDIR/System.dll",
+        "source": "nsis",
+        "sha256": "afe032f942e2ed0bf7494ec08ba813f5739fb522c640bde81d30ecaf9f894432",
+        "machine": "0x14c"
+      },
+      {
+        "file": "$PLUGINSDIR/nsDialogs.dll",
+        "source": "nsis",
+        "sha256": "9c76f4d53ceee2a471c936e0899688405e1009ce962d140e9acb49ed68d114cb",
+        "machine": "0x14c"
+      },
+      {
+        "file": "$PLUGINSDIR/StartMenu.dll",
+        "source": "nsis",
+        "sha256": "39870682e7d1c026cd2b33ca25591db28250dde17de7eb1feec404222d534ffc",
+        "machine": "0x14c"
+      },
+      {
+        "file": "$PLUGINSDIR/LangDLL.dll",
+        "source": "nsis",
+        "sha256": "3c8b2629048c118e4fcf80188cbcdaad3a668270e49fd95d2809feccc98fe220",
+        "machine": "0x14c"
+      },
+      {
+        "file": "$PLUGINSDIR/modern-wizard.bmp",
+        "source": "nsis",
+        "sha256": "3ad2dc318056d0a2024af1804ea741146cfc18cc404649a44610cbf8b2056cf2"
+      },
+      {
+        "file": "$PLUGINSDIR/nsis_tauri_utils.dll",
+        "source": "tauri-utils",
+        "sha256": "5ba143b5db4a87d32d6e7802e033330aae56cbceabe0d1e3ba41948385ad4709",
+        "machine": "0x14c"
+      },
+      {
+        "file": "$PLUGINSDIR/nsExec.dll",
+        "source": "nsis",
+        "sha256": "1dee37f6abb2dec9e767bd022d29386b6b295bbd55bf316d2649b8d298f89e9d",
+        "machine": "0x14c"
+      }
+    ],
+    "reported_native_component_comparison": {
+      "installer": {
+        "machine": "0x14c",
+        "imports_identical_to_local": true,
+        "ci_sha256": "45e1c4b966b84740b7bf8505e6cdfca3295685a684c480497907c48738b0c787",
+        "local_sha256": "25c943dc2b08832b405938920de7e0043033f5d132a536af6bde85942701505f",
+        "hash_identical": false
+      },
+      "uninstaller": {
+        "machine": "0x14c",
+        "imports_identical_to_local": true,
+        "ci_sha256": "57e934da8609d0dcb06114d45f9a6763cfd4d3dec6ae4a87e48e642799c44cab",
+        "local_sha256": "57e934da8609d0dcb06114d45f9a6763cfd4d3dec6ae4a87e48e642799c44cab",
+        "hash_identical": true
+      },
+      "launcher": {
+        "machine": "0x8664",
+        "imports_identical_to_local": true,
+        "ci_sha256": "790fa69930fb3fc09883bdc4c1bb8fc03bc96b9627862d3d5f48e4f512678f36",
+        "local_sha256": "b718a8748a5409af67385f4a02b7b6cb343ee3501fafe94b80ebbcb27242d725",
+        "hash_identical": false
+      },
+      "webview2_bootstrapper": {
+        "machine": "0x14c",
+        "imports_identical_to_local": true,
+        "ci_sha256": "00c6e5a7413c37753bb92e176539dbf691a101846a622e00a9faec3f23e2816b",
+        "local_sha256": "00c6e5a7413c37753bb92e176539dbf691a101846a622e00a9faec3f23e2816b",
+        "hash_identical": true
+      }
+    },
+    "reported_launcher_amd64": true,
+    "runtime_individual_architectures_available_in_four_reports": false,
+    "architecture_scope": "The reported launcher is AMD64; installer, uninstaller, bootstrapper and six NSIS plugins report I386. The four reports do not list each of the 60 runtime PE architectures; this receipt compares their hashes/signatures and records the upstream origin gate, without inventing an independent per-file architecture audit.",
+    "webview2_bootstrapper": {
+      "version": "1.3.311.5",
+      "sha256": "00c6e5a7413c37753bb92e176539dbf691a101846a622e00a9faec3f23e2816b",
+      "bytes": 1888976,
+      "signature_reported": "Valid",
+      "signer": "Microsoft Corporation",
+      "machine": "0x14c",
+      "source_url": "https://go.microsoft.com/fwlink/p/?LinkId=2124703",
+      "resolved_source_url": "https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/6afc3f6e-9ce1-4287-8501-612531eeeef7/MicrosoftEdgeWebview2Setup.exe",
+      "local_and_ci_metadata_identical": true,
+      "scope": "Pinned official Evergreen bootstrapper, not an offline or fixed WebView2 runtime. Runtime installation still needs Internet if absent."
+    },
+    "payload_blocking_findings_ci": 0,
+    "payload_blocking_findings_local": 0,
+    "nsis_nonruntime_blocking_findings_ci": 0,
+    "nsis_nonruntime_blocking_findings_local": 0,
+    "nonblocking_pattern_findings_ci": 18,
+    "nonblocking_pattern_findings_local": 16,
+    "ci_only_nonblocking_patterns": [
+      {
+        "file": "vendor/numpy/__config__.py",
+        "reason": "published_upstream_ci_prefix",
+        "blocking": false
+      },
+      {
+        "file": "vendor/pydantic_core/_pydantic_core.cp314-win_amd64.pyd",
+        "reason": "published_upstream_ci_prefix",
+        "blocking": false
+      }
+    ]
+  },
+  "differences": {
+    "installers_bit_identical": false,
+    "installer_byte_delta_local_minus_ci": 8196,
+    "build_python_versions_differ": true,
+    "packaged_launcher_hash_differs": true,
+    "uninstaller_hash_identical": true,
+    "installer_manifest_hash_differs": true,
+    "build_launcher_sha256_ci": "2cf16656044b9dba0b66fc650a069dc2896deda6dfaf74d1dff9c990465248d8",
+    "build_launcher_sha256_local": "194a5675e409cdf2e6b0b31f968d4cbeaae89c5967399dbf434805a34c49c192",
+    "bundle_marker_comparison_ci": "only_Tauri_UNK_to_NSS_bundle_marker",
+    "bundle_marker_comparison_local": "only_Tauri_UNK_to_NSS_bundle_marker",
+    "binary_difference_cause": "Not determined from these reports. Observed tool-version differences are recorded without attributing causation."
+  },
+  "limits": {
+    "clean_windows_or_vm_tested_by_ci_build": false,
+    "ci_executable_installed_or_executed_in_this_review": false,
+    "independent_raw_executable_inspection_performed_here": false,
+    "installer_script_safety_certified_by_this_receipt": false,
+    "human_acceptance": false,
+    "redistribution_approved": false,
+    "external_beta": "NO-GO",
+    "commercial": "NO-GO",
+    "scope": "A successful intermediate build and reported audit gates do not prove clean installation, upgrade safety, offline operation, editor compatibility or legal acceptance. A corrected build/run and its real QA remain pending."
+  }
+}

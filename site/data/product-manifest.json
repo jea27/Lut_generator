@@ -508,7 +508,8 @@
         "tests_mvp/test_embedded_runtime.py",
         "tests_mvp/test_nsis_audit.py",
         "tests_mvp/test_installer_transaction.py",
-        "tests_mvp/test_installer_inputs.py"
+        "tests_mvp/test_installer_inputs.py",
+        "tests_mvp/test_nsis_uninstall_guard.py"
       ],
       "evidence": [
         {

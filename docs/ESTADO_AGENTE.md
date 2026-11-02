@@ -1,3 +1,46 @@
+# Checkpoint vigente · revisión de seguridad beta4 · 02-11-2026
+
+PR90 borrador, rama codex/COL-036-actualizacion-segura. Candidato intermedio de
+fuentee317c02, SHA25c943dc…505f construido/auditado y probado realmente. CI de
+construcción41347038273 success; solo4JSON públicos. No distribuir ni dar GO.
+
+Actualizaciones directas beta3→beta4 (9,313s) y beta2→beta4 (8,125s):0; presets,
+preferencias, imágenes y store privado conservados. Fixture sintético de raíz
+preservado también en backup; se limpió solo la copia propia activa. Fallo real
+controlado con handle de stage: Winerror32/errno13, instalador2/hijo2, rollback
+old_restored=true, bytes de app/datos intactos. Reintento0. Guard de app abierta2
+antes de copiar. Desinstalación normal observada completa sin borrar stores; no
+se observó directamente el exit del hijo temporal del desinstalador.
+
+GUI real en25c: Creator→Pro conserva imagen e intensidad60%, descargaPNG/receta y
+ShotPlannerJSON reales; tipos de observación/estimación/recomendación/fuente,
+fuentes y límites visibles; cierre normal y children detenidos. Capturas CC0
+UPGRADE_036_*.png pendientes de incorporar. Runtime instalado105 tests/3 symlink
+omitidos, aislamiento71 módulos y smoke2CC0 pasan. Historial2 beta3 no atribuido.
+
+REVISIÓN DETECTÓ: Delete heredado usa MainBinaryName del registro sin validar.
+Eliminado en working tree;25c/e317 quedan superados como selección final. Añadido
+preflight NSIS de reparse/junction antes de cualquier Delete del desinstalador.
+La prueba roja real detectó un error de registrosSystem r7/r8 vsR7/R8; corregido
+a r17/r18 y prueba verde5/5: carpetas normales/ausentes0, junction en recurso/raíz/
+ancestro2 y marcadores intactos. Nuevo desinstalador aún no compilado/ejecutado.
+Reconstruir
+fuente limpia, nuevaCI, auditoría951 archivos y retests selectivos de update/fallo.
+Resolver_inventory terminó reciboCI histórico, marcado superseded, en
+UPGRADE_036_CI_BUILD.json. No confundircon recepción del móvil ni aprobación.
+
+Pendiente humano: Windows limpio/Hyper-V+RAM/ISO y descargaResolve con registro
+personal, Issue67 ya notificada41316675082/mención6559335054. No repetir bloqueo.
+SinVM, sin desconexión real, sin editor real; externa/venta NO-GO. No ejecutar
+uninstall.exe de backups: puede retirar registro de instalación activa.
+
+Reanudar: git status y revisar mensajes de agentes; corregirSystemtrasredtest;
+no alterar otros worktrees. Los logs/instaladores/fixtures están en .lumaforge-local
+(privado). Conservar25ccomo intermedio, archivosbeta2/beta3 y todoslosbackups.
+No main, merge, approved, releases ni herramientas/permisos nuevos.
+
+---
+
 # Checkpoint vigente · COL036 actualización segura · 01-11-2026
 
 Rama `codex/COL-036-actualizacion-segura`, worktree independiente; base main918cb638

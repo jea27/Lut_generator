@@ -594,12 +594,10 @@ Section Install
     WriteRegStr SHCTX "${UNINSTKEY}" $MultiUser.InstallMode 1
   !endif
 
-  ; Remove old main binary if it doesn't match new main binary name
+  ; Read only for shortcut migration. A fresh stage has no obsolete launcher;
+  ; never Delete a filename obtained from the registry (traversal/wildcards).
+  ; The old installation remains complete in its private backup.
   ReadRegStr $OldMainBinaryName SHCTX "${UNINSTKEY}" "MainBinaryName"
-  ${If} $OldMainBinaryName != ""
-  ${AndIf} $OldMainBinaryName != "${MAINBINARYNAME}.exe"
-    Delete "$INSTDIR\$OldMainBinaryName"
-  ${EndIf}
 
   ; Save current MAINBINARYNAME for future updates
   WriteRegStr SHCTX "${UNINSTKEY}" "MainBinaryName" "${MAINBINARYNAME}.exe"
@@ -712,7 +710,50 @@ Function un.onGUIEnd
   ${EndIf}
 FunctionEnd
 
+; Inspect each managed directory and its original lexical ancestors before any
+; Delete. Do not run the installed Python to validate a potentially altered path.
+Function un.LFCheckManagedPath
+  Exch $R7
+  Push $R8
+  Push $R9
+  lf_un_path_loop:
+    System::Call 'kernel32::GetFileAttributesW(w r17) i.r18 ?e'
+    Pop $R9
+    ${If} $R8 = -1
+      ${If} $R9 != 2
+      ${AndIf} $R9 != 3
+        SetErrorLevel 2
+        Abort "No se puede verificar una carpeta de la aplicación. No se ha borrado ningún archivo. Revisa permisos y rutas antes de desinstalar."
+      ${EndIf}
+    ${Else}
+      IntOp $R8 $R8 & 0x400
+      ${If} $R8 != 0
+        SetErrorLevel 2
+        Abort "Se detectó un enlace o junction en la instalación. No se ha borrado ningún archivo. Restaura la carpeta original antes de desinstalar."
+      ${EndIf}
+    ${EndIf}
+    ${GetParent} "$R7" $R8
+    ${If} $R8 == ""
+    ${OrIf} $R8 == $R7
+      Goto lf_un_path_done
+    ${EndIf}
+    StrCpy $R7 $R8
+    Goto lf_un_path_loop
+  lf_un_path_done:
+  Pop $R9
+  Pop $R8
+  Pop $R7
+FunctionEnd
+
 Section Uninstall
+
+  ; Complete the preflight before deleting even the first launcher/resource.
+  Push "$INSTDIR"
+  Call un.LFCheckManagedPath
+  {{#each resources_dirs}}
+    Push "$INSTDIR\\{{this}}"
+    Call un.LFCheckManagedPath
+  {{/each}}
 
   !ifmacrodef NSIS_HOOK_PREUNINSTALL
     !insertmacro NSIS_HOOK_PREUNINSTALL
