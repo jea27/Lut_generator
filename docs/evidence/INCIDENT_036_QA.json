@@ -40,7 +40,7 @@
     "embedded_python": "3.14.10",
     "nsis_inert_guard_cases": 7
   },
-  "process_monitor": "not_executed; isolated operator protocol prepared",
+  "process_monitor": "operator_opened; capture disabled and empty; elevated UI inputs ineffective; operator filter/start pending",
   "clean_windows": false,
   "current_installer_quarantined": true,
   "external_beta": "NO-GO",
@@ -75,5 +75,26 @@
   "existing_security_audit_reviewed": true,
   "existing_security_audit_attribution_found": false,
   "additional_owned_task_history_reviewed": true,
-  "procmon_preparation": "Official 4.12 ZIP and Microsoft signatures verified; execution/operator approval pending"
+  "procmon_preparation": "Official 4.12 verified; operator opened and authorized; agent did not accept EULA or elevate",
+  "procmon_session": {
+    "observed_at_utc": "2026-11-02T13:22:13.689021+00:00",
+    "operator_opened": true,
+    "operator_authorized_continue": true,
+    "procmon_integrity_rid": 12288,
+    "procmon_elevated": true,
+    "diagnostic_integrity_rid": 8192,
+    "diagnostic_elevated": false,
+    "window_responding": true,
+    "window_initial_events": 0,
+    "window_initial_capture_enabled": false,
+    "activation_succeeded": true,
+    "filter_click_effect_observed": false,
+    "ctrl_l_effect_observed": false,
+    "accessible_title_only": true,
+    "uipi_compatible_not_internal_channel_proof": true,
+    "security_configuration_changed": false,
+    "new_probes_executed": false,
+    "real_store_accessed": false,
+    "capture_saved": false
+  }
 }

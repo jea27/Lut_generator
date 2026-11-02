@@ -107,11 +107,24 @@ Defender/AppModel/AppX existentes tampoco aportaron atribución; no se modificar
 No restaurar archivos mientras se investiga. El código de
 contención en la rama no protege automáticamente procesos/versiones ya abiertos.
 
-Process Monitor oficial4.12 ya está preparado de forma privada. Sus tres firmas
+Process Monitor oficial4.12 está preparado de forma privada. Sus tres firmas
 Microsoft son válidas y sus hashes/arquitecturas están en
-[recibo de preparación](INCIDENT_036_TOOL_PREP.json). No se ha ejecutado ni se ha
-cargado un controlador o aceptado la licencia por el agente. La herramienta no se
+[recibo de preparación](INCIDENT_036_TOOL_PREP.json). El operador ya ha abierto la
+ventana y ha autorizado continuar. No se ha aceptado la licencia ni elevado la
+herramienta por el agente. La herramienta no se
 incluye en el instalador de Color Studio ni se publica su binario.
+
+Comprobación de la sesión: ventana receptiva, sin eventos y captura desactivada.
+La automatización consigue traerla al frente, pero ni el clic en Filter ni Ctrl+L
+abren el diálogo; la accesibilidad solo expone ventana/título. Una consulta de
+tokens de solo lectura confirma Procmon elevado (integridad alta, RID12288) y
+el proceso de diagnóstico sin elevación (integridad media, RID8192). Es compatible
+con la restricción [UIPI de SendInput](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-sendinput);
+no es un diagnóstico del canal interno de la herramienta de automatización.
+No se han cambiado privilegios, permisos ni protecciones para sortearla.
+**Aún no hay captura Procmon, PML/CSV ni nuevas reproducciones de esta sesión.**
+El operador debe configurar el filtro y arrancar la captura; después Codex puede
+ejecutar las cuatro pruebas por CLI. Rutas e instrucciones completas solo privadas.
 
 La ayuda incorporada firmada confirma `/NoConnect`: no empieza a recopilar eventos
 al abrir. La carga privilegiada y licencia requieren al operador. Para observar
@@ -128,9 +141,11 @@ el proceso y la pila nativos de una reproducción nueva:
    No usar `/AcceptEula`. Leer y aceptar la licencia solo si está de acuerdo.
    Confirmar que la captura está detenida antes de preparar filtros. El agente
    no inicia la carga del controlador automáticamente ni cambia protecciones.
-2. Detener la captura, limpiar solo la vista de Procmon y configurar Include por
+2. Confirmar captura detenida; no borrar registros existentes. En esta sesión la
+   vista está vacía. Configurar Include por
    ruta que comience por el workspace + `.lumaforge-local\data-incident-repro-`.
-   Excluir actividad ajena al fixture de la captura guardada. Guardar el PML solo
+   No dejar otras reglas Include y activar Filter > Drop Filtered Events antes
+   de iniciar. Excluir actividad ajena al fixture de la captura guardada. Guardar el PML solo
    dentro de la carpeta privada. No filtrar únicamente por nombre del proceso:
    se busca también un posible proceso externo que toque el fixture.
 3. Iniciar captura y ejecutar desde este worktree, con el Python de QA existente:
@@ -142,7 +157,9 @@ el proceso y la pila nativos de una reproducción nueva:
    & ../../.venv-mvp/Scripts/python.exe -B scripts/reproduce_private_deletion.py --mode contained --probe batch-part
    ```
 
-4. Detener captura. Correlacionar ruta sintética, PID, imagen/command line del proceso,
+4. El operador detiene la captura y guarda los eventos mostrados como PML y CSV
+   en archivos nuevos privados, sin sobrescribir trazas. Codex verifica que el
+   filtro está activo antes de ejecutar las pruebas. Correlacionar ruta sintética, PID, imagen/command line del proceso,
    tiempo y operaciones CreateFile/SetDispositionInformationFile/CloseFile, resultado
    y stack disponible. Conservar PML y CSV privados; publicar solo un resumen saneado.
 5. Esto verifica una reproducción nueva; no convierte una operación similar en

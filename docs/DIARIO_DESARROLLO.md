@@ -555,3 +555,24 @@ histórico por sí sola. Causa abierta, PR90 borrador y beta/venta NO-GO.
 Solo evidencia/documentación; sin nuevos cambios del producto. JSON saneados y
 diff comprobados; no se repiten suites ya verificadas135/135/134/7. CI comprobará
 el nuevo commit. El resultado privado no se adjunta a Issues/PR.
+
+## 02-11-2026 · COL036 · Procmon abierto por operador; control elevado pendiente
+
+El usuario confirma ventana abierta y autoriza continuar. Mediante la habilidad
+Computer Use se observa Process Monitor receptivo, vacío y captura desactivada.
+Activar ventana funciona; clic en Filter y Ctrl+L no abren menú/diálogo; solo título
+accesible. Tokens consultados sin modificación: Procmon alto/elevado y diagnóstico
+medio/no elevado; compatible con UIPI, sin atribuir el fallo a un canal interno
+no inspeccionado. No elevar agentes ni modificar permisos, logging o protecciones.
+
+No se ejecutan probes nuevos sin confirmar filtro. Se solicita solo configurar
+Path begins with el prefijo sintético privado, sin otras Include, Drop Filtered
+Events y arrancar captura. Después Codex ejecutará los cuatro probes existentes;
+PML/CSV permanecerán privados. Apertura satisfecha, captura todavía pendiente.
+No es nueva evidencia de atribución histórica. PR90 borrador y distribución NO-GO.
+
+Solicitud67 reutilizada conservando marcadores y needs-human, sin quitar/reaplicar
+etiqueta. Dispatch41452456160 success y comentario6578231215 del bot con @jea27
+verificados; no afirmar recepción física nueva. JSON e invariantes NO-GO correctos,
+diff sin rutas privadas/credenciales y evidencia privada ignorada por Git. Solo
+cuatro archivos de documentación/evidencia; no repetir suites de producto sin cambio.

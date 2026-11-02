@@ -46,11 +46,18 @@ Tres symlinks omitidos por privilegios; no se cambiaron permisos.
 
 Pendiente: atribución histórica, nueva QA nativa en entorno aislado y aceptación
 humana. No empezar más distribución ni resolver por updates verdes. Process Monitor
-oficial4.12 descargado dentro del workspace y firmas Microsoft verificadas; no
-ejecutado, EULA no aceptada, controlador no cargado por el agente. ZIP477754bf…3a10,
+oficial4.12 descargado dentro del workspace y firmas Microsoft verificadas;
+el operador ya abrió la ventana y autorizó continuar. EULA/elevación no realizadas
+por el agente. ZIP477754bf…3a10,
 x64 SHA28495e64…885; recibo INCIDENT_036_TOOL_PREP.json. Binarios solo privados.
-Siguiente paso: consentimiento/arranque elevado del operador con /NoConnect; después
-captura exclusiva del fixture sintético. No prometer atribución retrospectiva.
+Ventana receptiva, vacía y captura desactivada. Clic y Ctrl+L automatizados sin efecto;
+solo título accesible. Tokens de solo lectura: Procmon alto/elevado, diagnóstico
+medio/no elevado; compatible con UIPI, no prueba de canal interno. No cambios de
+seguridad ni nuevas reproducciones. Siguiente paso: operador configura Path begins
+with prefijo privado del fixture, sin otras Include, activa Drop Filtered Events e
+inicia captura. Confirmar visualmente filtro/captura; ejecutar los cuatro comandos
+del informe, pedir detener/guardar PML+CSV privados y analizar. No ejecutar pruebas
+si no se puede confirmar el filtro. No prometer atribución retrospectiva.
 Archivo de Security recibido: .lumaforge-local/incidents/COL-036-20261102/
 received-security-empty.json; no copiarlo a GitHub. Queda cerrada solo la petición
 de consulta, no el incidente ni la autorización de distribución.
