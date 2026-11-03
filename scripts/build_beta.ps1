@@ -45,6 +45,12 @@ if(Test-Path -LiteralPath $lfPreviousLauncher){
  if((Get-Item -LiteralPath $lfPreviousLauncher -Force).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Refusing linked previous launcher'}
  Copy-Item -LiteralPath $lfPreviousLauncher -Destination (Join-Path $lfHistory 'previous-launcher.exe')
 }
+$lfPreviousConfig=Get-Content -LiteralPath apps/desktop/src-tauri/tauri.conf.json -Raw | ConvertFrom-Json
+$lfPreviousSetup=Join-Path $lfRoot ('apps/desktop/src-tauri/target/release/bundle/nsis/'+$lfPreviousConfig.productName+'_'+$lfPreviousConfig.version+'_x64-setup.exe')
+if(Test-Path -LiteralPath $lfPreviousSetup){
+ if((Get-Item -LiteralPath $lfPreviousSetup -Force).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Refusing linked previous setup'}
+ Copy-Item -LiteralPath $lfPreviousSetup -Destination (Join-Path $lfHistory 'previous-setup.exe')
+}
 $lfOldPath=$env:PATH;$lfOldFlags=$env:CARGO_ENCODED_RUSTFLAGS;$lfOldJobs=$env:CARGO_BUILD_JOBS
 try {
  $env:PATH="$env:USERPROFILE\.cargo\bin;$env:PATH"

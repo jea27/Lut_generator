@@ -1,5 +1,21 @@
 # Checkpoint vigente · consolidación COL036 · 03-11-2026
 
+Punto de continuación: ebdfbe5 produjo un preliminar beta.5 limpio,48.482.443bytes,
+SHA d1cbdd9073af8e42ff73c241b6769ef64a2b5b300fa405f9af6c00f4364468ea; NO usarlo
+como candidato final. Revisión posterior detectó diario descartado si reaparece
+un destino ajeno tras mover el old a backup. Nuevo test lo reproduce; corregido
+para conservar diario/backup/destino sustituto, recuperación tras revisar ese
+destino.36 pruebas focales correctas (3 symlinks omitidos). Falta regenerar beta.5
+desde el nuevo commit, preservando el preliminar; build archiva también setup.
+Kit VM preparado en scripts/prepare_vm_qa_kit.py + qa_guest_checks.ps1 y guía
+QA_BETA5_INTERNA.md: guard de guest, hashes, instalación, fixtures y probes sin
+Git/httpx globales. Datos/fotos/presets solo sintéticos; fuentes legacy fijadas.
+Todavía no se ejecuta en VM ni se certifica su compatibilidad real. Después del
+build: QA embebido/smoke/aislamiento, generar ZIP privado y notificar una sola
+acción concreta para disponer de Windows11 limpio. No ejecutar instaladores
+en el host. CI candidato preliminar41586295244 cancelada por código superado.
+Los3 symlinks originales pasaron CI Linux41585993189; no equivalen a NTFS file symlink.
+
 Continuación desde edf82d0 autorizada: preparar candidato interno beta.5 sin GO
 externo/venta. Host154 tests correctos,3 symlinks aún omitidos por privilegios;
 cuatro casos NTFS junction nuevos y un bloqueo Win32 real pasan. Nuevos guards

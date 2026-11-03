@@ -627,3 +627,19 @@ Gate global usa data_safety_validated=false: una causa desconocida no sustituye
 evaluación preventiva y aceptación humana. Tests no conceden GO ni aprobación.
 Nuevo test de sincronización usa evidencia futura sintética, nunca modifica el recibo
 real. Sin merge/cierre/release ni permisos cambiados. Build/auditorías aún pendientes.
+
+03-11: ebdfbe5 compilado/auditado en limpio: preliminar beta5 d1cbdd…68ea,
+48.482.443bytes,951 archivos/924 runtime,289 componentes con avisos. Sin instalación.
+Tres symlinks pasan en LinuxCI41585993189; no prueba de file-symlink Windows.
+Revisión posterior de sustitutos detecta pérdida del diario si aparece un destino
+ajeno tras el move del old: reproducción real de colisión falla y corrección retiene
+diario+backup+receta ajena. La recuperación no sobrescribe ese destino; tras revisión
+manual de la carpeta el fixture puede recuperar el old.36 tests focales correctos.
+Regenerar beta5 después del commit, archivando preliminar. CI candidata41586295244
+cancelada por fuente superada, no por pérdida de datos. No publicar instaladores.
+
+Kit VM preparado con guard/modelo/ruta, hashes, instaladores fijados y fuentes legacy
+con SHA; pruebas directas no se presentan como HTTP. Inputs PNG/receta sintéticos,
+sin dependencias de desarrollo globales. Pendiente generar/testear kit final tras
+build. Readiness de conservación apunta a aceptación preventiva nueva, todavía
+false; conserva el recibo histórico y no lo convierte en una aceptación retrospectiva.

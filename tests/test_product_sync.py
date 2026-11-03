@@ -55,11 +55,11 @@ class ProductTests(unittest.TestCase):
 
     def test_unresolved_data_preservation_is_independent_of_technical_checks_and_issue_labels(self):
         rule=next(r for r in self.manifest['readiness']['beta'] if r['id']=='data-preservation')
-        self.assertEqual(rule['field'],'cross_session_data_preservation_accepted')
+        self.assertEqual(rule['field'],'preventive_data_preservation_accepted')
         self.assertIs(product.evidence(ROOT,rule),False)
         self.issue(57).update(state='closed',labels=[{'name':'approved'}])  # Synthetic API fixture only.
         self.manifest['readiness']['beta']=[rule]
-        with patch.object(product,'evidence',side_effect=lambda root,proof:False if proof['field']=='cross_session_data_preservation_accepted' else True):
+        with patch.object(product,'evidence',side_effect=lambda root,proof:False if proof['field']=='preventive_data_preservation_accepted' else True):
             result=self.derive()
         self.assertTrue(next(f for f in result['features'] if f['id']=='windows')['technically_verified'])
         self.assertFalse(result['readiness']['beta']['checks'][0]['passed'])

@@ -969,10 +969,10 @@
       },
       {
         "id": "data-preservation",
-        "title": "Conservación global de datos explicada",
+        "title": "Conservación preventiva y riesgo residual aceptados",
         "kind": "evidence",
-        "path": "docs/evidence/UPGRADE_036_QA.json",
-        "field": "cross_session_data_preservation_accepted",
+        "path": "docs/evidence/INCIDENT_036_QA.json",
+        "field": "preventive_data_preservation_accepted",
         "equals": true,
         "issue": 57
       }

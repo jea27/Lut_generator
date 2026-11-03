@@ -286,6 +286,27 @@ class InstallerTransactionTests(unittest.TestCase):
         self.assertEqual(snapshot(self.target),changed);self.assertEqual(snapshot(backup),old)
         self.assertTrue(installer.journal_path(self.target).is_file());self.assert_data_untouched()
 
+    def test_reappearing_target_retains_journal_backup_and_foreign_recipe(self):
+        old=self.old_package(extras=True);expected=self.package(self.stage)
+        def fault(phase):
+            if phase=='after_old_move':
+                self.target.mkdir()
+                (self.target/'replacement.recipe.json').write_bytes(b'{"synthetic":"foreign replacement, preserve"}')
+        with self.assertRaises(installer.InstallError) as raised:installer.commit(self.stage,self.target,expected,fault=fault)
+        self.assertEqual(raised.exception.phase,'directory_switch_failed')
+        self.assertIs(raised.exception.report()['old_restored'],False)
+        journal=installer.journal_path(self.target);self.assertTrue(journal.is_file())
+        backup=self.root/self.journal_record()['backup'];self.assertEqual(snapshot(backup),old)
+        foreign=snapshot(self.target)
+        with self.assertRaises((installer.InstallError,OSError)):installer.recover(self.target)
+        self.assertTrue(journal.is_file());self.assertEqual(snapshot(self.target),foreign)
+        self.assertEqual(snapshot(backup),old);self.assert_data_untouched()
+        # The replacement is a test-owned synthetic fixture. Retain it elsewhere;
+        # a real unknown directory requires operator review, never automatic purge.
+        self.target.rename(self.root/'retained-foreign-target')
+        self.assertEqual(installer.recover(self.target),'old_restored_after_interruption')
+        self.assertEqual(snapshot(self.target),old);self.assert_data_untouched()
+
     def test_unknown_nonempty_root_is_preserved_and_rejected(self):
         self.target.mkdir();(self.target/'unrelated.txt').write_bytes(b'Synthetic unrelated directory')
         old=snapshot(self.target);expected=self.package(self.stage)

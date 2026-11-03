@@ -100,5 +100,6 @@
     "real_store_accessed": false,
     "capture_saved": false
   },
-  "storage_followup_evidence": "docs/evidence/INCIDENT_036_STORAGE_QA.json"
+  "storage_followup_evidence": "docs/evidence/INCIDENT_036_STORAGE_QA.json",
+  "preventive_data_preservation_accepted": false
 }

@@ -257,7 +257,9 @@ def _commit(stage,target,expected,fault):
         if fault:fault('after_old_move')
         stage.rename(target)
     except OSError as error:
-        restored=None
+        # If a replacement appeared at target after the old app moved, never
+        # overwrite it or discard the journal needed to recover the old backup.
+        restored=False if moved else None
         if moved and not target.exists():
             try:
                 if tree_digest(backup)!=old_tree:raise OSError('Backup changed')
