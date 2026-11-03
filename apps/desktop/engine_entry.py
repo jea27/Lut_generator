@@ -34,7 +34,7 @@ def main():
                 os._exit(0)
     threading.Thread(target=supervise,daemon=True).start()
     # Only public connection metadata: session secrets are never written to stdout.
-    print(json.dumps({'port':port,'version':'0.3.0-beta.4'}),flush=True)
+    print(json.dumps({'port':port,'version':'0.3.0-beta.5'}),flush=True)
     try:server.run(sockets=[listener])
     finally:listener.close()
 

@@ -2,6 +2,8 @@
 import hashlib
 import json
 import os
+import stat
+import subprocess
 from pathlib import Path
 import tempfile
 import threading
@@ -199,6 +201,34 @@ class PrivateDataPreservationTests(unittest.TestCase):
         ui=(ROOT/'apps/web/src/App.vue').read_text(encoding='utf-8')
         self.assertNotIn("api('/images',{method:'DELETE'})",ui)
         self.assertIn('Images and presets protected',ui)
+
+    @unittest.skipUnless(os.name=='nt','Real Windows readonly file')
+    def test_readonly_preferences_preserve_images_presets_and_saved_recipe(self):
+        (self.data/'saved.recipe.json').write_bytes(b'{"synthetic":"standalone recipe"}')
+        self.before=self.snapshot();path=self.data/'preferences.json';mode=path.stat().st_mode
+        try:
+            path.chmod(stat.S_IREAD)
+            response=self.client.put('/api/preferences',json={'workspace':'creator','language':'en'})
+            self.assertEqual(response.status_code,422);self.assert_originals()
+            self.assertEqual(list(self.data.glob('.pending-*')),[])
+        finally:path.chmod(mode)
+
+    @unittest.skipUnless(os.name=='nt','Real NTFS storage aliases')
+    def test_junction_store_root_and_parent_are_rejected_before_creation(self):
+        links=[]
+        try:
+            for name,destination,suffix in [('root-alias',self.data,''),('parent-alias',self.root,self.data.name)]:
+                alias=self.root/name
+                env=dict(os.environ,LF_TEST_JUNCTION=str(alias),LF_TEST_DESTINATION=str(destination))
+                subprocess.run(['powershell.exe','-NoProfile','-NonInteractive','-Command',
+                    'New-Item -ItemType Junction -Path $env:LF_TEST_JUNCTION -Target $env:LF_TEST_DESTINATION -ErrorAction Stop | Out-Null'],
+                    env=env,check=True,capture_output=True,timeout=20)
+                links.append(alias)
+                with self.subTest(alias=name),self.assertRaises(ValueError):create_app(alias/suffix if suffix else alias)
+                self.assert_originals()
+        finally:
+            for alias in links:
+                if alias.is_junction():alias.rmdir()
 
 
 if __name__=='__main__':unittest.main()

@@ -1,4 +1,18 @@
-# Checkpoint vigente · incidente crítico de datos COL036 · 02-11-2026
+# Checkpoint vigente · consolidación COL036 · 03-11-2026
+
+Continuación desde edf82d0 autorizada: preparar candidato interno beta.5 sin GO
+externo/venta. Host154 tests correctos,3 symlinks aún omitidos por privilegios;
+cuatro casos NTFS junction nuevos y un bloqueo Win32 real pasan. Nuevos guards
+rechazan root/ancestros enlazados del almacén y recuperación directa por alias.
+CI Linux añadida para los3 symlinks originales, pendiente de ejecución remota.
+Custodia privada revalidada2PNG+2presets+preferencias, sin restaurar ni publicar.
+Preflight03-11: gestorVM ausente,3,41GiB libres; no VM ni Procmon aislado ejecutados.
+Versión interna beta.5 preparada en fuentes; build y auditorías aún pendientes.
+135 tests de seguimiento y7 frontend correctos; AST build_beta.ps1 sin errores.
+Build preserva stage/launcher/recibos anteriores y rechaza cambios de fuente durante
+compilación. Gate de distribución pasa a seguridad preventiva validada, todavía
+false; causa histórica sigue desconocida y aceptación/release requieren al humano.
+Ver .lumaforge-local/containment-20261103/ para logs. No instalar sobre AppData real.
 
 **P0 abierto. PR90 BORRADOR. Beta externa/venta NO-GO. No instalar ni distribuir
 f002…: candidato en cuarentena. No restaurar ni limpiar el almacén real.**

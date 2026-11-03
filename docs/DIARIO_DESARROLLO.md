@@ -607,3 +607,23 @@ probadas, enlaces de pruebas/huellas e invariantes NO-GO cotejados. Escaneo de l
 11 archivos de entrega sin credenciales/rutas privadas; trazas privadas ignoradas.
 42 tareas históricas sin cambios. Sin nuevos tests frontend al no cambiar UI;
 la CI de la PR comprobará la entrega completa. No repetir aviso del bloqueo Procmon.
+
+## 03-11-2026 · COL036 · consolidación y candidato interno beta.5
+
+Revisión desde edf82d0 con preservación del worktree y custodia de las copias.
+Junctions NTFS reales detectan recuperación directa sin comprobar ancestros y
+root de almacén resuelto antes de comprobar enlaces; corregidos. No atribución
+histórica. Prueba real de readonly conserva preferencias, fotos, presets y receta;
+bloqueo Win32 de directorio aborta switch y permite retry con stage nuevo, como NSIS.
+El primer harness intentó reutilizar stage con extras ya copiados: corregido el
+harness para crear stage fresco; fallo/trace retenidos.154 host correctos,3 omitidos.
+CI Linux añadida para ejecutar los3 symlinks originales; NTFS se prueba en Windows.
+
+VM actual no disponible: gestor ausente,3,41GiB libres. No activar features, reiniciar
+o ejecutar Procmon en host; fase nativa queda para entorno aislado. Custodia privada
+2PNG+2presets y preferencias cotejada contra hashes sin restauración/publicación.
+Preparar versión beta.5 y build interno, guardando etapas/recibos/launcher previos.
+Gate global usa data_safety_validated=false: una causa desconocida no sustituye
+evaluación preventiva y aceptación humana. Tests no conceden GO ni aprobación.
+Nuevo test de sincronización usa evidencia futura sintética, nunca modifica el recibo
+real. Sin merge/cierre/release ni permisos cambiados. Build/auditorías aún pendientes.

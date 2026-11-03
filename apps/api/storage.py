@@ -14,7 +14,11 @@ def private_path(root, *parts):
     Defence against accidental/tampered paths, not a sandbox against an OS user
     who can replace directories between a check and a filesystem operation.
     """
-    root = Path(root)
+    root = Path(root).absolute()
+    # Check the supplied path before resolve() hides a linked root or ancestor.
+    for parent in (root, *root.parents):
+        if parent.is_symlink() or os.path.isjunction(parent):
+            raise ValueError('Linked private storage paths are not supported')
     candidate = root.joinpath(*parts)
     if not candidate.resolve().is_relative_to(root.resolve()):
         raise ValueError('Private storage path is outside its allowed directory')

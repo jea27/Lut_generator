@@ -168,7 +168,16 @@ def refuse_private_locations(*locations):
             raise InstallError('private_data_install_location')
 
 
+def refuse_linked_locations(*locations):
+    for location in locations:
+        for part in (location.absolute(),*location.absolute().parents):
+            try:
+                if linked(part):raise InstallError('linked_install_location')
+            except FileNotFoundError:pass
+
+
 def recover(target):
+    refuse_linked_locations(target)
     refuse_private_locations(target)
     path=journal_path(target)
     if not path.exists():return 'none'
@@ -197,12 +206,8 @@ def recover(target):
 
 
 def commit(stage,target,expected,fault=None):
+    refuse_linked_locations(stage,target)
     refuse_private_locations(stage,target)
-    for location in (stage.absolute(),target.absolute()):
-        for part in (location,*location.parents):
-            try:
-                if linked(part):raise InstallError('linked_install_location')
-            except FileNotFoundError:pass
     stage=stage.resolve();target=target.resolve()
     if stage==target or stage.parent!=target.parent or target==target.parent or linked(stage):raise InstallError('unsafe_install_location')
     # A regular NSIS stage is a fresh sibling, never a folder within the old app.

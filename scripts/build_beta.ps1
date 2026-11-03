@@ -27,6 +27,24 @@ $lfTools=Get-Content -LiteralPath packaging/build-environment.json -Raw | Conver
 if((node --version).Trim() -ne ('v'+$lfTools.node)){throw 'Use the recorded Node version; no automatic local tool installation'}
 $lfDirty=[bool](git status --porcelain --untracked-files=normal)
 if($lfDirty -and -not $AllowDirtyInternal){throw 'Commit reviewable sources first, or explicitly choose an internal dirty build'}
+$lfBuildSource=(git rev-parse HEAD).Trim()
+$lfPrivateRoot=Join-Path $lfRoot '.lumaforge-local'
+if((Get-Item -LiteralPath $lfPrivateRoot -Force).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Refusing linked private build archive'}
+$lfHistory=Join-Path $lfPrivateRoot ('build-history-'+[guid]::NewGuid().ToString('N'))
+if(Test-Path -LiteralPath $lfHistory){throw 'Build archive already exists'}
+New-Item -ItemType Directory -Path $lfHistory | Out-Null
+foreach($lfReportName in @('beta-artifact.json','beta-nsis-audit.json','beta-payload-audit.json','runtime-signatures.json','runtime-payload.json')){
+ $lfPreviousReport=Join-Path $lfPrivateRoot $lfReportName
+ if(Test-Path -LiteralPath $lfPreviousReport){
+  if((Get-Item -LiteralPath $lfPreviousReport -Force).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Refusing linked build receipt'}
+  Copy-Item -LiteralPath $lfPreviousReport -Destination (Join-Path $lfHistory $lfReportName)
+ }
+}
+$lfPreviousLauncher=Join-Path $lfRoot 'apps/desktop/src-tauri/target/release/color-studio-beta.exe'
+if(Test-Path -LiteralPath $lfPreviousLauncher){
+ if((Get-Item -LiteralPath $lfPreviousLauncher -Force).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Refusing linked previous launcher'}
+ Copy-Item -LiteralPath $lfPreviousLauncher -Destination (Join-Path $lfHistory 'previous-launcher.exe')
+}
 $lfOldPath=$env:PATH;$lfOldFlags=$env:CARGO_ENCODED_RUSTFLAGS;$lfOldJobs=$env:CARGO_BUILD_JOBS
 try {
  $env:PATH="$env:USERPROFILE\.cargo\bin;$env:PATH"
@@ -60,8 +78,12 @@ try {
   if(Get-ChildItem -LiteralPath $lfBinaries -Force -Recurse | Where-Object {$_.Attributes -band [IO.FileAttributes]::ReparsePoint}){throw 'Refusing linked staging contents'}
   & $lfPython -c 'from pathlib import Path; from scripts.build_embedded_runtime import verify_bundle; import sys; verify_bundle(Path(sys.argv[1]))' (Join-Path $lfBinaries 'runtime')
   if($LASTEXITCODE -ne 0){throw 'Existing staging changed; preserve it instead of replacing'}
-  # Only this resolved, marked, fully verified generated tree is replaced.
-  Remove-Item -LiteralPath $lfBinaries -Recurse -Force
+  # Preserve the verified generated stage; never discard an earlier build receipt.
+  $lfStageArchive=Join-Path $lfHistory 'previous-staging'
+  $lfArchivePrefix=[IO.Path]::GetFullPath($lfPrivateRoot).TrimEnd('\','/')+[IO.Path]::DirectorySeparatorChar
+  if(-not [IO.Path]::GetFullPath($lfStageArchive).StartsWith($lfArchivePrefix,[StringComparison]::OrdinalIgnoreCase)){throw 'Unsafe staging archive destination'}
+  if(Test-Path -LiteralPath $lfStageArchive){throw 'Refusing to overwrite a staging archive'}
+  Move-Item -LiteralPath $lfBinaries -Destination $lfStageArchive
  }
  New-Item -ItemType Directory -Path $lfBinaries | Out-Null
  Set-Content -LiteralPath (Join-Path $lfBinaries '.generated-by-color-studio') -Value 'Verified embedded runtime staging only'
@@ -85,6 +107,8 @@ try {
  $lfInstaller=Get-Item -LiteralPath (Join-Path $lfRoot ('apps/desktop/src-tauri/target/release/bundle/nsis/'+$lfExpectedName))
  & $lfPython scripts/audit_nsis_payload.py $lfInstaller.FullName .lumaforge-local/beta-nsis-audit.json $lfSevenZip apps/desktop/src-tauri/target/release/color-studio-beta.exe .lumaforge-local/downloads/nsis-3.13.zip apps/desktop/src-tauri/target/.tauri/NSIS
  if($LASTEXITCODE -ne 0){throw 'Full NSIS provenance/architecture/privacy gate failed'}
+ if((git rev-parse HEAD).Trim() -ne $lfBuildSource){throw 'Source commit changed during build'}
+ if(-not $lfDirty -and [bool](git status --porcelain --untracked-files=normal)){throw 'Build changed tracked source or notices; review them before claiming a clean candidate'}
  $lfArtifact=@{
   version=$lfConfig.version;file=$lfInstaller.Name;bytes=$lfInstaller.Length
   sha256=(Get-FileHash -LiteralPath $lfInstaller.FullName -Algorithm SHA256).Hash.ToLower()

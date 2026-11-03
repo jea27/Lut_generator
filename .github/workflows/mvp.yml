@@ -7,6 +7,22 @@ on:
 permissions:
   contents: read
 jobs:
+  symlink-safety:
+    # Real symlinks without changing Windows privileges. This does not certify NTFS.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run all three previously skipped symlink regressions
+        run: >-
+          python -m unittest -v
+          tests_mvp.test_installer_transaction.InstallerTransactionTests.test_linked_staged_file_is_rejected_without_reading_external_target
+          tests_mvp.test_installer_transaction.InstallerTransactionTests.test_linked_stage_root_is_rejected_before_resolving_it
+          tests_mvp.test_installer_transaction.InstallerTransactionTests.test_linked_parent_is_rejected_before_resolve_hides_the_alias
   mvp:
     runs-on: windows-latest
     steps:

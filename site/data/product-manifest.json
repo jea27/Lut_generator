@@ -5,7 +5,7 @@
   "approval_issue": 62,
   "distribution_safety_evidence": {
     "path": "docs/evidence/INCIDENT_036_QA.json",
-    "field": "root_cause_resolved",
+    "field": "data_safety_validated",
     "equals": true
   },
   "required_ci": [

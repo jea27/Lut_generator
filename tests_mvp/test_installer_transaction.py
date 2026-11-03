@@ -7,6 +7,7 @@ import errno
 import hashlib
 import json
 import os
+import subprocess
 from pathlib import Path
 import tempfile
 import unittest
@@ -71,6 +72,7 @@ class InstallerTransactionTests(unittest.TestCase):
             (self.target/'personal-sentinel.txt').write_bytes(b'Synthetic personal file; preserve exactly')
             (self.target/'User originals').mkdir()
             (self.target/'User originals/fixture.raw').write_bytes(b'Synthetic original, not a photograph')
+            (self.target/'User originals/saved.recipe.json').write_bytes(b'{"synthetic":"saved recipe, preserve"}')
         return snapshot(self.target)
 
     def assert_data_untouched(self):
@@ -107,6 +109,17 @@ class InstallerTransactionTests(unittest.TestCase):
             if getattr(error,'winerror',None) in (1314,50) or error.errno in (errno.EPERM,errno.EACCES,errno.ENOTSUP):
                 self.skipTest('Symlink fixture requires unavailable privileges/support; no permissions changed')
             raise
+
+    def junction(self,path,destination):
+        if os.name!='nt':self.skipTest('Real NTFS junction case is covered on Windows')
+        self.assertTrue(path.absolute().is_relative_to(self.root))
+        self.assertTrue(destination.resolve().is_relative_to(self.root))
+        env=dict(os.environ,LF_TEST_JUNCTION=str(path),LF_TEST_DESTINATION=str(destination))
+        subprocess.run(['powershell.exe','-NoProfile','-NonInteractive','-Command',
+            'New-Item -ItemType Junction -Path $env:LF_TEST_JUNCTION -Target $env:LF_TEST_DESTINATION -ErrorAction Stop | Out-Null'],
+            env=env,check=True,capture_output=True,timeout=20)
+        self.assertTrue(path.is_junction())
+        self.addCleanup(lambda:path.rmdir() if path.is_junction() else None)
 
     def test_clean_install_commits_verified_fake_package_without_backup(self):
         expected=self.package(self.stage);before=snapshot(self.stage)
@@ -385,6 +398,64 @@ class InstallerTransactionTests(unittest.TestCase):
             installer.commit(alias/'stage',alias/target.name,expected)
         self.assertEqual(raised.exception.phase,'linked_install_location')
         self.assertEqual(snapshot(target),old);self.assert_data_untouched()
+
+
+    def test_ntfs_junction_stage_is_rejected_before_resolving(self):
+        old=self.old_package();expected=self.package(self.stage)
+        alias=self.root/'stage-junction';self.junction(alias,self.stage)
+        with self.assertRaises(installer.InstallError) as raised:installer.commit(alias,self.target,expected)
+        self.assertEqual(raised.exception.phase,'linked_install_location')
+        self.assertEqual(snapshot(self.target),old);self.assert_data_untouched()
+
+    def test_ntfs_junction_parent_is_rejected_before_resolving(self):
+        parent=self.root/'real-parent';parent.mkdir()
+        stage=parent/'stage';expected=self.package(stage)
+        target=parent/'Color Studio QA';self.package(target,'0.3.0-beta.3');old=snapshot(target)
+        alias=self.root/'parent-junction';self.junction(alias,parent)
+        with self.assertRaises(installer.InstallError) as raised:installer.commit(alias/'stage',alias/target.name,expected)
+        self.assertEqual(raised.exception.phase,'linked_install_location')
+        self.assertEqual(snapshot(target),old);self.assert_data_untouched()
+
+    def test_ntfs_junction_payload_does_not_read_or_modify_external_files(self):
+        old=self.old_package();expected=self.package(self.stage)
+        self.junction(self.stage/'runtime/external',self.data)
+        real_sha=installer.sha
+        def sha(path):
+            self.assertFalse(path.resolve().is_relative_to(self.data))
+            return real_sha(path)
+        with patch.object(installer,'sha',side_effect=sha),self.assertRaises(installer.InstallError) as raised:
+            installer.commit(self.stage,self.target,expected)
+        self.assertEqual(raised.exception.phase,'linked_directory_entry')
+        self.assertEqual(snapshot(self.target),old);self.assert_data_untouched()
+
+    def test_ntfs_junction_recovery_parent_cannot_move_retained_backup(self):
+        old=self.old_package();expected=self.package(self.stage)
+        backup=self.interrupt_after_old_move(expected)
+        alias=self.root/'recovery-parent-junction';self.junction(alias,self.root)
+        with self.assertRaises(installer.InstallError) as raised:installer.recover(alias/self.target.name)
+        self.assertEqual(raised.exception.phase,'linked_install_location')
+        self.assertFalse(self.target.exists());self.assertEqual(snapshot(backup),old)
+        self.assertTrue(installer.journal_path(self.target).is_file());self.assert_data_untouched()
+
+    @unittest.skipUnless(os.name=='nt','Real Windows sharing violation')
+    def test_real_directory_lock_denies_switch_preserves_data_and_allows_retry(self):
+        import ctypes
+        from ctypes import wintypes
+        old=self.old_package(extras=True);expected=self.package(self.stage)
+        kernel=ctypes.WinDLL('kernel32',use_last_error=True)
+        kernel.CreateFileW.argtypes=[wintypes.LPCWSTR,wintypes.DWORD,wintypes.DWORD,ctypes.c_void_p,wintypes.DWORD,wintypes.DWORD,wintypes.HANDLE]
+        kernel.CreateFileW.restype=wintypes.HANDLE
+        kernel.CloseHandle.argtypes=[wintypes.HANDLE]
+        handle=kernel.CreateFileW(str(self.target),0x80000000,3,None,3,0x02000000,None)
+        self.assertNotEqual(handle,ctypes.c_void_p(-1).value)
+        try:
+            with self.assertRaises(installer.InstallError) as raised:installer.commit(self.stage,self.target,expected)
+            self.assertEqual(raised.exception.phase,'directory_switch_failed')
+            self.assertIn(raised.exception.report()['winerror'],(5,32))
+            self.assertEqual(snapshot(self.target),old);self.assert_data_untouched()
+        finally:kernel.CloseHandle(handle)
+        retry=self.root/'.lf-stage-after-real-lock';retry_hash=self.package(retry)
+        self.assertTrue(installer.commit(retry,self.target,retry_hash)['ok']);self.assert_data_untouched()
 
 
 if __name__=='__main__':unittest.main()

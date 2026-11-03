@@ -79,7 +79,7 @@ class ProductTests(unittest.TestCase):
 
     def test_quarantined_build_never_counts_as_candidate_or_enables_download(self):
         initial=self.derive();self.assertIsNone(initial['candidate'])
-        build=next(b for b in initial['versions'] if b['version']==initial['source_version'])
+        build=next(b for b in initial['versions'] if b['quarantined'])
         self.assertTrue(build['quarantined'])
         tag='v'+build['version'];self.issue(62)['labels']=[{'name':'release-approved:'+tag}]
         self.releases=[{'tag_name':tag,'draft':False,'published_at':'2026-11-02T00:00:00Z',
@@ -162,7 +162,7 @@ class ProductTests(unittest.TestCase):
         self.assertEqual(self.derive()['metrics']['human']['passed'],0)
 
     def test_data_safety_hold_blocks_historical_authorized_download_and_missing_evidence(self):
-        self.assertEqual(self.manifest['distribution_safety_evidence']['field'],'root_cause_resolved')
+        self.assertEqual(self.manifest['distribution_safety_evidence']['field'],'data_safety_validated')
         build=next(b for b in self.derive()['versions'] if not b['quarantined'] and b['dirty'] is False)
         tag='v'+build['version'];self.issue(62)['labels']=[{'name':'release-approved:'+tag}]
         self.releases=[{'tag_name':tag,'draft':False,'published_at':'2026-11-02T00:00:00Z',
@@ -176,6 +176,22 @@ class ProductTests(unittest.TestCase):
             self.assertNotIn('Descarga autorizada',rendered)
         self.manifest['distribution_safety_evidence']['path']='docs/evidence/no-such-safety-evidence.json'
         self.assertIsNone(self.derive()['latest_release']['download_url'])
+
+    def test_preventive_safety_evidence_never_substitutes_release_or_human_approval(self):
+        # Future qualified evidence is a test fixture, never a real acceptance.
+        self.assertFalse(json.loads((ROOT/'docs/evidence/INCIDENT_036_QA.json').read_bytes())['data_safety_validated'])
+        build=next(b for b in self.derive()['versions'] if not b['quarantined'] and b['dirty'] is False)
+        tag='v'+build['version']
+        self.releases=[{'tag_name':tag,'draft':False,'published_at':'2026-11-03T00:00:00Z',
+            'html_url':BASE+'/releases/tag/'+tag,'assets':[{'state':'uploaded','name':'fixture.exe','digest':'sha256:'+build['sha256']}]}]
+        original=product.evidence
+        with patch.object(product,'evidence',side_effect=lambda root,proof:True if proof.get('field')=='data_safety_validated' else original(root,proof)):
+            result=self.derive();self.assertFalse(result['latest_release']['safety_hold'])
+            self.assertIsNone(result['latest_release']['download_url'])
+            self.issue(62)['labels']=[{'name':'release-approved:'+tag}]
+            result=self.derive();self.assertIsNotNone(result['latest_release']['download_url'])
+            self.assertEqual(result['metrics']['human']['passed'],0)
+        self.assertTrue(self.derive()['latest_release']['safety_hold'])
 
     def test_public_projection_drops_bodies_emails_tokens_and_paths(self):
         i=self.issue(67);i.update(title=r'C:\Users\private-person\file',body='github_pat_secret-value',labels=[{'name':'needs-human'}])

@@ -168,6 +168,41 @@ el proceso y la pila nativos de una reproducción nueva:
 
 ## Hipótesis pendientes y decisión
 
+### Consolidación preventiva · 03-11-2026
+
+Se revisa la PR completa desde edf82d0 y se prepara beta.5 solo interna. Pruebas
+NTFS nuevas verifican root/ancestros de staging, entradas enlazadas y recuperación
+directa. Esta última y la raíz del almacén ocultaban aliases antes de comprobarlos;
+se rechazan antes de resolve/recuperación. Readonly real conserva preferencias,
+imágenes, presets y receta. Un handle Win32 sin delete-sharing provoca el fallo de
+switch y el reintento con stage nuevo conserva los datos.154 host correctos;
+135 seguimiento y7 frontend correctos. No son pruebas de una instalación completa.
+
+Los3 omitidos originales son symlink de archivo, root de staging y padre. Los2
+casos de directorio tienen ahora equivalentes reales NTFS junction; el payload
+tiene además una junction probada sin leer destino externo. CI Linux ejecutará
+los3 originales sin privilegios (pendiente hasta verificar su run). Eso no prueba
+la creación/semántica nativa de un symlink de archivo en Windows: se requiere
+ejecutarlo en la VM con privilegios ya concedidos por su operador. No se activa
+Developer Mode ni se cambia una política del host para ocultar la omisión.
+
+Garantías acotadas: almacén soportado separado del programa, DELETE bloqueado,
+creación sin reemplazo, guardado atómico y backup completo retenido al actualizar.
+Los tests incluyen recetas personales dentro de extras que se conservan. No se
+promete protección contra un proceso del mismo usuario manipulando rutas entre
+checks ni contra guardar manualmente datos sobre un archivo gestionado del runtime:
+el desinstalador elimina recursos de programa por rutas fijadas, no clasifica su
+contenido. Las imágenes/recetas deben guardarse en el almacén o fuera del directorio
+de instalación. Riesgo residual y validación nativa siguen pendientes de aceptación.
+
+El usuario permite causa desconocida si se demuestra prevención y acepta el riesgo.
+Por ello la puerta global pasa a data_safety_validated, que **continúa false**;
+no se inventa root_cause_resolved ni se abre ninguna descarga. La autorización de
+release y la aceptación por capacidad siguen siendo humanas e independientes.
+Custodia de2PNG+2presets revalidada privada, sin restauración. VM no disponible en
+el preflight actual: gestor ausente y3,41GiB libres. Procmon solo se usará en entorno
+aislado; no se repite sobre el host. Build de beta.5/auditorías pendientes.
+
 ### Continuación autorizada: escrituras y recuperación seguras
 
 El operador pidió reintentar el control de Procmon y, si no funcionaba, continuar
