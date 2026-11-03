@@ -146,7 +146,15 @@
     },
     "windows_mvp_tests": 153,
     "windows_nsis_guard_class_skipped": true,
-    "scope": "GitHub hosted runners; not clean Windows11 installer acceptance"
+    "scope": "GitHub hosted runners; not clean Windows11 installer acceptance",
+    "independent_build_evidence": "docs/evidence/BETA5_036_CI_BUILD.json",
+    "latest_qa_head": {
+      "source": "1d917c71f6797e9ed7cda01bf5239cbb16a7475c",
+      "mvp": "https://github.com/jea27/Lut_generator/actions/runs/41650393122",
+      "studio": "https://github.com/jea27/Lut_generator/actions/runs/41650393107",
+      "tracking": "https://github.com/jea27/Lut_generator/actions/runs/41650393173",
+      "conclusion": "success"
+    }
   },
   "payload": {
     "extracted_files": 951,
@@ -244,5 +252,12 @@
     },
     "scope": "Tracked text changes and new JSON plus visual review of three existing screenshots; pattern checks are not proof of absence of every secret"
   },
-  "synchronization_evidence": "docs/evidence/BETA5_036_SYNC.json"
+  "synchronization_evidence": "docs/evidence/BETA5_036_SYNC.json",
+  "human_request": {
+    "issue": 67,
+    "workflow": "https://github.com/jea27/Lut_generator/actions/runs/41650561917",
+    "conclusion": "success",
+    "bot_mention": "https://github.com/jea27/Lut_generator/issues/67#issuecomment-6605944403",
+    "new_physical_phone_receipt_confirmed": false
+  }
 }

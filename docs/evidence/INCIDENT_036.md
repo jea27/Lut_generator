@@ -275,3 +275,9 @@ original sin errno/winerror. Se conservó el fallo;20repeticiones focales y una 
 completa pasan. Más detalle de errores añadido al runner. No exonerar procesos,
 atribuirlo a antivirus ni confundir este fallo con las eliminaciones históricas.
 La discrepancia y validación nativa pendientes impiden cerrar la contención.
+
+Cierre acotado:5suites adicionales160/3omitidos pasan con diagnóstico nuevo; no
+se conoce la causa del error previo. Build WindowsCI independiente41649084841
+pasa160/0omitidos y audita el NSIS completo. No es un Windows11 limpio ni resuelve
+la discrepancia retrospectiva. Se conserva PR90borrador y NO-GO. Un único aviso
+de la solicitud67 pide preparar guest aislado; no reintentar Procmon sobre el host.

@@ -54,7 +54,9 @@ Seguimiento135 y frontend7/build correctos. CI8876535: MVP41648801203, cliente
 41648801729 y seguimiento41648801678 success. Los3symlinks originales pasan tanto
 en Windows como Linux CI. MVP remoto153 tests y una clase NSIS omitida por caché
 no preparada; no presentarlo como160. Build candidato independiente41649084841
-en curso, solo publica4recibos saneados; no sube EXE ni crea release.
+success:160tests/0omitidos, NSIS completo correcto. Solo publica4recibos saneados;
+no sube EXE ni crea release. Su setup e5862a…27da difiere del local789983…8bb69:
+no hay reproducibilidad bit a bit demostrada. Aplicación fuente29fb=8876535.
 
 ## Custodia y bloqueos humanos
 
@@ -86,8 +88,8 @@ con SHA anterior. El entorno de build existente está en `../../.venv-mvp/Script
 
 Reanudar: `git status --short`; `gh pr view 90`; `gh pr checks 90`; leer
 BETA5_036_QA y QA_BETA5_INTERNA. Consultar primero logs/recibos de diagnóstico y CI,
-no repetir build de aplicación sin cambios. Completar CI candidato, commit/push
-solo de esta rama, actualizar57/67 y notificar una sola acción concreta de VM.
+no repetir build de aplicación sin cambios. Verificar CI del head final y estado remoto; commit/push
+solo de esta rama. Actualizar57/67 sin repetir el aviso de la misma acción VM.
 Preparar revisión de contención sin equipararla a aceptación Windows ni GO.
 Siguiente trabajo elegible: QA aislada, condicionado a disponibilidad del guest;
 ninguna nueva funcionalidad grande.
@@ -95,6 +97,14 @@ ninguna nueva funcionalidad grande.
 Sincronización GitHub real probada sin modificar archivos generados:42tareas,
 COL036blocked/PR90, aceptación0/8, beta5 en cuarentena/NO-GO. Pages continúa beta3
 sobre918cb638 hasta integración humana; no fingir que el recibo de rama está publicado.
+
+Cierre remoto: commit1d917c7 publicado y CI MVP41650393122/cliente41650393107/
+seguimiento41650393173 success. Solicitud67 sustituye el bucle Procmon host por
+preparación de Windows11 aislado. Aviso único41650561917 success; bot mencionó
+@jea27 en67#issuecomment-6605944403; nueva recepción física no confirmada. No repetir.
+Algún sync de la ráfaga fue cancelled antes de steps; no es fallo de test. Verificar
+el último despliegue cuando terminen las ediciones de Issue/PR. PR90 sigue borrador
+por discrepancia de fixture registrada y QA nativa pendiente; sin cierre ni GO.
 
 ---
 

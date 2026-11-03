@@ -685,3 +685,13 @@ InstallError nuevo; no explica el único fallo previo. Sigue registrado y PRborr
 Colector GitHub real:42tareas, COL036blocked/PR90, aceptación0/8, beta5 en cuarentena
 y NO-GO. Generated files preservados byte a byte. Pages publica beta3/main918cb638;
 los recibos/cambios de esta rama esperan integración humana. Ver BETA5_036_SYNC.json.
+
+Build independiente41649084841 success sobre8876535:160tests/0omitidos, incluyendo
+3symlinks nativos y7guards NSIS, auditoría951/924/60 y firmas correctas. Solo4recibos
+subidos; no EXE. SHA e5862a…27da difiere del candidato local789983…8bb69. Mismas
+fuentes apps/packages/packaging entre29fb/8876, no afirmar identidad de binarios.
+Recibo BETA5_036_CI_BUILD.json. CI1d917c7 MVP/cliente/seguimiento success.
+Solicitud67 actualizada con7campos y VM concreta; aviso41650561917 success y bot
+@jea27 en67#issuecomment-6605944403. No nueva confirmación física. Sin toggles de
+needs-human ni Issue duplicada; no repetir aviso. Algunos sync cancelados en cola
+sin steps, verificar despliegue final. PR90 sigue borrador; incertidumbre y NO-GO.
