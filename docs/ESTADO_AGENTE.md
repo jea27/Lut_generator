@@ -1,3 +1,108 @@
+# Checkpoint vigente · COL-036 · candidato interno beta.5 · 03-11-2026
+
+## Tarea, rama y límites
+
+Issue57 / PR90; solicitud humana canónica67. Rama
+`codex/COL-036-actualizacion-segura`, worktree `COL-036-actualizacion-segura`.
+Continuación desde edf82d0; commits ebdfbe5,29fb77a,8876535 publicados. Consultar
+Git/PR para el head posterior. Main y los otros worktrees se conservan.
+No merge, approved, cierre de tarea, release ni distribución externa autorizados.
+
+**Incidente P0 abierto; causa histórica sin atribución. Beta externa y venta NO-GO.**
+PR90 permanece borrador durante la investigación del ensayo intermitente indicada abajo.
+
+## Trabajo completado
+
+- DELETE de imágenes/presets y limpieza UI bloqueados; escrituras atómicas con
+  identidad propia y creaciones sin reemplazo/409. Fallos del trabajador permiten
+  reintentar y recuperar interrupted, sin fingir una finalización.
+- Root/ancestros del almacén y recuperación rechazan enlaces antes de resolverlos.
+  Cuatro junctions NTFS reales, readonly y bloqueo Win32 de directorio ejercitados.
+- Si aparece un destino sustituto después de mover el programa antiguo, se conserva
+  destino+backup+diario. La recuperación no sobrescribe el contenido ajeno.
+- Actualización por stage/ledger/backup; sin purga AppData ni eliminación de backups.
+  Builds archivan etapas, launcher, setup y recibos anteriores. TEMP/TMP se confinan
+  al build y se restauran; no se cambian variables globales o permisos.
+- Candidato final **0.3.0-beta.5** compilado desde29fb77a limpio,48.473.299bytes,
+  SHA256789983ea5c8e71b92271b91e2fc7a76ad6d6fef3272ac5ac24d96ac4c308bb69.
+  Sin firma, no instalado en el host. Preliminar d1cbdd…68ea preservado y superado.
+- Auditoría completa del NSIS:951 archivos/924runtime/60nativos, hashes y procedencia
+  cotejados; privacidad0bloqueos;289 componentes con avisos,0ausentes. PSF/Microsoft
+  con firmas requeridas válidas. Eso no supone aceptación legal ni GO.
+- ZIP privado de QA generado/verificado,17 entradas+manifiesto; incluye beta3 fijada,
+  beta5, guías, fixtures y PNG/receta sintéticos. No contiene diagnóstico ni fotos
+  personales. SHA256abf342a86405434dc6506e5dbe0cce57fcb48544398cc2d1b43fc1c4abfd4015,
+  95.194.508bytes. Fuentes de herramientas8876535; aplicación29fb77a, sin cambios
+  posteriores en apps/packages/packaging. No se afirma NSIS reproducible bit a bit.
+
+## Pruebas y discrepancia en investigación
+
+Host:160 pruebas,0fallos/errores,3symlinks omitidos;7 guards NSIS inertes incluidos.
+Primer pase runtime extraído:160 sin fallos/errores; aislamiento71 módulos,
+reinicio y preferencias/preset correctos. Smoke HTTP con2demo CC0: Creator/Pro
+mantienen bytes, receta/preset/acabado, lote2,LUT y Planner correctos; originales
+intactos. No es una prueba de GUI instalada ni de calidad visual aceptada.
+
+Una repetición posterior del runtime:1error en la inyección de interrupción de
+instalación limpia, phase=directory_switch_failed; el código original no registró
+errno/winerror, por lo que no se atribuye a antivirus ni a otro proceso. Se conserva
+el recibo fallido.20 repeticiones focales y una suite diagnóstica completa pasan.
+Se añadió detalle saneado de InstallError y contador de omitidos al runner; cinco
+suites completas adicionales pasan,160cada una/3omitidos. Causa del error pendiente. No borrar ni ocultar esta discrepancia si vuelve a pasar.
+
+Seguimiento135 y frontend7/build correctos. CI8876535: MVP41648801203, cliente
+41648801729 y seguimiento41648801678 success. Los3symlinks originales pasan tanto
+en Windows como Linux CI. MVP remoto153 tests y una clase NSIS omitida por caché
+no preparada; no presentarlo como160. Build candidato independiente41649084841
+en curso, solo publica4recibos saneados; no sube EXE ni crea release.
+
+## Custodia y bloqueos humanos
+
+Privados en `.lumaforge-local/incidents/COL-036-20261102/`: diagnóstico/USN/cache.
+2PNG+2presets+preferencias cotejados, preservados, sin restauración. Cuatro borrados
+PNG USN confirmados; actor desconocido. Las dos vistas tienen distintas identidades
+NTFS; no confundir8ausencias externas con8borrados globales demostrados. No publicar
+rutas, nombres, JSON, PML/CSV o eventos originales. No probar sobre AppData real.
+
+Preflight03-11: gestión Hyper-V/VBox/VMware ausente,3,41GiB RAM libres; no VM creada.
+No habilitar features, elevar agentes ni reiniciar por sorpresa. Hace falta preparar
+Windows11 limpio con ISO/licencia/evaluación válida y recursos; guía QA_BETA5_INTERNA.
+Procmon solo en guest aislado con datos sintéticos. Siguen NOT_RUN: instalación/
+actualización NSIS y recuperación nativas, GUI instalada beta5, desinstalación,
+desconexión real y LUT en Resolve/Adobe. La autorización y aceptación son humanas.
+
+## Archivos y reanudación
+
+Evidencias públicas: BETA5_036_ARTIFACT.json, BETA5_036_NSIS.json, BETA5_036_QA.json;
+INCIDENT_036_QA conserva data_safety_validated=false y aceptación preventiva=false.
+El colector detecta automáticamente *_ARTIFACT*.json; candidato en cuarentena,
+sin descargas. Pages lee main: no simular publicación de archivos de esta rama.
+
+Privado: `.lumaforge-local/containment-20261103/`; kit
+`.lumaforge-local/vm-qa-beta5-final-29fb77a.zip`. Setup final en
+`apps/desktop/src-tauri/target/release/bundle/nsis/Color Studio Beta_0.3.0-beta.5_x64-setup.exe`.
+Un intento de kit sin dependencias quedó parcial y preservado; usar solo el ZIP final
+con SHA anterior. El entorno de build existente está en `../../.venv-mvp/Scripts/python.exe`.
+
+Reanudar: `git status --short`; `gh pr view 90`; `gh pr checks 90`; leer
+BETA5_036_QA y QA_BETA5_INTERNA. Consultar primero logs/recibos de diagnóstico y CI,
+no repetir build de aplicación sin cambios. Completar CI candidato, commit/push
+solo de esta rama, actualizar57/67 y notificar una sola acción concreta de VM.
+Preparar revisión de contención sin equipararla a aceptación Windows ni GO.
+Siguiente trabajo elegible: QA aislada, condicionado a disponibilidad del guest;
+ninguna nueva funcionalidad grande.
+
+Sincronización GitHub real probada sin modificar archivos generados:42tareas,
+COL036blocked/PR90, aceptación0/8, beta5 en cuarentena/NO-GO. Pages continúa beta3
+sobre918cb638 hasta integración humana; no fingir que el recibo de rama está publicado.
+
+---
+
+## Historial conservado; no describe el estado vigente
+
+Los siguientes checkpoints se conservan íntegros para trazabilidad. El estado
+vigente y las instrucciones de reanudación están al principio de este archivo.
+
 # Checkpoint vigente · consolidación COL036 · 03-11-2026
 
 Punto de continuación: ebdfbe5 produjo un preliminar beta.5 limpio,48.482.443bytes,

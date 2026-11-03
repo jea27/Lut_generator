@@ -31,19 +31,21 @@
     "preservation_baseline_bound_to_volume_and_directory": true,
     "atomic_temporary_ownership_checked": true,
     "new_asset_collision_overwrite_prevented": true,
-    "worker_persistence_failure_retryable": true
+    "worker_persistence_failure_retryable": true,
+    "linked_ancestors_rejected_before_resolve": true,
+    "recovery_replacement_keeps_journal": true
   },
   "tests": {
-    "host_mvp": 147,
+    "host_mvp": 160,
     "host_skipped": 3,
     "frontend": 7,
     "frontend_build": "passed",
-    "tracking": 134,
-    "patched_embedded_runtime": 147,
+    "tracking": 135,
+    "patched_embedded_runtime": 160,
     "embedded_python": "3.14.10",
     "nsis_inert_guard_cases": 7
   },
-  "process_monitor": "retry ineffective; capture disabled; operator authorized continuing independent stabilization; no native trace",
+  "process_monitor": "Not executed in isolated environment; private VM kit prepared; historical host attempt remains separate",
   "clean_windows": false,
   "current_installer_quarantined": true,
   "external_beta": "NO-GO",
@@ -56,12 +58,13 @@
     "Containment tests do not resolve the historical deletion"
   ],
   "runtime_qa_build": {
-    "source": "98f9ab9d178643c2f718a18be2be68858c2fd23d",
-    "dirty": true,
-    "manifest_sha256": "0f7095f3e1a83ffb9c27ea7247f5a453ed0f9d0f8ffc6e3347edff1165bf1c4c",
+    "source": "29fb77ac8c4c279e83381e97cdf6769671f40160",
+    "dirty": false,
+    "manifest_sha256": "7b75622da437835598070037284a2164a77c24587d217c3c6e637d59e5754f87",
     "build_origin_gate_passed": true,
     "copy_host_dlls": false,
-    "installer_created": false
+    "installer_created": true,
+    "installer_evidence": "docs/evidence/BETA5_036_ARTIFACT.json"
   },
   "patched_runtime_checks": {
     "isolation_passed": true,
@@ -101,5 +104,6 @@
     "capture_saved": false
   },
   "storage_followup_evidence": "docs/evidence/INCIDENT_036_STORAGE_QA.json",
-  "preventive_data_preservation_accepted": false
+  "preventive_data_preservation_accepted": false,
+  "followup_2026_11_03": "docs/evidence/BETA5_036_QA.json"
 }

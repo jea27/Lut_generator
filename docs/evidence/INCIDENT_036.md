@@ -256,3 +256,22 @@ el incidente ni autorizan distribución. PR90 sigue en borrador y no se aprueba 
 Fuentes primarias: [estructura y límites del USN](https://learn.microsoft.com/en-us/windows/win32/api/winioctl/ns-winioctl-usn_record_v2),
 [semántica del diario](https://learn.microsoft.com/en-us/windows/win32/fileio/change-journal-records),
 [Process Monitor](https://learn.microsoft.com/sysinternals/downloads/procmon).
+
+
+### Candidato interno beta5 y entrega de QA aislada · 03-11
+
+[Auditoría y alcance](BETA5_036_QA.json), [artefacto](BETA5_036_ARTIFACT.json) y
+[NSIS completo](BETA5_036_NSIS.json). El candidato final incluye la retención de
+journal/backup ante destino sustituto. No fue instalado en este host. SHA y fuente
+29fb77a fijados; fuentes de aplicación sin cambios posteriores. El ZIP privado con
+beta3→beta5 está verificado y listo para transferir al guest, no para distribución.
+Guía: [QA interna](../QA_BETA5_INTERNA.md). No contiene las copias del incidente.
+
+Los3symlinks omitidos del host pasan ahora en Windows y Linux CI41648801203; no
+prueban instalación Windows11. Las4junctions NTFS, readonly y sharing-lock se
+prueban en host. Una repetición posterior de la suite embebida dio1error en el
+fixture de interrupción de instalación limpia (directory_switch_failed); diagnóstico
+original sin errno/winerror. Se conservó el fallo;20repeticiones focales y una suite
+completa pasan. Más detalle de errores añadido al runner. No exonerar procesos,
+atribuirlo a antivirus ni confundir este fallo con las eliminaciones históricas.
+La discrepancia y validación nativa pendientes impiden cerrar la contención.

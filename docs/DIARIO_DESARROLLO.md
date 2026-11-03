@@ -643,3 +643,45 @@ con SHA; pruebas directas no se presentan como HTTP. Inputs PNG/receta sintétic
 sin dependencias de desarrollo globales. Pendiente generar/testear kit final tras
 build. Readiness de conservación apunta a aceptación preventiva nueva, todavía
 false; conserva el recibo histórico y no lo convierte en una aceptación retrospectiva.
+
+
+## 03-11-2026 · COL036 · candidato beta5 final y kit privado verificable
+
+Compilado desde29fb77a limpio, beta.5 SHA789983…8bb69,48.473.299bytes. Auditoría
+NSIS951/924runtime/60nativos correcta;289 paquetes con avisos y0ausentes; firmas
+PSF/MS requeridas válidas. Sin instalar en host, sin firmas compradas ni publicación.
+Se preservan beta4 y preliminar beta5. Fuentes posteriores solo CI/herramientas/docs;
+apps/packages/packaging siguen iguales. Build mueve staging a archivo privado y
+conserva launcher/setup/recibos; TEMP/TMP locales se restauran. No copia DLL del host.
+
+Kit privado17entradas+manifiesto,95.194.508bytes, SHAabf342…fd4015; candidato,
+beta3 fijada, fuentes QA allowlist,2PNG/receta sintéticos. CRC/todos hashes correctos.
+Scripts rechazan host, guest/ruta no esperados, enlaces y payload cambiado; no se
+han ejecutado en Windows11 limpio. No hay Python/Node/Git global requerido en guest.
+Primer intento con Python del sistema falló por dependencias ausentes; se conservó
+su carpeta parcial y se generó otro kit con el venv existente, sin instalaciones.
+
+160 host (3omitidos), primer runtime160 correcto, aislamiento71módulos y smoke
+2CC0 correctos. Una repetición del runtime dio1error directory_switch_failed en
+fixture de interrupción tras el move de una instalación limpia. No registró causa
+Win32, por tanto no atribuirla. Recibo fallido preservado;20repeticiones del caso y
+una suite completa diagnóstica pasan. Runner ahora registra omitidos y report de
+InstallError sin rutas; serie limitada adicional en curso. No declarar resuelto por
+repeticiones verdes. No relacionarlo con el actor histórico sin evidencia.
+
+CI8876535 MVP/cliente/seguimiento correctos;3symlinks originales pasan en Windows
+CI y Linux. Job Windows153 tests con clase7guardas NSIS omitida por cache ausente;
+los7sí pasan en build local160. Primer CI29fb falló por checkout superficial sin
+fuente legacy fijada: corregido fetch-depth0, sin modificar permisos. Build completo
+remoto41649084841 en curso; sube solo informes, no instalador.
+
+Recibos públicos beta5 y agregado de incidente actualizados sin aceptar seguridad
+ni causa histórica. Capturas beta4 existentes revisadas: demo CC0 y UI, sin rutas
+privadas; no presentarlas como GUIbeta5.42tareas intactas y aceptación por capacidad
+independiente de merge/CI. Windows/Procmon/red real/editores siguen NOT_RUN; NO-GO.
+
+Cierre diagnóstico limitado: cinco suites adicionales160/3omitidos correctas, sin
+InstallError nuevo; no explica el único fallo previo. Sigue registrado y PRborrador.
+Colector GitHub real:42tareas, COL036blocked/PR90, aceptación0/8, beta5 en cuarentena
+y NO-GO. Generated files preservados byte a byte. Pages publica beta3/main918cb638;
+los recibos/cambios de esta rama esperan integración humana. Ver BETA5_036_SYNC.json.
