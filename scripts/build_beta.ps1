@@ -52,7 +52,11 @@ if(Test-Path -LiteralPath $lfPreviousSetup){
  Copy-Item -LiteralPath $lfPreviousSetup -Destination (Join-Path $lfHistory 'previous-setup.exe')
 }
 $lfOldPath=$env:PATH;$lfOldFlags=$env:CARGO_ENCODED_RUSTFLAGS;$lfOldJobs=$env:CARGO_BUILD_JOBS
+$lfOldTemp=$env:TEMP;$lfOldTmp=$env:TMP
 try {
+ $lfTemporary=Join-Path $lfHistory 'tmp'
+ New-Item -ItemType Directory -Path $lfTemporary | Out-Null
+ $env:TEMP=$lfTemporary;$env:TMP=$lfTemporary
  $env:PATH="$env:USERPROFILE\.cargo\bin;$env:PATH"
  $env:CARGO_BUILD_JOBS='2'
  if((rustc --version) -notlike ('rustc '+$lfTools.rust+' *')){throw 'Use the recorded Rust version; no automatic local tool installation'}
@@ -134,4 +138,5 @@ try {
  Write-Output 'Internal candidate built and NSIS audited. Do not distribute: clean-Windows/upgrade/editor/rights/owner gates remain.'
 } finally {
  $env:PATH=$lfOldPath;$env:CARGO_ENCODED_RUSTFLAGS=$lfOldFlags;$env:CARGO_BUILD_JOBS=$lfOldJobs
+ $env:TEMP=$lfOldTemp;$env:TMP=$lfOldTmp
 }
