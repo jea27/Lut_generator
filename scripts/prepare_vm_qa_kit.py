@@ -40,6 +40,7 @@ def prepare(artifact, output, previous=None):
     for source,destination in [
         ('scripts/qa_guest_checks.ps1','qa_guest_checks.ps1'),
         ('scripts/qa_vm_cycle.ps1','qa_vm_cycle.ps1'),
+        ('scripts/qa_vm_assistant.ps1','scripts/qa_vm_assistant.ps1'),
         ('scripts/qa_guest_api.py','scripts/qa_guest_api.py'),
         ('scripts/qa_windows_preservation.ps1','qa_windows_preservation.ps1'),
         ('scripts/qa_windows_clean.ps1','qa_windows_clean.ps1'),
@@ -49,7 +50,9 @@ def prepare(artifact, output, previous=None):
         ('docs/QA_RESOLVE_BETA3.md','QA_RESOLVE_BETA3.md'),
         ('docs/QA_EDITORES_03.md','QA_EDITORES_03.md'),
         ('docs/evidence/INCIDENT_036_TOOL_PREP.json','INCIDENT_036_TOOL_PREP.json'),
-        ('docs/QA_BETA5_INTERNA.md','LEEME.md')]:
+        ('docs/QA_BETA5_INTERNA.md','QA_BETA5_INTERNA.md'),
+        ('docs/PRUEBA_CREATOR_PRO_PLANNER.md','PRUEBA_CREATOR_PRO_PLANNER.md'),
+        ('docs/QA_VM_ASISTIDA.md','LEEME.md')]:
         path=ROOT/source
         if path.is_symlink() or not path.resolve().is_relative_to(ROOT):raise ValueError('Linked QA source')
         target=output/destination;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(path,target)

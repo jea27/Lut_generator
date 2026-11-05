@@ -9,6 +9,11 @@ param(
 # guest-only cycle. No VM start/restore, feature enable, share, permission or UAC.
 $ErrorActionPreference='Stop'
 $lfRoot=[IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
+while(-not(Test-Path -LiteralPath (Join-Path $lfRoot '.git'))){
+ $lfParent=Split-Path -Parent $lfRoot
+ if(-not $lfParent -or $lfParent -eq $lfRoot){throw 'Run the handoff from its existing Git workspace; no host directories will be created elsewhere'}
+ $lfRoot=$lfParent
+}
 $lfPrivate=Join-Path $lfRoot '.lumaforge-local'
 $lfZip=[IO.Path]::GetFullPath((Resolve-Path -LiteralPath $KitZip).Path)
 function Test-LfUnlinked([string]$lfPath){
