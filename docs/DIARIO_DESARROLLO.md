@@ -723,3 +723,18 @@ MVP_CLOSURE_036 clasifica8bloqueos; manifiesto añade evidencias/tests/huellas d
 herramientas de QA, sin aprobación. Preparación comercial existente conciliada:
 no duplicar feedback/guías,49€ de COL005 conserva significado,0respuestas inventadas.
 Falta licencia propia y decisiones humanas/legales. NoGO beta externa/venta.
+
+Cierre de verificación: primer kitv2 bloqueado antes del ZIP porque beta3 no tiene
+ledger transaccional. Se preservó su carpeta y se corrigió la verificación con
+runtime+launcher ligados al NSIS auditado; regresión real metadata beta3 correcta.
+CIe246 detectó GET/404 en fixtureAPI antes del buildUI. El cliente del kit conserva
+web200 obligatorio; el fixture unitario API lo declara no probado. CI9f3702a MVP,
+cliente y seguimiento correctos. Sin cambios de apps/packages/packaging.
+
+Kit final22entradas+manifest,95.299.557bytes, SHAa304c5…b0a1f4, toolsource9f3702a,
+apps29fb. CRC/hashes y extractorWindowsPS5 reales correctos;3archivesmalformados
+rechazados antes de extraer. Runtime167/3omitidos correcto; host166/3omitidos más
+regresiónlegacy focal, seguimiento135.100repeticionesinstrumentadas pasan sin
+explicar fallo anterior; fixture inesperado se conserva si reaparece. No ejecución
+guest, copiaVM ni cambio decheckpoint. VMMSRunning/GetVMpermiso insuficiente confirmado.
+Actualización nativa, UI, offline real y editores siguen NOT_RUN y NO-GO.

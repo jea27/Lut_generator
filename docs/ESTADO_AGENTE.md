@@ -29,7 +29,7 @@ PS7 en el proceso hijo. No cambia módulos ni variables globales.
 
 Intermitente: la causa del antiguo directory_switch_failed sigue sin demostrar.
 El harness ahora conserva árbol sintético+errno/winerror antes del cleanup si reaparece.
-Una inyección controlada verifica esa conservación; stress acotado100casos en curso.
+Una inyección controlada verifica esa conservación; stress acotado100casos pasa; no resuelve la causa anterior.
 No atribuir al instalador/antivirus los4borrados históricos. Copias2PNG+2presets+
 preferencias siguen privadas; no restaurar, subir o ensayar sobre AppData real.
 
@@ -40,9 +40,8 @@ necesitar red, DELETE/limpieza deshabilitados, guías/feedback ya existentes, si
 nuevos precios ni entrevistas. Estímulo49€ de COL005 se conserva, no precio aprobado.
 Preparar cinco perfiles no acredita10–20equipos históricos de COL041.
 
-Reanudar: git status; gh pr view90/checks; QA_VM_ASISTIDA.md. Primero commit de
-herramientas, tests y manifiesto, después generar kitv2 con herramientas en Git limpio
-hacia .lumaforge-local/vm-qa-beta5-cycle-20261105 (preservar v1). No recompilar app:
+Reanudar: git status; gh pr view90/checks; QA_VM_ASISTIDA.md. Herramientas publicadas en9f3702a y kitv2 generado en limpio
+hacia .lumaforge-local/vm-qa-beta5-cycle-20261105 (v1 y parcial preservados). No recompilar app:
 bytes apps/packages/packaging siguen source29fb77a beta5 SHA789983…8bb69. Verificar
 kit completo y producir recibo privado closure-20261105/kit-receipt.json. Ejecutar
 MVP/embebido/seguimiento y escaneo. Actualizar57/60/61/62 y coordinar73 sin duplicar
@@ -51,6 +50,19 @@ con acceso Hyper-V y credenciales locales guest; no reenviar la antigua petició
 «preparar VM» ya cumplida. CapturaProcmon/Resolve/UI nativas siguen NOT_RUN.
 
 Beta externa y venta **NO-GO**. Todas las aceptaciones humanas siguen pendientes.
+
+Resultado de cierre: kit22archivos+manifiesto,95.299.557bytes; SHA256
+a304c5f643c67a3cacafc6505c8b99e1d10f5460fbe5e6c9bd60d0eaf2b0a1f4.
+Recibo privado closure-20261105/kit-receipt.json y QA pública MVP_CLOSURE_036_QA.
+CRC/todos hashes correctos; extractor de host WindowsPowerShell5 pasa con el kit
+real y rechaza traversal/duplicados/absolutos antes de extraer. Runtime embebido167
+correcto/3omitidos; host166/3omitidos y regresión beta3 focal correcta; seguimiento135.
+CI9f3702a MVP42013403805/cliente42013404035/seguimiento42013403865 correctos.
+CI anterior detectó pruebaAPIunittest que exigía UI antes de compilarla: el cliente
+real sigue exigiendo web200; solo el fixtureAPIunitario omite ese check. Fallo de
+kit por ausencia legítima de ledgerbeta3 corregido usando launcher/runtime fijados
+al NSIS auditado, sin inventar metadatos. Parcial preservado, no reutilizarlo.
+No ejecutar/recompilar aplicación en host. Se requiere operador para PowerShellDirect.
 
 ---
 
