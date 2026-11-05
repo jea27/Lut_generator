@@ -42,8 +42,8 @@ class BetaTests(unittest.TestCase):
         self.assertEqual(response.status_code,200);self.assertEqual(response.json()['group'],'Landscape')
         corrupt=self.root/'presets'/'bad.json';corrupt.write_text('{bad',encoding='utf-8')
         rows=self.client.get('/api/presets').json();self.assertEqual(len(rows),1);self.assertTrue(corrupt.exists())
-        self.assertEqual(self.client.delete('/api/presets/'+p['id']).status_code,200)
-        self.assertEqual(self.client.get('/api/presets').json(),[])
+        self.assertEqual(self.client.delete('/api/presets/'+p['id']).status_code,423)
+        self.assertEqual(len(self.client.get('/api/presets').json()),1)
 
     def test_preferences_persist_without_session_secrets(self):
         value={'language':'en','welcome_seen':True,'export_format':'jpg','workspace':'pro'}

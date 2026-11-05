@@ -114,11 +114,6 @@ async function importRecipe(event:Event){
   busy.value=true
   try{if(file.size>64000)throw Error(tx('Receta JSON demasiado grande','Recipe JSON is too large'));const value=JSON.parse(await file.text());const valid=await(await api('/presets/validate',jsonPost(value))).json();await assignRecipe(valid);rememberRecipe()}catch(e){error.value=(e as Error).message}finally{input.value='';busy.value=false}
 }
-function clearImages(){if(busy.value)return;q.dialog({title:tx('Eliminar imágenes temporales','Clear temporary images'),message:tx('Se eliminarán las copias locales y se reiniciarán los ajustes y el plan no guardados. Guarda antes tu preset, receta y plan JSON. Los originales y presets guardados se conservan.','This removes local copies and resets unsaved adjustments and plan. Save your preset, recipe and plan JSON first. Originals and saved presets are preserved.'),cancel:true,persistent:true}).onOk(async()=>{
-  if(busy.value)return
-  busy.value=true
-  try{await api('/images',{method:'DELETE'});controller?.abort();clearTimeout(timer);++serial;source.value=null;reference.value=null;revoke();previewing.value=false;await assignRecipe(neutral(),true)}catch(e){error.value=(e as Error).message}finally{busy.value=false}
-})}
 const histogram=computed(()=>reference.value?.analysis??source.value?.analysis)
 function histogramPath(channel:number){const data=histogram.value?.histograms[channel]??[],max=Math.max(...data,1);return data.map((x,i)=>`${i?'L':'M'}${i*4},${76-x/max*70}`).join(' ')}
 watch([source,reference],()=>{matched.value=false;compared.value=false;exported.value=false})
@@ -159,7 +154,7 @@ onBeforeUnmount(()=>{controller?.abort();clearTimeout(timer);revoke()})
     <button v-for="preset in presets" :key="preset.id" class="preset-row" :disabled="busy" @click="applyUserRecipe(preset.recipe)"><span class="preset-dot"></span>{{preset.name}}<q-icon name="chevron_right"/></button>
     <div class="preset-save"><q-input v-model="presetName" dense outlined :label="tx('Nombre del preset','Preset name')" maxlength="80"/><q-btn flat dense icon="add" :aria-label="tx('Guardar preset','Save preset')" :disable="busy||!source||!presetName.trim()" @click="savePreset"/></div>
     <label v-if="isPro" class="import-recipe">{{tx('Importar receta JSON','Import recipe JSON')}}<input type="file" accept="application/json,.json" :aria-label="tx('Importar receta JSON','Import recipe JSON')" :disabled="busy" @change="importRecipe"></label>
-    <button class="clear-button" :disabled="busy" @click="clearImages"><q-icon name="delete_outline"/>{{tx('Eliminar imágenes temporales','Clear temporary images')}}</button>
+    <button class="clear-button" disabled :title="tx('Tus imágenes y presets se conservan. La eliminación está desactivada en esta beta.','Your images and presets are kept. Deletion is disabled in this beta.')"><q-icon name="lock"/>{{tx('Imágenes y presets protegidos','Images and presets protected')}}</button>
    </aside>
    <main class="main-panel">
     <div class="viewer-toolbar"><div><span class="active-tab">{{tx('Comparar','Compare')}}</span><span class="secondary-tab">{{source?tx('Previsualización · lado máx. 1280 px','Preview · max side 1280 px'):tx('Espacio de trabajo','Workspace')}}</span></div>

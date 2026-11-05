@@ -48,20 +48,56 @@ def read_ready(child,timeout=45):
     return ready
 
 
+def loader_module_paths(pid):
+    """Read the loader's paths, not stale mapped-section names after a rename.
+
+    Microsoft PSAPI: EnumProcessModulesEx + GetModuleFileNameExW. Both calls are
+    read-only and apply only to the owned QA child; no debug privilege is enabled.
+    https://learn.microsoft.com/en-us/windows/win32/psapi/module-information
+    """
+    import ctypes
+    from ctypes import wintypes
+    if ctypes.sizeof(ctypes.c_void_p)!=8:raise RuntimeError('Use a 64-bit QA inspector')
+    kernel=ctypes.WinDLL('kernel32',use_last_error=True)
+    api=ctypes.WinDLL('psapi',use_last_error=True)
+    kernel.OpenProcess.argtypes=[wintypes.DWORD,wintypes.BOOL,wintypes.DWORD]
+    kernel.OpenProcess.restype=wintypes.HANDLE
+    kernel.CloseHandle.argtypes=[wintypes.HANDLE];kernel.CloseHandle.restype=wintypes.BOOL
+    api.EnumProcessModulesEx.argtypes=[wintypes.HANDLE,ctypes.POINTER(wintypes.HMODULE),wintypes.DWORD,ctypes.POINTER(wintypes.DWORD),wintypes.DWORD]
+    api.EnumProcessModulesEx.restype=wintypes.BOOL
+    api.GetModuleFileNameExW.argtypes=[wintypes.HANDLE,wintypes.HMODULE,wintypes.LPWSTR,wintypes.DWORD]
+    api.GetModuleFileNameExW.restype=wintypes.DWORD
+    handle=kernel.OpenProcess(0x410,False,pid) # QUERY_INFORMATION | VM_READ
+    if not handle:raise ctypes.WinError(ctypes.get_last_error())
+    try:
+        modules=(wintypes.HMODULE*4096)();needed=wintypes.DWORD()
+        if not api.EnumProcessModulesEx(handle,modules,ctypes.sizeof(modules),ctypes.byref(needed),3):raise ctypes.WinError(ctypes.get_last_error())
+        if not needed.value or needed.value>ctypes.sizeof(modules):raise RuntimeError('Incomplete module enumeration')
+        result=[]
+        for module in modules[:needed.value//ctypes.sizeof(wintypes.HMODULE)]:
+            buffer=ctypes.create_unicode_buffer(32768)
+            length=api.GetModuleFileNameExW(handle,module,buffer,len(buffer))
+            if not length or length>=len(buffer):raise RuntimeError('Incomplete module filename')
+            result.append(Path(buffer.value))
+        return result
+    finally:kernel.CloseHandle(handle)
+
+
 def loaded_modules(child,executable):
     allowed=(executable.parent.resolve(),Path(os.environ['SYSTEMROOT']).resolve())
     manifest_path=executable.parent/'runtime-manifest.json'
     manifest=json.loads(manifest_path.read_text(encoding='utf-8')) if manifest_path.is_file() else None
+    expected={name.casefold():row for name,row in manifest['files'].items()} if manifest else {}
     unexpected=[];python_bundled=False;count=0
-    for mapping in psutil.Process(child.pid).memory_maps():
-        path=Path(mapping.path)
+    paths=loader_module_paths(child.pid) if os.name=='nt' else [Path(m.path) for m in psutil.Process(child.pid).memory_maps()]
+    for path in paths:
         if path.suffix.lower() not in ('.dll','.pyd','.exe'):continue
         count+=1;resolved=path.resolve()
         if not any(resolved.is_relative_to(base) for base in allowed):unexpected.append(path.name)
         if manifest:
             if resolved.is_relative_to(allowed[0]):
-                relative=resolved.relative_to(allowed[0]).as_posix()
-                assert relative in manifest['files'] and hashlib.sha256(resolved.read_bytes()).hexdigest()==manifest['files'][relative]['sha256'],'Loaded native bytes do not match runtime manifest'
+                relative=resolved.relative_to(allowed[0]).as_posix().casefold()
+                assert relative in expected and hashlib.sha256(resolved.read_bytes()).hexdigest()==expected[relative]['sha256'],'Loaded native bytes do not match runtime manifest'
             elif re.match(r'(?:vcruntime\d|msvcp\d|python3)',path.name.lower()):
                 unexpected.append(path.name) # A globally installed redistributable must not mask an incomplete bundle.
         if path.name.lower().startswith('python') and path.suffix.lower()=='.dll':
@@ -69,6 +105,7 @@ def loaded_modules(child,executable):
     assert python_bundled,'Python DLL was not loaded from the frozen bundle'
     assert not unexpected,{'unexpected_module_names':sorted(set(unexpected))}
     return {'observed_pe_modules':count,'unexpected_module_names':[],
+            'enumeration':'PSAPI loader module paths' if os.name=='nt' else 'mapped files',
             'python_dll_loaded_from_bundle':True,'payload_module_hashes_checked':manifest is not None,
             'scope':'Snapshot after all API operations, not a clean OS certification'}
 

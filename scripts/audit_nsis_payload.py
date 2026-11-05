@@ -4,6 +4,7 @@
 the public report contains relative names/hashes only. Clean Windows is a separate gate.
 """
 import argparse
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -38,9 +39,10 @@ def listing(text):
     return rows
 
 
-def expected_files(runtime,notices,plugins):
+def expected_files(runtime,notices,plugins,transactional=False):
     names={'runtime/'+n for n in runtime['files']}|{'runtime/'+MANIFEST,'color-studio-beta.exe','uninstall.exe'}|set(plugins)
     names|={'notices/'+p.relative_to(notices).as_posix() for p in notices.rglob('*') if p.is_file()}
+    if transactional:names|={'installer-manifest.json','$PLUGINSDIR/MicrosoftEdgeWebview2Setup.exe'}
     return names
 
 
@@ -66,6 +68,14 @@ def launcher_match(built,installed):
     if built.count(marker+b'UNK')==1 and built.replace(marker+b'UNK',marker+b'NSS')==installed:
         return 'only_Tauri_UNK_to_NSS_bundle_marker'
     raise ValueError('Native launcher hash mismatch outside documented bundle marker')
+
+
+def installer_validator():
+    # A direct `python scripts/audit_nsis_payload.py` has only scripts/ on sys.path.
+    # Load this exact repository source, without importing a host `apps` package.
+    spec=importlib.util.spec_from_file_location('color_studio_installer_validation',ROOT/'apps/desktop/installer_helper.py')
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+    return module.verify
 
 
 def prepare_archive(offline=False):
@@ -120,7 +130,13 @@ def audit(installer,seven_zip,native,nsis_zip,nsis_cache):
     if actual!=set(rows):raise ValueError('Listing/extraction mismatch')
     runtime=verify_sources(private/'runtime',ROOT/'.lumaforge-local/downloads')
     notices=ROOT/'packaging/notices'
-    if actual!=expected_files(runtime,notices,lock['files']):raise ValueError('Unexpected or missing installer files')
+    if actual!=expected_files(runtime,notices,lock['files'],transactional=True):raise ValueError('Unexpected or missing installer files')
+    ledger=ROOT/'apps/desktop/src-tauri/binaries/installer-manifest.json'
+    if (private/'installer-manifest.json').read_bytes()!=ledger.read_bytes():raise ValueError('Installer ledger differs from generated pinned input')
+    installer_validator()(private,digest(ledger.read_bytes()),personal_extras=True) # exact extraction set already checked above
+    webview=json.loads((ROOT/'packaging/webview2.lock.json').read_bytes())
+    bootstrapper=private/'$PLUGINSDIR/MicrosoftEdgeWebview2Setup.exe'
+    if digest(bootstrapper.read_bytes())!=webview['sha256'] or bootstrapper.stat().st_size!=webview['bytes']:raise ValueError('Embedded bootstrapper differs from official pinned input')
     launcher=launcher_match(native.read_bytes(),(private/'color-studio-beta.exe').read_bytes())
     for path in notices.rglob('*'):
         if path.is_file() and (private/'notices'/path.relative_to(notices)).read_bytes()!=path.read_bytes():
@@ -130,7 +146,7 @@ def audit(installer,seven_zip,native,nsis_zip,nsis_cache):
         if digest((private/name).read_bytes())!=row['sha256']:raise ValueError('Installer plugin/resource hash mismatch')
         plugins.append({'file':name,**row,**(pe_summary(private/name,0x14c) if name.endswith('.dll') else {})})
     native_components={'installer':pe_summary(installer,0x14c),'uninstaller':pe_summary(private/'uninstall.exe',0x14c),
-                       'launcher':pe_summary(private/'color-studio-beta.exe',0x8664)}
+                       'launcher':pe_summary(private/'color-studio-beta.exe',0x8664),'webview2_bootstrapper':pe_summary(bootstrapper,0x14c)}
     extra={n:{'origin':'repository-compiled' if n in ('color-studio-beta.exe','uninstall.exe') else 'verified-upstream'} for n in actual if not n.startswith('runtime/')}
     privacy=scan_files(private/'runtime/python.exe',private,extra)
     if not privacy['passed']:raise ValueError('Installer non-runtime privacy gate failed')
@@ -139,7 +155,8 @@ def audit(installer,seven_zip,native,nsis_zip,nsis_cache):
             'runtime_manifest_sha256':digest((private/'runtime'/MANIFEST).read_bytes()),'plugins_and_graphics':plugins,
             'nsis_source':lock['nsis'],'native_components':native_components,'all_payload_bytes_match_verified_inputs':True,
             'launcher_comparison':launcher,'build_launcher_sha256':digest(native.read_bytes()),
-            'notices_match_repository':True,'privacy':privacy,'webview2_runtime_or_bootstrapper_embedded':False,
+            'notices_match_repository':True,'privacy':privacy,'webview2_runtime_or_bootstrapper_embedded':True,
+            'webview2_bootstrapper':webview,'installer_manifest_sha256':digest(ledger.read_bytes()),
             'clean_windows_tested':False,'redistribution_approved':False,'external_beta':'NO-GO',
             'scope':'NSIS full extraction, exact file set/hashes and native import audit; not installation or legal approval'}
 

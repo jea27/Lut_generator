@@ -1,0 +1,31 @@
+{
+  "schema": "color-studio-beta5-live-sync-v1",
+  "observed_at_utc": "2026-11-03T14:04:50.486948+00:00",
+  "projection_of_worktree_not_published": true,
+  "source_version": "0.3.0-beta.5",
+  "versioned_candidate_quarantined": true,
+  "candidate_selectable": false,
+  "beta_go": false,
+  "commercial_go": false,
+  "human_progress": {
+    "passed": 0,
+    "total": 8,
+    "unknown": 0,
+    "percent": 0
+  },
+  "legacy_tasks": 42,
+  "COL-036": {
+    "id": "COL-036",
+    "status": "blocked",
+    "pr_url": "https://github.com/jea27/Lut_generator/pull/90",
+    "issue_number": 57
+  },
+  "published_main": {
+    "source_version": "0.3.0-beta.3",
+    "main_sha": "918cb6386553d86793df5e2a6d12a7c23046aa7e",
+    "beta_go": false,
+    "commercial_go": false,
+    "candidate_selectable": true
+  },
+  "tracked_generated_files_unchanged": true
+}

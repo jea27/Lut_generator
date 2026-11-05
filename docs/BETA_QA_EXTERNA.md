@@ -1,3 +1,9 @@
+Estado vigente05-11: beta.5 interna auditada, PR90borrador y distribución externa
+NO-GO. El usuario aporta Windows11 Pro en Hyper-V y checkpoints; el ciclo dentro
+del guest aún no se ha ejecutado. Usar [asistente actual](QA_VM_ASISTIDA.md).
+No desinstalar/reinstalar para dar por superada una actualización. Los apartados
+anteriores describen historia; los cinco perfiles siguen sin participantes asignados.
+
 # Beta privada · procedimiento reproducible y cinco pruebas
 
 Estado vigente01-11-2026: PR88 integrada por jea27; PR89 prepara candidato interno

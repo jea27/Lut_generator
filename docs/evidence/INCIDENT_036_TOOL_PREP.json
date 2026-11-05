@@ -1,0 +1,42 @@
+{
+  "schema": "lumaforge-procmon-preparation-v1",
+  "tool": "Microsoft Sysinternals Process Monitor",
+  "version": "4.12",
+  "source_url": "https://download.sysinternals.com/files/ProcessMonitor.zip",
+  "official_documentation": "https://learn.microsoft.com/en-us/sysinternals/downloads/procmon",
+  "zip_sha256": "477754bf299c9e5b311c5666f7a4a48dfdb21265eaa8f0cca70ef9d9552e3a10",
+  "files": [
+    {
+      "file": "Procmon.exe",
+      "sha256": "a7a2adcb8353e4fad8d7f408b7f14f5d2bf4912ab556e6bdb5887682701a917e",
+      "machine": "0x14c",
+      "signature": "Valid",
+      "file_version": "4.12"
+    },
+    {
+      "file": "Procmon64.exe",
+      "sha256": "28495e642b2a465474a4edc58380eaf8b7ee580f3fbcb4141061deadafe9b885",
+      "machine": "0x8664",
+      "signature": "Valid",
+      "file_version": "4.12"
+    },
+    {
+      "file": "Procmon64a.exe",
+      "sha256": "b1c6beaec539f0ffdf714746c161bf9d78f44cb3715d634f36cdb2683f4d6f5b",
+      "machine": "0xaa64",
+      "signature": "Valid",
+      "file_version": "4.12"
+    }
+  ],
+  "x64_execution_planned": true,
+  "noconnect_option_verified_in_signed_help": true,
+  "executed_by_agent": false,
+  "driver_loaded_by_agent": false,
+  "license_accepted_by_agent": false,
+  "included_in_color_studio_installer": false,
+  "capture_scope": "Fresh synthetic workspace fixture only; exclude real user store",
+  "capture_performed": false,
+  "historical_actor_identified": false,
+  "external_beta": "NO-GO",
+  "commercial": "NO-GO"
+}

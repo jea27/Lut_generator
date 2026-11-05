@@ -1,3 +1,496 @@
+# Checkpoint vigente · cierre MVP/COL-036 · 05-11-2026
+
+Rama codex/COL-036-actualizacion-segura, PR90borrador, Issue57 y acción67.
+Base3514146 preservada. Main y worktree de Project OS no modificados; su carpeta
+functions/ no versionada es ajena y no se toca. No merge/cierre/approved/release.
+
+Nuevo alcance autorizado: cierre técnico/QA y preparación comercial, con VM
+ColorStudio-QA-Win11 ya instalada por el usuario y checkpoints existentes. Hyper-V
+está presente, pero Get-VM falla en esta sesión no elevada; no hay consola VM abierta.
+No cambiar permisos, features, checkpoints ni levantar NO-GO para sortear ese bloqueo.
+
+Implementado: asistente host qa_vm_assistant.ps1 y ciclo guest qa_vm_cycle.ps1.
+SHA/ZIP/miembros, VMId/BIOSUUID frente a SMBIOS, checkpoint existente elegido y
+confirmación del estado limpio por operador. Solo PowerShell Direct y kit sintético;
+no shares/WinRM/red/credenciales guardadas. Instala3, prueba API/semilla/baseline,
+provoca fallo real con handle Win32, verifica preservación y actualización directa5,
+API/reinicio/cancelación/fixtures, desconecta adaptadores guest con restauración en
+finally, y desinstala comprobando datos. No se ha ejecutado dentro de la VM.
+
+Nuevo cliente HTTP estándar qa_guest_api.py probado contra runtime extraído beta5:
+semilla y reinicio reales con imágenes sintéticas768x1024, Creator/Pro preservan
+bytes; preview igual al export de ese tamaño, presets/receta,LUT solo color, Planner
+con fuentes y cancelación realPASS. No prueba GUI instalada ni calidad estética.
+Suite focal5tests y regresión de diagnóstico de instalador correctas. Primer pase
+MVP164/3omitidos correcto; suite final166 y seguimiento pendientes tras commit.
+El venv existente se utiliza sin instalar dependencias. El hijo WindowsPowerShell5
+necesita inicializar su PSModulePath; el test elimina únicamente la variable heredada
+PS7 en el proceso hijo. No cambia módulos ni variables globales.
+
+Intermitente: la causa del antiguo directory_switch_failed sigue sin demostrar.
+El harness ahora conserva árbol sintético+errno/winerror antes del cleanup si reaparece.
+Una inyección controlada verifica esa conservación; stress acotado100casos pasa; no resuelve la causa anterior.
+No atribuir al instalador/antivirus los4borrados históricos. Copias2PNG+2presets+
+preferencias siguen privadas; no restaurar, subir o ensayar sobre AppData real.
+
+Inventario de8bloqueos y categorías en MVP_CLOSURE_036.json. Inventario289avisos,
+0ausentes, pero falta licencia propia de raíz y aceptación de derechos/titular.
+Se corrigen documentos existentes: beta5 actual, bootstrapper WebView2 puede
+necesitar red, DELETE/limpieza deshabilitados, guías/feedback ya existentes, sin
+nuevos precios ni entrevistas. Estímulo49€ de COL005 se conserva, no precio aprobado.
+Preparar cinco perfiles no acredita10–20equipos históricos de COL041.
+
+Reanudar: git status; gh pr view90/checks; QA_VM_ASISTIDA.md. Herramientas publicadas en9f3702a y kitv2 generado en limpio
+hacia .lumaforge-local/vm-qa-beta5-cycle-20261105 (v1 y parcial preservados). No recompilar app:
+bytes apps/packages/packaging siguen source29fb77a beta5 SHA789983…8bb69. Verificar
+kit completo y producir recibo privado closure-20261105/kit-receipt.json. Ejecutar
+MVP/embebido/seguimiento y escaneo. Actualizar57/60/61/62 y coordinar73 sin duplicar
+Issues ni avisos. La única nueva acción humana es ejecutar el asistente desde host
+con acceso Hyper-V y credenciales locales guest; no reenviar la antigua petición
+«preparar VM» ya cumplida. CapturaProcmon/Resolve/UI nativas siguen NOT_RUN.
+
+Beta externa y venta **NO-GO**. Todas las aceptaciones humanas siguen pendientes.
+
+Resultado de cierre: kit23archivos+manifiesto,95.299.851bytes; SHA256
+c3521f63507502d1b76e18d304246947d08514c938571378beb6cfe2ae6bc011.
+Recibo privado closure-20261105/kit-receipt.json y QA pública MVP_CLOSURE_036_QA.
+CRC/todos hashes correctos; extractor de host WindowsPowerShell5 pasa con el kit
+real y rechaza traversal/duplicados/absolutos antes de extraer. Runtime embebido167
+correcto/3omitidos; host166/3omitidos y regresión beta3 focal correcta; seguimiento135.
+CI9f3702a MVP42013403805/cliente42013404035/seguimiento42013403865 correctos.
+CI anterior detectó pruebaAPIunittest que exigía UI antes de compilarla: el cliente
+real sigue exigiendo web200; solo el fixtureAPIunitario omite ese check. Fallo de
+kit por ausencia legítima de ledgerbeta3 corregido usando launcher/runtime fijados
+al NSIS auditado, sin inventar metadatos. Parcial preservado, no reutilizarlo.
+No ejecutar/recompilar aplicación en host. Se requiere operador para PowerShellDirect.
+
+Último kit: toolsource539a159; recibo closure-20261105/kit-receipt.json. El kit9f
+se conserva como vm-qa-beta5-cycle-20261105-source-9f3702a.zip; NO usarlo para la
+guía visual actual. Se corrigió guía que aún decía beta3/reinstalar y se separan
+almacenes QA/Inicio para no confundir vistas.23miembros y navegaciónoffline verificados.
+Host168/3omitidos correcto, embebido167/3omitidos y nueva regresión de enlaces focal
+correctos; seguimiento135. No más aplicación recompilada ni suite repetida sin cambios.
+Solicitud67 actualizada con comando exacto del host y SHA final. Aviso único
+42014330354 success, bot@jea27 en67#issuecomment-6656140492; recepción física nueva
+no confirmada. No repetir aviso tras cambios de documentación. Coordinado73 y
+actualizadas60/61/62 por comentarios sin crear Issues/aprobar. PR90 sigue borrador.
+No se ha iniciado una sesión PowerShellDirect ni copiaVM. Paso inmediato: operador
+con accesoHyperV ejecuta QA_VM_ASISTIDA, introduce credenciales guest localmente y
+conserva informe privado. Si hay error, diagnosticarlo sin restaurar checkpoints ni
+eliminar pruebas por automatismo. Beta externa y venta NO-GO.
+
+---
+
+## Historial conservado (el checkpoint vigente está arriba)
+
+# Checkpoint vigente · COL-036 · candidato interno beta.5 · 03-11-2026
+
+## Tarea, rama y límites
+
+Issue57 / PR90; solicitud humana canónica67. Rama
+`codex/COL-036-actualizacion-segura`, worktree `COL-036-actualizacion-segura`.
+Continuación desde edf82d0; commits ebdfbe5,29fb77a,8876535 publicados. Consultar
+Git/PR para el head posterior. Main y los otros worktrees se conservan.
+No merge, approved, cierre de tarea, release ni distribución externa autorizados.
+
+**Incidente P0 abierto; causa histórica sin atribución. Beta externa y venta NO-GO.**
+PR90 permanece borrador durante la investigación del ensayo intermitente indicada abajo.
+
+## Trabajo completado
+
+- DELETE de imágenes/presets y limpieza UI bloqueados; escrituras atómicas con
+  identidad propia y creaciones sin reemplazo/409. Fallos del trabajador permiten
+  reintentar y recuperar interrupted, sin fingir una finalización.
+- Root/ancestros del almacén y recuperación rechazan enlaces antes de resolverlos.
+  Cuatro junctions NTFS reales, readonly y bloqueo Win32 de directorio ejercitados.
+- Si aparece un destino sustituto después de mover el programa antiguo, se conserva
+  destino+backup+diario. La recuperación no sobrescribe el contenido ajeno.
+- Actualización por stage/ledger/backup; sin purga AppData ni eliminación de backups.
+  Builds archivan etapas, launcher, setup y recibos anteriores. TEMP/TMP se confinan
+  al build y se restauran; no se cambian variables globales o permisos.
+- Candidato final **0.3.0-beta.5** compilado desde29fb77a limpio,48.473.299bytes,
+  SHA256789983ea5c8e71b92271b91e2fc7a76ad6d6fef3272ac5ac24d96ac4c308bb69.
+  Sin firma, no instalado en el host. Preliminar d1cbdd…68ea preservado y superado.
+- Auditoría completa del NSIS:951 archivos/924runtime/60nativos, hashes y procedencia
+  cotejados; privacidad0bloqueos;289 componentes con avisos,0ausentes. PSF/Microsoft
+  con firmas requeridas válidas. Eso no supone aceptación legal ni GO.
+- ZIP privado de QA generado/verificado,17 entradas+manifiesto; incluye beta3 fijada,
+  beta5, guías, fixtures y PNG/receta sintéticos. No contiene diagnóstico ni fotos
+  personales. SHA256abf342a86405434dc6506e5dbe0cce57fcb48544398cc2d1b43fc1c4abfd4015,
+  95.194.508bytes. Fuentes de herramientas8876535; aplicación29fb77a, sin cambios
+  posteriores en apps/packages/packaging. No se afirma NSIS reproducible bit a bit.
+
+## Pruebas y discrepancia en investigación
+
+Host:160 pruebas,0fallos/errores,3symlinks omitidos;7 guards NSIS inertes incluidos.
+Primer pase runtime extraído:160 sin fallos/errores; aislamiento71 módulos,
+reinicio y preferencias/preset correctos. Smoke HTTP con2demo CC0: Creator/Pro
+mantienen bytes, receta/preset/acabado, lote2,LUT y Planner correctos; originales
+intactos. No es una prueba de GUI instalada ni de calidad visual aceptada.
+
+Una repetición posterior del runtime:1error en la inyección de interrupción de
+instalación limpia, phase=directory_switch_failed; el código original no registró
+errno/winerror, por lo que no se atribuye a antivirus ni a otro proceso. Se conserva
+el recibo fallido.20 repeticiones focales y una suite diagnóstica completa pasan.
+Se añadió detalle saneado de InstallError y contador de omitidos al runner; cinco
+suites completas adicionales pasan,160cada una/3omitidos. Causa del error pendiente. No borrar ni ocultar esta discrepancia si vuelve a pasar.
+
+Seguimiento135 y frontend7/build correctos. CI8876535: MVP41648801203, cliente
+41648801729 y seguimiento41648801678 success. Los3symlinks originales pasan tanto
+en Windows como Linux CI. MVP remoto153 tests y una clase NSIS omitida por caché
+no preparada; no presentarlo como160. Build candidato independiente41649084841
+success:160tests/0omitidos, NSIS completo correcto. Solo publica4recibos saneados;
+no sube EXE ni crea release. Su setup e5862a…27da difiere del local789983…8bb69:
+no hay reproducibilidad bit a bit demostrada. Aplicación fuente29fb=8876535.
+
+## Custodia y bloqueos humanos
+
+Privados en `.lumaforge-local/incidents/COL-036-20261102/`: diagnóstico/USN/cache.
+2PNG+2presets+preferencias cotejados, preservados, sin restauración. Cuatro borrados
+PNG USN confirmados; actor desconocido. Las dos vistas tienen distintas identidades
+NTFS; no confundir8ausencias externas con8borrados globales demostrados. No publicar
+rutas, nombres, JSON, PML/CSV o eventos originales. No probar sobre AppData real.
+
+Preflight03-11: gestión Hyper-V/VBox/VMware ausente,3,41GiB RAM libres; no VM creada.
+No habilitar features, elevar agentes ni reiniciar por sorpresa. Hace falta preparar
+Windows11 limpio con ISO/licencia/evaluación válida y recursos; guía QA_BETA5_INTERNA.
+Procmon solo en guest aislado con datos sintéticos. Siguen NOT_RUN: instalación/
+actualización NSIS y recuperación nativas, GUI instalada beta5, desinstalación,
+desconexión real y LUT en Resolve/Adobe. La autorización y aceptación son humanas.
+
+## Archivos y reanudación
+
+Evidencias públicas: BETA5_036_ARTIFACT.json, BETA5_036_NSIS.json, BETA5_036_QA.json;
+INCIDENT_036_QA conserva data_safety_validated=false y aceptación preventiva=false.
+El colector detecta automáticamente *_ARTIFACT*.json; candidato en cuarentena,
+sin descargas. Pages lee main: no simular publicación de archivos de esta rama.
+
+Privado: `.lumaforge-local/containment-20261103/`; kit
+`.lumaforge-local/vm-qa-beta5-final-29fb77a.zip`. Setup final en
+`apps/desktop/src-tauri/target/release/bundle/nsis/Color Studio Beta_0.3.0-beta.5_x64-setup.exe`.
+Un intento de kit sin dependencias quedó parcial y preservado; usar solo el ZIP final
+con SHA anterior. El entorno de build existente está en `../../.venv-mvp/Scripts/python.exe`.
+
+Reanudar: `git status --short`; `gh pr view 90`; `gh pr checks 90`; leer
+BETA5_036_QA y QA_BETA5_INTERNA. Consultar primero logs/recibos de diagnóstico y CI,
+no repetir build de aplicación sin cambios. Verificar CI del head final y estado remoto; commit/push
+solo de esta rama. Actualizar57/67 sin repetir el aviso de la misma acción VM.
+Preparar revisión de contención sin equipararla a aceptación Windows ni GO.
+Siguiente trabajo elegible: QA aislada, condicionado a disponibilidad del guest;
+ninguna nueva funcionalidad grande.
+
+Sincronización GitHub real probada sin modificar archivos generados:42tareas,
+COL036blocked/PR90, aceptación0/8, beta5 en cuarentena/NO-GO. Pages continúa beta3
+sobre918cb638 hasta integración humana; no fingir que el recibo de rama está publicado.
+
+Cierre remoto: commit1d917c7 publicado y CI MVP41650393122/cliente41650393107/
+seguimiento41650393173 success. Solicitud67 sustituye el bucle Procmon host por
+preparación de Windows11 aislado. Aviso único41650561917 success; bot mencionó
+@jea27 en67#issuecomment-6605944403; nueva recepción física no confirmada. No repetir.
+Algún sync de la ráfaga fue cancelled antes de steps; no es fallo de test. Verificar
+el último despliegue cuando terminen las ediciones de Issue/PR. PR90 sigue borrador
+por discrepancia de fixture registrada y QA nativa pendiente; sin cierre ni GO.
+
+---
+
+## Historial conservado; no describe el estado vigente
+
+Los siguientes checkpoints se conservan íntegros para trazabilidad. El estado
+vigente y las instrucciones de reanudación están al principio de este archivo.
+
+# Checkpoint vigente · consolidación COL036 · 03-11-2026
+
+Punto de continuación: ebdfbe5 produjo un preliminar beta.5 limpio,48.482.443bytes,
+SHA d1cbdd9073af8e42ff73c241b6769ef64a2b5b300fa405f9af6c00f4364468ea; NO usarlo
+como candidato final. Revisión posterior detectó diario descartado si reaparece
+un destino ajeno tras mover el old a backup. Nuevo test lo reproduce; corregido
+para conservar diario/backup/destino sustituto, recuperación tras revisar ese
+destino.36 pruebas focales correctas (3 symlinks omitidos). Falta regenerar beta.5
+desde el nuevo commit, preservando el preliminar; build archiva también setup.
+Kit VM preparado en scripts/prepare_vm_qa_kit.py + qa_guest_checks.ps1 y guía
+QA_BETA5_INTERNA.md: guard de guest, hashes, instalación, fixtures y probes sin
+Git/httpx globales. Datos/fotos/presets solo sintéticos; fuentes legacy fijadas.
+Todavía no se ejecuta en VM ni se certifica su compatibilidad real. Después del
+build: QA embebido/smoke/aislamiento, generar ZIP privado y notificar una sola
+acción concreta para disponer de Windows11 limpio. No ejecutar instaladores
+en el host. CI candidato preliminar41586295244 cancelada por código superado.
+Los3 symlinks originales pasaron CI Linux41585993189; no equivalen a NTFS file symlink.
+
+Continuación desde edf82d0 autorizada: preparar candidato interno beta.5 sin GO
+externo/venta. Host154 tests correctos,3 symlinks aún omitidos por privilegios;
+cuatro casos NTFS junction nuevos y un bloqueo Win32 real pasan. Nuevos guards
+rechazan root/ancestros enlazados del almacén y recuperación directa por alias.
+CI Linux añadida para los3 symlinks originales, pendiente de ejecución remota.
+Custodia privada revalidada2PNG+2presets+preferencias, sin restaurar ni publicar.
+Preflight03-11: gestorVM ausente,3,41GiB libres; no VM ni Procmon aislado ejecutados.
+Versión interna beta.5 preparada en fuentes; build y auditorías aún pendientes.
+135 tests de seguimiento y7 frontend correctos; AST build_beta.ps1 sin errores.
+Build preserva stage/launcher/recibos anteriores y rechaza cambios de fuente durante
+compilación. Gate de distribución pasa a seguridad preventiva validada, todavía
+false; causa histórica sigue desconocida y aceptación/release requieren al humano.
+Ver .lumaforge-local/containment-20261103/ para logs. No instalar sobre AppData real.
+
+**P0 abierto. PR90 BORRADOR. Beta externa/venta NO-GO. No instalar ni distribuir
+f002…: candidato en cuarentena. No restaurar ni limpiar el almacén real.**
+
+Tarea57, solicitud canónica67; rama codex/COL-036-actualizacion-segura, worktree
+COL-036-actualizacion-segura. Main y raíz ajenos preservados. Sin merge/aprobación.
+Último head previo a esta contención: eb3866d; consultar Git/PR90 para el actual.
+
+Continuación actual autorizada: reintento Ctrl+L sin efecto, Procmon sin eventos y
+captura desactivada. Se deja pendiente esa captura y se continúa estabilización.
+Nueva corrección de storage: limpieza solo de temporal propio por identidad;
+creación de imagen/preset sin sobrescribir ante colisión (409), edición atómica
+conservada; fallos de persistencia del trabajador ya no dejan lotes activos sin
+fin. Reinicio de un fallo no persistido muestra interrupted. No nuevas funciones.
+12 regresiones añadidas,147 host/147 embebidos correctos (host3 omitidos). Runtime
+QA privado .lumaforge-local/atomic-worker-containment-runtime, source98f9ab9 dirty
+declarado, manifiesto SHA0f7095f3e1a83ffb9c27ea7247f5a453ed0f9d0f8ffc6e3347edff1165bf1c4c.
+71 módulos/aislamiento/reinicio correctos; smoke2 demo CC0 pasa Creator/Pro,
+presets/receta/acabado/lote/LUT/Planner y originales. Sin setup ni instalación.
+Recibo nuevo docs/evidence/INCIDENT_036_STORAGE_QA.json; logs fallidos/correctos
+privados. Manifiesto añade tests/PR90 y dependencias de huella, no autoaprobación.
+No hace falta otro aviso del mismo bloqueo. Causa histórica continúa abierta.
+
+Evidencia privada: .lumaforge-local/incidents/COL-036-20261102/. Dos diagnósticos
+copiados/verificados, baseline e índice privados. El operador confirma4 eventos
+PNG FILE_DELETE/CLOSE del02-11-2026 07:12:44 Madrid =06:12:44Z. Actor no identificado.
+La vista externa tiene1/9; la vista/cache Codex5/9 y distintas identidades NTFS.
+Otros2PNG+2presets siguen disponibles con hashes originales, preservados junto
+a preferencias; no restaurados. No confundir ocho ausencias externas con ocho
+borrados demostrados ni mezclar identidades. No subir JSON, nombres, rutas o USN.
+
+Correlación de tareas/recibos/logs sin atribución. El build final empezó después
+de la hora del evento. Security fue consultado por el operador sin coincidencias;
+original privado recibido y conservado. No repetir consulta ni exonerar procesos.
+Historial adicional de tres agentes propios revisado sin atribución; no descarta
+procesos en segundo plano. Sysmon no disponible, TaskScheduler
+desactivado; no se modificó logging. API anterior sin access log retrospectivo útil.
+El detalle temporal y los procesos observados quedan en informe privado.
+
+Defectos demostrados en fixtures: DELETE anterior sin consentimiento específico
+borra6PNG (9→3); contención423 conserva9. Cleanup anterior borra un .part preexistente
+cuando falla open('xb'); nueva versión lo conserva y comprueba identidad de sus
+propios temporales. Audit hooks registran el PID de reproducción, no el histórico.
+
+Cambios: DELETE imágenes/presets deshabilitados y UI protegida; directorio de lote
+exclusivo, sin trabajo fantasma ante fallo inicial; guard privado de instalación y
+recuperación; retirada purga AppData/checkbox NSIS. Baselinev2 exige volumen/NTFSID,
+rechaza otro almacén aunque tenga mismos bytes y no acepta v1 como certificación.
+Quarantined en manifiesto y hold de seguridad bloquean candidato y descargas,
+incluidas releases históricas autorizadas. Windows no queda técnicamente validado
+por el CI previo; evidencia actual data_safety_validated=false.42 tareas intactas.
+
+Pruebas/logs: host MVP, runtime embebido nuevo de contención, seguimiento y7 frontend
+con build:147 host,147 embebido y134 seguimiento correctos tras el ajuste de manifiesto. Los resultados finales
+están en docs/evidence/INCIDENT_036_QA.json.
+Runtime de primera contención en .lumaforge-local/incident-containment-runtime;
+el actual está en atomic-worker-containment-runtime (ambos dirty declarados,
+entradas oficiales offline); no nuevo setup ni instalación sobre datos reales.
+Probes NSIS inertes7 casos y pruebas de actualización/interrupción con9 sentinelas.
+Tres symlinks omitidos por privilegios; no se cambiaron permisos.
+
+Pendiente: atribución histórica, nueva QA nativa en entorno aislado y aceptación
+humana. No empezar más distribución ni resolver por updates verdes. Process Monitor
+oficial4.12 descargado dentro del workspace y firmas Microsoft verificadas;
+el operador ya abrió la ventana y autorizó continuar. EULA/elevación no realizadas
+por el agente. ZIP477754bf…3a10,
+x64 SHA28495e64…885; recibo INCIDENT_036_TOOL_PREP.json. Binarios solo privados.
+Ventana receptiva, vacía y captura desactivada. Clic y Ctrl+L automatizados sin efecto;
+solo título accesible. Tokens de solo lectura: Procmon alto/elevado, diagnóstico
+medio/no elevado; compatible con UIPI, no prueba de canal interno. No cambios de
+seguridad ni nuevas reproducciones Procmon. Paso de captura pendiente: operador configura Path begins
+with prefijo privado del fixture, sin otras Include, activa Drop Filtered Events e
+inicia captura. Confirmar visualmente filtro/captura; ejecutar los cuatro comandos
+del informe, pedir detener/guardar PML+CSV privados y analizar. No ejecutar pruebas
+si no se puede confirmar el filtro. No prometer atribución retrospectiva.
+Archivo de Security recibido: .lumaforge-local/incidents/COL-036-20261102/
+received-security-empty.json; no copiarlo a GitHub. Queda cerrada solo la petición
+de consulta, no el incidente ni la autorización de distribución.
+
+Reanudar: git status/branch; leer Issue67/PR90 y el informe privado. Preservar
+baseline/copies/traces y no eliminar fixtures antes de capturar Procmon si procede.
+No usar antiguos scripts nativos de install/uninstall en el host durante el incidente.
+Documentación saneada: docs/evidence/INCIDENT_036.md y reproduciones/recibo JSON.
+Datos reales completos únicamente en el directorio privado citado.
+
+---
+
+# Histórico · beta.4 probada; conservación bloqueada · 02-11-2026
+
+Tarea COL036/Issue57, solicitud canónica67; PR90 en BORRADOR. Rama
+`codex/COL-036-actualizacion-segura`, worktree COL-036-actualizacion-segura, base
+main918cb638. Raíz y otros worktrees preservados. No merge ni aprobaciones.
+
+**Candidato seleccionado:** fuente limpia8f4c60ecbbb25a5681796f7509e20e2eebe6f144,
+0.3.0-beta.4, SHA256f002769da0c37d8a85a8fa8bf6351053ea3608a298cbf368d0c442f164eca4bf,
+48.473.370bytes. Setup en apps/desktop/src-tauri/target/release/bundle/nsis/.
+Cambios QA posteriores no cambian apps/ ni packaging/ de ese binario. Intermedio
+25c943dc queda superado y conservado; beta2/beta3/backups intactos. No distribuir.
+
+Completado: stage+ledger+mutex/lock/backup/rollback, bootstrapper Microsoft fijado
+y firmado, retirada Delete dirigido por registro y guards NSIS de junction.
+Extracción951 archivos/924runtime y privacidad sin hallazgos. Actualizaciones
+DIRECTAS beta3→beta4 exit0/8,016s y beta2→beta4 exit0/7,110s, stores inmediatos
+intactos y preset por API. Fallo real controlado Winerror32/errno13: NSIS2/hijo2,
+old_restored=true, bytes intactos, reintento0/8,438s. Registro manipulado con fixture
+propio preservado. Uninstaller final con junction aborta2 antes de borrar launcher;
+runtime restaurado byte a byte (checkpoint privado restored=true). Desinstalación
+normal finalizada sin cambiar stores; exit del hijo temporal no observado.
+
+Pruebas:116 MVP host y116 con Python embebido instalado sin fallos (3 symlink
+omitidos por privilegios);5 guards NSIS reales pasan sin elevación. Auditor loader
+PSAPI coteja71 módulos, hashes y límites: no aceptar DLL externa por bytes iguales.
+Aislamiento con CWD/env contaminados y reinicio de prefs/preset pasa. API con2CC0:
+Creator/Pro byte-idénticos, PNG/JPEG/LUT/receta/óptica/lote2/Planner y originales
+intactos. GUI/capturas/descargas reales en intermedio25c, árboles apps/packages
+idénticos a8f; no confundir con retest visual del setup final ni aceptación humana.
+Histórico2 beta3 sigue sin causa atribuida.7frontend anteriores pasan;132 tests de
+seguimiento correctos: conservación independiente de CI/etiquetas y bloqueo visible
+frente a revisión obsoleta/cambios solicitados, con historial conservado.
+
+CI del paquete8f: construcción41399176754 success, MVP41399182517, Studio41399182514
+y validate41399182518 success.4JSON de CI verificados por digest; no .exe publicado.
+60PE/runtime/bootstrapper coinciden, setup CI/local no byte-idénticos. CI de los
+instrumentos QA810bf44: MVP41409829710, Studio41409829747, validate41409829738 y
+sync41409827751 success. Los siguientes cambios corrigen prioridad visual del bloqueo
+y agregan recibo de integración; consultar checks de PR90 para el último head, sin
+reconstruir el setup de8f porque apps/packaging siguen iguales.
+
+**BLOQUEO REAL:** captura privada9→5 archivos;4 imágenes temporales ausentes,5
+presentes con hashes idénticos (2 imágenes,2 presets,prefs). El usuario niega limpieza
+y exige investigar antes de aceptar. Búsquedas e historial acotado sin causa ni copias.
+Vistas actuales coinciden; captura antigua no tenía identidad de volumen/directorio.
+No atribuir a otras API: sus defaults usan su propio worktree. No restaurar/borrar.
+USN lectura devuelve5 desde Codex; no se elevaron permisos. Instrumento probado
+scripts/diagnose_private_store.ps1 compara solo lectura y guarda identidades NTFS
+actuales/filas coincidentes en JSON privado. Necesita operador fuera de Codex y
+consola elevada solo para USN. Resultado únicamente por chat privado, nunca GitHub.
+No aceptar conservación global por las comparaciones inmediatas o por CI.
+
+Issue57 marcada blocked, retirada status:in-progress;67 mantiene needs-human y
+marcador de PR90 para evitar solicitud duplicada. Un solo aviso nuevo para diagnóstico:
+workflow41410069177 success y comentario6572098610 con mención@jea27 verificados.
+Recepción física de este aviso no confirmada. No repetirlo. La web pública ya
+refleja COL036 bloqueada/PR90 y beta.3 de main; corrección visual de producto y
+metadatos beta.4 quedan únicamente en PR90. UPGRADE_036_SYNC.json verifica proyección
+con datos GitHub reales y puerta de conservación false, sin desplegar ni aprobar.
+
+Pendientes humanos secundarios ya notificados: Hyper-V/RAM/ISO oficial/licencia
+válida y Resolve gratuito/registro propio. Gestor VM/Resolve ausentes; sin Windows
+limpio, desconexión física ni editor real. Beta externa y venta NO-GO. Issue60
+derechos pendiente. No permisos nuevos, reinicio, pagos, release o fotos personales.
+
+Reanudar en este worktree:
+
+```powershell
+git status --short
+git branch --show-current
+gh issue view 67 --repo jea27/Lut_generator
+# Solo el operador fuera de Codex; consola elevada para leer USN existente:
+.\scripts\diagnose_private_store.ps1 -ReadUsn
+```
+
+Conservar informe nuevo bajo .lumaforge-local; comparar identidades/contexto y
+registros sin publicar nombres/hashes/rutas privados. No inferir causa de ausencia
+de USN por retención. Después decidir siguiente investigación; no aprobar nada.
+Fuentes/evidencias: docs/evidence/UPGRADE_036_QA.md y JSON asociados; diagnóstico
+en docs/DIAGNOSTICO_TEMPORALES_BETA4.md. Manifiesto enlaza PR90 y puerta separada
+de conservación; estados publicados proceden de GitHub Actions. No quedan
+instalaciones, handles de prueba ni junctions propios a medio restaurar. Trabajo
+independiente de estabilización preparado; siguiente paso depende del diagnóstico
+del operador y del entorno limpio, no de añadir funcionalidades.
+
+---
+
+# Histórico · revisión de seguridad beta4 · 02-11-2026
+
+PR90 borrador, rama codex/COL-036-actualizacion-segura. Candidato intermedio de
+fuentee317c02, SHA25c943dc…505f construido/auditado y probado realmente. CI de
+construcción41347038273 success; solo4JSON públicos. No distribuir ni dar GO.
+
+Actualizaciones directas beta3→beta4 (9,313s) y beta2→beta4 (8,125s):0; presets,
+preferencias, imágenes y store privado conservados. Fixture sintético de raíz
+preservado también en backup; se limpió solo la copia propia activa. Fallo real
+controlado con handle de stage: Winerror32/errno13, instalador2/hijo2, rollback
+old_restored=true, bytes de app/datos intactos. Reintento0. Guard de app abierta2
+antes de copiar. Desinstalación normal observada completa sin borrar stores; no
+se observó directamente el exit del hijo temporal del desinstalador.
+
+GUI real en25c: Creator→Pro conserva imagen e intensidad60%, descargaPNG/receta y
+ShotPlannerJSON reales; tipos de observación/estimación/recomendación/fuente,
+fuentes y límites visibles; cierre normal y children detenidos. Capturas CC0
+UPGRADE_036_*.png pendientes de incorporar. Runtime instalado105 tests/3 symlink
+omitidos, aislamiento71 módulos y smoke2CC0 pasan. Historial2 beta3 no atribuido.
+
+REVISIÓN DETECTÓ: Delete heredado usa MainBinaryName del registro sin validar.
+Eliminado en working tree;25c/e317 quedan superados como selección final. Añadido
+preflight NSIS de reparse/junction antes de cualquier Delete del desinstalador.
+La prueba roja real detectó un error de registrosSystem r7/r8 vsR7/R8; corregido
+a r17/r18 y prueba verde5/5: carpetas normales/ausentes0, junction en recurso/raíz/
+ancestro2 y marcadores intactos. Nuevo desinstalador aún no compilado/ejecutado.
+Reconstruir
+fuente limpia, nuevaCI, auditoría951 archivos y retests selectivos de update/fallo.
+Resolver_inventory terminó reciboCI histórico, marcado superseded, en
+UPGRADE_036_CI_BUILD.json. No confundircon recepción del móvil ni aprobación.
+
+Pendiente humano: Windows limpio/Hyper-V+RAM/ISO y descargaResolve con registro
+personal, Issue67 ya notificada41316675082/mención6559335054. No repetir bloqueo.
+SinVM, sin desconexión real, sin editor real; externa/venta NO-GO. No ejecutar
+uninstall.exe de backups: puede retirar registro de instalación activa.
+
+Reanudar: git status y revisar mensajes de agentes; corregirSystemtrasredtest;
+no alterar otros worktrees. Los logs/instaladores/fixtures están en .lumaforge-local
+(privado). Conservar25ccomo intermedio, archivosbeta2/beta3 y todoslosbackups.
+No main, merge, approved, releases ni herramientas/permisos nuevos.
+
+---
+
+# Checkpoint vigente · COL036 actualización segura · 01-11-2026
+
+Rama `codex/COL-036-actualizacion-segura`, worktree independiente; base main918cb638
+(PR89 fusionada por jea27). Issue57 en curso,67 solicitud canónica. No se toca el
+worktree del agente principal ni se fusiona nada. Beta externa/venta siguen NO-GO.
+
+Repetición real beta2→beta3 silenciosa:0, preset QA recuperado por API, datos
+conservados. No reproduce ni explica el2 histórico. Overlay retuvo runtime antiguo.
+Probe NSISdl loopback con URL https recibió HTTP plano; transporte sustituido por
+bootstrapper oficial Microsoft fijado/firmado, sin ejecutarlo ni instalar Evergreen.
+
+Preparado candidato correctivo beta.4: extracción a stage nuevo, ledger SHA fijado,
+mutex de app y lock de transacción, backup completo, rollback de errores de rename,
+diario recuperable sin borrado automático y logs de fases sanitizados. Código en
+apps/desktop/installer_helper.py y packaging/nsis/installer.nsi. PR90 borrador: https://github.com/jea27/Lut_generator/pull/90. Nativo y NSIS ya
+compilan; auditoría manual completa951 archivos/924 runtime,0 hallazgos, SHA del
+probe5a6a1648…4227 (fuente d3eef7f). No ejecutado. El pipeline detectó un import
+incorrecto al ejecutar el auditor como script; corregido con carga exacta del
+validador y regresión aislada. Se reconstruye desde fuente limpia antes de elegir
+el candidato final y probar actualización/rollback nativos. Probe anterior privado
+conservado; beta2 y beta3 intactos.
+
+Pruebas:130 seguimiento y7 frontend pasan. Runtime embebido103 tests pasan
+(3 symlink omitidos por permisos), aislamiento y smoke CC0 de2 fotos correctos;
+71 módulos nativos observados, ninguno inesperado. Después se añadieron un caso
+de journal malformado y uno de import CLI: siguiente suite completa105. CI de
+PR90/d3eef7f: MVP41346633128, Studio41346633108 y validate41346633292 success;
+sync41346633137 success. Ninguna aprobación humana derivada de esos checks.
+
+Bloqueos reales: Hyper-V gestión no habilitado, elevación740 y RAM libre~5GB;
+Resolve no instalado/registro personal pendiente. Guías QA_WINDOWS11_VM y
+QA_RESOLVE_BETA3 preparadas. Solicitud67 publicada y workflow41316675082 success,
+mención6559335054 confirmada. No nueva confirmación de entrega física al iPhone.
+No repetir aviso sobre ese bloqueo. Ninguna VM/ISO/editor/desconexión física probada.
+
+Reanudar: git status; leer ACTUALIZACION_SEGURA_WINDOWS; preparar inputs oficiales
+con scripts/prepare_installer_inputs.py; ejecutar build_beta.ps1 usando Python de
+build existente y cachés verificadas; auditar NSIS y probar actualización directa
+con store QA privado antes de crear PR correctiva de57. Conservar beta2/beta3,
+backups, logs crudos y datos privados; publicar solo recibos sanitizados. Si falla,
+identificar fase y código real, no atribuir el histórico por analogía. No GO externo,
+no merge, no approved. Trabajo independiente autorizado continúa.
+
+---
+
 # Checkpoint vigente · estabilización y procedencia binaria · 31-10-2026
 
 PR71 lista para revisión: https://github.com/jea27/Lut_generator/pull/71.
@@ -865,3 +1358,31 @@ No repetir el aviso. Los sync cancelados de la ráfaga no ejecutaron steps; su
 reintento final/estado publicado se verifica en PR89/checks y comentario final57.
 El checkpoint usa identidad no-reply por comando; la identidad anterior ya
 estaba en el historial público. No se cambió config global ni reescribió historial.
+
+## En curso · diagnóstico de actualización beta3 · 01-11-2026
+
+PR89 integrada por jea27 en918cb638; nuevo worktree COL-036-actualizacion-segura,
+rama codex/COL-036-actualizacion-segura desde main, Issue57 in-progress y67 canónica.
+Se preserva worktree runtime-oficial y candidato0350f5b4 completo. Usuario autoriza
+QA interna/VM oficial/Resolve gratuito, sin GO externo, merge o cambios del host.
+
+Preflight real: virtualización firmware/hipervisor/VBS activos, Hyper-V de gestión
+no disponible; consulta de features requiere elevación740.16GB nominales RAM y
+aprox5GB libres; disco suficiente. No se habilitó nada ni se reinició. Guía y
+script read-only preparados. Resolve no instalado; descarga oficial exige registro
+personal del operador. Adobe registrado no acredita activación. Pruebas reales
+de Windows limpio/desconexión/editores todavía no ejecutadas.
+
+Diagnóstico: candidato instrumentado privado detiene con código90 antes de copiar
+aplicación. Alcanzó Install; WebView2 presente156.0.4314.50 y sin desinstalador en
+/S. El2 histórico sigue sin atribución confirmada. No confundir con error Win32 2.
+Fixture de descarga NSISdl devuelve success pese al README antiguo. Otro fixture
+loopback muestra HTTP plano para URL https (sin ClientHello TLS): defecto de
+transporte comprobado, distinto de la causa histórica. No se ejecutó descarga.
+
+Pendiente: reproducir beta2→beta3 directo con traza completa, fallo/recuperación y
+datos/prefs; corregir casos medidos y sustituir descarga NSISdl por bootstrapper
+Evergreen oficial fijado/firmado si procede. No se ha preparado candidato correctivo
+ni se afirma que el2 esté resuelto. Logs/probes privados .lumaforge-local; nunca
+publicar exe diagnóstico, rutas crudas o datos existentes. Reanudar aquí leyendo
+este checkpoint, git status y las guías QA_WINDOWS11_VM/QA_RESOLVE_BETA3.

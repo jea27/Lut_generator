@@ -1,2 +1,4 @@
 packaging/notices/** -text -whitespace
 docs/evidence/RUNTIME_036_*.json -text -whitespace
+docs/evidence/UPGRADE_036_*.json -text -whitespace
+docs/evidence/BETA5_036_*.json -text -whitespace

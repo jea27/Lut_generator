@@ -2,6 +2,8 @@
 from pathlib import Path
 import json
 import tempfile
+import subprocess
+import sys
 import unittest
 from unittest.mock import patch
 from scripts import audit_nsis_payload as audit
@@ -13,6 +15,12 @@ def archive(*rows):
 
 
 class NsisAuditTests(unittest.TestCase):
+    def test_direct_script_validator_does_not_require_repository_on_search_path(self):
+        scripts=str(Path(__file__).resolve().parents[1]/'scripts')
+        code='import sys;sys.path.insert(0,sys.argv[1]);import audit_nsis_payload as audit;assert callable(audit.installer_validator())'
+        result=subprocess.run([sys.executable,'-I','-S','-c',code,scripts],capture_output=True,text=True,timeout=15)
+        self.assertEqual(result.returncode,0,result.stderr)
+
     def test_offline_nsis_cache_is_hash_checked_without_fallback_network(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);(root/'packaging').mkdir();cache=root/'.lumaforge-local/downloads';cache.mkdir(parents=True)

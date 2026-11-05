@@ -35,7 +35,7 @@ class ProductTests(unittest.TestCase):
     def test_idempotence_defined_denominators_and_no_double_counting(self):
         a=self.derive(); self.assertEqual(a,self.derive())
         self.assertEqual(a['metrics']['technical']['total'],8)
-        self.assertEqual(a['metrics']['technical']['passed'],8)
+        self.assertEqual(a['metrics']['technical']['passed'],7)  # Windows data-safety incident is open.
         self.assertEqual(a['metrics']['human']['passed'],0)
         self.assertFalse(a['readiness']['beta']['go'])
         self.assertFalse(a['readiness']['commercial']['go'])
@@ -52,6 +52,40 @@ class ProductTests(unittest.TestCase):
         self.assertEqual(result['metrics']['human']['passed'],0)
         self.assertFalse(result['readiness']['beta']['go'])
         self.assertEqual(len(json.loads((ROOT/'site/data/roadmap.json').read_bytes())['tasks']),42)
+
+    def test_unresolved_data_preservation_is_independent_of_technical_checks_and_issue_labels(self):
+        rule=next(r for r in self.manifest['readiness']['beta'] if r['id']=='data-preservation')
+        self.assertEqual(rule['field'],'preventive_data_preservation_accepted')
+        self.assertIs(product.evidence(ROOT,rule),False)
+        self.issue(57).update(state='closed',labels=[{'name':'approved'}])  # Synthetic API fixture only.
+        self.manifest['readiness']['beta']=[rule]
+        with patch.object(product,'evidence',side_effect=lambda root,proof:False if proof['field']=='preventive_data_preservation_accepted' else True):
+            result=self.derive()
+        self.assertTrue(next(f for f in result['features'] if f['id']=='windows')['technically_verified'])
+        self.assertFalse(result['readiness']['beta']['checks'][0]['passed'])
+        self.assertFalse(result['readiness']['beta']['go'])
+        with patch.object(product,'evidence',return_value=None):
+            self.assertFalse(self.derive()['readiness']['beta']['go'])
+
+    def test_pending_review_does_not_mask_active_blocker(self):
+        self.issue(57)['labels']=[{'name':'blocked'}]
+        for state in ('needs_review','changes_requested'):
+            with self.subTest(state=state):
+                result=product.derive(self.manifest,ROOT,REPO,self.issues,self.prs,self.runs,'a'*40,[],[],
+                    '2026-11-02T00:00:00Z',{'windows':{'state':state}})
+                windows=next(f for f in result['features'] if f['id']=='windows')
+                self.assertTrue(windows['blocked']);self.assertEqual(windows['status'],'blocked')
+                self.assertFalse(windows['human_approved']);self.assertEqual(windows['review']['state'],state)
+
+    def test_quarantined_build_never_counts_as_candidate_or_enables_download(self):
+        initial=self.derive();self.assertIsNone(initial['candidate'])
+        build=next(b for b in initial['versions'] if b['quarantined'])
+        self.assertTrue(build['quarantined'])
+        tag='v'+build['version'];self.issue(62)['labels']=[{'name':'release-approved:'+tag}]
+        self.releases=[{'tag_name':tag,'draft':False,'published_at':'2026-11-02T00:00:00Z',
+            'html_url':BASE+'/releases/tag/'+tag,'assets':[{'state':'uploaded','name':'fixture.exe','digest':'sha256:'+build['sha256']}]}]
+        result=self.derive();self.assertIsNone(result['latest_release']['download_url'])
+        self.assertFalse(result['latest_release']['asset_matches_manifest']);self.assertFalse(result['readiness']['beta']['go'])
 
     def test_new_capability_needs_own_receipt_even_after_delivery_and_issue_label(self):
         creator=next(f for f in self.manifest['features'] if f['id']=='creator')
@@ -113,6 +147,8 @@ class ProductTests(unittest.TestCase):
         self.assertFalse(any(f['implemented'] for f in self.derive()['features']))
 
     def test_release_requires_explicit_tag_approval_and_never_auto_approves_features(self):
+        # Synthetic pre-incident policy; a real active safety hold overrides this.
+        self.manifest.pop('distribution_safety_evidence',None)
         self.releases=[{'tag_name':'v0.3.0-beta.2','draft':False,'published_at':'2026-10-31T00:00:00Z','html_url':BASE+'/releases/tag/v0.3.0-beta.2'}]
         self.assertIsNone(self.derive()['latest_release']['download_url'])
         self.issue(62)['labels']=[{'name':'release-approved:v0.3.0-beta.2'}]
@@ -124,6 +160,38 @@ class ProductTests(unittest.TestCase):
         self.releases[0]['assets']=[{'state':'uploaded','name':'installer.exe','digest':'sha256:'+release_build['sha256']}]
         self.assertIsNotNone(self.derive()['latest_release']['download_url'])
         self.assertEqual(self.derive()['metrics']['human']['passed'],0)
+
+    def test_data_safety_hold_blocks_historical_authorized_download_and_missing_evidence(self):
+        self.assertEqual(self.manifest['distribution_safety_evidence']['field'],'data_safety_validated')
+        build=next(b for b in self.derive()['versions'] if not b['quarantined'] and b['dirty'] is False)
+        tag='v'+build['version'];self.issue(62)['labels']=[{'name':'release-approved:'+tag}]
+        self.releases=[{'tag_name':tag,'draft':False,'published_at':'2026-11-02T00:00:00Z',
+            'html_url':BASE+'/releases/tag/'+tag,'assets':[{'state':'uploaded','name':'fixture.exe','digest':'sha256:'+build['sha256']}]}]
+        result=self.derive();self.assertTrue(result['latest_release']['asset_matches_manifest'])
+        self.assertTrue(result['latest_release']['safety_hold']);self.assertIsNone(result['latest_release']['download_url'])
+        if shutil.which('node'):
+            js='global.window={INITIAL_PRODUCT:'+json.dumps(result)+'};global.document={querySelectorAll:()=>[]};global.location={protocol:"file:"};'+(ROOT/'site/product.js').read_text(encoding='utf-8')+';process.stdout.write(window.LumaForgeProduct.render());'
+            rendered=subprocess.run(['node'],input=js,encoding='utf-8',capture_output=True,check=True).stdout
+            self.assertIn('Distribución bloqueada por seguridad de datos',rendered)
+            self.assertNotIn('Descarga autorizada',rendered)
+        self.manifest['distribution_safety_evidence']['path']='docs/evidence/no-such-safety-evidence.json'
+        self.assertIsNone(self.derive()['latest_release']['download_url'])
+
+    def test_preventive_safety_evidence_never_substitutes_release_or_human_approval(self):
+        # Future qualified evidence is a test fixture, never a real acceptance.
+        self.assertFalse(json.loads((ROOT/'docs/evidence/INCIDENT_036_QA.json').read_bytes())['data_safety_validated'])
+        build=next(b for b in self.derive()['versions'] if not b['quarantined'] and b['dirty'] is False)
+        tag='v'+build['version']
+        self.releases=[{'tag_name':tag,'draft':False,'published_at':'2026-11-03T00:00:00Z',
+            'html_url':BASE+'/releases/tag/'+tag,'assets':[{'state':'uploaded','name':'fixture.exe','digest':'sha256:'+build['sha256']}]}]
+        original=product.evidence
+        with patch.object(product,'evidence',side_effect=lambda root,proof:True if proof.get('field')=='data_safety_validated' else original(root,proof)):
+            result=self.derive();self.assertFalse(result['latest_release']['safety_hold'])
+            self.assertIsNone(result['latest_release']['download_url'])
+            self.issue(62)['labels']=[{'name':'release-approved:'+tag}]
+            result=self.derive();self.assertIsNotNone(result['latest_release']['download_url'])
+            self.assertEqual(result['metrics']['human']['passed'],0)
+        self.assertTrue(self.derive()['latest_release']['safety_hold'])
 
     def test_public_projection_drops_bodies_emails_tokens_and_paths(self):
         i=self.issue(67);i.update(title=r'C:\Users\private-person\file',body='github_pat_secret-value',labels=[{'name':'needs-human'}])
@@ -204,15 +272,16 @@ class ProductTests(unittest.TestCase):
     def test_render_escapes_html_and_disables_unapproved_downloads(self):
         d=self.derive();d['features'][0]['title']='<img src=x onerror=alert(1)>'
         d['features'][0]['issue_url']='javascript:alert(1)'
-        js='global.window={INITIAL_PRODUCT:'+json.dumps(d)+'};global.document={querySelectorAll:()=>[]};global.location={protocol:"file:"};'+(ROOT/'site/product.js').read_text()+';process.stdout.write(window.LumaForgeProduct.render());'
+        js='global.window={INITIAL_PRODUCT:'+json.dumps(d)+'};global.document={querySelectorAll:()=>[]};global.location={protocol:"file:"};'+(ROOT/'site/product.js').read_text(encoding='utf-8')+';process.stdout.write(window.LumaForgeProduct.render());'
         rendered=subprocess.run(['node'],input=js,encoding='utf-8',capture_output=True,check=True).stdout
         self.assertIn('&lt;img',rendered);self.assertNotIn('<img src=x',rendered)
         self.assertNotIn('href="javascript:',rendered);self.assertNotIn('Descarga autorizada',rendered)
         self.assertIn('Ninguna release publicada',rendered)
+        self.assertIn('Retirado por incidente de datos',rendered)
 
     @unittest.skipUnless(shutil.which('node'),'Node unavailable')
     def test_render_missing_data_and_refresh_failure_keep_last_snapshot(self):
-        source=(ROOT/'site/product.js').read_text()
+        source=(ROOT/'site/product.js').read_text(encoding='utf-8')
         js='global.window={};global.document={querySelectorAll:()=>[]};global.location={protocol:"https:"};global.fetch=async()=>({ok:true,json:async()=>({schema_version:1,features:[],metrics:{}})});'+source+';window.LumaForgeProduct.refresh(()=>process.stdout.write(window.LumaForgeProduct.render()));'
         self.assertIn('Sin datos',subprocess.run(['node'],input=js,encoding='utf-8',capture_output=True,check=True).stdout)
         js='global.window={INITIAL_PRODUCT:'+json.dumps(self.derive())+'};global.document={querySelectorAll:()=>[]};global.location={protocol:"https:"};global.fetch=async()=>{throw Error("offline")};'+source+';window.LumaForgeProduct.refresh(()=>process.stdout.write(window.LumaForgeProduct.render()));'

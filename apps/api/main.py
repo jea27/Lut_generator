@@ -87,10 +87,10 @@ def measurement():
 
 
 def create_app(data_dir=None):
-    app=FastAPI(title='Color Studio local beta',version='0.3.0-beta.3',
+    app=FastAPI(title='Color Studio local beta',version='0.3.0-beta.5',
                 docs_url=None,redoc_url=None,openapi_url=None)
     default_data=Path(os.environ.get('LOCALAPPDATA',str(Path.home())))/'ColorStudioBetaData' if getattr(sys,'frozen',False) else ROOT/'.lumaforge-local'
-    data=Path(data_dir or os.environ.get('LUMAFORGE_DATA_DIR',default_data)).resolve()
+    data=private_path(Path(data_dir or os.environ.get('LUMAFORGE_DATA_DIR',default_data))).resolve()
     images=private_path(data,'images'); presets=private_path(data,'presets')
     images.mkdir(parents=True,exist_ok=True); presets.mkdir(parents=True,exist_ok=True)
     session=secrets.token_urlsafe(32)
@@ -156,7 +156,7 @@ def create_app(data_dir=None):
         return image_io.decode(path_for(identifier,images,'.png').read_bytes(),max_side=size)
 
     @app.get('/api/health')
-    def health(): return {'version':'0.3.0-beta.3','offline_processing':True,'domain':'encoded-sRGB-D65'}
+    def health(): return {'version':'0.3.0-beta.5','offline_processing':True,'domain':'encoded-sRGB-D65'}
 
     @app.get('/api/capabilities')
     def capabilities():return catalogue()
@@ -180,11 +180,12 @@ def create_app(data_dir=None):
         with LOCK,measurement() as stats:
             payload=file.file.read(32*1024*1024+1)
             if len(payload)>32*1024*1024: raise HTTPException(413,'Maximum upload 32 MiB')
-            if len(list(images.glob('*.png')))>=32: raise HTTPException(409,'32 local images maximum; clear temporary images first')
+            if len(list(images.glob('*.png')))>=32: raise HTTPException(409,'32 local images maximum; deletion is disabled for data protection')
             rgb,alpha,notes=image_io.decode(payload)
             analysis=engine.analyze(rgb,alpha)
             identifier=str(uuid.uuid4())
-            atomic_bytes(private_path(data,'images',identifier+'.png'),image_io.encode(rgb,alpha))
+            try:atomic_bytes(private_path(data,'images',identifier+'.png'),image_io.encode(rgb,alpha),overwrite=False)
+            except FileExistsError:raise HTTPException(409,'Existing local image preserved; retry import') from None
             result={'id':identifier,'width':rgb.shape[1],'height':rgb.shape[0],'has_alpha':alpha is not None,
                     'notes':notes,'analysis':analysis,'preview_url':f'/api/images/{identifier}/preview'}
         return {**result,'metrics':stats}
@@ -258,7 +259,8 @@ def create_app(data_dir=None):
             recipe=engine.validate_recipe(body.recipe)
             identifier=str(uuid.uuid4()); record={'id':identifier,'name':body.name.strip(),'group':body.group.strip(),'recipe':recipe.model_dump()}
             if not record['name']:raise ValueError('Preset name cannot be empty')
-            atomic_json(private_path(data,'presets',identifier+'.json'),record)
+            try:atomic_json(private_path(data,'presets',identifier+'.json'),record,overwrite=False)
+            except FileExistsError:raise HTTPException(409,'Existing local preset preserved; retry save') from None
         return record
 
     @app.put('/api/presets/{identifier}')
@@ -316,15 +318,13 @@ def create_app(data_dir=None):
 
     @app.delete('/api/presets/{identifier}')
     def delete_preset(identifier:str):
-        with LOCK: path_for(identifier,presets,'.json').unlink()
-        return {'removed':True}
+        # Session authentication is not proof of informed deletion consent.
+        # Incident containment: no purge/cleanup bypass or automatic fallback.
+        raise HTTPException(423,'PRIVATE_DATA_DELETION_DISABLED')
 
     @app.delete('/api/images')
     def clear_images():
-        with LOCK:
-            if jobs.active():raise HTTPException(409,'Cancel the active batch before clearing images')
-            for path in images.glob('*.png'): private_path(data,'images',path.name).unlink()
-        return {'removed':True,'presets_preserved':True}
+        raise HTTPException(423,'PRIVATE_DATA_DELETION_DISABLED')
 
     dist=ROOT/'apps/web/dist'
     if dist.is_dir(): app.mount('/',StaticFiles(directory=dist,html=True),name='web')

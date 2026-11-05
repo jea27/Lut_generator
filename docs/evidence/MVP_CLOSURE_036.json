@@ -1,0 +1,126 @@
+{
+  "schema": "color-studio-mvp-closure-v1",
+  "observed_on": "2026-11-05",
+  "application_version": "0.3.0-beta.5",
+  "application_source": "29fb77ac8c4c279e83381e97cdf6769671f40160",
+  "task": "COL-036",
+  "PR": 90,
+  "blockers": [
+    {
+      "id": "storage-incident",
+      "issue": 57,
+      "priority": "P0",
+      "categories": [
+        "AI-solvable",
+        "automated-tests",
+        "Windows-environment",
+        "human-decision"
+      ],
+      "state": "open",
+      "next": "Run isolated native upgrade/failure/preservation cycle, examine evidence and accept residual risk; historical actor unknown"
+    },
+    {
+      "id": "vm-cycle",
+      "issue": 57,
+      "priority": "P0",
+      "categories": [
+        "automated-tests",
+        "Windows-environment"
+      ],
+      "state": "prepared_not_executed",
+      "next": "Operator runs qa_vm_assistant in host administrative session with guest credentials; checkpoints unchanged"
+    },
+    {
+      "id": "intermittent-fixture",
+      "issue": 57,
+      "priority": "P0",
+      "categories": [
+        "AI-solvable",
+        "automated-tests"
+      ],
+      "state": "unresolved",
+      "next": "Preserve errno/winerror and synthetic tree on next occurrence; successful repetitions do not resolve earlier error"
+    },
+    {
+      "id": "creator-pro-planner-acceptance",
+      "issue": 87,
+      "priority": "P0",
+      "categories": [
+        "Windows-environment",
+        "human-decision"
+      ],
+      "state": "pending_visual_review",
+      "next": "Use existing manual checklist, no automatic acceptance from API tests"
+    },
+    {
+      "id": "external-lut-import",
+      "issue": 59,
+      "priority": "P0",
+      "categories": [
+        "Windows-environment",
+        "external-rights"
+      ],
+      "state": "not_run",
+      "next": "Resolve official free edition and real editor test; Adobe only with valid installation/license"
+    },
+    {
+      "id": "redistribution-privacy",
+      "issue": 60,
+      "priority": "P0",
+      "categories": [
+        "AI-solvable",
+        "human-decision",
+        "external-rights"
+      ],
+      "state": "inventory_prepared_acceptance_pending",
+      "next": "Review 289 input entries/notices, Microsoft terms, own license and privacy/brand"
+    },
+    {
+      "id": "five-person-pilot",
+      "issue": 61,
+      "priority": "P0",
+      "categories": [
+        "human-decision",
+        "external-rights"
+      ],
+      "state": "blocked_by_technical_and_owner_gates",
+      "next": "No contact or distribution; existing five unassigned profiles and feedback form retained"
+    },
+    {
+      "id": "commercial-release",
+      "issue": 62,
+      "priority": "P1",
+      "categories": [
+        "human-decision",
+        "external-rights"
+      ],
+      "state": "NO-GO",
+      "next": "Validate commercial P0, pricing, rights, support/tax terms and explicit launch decision; no payments"
+    }
+  ],
+  "vm_cycle_completed": false,
+  "vm_available_operator_reported": true,
+  "VM_control_verified_by_agent": false,
+  "HyperV_commands_present": true,
+  "host_vm_query": "failed_in_non_elevated_session",
+  "shared_folders_enabled": false,
+  "checkpoint_changed": false,
+  "guest_credentials_received": false,
+  "technical_automation_accepted": false,
+  "human_accepted": false,
+  "external_beta": "NO-GO",
+  "commercial": "NO-GO",
+  "commercial_documents": [
+    "docs/BETA_COMERCIAL.md",
+    "docs/BETA_QA_EXTERNA.md",
+    "docs/PRUEBA_CREATOR_PRO_PLANNER.md",
+    "docs/BETA_RELEASE_NOTES.md"
+  ],
+  "input_license_inventory": {
+    "components": 289,
+    "without_notices": 0,
+    "root_own_code_license_present": false,
+    "human_legal_approval": false
+  },
+  "scope": "Preparation and host synthetic infrastructure checks. No fabricated guest, editor, interview or research results."
+}

@@ -123,3 +123,13 @@ Continuación aislada codex/COL-036-runtime-oficial. No fusionar, approved, beta
 externa/pública, venta, compras ni habilitar virtualización. Una VM limpia puede
 usarse si está disponible y autorizada; de lo contrario preparar pasos humanos.
 Edición real Adobe/Resolve y GO externos siguen pendientes de pruebas efectivas.
+
+## QA interna beta3 · autorización 01-11-2026
+
+El usuario autoriza investigar/corregir actualización directa, comprobar host para
+VM Windows11 con ISO Microsoft/licencia o evaluación válida y usar Resolve gratuito
+oficial. Primero recursos/virtualización; no tocar particiones, reinstalar host ni
+desactivar protecciones. La disponibilidad del entorno/operador sigue por confirmar.
+Registro con datos personales, elevación/reinicio del host y recursos insuficientes
+requieren intervención real del operador. No inferir licencia de Adobe por instalación.
+La autorización no concede GO externo/venta, merge, pagos ni publicación de binarios.
