@@ -695,3 +695,31 @@ Solicitud67 actualizada con7campos y VM concreta; aviso41650561917 success y bot
 @jea27 en67#issuecomment-6605944403. No nueva confirmación física. Sin toggles de
 needs-human ni Issue duplicada; no repetir aviso. Algunos sync cancelados en cola
 sin steps, verificar despliegue final. PR90 sigue borrador; incertidumbre y NO-GO.
+
+
+## 05-11-2026 · COL036 · cierre MVP y QA asistida de VM existente
+
+Usuario confirma VMWindows11Pro/HyperV con checkpoints. Cmdlets presentes;
+Get-VM falla en contexto no elevado y no hay consola accesible. No modificación
+administrativa ni checkpoint. Preparado asistente PowerShellDirect con identidad
+BIOS/guest, kitSHA, selección/atestación checkpoint, sin shares/credenciales guardadas.
+Ciclo guest prepara semillaAPI3, baselineNTFS, bloqueo Win32/fracaso nativo, retry
+update5, API/reinicio/cancelación, fixtures, red guest real/finally y desinstalación.
+No ejecutado en guest. La confirmación del operador no se confunde con verificación
+automática del contenido del checkpoint ni con aprobación de producto.
+
+Cliente nuevo probado por HTTP real con runtime empaquetado beta5, fuente29fb:
+2pases semilla/reinicio, modo Creator/Pro byteigual, receta/presets,LUT sin óptica,
+Planner/incertidumbre/fuentes y cancelación realPASS. Sintéticos768x1024, nada de
+fotos personales ni AppData real. No prueba GUI ni Windows limpio.
+
+4tests nuevos primero y suite164/3omitidos correctos; nueva prueba de hash host
+falló porque WindowsPowerShell5 heredaba PSModulePath7 y ocultaba Get-FileHash.
+Test corregido con entorno propio del hijo, sin instalaciones/cambios globales;
+5tests focales correctos. Regresión adicional comprueba captura de fallo inesperado
+antes de limpiar el fixture. Cause histórica e intermitente no resueltas.
+
+MVP_CLOSURE_036 clasifica8bloqueos; manifiesto añade evidencias/tests/huellas de
+herramientas de QA, sin aprobación. Preparación comercial existente conciliada:
+no duplicar feedback/guías,49€ de COL005 conserva significado,0respuestas inventadas.
+Falta licencia propia y decisiones humanas/legales. NoGO beta externa/venta.

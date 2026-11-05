@@ -24,6 +24,8 @@ def prepare(artifact, output, previous=None):
     if private.resolve()!=private.absolute() or output.resolve()!=output or not output.is_relative_to(private) or output==private:
         raise ValueError('QA output must be an unlinked private workspace child')
     if output.exists() or output.with_suffix('.zip').exists():raise ValueError('Preserve existing kits; choose a new output')
+    if subprocess.check_output(['git','status','--porcelain','--untracked-files=normal'],cwd=ROOT):
+        raise ValueError('Commit QA tools and documents before creating a reproducible handoff')
     record=json.loads(artifact.read_bytes())
     if (record.get('dirty') is not False or not record.get('build_origin_gate_passed') or not record.get('payload_audit_passed')
             or record.get('nsis_full_audit')!='passed' or not re.fullmatch('[a-f0-9]{40}',record.get('source',''))):
@@ -37,6 +39,8 @@ def prepare(artifact, output, previous=None):
     shutil.copyfile(installer,output/'candidate.exe')
     for source,destination in [
         ('scripts/qa_guest_checks.ps1','qa_guest_checks.ps1'),
+        ('scripts/qa_vm_cycle.ps1','qa_vm_cycle.ps1'),
+        ('scripts/qa_guest_api.py','scripts/qa_guest_api.py'),
         ('scripts/qa_windows_preservation.ps1','qa_windows_preservation.ps1'),
         ('scripts/qa_windows_clean.ps1','qa_windows_clean.ps1'),
         ('scripts/reproduce_private_deletion.py','scripts/reproduce_private_deletion.py'),
@@ -52,9 +56,9 @@ def prepare(artifact, output, previous=None):
     import numpy as np
     from packages.colour_core import engine,image_io
     inputs=output/'inputs';inputs.mkdir()
-    x=np.linspace(0,1,256,dtype='float32')[None,:,None]
-    y=np.linspace(0,1,192,dtype='float32')[:,None,None]
-    source=np.broadcast_to(.65*x+.35*y,(192,256,3)).copy()
+    y=np.linspace(0,1,768,dtype='float32')[:,None,None]
+    x=np.linspace(0,1,1024,dtype='float32')[None,:,None]
+    source=np.broadcast_to(.65*x+.35*y,(768,1024,3)).copy()
     reference=np.clip(source*np.array([1.1,.9,.75],dtype='float32')+.03,0,1)
     (inputs/'source.png').write_bytes(image_io.encode(source))
     (inputs/'reference.png').write_bytes(image_io.encode(reference))
@@ -68,11 +72,18 @@ def prepare(artifact, output, previous=None):
         if previous.is_symlink() or sha(previous)!=prior['sha256']:raise ValueError('Previous installer is not the pinned beta3')
         shutil.copyfile(previous,output/'previous.exe')
     files={p.relative_to(output).as_posix():sha(p) for p in output.rglob('*') if p.is_file()}
-    manifest={'schema':'color-studio-private-vm-kit-v1','version':record['version'],'source':record['source'],
+    audit=json.loads((private/'beta-nsis-audit.json').read_bytes())
+    if audit['installer_sha256']!=record['sha256']:raise ValueError('NSIS audit is not bound to this candidate')
+    manifest={'schema':'color-studio-private-vm-kit-v2','version':record['version'],'source':record['source'],
         'installer_sha256':record['sha256'],'previous_installer_sha256':prior['sha256'] if prior else None,
         'runtime_manifest_sha256':record['runtime_manifest_sha256'],
         'installer_manifest_sha256':record['installer_manifest_sha256'],
+        'previous_version':prior['version'] if prior else None,
+        'previous_runtime_manifest_sha256':prior['runtime_manifest_sha256'] if prior else None,
+        'previous_installer_manifest_sha256':prior['installer_manifest_sha256'] if prior else None,
+        'candidate_uninstaller_sha256':audit['native_components']['uninstaller']['sha256'],
         'tool_source':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+        'tool_dirty':False,
         'legacy_source_commit':LEGACY,'legacy_source_sha256':LEGACY_SHA256,
         'files':files,'clean_windows_verified':False,'native_capture_verified':False,'human_accepted':False,
         'external_beta':'NO-GO','commercial':'NO-GO','scope':'Private synthetic QA handoff; no historical incident evidence or personal media'}

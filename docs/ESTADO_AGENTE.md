@@ -1,3 +1,61 @@
+# Checkpoint vigente · cierre MVP/COL-036 · 05-11-2026
+
+Rama codex/COL-036-actualizacion-segura, PR90borrador, Issue57 y acción67.
+Base3514146 preservada. Main y worktree de Project OS no modificados; su carpeta
+functions/ no versionada es ajena y no se toca. No merge/cierre/approved/release.
+
+Nuevo alcance autorizado: cierre técnico/QA y preparación comercial, con VM
+ColorStudio-QA-Win11 ya instalada por el usuario y checkpoints existentes. Hyper-V
+está presente, pero Get-VM falla en esta sesión no elevada; no hay consola VM abierta.
+No cambiar permisos, features, checkpoints ni levantar NO-GO para sortear ese bloqueo.
+
+Implementado: asistente host qa_vm_assistant.ps1 y ciclo guest qa_vm_cycle.ps1.
+SHA/ZIP/miembros, VMId/BIOSUUID frente a SMBIOS, checkpoint existente elegido y
+confirmación del estado limpio por operador. Solo PowerShell Direct y kit sintético;
+no shares/WinRM/red/credenciales guardadas. Instala3, prueba API/semilla/baseline,
+provoca fallo real con handle Win32, verifica preservación y actualización directa5,
+API/reinicio/cancelación/fixtures, desconecta adaptadores guest con restauración en
+finally, y desinstala comprobando datos. No se ha ejecutado dentro de la VM.
+
+Nuevo cliente HTTP estándar qa_guest_api.py probado contra runtime extraído beta5:
+semilla y reinicio reales con imágenes sintéticas768x1024, Creator/Pro preservan
+bytes; preview igual al export de ese tamaño, presets/receta,LUT solo color, Planner
+con fuentes y cancelación realPASS. No prueba GUI instalada ni calidad estética.
+Suite focal5tests y regresión de diagnóstico de instalador correctas. Primer pase
+MVP164/3omitidos correcto; suite final166 y seguimiento pendientes tras commit.
+El venv existente se utiliza sin instalar dependencias. El hijo WindowsPowerShell5
+necesita inicializar su PSModulePath; el test elimina únicamente la variable heredada
+PS7 en el proceso hijo. No cambia módulos ni variables globales.
+
+Intermitente: la causa del antiguo directory_switch_failed sigue sin demostrar.
+El harness ahora conserva árbol sintético+errno/winerror antes del cleanup si reaparece.
+Una inyección controlada verifica esa conservación; stress acotado100casos en curso.
+No atribuir al instalador/antivirus los4borrados históricos. Copias2PNG+2presets+
+preferencias siguen privadas; no restaurar, subir o ensayar sobre AppData real.
+
+Inventario de8bloqueos y categorías en MVP_CLOSURE_036.json. Inventario289avisos,
+0ausentes, pero falta licencia propia de raíz y aceptación de derechos/titular.
+Se corrigen documentos existentes: beta5 actual, bootstrapper WebView2 puede
+necesitar red, DELETE/limpieza deshabilitados, guías/feedback ya existentes, sin
+nuevos precios ni entrevistas. Estímulo49€ de COL005 se conserva, no precio aprobado.
+Preparar cinco perfiles no acredita10–20equipos históricos de COL041.
+
+Reanudar: git status; gh pr view90/checks; QA_VM_ASISTIDA.md. Primero commit de
+herramientas, tests y manifiesto, después generar kitv2 con herramientas en Git limpio
+hacia .lumaforge-local/vm-qa-beta5-cycle-20261105 (preservar v1). No recompilar app:
+bytes apps/packages/packaging siguen source29fb77a beta5 SHA789983…8bb69. Verificar
+kit completo y producir recibo privado closure-20261105/kit-receipt.json. Ejecutar
+MVP/embebido/seguimiento y escaneo. Actualizar57/60/61/62 y coordinar73 sin duplicar
+Issues ni avisos. La única nueva acción humana es ejecutar el asistente desde host
+con acceso Hyper-V y credenciales locales guest; no reenviar la antigua petición
+«preparar VM» ya cumplida. CapturaProcmon/Resolve/UI nativas siguen NOT_RUN.
+
+Beta externa y venta **NO-GO**. Todas las aceptaciones humanas siguen pendientes.
+
+---
+
+## Historial conservado (el checkpoint vigente está arriba)
+
 # Checkpoint vigente · COL-036 · candidato interno beta.5 · 03-11-2026
 
 ## Tarea, rama y límites

@@ -526,16 +526,23 @@
         "tests_mvp/test_loader_audit.py",
         "tests_mvp/test_private_store_diagnosis.py",
         "tests_mvp/test_data_preservation.py",
-        "tests_mvp/test_atomic_storage.py"
+        "tests_mvp/test_atomic_storage.py",
+        "tests_mvp/test_vm_cycle.py",
+        "tests_mvp/test_vm_qa_kit.py"
       ],
       "evidence": [
         {
           "path": "docs/evidence/INCIDENT_036_QA.json",
           "field": "data_safety_validated",
           "equals": true
+        },
+        {
+          "path": "docs/evidence/MVP_CLOSURE_036.json",
+          "field": "vm_cycle_completed",
+          "equals": true
         }
       ],
-      "acceptance": "Paquete Windows autónomo con conservación de datos demostrada. Incidente de borrado P0 abierto; contención en PR90, candidato retirado y distribución NO-GO hasta cerrar causa, QA y revisión humana.",
+      "acceptance": "Paquete Windows con conservación demostrada. Incidente P0 abierto; candidato en cuarentena. Requiere QA nativa, evaluación preventiva y aceptación humana del riesgo residual; no se atribuye una causa histórica desconocida.",
       "review": {
         "steps": [
           "Ejecutar protocolo de QA en el equipo de prueba autorizado.",
@@ -577,7 +584,11 @@
         "scripts/audit_nsis_payload.py",
         "packaging/nsis/bundle.conf.json",
         "apps/api/storage.py",
-        "apps/api/jobs.py"
+        "apps/api/jobs.py",
+        "scripts/qa_vm_assistant.ps1",
+        "scripts/qa_vm_cycle.ps1",
+        "scripts/qa_guest_api.py",
+        "scripts/prepare_vm_qa_kit.py"
       ]
     },
     {

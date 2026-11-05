@@ -1,4 +1,4 @@
-Estado de estabilización: ver ESTABILIZACION_03.md y GO_NO_GO_03.md. Microsoft WebView2 tiene diagnósticos/actualizaciones propios; «sin telemetría» se limita al código de LumaForge. El setup beta2 existente todavía contiene el texto anterior. No hay candidato nuevo ni autorización externa.
+Estado vigente05-11-2026: candidato interno beta.5 auditado, PR90borrador. VM Windows11 indicada por el operador; ciclo nativo pendiente de ejecutar. Beta externa y venta NO-GO. Ver QA_VM_ASISTIDA.md y evidencias BETA5_036_*. Microsoft WebView2 tiene diagnósticos/actualizaciones propios; «sin telemetría» se limita al código de LumaForge.
 
 # Preparación comercial · borrador para revisión
 
@@ -101,7 +101,7 @@ son fuentes para presupuesto, no acuerdos ni altas realizadas.
 ## Firma, versiones y distribución
 
 Versionado0.2.0-beta.1, changelog y SHA256 del artefacto. NSIS por usuario no pide
-Python/Node/Rust. WebView2 evergreen offline se empaqueta; no implica que las
+Python/Node/Rust. Se incluye el bootstrapper Evergreen oficial, que necesita red si falta WebView2. No se incluye un runtime WebView2 standalone. Esto no implica que las
 actualizaciones del runtime/Windows/Adobe sean offline. Sin firma Authenticode:
 SmartScreen puede mostrar avisos; no pedir desactivar protecciones ni prometer
 que un certificado elimine cualquier aviso.
@@ -155,9 +155,9 @@ No activar aceptación electrónica hasta revisar texto y registrar su versión.
 
 Editor: JPG/PNG y presets procesados localmente; copias sRGB y resultados en
 %LOCALAPPDATA%/ColorStudioBetaData. Sin cuenta, anuncios, telemetría propia, subida de
-fotos o API externa. El proceso loopback atiende solo el equipo local. Borrar
-temporales desde la aplicación requiere confirmación y no borra originales;
-desinstalar conserva datos privados para evitar pérdida. Informar cómo localizar
+fotos o API externa. El proceso loopback atiende solo el equipo local. Las operaciones de borrado de imágenes/presets y limpieza desde la aplicación están
+bloqueadas por la contención P0. Desinstalar está diseñado para conservar el almacén
+privado separado; su validación nativa en la VM aún está pendiente. Informar cómo localizar
 y retirar presets/jobs/caché tras respaldo, sin borrar imágenes ajenas.
 
 Distribución/soporte/compra futura: identificar responsable, finalidades, base
@@ -182,3 +182,38 @@ para suprimir derechos. [Texto consolidado consumidores](https://www.boe.es/busc
 Revisar RGPD/LOPDGDD, encargados y seguridad para cualquier tratamiento posterior.
 La IA prepara software/borradores y evidencias; titular/asesores aceptan las
 decisiones legales, fiscales, de marca y comerciales. Sin ventas hasta resolverlas.
+
+
+## Preparación de cierre05-11 · sin publicación ni precios aprobados
+
+Guías utilizables: [Creator/Pro/Planner](PRUEBA_CREATOR_PRO_PLANNER.md),
+[primeros pasos](BETA_WINDOWS.md), [cinco recorridos y feedback](BETA_QA_EXTERNA.md),
+[licencias binarias](LICENCIAS_BINARIAS_BETA.md), [QA asistida](QA_VM_ASISTIDA.md).
+No crear otro formulario: se conserva `/feedback/`, JSON offline, sin envío automático.
+El titular elige el canal privado de soporte y los plazos antes de invitar a nadie.
+
+Precio: se mantiene el estímulo49€ de COL005 y sus hipótesis originales; no se
+cambia el cuestionario mientras se recogen respuestas comparables. Creator/Pro
+son dos experiencias sobre el mismo motor, no dos validaciones comerciales.
+Si las entrevistas justifican otra oferta, estudiar pago único y soporte definido;
+no se activa trial, checkout, cuenta, bloqueo de exports ni licencia remota.
+
+Para solicitar beta de cinco personas: primero conservación/actualización/recuperación
+nativa y offline reales, UI revisada, compatibilidad/límites declarados, inventario
+conciliado, titular/canal/retención acordados y permiso explícito. Cinco recorridos
+no completan el objetivo histórico10–20 equipos de COL041 ni las12 entrevistas.
+Venta requiere además aceptación de calidad diversa, compatibilidad efectiva,
+marca/licencia propia, condiciones, soporte y decisión fiscal/legal. No hay fichero
+LICENSE del código propio en la raíz; una URL pública no concede derechos de uso.
+
+Métricas a registrar sin inventar umbrales aprobados: hashes intactos antes/después,
+casos PASS/FAIL/BLOCKED/NOT_RUN, dimensiones/ICC, diferencias PNG/preview a igual
+resolución, coherencia LUT color-only, cancelación efectivamente ejercitada, tiempos
+por caso y RSS muestreada. La preferencia visual y la intención de pago requieren
+personas reales; no se sustituyen por gradientes ni pruebas automatizadas.
+
+La identificación del responsable y el tratamiento de los datos de soporte deben
+revisarse según [AEPD](https://www.aepd.es/preguntas-frecuentes/2-tus-obligaciones-como-responsable-del-tratamiento/8-responsable-y-encargado-del-tratamiento/FAQ-0251-como-se-si-soy-responsable-o-encargado).
+El alcance fiscal/OSS depende de las operaciones y del titular; consultar
+[AEAT](https://sede.agenciatributaria.gob.es/Sede/iva/iva-comercio-electronico/cuestiones-generales.html).
+Fuentes reconsultadas05-11-2026; borrador pendiente de revisión, no asesoramiento ni alta.

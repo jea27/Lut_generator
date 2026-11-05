@@ -15,7 +15,7 @@ function Test-LfUnlinked([string]$lfPath){
 }
 Test-LfUnlinked $lfKit
 $lfManifest=Get-Content -LiteralPath (Join-Path $lfKit 'kit-manifest.json') -Raw | ConvertFrom-Json
-if($lfManifest.schema -ne 'color-studio-private-vm-kit-v1'){throw 'Unknown kit schema'}
+if($lfManifest.schema -notin @('color-studio-private-vm-kit-v1','color-studio-private-vm-kit-v2')){throw 'Unknown kit schema'}
 foreach($lfFile in $lfManifest.files.psobject.Properties){
  if([IO.Path]::IsPathRooted($lfFile.Name) -or $lfFile.Name -match '(^|[\\/])\.\.([\\/]|$)|:'){throw 'Unsafe kit member'}
  $lfPath=Join-Path $lfKit $lfFile.Name;Test-LfUnlinked $lfPath

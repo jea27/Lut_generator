@@ -1,3 +1,12 @@
+> Vigente05-11: **0.3.0-beta.5**, candidato interno en cuarentena, fuente29fb77a limpia.
+> SHA256789983ea5c8e71b92271b91e2fc7a76ad6d6fef3272ac5ac24d96ac4c308bb69,
+> 48.473.299bytes. PR90borrador; NO-GO beta externa/venta. Sin release publicada.
+> Contención de borrados, escrituras sin reemplazo, rutas enlazadas rechazadas y
+> recuperación que conserva backup/diario/destino sustituto. Causa histórica abierta.
+> El nuevo kit v2 automatiza QA, sin cambiar los bytes de esta aplicación.
+> VM declarada disponible; ejecución nativa pendiente. Ver QA_VM_ASISTIDA.md.
+> Las notas siguientes se conservan como **historial**, no versión vigente.
+
 > Vigente:0.3.0-beta.2 desde a452a5f (clean),266211731 bytes.
 > SHA256 3e3851ee4f3c67608d3802ad167572375b130eeafa57165d26379cd26797714f.
 > Corrige feedback nativo y migración UI de presets v1. NOTAS beta1 conservadas

@@ -11,6 +11,9 @@ import subprocess
 from pathlib import Path
 import tempfile
 import unittest
+import shutil
+import time
+import uuid
 from unittest.mock import patch
 
 from apps.desktop import installer_helper as installer
@@ -96,8 +99,19 @@ class InstallerTransactionTests(unittest.TestCase):
             result=original(path,destination)
             if path==self.stage:raise SyntheticInterruption('Synthetic interruption after directory switch')
             return result
-        with patch.object(Path,'rename',new=rename),self.assertRaises(SyntheticInterruption):
-            installer.commit(self.stage,self.target,expected)
+        try:
+            with patch.object(Path,'rename',new=rename),self.assertRaises(SyntheticInterruption):
+                installer.commit(self.stage,self.target,expected)
+        except installer.InstallError as error:
+            # Preserve only this test-owned synthetic tree before unittest cleanup.
+            # A successful rerun does not explain an earlier filesystem error.
+            evidence=ROOT/'.lumaforge-local'/('installer-unexpected-'+uuid.uuid4().hex)
+            shutil.copytree(self.root,evidence,symlinks=True)
+            (evidence/'failure.json').write_text(json.dumps({'schema':'synthetic-installer-failure-v1',
+                'test':self.id(),'observed_unix_ns':time.time_ns(),'error':error.report(),
+                'target_exists':self.target.exists(),'stage_exists':self.stage.exists(),
+                'historical_actor_identified':False,'scope':'Only this owned synthetic fixture; never actual application data'},indent=2)+'\n',encoding='utf-8')
+            raise
         self.assertTrue(self.target.is_dir())
         self.assertTrue(installer.journal_path(self.target).is_file())
 
@@ -264,6 +278,28 @@ class InstallerTransactionTests(unittest.TestCase):
         self.assertEqual(installer.recover(self.target),'old_not_moved')
         self.assertEqual(snapshot(self.target),before)
         installer.verify(self.target,expected);self.assert_data_untouched()
+
+    def test_unexpected_switch_error_retains_a_synthetic_diagnostic_before_cleanup(self):
+        expected=self.package(self.stage);original=Path.rename
+        before=set((ROOT/'.lumaforge-local').glob('installer-unexpected-*'))
+        def deny(path,destination):
+            if path==self.stage:raise PermissionError(errno.EACCES,'Controlled synthetic directory denial')
+            return original(path,destination)
+        with patch.object(Path,'rename',new=deny),self.assertRaises(installer.InstallError):
+            self.interrupt_after_new_move(expected)
+        added=set((ROOT/'.lumaforge-local').glob('installer-unexpected-*'))-before
+        self.assertEqual(len(added),1);evidence=added.pop()
+        try:
+            record=json.loads((evidence/'failure.json').read_bytes())
+            self.assertEqual(record['error']['phase'],'directory_switch_failed')
+            self.assertEqual(record['error']['errno'],errno.EACCES)
+            self.assertEqual(snapshot(evidence/'External Data QA'),self.original_data)
+            self.assert_data_untouched()
+        finally:
+            # Delete only the diagnostic produced by this known synthetic injection.
+            self.assertEqual(evidence.resolve().parent,(ROOT/'.lumaforge-local').resolve())
+            self.assertEqual(record['test'],self.id())
+            shutil.rmtree(evidence)
 
     def test_changed_backup_personal_file_is_not_restored_automatically(self):
         self.old_package(extras=True);expected=self.package(self.stage);backup=self.interrupt_after_old_move(expected)
