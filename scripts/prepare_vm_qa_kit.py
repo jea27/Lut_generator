@@ -28,6 +28,15 @@ def previous_identity(record,audit):
             'previous_launcher_sha256':audit['native_components']['launcher']['sha256']}
 
 
+def verify_document_links(folder):
+    for document in folder.glob('*.md'):
+        for target in re.findall(r'\]\(([^)]+)\)',document.read_text(encoding='utf-8')):
+            if target.startswith(('https:','http:','#')):continue
+            destination=(document.parent/target.split('#',1)[0]).resolve()
+            if not destination.is_relative_to(folder.resolve()) or not destination.is_file():
+                raise ValueError('Missing or escaping offline QA documentation link')
+
+
 def prepare(artifact, output, previous=None):
     private=ROOT/'.lumaforge-local'
     output=output.absolute()
@@ -62,10 +71,12 @@ def prepare(artifact, output, previous=None):
         ('docs/evidence/INCIDENT_036_TOOL_PREP.json','INCIDENT_036_TOOL_PREP.json'),
         ('docs/QA_BETA5_INTERNA.md','QA_BETA5_INTERNA.md'),
         ('docs/PRUEBA_CREATOR_PRO_PLANNER.md','PRUEBA_CREATOR_PRO_PLANNER.md'),
-        ('docs/QA_VM_ASISTIDA.md','LEEME.md')]:
+        ('docs/QA_VM_ASISTIDA.md','QA_VM_ASISTIDA.md')]:
         path=ROOT/source
         if path.is_symlink() or not path.resolve().is_relative_to(ROOT):raise ValueError('Linked QA source')
         target=output/destination;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(path,target)
+    (output/'LEEME.md').write_text('# QA privada beta.5\n\nEmpieza por [QA_VM_ASISTIDA.md](QA_VM_ASISTIDA.md).\nSolo VM aislada y datos sintéticos; beta externa y venta NO-GO.\n',encoding='utf-8')
+    verify_document_links(output)
     import numpy as np
     from packages.colour_core import engine,image_io
     inputs=output/'inputs';inputs.mkdir()

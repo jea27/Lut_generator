@@ -45,6 +45,14 @@ class VmKitSafetyTests(unittest.TestCase):
         audit['installer_sha256']='0'*64
         with self.assertRaises(ValueError):kit.previous_identity(record,audit)
 
+    def test_offline_guide_links_must_exist_and_stay_inside_the_kit(self):
+        guide=self.root/'LEEME.md';guide.write_text('[Start](guide.md)\n[Microsoft](https://learn.microsoft.com/)')
+        with self.assertRaises(ValueError):kit.verify_document_links(self.root)
+        (self.root/'guide.md').write_text('Synthetic documentation')
+        kit.verify_document_links(self.root)
+        guide.write_text('[Outside](../private.md)')
+        with self.assertRaises(ValueError):kit.verify_document_links(self.root)
+
     def test_pinned_legacy_source_works_without_git_and_rejects_tampering(self):
         raw=probe.legacy_source('apps/api/main.py')
         folder=self.root/'qa/legacy';folder.mkdir(parents=True);source=folder/'main.py';source.write_bytes(raw)
