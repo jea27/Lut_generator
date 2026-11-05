@@ -51,8 +51,8 @@ con acceso Hyper-V y credenciales locales guest; no reenviar la antigua petició
 
 Beta externa y venta **NO-GO**. Todas las aceptaciones humanas siguen pendientes.
 
-Resultado de cierre: kit22archivos+manifiesto,95.299.557bytes; SHA256
-a304c5f643c67a3cacafc6505c8b99e1d10f5460fbe5e6c9bd60d0eaf2b0a1f4.
+Resultado de cierre: kit23archivos+manifiesto,95.299.851bytes; SHA256
+c3521f63507502d1b76e18d304246947d08514c938571378beb6cfe2ae6bc011.
 Recibo privado closure-20261105/kit-receipt.json y QA pública MVP_CLOSURE_036_QA.
 CRC/todos hashes correctos; extractor de host WindowsPowerShell5 pasa con el kit
 real y rechaza traversal/duplicados/absolutos antes de extraer. Runtime embebido167
@@ -63,6 +63,21 @@ real sigue exigiendo web200; solo el fixtureAPIunitario omite ese check. Fallo d
 kit por ausencia legítima de ledgerbeta3 corregido usando launcher/runtime fijados
 al NSIS auditado, sin inventar metadatos. Parcial preservado, no reutilizarlo.
 No ejecutar/recompilar aplicación en host. Se requiere operador para PowerShellDirect.
+
+Último kit: toolsource539a159; recibo closure-20261105/kit-receipt.json. El kit9f
+se conserva como vm-qa-beta5-cycle-20261105-source-9f3702a.zip; NO usarlo para la
+guía visual actual. Se corrigió guía que aún decía beta3/reinstalar y se separan
+almacenes QA/Inicio para no confundir vistas.23miembros y navegaciónoffline verificados.
+Host168/3omitidos correcto, embebido167/3omitidos y nueva regresión de enlaces focal
+correctos; seguimiento135. No más aplicación recompilada ni suite repetida sin cambios.
+Solicitud67 actualizada con comando exacto del host y SHA final. Aviso único
+42014330354 success, bot@jea27 en67#issuecomment-6656140492; recepción física nueva
+no confirmada. No repetir aviso tras cambios de documentación. Coordinado73 y
+actualizadas60/61/62 por comentarios sin crear Issues/aprobar. PR90 sigue borrador.
+No se ha iniciado una sesión PowerShellDirect ni copiaVM. Paso inmediato: operador
+con accesoHyperV ejecuta QA_VM_ASISTIDA, introduce credenciales guest localmente y
+conserva informe privado. Si hay error, diagnosticarlo sin restaurar checkpoints ni
+eliminar pruebas por automatismo. Beta externa y venta NO-GO.
 
 ---
 

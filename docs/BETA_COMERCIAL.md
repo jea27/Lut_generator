@@ -100,7 +100,7 @@ son fuentes para presupuesto, no acuerdos ni altas realizadas.
 
 ## Firma, versiones y distribución
 
-Versionado0.2.0-beta.1, changelog y SHA256 del artefacto. NSIS por usuario no pide
+Versionado semántico: candidato interno actual0.3.0-beta.5, changelog y SHA256 del artefacto. NSIS por usuario no pide
 Python/Node/Rust. Se incluye el bootstrapper Evergreen oficial, que necesita red si falta WebView2. No se incluye un runtime WebView2 standalone. Esto no implica que las
 actualizaciones del runtime/Windows/Adobe sean offline. Sin firma Authenticode:
 SmartScreen puede mostrar avisos; no pedir desactivar protecciones ni prometer

@@ -738,3 +738,14 @@ regresiónlegacy focal, seguimiento135.100repeticionesinstrumentadas pasan sin
 explicar fallo anterior; fixture inesperado se conserva si reaparece. No ejecución
 guest, copiaVM ni cambio decheckpoint. VMMSRunning/GetVMpermiso insuficiente confirmado.
 Actualización nativa, UI, offline real y editores siguen NOT_RUN y NO-GO.
+
+Handoff final: guía visual actualizada a beta5, sin recomendar reinstalación como
+prueba de upgrade. Separados almacenes QA/Inicio para evitar conclusiones entre
+vistas distintas. Verificador de enlacesoffline con regresión; kit23miembros,
+95.299.851bytes, SHA c3521f…bc011, toolsource539a159. Kit9f previo preservado.
+Archivo/hash/extracción WindowsPS5 y enlaces correctos. Host168/3omitidos correcto;
+embebido167/3omitidos anterior más prueba focal de enlaces correcta. No nativeVM.
+Notificaciónúnica42014330354 success, bot@jea27 en67#issuecomment-6656140492; no
+confirmación física nueva. Body67 actualizado al hash final sin volver a disparar
+aviso. Coordinación73 y comentarios60/61/62 publicados; nadie contactado, sin pagos,
+merge, aprobaciones o publicación de instalador. Datos privados recuperados intactos.

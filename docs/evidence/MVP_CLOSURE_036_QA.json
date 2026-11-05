@@ -4,15 +4,15 @@
   "task": "COL-036",
   "PR": 90,
   "application_source": "29fb77ac8c4c279e83381e97cdf6769671f40160",
-  "QA_tool_source": "9f3702af2d705678d82317af02408dcead670486",
+  "QA_tool_source": "539a159346ffae0df93ea9bfc0722296a3d186f1",
   "kit": {
     "version": "0.3.0-beta.5",
     "source": "29fb77ac8c4c279e83381e97cdf6769671f40160",
     "installer_sha256": "789983ea5c8e71b92271b91e2fc7a76ad6d6fef3272ac5ac24d96ac4c308bb69",
-    "kit_zip_sha256": "a304c5f643c67a3cacafc6505c8b99e1d10f5460fbe5e6c9bd60d0eaf2b0a1f4",
-    "kit_zip_bytes": 95299557,
-    "kit_manifest_sha256": "709f173322be16fb2c9e1c1c71189de3d6e549dfff9c614a9fba71fe53b3bd74",
-    "files": 22,
+    "kit_zip_sha256": "c3521f63507502d1b76e18d304246947d08514c938571378beb6cfe2ae6bc011",
+    "kit_zip_bytes": 95299851,
+    "kit_manifest_sha256": "e6017be1fc45031191e0d993bab5eabdd75f2a3000f7638690cbb6de742c6071",
+    "files": 23,
     "previous_installer_included": true,
     "clean_windows_verified": false,
     "native_capture_verified": false,
@@ -25,14 +25,15 @@
     "undeclared_members": 0,
     "Windows_PowerShell5_archive_validation": "passed",
     "traversal_duplicate_and_absolute_members": "rejected_before_extraction",
-    "legacy_beta3_without_ledger": "verified_by_bound_full_NSIS_audit_launcher_and_runtime"
+    "legacy_beta3_without_ledger": "verified_by_bound_full_NSIS_audit_launcher_and_runtime",
+    "offline_document_links": "all_present_inside_kit",
+    "member_count": 23
   },
   "host_tests": {
-    "tests": 166,
+    "tests": 168,
     "failures": 0,
     "errors": 0,
-    "skipped": 3,
-    "additional_legacy_regression": "passed"
+    "skipped": 3
   },
   "embedded_tests": {
     "python": "3.14.10",
@@ -115,5 +116,18 @@
   "data_safety_validated": false,
   "external_beta": "NO-GO",
   "commercial": "NO-GO",
-  "privacy": "No raw incident data, guest UUID, host paths, credentials, real photos, interviews or research responses in this report"
+  "privacy": "No raw incident data, guest UUID, host paths, credentials, real photos, interviews or research responses in this report",
+  "handoff_revision": {
+    "superseded_kit_sha256": "a304c5f643c67a3cacafc6505c8b99e1d10f5460fbe5e6c9bd60d0eaf2b0a1f4",
+    "reason": "Align visual guide with beta5 and separate QA/default stores; verify offline navigation; execution scripts and application unchanged",
+    "prior_kit_preserved_privately": true
+  },
+  "human_action": {
+    "issue": 67,
+    "notification_workflow": "https://github.com/jea27/Lut_generator/actions/runs/42014330354",
+    "workflow_conclusion": "success",
+    "verified_bot_mention": "https://github.com/jea27/Lut_generator/issues/67#issuecomment-6656140492",
+    "one_notification_for_this_blocker": true,
+    "new_physical_phone_receipt_confirmed": false
+  }
 }
