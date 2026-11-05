@@ -36,6 +36,15 @@ class VmKitSafetyTests(unittest.TestCase):
         with self.assertRaises(ValueError):kit.prepare(artifact,target)
         self.assertFalse(target.exists())
 
+    def test_real_beta3_without_transaction_ledger_uses_bound_runtime_and_launcher(self):
+        record=json.loads((ROOT/'docs/evidence/RUNTIME_036_ARTIFACT.json').read_bytes())
+        audit=json.loads((ROOT/'docs/evidence/RUNTIME_036_NSIS.json').read_bytes())
+        identity=kit.previous_identity(record,audit)
+        self.assertIsNone(identity['previous_installer_manifest_sha256'])
+        self.assertEqual(identity['previous_launcher_sha256'],audit['native_components']['launcher']['sha256'])
+        audit['installer_sha256']='0'*64
+        with self.assertRaises(ValueError):kit.previous_identity(record,audit)
+
     def test_pinned_legacy_source_works_without_git_and_rejects_tampering(self):
         raw=probe.legacy_source('apps/api/main.py')
         folder=self.root/'qa/legacy';folder.mkdir(parents=True);source=folder/'main.py';source.write_bytes(raw)

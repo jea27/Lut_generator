@@ -41,11 +41,11 @@ class VmCycleTests(unittest.TestCase):
         data=self.root/'data';out=self.root/'first';out.mkdir()
         original={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in self.inputs.iterdir()}
         with TestClient(create_app(data),base_url='http://127.0.0.1') as client:
-            state,result=exercise(LocalClient(client),self.inputs,out,cancellation=False)
+            state,result=exercise(LocalClient(client),self.inputs,out,cancellation=False,web_required=False)
         private_before={p.relative_to(data).as_posix():p.read_bytes() for p in (data/'images').glob('*')}
         second=self.root/'second';second.mkdir()
         with TestClient(create_app(data),base_url='http://127.0.0.1') as client:
-            restored,after=exercise(LocalClient(client),self.inputs,second,state,cancellation=False)
+            restored,after=exercise(LocalClient(client),self.inputs,second,state,cancellation=False,web_required=False)
         self.assertEqual(restored,state);self.assertEqual(result['png_sha256'],after['png_sha256'])
         self.assertTrue(after['creator_pro_export_equal']);self.assertTrue(after['lut_excludes_optics'])
         self.assertEqual(private_before,{p.relative_to(data).as_posix():p.read_bytes() for p in (data/'images').glob('*')})

@@ -53,10 +53,11 @@ def upload(client,raw):
     uuid.UUID(result['id']);return result
 
 
-def exercise(client, inputs, output, seed=None, cancellation=True):
+def exercise(client, inputs, output, seed=None, cancellation=True, web_required=True):
     """Real API contract checks; callers provide an owned synthetic output folder."""
     from PIL import Image
-    health=client.json('GET','/api/health');client.call('GET','/')
+    health=client.json('GET','/api/health')
+    if web_required:client.call('GET','/')
     token=client.json('GET','/api/session')['csrf']
     client.headers.update({'X-LumaForge-Local':'1','X-Color-Studio-Token':token})
     if seed is None:
@@ -105,7 +106,7 @@ def exercise(client, inputs, output, seed=None, cancellation=True):
             time.sleep(.05)
         cancel='PASS' if job['status']=='cancelled' else 'NOT_EXERCISED' if job['status']=='completed' else 'FAIL'
         assert cancel!='FAIL','Cancellation failed or timed out'
-    return seed,{'version':health['version'],'creator_pro_export_equal':True,'small_preview_export_equal':True,'presets_preserved':2,'recipe_roundtrip':True,'lut_excludes_optics':True,'planner_uncertainty_sources_and_json':True,'cancellation':cancel,'png_sha256':digest(rendered[0]),'cube_sha256':digest(cube),'scope':'Bundled API exercised; GUI interaction and aesthetic acceptance remain pending'}
+    return seed,{'version':health['version'],'web_bundle_served':web_required,'creator_pro_export_equal':True,'small_preview_export_equal':True,'presets_preserved':2,'recipe_roundtrip':True,'lut_excludes_optics':True,'planner_uncertainty_sources_and_json':True,'cancellation':cancel,'png_sha256':digest(rendered[0]),'cube_sha256':digest(cube),'scope':'Bundled API exercised; GUI interaction and aesthetic acceptance remain pending'}
 
 
 def main():

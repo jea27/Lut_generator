@@ -18,6 +18,16 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def previous_identity(record,audit):
+    if (record['version']!='0.3.0-beta.3' or record['sha256']!=audit['installer_sha256']
+            or record['runtime_manifest_sha256']!=audit['runtime_manifest_sha256']):
+        raise ValueError('Previous NSIS audit must be bound to the pinned beta3')
+    return {'previous_version':record['version'],
+            'previous_runtime_manifest_sha256':record['runtime_manifest_sha256'],
+            'previous_installer_manifest_sha256':record.get('installer_manifest_sha256'),
+            'previous_launcher_sha256':audit['native_components']['launcher']['sha256']}
+
+
 def prepare(artifact, output, previous=None):
     private=ROOT/'.lumaforge-local'
     output=output.absolute()
@@ -69,10 +79,11 @@ def prepare(artifact, output, previous=None):
     from scripts.reproduce_private_deletion import LEGACY,LEGACY_SHA256,legacy_source
     legacy=output/'qa/legacy';legacy.mkdir(parents=True)
     for name in LEGACY_SHA256:(legacy/Path(name).name).write_bytes(legacy_source(name))
-    prior=None
+    prior=None;prior_identity={}
     if previous:
         prior=json.loads((ROOT/'docs/evidence/RUNTIME_036_ARTIFACT.json').read_bytes())
         if previous.is_symlink() or sha(previous)!=prior['sha256']:raise ValueError('Previous installer is not the pinned beta3')
+        prior_identity=previous_identity(prior,json.loads((ROOT/'docs/evidence/RUNTIME_036_NSIS.json').read_bytes()))
         shutil.copyfile(previous,output/'previous.exe')
     files={p.relative_to(output).as_posix():sha(p) for p in output.rglob('*') if p.is_file()}
     audit=json.loads((private/'beta-nsis-audit.json').read_bytes())
@@ -81,9 +92,7 @@ def prepare(artifact, output, previous=None):
         'installer_sha256':record['sha256'],'previous_installer_sha256':prior['sha256'] if prior else None,
         'runtime_manifest_sha256':record['runtime_manifest_sha256'],
         'installer_manifest_sha256':record['installer_manifest_sha256'],
-        'previous_version':prior['version'] if prior else None,
-        'previous_runtime_manifest_sha256':prior['runtime_manifest_sha256'] if prior else None,
-        'previous_installer_manifest_sha256':prior['installer_manifest_sha256'] if prior else None,
+        **prior_identity,
         'candidate_uninstaller_sha256':audit['native_components']['uninstaller']['sha256'],
         'tool_source':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
         'tool_dirty':False,

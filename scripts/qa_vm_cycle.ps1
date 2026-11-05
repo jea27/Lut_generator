@@ -49,8 +49,17 @@ function Test-LfRuntime([bool]$lfPrevious){
  Test-LfPath 'C:\LF-QA\App'
  $lfLedgerHash=if($lfPrevious){$lfManifest.previous_installer_manifest_sha256}else{$lfManifest.installer_manifest_sha256}
  $lfRuntimeHash=if($lfPrevious){$lfManifest.previous_runtime_manifest_sha256}else{$lfManifest.runtime_manifest_sha256}
- if((Get-FileHash -LiteralPath 'C:\LF-QA\App\installer-manifest.json').Hash.ToLower() -ne $lfLedgerHash -or (Get-FileHash -LiteralPath 'C:\LF-QA\App\runtime\runtime-manifest.json').Hash.ToLower() -ne $lfRuntimeHash){throw 'Installed provenance differs from the pinned installer'}
- $lfLedger=Get-Content -LiteralPath 'C:\LF-QA\App\installer-manifest.json' -Raw|ConvertFrom-Json
+ if((Get-FileHash -LiteralPath 'C:\LF-QA\App\runtime\runtime-manifest.json').Hash.ToLower() -ne $lfRuntimeHash){throw 'Installed runtime provenance differs from the pinned installer'}
+ $lfLedger=$null
+ if($lfPrevious -and -not $lfLedgerHash){
+  # Audited beta3 predates the transaction ledger. Do not invent one or skip
+  # runtime verification: pin its launcher and complete runtime independently.
+  if(Test-Path -LiteralPath 'C:\LF-QA\App\installer-manifest.json'){throw 'Unexpected ledger in legacy beta3'}
+  if((Get-FileHash -LiteralPath 'C:\LF-QA\App\color-studio-beta.exe').Hash.ToLower() -ne $lfManifest.previous_launcher_sha256){throw 'Legacy launcher differs from its full NSIS audit'}
+ }else{
+  if((Get-FileHash -LiteralPath 'C:\LF-QA\App\installer-manifest.json').Hash.ToLower() -ne $lfLedgerHash){throw 'Installed ledger differs from the pinned installer'}
+  $lfLedger=Get-Content -LiteralPath 'C:\LF-QA\App\installer-manifest.json' -Raw|ConvertFrom-Json
+ }
  $lfRuntime=Get-Content -LiteralPath 'C:\LF-QA\App\runtime\runtime-manifest.json' -Raw|ConvertFrom-Json
  foreach($lfFile in $lfLedger.files.psobject.Properties){
   if([IO.Path]::IsPathRooted($lfFile.Name) -or $lfFile.Name -match '(^|[\\/])\.\.([\\/]|$)|:'){throw 'Unsafe installed ledger path'}
