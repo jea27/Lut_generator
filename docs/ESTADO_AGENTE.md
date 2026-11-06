@@ -7,7 +7,10 @@ fallan cerrado. No se leen imágenes/presets ni se ejecuta instalación/limpieza
 13 pruebas focales VM/kit/preflight correctas;10 escenarios del guard ejecutados
 con sondas sintéticas en Windows PowerShell5. No acceso de administrador nuevo,
 VM, checkpoints ni registro del usuario modificados. Causa histórica desconocida,
-PR90borrador, beta/venta NO-GO. Kit nuevo requiere recibo de preparación actualizado;
+PR90borrador, beta/venta NO-GO. Kit nuevo preparado y sus23 miembros verificados por SHA/CRC; recibo privado
+canónico actualizado conservando el anterior. SHA256 del ZIP:
+798dd0603f97d716d19424d6102ddcf242dcb4c732a1a4ab7dccddad3deca6ac.
+
 los kits previos se conservan y no deben reutilizarse como entrada independiente.
 
 La prioridad actual del usuario es COL-048; su estado está en el worktree propio,
