@@ -1,3 +1,20 @@
+# Checkpoint adicional · guardas de QA · 06-11-2026
+
+Mientras COL-048 espera activación confirmada, cerrada una carencia preventiva
+pendiente del asistente VM: antes de copiar/instalar se rechazan almacén/instalación
+predeterminados y registro del producto en HKCU/HKLM,32/64; errores de permisos
+fallan cerrado. No se leen imágenes/presets ni se ejecuta instalación/limpieza real.
+13 pruebas focales VM/kit/preflight correctas;10 escenarios del guard ejecutados
+con sondas sintéticas en Windows PowerShell5. No acceso de administrador nuevo,
+VM, checkpoints ni registro del usuario modificados. Causa histórica desconocida,
+PR90borrador, beta/venta NO-GO. Kit nuevo requiere recibo de preparación actualizado;
+los kits previos se conservan y no deben reutilizarse como entrada independiente.
+
+La prioridad actual del usuario es COL-048; su estado está en el worktree propio,
+docs/ESTADO_COL048.md. La entrega de esta guarda se conserva en esta rama y no
+se confunde con despliegue Cloudflare ni integración de PR90.
+
+---
 # Checkpoint vigente · cierre MVP/COL-036 · 05-11-2026
 
 Rama codex/COL-036-actualizacion-segura, PR90borrador, Issue57 y acción67.

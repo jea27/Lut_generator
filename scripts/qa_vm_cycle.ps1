@@ -1,5 +1,26 @@
 param([Parameter(Mandatory=$true)][string]$ExpectedManifestSha256)
 $ErrorActionPreference='Stop'
+function Test-LfColorStudioRegistration {
+ foreach($lfHive in @([Microsoft.Win32.RegistryHive]::CurrentUser,[Microsoft.Win32.RegistryHive]::LocalMachine)){
+  foreach($lfView in @([Microsoft.Win32.RegistryView]::Registry32,[Microsoft.Win32.RegistryView]::Registry64)){
+   $lfBase=$null;$lfKey=$null
+   try{
+    $lfBase=[Microsoft.Win32.RegistryKey]::OpenBaseKey($lfHive,$lfView)
+    $lfKey=$lfBase.OpenSubKey('Software\Microsoft\Windows\CurrentVersion\Uninstall\Color Studio Beta',$false)
+    if($null -ne $lfKey){return $true}
+   }finally{if($lfKey){$lfKey.Dispose()};if($lfBase){$lfBase.Dispose()}}
+  }
+ }
+ return $false
+}
+function Assert-LfNoExistingColorStudio {
+ $lfLocal=[Environment]::GetFolderPath('LocalApplicationData')
+ if(-not $lfLocal){throw 'Cannot certify an empty guest profile; preserve existing state'}
+ foreach($lfRelative in @('ColorStudioBetaData','Color Studio Beta','Programs\Color Studio Beta')){
+  if(Test-Path -LiteralPath (Join-Path $lfLocal $lfRelative)){throw 'Existing Color Studio state preserved; operator must select a fresh guest checkpoint'}
+ }
+ if(Test-LfColorStudioRegistration){throw 'Existing registered Color Studio preserved; operator must select a fresh guest checkpoint'}
+}
 $lfKit=[IO.Path]::GetFullPath($PSScriptRoot)
 if($lfKit -ne 'C:\LF-QA\Kit'){throw 'Requires the dedicated VM kit path'}
 function Test-LfPath([string]$lfPath){
@@ -24,6 +45,7 @@ $lfAttestation=Get-Content -LiteralPath "$lfKit\host-attestation.json" -Raw|Conv
 $lfMachine=Get-CimInstance Win32_ComputerSystem;$lfOs=Get-CimInstance Win32_OperatingSystem
 $lfUuid=[guid](Get-CimInstance Win32_ComputerSystemProduct).UUID
 if($lfAttestation.schema -ne 'color-studio-private-vm-attestation-v1' -or $lfAttestation.vm_name -ne 'ColorStudio-QA-Win11' -or -not $lfAttestation.operator_confirms_clean_checkpoint -or $lfUuid -ne [guid]$lfAttestation.bios_guid -or $lfMachine.Manufacturer -ne 'Microsoft Corporation' -or $lfMachine.Model -ne 'Virtual Machine' -or $lfOs.ProductType -ne 1 -or [int]$lfOs.BuildNumber -lt 22000){throw 'Guest identity or selected checkpoint attestation does not match'}
+Assert-LfNoExistingColorStudio
 if(Test-Path -LiteralPath 'C:\LF-QA\App'){throw 'Preserve existing installation. Operator must select a fresh test state; no automatic restore'}
 if(Test-Path -LiteralPath 'C:\LF-QA\Data'){throw 'Existing data preserved. No automatic cleanup or overwrite'}
 Test-LfPath 'C:\LF-QA\Reports';$lfRun='C:\LF-QA\Reports\'+[guid]::NewGuid().ToString('N')

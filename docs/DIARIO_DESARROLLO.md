@@ -749,3 +749,15 @@ Notificaciónúnica42014330354 success, bot@jea27 en67#issuecomment-6656140492; 
 confirmación física nueva. Body67 actualizado al hash final sin volver a disparar
 aviso. Coordinación73 y comentarios60/61/62 publicados; nadie contactado, sin pagos,
 merge, aprobaciones o publicación de instalador. Datos privados recuperados intactos.
+
+
+### COL036 · no reutilizar un perfil con otra instalación · 06-11-2026
+
+La preparación del ciclo asumía que C:\LF-QA vacío implicaba perfil limpio. Se
+corrige antes de copiar el kit y en el guest: presencia del almacén predeterminado,
+directorios conocidos o clave de desinstalación exacta (HKCU/HKLM, vistas32/64)
+bloquea sin modificar. Acceso a registro fallido también bloquea. Así se evita
+que beta3 encuentre por registro otra instalación fuera de la carpeta dedicada.
+13 tests focales correctos con sondas sintéticas; no hay instalación real, cambios
+de registro, VM/checkpoints o lectura de fotos/presets del usuario. No identifica
+el actor histórico. Kits anteriores retenidos; beta externa y venta NO-GO.

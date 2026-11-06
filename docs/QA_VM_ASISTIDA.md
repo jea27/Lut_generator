@@ -17,7 +17,7 @@ limpio adecuado. La comprobación posterior exige que no haya App/Data de ensayo
 
 ```powershell
 $qa = Get-Content .lumaforge-local/closure-20261105/kit-receipt.json -Raw | ConvertFrom-Json
-./scripts/qa_vm_assistant.ps1 -KitZip .lumaforge-local/vm-qa-beta5-cycle-20261105.zip -ExpectedSha256 $qa.kit_zip_sha256 -Run -ConfirmCleanCheckpoint
+./scripts/qa_vm_assistant.ps1 -KitZip .lumaforge-local/vm-qa-beta5-cycle-20261106.zip -ExpectedSha256 $qa.kit_zip_sha256 -Run -ConfirmCleanCheckpoint
 ```
 
    Elige el ID del checkpoint limpio que muestra la lista. Introduce las
@@ -82,3 +82,17 @@ Mecanismo oficial: [PowerShell Direct de Microsoft](https://learn.microsoft.com/
 Requiere acceso administrativo Hyper-V y credenciales válidas del guest. La
 identidad usa [UUID SMBIOS](https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-computersystemproduct);
 los identificadores se conservan exclusivamente en el informe privado.
+
+
+## Contención adicional · 6 noviembre
+
+Antes de copiar el kit y antes de instalar, el asistente y el ciclo rechazan un
+perfil con almacén predeterminado existente, directorios de instalación conocidos
+o registro de desinstalación de Color Studio Beta. Se comprueban HKCU/HKLM en
+ambas vistas32/64 solo en lectura. Un error al leer registro también bloquea.
+No se ejecuta el desinstalador previo para limpiar el perfil ni se restauran
+checkpoints automáticamente. El operador debe elegir un estado realmente vacío.
+Esto evita que el instalador legado encuentre otra instalación registrada fuera
+de la carpeta sintética. Es una protección preventiva; no atribuye el incidente
+histórico al instalador. Los kits del5 de noviembre se conservan como históricos;
+utilizar el nuevo kit del6 de noviembre con ambas guardas.

@@ -82,7 +82,31 @@ try{
  }
  if([guid]$lfGuest.uuid -ne $lfBios -or $lfGuest.manufacturer -ne 'Microsoft Corporation' -or $lfGuest.model -ne 'Virtual Machine' -or $lfGuest.product_type -ne 1 -or [int]$lfGuest.build -lt 22000){throw 'Guest identity mismatch; no files copied'}
  if($lfGuest.root_exists){throw 'Existing guest QA workspace preserved. Select a fresh state manually; never overwrite or restore automatically'}
- Invoke-Command -Session $lfSession -ScriptBlock {New-Item -ItemType Directory -Path 'C:\LF-QA\Kit'|Out-Null}
+ Invoke-Command -Session $lfSession -ScriptBlock {
+function Test-LfColorStudioRegistration {
+ foreach($lfHive in @([Microsoft.Win32.RegistryHive]::CurrentUser,[Microsoft.Win32.RegistryHive]::LocalMachine)){
+  foreach($lfView in @([Microsoft.Win32.RegistryView]::Registry32,[Microsoft.Win32.RegistryView]::Registry64)){
+   $lfBase=$null;$lfKey=$null
+   try{
+    $lfBase=[Microsoft.Win32.RegistryKey]::OpenBaseKey($lfHive,$lfView)
+    $lfKey=$lfBase.OpenSubKey('Software\Microsoft\Windows\CurrentVersion\Uninstall\Color Studio Beta',$false)
+    if($null -ne $lfKey){return $true}
+   }finally{if($lfKey){$lfKey.Dispose()};if($lfBase){$lfBase.Dispose()}}
+  }
+ }
+ return $false
+}
+function Assert-LfNoExistingColorStudio {
+ $lfLocal=[Environment]::GetFolderPath('LocalApplicationData')
+ if(-not $lfLocal){throw 'Cannot certify an empty guest profile; preserve existing state'}
+ foreach($lfRelative in @('ColorStudioBetaData','Color Studio Beta','Programs\Color Studio Beta')){
+  if(Test-Path -LiteralPath (Join-Path $lfLocal $lfRelative)){throw 'Existing Color Studio state preserved; operator must select a fresh guest checkpoint'}
+ }
+ if(Test-LfColorStudioRegistration){throw 'Existing registered Color Studio preserved; operator must select a fresh guest checkpoint'}
+}
+Assert-LfNoExistingColorStudio
+New-Item -ItemType Directory -Path 'C:\LF-QA\Kit'|Out-Null
+}
  foreach($lfFile in Get-ChildItem -LiteralPath $lfExtract){Copy-Item -LiteralPath $lfFile.FullName -Destination 'C:\LF-QA\Kit' -ToSession $lfSession -Recurse}
  Copy-Item -LiteralPath "$lfOutput\host-attestation.json" -Destination 'C:\LF-QA\Kit\host-attestation.json' -ToSession $lfSession
  # The copied script is checked against the trusted ZIP before being executed.
