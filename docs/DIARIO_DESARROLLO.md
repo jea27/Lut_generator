@@ -777,3 +777,13 @@ Suite MVP local 171 casos, 168 correctos y 3 omitidos por permisos de symlinks.
 Esta evidencia corresponde al helper en desarrollo. El beta.5 ya construido
 conserva sus bytes y SHA para la QA beta.3 → beta.5. La causa histórica de las
 eliminaciones sigue desconocida. La VM devuelve acceso denegado desde Codex.
+
+### COL-045 · Demo reutilizable · 11-11-2026
+
+La demo reutiliza sus dos imágenes normalizadas al repetir el recorrido o
+reiniciar. Comprueba la capacidad para ambas antes de guardar y conserva
+cualquier archivo existente que difiera. La API mantuvo los identificadores
+tras reiniciar y el número de imágenes permaneció en tres, incluida la
+importación sintética previa. Con una plaza libre conservó todo el almacén.
+Siete pruebas de API correctas. Las copias de demos de versiones anteriores
+se conservan y siguen ocupando sus plazas.

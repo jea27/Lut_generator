@@ -1,5 +1,5 @@
 """Loopback-only LumaForge API. Images/presets are private local application data."""
-import io
+import hashlib
 import json
 import os
 import threading
@@ -155,6 +155,16 @@ def create_app(data_dir=None):
     def pixels(identifier, size=None):
         return image_io.decode(path_for(identifier,images,'.png').read_bytes(),max_side=size)
 
+    def prepare_image(payload):
+        rgb, alpha, notes = image_io.decode(payload)
+        return image_io.encode(rgb, alpha), {
+            'width': rgb.shape[1], 'height': rgb.shape[0], 'has_alpha': alpha is not None,
+            'notes': notes, 'analysis': engine.analyze(rgb, alpha),
+        }
+
+    def image_asset(identifier, description):
+        return {**description, 'id': identifier, 'preview_url': f'/api/images/{identifier}/preview'}
+
     @app.get('/api/health')
     def health(): return {'version':'0.3.0-beta.5','offline_processing':True,'domain':'encoded-sRGB-D65'}
 
@@ -181,24 +191,39 @@ def create_app(data_dir=None):
             payload=file.file.read(32*1024*1024+1)
             if len(payload)>32*1024*1024: raise HTTPException(413,'Maximum upload 32 MiB')
             if len(list(images.glob('*.png')))>=32: raise HTTPException(409,'32 local images maximum; deletion is disabled for data protection')
-            rgb,alpha,notes=image_io.decode(payload)
-            analysis=engine.analyze(rgb,alpha)
+            png, description = prepare_image(payload)
             identifier=str(uuid.uuid4())
-            try:atomic_bytes(private_path(data,'images',identifier+'.png'),image_io.encode(rgb,alpha),overwrite=False)
+            try:atomic_bytes(private_path(data,'images',identifier+'.png'),png,overwrite=False)
             except FileExistsError:raise HTTPException(409,'Existing local image preserved; retry import') from None
-            result={'id':identifier,'width':rgb.shape[1],'height':rgb.shape[0],'has_alpha':alpha is not None,
-                    'notes':notes,'analysis':analysis,'preview_url':f'/api/images/{identifier}/preview'}
-        return {**result,'metrics':stats}
+        return {**image_asset(identifier, description), 'metrics': stats}
 
     @app.post('/api/demo/load')
     def demo():
         directory=ROOT/'apps/demo'
         if not (directory/'credits.json').is_file():raise HTTPException(503,'Demo files are not bundled')
-        result={}
-        for role in ('source','reference'):
-            payload=(directory/(role+'.jpg')).read_bytes()
-            result[role]=upload(UploadFile(file=io.BytesIO(payload),filename=role+'.jpg'))
-        result['credits']=json.loads((directory/'credits.json').read_bytes())
+        credits = json.loads((directory/'credits.json').read_bytes())
+        result = {'credits': credits}
+        with LOCK, measurement() as stats:
+            missing = []
+            for role in ('source', 'reference'):
+                png, description = prepare_image((directory/(role+'.jpg')).read_bytes())
+                digest = hashlib.sha256(png).hexdigest()
+                identifier = str(uuid.uuid5(uuid.NAMESPACE_URL, f'urn:lumaforge:demo:{role}:{digest}'))
+                path = private_path(data, 'images', identifier+'.png')
+                if not path.exists():
+                    missing.append((path, png))
+                elif not path.is_file() or path.stat().st_size != len(png) or path.read_bytes() != png:
+                    raise HTTPException(409, 'Existing local demo image differs and was preserved')
+                result[role] = image_asset(identifier, description)
+            if len(list(images.glob('*.png'))) + len(missing) > 32:
+                raise HTTPException(409, 'The demo needs room for both local images. Existing images were preserved')
+            for path, png in missing:
+                try:
+                    atomic_bytes(path, png, overwrite=False)
+                except FileExistsError:
+                    raise HTTPException(409, 'Existing local image preserved; retry demo') from None
+        for role in ('source', 'reference'):
+            result[role]['metrics'] = stats
         return result
 
     @app.get('/api/images/{identifier}/preview')
