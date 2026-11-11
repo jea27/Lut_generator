@@ -1427,3 +1427,9 @@ Rama `codex/COL-013-lut-rendimiento` sobre PR #90, Issue #45. Comparación local
 Recibo `COLOR_LUT_013_PERF.json`. Próximas mediciones con imágenes reales
 representativas y pico de memoria en la VM autorizada. Mantener la validación
 visual y de LUT en editores en sus tareas respectivas.
+## COL-045 · Demo reutilizable · 11-11-2026
+
+Rama `codex/COL-045-demo-reutilizable`, base PR #90, Issue #81. Los dos
+archivos de demo se reutilizan tras reiniciar. Conflicto de contenido o falta
+de capacidad detienen la operación y conservan archivos existentes. Siete
+pruebas de API correctas. Probar el conjunto junto con los proyectos de #92.

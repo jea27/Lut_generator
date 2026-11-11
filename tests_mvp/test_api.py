@@ -1,6 +1,11 @@
 import io
+import json
+import subprocess
+import sys
 import tempfile
+import time
 import unittest
+from pathlib import Path
 import numpy as np
 from PIL import Image
 from fastapi.testclient import TestClient
@@ -46,6 +51,55 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(self.client.post('/api/images',headers={'X-Color-Studio-Token':''}).status_code,403)
         self.assertEqual(self.client.post('/api/images',headers={**H,'Origin':'https://untrusted.example'}).status_code,403)
         self.assertEqual(self.client.get('/api/health',headers={'Host':'untrusted.example'}).status_code,403)
+
+    def test_demo_reuses_both_assets_after_service_restart(self):
+        store=Path(self.directory.name)
+        original=self.upload()['id']
+        first=self.client.post('/api/demo/load',json={})
+        self.assertEqual(first.status_code,200,first.text[:200])
+        self.assertEqual(len(list((store/'images').glob('*.png'))),3)
+        # LCMS profiles use a wall-clock timestamp with one-second precision.
+        time.sleep(1.1)
+        script = """
+import json
+import sys
+sys.path[:] = json.loads(sys.argv[2])
+from fastapi.testclient import TestClient
+from apps.api.main import create_app
+
+with TestClient(create_app(sys.argv[1]), base_url='http://127.0.0.1') as client:
+    csrf = client.get('/api/session').json()['csrf']
+    client.headers.update({'X-LumaForge-Local': '1', 'X-Color-Studio-Token': csrf})
+    response = client.post('/api/demo/load', json={})
+    response.raise_for_status()
+    print(json.dumps({role: response.json()[role]['id'] for role in ('source', 'reference')}))
+"""
+        ids = json.loads(subprocess.check_output(
+            [sys.executable, '-I', '-S', '-B', '-c', script, str(store), json.dumps(sys.path)],
+            cwd=Path(__file__).resolve().parents[1], timeout=30,
+        ))
+        self.assertEqual(ids,{role:first.json()[role]['id'] for role in ('source','reference')})
+        self.assertEqual(len(list((store/'images').glob('*.png'))),3)
+        preview=self.client.get(first.json()['source']['preview_url'])
+        with Image.open(io.BytesIO(preview.content)) as image:
+            self.assertTrue(image.info['icc_profile'])
+        self.assertEqual(self.client.get('/api/images/'+original+'/preview').status_code,200)
+
+    def test_demo_preserves_existing_images_when_capacity_or_content_conflicts(self):
+        images=Path(self.directory.name)/'images'
+        first=self.client.post('/api/demo/load',json={})
+        self.assertEqual(first.status_code,200,first.text[:200])
+        source=images/(first.json()['source']['id']+'.png')
+        source.write_bytes(b'Inert changed local fixture')
+        self.assertEqual(self.client.post('/api/demo/load',json={}).status_code,409)
+        self.assertEqual(source.read_bytes(),b'Inert changed local fixture')
+        for path in images.glob('*.png'):
+            path.rename(path.with_suffix('.retained'))
+        for index in range(31):
+            (images/f'fixture-{index}.png').write_bytes(b'Inert capacity sentinel')
+        before={p.name:p.read_bytes() for p in images.iterdir()}
+        self.assertEqual(self.client.post('/api/demo/load',json={}).status_code,409)
+        self.assertEqual({p.name:p.read_bytes() for p in images.iterdir()},before)
 
     def test_bad_image_recipe_and_unknown_id(self):
         response=self.client.post('/api/images',files={'file':('bad.png',b'not image','image/png')},headers=H)

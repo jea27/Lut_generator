@@ -796,3 +796,12 @@ ambos worktrees. El fixture se genera con x/y lineales de 0 a 1: canales
 0,72x+0,23y; 0,62y+0,28x; 0,5(1−x)+0,45y. Receta de exposición 0,45,
 temperatura −0,2, saturación 1,23, contraste 1,12, glow 0,25, difusión 0,2 y
 fade 0,18. Comparar SHA de píxeles y medianas, con las mismas dependencias.
+### COL-045 · Demo reutilizable · 11-11-2026
+
+La demo reutiliza sus dos imágenes normalizadas al repetir el recorrido o
+reiniciar. Comprueba la capacidad para ambas antes de guardar y conserva
+cualquier archivo existente que difiera. La API mantuvo los identificadores
+tras reiniciar y el número de imágenes permaneció en tres, incluida la
+importación sintética previa. Con una plaza libre conservó todo el almacén.
+Siete pruebas de API correctas. Las copias de demos de versiones anteriores
+se conservan y siguen ocupando sus plazas.
