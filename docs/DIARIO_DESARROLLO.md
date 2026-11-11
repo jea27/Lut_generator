@@ -786,3 +786,12 @@ Fuentes oficiales enlazadas y círculo de confusión explícito. Nueve pruebas d
 Planner, siete de cliente, build y recorrido de navegador con demo CC0 correctos.
 Evidencia `SHOT_PLANNER_047_OPTICS.json`. Propuesta experimental, pendiente de
 comparación con cámara real. La imagen no se usa para deducir óptica original.
+### COL-045 · Demo reutilizable · 11-11-2026
+
+La demo reutiliza sus dos imágenes normalizadas al repetir el recorrido o
+reiniciar. Comprueba la capacidad para ambas antes de guardar y conserva
+cualquier archivo existente que difiera. La API mantuvo los identificadores
+tras reiniciar y el número de imágenes permaneció en tres, incluida la
+importación sintética previa. Con una plaza libre conservó todo el almacén.
+Siete pruebas de API correctas. Las copias de demos de versiones anteriores
+se conservan y siguen ocupando sus plazas.

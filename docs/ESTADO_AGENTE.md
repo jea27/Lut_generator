@@ -1426,3 +1426,9 @@ Rama `codex/COL-047-optica-rodaje`, base PR #90, Issue #83. Backend y navegador
 verificados con focal y distancia de enfoque introducidas por el operador.
 Recibo `SHOT_PLANNER_047_OPTICS.json`. Quedan recuperación de planes, revisión
 con referencias autorizadas y comparación del modelo con cámara/óptica reales.
+## COL-045 · Demo reutilizable · 11-11-2026
+
+Rama `codex/COL-045-demo-reutilizable`, base PR #90, Issue #81. Los dos
+archivos de demo se reutilizan tras reiniciar. Conflicto de contenido o falta
+de capacidad detienen la operación y conservan archivos existentes. Siete
+pruebas de API correctas. Probar el conjunto junto con los proyectos de #92.
