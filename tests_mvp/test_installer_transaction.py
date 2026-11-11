@@ -209,7 +209,8 @@ class InstallerTransactionTests(unittest.TestCase):
         with self.assertRaises(installer.InstallError) as raised:
             installer.commit(self.stage,self.target,expected,fault=fault)
         report=raised.exception.report()
-        self.assertEqual(set(report),{'ok','phase','errno','winerror','old_restored'})
+        self.assertEqual(set(report),{'ok','phase','errno','winerror','old_restored','switch_step'})
+        self.assertEqual(report['switch_step'],'stage_to_target')
         self.assertFalse(report['ok']);self.assertEqual(report['winerror'],32)
         self.assertEqual(report['phase'],'directory_switch_failed')
         self.assertEqual(report['errno'],errno.EACCES);self.assertTrue(report['old_restored'])
@@ -494,25 +495,75 @@ class InstallerTransactionTests(unittest.TestCase):
         self.assertFalse(self.target.exists());self.assertEqual(snapshot(backup),old)
         self.assertTrue(installer.journal_path(self.target).is_file());self.assert_data_untouched()
 
-    @unittest.skipUnless(os.name=='nt','Real Windows sharing violation')
-    def test_real_directory_lock_denies_switch_preserves_data_and_allows_retry(self):
+    def lock_windows_directory(self, directory):
         import ctypes
         from ctypes import wintypes
-        old=self.old_package(extras=True);expected=self.package(self.stage)
         kernel=ctypes.WinDLL('kernel32',use_last_error=True)
         kernel.CreateFileW.argtypes=[wintypes.LPCWSTR,wintypes.DWORD,wintypes.DWORD,ctypes.c_void_p,wintypes.DWORD,wintypes.DWORD,wintypes.HANDLE]
         kernel.CreateFileW.restype=wintypes.HANDLE
         kernel.CloseHandle.argtypes=[wintypes.HANDLE]
-        handle=kernel.CreateFileW(str(self.target),0x80000000,3,None,3,0x02000000,None)
+        handle=kernel.CreateFileW(str(directory),0x80000000,3,None,3,0x02000000,None)
         self.assertNotEqual(handle,ctypes.c_void_p(-1).value)
+        return lambda: kernel.CloseHandle(handle)
+
+    @unittest.skipUnless(os.name=='nt','Real Windows sharing violation')
+    def test_real_directory_lock_denies_switch_preserves_data_and_allows_retry(self):
+        old=self.old_package(extras=True);expected=self.package(self.stage)
+        unlock=self.lock_windows_directory(self.target)
         try:
-            with self.assertRaises(installer.InstallError) as raised:installer.commit(self.stage,self.target,expected)
+            with patch.object(installer.time,'sleep') as waits, self.assertRaises(installer.InstallError) as raised:
+                installer.commit(self.stage,self.target,expected)
             self.assertEqual(raised.exception.phase,'directory_switch_failed')
             self.assertIn(raised.exception.report()['winerror'],(5,32))
+            self.assertEqual(raised.exception.report()['switch_step'],'previous_to_backup')
+            self.assertEqual(waits.call_count,3)
             self.assertEqual(snapshot(self.target),old);self.assert_data_untouched()
-        finally:kernel.CloseHandle(handle)
+        finally:unlock()
         retry=self.root/'.lf-stage-after-real-lock';retry_hash=self.package(retry)
         self.assertTrue(installer.commit(retry,self.target,retry_hash)['ok']);self.assert_data_untouched()
+
+    @unittest.skipUnless(os.name=='nt','Real Windows sharing violation')
+    def test_transient_directory_locks_at_both_switch_steps_commit_and_preserve_data(self):
+        old=self.old_package(extras=True)
+        expected=self.package(self.stage)
+        unlock=self.lock_windows_directory(self.target)
+        def release_on_wait(_delay):
+            nonlocal unlock
+            self.assertIsNotNone(unlock)
+            unlock()
+            unlock=None
+        def lock_staged_package(phase):
+            nonlocal unlock
+            if phase=='after_old_move':unlock=self.lock_windows_directory(self.stage)
+        try:
+            with patch.object(installer.time,'sleep',side_effect=release_on_wait) as waits:
+                result=installer.commit(self.stage,self.target,expected,fault=lock_staged_package)
+        finally:
+            if unlock is not None:unlock()
+        self.assertEqual(waits.call_count,2)
+        installer.verify(self.target,expected,personal_extras=True)
+        self.assertEqual(snapshot(self.root/result['previous_directory']),old)
+        self.assertEqual((self.target/'personal-sentinel.txt').read_bytes(),b'Synthetic personal file; preserve exactly')
+        self.assert_data_untouched()
+
+    @unittest.skipUnless(os.name=='nt','Real Windows sharing violation')
+    def test_changes_while_waiting_stop_retry_and_restore_previous_installation(self):
+        old=self.old_package(extras=True)
+        expected=self.package(self.stage)
+        unlock=self.lock_windows_directory(self.stage)
+        def change_stage(_delay):
+            (self.stage/'notices/LICENSE.txt').write_bytes(b'Changed during wait')
+        try:
+            with patch.object(installer.time,'sleep',side_effect=change_stage) as waits:
+                with self.assertRaises(installer.InstallError) as raised:
+                    installer.commit(self.stage,self.target,expected)
+        finally:unlock()
+        self.assertEqual(waits.call_count,1)
+        self.assertTrue(raised.exception.restored)
+        self.assertEqual(raised.exception.report()['switch_step'],'stage_to_target')
+        self.assertEqual(snapshot(self.target),old)
+        self.assertEqual((self.stage/'notices/LICENSE.txt').read_bytes(),b'Changed during wait')
+        self.assert_data_untouched()
 
 
 if __name__=='__main__':unittest.main()

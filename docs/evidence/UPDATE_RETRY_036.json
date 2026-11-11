@@ -1,0 +1,14 @@
+{
+  "schema": "color-studio-installer-retry-v1",
+  "date": "2026-11-11",
+  "tested_on": "Windows host with synthetic directories and native Windows handles",
+  "mvp_tests_discovered": 171,
+  "mvp_tests_passed": 168,
+  "mvp_tests_skipped": 3,
+  "transient_lock_both_switches_recovered": true,
+  "persistent_lock_preserved_data": true,
+  "changed_stage_stopped_and_rolled_back": true,
+  "windows_vm_cycle_executed": false,
+  "installer_rebuilt": false,
+  "historical_deletion_cause": "unknown"
+}

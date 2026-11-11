@@ -1406,3 +1406,16 @@ Evergreen oficial fijado/firmado si procede. No se ha preparado candidato correc
 ni se afirma que el2 esté resuelto. Logs/probes privados .lumaforge-local; nunca
 publicar exe diagnóstico, rutas crudas o datos existentes. Reanudar aquí leyendo
 este checkpoint, git status y las guías QA_WINDOWS11_VM/QA_RESOLVE_BETA3.
+
+## 11-11-2026 · Reanudación de Color Studio 1.0
+
+PR #90 / #57. Guardia de perfil limpio y kit privado del 6 de noviembre
+conservados. Reintentos de cambio de directorio comprobados con handles Windows
+reales sobre fixtures. Evidencia `UPDATE_RETRY_036.json`. El siguiente candidato
+que incorpore ese helper deberá llevar su propio recibo y repetición de QA.
+Usar el beta.5 existente para el protocolo original. Hyper-V denegó la lectura
+`Get-VM -Name ColorStudio-QA-Win11`. La acción del operador sigue en #67.
+
+Trabajo Pro de guardado y recuperación en worktree independiente, apilado sobre
+PR #90 para probar con sus protecciones de datos. Aceptación visual y comercial
+pendientes. Project OS conserva su rama de trabajo.

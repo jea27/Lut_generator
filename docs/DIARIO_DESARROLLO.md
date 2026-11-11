@@ -761,3 +761,19 @@ que beta3 encuentre por registro otra instalación fuera de la carpeta dedicada.
 13 tests focales correctos con sondas sintéticas; no hay instalación real, cambios
 de registro, VM/checkpoints o lectura de fotos/presets del usuario. No identifica
 el actor histórico. Kits anteriores retenidos; beta externa y venta NO-GO.
+
+### COL-036 · Bloqueos temporales durante la actualización · 11-11-2026
+
+El cambio de directorio admite tres reintentos acotados para errores de Windows
+5, 32 y 33. Antes de reintentar, comprueba identidad, enlaces, huella del árbol y
+que el destino esté libre. Si el bloqueo persiste, conserva la aplicación anterior
+o su respaldo y el registro de recuperación. El diagnóstico distingue mover la
+instalación previa y activar el paquete preparado.
+
+Handles reales de Windows sobre directorios sintéticos comprobaron recuperación
+de ambas fases y conservación ante bloqueo persistente. Una modificación del
+paquete durante la espera detuvo la operación y restauró la instalación previa.
+Suite MVP local 171 casos, 168 correctos y 3 omitidos por permisos de symlinks.
+Esta evidencia corresponde al helper en desarrollo. El beta.5 ya construido
+conserva sus bytes y SHA para la QA beta.3 → beta.5. La causa histórica de las
+eliminaciones sigue desconocida. La VM devuelve acceso denegado desde Codex.

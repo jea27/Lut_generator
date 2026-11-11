@@ -5,6 +5,7 @@ Does not touch the separate data store, execute commands, or remove old packages
 """
 import argparse
 from contextlib import contextmanager
+import errno
 import hashlib
 import json
 import os
@@ -12,11 +13,15 @@ from pathlib import Path, PurePosixPath
 import re
 import shutil
 import stat
+import time
 import uuid
 
 PRODUCT='local.colorstudio.beta'
 LEDGER='installer-manifest.json'
 LAUNCHER='color-studio-beta.exe'
+RENAME_RETRY_DELAYS = (0.05, 0.10, 0.20)
+# Windows may return access denied for an open directory without delete sharing.
+RETRYABLE_WINDOWS_RENAME_ERRORS = {5, 32, 33}
 LEGACY_LAUNCHERS={
  '9308daf515781d77e3e79b2abe2ef942160f377eb17df69013eced27bb8ba7a2', # audited beta2 NSIS
  '0ee92bb92e6573f1cce3d3883a144302716c0923fd8d834e0d151998e4362742', # audited beta3 NSIS
@@ -24,12 +29,15 @@ LEGACY_LAUNCHERS={
 
 
 class InstallError(Exception):
-    def __init__(self,phase,cause=None,restored=None):
+    def __init__(self,phase,cause=None,restored=None,*,switch_step=None):
         self.phase=phase;self.cause=cause;self.restored=restored
+        self.switch_step=switch_step
         super().__init__(phase)
     def report(self):
-        return {'ok':False,'phase':self.phase,'errno':getattr(self.cause,'errno',None),
+        result={'ok':False,'phase':self.phase,'errno':getattr(self.cause,'errno',None),
                 'winerror':getattr(self.cause,'winerror',None),'old_restored':self.restored}
+        if self.switch_step is not None:result['switch_step']=self.switch_step
+        return result
 
 
 def sha(path):
@@ -176,6 +184,32 @@ def refuse_linked_locations(*locations):
             except FileNotFoundError:pass
 
 
+def switch_directory(source, destination, expected_tree):
+    """Retry only a blocked Windows rename, while the source still matches."""
+    refuse_linked_locations(source, destination)
+    original = source.lstat()
+    identity = (original.st_dev, original.st_ino)
+    for attempt in range(len(RENAME_RETRY_DELAYS) + 1):
+        try:
+            destination.lstat()
+        except FileNotFoundError:
+            pass
+        else:
+            raise FileExistsError(errno.EEXIST, 'Directory switch destination is occupied')
+        try:
+            source.rename(destination)
+            return
+        except OSError as error:
+            if (getattr(error, 'winerror', None) not in RETRYABLE_WINDOWS_RENAME_ERRORS
+                    or attempt == len(RENAME_RETRY_DELAYS) or not original.st_ino):
+                raise
+        time.sleep(RENAME_RETRY_DELAYS[attempt])
+        refuse_linked_locations(source, destination)
+        current = source.lstat()
+        if (current.st_dev, current.st_ino) != identity or tree_digest(source) != expected_tree:
+            raise OSError(errno.EBUSY, 'Directory changed during installer retry')
+
+
 def recover(target):
     refuse_linked_locations(target)
     refuse_private_locations(target)
@@ -245,18 +279,24 @@ def _commit(stage,target,expected,fault):
     backup=target.parent/('.lf-previous-'+uuid.uuid4().hex)
     journal=journal_path(target)
     old_sha=sha(target/LAUNCHER) if (target/LAUNCHER).is_file() else None
+    stage_tree=tree_digest(stage)
     record={'product':PRODUCT,'target':target.name,'stage':stage.name,'backup':backup.name,
             'old_launcher_sha256':old_sha,'old_tree_sha256':old_tree,'manifest_sha256':expected}
     try:write_journal(journal,record)
     except OSError as error:raise InstallError('journal_prepare_failed_old_unchanged',error) from None
     moved=False
+    switch_step='previous_to_backup'
     try:
         if fault:fault('before_old_move')
-        if target.exists() and tree_digest(target)!=old_tree:raise OSError('Old installation changed during staging')
-        if target.exists():target.rename(backup);moved=True
+        current_tree=tree_digest(target) if target.exists() else None
+        if current_tree!=old_tree:raise OSError('Old installation changed during staging')
+        if old_tree is not None:
+            switch_directory(target,backup,old_tree)
+            moved=True
+        switch_step='stage_to_target'
         if fault:fault('after_old_move')
-        stage.rename(target)
-    except OSError as error:
+        switch_directory(stage,target,stage_tree)
+    except (OSError,InstallError) as error:
         # If a replacement appeared at target after the old app moved, never
         # overwrite it or discard the journal needed to recover the old backup.
         restored=False if moved else None
@@ -266,7 +306,7 @@ def _commit(stage,target,expected,fault):
                 backup.rename(target);restored=True
             except OSError:restored=False
         if restored is not False:journal.unlink()
-        raise InstallError('directory_switch_failed',error,restored) from None
+        raise InstallError('directory_switch_failed',error,restored,switch_step=switch_step) from None
     # The old directory is deliberately retained: no recursive deletion of user data.
     retained=False
     try:journal.unlink()

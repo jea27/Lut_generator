@@ -528,7 +528,8 @@
         "tests_mvp/test_data_preservation.py",
         "tests_mvp/test_atomic_storage.py",
         "tests_mvp/test_vm_cycle.py",
-        "tests_mvp/test_vm_qa_kit.py"
+        "tests_mvp/test_vm_qa_kit.py",
+        "tests_mvp/test_vm_preflight.py"
       ],
       "evidence": [
         {
