@@ -1,0 +1,41 @@
+name: Test Project OS auth
+on:
+  pull_request:
+    paths:
+      - 'functions/**'
+      - 'migrations/**'
+      - 'site/reviews.js'
+      - 'site/product.js'
+      - 'tests/project_os_auth.test.mjs'
+      - '.github/workflows/test-project-os-auth.yml'
+  push:
+    branches:
+      - 'codex/COL-048-project-os-auth'
+    paths:
+      - 'functions/**'
+      - 'migrations/**'
+      - 'site/reviews.js'
+      - 'site/product.js'
+      - 'tests/project_os_auth.test.mjs'
+      - '.github/workflows/test-project-os-auth.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: node --test tests/project_os_auth.test.mjs
+      - name: Parse browser and Pages Function modules
+        run: |
+          node --check site/reviews.js
+          node --check site/product.js
+          node --check functions/api/auth/github/start.js
+          node --check functions/api/auth/github/callback.js
+          node --check functions/api/auth/session.js
+          node --check functions/api/auth/logout.js
+          node --check 'functions/api/reviews/[featureId]/decision.js'
+          node --check functions/api/product.js
