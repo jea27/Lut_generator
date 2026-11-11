@@ -46,7 +46,7 @@ def decode(payload, max_side=None):
             return pixels, alpha if np.any(alpha<1) else None, notes
 
 
-def encode(rgb, alpha=None, format='PNG'):
+def encode(rgb, alpha=None, format='PNG', *, embed_profile=True):
     if format not in ('PNG','JPEG'): raise ValueError('Unsupported export format')
     pixels=np.clip(np.rint(rgb*255),0,255).astype(np.uint8)
     if alpha is not None and format=='JPEG':
@@ -54,5 +54,6 @@ def encode(rgb, alpha=None, format='PNG'):
     image=Image.fromarray(pixels)
     if alpha is not None and format=='PNG': image.putalpha(Image.fromarray(np.rint(alpha*255).astype(np.uint8)))
     stream=io.BytesIO()
-    image.save(stream,format=format,icc_profile=SRGB.tobytes(),**({'quality':95,'subsampling':0} if format=='JPEG' else {}))
+    profile = SRGB.tobytes() if embed_profile else None
+    image.save(stream,format=format,icc_profile=profile,**({'quality':95,'subsampling':0} if format=='JPEG' else {}))
     return stream.getvalue()

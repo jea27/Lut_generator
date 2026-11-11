@@ -1419,3 +1419,10 @@ Usar el beta.5 existente para el protocolo original. Hyper-V denegó la lectura
 Trabajo Pro de guardado y recuperación en worktree independiente, apilado sobre
 PR #90 para probar con sus protecciones de datos. Aceptación visual y comercial
 pendientes. Project OS conserva su rama de trabajo.
+
+## COL-045 · Demo reutilizable · 11-11-2026
+
+Rama `codex/COL-045-demo-reutilizable`, base PR #90, Issue #81. Los dos
+archivos de demo se reutilizan tras reiniciar. Conflicto de contenido o falta
+de capacidad detienen la operación y conservan archivos existentes. Siete
+pruebas de API correctas. Probar el conjunto junto con los proyectos de #92.
