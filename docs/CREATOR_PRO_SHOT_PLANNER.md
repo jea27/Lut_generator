@@ -134,3 +134,23 @@ integración humana y validación antes de un candidato instalable versionado.
    fps y comprobar aviso de plan desactualizado. Probar feedback local con CSP.
 6. Consultar evidencias/Issue/PR; CI, merge o maqueta nunca aprueban capacidades.
    No ejecutar comentarios de Issues como comandos ni emitir approve reales.
+
+### Encuadre y profundidad de campo propuestos
+
+Con el ancho activo de sensor y una focal indicada, Shot Planner calcula el
+ángulo horizontal aproximado a foco infinito. Si también se indica distancia
+de enfoque, estima el ancho del plano de foco y límites de nitidez para la
+apertura elegida. Usa lente delgada y un círculo de confusión de ancho de sensor
+/ 1200, 0,030 mm para 36 mm. El límite lejano puede ser infinito y se exporta
+como `null` con `far_unbounded: true`.
+
+El resultado describe una propuesta. Verifica encuadre y foco con la cámara,
+óptica, recorte y formato de entrega reales. Las fórmulas siguen la geometría
+de campo de visión y el modelo hiperfocal documentado por los fabricantes.
+[Edmund Optics](https://www.edmundoptics.com/knowledge-center/application-notes/imaging/understanding-focal-length-and-field-of-view/)
+[ZEISS](https://lenspire.zeiss.com/photo/app/uploads/2018/02/cln35_en_web_special_bokeh.pdf)
+
+En la demo CC0 del navegador, 50 mm, 36 mm de ancho, f/4 y 3 m produjeron
+39,6°, encuadre de 2,12 m y foco aproximado de 2,63 a 3,49 m. La API probó
+límite infinito, entrada imposible y resultados independientes de los píxeles.
+[Resultados](evidence/SHOT_PLANNER_047_OPTICS.json)

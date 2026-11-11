@@ -777,3 +777,12 @@ Suite MVP local 171 casos, 168 correctos y 3 omitidos por permisos de symlinks.
 Esta evidencia corresponde al helper en desarrollo. El beta.5 ya construido
 conserva sus bytes y SHA para la QA beta.3 → beta.5. La causa histórica de las
 eliminaciones sigue desconocida. La VM devuelve acceso denegado desde Codex.
+
+### COL-047 · Estimaciones ópticas de rodaje · 11-11-2026
+
+Shot Planner calcula ángulo de visión, cobertura y profundidad de campo
+aproximados desde ancho de sensor, focal, apertura y distancia declarados.
+Fuentes oficiales enlazadas y círculo de confusión explícito. Nueve pruebas del
+Planner, siete de cliente, build y recorrido de navegador con demo CC0 correctos.
+Evidencia `SHOT_PLANNER_047_OPTICS.json`. Propuesta experimental, pendiente de
+comparación con cámara real. La imagen no se usa para deducir óptica original.

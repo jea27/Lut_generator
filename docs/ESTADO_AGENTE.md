@@ -1419,3 +1419,10 @@ Usar el beta.5 existente para el protocolo original. Hyper-V denegó la lectura
 Trabajo Pro de guardado y recuperación en worktree independiente, apilado sobre
 PR #90 para probar con sus protecciones de datos. Aceptación visual y comercial
 pendientes. Project OS conserva su rama de trabajo.
+
+## COL-047 · Estimaciones ópticas · 11-11-2026
+
+Rama `codex/COL-047-optica-rodaje`, base PR #90, Issue #83. Backend y navegador
+verificados con focal y distancia de enfoque introducidas por el operador.
+Recibo `SHOT_PLANNER_047_OPTICS.json`. Quedan recuperación de planes, revisión
+con referencias autorizadas y comparación del modelo con cámara/óptica reales.
