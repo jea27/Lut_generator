@@ -27,6 +27,7 @@ class PlannerTests(unittest.TestCase):
         np.testing.assert_array_equal(self.rgb,before)
         self.assertFalse(a['human_validated']);self.assertFalse(a['original_setup_recovered'])
         self.assertIsNone(a['calculations']['horizontal_focal_equivalent_mm'])
+        self.assertIsNone(a['calculations']['proposed_optics'])
         self.assertIn('sin datos',a['sections']['camera'][0]['title'])
         self.assertTrue(all(not check['checked'] for check in a['checklist']))
         self.assertEqual(a['provider'],'local-rules-v1')
@@ -38,6 +39,26 @@ class PlannerTests(unittest.TestCase):
             self.assertAlmostEqual(a['calculations']['horizontal_focal_equivalent_mm'],37.5)
         a=generate(self.rgb,Setup(fps=50,shutter_angle=90))
         self.assertEqual(a['calculations']['exposure_seconds'],1/200)
+
+    def test_proposed_optics_use_explicit_setup_and_preserve_uncertainty(self):
+        setup=Setup(focal_mm=50,sensor_width_mm=36,aperture=4,focus_distance_m=3)
+        plan=generate(self.rgb,setup)
+        result=plan['calculations']['proposed_optics']
+        self.assertAlmostEqual(result['horizontal_fov_degrees_at_infinity'],39.59775,places=4)
+        self.assertAlmostEqual(result['focus_plane_width_m'],2.124)
+        self.assertAlmostEqual(result['depth_of_field']['near_m'],2.62789,places=4)
+        self.assertAlmostEqual(result['depth_of_field']['far_m'],3.49488,places=4)
+        self.assertEqual(result['depth_of_field']['circle_of_confusion_mm'],.03)
+        self.assertEqual(result,generate(1-self.rgb,setup)['calculations']['proposed_optics'])
+        self.assertTrue({'edmund-fov','zeiss-dof'} <= {source['id'] for source in plan['sources']})
+        self.assertFalse(plan['original_setup_recovered'])
+        distant=generate(self.rgb,Setup(focal_mm=50,focus_distance_m=100))
+        depth=distant['calculations']['proposed_optics']['depth_of_field']
+        self.assertTrue(depth['far_unbounded'])
+        self.assertIsNone(depth['far_m'])
+        json.dumps(distant,allow_nan=False)
+        with self.assertRaises(ValueError):
+            generate(self.rgb,Setup(focal_mm=300,focus_distance_m=.1))
 
     def test_claim_types_uncertainty_and_attribution_are_explicit(self):
         a=generate(self.rgb,Setup())

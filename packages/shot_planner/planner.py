@@ -3,6 +3,7 @@
 No semantics/EXIF inference, external API, model weights or copyrighted frames.
 Sources are attributed links, not copies of manuals or third-party diagrams.
 """
+from math import atan, degrees
 from typing import Literal, Protocol
 import numpy as np
 from pydantic import BaseModel, ConfigDict, Field
@@ -17,6 +18,14 @@ SOURCES = [
     {'id':'asc-fill', 'title':'ASC — Lighting a Set with Stephen H. Burum: measured fill and mood',
      'url':'https://theasc.com/article/lighting-a-set/', 'verified_on':'2026-10-31'},
 ]
+OPTICS_SOURCES = [
+    {'id': 'edmund-fov', 'title': 'Edmund Optics — Focal Length and Field of View',
+     'url': 'https://www.edmundoptics.com/knowledge-center/application-notes/imaging/understanding-focal-length-and-field-of-view/',
+     'verified_on': '2026-11-11'},
+    {'id': 'zeiss-dof', 'title': 'ZEISS — Depth of Field and Bokeh, hyperfocal geometry',
+     'url': 'https://lenspire.zeiss.com/photo/app/uploads/2018/02/cln35_en_web_special_bokeh.pdf',
+     'verified_on': '2026-11-11'},
+]
 
 
 class Setup(BaseModel):
@@ -27,6 +36,7 @@ class Setup(BaseModel):
     contrast: Literal['low','medium','high']='medium'
     sensor_width_mm: float=Field(default=36,ge=6,le=70)
     focal_mm: float | None=Field(default=None,ge=4,le=300)
+    focus_distance_m: float | None = Field(default=None, ge=.1, le=1000)
     aperture: float=Field(default=4,ge=1,le=22)
     fps: float=Field(default=25,ge=1,le=120)
     shutter_angle: float=Field(default=180,ge=1,le=360)
@@ -80,10 +90,43 @@ class LocalRules:
     def analyze(self, rgb, alpha=None):return observations(rgb,alpha)
 
 
+def optical_estimate(setup: Setup):
+    """Thin-lens geometry from user inputs, independent of reference pixels."""
+    focal = setup.focal_mm
+    if focal is None:
+        return None
+    result = {'horizontal_fov_degrees_at_infinity': degrees(2 * atan(setup.sensor_width_mm / (2 * focal))),
+              'focus_plane_width_m': None, 'depth_of_field': None}
+    if setup.focus_distance_m is None:
+        return result
+    distance = setup.focus_distance_m * 1000
+    if distance <= focal:
+        raise ValueError('Focus distance must exceed the focal length')
+    # Explicit working convention: 0.030 mm on a 36 mm-wide sensor.
+    circle = setup.sensor_width_mm / 1200
+    hyperfocal_minus_focal = focal ** 2 / (setup.aperture * circle)
+    delta = distance - focal
+    near = distance * hyperfocal_minus_focal / (hyperfocal_minus_focal + delta)
+    far = None
+    if delta < hyperfocal_minus_focal:
+        far = distance * hyperfocal_minus_focal / (hyperfocal_minus_focal - delta) / 1000
+    result['focus_plane_width_m'] = setup.sensor_width_mm * delta / focal / 1000
+    result['depth_of_field'] = {'near_m': near / 1000, 'far_m': far,
+                               'far_unbounded': far is None, 'circle_of_confusion_mm': circle,
+                               'hyperfocal_m': (hyperfocal_minus_focal + focal) / 1000}
+    return result
+
+
 def generate(rgb, setup:Setup, alpha=None, recipe=None, provider_id='local-rules-v1'):
     # Explicit allowlist: there is no remote transport, opt-in switch or fallback.
     if provider_id!='local-rules-v1':raise ValueError('Provider unavailable; external image transmission is disabled')
     s=Setup.model_validate(setup)
+    optics = optical_estimate(s)
+    sources = SOURCES.copy()
+    if optics:
+        sources.append(OPTICS_SOURCES[0])
+        if optics['depth_of_field']:
+            sources.append(OPTICS_SOURCES[1])
     obs=LocalRules().analyze(rgb,alpha)
     shot={'wide':'Plano general: incluir entorno y comprobar líneas/perspectiva.',
           'medium':'Plano medio: ajustar encuadre a la acción y separación del fondo.',
@@ -122,6 +165,18 @@ def generate(rgb, setup:Setup, alpha=None, recipe=None, provider_id='local-rules
         suggestions['camera'].insert(0,item('recommendation','Focal y sensor elegidos',
             f'{s.focal_mm:g} mm / sensor ancho {s.sensor_width_mm:g} mm → equivalente horizontal 36 mm: {equivalent:.1f} mm.',
             uncertainty='Cálculo geométrico de tu propuesta, no una estimación de la óptica original; se desconoce el recorte.'))
+        angle = optics['horizontal_fov_degrees_at_infinity']
+        suggestions['camera'].insert(1, item('estimate', 'Ángulo de visión horizontal',
+            f'{angle:.1f}° a foco infinito con tu focal y ancho de sensor.', ('edmund-fov',),
+            uncertainty='Modelo de lente delgada. El recorte, el enfoque cercano y el diseño de la óptica pueden cambiar el encuadre.'))
+        depth = optics['depth_of_field']
+        if depth:
+            far = 'infinito' if depth['far_unbounded'] else f"{depth['far_m']:.2f} m"
+            suggestions['camera'].insert(2, item('estimate', 'Encuadre y profundidad de campo',
+                f"A {s.focus_distance_m:g} m, ancho encuadrado aproximado de {optics['focus_plane_width_m']:.2f} m. "
+                f"A f/{s.aperture:g}, zona aceptable aproximada entre {depth['near_m']:.2f} m y {far}. "
+                f"Círculo de confusión supuesto de {depth['circle_of_confusion_mm']:.3f} mm.",
+                ('edmund-fov', 'zeiss-dof'), uncertainty='Distancias medidas desde una lente delgada ideal. Comprueba el foco con la óptica, monitor y tamaño de entrega reales.'))
     else:
         suggestions['camera'].insert(0,item('estimate','Focal original: sin datos',
             'Elegir una focal disponible, fijar distancia y contrastar perspectiva/encuadre.',uncertainty='Sin evidencia suficiente: no se asigna una focal numérica desde la foto.'))
@@ -134,7 +189,8 @@ def generate(rgb, setup:Setup, alpha=None, recipe=None, provider_id='local-rules
     return {'schema':'lumaforge-shot-plan-v1','provider':LocalRules.id,'experimental':True,
             'original_setup_recovered':False,'human_validated':False,'setup':s.model_dump(),
             'observations':obs,'sections':suggestions,'diagram':{'units':'metres-proposed','nodes':diagram},
-            'calculations':{'exposure_seconds':shutter,'horizontal_focal_equivalent_mm':equivalent},
+            'calculations':{'exposure_seconds':shutter,'horizontal_focal_equivalent_mm':equivalent,
+                            'proposed_optics':optics},
             'equipment':{
                 'low_budget':['Cámara y óptica disponibles; soporte estable','Ventana controlada o fuente existente, reflector y tela negra','Carta gris, cinta y prueba de foco/exposición'],
                 'professional':['Fuentes regulables con difusión y control de derrame','Banderas/negative fill y rim opcional','Fotómetro, monitor con waveform y carta de color']},
@@ -146,7 +202,7 @@ def generate(rgb, setup:Setup, alpha=None, recipe=None, provider_id='local-rules
                 ('wb','Ajustar WB con carta y comprobar mezclas de luz.'),
                 ('flicker','Grabar prueba con fps/obturación elegidos y comprobar flicker/movimiento.'),
                 ('continuity','Comparar planos y exportación con la misma gestión de color.')]],
-            'sources':[dict(source) for source in SOURCES],
+            'sources':[dict(source) for source in sources],
             'recipe':engine.validate_recipe(recipe).model_dump() if recipe is not None else None,
             'limits':['Propuesta inicial local, no reproducción fiel ni datos confirmados del rodaje original.',
                       'No detector de personas, luces, óptica, profundidad o atmósfera; hipótesis dirigidas por el usuario.',
