@@ -862,7 +862,8 @@
     {
       "delivery_prs": [
         86,
-        88
+        88,
+        94
       ],
       "group": "Creator / Pro",
       "evidence": [
@@ -874,6 +875,11 @@
         {
           "path": "docs/evidence/INTEGRACION_036_QA.json",
           "field": "planner_regeneration_checked",
+          "equals": true
+        },
+        {
+          "path": "docs/evidence/SHOT_PLANNER_047_OPTICS.json",
+          "field": "browser_demo_reference_checked",
           "equals": true
         }
       ],
