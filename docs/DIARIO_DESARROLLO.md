@@ -777,3 +777,22 @@ Suite MVP local 171 casos, 168 correctos y 3 omitidos por permisos de symlinks.
 Esta evidencia corresponde al helper en desarrollo. El beta.5 ya construido
 conserva sus bytes y SHA para la QA beta.3 → beta.5. La causa histórica de las
 eliminaciones sigue desconocida. La VM devuelve acceso denegado desde Codex.
+
+### COL-013 · Interpolación LUT en imágenes grandes · 11-11-2026
+
+Se reutilizan índices y pesos por eje al interpolar la LUT 33³. Se mantiene el
+orden de acumulación y el cálculo de los pesos en float64. Se ejecutaron tres
+exportaciones PNG por versión con una imagen sintética sRGB de 6000 × 4000 y
+receta con glow, difusión, fade y color. Los seis hashes de píxeles coinciden.
+
+Medianas en este host Windows: exportación 37,09 → 27,95 s, fase LUT
+19,91 → 11,88 s y CPU 71,70 → 62,67 s. RSS pico muestreado 1119,4 → 1161,7 MiB.
+El tiempo mejora un 24,6 % en este caso y la medición no muestra ahorro de memoria.
+La diferencia de RSS no establece una tendencia para otras imágenes o equipos.
+16 pruebas motor/acabado correctas. Ver `COLOR_LUT_013_PERF.json`.
+
+Para repetir el ensayo se usa `scripts/profile_export.py` y el mismo PNG en
+ambos worktrees. El fixture se genera con x/y lineales de 0 a 1: canales
+0,72x+0,23y; 0,62y+0,28x; 0,5(1−x)+0,45y. Receta de exposición 0,45,
+temperatura −0,2, saturación 1,23, contraste 1,12, glow 0,25, difusión 0,2 y
+fade 0,18. Comparar SHA de píxeles y medianas, con las mismas dependencias.

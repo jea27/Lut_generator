@@ -1,0 +1,43 @@
+{
+  "schema": "color-studio-lut-benchmark-v1",
+  "date": "2026-11-11",
+  "baseline": "ba7ec324c2d4807f8afb84fc85227c5d5798210f",
+  "fixture": "Synthetic SDR sRGB gradient with finishing enabled",
+  "dimensions": [
+    6000,
+    4000
+  ],
+  "fixture_sha256": "a7688eac398ec758ecb113ee99351286f2ff03d4e0032d194cb60e2f9b455fff",
+  "png_pixels_sha256": "a93aac87d5b33871883920360a8d80c2dba20a7d7228b13eb9dd0b3102ec352f",
+  "all_six_runs_pixel_identical": true,
+  "baseline_result": {
+    "median_seconds": {
+      "decode_icc_seconds": 1.210140300000603,
+      "color_lut_seconds": 19.905137900000227,
+      "finishing_seconds": 14.509962099999939,
+      "render_seconds": 34.516433899999356,
+      "quantize_png_seconds": 1.2837240999997448,
+      "pipeline_seconds": 37.09311460000026
+    },
+    "median_cpu_seconds": 71.703125,
+    "median_sampled_peak_rss_mb": 1119.4,
+    "runs": 3
+  },
+  "optimized_result": {
+    "median_seconds": {
+      "decode_icc_seconds": 1.0377158999999665,
+      "color_lut_seconds": 11.875002800000402,
+      "finishing_seconds": 13.53384769999957,
+      "render_seconds": 25.35221410000031,
+      "quantize_png_seconds": 1.309764399999949,
+      "pipeline_seconds": 27.953841300000022
+    },
+    "median_cpu_seconds": 62.671875,
+    "median_sampled_peak_rss_mb": 1161.7,
+    "runs": 3
+  },
+  "python": "3.12.14",
+  "numpy": "2.5.4",
+  "engine_look_tests_passed": 16,
+  "scope": "Local Windows, three consecutive full PNG exports per mode, same fixture and recipe. RSS sampled every 10 ms. No real editor import or aesthetic acceptance."
+}
