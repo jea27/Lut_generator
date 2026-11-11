@@ -153,15 +153,25 @@ def transform(rgb, recipe):
              r.contrast==1 and r.saturation==1 and r.temperature==0)
     if r.intensity==0 or neutral:return a.copy()
     # The rendered look IS the 33^3 LUT, not a second analytic approximation.
-    table=lut_grid(r.model_dump_json());flat=a.reshape(-1,3);position=flat*32
-    lower=np.floor(position).astype(np.int32);fraction=position-lower
-    output=np.zeros_like(flat)
-    for blue in (0,1):
-        for green in (0,1):
-            for red in (0,1):
-                bits=np.array([red,green,blue]);indices=np.minimum(lower+bits,32)
-                weight=np.prod(np.where(bits,fraction,1-fraction),axis=1)
-                output+=table[indices[:,2],indices[:,1],indices[:,0]]*weight[:,None]
+    table = lut_grid(r.model_dump_json())
+    flat = a.reshape(-1, 3)
+    position = flat * 32
+    lower = np.floor(position).astype(np.int32)
+    fraction = position - lower
+    upper = np.minimum(lower + 1, 32)
+    low_weight = 1 - fraction
+
+    # Keep the previous corner order and float64 weight arithmetic. Reuse the
+    # per-axis choices instead of allocating an index and weight matrix per corner.
+    red_corners = ((lower[:, 0], low_weight[:, 0]), (upper[:, 0], fraction[:, 0]))
+    green_corners = ((lower[:, 1], low_weight[:, 1]), (upper[:, 1], fraction[:, 1]))
+    blue_corners = ((lower[:, 2], low_weight[:, 2]), (upper[:, 2], fraction[:, 2]))
+    output = np.zeros_like(flat)
+    for blue_index, blue_weight in blue_corners:
+        for green_index, green_weight in green_corners:
+            for red_index, red_weight in red_corners:
+                weight = (red_weight * green_weight) * blue_weight
+                output += table[blue_index, green_index, red_index] * weight[:, None]
     return np.clip(output.reshape(a.shape),0,1)
 
 

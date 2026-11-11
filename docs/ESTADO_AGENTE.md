@@ -1420,6 +1420,13 @@ Trabajo Pro de guardado y recuperación en worktree independiente, apilado sobre
 PR #90 para probar con sus protecciones de datos. Aceptación visual y comercial
 pendientes. Project OS conserva su rama de trabajo.
 
+## COL-013 · Interpolación LUT · 11-11-2026
+
+Rama `codex/COL-013-lut-rendimiento` sobre PR #90, Issue #45. Comparación local
+24 MP reproducida con 3 exportaciones por versión y píxeles idénticos.
+Recibo `COLOR_LUT_013_PERF.json`. Próximas mediciones con imágenes reales
+representativas y pico de memoria en la VM autorizada. Mantener la validación
+visual y de LUT en editores en sus tareas respectivas.
 ## COL-045 · Demo reutilizable · 11-11-2026
 
 Rama `codex/COL-045-demo-reutilizable`, base PR #90, Issue #81. Los dos
