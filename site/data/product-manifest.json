@@ -793,7 +793,8 @@
     {
       "delivery_prs": [
         86,
-        88
+        88,
+        92
       ],
       "group": "Creator / Pro",
       "evidence": [
@@ -805,6 +806,11 @@
         {
           "path": "docs/evidence/INTEGRACION_036_QA.json",
           "field": "creator_mode_preservation_checked",
+          "equals": true
+        },
+        {
+          "path": "docs/evidence/PRO_046_PROJECT_QA.json",
+          "field": "api_save_reopen_after_restart",
           "equals": true
         }
       ],
