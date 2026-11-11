@@ -77,7 +77,10 @@ class ApiTests(unittest.TestCase):
             self.assertEqual((value['split'],value['zoom'],value['matched']),(63,1.5,True))
             self.assertEqual(value['recipe']['look']['glow'],.2)
             after=restarted.post('/api/export/png',json={'source_id':source['id'],'recipe':value['recipe']})
-            self.assertEqual(after.content,before.content)
+            self.assertEqual(after.status_code,200,after.text[:100])
+            with Image.open(io.BytesIO(before.content)) as expected, Image.open(io.BytesIO(after.content)) as actual:
+                self.assertEqual((actual.mode,actual.size,actual.tobytes()),(expected.mode,expected.size,expected.tobytes()))
+                self.assertTrue(actual.info['icc_profile'])
         self.assertEqual({p.name:p.read_bytes() for p in (store/'images').iterdir()},images)
 
     def test_project_copies_never_overwrite_and_changed_media_is_rejected(self):
