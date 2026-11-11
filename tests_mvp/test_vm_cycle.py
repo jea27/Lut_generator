@@ -59,6 +59,23 @@ class VmCycleTests(unittest.TestCase):
         for path in ('https://example.org','//example.org','/../private'):
             with self.assertRaises(ValueError):client.call('GET',path)
 
+    def test_beta7_project_reopens_without_creating_another_copy(self):
+        data=self.root/'project-data'
+        output=self.root/'first';output.mkdir()
+        with TestClient(create_app(data),base_url='http://127.0.0.1') as client:
+            state,report=exercise(LocalClient(client),self.inputs,output,cancellation=False,
+                                  web_required=False,projects=True)
+        self.assertTrue(report['project_roundtrip'])
+        saved={p.name:p.read_bytes() for p in (data/'projects').iterdir()}
+        self.assertEqual(list(saved),[state['project_id']+'.json'])
+        output=self.root/'second';output.mkdir()
+        with TestClient(create_app(data),base_url='http://127.0.0.1') as client:
+            reopened,report=exercise(LocalClient(client),self.inputs,output,state,cancellation=False,
+                                     web_required=False,projects=True)
+        self.assertEqual(reopened,state)
+        self.assertTrue(report['project_roundtrip'])
+        self.assertEqual(saved,{p.name:p.read_bytes() for p in (data/'projects').iterdir()})
+
     def test_api_cli_rejects_host_before_output_creation(self):
         output=self.root/'must-not-create'
         r=subprocess.run([sys.executable,'-B',str(ROOT/'scripts/qa_guest_api.py'),'--output',str(output)],capture_output=True,text=True)

@@ -53,7 +53,7 @@ def upload(client,raw):
     uuid.UUID(result['id']);return result
 
 
-def exercise(client, inputs, output, seed=None, cancellation=True, web_required=True):
+def exercise(client, inputs, output, seed=None, cancellation=True, web_required=True, projects=False):
     """Real API contract checks; callers provide an owned synthetic output folder."""
     from PIL import Image
     health=client.json('GET','/api/health')
@@ -91,6 +91,26 @@ def exercise(client, inputs, output, seed=None, cancellation=True, web_required=
     plan['diagram']['nodes'][0]['x']=.25
     assert json.loads(json.dumps(plan))['diagram']['nodes'][0]['x']==.25
     assert not re.search(r'(?i)(?<![a-z0-9])[a-z]:[\\/]|github_pat_|gh[pousr]_',json.dumps(plan))
+    project_checked=False
+    if projects:
+        if 'project_id' not in seed:
+            draft={'name':'Synthetic Hyper-V QA',**edit,'reference_id':seed['reference']['id'],
+                   'split':63,'zoom':1.5,'matched':True}
+            saved=json.loads(client.call('POST','/api/projects',draft,expected=201)[0])
+            seed['project_id']=str(uuid.UUID(saved['id']))
+        reopened=client.json('GET','/api/projects/'+seed['project_id'])
+        assert reopened['source']['id']==seed['source']['id'] and reopened['reference']['id']==seed['reference']['id']
+        assert reopened['recipe']==recipe and (reopened['split'],reopened['zoom'],reopened['matched'])==(63,1.5,True)
+        replay=client.call('POST','/api/export/png',{'source_id':reopened['source']['id'],'recipe':reopened['recipe']})[0]
+        with Image.open(io.BytesIO(replay)) as image, Image.open(io.BytesIO(rendered[0])) as expected:
+            assert image.tobytes()==expected.tobytes() and image.info.get('icc_profile')
+        project_checked=True
+        # Keep the exact synthetic inputs and color-only oracle for Resolve.
+        color_png=client.call('POST','/api/export/png',color_only)[0]
+        identity=client.call('POST','/api/export/cube',{'source_id':seed['source']['id'],'recipe':{}})[0]
+        for name,payload in [('source.png',(inputs/'source.png').read_bytes()),
+                             ('output-color-only.png',color_png),('identity.cube',identity)]:
+            with (output/name).open('xb') as stream:stream.write(payload)
     for name,payload in [('output.png',rendered[0]),('look.cube',cube),('recipe.json',json.dumps(recipe).encode()),('plan.json',json.dumps(plan).encode())]:
         with (output/name).open('xb') as stream:stream.write(payload)
     cancel='NOT_RUN'
@@ -106,11 +126,11 @@ def exercise(client, inputs, output, seed=None, cancellation=True, web_required=
             time.sleep(.05)
         cancel='PASS' if job['status']=='cancelled' else 'NOT_EXERCISED' if job['status']=='completed' else 'FAIL'
         assert cancel!='FAIL','Cancellation failed or timed out'
-    return seed,{'version':health['version'],'web_bundle_served':web_required,'creator_pro_export_equal':True,'small_preview_export_equal':True,'presets_preserved':2,'recipe_roundtrip':True,'lut_excludes_optics':True,'planner_uncertainty_sources_and_json':True,'cancellation':cancel,'png_sha256':digest(rendered[0]),'cube_sha256':digest(cube),'scope':'Bundled API exercised; GUI interaction and aesthetic acceptance remain pending'}
+    return seed,{'version':health['version'],'web_bundle_served':web_required,'creator_pro_export_equal':True,'small_preview_export_equal':True,'presets_preserved':2,'recipe_roundtrip':True,'lut_excludes_optics':True,'planner_uncertainty_sources_and_json':True,'project_roundtrip':project_checked,'cancellation':cancel,'png_sha256':digest(rendered[0]),'cube_sha256':digest(cube),'scope':'Bundled API exercised; GUI interaction and aesthetic acceptance remain pending'}
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True);parser.add_argument('--seed',type=Path);parser.add_argument('--cancellation',action='store_true');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True);parser.add_argument('--seed',type=Path);parser.add_argument('--cancellation',action='store_true');parser.add_argument('--projects',action='store_true');args=parser.parse_args()
     kit=Path(__file__).resolve().parents[1];app=Path('C:/LF-QA/App');data=Path('C:/LF-QA/Data')
     if os.name!='nt' or kit!=Path('C:/LF-QA/Kit') or Path(sys_executable()).parent!=app/'runtime' or os.environ.get('LF_QA_VM_VERIFIED')!='1':raise RuntimeError('Only the verified guest orchestrator may run this CLI')
     for p in (kit,app,data,args.output):
@@ -126,7 +146,7 @@ def main():
             try:client.json('GET','/api/health');break
             except (OSError,urllib.error.URLError):time.sleep(.05)
         seed=json.loads(args.seed.read_bytes()) if args.seed else None
-        seed,result=exercise(client,kit/'inputs',args.output,seed,args.cancellation)
+        seed,result=exercise(client,kit/'inputs',args.output,seed,args.cancellation,projects=args.projects)
         (args.output/'state.json').write_text(json.dumps(seed,indent=2)+'\n',encoding='utf-8')
         (args.output/'result.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
     finally:

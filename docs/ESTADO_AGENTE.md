@@ -1427,3 +1427,27 @@ copias y abrirlas se verificó en navegador con demo CC0 y en API tras reinicio.
 Pruebas y estado hacia 1.0 en `CREATOR_PRO_SHOT_PLANNER.md`. Continuar con
 validación real de LUT, perfiles y curvas, y recuperación de planes de rodaje.
 La dependencia de integración es la revisión humana de PR #90.
+
+## QA final de beta.7 en Hyper-V
+
+La [guía del operador](QA_HYPER_V_BETA7.md) reúne el ciclo beta.3 → beta.5,
+la instalación limpia de beta.7 y los pasos de revisión de interfaz y LUT.
+Los dos kits originales se verificaron y se conservan. El kit beta.7 revisado
+añade un modo de instalación limpia y comprobaciones de proyectos. Usa
+el mismo instalador identificado por su SHA-256, sin recompilar el producto.
+
+GitHub registra #92–95 integradas en la rama de #90. La integración
+perdió dos funciones auxiliares que usan la importación y la demo. Se
+restauraron las funciones y el límite de concurrencia de la demo. El
+review de #90 y la aceptación individual siguen pendientes.
+
+171 pruebas de la rama reparada pasaron en el host, con tres omisiones
+de symlinks. Las 14 comprobaciones focales pasaron con las herramientas
+nuevas. En el runtime extraído de beta.7 pasaron 174 de 177 casos. Las
+tres omisiones corresponden a los mismos fixtures de enlaces del host.
+
+Hyper-V devolvió acceso denegado en la sesión de Codex. El siguiente
+paso sigue en [#67](https://github.com/jea27/Lut_generator/issues/67).
+Los dos ciclos, la validación visual y el ensayo en Resolve siguen
+pendientes de ejecución. El fallo intermitente anterior y las eliminaciones
+históricas permanecen abiertos. Beta externa y venta siguen en NO-GO.

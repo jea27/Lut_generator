@@ -3,6 +3,7 @@ param(
  [Parameter(Mandatory=$true)][ValidatePattern('^[a-f0-9]{64}$')][string]$ExpectedSha256,
  [guid]$CheckpointId=[guid]::Empty,
  [switch]$ConfirmCleanCheckpoint,
+ [switch]$CleanCandidate,
  [switch]$Run
 )
 # Read-only by default. -Run transfers only the verified kit and invokes its
@@ -61,6 +62,7 @@ try{
 $lfExtract=Join-Path $lfOutput 'verified-kit';Expand-Archive -LiteralPath $lfZip -DestinationPath $lfExtract
 $lfManifest=Get-Content -LiteralPath "$lfExtract\kit-manifest.json" -Raw|ConvertFrom-Json
 if($lfManifest.schema -ne 'color-studio-private-vm-kit-v2'){throw 'Use the cycle-enabled v2 kit'}
+if($CleanCandidate -and $lfManifest.version -ne '0.3.0-beta.7'){throw 'CleanCandidate requires the revised beta.7 kit'}
 if($lfNames.Count -ne @($lfManifest.files.psobject.Properties).Count+1){throw 'ZIP has undeclared files'}
 foreach($lfFile in $lfManifest.files.psobject.Properties){
  if(-not $lfNames.Contains($lfFile.Name) -or (Get-FileHash -LiteralPath (Join-Path $lfExtract $lfFile.Name)).Hash.ToLower() -ne $lfFile.Value){throw 'Kit file mismatch'}
@@ -76,6 +78,7 @@ try{
  if(-not $lfCredential){throw 'Guest credentials not provided'}
  $lfSession=New-PSSession -VMId $lfVm.Id -Credential $lfCredential -ErrorAction Stop
  $lfCredential=$null
+ $lfCollectReports=$false
  $lfGuest=Invoke-Command -Session $lfSession -ScriptBlock {
   $m=Get-CimInstance Win32_ComputerSystem;$o=Get-CimInstance Win32_OperatingSystem
   @{uuid=(Get-CimInstance Win32_ComputerSystemProduct).UUID;manufacturer=$m.Manufacturer;model=$m.Model;product_type=$o.ProductType;build=$o.BuildNumber;root_exists=(Test-Path -LiteralPath 'C:\LF-QA')}
@@ -107,18 +110,37 @@ function Assert-LfNoExistingColorStudio {
 Assert-LfNoExistingColorStudio
 New-Item -ItemType Directory -Path 'C:\LF-QA\Kit'|Out-Null
 }
+ $lfCollectReports=$true
  foreach($lfFile in Get-ChildItem -LiteralPath $lfExtract){Copy-Item -LiteralPath $lfFile.FullName -Destination 'C:\LF-QA\Kit' -ToSession $lfSession -Recurse}
  Copy-Item -LiteralPath "$lfOutput\host-attestation.json" -Destination 'C:\LF-QA\Kit\host-attestation.json' -ToSession $lfSession
  # The copied script is checked against the trusted ZIP before being executed.
  $lfCycleHash=$lfManifest.files.'qa_vm_cycle.ps1'
- Invoke-Command -Session $lfSession -ArgumentList $lfCycleHash,$lfManifestHash -ScriptBlock {
-  param($cycleHash,$manifestHash)
+ Invoke-Command -Session $lfSession -ArgumentList $lfCycleHash,$lfManifestHash,([bool]$CleanCandidate) -ScriptBlock {
+  param($cycleHash,$manifestHash,$clean)
   if((Get-FileHash -LiteralPath 'C:\LF-QA\Kit\qa_vm_cycle.ps1').Hash.ToLower() -ne $cycleHash){throw 'Guest cycle script changed'}
-  & 'C:\LF-QA\Kit\qa_vm_cycle.ps1' -ExpectedManifestSha256 $manifestHash
+  $params=@{ExpectedManifestSha256=$manifestHash}
+  if($clean){$params.CleanCandidate=$true}
+  & 'C:\LF-QA\Kit\qa_vm_cycle.ps1' @params
  }
 }finally{
  if($lfSession){
-  try{Copy-Item -Path 'C:\LF-QA\Reports\*\report.json' -Destination $lfOutput -FromSession $lfSession -ErrorAction Stop}catch{Write-Output 'No completed guest report copied; retain guest logs and inspect privately'}
+  if($lfCollectReports){
+   try{
+    $lfGuestReport=Invoke-Command -Session $lfSession -ScriptBlock {
+     $root='C:\LF-QA\Reports'
+     foreach($parent in @('C:\LF-QA',$root)){
+      if((Get-Item -LiteralPath $parent -Force).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Linked report path'}
+     }
+     $dirs=@(Get-ChildItem -LiteralPath $root -Force)
+     if($dirs.Count -ne 1 -or -not $dirs[0].PSIsContainer -or $dirs[0].Name -notmatch '^[0-9a-f]{32}$'){throw 'No unique synthetic report'}
+     if($dirs[0].Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Linked report'}
+     if(Get-ChildItem -LiteralPath $dirs[0].FullName -Force -Recurse | Where-Object {$_.Attributes -band [IO.FileAttributes]::ReparsePoint}){throw 'Linked report contents'}
+     $dirs[0].FullName
+    }
+    Copy-Item -LiteralPath $lfGuestReport -Destination $lfOutput -FromSession $lfSession -Recurse -ErrorAction Stop
+    Write-Output ('Private reports copied to: '+$lfOutput)
+   }catch{Write-Output 'Report copy failed; retain guest logs and do not apply a checkpoint before preserving evidence'}
+  }
   Remove-PSSession -Session $lfSession
  }
 }

@@ -789,3 +789,17 @@ PNG idéntico y rechazo de medio cambiado, ausente o fuera del almacén.
 166 casos MVP, 162 correctos y 4 omitidos en este worktree. Tres requieren
 symlinks y la clase NSIS requiere el caché fijado del worktree COL036.
 Siete pruebas de cliente y build correctos. Validación de VM pendiente en #67.
+
+### QA final de beta.7 en Hyper-V · COL-036
+
+Se compararon la composición beta.7 y la rama de #90 tras la integración de
+#92–95. El conflicto dejó llamadas a dos funciones auxiliares ausentes.
+Restaurar ambas y el límite de concurrencia preserva la importación, la demo
+estable y los cambios integrados. La prueba usa medios sintéticos o CC0.
+
+La batería del invitado distingue actualización de instalación limpia.
+Para beta.7 conserva y reabre un proyecto, verifica los hashes después del
+reinicio y genera el control sRGB para medir la LUT en Resolve. Los
+instaladores y kits originales conservan sus SHA-256. El kit revisado
+solo añade herramientas de ensayo. La guía de ejecución está en
+[QA final en Hyper-V](QA_HYPER_V_BETA7.md).

@@ -179,6 +179,16 @@ def create_app(data_dir=None):
     def pixels(identifier, size=None):
         return image_io.decode(path_for(identifier,images,'.png').read_bytes(),max_side=size)
 
+    def prepare_image(payload, *, embed_profile=True):
+        rgb, alpha, notes = image_io.decode(payload)
+        return image_io.encode(rgb, alpha, embed_profile=embed_profile), {
+            'width': rgb.shape[1], 'height': rgb.shape[0], 'has_alpha': alpha is not None,
+            'notes': notes, 'analysis': engine.analyze(rgb, alpha),
+        }
+
+    def image_asset(identifier, description):
+        return {**description, 'id': identifier, 'preview_url': f'/api/images/{identifier}/preview'}
+
     def project_media(identifier):
         limit = 100 * 1024 * 1024
         try:
