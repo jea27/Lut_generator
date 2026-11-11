@@ -1,0 +1,17 @@
+{
+  "schema": "color-studio-project-qa-v1",
+  "date": "2026-11-11",
+  "api_save_reopen_after_restart": true,
+  "png_byte_identical_after_restart": true,
+  "copy_collision_preserved": true,
+  "changed_or_missing_media_rejected": true,
+  "browser_demo_save_reload_reopen": true,
+  "browser_export_available_after_preview": true,
+  "mvp_tests_discovered": 166,
+  "mvp_tests_passed": 162,
+  "mvp_tests_skipped": 4,
+  "client_tests_passed": 7,
+  "client_build_passed": true,
+  "windows_vm_executed": false,
+  "human_approved": false
+}

@@ -819,6 +819,7 @@
       ],
       "tests": [
         "tests_mvp/test_planner.py",
+        "tests_mvp/test_api.py",
         "apps/web/tests/workspace.test.ts",
         "apps/web/tests/preferences.test.ts"
       ],
@@ -837,10 +838,11 @@
         "packages/colour_core/__init__.py",
         "apps/api/jobs.py"
       ],
-      "acceptance": "Controles técnicos, LUT/receta/lotes y preferencias sobre el mismo motor; catálogo distingue experimental y previsto, sin pagos.",
+      "acceptance": "Controles técnicos, LUT, recetas, lotes, proyectos locales y preferencias sobre el mismo motor; catálogo distingue experimental y previsto, sin pagos.",
       "review": {
         "steps": [
           "Cambiar a Pro; comprobar método, análisis, controles, LUT, receta y lotes.",
+          "Guardar una copia de proyecto, recargar, abrirla y comprobar receta, imágenes y previsualización.",
           "Volver a Creator con ajustes Pro y reabrir Pro; comprobar advertencia y conservación, sin anunciar RAW/Log/vídeo como disponibles."
         ],
         "checklist": [

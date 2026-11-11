@@ -24,8 +24,9 @@ class RequestLimits:
                 return await JSONResponse({'detail': 'Request exceeds local size limit'}, 413)(scope, receive, send)
         else:
             declared = limit
-        heavy = write and (scope['path'] in ('/api/images', '/api/fit', '/api/preview', '/api/planner')
-                           or scope['path'].startswith('/api/export/'))
+        heavy = (write and (scope['path'] in ('/api/images', '/api/fit', '/api/preview', '/api/planner', '/api/projects')
+                            or scope['path'].startswith('/api/export/'))
+                 or scope['method'] == 'GET' and scope['path'].startswith('/api/projects/'))
         if heavy and self.active >= self.capacity:
             return await JSONResponse({'detail': 'Local engine busy; retry after current operations'}, 429)(scope, receive, send)
         if heavy:

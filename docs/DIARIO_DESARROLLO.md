@@ -777,3 +777,15 @@ Suite MVP local 171 casos, 168 correctos y 3 omitidos por permisos de symlinks.
 Esta evidencia corresponde al helper en desarrollo. El beta.5 ya construido
 conserva sus bytes y SHA para la QA beta.3 → beta.5. La causa histórica de las
 eliminaciones sigue desconocida. La VM devuelve acceso denegado desde Codex.
+
+### COL-046 · Proyectos locales · 11-11-2026
+
+Pro recupera una copia de edición con las dos imágenes importadas, receta y
+comparador. API privada por sesión, referencias por UUID y huella SHA-256,
+registros acotados y escritura atómica sin sobrescritura. Confirmación antes
+de cambiar una edición abierta. El navegador recorrió demo CC0, guardar,
+recargar, abrir y exportación disponible. Suite de API verificó reinicio,
+PNG idéntico y rechazo de medio cambiado, ausente o fuera del almacén.
+166 casos MVP, 162 correctos y 4 omitidos en este worktree. Tres requieren
+symlinks y la clase NSIS requiere el caché fijado del worktree COL036.
+Siete pruebas de cliente y build correctos. Validación de VM pendiente en #67.
