@@ -39,5 +39,23 @@
   "python": "3.12.14",
   "numpy": "2.5.4",
   "engine_look_tests_passed": 16,
+  "look_buffer_reuse_experiment": {
+    "included_in_delivery": false,
+    "runs_per_mode": 3,
+    "all_six_runs_pixel_identical": true,
+    "separate_buffer": {
+      "median_pipeline_seconds": 25.315,
+      "median_finishing_seconds": 12.293,
+      "median_cpu_seconds": 60.125,
+      "median_sampled_peak_rss_mb": 1133.0
+    },
+    "reused_buffer": {
+      "median_pipeline_seconds": 28.052,
+      "median_finishing_seconds": 13.123,
+      "median_cpu_seconds": 62.125,
+      "median_sampled_peak_rss_mb": 1151.6
+    },
+    "scope": "Separate session on the same 24 MP fixture and optimized LUT. Windows installer bundling overlapped the first mode. The experiment did not show a memory improvement."
+  },
   "scope": "Local Windows, three consecutive full PNG exports per mode, same fixture and recipe. RSS sampled every 10 ms. No real editor import or aesthetic acceptance."
 }
