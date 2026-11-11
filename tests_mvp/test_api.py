@@ -63,6 +63,7 @@ class ApiTests(unittest.TestCase):
         script = """
 import json
 import sys
+sys.path[:] = json.loads(sys.argv[2])
 from fastapi.testclient import TestClient
 from apps.api.main import create_app
 
@@ -74,7 +75,7 @@ with TestClient(create_app(sys.argv[1]), base_url='http://127.0.0.1') as client:
     print(json.dumps({role: response.json()[role]['id'] for role in ('source', 'reference')}))
 """
         ids = json.loads(subprocess.check_output(
-            [sys.executable, '-c', script, str(store)],
+            [sys.executable, '-I', '-S', '-B', '-c', script, str(store), json.dumps(sys.path)],
             cwd=Path(__file__).resolve().parents[1], timeout=30,
         ))
         self.assertEqual(ids,{role:first.json()[role]['id'] for role in ('source','reference')})
