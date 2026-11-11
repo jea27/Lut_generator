@@ -14,6 +14,7 @@ CATALOG = {
         {'id': 'image-export', 'modes': ['creator','pro'], 'status': 'available'},
         {'id': 'lut-export', 'modes': ['pro'], 'status': 'available'},
         {'id': 'batches', 'modes': ['pro'], 'status': 'available'},
+        {'id': 'local-projects', 'modes': ['pro'], 'status': 'available'},
         {'id': 'shot-planner', 'modes': ['pro'], 'status': 'experimental'},
         {'id': 'automatic-look', 'modes': ['creator','pro'], 'status': 'planned'},
         {'id': 'raw-log-hdr', 'modes': ['pro'], 'status': 'planned'},
@@ -28,6 +29,7 @@ CATALOG = {
 def catalogue():
     result=deepcopy(CATALOG)
     titles={
+        'local-projects':('Proyectos locales','Local projects'),
         'automatic-look':('Detección automática del acabado','Automatic finish detection'),
         'raw-log-hdr':('Ingesta RAW, Log y HDR','RAW, Log and HDR ingestion'),
         'video-shot-match':('Matching entre planos de vídeo','Video shot matching'),

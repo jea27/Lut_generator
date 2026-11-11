@@ -1,5 +1,6 @@
 """Loopback-only LumaForge API. Images/presets are private local application data."""
 import hashlib
+import io
 import json
 import os
 import threading
@@ -10,6 +11,7 @@ import hmac
 import sys
 from contextlib import contextmanager
 from pathlib import Path
+from typing import Literal
 from urllib.parse import urlparse
 
 import psutil
@@ -46,6 +48,28 @@ class Preset(BaseModel):
     name: str = Field(min_length=1,max_length=80)
     recipe: engine.Recipe
     group: str = Field(default='',max_length=40)
+
+
+class ProjectDraft(BaseModel):
+    model_config = ConfigDict(extra='forbid')
+    name: str = Field(min_length=1, max_length=80, pattern=r'^[^\x00-\x1f\x7f]+$')
+    source_id: str = Field(max_length=36)
+    reference_id: str | None = Field(default=None, max_length=36)
+    recipe: engine.Recipe
+    split: float = Field(default=50, ge=0, le=100)
+    zoom: float = Field(default=1, ge=1, le=3)
+    matched: bool = False
+
+
+class StoredProject(ProjectDraft):
+    schema_version: Literal[1]
+    id: str
+    created_at: int = Field(ge=0, le=253402300799)
+    source_sha256: str = Field(pattern='^[a-f0-9]{64}$')
+    reference_sha256: str | None = Field(pattern='^[a-f0-9]{64}$')
+
+    def summary(self):
+        return {'id': self.id, 'name': self.name, 'created_at': self.created_at}
 
 
 class Batch(BaseModel):
@@ -155,15 +179,99 @@ def create_app(data_dir=None):
     def pixels(identifier, size=None):
         return image_io.decode(path_for(identifier,images,'.png').read_bytes(),max_side=size)
 
-    def prepare_image(payload, *, embed_profile=True):
-        rgb, alpha, notes = image_io.decode(payload)
-        return image_io.encode(rgb, alpha, embed_profile=embed_profile), {
-            'width': rgb.shape[1], 'height': rgb.shape[0], 'has_alpha': alpha is not None,
-            'notes': notes, 'analysis': engine.analyze(rgb, alpha),
-        }
+    def project_media(identifier):
+        limit = 100 * 1024 * 1024
+        try:
+            path = path_for(identifier, images, '.png')
+            with path.open('rb') as stream:
+                size = os.fstat(stream.fileno()).st_size
+                if size > limit:
+                    raise HTTPException(409, 'PROJECT_MEDIA_UNAVAILABLE')
+                payload = stream.read(size + 1)
+        except (HTTPException, OSError):
+            raise HTTPException(409, 'PROJECT_MEDIA_UNAVAILABLE') from None
+        if len(payload) != size:
+            raise HTTPException(409, 'PROJECT_MEDIA_UNAVAILABLE')
+        return payload
 
-    def image_asset(identifier, description):
-        return {**description, 'id': identifier, 'preview_url': f'/api/images/{identifier}/preview'}
+    def restore_project_media(identifier, expected_digest):
+        payload = project_media(identifier)
+        if hashlib.sha256(payload).hexdigest() != expected_digest:
+            raise HTTPException(409, 'PROJECT_MEDIA_CHANGED')
+        try:
+            rgb, alpha, notes = image_io.decode(payload, max_side=512)
+            with Image.open(io.BytesIO(payload)) as image:
+                width, height = image.size
+        except (ValueError, OSError, Image.DecompressionBombError, Image.DecompressionBombWarning):
+            raise HTTPException(409, 'PROJECT_MEDIA_UNAVAILABLE') from None
+        return {'id': identifier, 'width': width, 'height': height, 'has_alpha': alpha is not None,
+                'notes': notes, 'analysis': engine.analyze(rgb, alpha),
+                'preview_url': f'/api/images/{identifier}/preview'}
+
+    def read_project(path):
+        record = StoredProject.model_validate(read_record(data, 'projects', path.name))
+        if record.id != path.stem or str(uuid.UUID(record.id)) != record.id or not record.name.strip():
+            raise ValueError('Invalid local project identity')
+        if (record.reference_id is None) != (record.reference_sha256 is None):
+            raise ValueError('Invalid local project reference')
+        return record
+
+    @app.get('/api/projects')
+    def list_projects():
+        with LOCK:
+            directory = private_path(data, 'projects')
+            records = []
+            unreadable = 0
+            for path in directory.glob('*.json'):
+                try:
+                    records.append(read_project(path).summary())
+                except (ValueError, OSError):
+                    unreadable += 1
+        records.sort(key=lambda item: (item['created_at'], item['id']), reverse=True)
+        return {'projects': records, 'unreadable': unreadable}
+
+    @app.post('/api/projects', status_code=201)
+    def save_project(body: ProjectDraft):
+        with LOCK:
+            directory = private_path(data, 'projects')
+            if len(list(directory.glob('*.json'))) >= 100:
+                raise HTTPException(409, 'PROJECT_LIMIT')
+            name = body.name.strip()
+            if not name:
+                raise ValueError('Project name cannot be empty')
+            recipe = engine.validate_recipe(body.recipe)
+            source_digest = hashlib.sha256(project_media(body.source_id)).hexdigest()
+            reference_digest = None
+            if body.reference_id is not None:
+                reference_digest = hashlib.sha256(project_media(body.reference_id)).hexdigest()
+            identifier = str(uuid.uuid4())
+            record = StoredProject(**body.model_dump(exclude={'name', 'recipe'}),
+                                   schema_version=1, id=identifier, created_at=int(time.time()),
+                                   name=name, recipe=recipe, source_sha256=source_digest,
+                                   reference_sha256=reference_digest)
+            try:
+                atomic_json(private_path(data, 'projects', identifier + '.json'),
+                            record.model_dump(), overwrite=False)
+            except FileExistsError:
+                raise HTTPException(409, 'PROJECT_COLLISION') from None
+            return record.summary()
+
+    @app.get('/api/projects/{identifier}')
+    def open_project(identifier: str):
+        with LOCK:
+            path = path_for(identifier, private_path(data, 'projects'), '.json')
+            try:
+                record = read_project(path)
+                recipe = engine.validate_recipe(record.recipe)
+            except (ValueError, OSError):
+                raise HTTPException(409, 'PROJECT_RECORD_INVALID') from None
+            source = restore_project_media(record.source_id, record.source_sha256)
+            reference = None
+            if record.reference_id is not None:
+                reference = restore_project_media(record.reference_id, record.reference_sha256)
+        return {**record.summary(), 'recipe': recipe.model_dump(), 'source': source,
+                'reference': reference, 'split': record.split, 'zoom': record.zoom,
+                'matched': record.matched and reference is not None}
 
     @app.get('/api/health')
     def health(): return {'version':'0.3.0-beta.5','offline_processing':True,'domain':'encoded-sRGB-D65'}

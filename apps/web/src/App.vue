@@ -12,11 +12,17 @@ type Recipe={look:Look;version:number;domain:string;method:string;scale:number[]
 type Analysis={histograms:number[][];dominant:{hex:string;fraction:number}[];luminance_mean:number;contrast_p95_p05:number}
 type ImageAsset={id:string;width:number;height:number;notes:string[];has_alpha:boolean;preview_url:string;analysis:Analysis;name:string}
 type Preset={id:string;name:string;recipe:Recipe}
+type LocalProject={id:string;name:string;created_at:number}
+type RestoredProject=LocalProject & {
+  source:Omit<ImageAsset,'name'>;reference:Omit<ImageAsset,'name'>|null
+  recipe:Recipe;split:number;zoom:number;matched:boolean
+}
 const q=useQuasar()
 const neutral=():Recipe=>({version:2,look:{enabled:false,strength:1,glow:0,diffusion:0,fade:0,radius:.008,threshold:.7},domain:'encoded-sRGB-D65',method:'lab-statistics',scale:[1,1,1],offset:[0,0,0],intensity:1,exposure:0,contrast:1,saturation:1,temperature:0})
 const recipe=reactive<Recipe>(neutral()), source=ref<ImageAsset|null>(null), reference=ref<ImageAsset|null>(null)
 const online=ref(false),busy=ref(false),previewing=ref(false),error=ref(''),resultUrl=ref(''),split=ref(50),zoom=ref(1)
 const presets=ref<Preset[]>([]),presetName=ref(''),timing=ref(0),memory=ref(0),method=ref('lab-statistics')
+const projects=ref<LocalProject[]>([]),projectName=ref(''),unreadableProjects=ref(0),loadingProjects=ref(false)
 const history=ref<Recipe[]>([neutral()]),historyIndex=ref(0)
 const tool=ref<'color'|'planner'>('color'),matched=ref(false),compared=ref(false),exported=ref(false)
 const isPro=computed(()=>preferences.value.workspace==='pro')
@@ -103,6 +109,71 @@ async function download(format:string) {
   }catch(e){error.value=(e as Error).message}finally{busy.value=false}
 }
 async function loadPresets(){presets.value=await(await api('/presets')).json()}
+function projectError(cause:unknown){
+  const detail=(cause as Error).message
+  switch(detail){
+    case 'PROJECT_MEDIA_UNAVAILABLE': return tx('Falta una imagen local del proyecto o no se puede leer.','A local project image is missing or unreadable.')
+    case 'PROJECT_MEDIA_CHANGED': return tx('Una imagen del proyecto ha cambiado desde que se guardó.','A project image changed since it was saved.')
+    case 'PROJECT_RECORD_INVALID': return tx('No se puede leer el proyecto guardado.','The saved project cannot be read.')
+    case 'PROJECT_LIMIT': return tx('Has alcanzado el límite de 100 copias de proyecto.','You have reached the limit of 100 project copies.')
+    case 'PROJECT_COLLISION': return tx('La copia existente se ha conservado. Vuelve a guardar.','The existing copy was preserved. Save again.')
+    default: return tx('No se pudo acceder a los proyectos locales. Comprueba el almacenamiento.','Local projects are unavailable. Check local storage.')
+  }
+}
+async function loadProjects(){
+  if(loadingProjects.value)return
+  loadingProjects.value=true
+  try{
+    const saved=await(await api('/projects')).json()
+    projects.value=saved.projects
+    unreadableProjects.value=saved.unreadable
+  }catch(cause){error.value=projectError(cause)}
+  finally{loadingProjects.value=false}
+}
+async function saveProject(){
+  if(busy.value||loadingProjects.value||!source.value||!projectName.value.trim())return
+  busy.value=true
+  error.value=''
+  try{
+    const response=await api('/projects',jsonPost({name:projectName.value.trim(),source_id:source.value.id,
+      reference_id:reference.value?.id??null,recipe:clone(recipe),split:split.value,zoom:zoom.value,matched:matched.value}))
+    const saved:LocalProject=await response.json()
+    projects.value=[saved,...projects.value]
+    q.notify({message:tx('Copia de proyecto guardada','Project copy saved'),color:'dark',icon:'check'})
+  }catch(cause){error.value=projectError(cause)}
+  finally{busy.value=false}
+}
+async function openProject(identifier:string){
+  if(busy.value)return
+  busy.value=true
+  error.value=''
+  try{
+    const saved:RestoredProject=await(await api('/projects/'+identifier)).json()
+    controller?.abort()
+    ++serial
+    clearTimeout(timer)
+    revoke()
+    renderedKey.value=''
+    source.value={...saved.source,name:saved.name}
+    reference.value=saved.reference?{...saved.reference,name:tx('Referencia guardada','Saved reference')}:null
+    split.value=saved.split
+    zoom.value=saved.zoom
+    projectName.value=saved.name
+    method.value=saved.recipe.method
+    await assignRecipe(saved.recipe,true)
+    matched.value=saved.matched
+    await renderPreview()
+  }catch(cause){error.value=projectError(cause)}
+  finally{busy.value=false}
+}
+function confirmOpenProject(project:LocalProject){
+  if(busy.value)return
+  if(!source.value&&!reference.value){void openProject(project.id);return}
+  q.dialog({title:tx('Abrir proyecto guardado','Open saved project'),
+    message:tx('Al abrirlo cambiará la edición actual. Guarda una copia si quieres retomarla más tarde.',
+      'Opening it switches the current edit. Save a copy to return to this edit later.'),cancel:true})
+    .onOk(()=>openProject(project.id))
+}
 async function savePreset(){
   if(busy.value||!presetName.value.trim())return
   busy.value=true
@@ -135,6 +206,18 @@ onBeforeUnmount(()=>{controller?.abort();clearTimeout(timer);revoke()})
   <div v-show="tool==='color'" class="workspace" :class="{'creator-workspace':!isPro}">
    <aside class="assets-panel">
     <div class="section-heading">{{tx('PROYECTO','PROJECT')}} <q-icon name="folder_open" size="17px"/></div>
+    <details v-if="isPro" class="future-capabilities" @toggle="($event.target as HTMLDetailsElement).open&&loadProjects()">
+     <summary>{{tx('Proyectos guardados','Saved projects')}}</summary>
+     <p>{{tx('Guarda la edición y vuelve a abrirla en este equipo.','Save the edit and reopen it on this computer.')}}</p>
+     <q-input v-model="projectName" dense outlined maxlength="80" :disable="busy" :label="tx('Nombre del proyecto','Project name')"/>
+     <q-btn flat no-caps icon="save" :label="tx('Guardar copia','Save copy')" :disable="busy||loadingProjects||!source||!projectName.trim()" @click="saveProject"/>
+     <p v-if="loadingProjects" role="status">{{tx('Cargando proyectos…','Loading projects…')}}</p>
+     <p v-else-if="!projects.length">{{tx('Todavía no hay proyectos guardados.','No saved projects yet.')}}</p>
+     <p v-if="unreadableProjects" role="status">{{tx('Proyectos que no se pudieron leer','Unreadable projects')}}: {{unreadableProjects}}</p>
+     <button v-for="project in projects" :key="project.id" class="preset-row" :disabled="busy" @click="confirmOpenProject(project)">
+      <q-icon name="folder_open"/>{{project.name}} <small>{{new Date(project.created_at*1000).toLocaleString()}}</small>
+     </button>
+    </details>
     <q-btn v-if="!source&&!reference" flat no-caps :loading="busy" :label="tx('Probar demo CC0','Try CC0 demo')" icon="play_circle" @click="demoFromEditor"/>
     <label class="image-import" @dragover.prevent @drop.prevent="dropImage($event,'reference')"><span class="asset-label"><span class="asset-number">01</span>{{tx('Referencia de estilo','Style reference')}}</span>
      <div class="import-frame" :class="{loaded:reference}"><img v-if="reference" :src="reference.preview_url" alt="Referencia de color importada"><div v-else><q-icon name="add_photo_alternate" size="30px"/><strong>{{tx('Importar referencia','Import reference')}}</strong><small>{{tx('JPG o PNG','JPG or PNG')}}</small></div></div>

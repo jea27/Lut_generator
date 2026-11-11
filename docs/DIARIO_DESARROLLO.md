@@ -778,38 +778,14 @@ Esta evidencia corresponde al helper en desarrollo. El beta.5 ya construido
 conserva sus bytes y SHA para la QA beta.3 → beta.5. La causa histórica de las
 eliminaciones sigue desconocida. La VM devuelve acceso denegado desde Codex.
 
-### COL-047 · Estimaciones ópticas de rodaje · 11-11-2026
+### COL-046 · Proyectos locales · 11-11-2026
 
-Shot Planner calcula ángulo de visión, cobertura y profundidad de campo
-aproximados desde ancho de sensor, focal, apertura y distancia declarados.
-Fuentes oficiales enlazadas y círculo de confusión explícito. Nueve pruebas del
-Planner, siete de cliente, build y recorrido de navegador con demo CC0 correctos.
-Evidencia `SHOT_PLANNER_047_OPTICS.json`. Propuesta experimental, pendiente de
-comparación con cámara real. La imagen no se usa para deducir óptica original.
-### COL-013 · Interpolación LUT en imágenes grandes · 11-11-2026
-
-Se reutilizan índices y pesos por eje al interpolar la LUT 33³. Se mantiene el
-orden de acumulación y el cálculo de los pesos en float64. Se ejecutaron tres
-exportaciones PNG por versión con una imagen sintética sRGB de 6000 × 4000 y
-receta con glow, difusión, fade y color. Los seis hashes de píxeles coinciden.
-
-Medianas en este host Windows: exportación 37,09 → 27,95 s, fase LUT
-19,91 → 11,88 s y CPU 71,70 → 62,67 s. RSS pico muestreado 1119,4 → 1161,7 MiB.
-El tiempo mejora un 24,6 % en este caso y la medición no muestra ahorro de memoria.
-La diferencia de RSS no establece una tendencia para otras imágenes o equipos.
-16 pruebas motor/acabado correctas. Ver `COLOR_LUT_013_PERF.json`.
-
-Para repetir el ensayo se usa `scripts/profile_export.py` y el mismo PNG en
-ambos worktrees. El fixture se genera con x/y lineales de 0 a 1: canales
-0,72x+0,23y; 0,62y+0,28x; 0,5(1−x)+0,45y. Receta de exposición 0,45,
-temperatura −0,2, saturación 1,23, contraste 1,12, glow 0,25, difusión 0,2 y
-fade 0,18. Comparar SHA de píxeles y medianas, con las mismas dependencias.
-### COL-045 · Demo reutilizable · 11-11-2026
-
-La demo reutiliza sus dos imágenes normalizadas al repetir el recorrido o
-reiniciar. Comprueba la capacidad para ambas antes de guardar y conserva
-cualquier archivo existente que difiera. La API mantuvo los identificadores
-tras reiniciar y el número de imágenes permaneció en tres, incluida la
-importación sintética previa. Con una plaza libre conservó todo el almacén.
-Siete pruebas de API correctas. Las copias de demos de versiones anteriores
-se conservan y siguen ocupando sus plazas.
+Pro recupera una copia de edición con las dos imágenes importadas, receta y
+comparador. API privada por sesión, referencias por UUID y huella SHA-256,
+registros acotados y escritura atómica sin sobrescritura. Confirmación antes
+de cambiar una edición abierta. El navegador recorrió demo CC0, guardar,
+recargar, abrir y exportación disponible. Suite de API verificó reinicio,
+PNG idéntico y rechazo de medio cambiado, ausente o fuera del almacén.
+166 casos MVP, 162 correctos y 4 omitidos en este worktree. Tres requieren
+symlinks y la clase NSIS requiere el caché fijado del worktree COL036.
+Siete pruebas de cliente y build correctos. Validación de VM pendiente en #67.

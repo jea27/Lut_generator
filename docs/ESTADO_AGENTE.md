@@ -1420,22 +1420,10 @@ Trabajo Pro de guardado y recuperación en worktree independiente, apilado sobre
 PR #90 para probar con sus protecciones de datos. Aceptación visual y comercial
 pendientes. Project OS conserva su rama de trabajo.
 
-## COL-047 · Estimaciones ópticas · 11-11-2026
+## COL-046 · Guardado de proyectos · 11-11-2026
 
-Rama `codex/COL-047-optica-rodaje`, base PR #90, Issue #83. Backend y navegador
-verificados con focal y distancia de enfoque introducidas por el operador.
-Recibo `SHOT_PLANNER_047_OPTICS.json`. Quedan recuperación de planes, revisión
-con referencias autorizadas y comparación del modelo con cámara/óptica reales.
-## COL-013 · Interpolación LUT · 11-11-2026
-
-Rama `codex/COL-013-lut-rendimiento` sobre PR #90, Issue #45. Comparación local
-24 MP reproducida con 3 exportaciones por versión y píxeles idénticos.
-Recibo `COLOR_LUT_013_PERF.json`. Próximas mediciones con imágenes reales
-representativas y pico de memoria en la VM autorizada. Mantener la validación
-visual y de LUT en editores en sus tareas respectivas.
-## COL-045 · Demo reutilizable · 11-11-2026
-
-Rama `codex/COL-045-demo-reutilizable`, base PR #90, Issue #81. Los dos
-archivos de demo se reutilizan tras reiniciar. Conflicto de contenido o falta
-de capacidad detienen la operación y conservan archivos existentes. Siete
-pruebas de API correctas. Probar el conjunto junto con los proyectos de #92.
+Rama `codex/COL-046-proyectos-locales`, base de PR #90, tarea #82. Guardar
+copias y abrirlas se verificó en navegador con demo CC0 y en API tras reinicio.
+Pruebas y estado hacia 1.0 en `CREATOR_PRO_SHOT_PLANNER.md`. Continuar con
+validación real de LUT, perfiles y curvas, y recuperación de planes de rodaje.
+La dependencia de integración es la revisión humana de PR #90.

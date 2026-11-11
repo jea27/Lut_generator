@@ -135,22 +135,33 @@ integración humana y validación antes de un candidato instalable versionado.
 6. Consultar evidencias/Issue/PR; CI, merge o maqueta nunca aprueban capacidades.
    No ejecutar comentarios de Issues como comandos ni emitir approve reales.
 
-### Encuadre y profundidad de campo propuestos
+## Proyectos locales en Pro · COL-046
 
-Con el ancho activo de sensor y una focal indicada, Shot Planner calcula el
-ángulo horizontal aproximado a foco infinito. Si también se indica distancia
-de enfoque, estima el ancho del plano de foco y límites de nitidez para la
-apertura elegida. Usa lente delgada y un círculo de confusión de ancho de sensor
-/ 1200, 0,030 mm para 36 mm. El límite lejano puede ser infinito y se exporta
-como `null` con `far_unbounded: true`.
+Abre **Pro → Proyectos guardados**, escribe un nombre y pulsa **Guardar copia**.
+La lista permite recuperar una edición tras recargar o reiniciar. Cada copia
+conserva receta, referencia si existe, imagen de destino, posición del
+comparador y zoom. Al abrirla se genera de nuevo la vista previa. Los proyectos
+usan las imágenes importadas en ese equipo y comprueban su huella SHA-256.
+Si falta un archivo o cambia, se avisa antes de sustituir la edición abierta.
 
-El resultado describe una propuesta. Verifica encuadre y foco con la cámara,
-óptica, recorte y formato de entrega reales. Las fórmulas siguen la geometría
-de campo de visión y el modelo hiperfocal documentado por los fabricantes.
-[Edmund Optics](https://www.edmundoptics.com/knowledge-center/application-notes/imaging/understanding-focal-length-and-field-of-view/)
-[ZEISS](https://lenspire.zeiss.com/photo/app/uploads/2018/02/cln35_en_web_special_bokeh.pdf)
+Las copias se crean de forma atómica con un identificador nuevo. Los nombres
+iguales se distinguen por fecha y cada copia conserva sus ajustes. Una colisión
+de identificador conserva el archivo existente. Se guardan referencias a los
+archivos normalizados y su huella, sin duplicar fotografías. Una copia de
+proyecto no es un archivo portable para otro equipo. El JSON de receta sigue
+siendo la opción para reutilizar ajustes por separado.
 
-En la demo CC0 del navegador, 50 mm, 36 mm de ancho, f/4 y 3 m produjeron
-39,6°, encuadre de 2,12 m y foco aproximado de 2,63 a 3,49 m. La API probó
-límite infinito, entrada imposible y resultados independientes de los píxeles.
-[Resultados](evidence/SHOT_PLANNER_047_OPTICS.json)
+La prueba de API volvió a abrir el mismo almacén tras reiniciar el servicio y
+obtuvo un PNG idéntico byte a byte. En el navegador se guardó la demo CC0,
+se recargó el editor y se comprobó la apertura y la exportación habilitada.
+Evidencia reproducible en [PRO_046_PROJECT_QA.json](evidence/PRO_046_PROJECT_QA.json).
+
+## Estado técnico hacia 1.0 · 11-11-2026
+
+| Área | Alcance disponible | Siguiente comprobación o desarrollo |
+|---|---|---|
+| Creator | Demo, importación JPG/PNG SDR, Color Match, comparador, ajustes, presets y PNG/JPG | Medir fidelidad en referencias representativas y completar validación por usuarios. El acabado de referencia requiere estimación evaluada. |
+| Pro | Motor compartido, ajustes de color, receta, LUT global, lotes y proyectos locales en esta entrega | Curvas avanzadas y perfiles adicionales. Validar LUT en editores y definir el alcance real del vídeo con coherencia temporal. |
+| Shot Planner | Propuesta local experimental, diagrama editable, alternativas, checklist y JSON | Recuperar planes y revisar propuestas con referencias autorizadas y operadores de rodaje. |
+| Windows | Instalador interno beta.5 y kit de QA para beta.3 → beta.5 | Ejecutar el ciclo en la VM limpia. Empaquetar y repetir QA para los cambios posteriores al candidato. |
+| Comercial | Inventario y propuesta de licencia, política, beta cerrada y soporte documentados | Completar pruebas en equipos de terceros, derechos de redistribución, titularidad, firma y decisión de lanzamiento. |
