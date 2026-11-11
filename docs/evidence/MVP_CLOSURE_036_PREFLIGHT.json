@@ -1,0 +1,19 @@
+{
+  "schema": "color-studio-qa-preflight-v1",
+  "date": "2026-11-06",
+  "qa_tool_source": "323aa93399c3219a2f771e4dc81d8bb190678607",
+  "source_only": true,
+  "application_rebuilt": false,
+  "focused_tests_passed": 13,
+  "synthetic_guard_cases": 10,
+  "registry_writes": 0,
+  "user_store_files_read_or_written": 0,
+  "vm_executed": false,
+  "kit_sha256": "798dd0603f97d716d19424d6102ddcf242dcb4c732a1a4ab7dccddad3deca6ac",
+  "kit_bytes": 95300956,
+  "kit_member_hashes_verified": true,
+  "prior_kits_preserved": true,
+  "historical_incident_cause": "unknown",
+  "external_beta": "NO-GO",
+  "commercial": "NO-GO"
+}

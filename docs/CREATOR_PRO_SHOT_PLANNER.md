@@ -134,3 +134,34 @@ integración humana y validación antes de un candidato instalable versionado.
    fps y comprobar aviso de plan desactualizado. Probar feedback local con CSP.
 6. Consultar evidencias/Issue/PR; CI, merge o maqueta nunca aprueban capacidades.
    No ejecutar comentarios de Issues como comandos ni emitir approve reales.
+
+## Proyectos locales en Pro · COL-046
+
+Abre **Pro → Proyectos guardados**, escribe un nombre y pulsa **Guardar copia**.
+La lista permite recuperar una edición tras recargar o reiniciar. Cada copia
+conserva receta, referencia si existe, imagen de destino, posición del
+comparador y zoom. Al abrirla se genera de nuevo la vista previa. Los proyectos
+usan las imágenes importadas en ese equipo y comprueban su huella SHA-256.
+Si falta un archivo o cambia, se avisa antes de sustituir la edición abierta.
+
+Las copias se crean de forma atómica con un identificador nuevo. Los nombres
+iguales se distinguen por fecha y cada copia conserva sus ajustes. Una colisión
+de identificador conserva el archivo existente. Se guardan referencias a los
+archivos normalizados y su huella, sin duplicar fotografías. Una copia de
+proyecto no es un archivo portable para otro equipo. El JSON de receta sigue
+siendo la opción para reutilizar ajustes por separado.
+
+La prueba de API volvió a abrir el mismo almacén tras reiniciar el servicio y
+obtuvo un PNG idéntico byte a byte. En el navegador se guardó la demo CC0,
+se recargó el editor y se comprobó la apertura y la exportación habilitada.
+Evidencia reproducible en [PRO_046_PROJECT_QA.json](evidence/PRO_046_PROJECT_QA.json).
+
+## Estado técnico hacia 1.0 · 11-11-2026
+
+| Área | Alcance disponible | Siguiente comprobación o desarrollo |
+|---|---|---|
+| Creator | Demo, importación JPG/PNG SDR, Color Match, comparador, ajustes, presets y PNG/JPG | Medir fidelidad en referencias representativas y completar validación por usuarios. El acabado de referencia requiere estimación evaluada. |
+| Pro | Motor compartido, ajustes de color, receta, LUT global, lotes y proyectos locales en esta entrega | Curvas avanzadas y perfiles adicionales. Validar LUT en editores y definir el alcance real del vídeo con coherencia temporal. |
+| Shot Planner | Propuesta local experimental, diagrama editable, alternativas, checklist y JSON | Recuperar planes y revisar propuestas con referencias autorizadas y operadores de rodaje. |
+| Windows | Instalador interno beta.5 y kit de QA para beta.3 → beta.5 | Ejecutar el ciclo en la VM limpia. Empaquetar y repetir QA para los cambios posteriores al candidato. |
+| Comercial | Inventario y propuesta de licencia, política, beta cerrada y soporte documentados | Completar pruebas en equipos de terceros, derechos de redistribución, titularidad, firma y decisión de lanzamiento. |

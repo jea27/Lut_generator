@@ -1,0 +1,263 @@
+{
+  "schema": "color-studio-beta5-containment-qa-v1",
+  "observed_at_utc": "2026-11-03T14:00:05.953389+00:00",
+  "task": "COL-036",
+  "issue": 57,
+  "pr": 90,
+  "source": "29fb77ac8c4c279e83381e97cdf6769671f40160",
+  "artifact_evidence": "docs/evidence/BETA5_036_ARTIFACT.json",
+  "nsis_evidence": "docs/evidence/BETA5_036_NSIS.json",
+  "incident_open": true,
+  "historical_process_identified": false,
+  "root_cause_resolved": false,
+  "data_safety_validated": false,
+  "preventive_data_preservation_accepted": false,
+  "human_accepted": false,
+  "external_beta": "NO-GO",
+  "commercial": "NO-GO",
+  "real_store_destructive_tests_executed": false,
+  "private_recovered_copies_restored": false,
+  "implemented_regressions": [
+    "linked_store_root_and_ancestors_rejected_before_resolve",
+    "linked_direct_recovery_parent_rejected",
+    "four_native_NTFS_junction_cases",
+    "real_Win32_sharing_violation_and_fresh_stage_retry",
+    "real_readonly_preferences_leave_originals_unchanged",
+    "reappearing_target_retains_journal_backup_and_foreign_recipe"
+  ],
+  "host": {
+    "tests": 160,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 3,
+    "nsis_inert_guard_cases": 7,
+    "scope": "Synthetic workspace fixtures; existing developer Windows; no installer execution"
+  },
+  "embedded": {
+    "python": "3.14.10",
+    "tests": 160,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 3,
+    "unexpected_installer_errors": [],
+    "successful": true,
+    "core_loaded_from_packaged_runtime": true,
+    "isolated": 1,
+    "no_site": 1,
+    "qa_dependencies_shipped": false,
+    "clean_windows": false
+  },
+  "isolation": {
+    "isolated": 1,
+    "ignore_environment": 1,
+    "no_site": 1,
+    "no_user_site": 1,
+    "modules_and_search_path_within_bundle": true,
+    "loaded_modules": {
+      "observed_pe_modules": 71,
+      "unexpected_module_names": [],
+      "enumeration": "PSAPI loader module paths",
+      "python_dll_loaded_from_bundle": true,
+      "payload_module_hashes_checked": true,
+      "scope": "Snapshot after all API operations, not a clean OS certification"
+    },
+    "schema": "color-studio-embedded-isolation-v1",
+    "default_data_location_preserved": true,
+    "preferences_and_preset_survive_restart": true,
+    "poisoned_cwd_and_python_environment_ignored": true,
+    "installation_tree_unchanged": true,
+    "clean_windows": false
+  },
+  "licensed_demo_smoke": {
+    "version": "0.3.0-beta.5",
+    "environment": "Existing Windows developer machine; not clean VM",
+    "scope": "Real licensed rural photographs only; no portrait/skin/market validation",
+    "packaged_runtime": true,
+    "executable_sha256": "d718435b892db4ad5b547d12fec61be7baa7faf7a58d857ea58053be24c7a000",
+    "runtime_manifest_sha256": "7b75622da437835598070037284a2164a77c24587d217c3c6e637d59e5754f87",
+    "developer_tools_found_in_child_path": {
+      "python": false,
+      "node": false,
+      "cargo": false,
+      "git": false
+    },
+    "cwd_empty_directory": true,
+    "module_audit": {
+      "observed_pe_modules": 71,
+      "unexpected_module_names": [],
+      "enumeration": "PSAPI loader module paths",
+      "python_dll_loaded_from_bundle": true,
+      "payload_module_hashes_checked": true,
+      "scope": "Snapshot after all API operations, not a clean OS certification"
+    },
+    "modes_preserve_export_bytes": true,
+    "plan_privacy_and_claim_types": "passed",
+    "recipe_preset_optics_roundtrip": "passed",
+    "session_guard": "passed",
+    "clean_windows_verified": false,
+    "redistribution_approved": false,
+    "samples": [
+      {
+        "input_sha256": "5005bfe36f98fd65e89673be1cc09d5f532f09482fd3e8a57de075022c13493c",
+        "dimensions": [
+          1024,
+          678
+        ],
+        "export_ms": 542.9,
+        "sampled_process_peak_rss_mb": 130.7,
+        "original_unchanged": true
+      },
+      {
+        "input_sha256": "c45f876097b42968568cf595b268b0600a83b0728c1edf8105ffccfea9cb9e5d",
+        "dimensions": [
+          1024,
+          678
+        ],
+        "export_ms": 526.9,
+        "sampled_process_peak_rss_mb": 128.1,
+        "original_unchanged": true
+      }
+    ],
+    "batch_status": "completed",
+    "batch_outputs_verified": 2,
+    "demo_originals_unchanged": true,
+    "ffmpeg_binary_present": false,
+    "cube_sha256": "4fb41b679e1f2a2363b22a57f3780ea87ff9ccf06ad718cc0eefaf7f3f48d331",
+    "parent_death_watchdog": "passed"
+  },
+  "tracking": {
+    "tests": 135,
+    "failures": 0,
+    "errors": 0,
+    "successful": true
+  },
+  "frontend": {
+    "tests": 7,
+    "build": "passed"
+  },
+  "ci": {
+    "source": "88765358a9b34c4937509cf9815a8ac7896c1aeb",
+    "mvp": "https://github.com/jea27/Lut_generator/actions/runs/41648801203",
+    "studio": "https://github.com/jea27/Lut_generator/actions/runs/41648801729",
+    "tracking": "https://github.com/jea27/Lut_generator/actions/runs/41648801678",
+    "all_three_original_symlinks": {
+      "windows": "passed",
+      "linux": "passed"
+    },
+    "windows_mvp_tests": 153,
+    "windows_nsis_guard_class_skipped": true,
+    "scope": "GitHub hosted runners; not clean Windows11 installer acceptance",
+    "independent_build_evidence": "docs/evidence/BETA5_036_CI_BUILD.json",
+    "latest_qa_head": {
+      "source": "1d917c71f6797e9ed7cda01bf5239cbb16a7475c",
+      "mvp": "https://github.com/jea27/Lut_generator/actions/runs/41650393122",
+      "studio": "https://github.com/jea27/Lut_generator/actions/runs/41650393107",
+      "tracking": "https://github.com/jea27/Lut_generator/actions/runs/41650393173",
+      "conclusion": "success"
+    }
+  },
+  "payload": {
+    "extracted_files": 951,
+    "runtime_files": 924,
+    "native_runtime_components": 60,
+    "all_hashes_match": true,
+    "privacy_blocking_findings": 0,
+    "required_upstream_signatures": "passed",
+    "input_components_with_notices": 289,
+    "missing_notices": 0,
+    "redistribution_approved": false
+  },
+  "private_vm_kit": {
+    "version": "0.3.0-beta.5",
+    "source": "29fb77ac8c4c279e83381e97cdf6769671f40160",
+    "installer_sha256": "789983ea5c8e71b92271b91e2fc7a76ad6d6fef3272ac5ac24d96ac4c308bb69",
+    "kit_zip_sha256": "abf342a86405434dc6506e5dbe0cce57fcb48544398cc2d1b43fc1c4abfd4015",
+    "kit_zip_bytes": 95194508,
+    "kit_manifest_sha256": "0c70b0b68ff40aa51bae0bc9ca64453b3c0863e20a7a4832a6f98e3eb4472d46",
+    "files": 17,
+    "previous_installer_included": true,
+    "clean_windows_verified": false,
+    "native_capture_verified": false,
+    "external_beta": "NO-GO",
+    "commercial": "NO-GO",
+    "verification": {
+      "checked_at_utc": "2026-11-03T13:59:12.777231+00:00",
+      "zip_crc_passed": true,
+      "all_17_member_hashes_passed": true,
+      "no_unlisted_members": true,
+      "candidate_and_previous_hashes_verified": true,
+      "application_source_unchanged_since_build": true,
+      "tool_source": "88765358a9b34c4937509cf9815a8ac7896c1aeb",
+      "clean_windows_verified": false,
+      "native_capture_verified": false
+    }
+  },
+  "remaining": {
+    "clean_windows_installation": "NOT_RUN",
+    "installed_native_GUI_creator_pro_planner": "NOT_RUN",
+    "native_NSIS_upgrade_and_recovery": "NOT_RUN",
+    "uninstall_preserving_synthetic_data": "NOT_RUN",
+    "actual_guest_network_disconnection": "NOT_RUN",
+    "process_monitor_isolated_capture": "NOT_RUN",
+    "resolve_lut_import": "NOT_RUN",
+    "photoshop_and_premiere_import": "NOT_RUN"
+  },
+  "limitations": [
+    "Automated fixtures do not identify the historical deletion actor or certify absence of all data-loss risks",
+    "Identity checks are not a sandbox against concurrent filesystem tampering by the same user",
+    "Program-managed files are not a supported storage location for user content; keep images, presets and recipes separately",
+    "SHA-pinned input provenance and notices do not constitute human legal acceptance",
+    "No bitwise-identical NSIS build or clean Windows claim; installer is unsigned",
+    "Developer-host original symlink skips are covered separately on native Windows CI, not in a Windows11 guest"
+  ],
+  "embedded_repetition_investigation": {
+    "initial_suite_successful": true,
+    "later_failed_suite": {
+      "python": "3.14.10",
+      "tests": 160,
+      "failures": 0,
+      "errors": 1,
+      "skipped": 3,
+      "successful": false,
+      "core_loaded_from_packaged_runtime": true,
+      "isolated": 1,
+      "no_site": 1,
+      "qa_dependencies_shipped": false,
+      "clean_windows": false
+    },
+    "failed_test": "test_interrupted_fresh_install_verifies_new_target_without_old_backup",
+    "failure_phase": "directory_switch_failed",
+    "original_errno_recorded": false,
+    "cause": "Not established; do not attribute to another process",
+    "targeted_repetitions": 20,
+    "targeted_repetitions_successful": true,
+    "additional_full_suite_repetitions": 5,
+    "additional_full_suite_repetitions_successful": true,
+    "diagnostic_reporting_added": true,
+    "resolved": false,
+    "pr_kept_draft": true
+  },
+  "public_diff_audit": {
+    "schema": "color-studio-pr90-public-diff-audit-v1",
+    "diff_base": "918cb6386553d86793df5e2a6d12a7c23046aa7e",
+    "previously_committed_binary_files": 3,
+    "binary_scope": "Existing beta4 screenshots visually checked; authorized rural demo CC0 and product UI only, not beta5 GUI validation",
+    "new_binary_files_since_edf82d0": 0,
+    "private_recovered_files_published": false,
+    "new_public_receipts": 3,
+    "high_confidence_findings": {
+      "windows_user_path": 0,
+      "github_token": 0,
+      "private_key": 0
+    },
+    "scope": "Tracked text changes and new JSON plus visual review of three existing screenshots; pattern checks are not proof of absence of every secret"
+  },
+  "synchronization_evidence": "docs/evidence/BETA5_036_SYNC.json",
+  "human_request": {
+    "issue": 67,
+    "workflow": "https://github.com/jea27/Lut_generator/actions/runs/41650561917",
+    "conclusion": "success",
+    "bot_mention": "https://github.com/jea27/Lut_generator/issues/67#issuecomment-6605944403",
+    "new_physical_phone_receipt_confirmed": false
+  }
+}

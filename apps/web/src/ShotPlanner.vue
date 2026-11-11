@@ -8,7 +8,8 @@ const emit=defineEmits(['back'])
 const q=useQuasar()
 type Node={id:string;label:string;x:number;y:number;enabled:boolean}
 type Plan={schema:string;setup:unknown;diagram:{nodes:Node[]};sections:Record<string,{kind:string;title:string;detail:string;source_ids:string[];uncertainty:string|null}[]>;equipment:Record<string,string[]>;checklist:{id:string;text:string;checked:boolean}[];sources:{id:string;title:string;url:string;verified_on:string}[];limits:string[];recipe:unknown}
-const setup=ref({shot:'medium',key_side:'left',softness:'soft',contrast:'medium',sensor_width_mm:36,focal_mm:null as number|null,aperture:4,fps:25,shutter_angle:180,white_balance_k:5600,camera_height_m:1.5,movement:'locked'})
+const setup=ref({shot:'medium',key_side:'left',softness:'soft',contrast:'medium',sensor_width_mm:36,focal_mm:null as number|null,
+ focus_distance_m:null as number|null,aperture:4,fps:25,shutter_angle:180,white_balance_k:5600,camera_height_m:1.5,movement:'locked'})
 const report=ref<Plan|null>(null),busy=ref(false),error=ref(''),selected=ref('key'),stale=ref(false),elapsed=ref(0)
 const selectedNode=computed(()=>report.value?.diagram.nodes.find(n=>n.id===selected.value))
 const editsKey=()=>JSON.stringify({diagram:report.value?.diagram,checklist:report.value?.checklist})
@@ -16,8 +17,19 @@ let initialEdits=''
 const kindLabel:Record<string,string>={observation:'Observación medida',estimate:'Estimación / sin confirmar',recommendation:'Recomendación de LumaForge',source_confirmed:'Cálculo con fuente técnica'}
 const sectionLabel:Record<string,string>={composition:'Composición',lighting:'Iluminación',camera:'Cámara',postproduction:'Postproducción'}
 const position=(v:number)=>250+v*40
+function updateFocal(event:Event){
+ const value=(event.target as HTMLInputElement).value
+ setup.value.focal_mm=value===''?null:Number(value)
+ if(setup.value.focal_mm===null)setup.value.focus_distance_m=null
+}
 async function generate(){
  if(busy.value||!props.referenceId)return
+ const {focal_mm,focus_distance_m}=setup.value
+ if(focal_mm!==null&&focus_distance_m!==null&&focus_distance_m*1000<=focal_mm){
+  error.value=tx('La distancia de enfoque debe superar la distancia focal. Revisa las unidades.',
+    'Focus distance must exceed focal length. Check the units.')
+  return
+ }
  if(report.value&&initialEdits!==editsKey()){
   q.dialog({title:tx('¿Regenerar la propuesta?','Regenerate proposal?'),message:tx('Se reiniciarán tus cambios del diagrama y la checklist. Cancela para guardar el plan JSON antes de continuar.','Your diagram and checklist edits will be reset. Cancel to save the plan JSON before continuing.'),cancel:true,persistent:true}).onOk(()=>generateConfirmed())
   return
@@ -51,7 +63,10 @@ watch([setup,()=>props.recipe],()=>{if(report.value)stale.value=true},{deep:true
     <label>{{tx('Calidad de luz propuesta','Proposed light quality')}}<select v-model="setup.softness"><option value="soft">Suave / Soft</option><option value="hard">Dura / Hard</option></select></label>
     <label>{{tx('Contraste deseado','Desired contrast')}}<select v-model="setup.contrast"><option value="low">Bajo / Low</option><option value="medium">Medio / Medium</option><option value="high">Alto / High</option></select></label>
     <label>{{tx('Ancho de sensor propuesto (mm)','Proposed sensor width (mm)')}}<input type="number" v-model.number="setup.sensor_width_mm" min="6" max="70" step=".1"></label>
-    <label>{{tx('Focal disponible (mm), opcional','Available lens (mm), optional')}}<input type="number" :value="setup.focal_mm??''" @input="setup.focal_mm=($event.target as HTMLInputElement).value===''?null:Number(($event.target as HTMLInputElement).value)" min="4" max="300" :placeholder="tx('Sin datos','No data')"></label>
+    <label>{{tx('Focal disponible (mm), opcional','Available lens (mm), optional')}}<input type="number" :value="setup.focal_mm??''" @input="updateFocal" min="4" max="300" :placeholder="tx('Sin datos','No data')"></label>
+    <label v-if="setup.focal_mm!==null">{{tx('Distancia de enfoque propuesta (m)','Proposed focus distance (m)')}}
+     <input type="number" :value="setup.focus_distance_m??''" @input="setup.focus_distance_m=($event.target as HTMLInputElement).value===''?null:Number(($event.target as HTMLInputElement).value)" min=".1" max="1000" step=".1" :placeholder="tx('Opcional','Optional')">
+    </label>
     <label>{{tx('Apertura de partida','Starting aperture')}}<input type="number" v-model.number="setup.aperture" min="1" max="22" step=".1"></label>
     <div class="planner-pair"><label>FPS<input type="number" v-model.number="setup.fps" min="1" max="120" step=".001"></label><label>Shutter °<input type="number" v-model.number="setup.shutter_angle" min="1" max="360"></label></div>
     <label>{{tx('WB de partida (K)','Starting WB (K)')}}<input type="number" v-model.number="setup.white_balance_k" min="2000" max="12000" step="100"></label>

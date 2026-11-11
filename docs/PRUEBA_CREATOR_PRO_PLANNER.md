@@ -4,32 +4,29 @@ Para el responsable, sin programar. Seguimiento: #57, #67, #81–83.
 
 ## Abrir la entrega correcta
 
-01-11-2026: existe el candidato **interno0.3.0-beta.3**, con Creator/Pro/Planner
-y runtime Python incluido. Su SHA-256 es
-`0350f5b44be2850f828a148debc4174b8f134953b080d895bbbca8620576b5cd`.
-El archivo se facilita localmente por este chat; no hay release autorizada ni
-descarga pública. El setup0.3.0-beta.2 no contiene estas experiencias.
+05-11-2026: candidato **interno0.3.0-beta.5**, en cuarentena, con Creator/Pro/Planner.
+SHA256 `789983ea5c8e71b92271b91e2fc7a76ad6d6fef3272ac5ac24d96ac4c308bb69`.
+No hay release autorizada ni descarga pública. El ensayo se hace exclusivamente
+con datos sintéticos o demo CC0 dentro de ColorStudio-QA-Win11.
 
-1. Guarda antes recetas/presets/planes importantes y cierra Color Studio.
-2. Comprueba versión/hash con `RUNTIME_036_ARTIFACT.json`. Si conservas beta2,
-   haz una copia privada de `%LOCALAPPDATA%/ColorStudioBetaData`. No la subas a GitHub.
-3. Para este ensayo interno utiliza la desinstalación explícita de beta2 y después
-   instala beta3, conservando los datos. No marques «Eliminar datos de la app».
-   La actualización directa automática **no está verificada**: devolvió2 en el
-   contexto de Codex y el asistente se detuvo en el idioma del desinstalador previo.
-   No ocultes ese fallo ni lo registres como PASS. Detalles en #67 y RUNTIME_036_QA.
-4. Abre Color Studio desde su acceso directo. Confirma Ayuda0.3.0-beta.3 y los
-   botones Creator/Pro. No necesitas Python, Node ni una consola para usarlo.
+1. Ejecuta primero [QA asistida](QA_VM_ASISTIDA.md). La actualización3→5 se verifica
+   directamente con baselines; desinstalar/reinstalar no la sustituye. El ciclo
+   termina comprobando la desinstalación, conservando datos e informes.
+2. Para esta revisión visual posterior, dentro del guest y desde `C:\LF-QA\Kit`,
+   ejecuta `./qa_guest_checks.ps1 -Install -Launch`. Esta instalación nueva sirve
+   solo para la UI, después de haber medido la actualización y desinstalación.
+3. Confirma Ayuda0.3.0-beta.5 y los botones Creator/Pro. No necesitas instalar
+   Python/Node ni arrancar servidores manualmente. Guarda salidas en `C:\LF-QA\Exports`.
+4. El lanzador QA usa `C:\LF-QA\Data`. Un inicio desde el acceso de Windows usa
+   el almacén predeterminado del guest y es un caso independiente: no alternes
+   ambos al comprobar conservación de presets. Captura baselines/identidades
+   separados para ese caso; no mezcles vistas ni concluyas pérdida por una ruta distinta.
 
-Si falta WebView2, el instalador usa Evergreen oficial y necesita Internet para
-esa primera instalación; después hay que ejecutar la prueba offline por separado.
-No desactives protecciones ni omitas un bloqueo de SmartScreen. Registra el error
-y detente si Windows impide ejecutarlo. No se ha probado aún Windows limpio.
-
-Las pruebas locales se ejecutaron desde Codex en un PC de desarrollo, con datos
-de QA separados y redirección MSIX de archivos. No acreditan una instalación
-normal de Windows limpio ni la ubicación de tus datos fuera de ese contexto.
-Para W01–W09 sigue BETA_QA_EXTERNA; el titular debe aportar el entorno/operador.
+Si falta WebView2, el bootstrapper Evergreen oficial necesita Internet para esa
+instalación; después hay que probar la aplicación con el adaptador guest desconectado.
+No se eluden protecciones. Si Windows bloquea algo, registra BLOCKED y conserva
+el mensaje. La UI, Windows limpio y compatibilidad de editores siguen pendientes
+hasta ejecutar estos casos realmente; la prueba de API no los aprueba.
 
 ## Recorrido de unos 15 minutos
 
@@ -45,7 +42,7 @@ personales ni subir archivos a GitHub. Espera a «Listo para crear» antes de ex
 | P01 | Abrir Pro, modificar exposición un paso y guardar «Receta JSON». Volver a Creator y regresar a Pro. | Misma referencia, destino, intensidad, exposición y acabado. Creator avisa de ajustes Pro activos. Guardar otra receta permite comprobarla; no hay conversión de motor al cambiar modo. |
 | P02 | Dar nombre al preset y guardarlo. Cambiar un ajuste y volver a aplicar ese preset. Probar deshacer/rehacer. | Se restaura la receta guardada. La aplicación no presenta el preset como aprobado por nadie. |
 | P03 | En Pro guardar JSON y LUT .cube, leyendo el aviso. | JSON conserva glow/difusión/fade. La LUT solo transforma color y los omite. No esperar que una LUT reproduzca blur o bloom. Adobe/Resolve necesitan su propia prueba real. |
-| P04 | Mientras exporta, intentar cambiar preset, importar receta, deshacer o eliminar imágenes temporales. | Esas acciones están deshabilitadas hasta terminar. No deben sustituir la receta a mitad de la operación. |
+| P04 | Mientras exporta, intentar cambiar preset, importar receta, deshacer o eliminar imágenes temporales. | Cambios incompatibles están deshabilitados durante exportación. El borrado de imágenes está bloqueado siempre por protección P0. No debe cambiar la receta a mitad de la operación. |
 | S01 | Pro → Shot Planner → Preparar propuesta local. Mantener 25 FPS/180°. | Aparecen observaciones medidas, estimaciones sin confirmar, recomendaciones y cálculo con fuente. Obturación 1/50 s. Cámara, focal y luces originales no se afirman como detectadas. |
 | S02 | Seleccionar Key, mover X, marcar una casilla y cambiar Creator → Pro → Shot Planner. | Diagrama y checklist conservados durante esta sesión. Guardar plan JSON y abrirlo en un editor de texto para revisar su contenido. |
 | S03 | Pulsar Preparar otra vez. Cancelar el diálogo y después repetir aceptando. | Cancelar conserva las ediciones. Confirmar reinicia diagrama y checklist. Si cambias FPS/receta, aparece «desactualizado» y no permite guardar un plan antiguo como si fuera actual. |
@@ -97,5 +94,5 @@ acordado, usar cuenta de prueba y fotografía CC0, sin datos reales:
    conservan. Registrar si los datos de aplicación se retienen y verificarlo,
    sin borrar datos ajenos. Reinstalar solo si el protocolo autorizado lo requiere.
 
-No instalar virtualización ni contactar probadores hasta la autorización de #67.
+La VM ya fue aportada por el usuario; no modificar sus checkpoints ni contactar probadores sin autorización específica.
 Venta y beta privada mantienen listas GO/NO-GO separadas en `GO_NO_GO_03.md`.

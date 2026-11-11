@@ -3,6 +3,11 @@
   "product": "Color Studio",
   "version_source": "apps/desktop/src-tauri/tauri.conf.json",
   "approval_issue": 62,
+  "distribution_safety_evidence": {
+    "path": "docs/evidence/INCIDENT_036_QA.json",
+    "field": "data_safety_validated",
+    "equals": true
+  },
   "required_ci": [
     "Validar MVP local",
     "Compilar Color Studio"
@@ -246,20 +251,23 @@
       "issue": 50,
       "task": "COL-018",
       "delivery_prs": [
-        65
+        65,
+        90
       ],
       "code_paths": [
         "apps/api/main.py"
       ],
       "tests": [
-        "tests_mvp/test_beta.py"
+        "tests_mvp/test_beta.py",
+        "tests_mvp/test_data_preservation.py",
+        "tests_mvp/test_atomic_storage.py"
       ],
       "evidence": [],
       "acceptance": "Guardar, aplicar, editar, agrupar y conservar presets locales.",
       "review": {
         "steps": [
           "Guardar un preset de prueba, renombrar y mover de grupo.",
-          "Cerrar/abrir la app y aplicarlo de nuevo; eliminar únicamente el preset de ensayo."
+          "Cerrar/abrir la app y aplicar el preset de nuevo. Comprobar que conserva imágenes y presets; el borrado está deshabilitado durante el incidente."
         ],
         "checklist": [
           {
@@ -291,13 +299,16 @@
       "issue": 58,
       "task": "COL-037",
       "delivery_prs": [
-        65
+        65,
+        90
       ],
       "code_paths": [
         "apps/api/jobs.py"
       ],
       "tests": [
-        "tests_mvp/test_beta.py"
+        "tests_mvp/test_beta.py",
+        "tests_mvp/test_data_preservation.py",
+        "tests_mvp/test_atomic_storage.py"
       ],
       "evidence": [
         {
@@ -332,7 +343,8 @@
         "apps/api/main.py",
         "apps/web/src/App.vue",
         "packages/colour_core/engine.py",
-        "packages/colour_core/image_io.py"
+        "packages/colour_core/image_io.py",
+        "apps/api/storage.py"
       ]
     },
     {
@@ -497,7 +509,8 @@
         65,
         70,
         88,
-        89
+        89,
+        90
       ],
       "code_paths": [
         "apps/desktop/src-tauri/tauri.conf.json"
@@ -506,16 +519,31 @@
         "tests_mvp/test_beta.py",
         "tests_mvp/test_packaged_qa.py",
         "tests_mvp/test_embedded_runtime.py",
-        "tests_mvp/test_nsis_audit.py"
+        "tests_mvp/test_nsis_audit.py",
+        "tests_mvp/test_installer_transaction.py",
+        "tests_mvp/test_installer_inputs.py",
+        "tests_mvp/test_nsis_uninstall_guard.py",
+        "tests_mvp/test_loader_audit.py",
+        "tests_mvp/test_private_store_diagnosis.py",
+        "tests_mvp/test_data_preservation.py",
+        "tests_mvp/test_atomic_storage.py",
+        "tests_mvp/test_vm_cycle.py",
+        "tests_mvp/test_vm_qa_kit.py",
+        "tests_mvp/test_vm_preflight.py"
       ],
       "evidence": [
         {
-          "path": "docs/evidence/RUNTIME_036_QA.json",
-          "field": "technical_preparation_passed",
+          "path": "docs/evidence/INCIDENT_036_QA.json",
+          "field": "data_safety_validated",
+          "equals": true
+        },
+        {
+          "path": "docs/evidence/MVP_CLOSURE_036.json",
+          "field": "vm_cycle_completed",
           "equals": true
         }
       ],
-      "acceptance": "Tauri/NSIS con Python oficial aislado, fuentes/hash y pruebas locales verificables. Windows limpio y actualización directa pendientes; no autoriza distribución.",
+      "acceptance": "Paquete Windows con conservación demostrada. Incidente P0 abierto; candidato en cuarentena. Requiere QA nativa, evaluación preventiva y aceptación humana del riesgo residual; no se atribuye una causa histórica desconocida.",
       "review": {
         "steps": [
           "Ejecutar protocolo de QA en el equipo de prueba autorizado.",
@@ -547,7 +575,21 @@
         "packaging/runtime.lock.json",
         "packaging/python314._pth",
         "scripts/build_embedded_runtime.py",
-        "scripts/build_beta.ps1"
+        "scripts/build_beta.ps1",
+        "apps/desktop/installer_helper.py",
+        "packaging/nsis/installer.nsi",
+        "packaging/nsis-toolchain.lock.json",
+        "packaging/webview2.lock.json",
+        "scripts/prepare_installer_inputs.py",
+        "scripts/create_install_manifest.py",
+        "scripts/audit_nsis_payload.py",
+        "packaging/nsis/bundle.conf.json",
+        "apps/api/storage.py",
+        "apps/api/jobs.py",
+        "scripts/qa_vm_assistant.ps1",
+        "scripts/qa_vm_cycle.ps1",
+        "scripts/qa_guest_api.py",
+        "scripts/prepare_vm_qa_kit.py"
       ]
     },
     {
@@ -751,7 +793,8 @@
     {
       "delivery_prs": [
         86,
-        88
+        88,
+        92
       ],
       "group": "Creator / Pro",
       "evidence": [
@@ -763,6 +806,11 @@
         {
           "path": "docs/evidence/INTEGRACION_036_QA.json",
           "field": "creator_mode_preservation_checked",
+          "equals": true
+        },
+        {
+          "path": "docs/evidence/PRO_046_PROJECT_QA.json",
+          "field": "api_save_reopen_after_restart",
           "equals": true
         }
       ],
@@ -777,6 +825,7 @@
       ],
       "tests": [
         "tests_mvp/test_planner.py",
+        "tests_mvp/test_api.py",
         "apps/web/tests/workspace.test.ts",
         "apps/web/tests/preferences.test.ts"
       ],
@@ -795,10 +844,11 @@
         "packages/colour_core/__init__.py",
         "apps/api/jobs.py"
       ],
-      "acceptance": "Controles técnicos, LUT/receta/lotes y preferencias sobre el mismo motor; catálogo distingue experimental y previsto, sin pagos.",
+      "acceptance": "Controles técnicos, LUT, recetas, lotes, proyectos locales y preferencias sobre el mismo motor; catálogo distingue experimental y previsto, sin pagos.",
       "review": {
         "steps": [
           "Cambiar a Pro; comprobar método, análisis, controles, LUT, receta y lotes.",
+          "Guardar una copia de proyecto, recargar, abrirla y comprobar receta, imágenes y previsualización.",
           "Volver a Creator con ajustes Pro y reabrir Pro; comprobar advertencia y conservación, sin anunciar RAW/Log/vídeo como disponibles."
         ],
         "checklist": [
@@ -820,7 +870,8 @@
     {
       "delivery_prs": [
         86,
-        88
+        88,
+        94
       ],
       "group": "Creator / Pro",
       "evidence": [
@@ -832,6 +883,11 @@
         {
           "path": "docs/evidence/INTEGRACION_036_QA.json",
           "field": "planner_regeneration_checked",
+          "equals": true
+        },
+        {
+          "path": "docs/evidence/SHOT_PLANNER_047_OPTICS.json",
+          "field": "browser_demo_reference_checked",
           "equals": true
         }
       ],
@@ -916,7 +972,7 @@
         "id": "clean-windows",
         "title": "Instalación en Windows limpio",
         "kind": "evidence",
-        "path": "docs/evidence/RUNTIME_036_QA.json",
+        "path": "docs/evidence/UPGRADE_036_QA.json",
         "field": "clean_windows",
         "equals": true
       },
@@ -936,6 +992,15 @@
         "id": "distribution",
         "title": "Autorización expresa de entrega",
         "kind": "release"
+      },
+      {
+        "id": "data-preservation",
+        "title": "Conservación preventiva y riesgo residual aceptados",
+        "kind": "evidence",
+        "path": "docs/evidence/INCIDENT_036_QA.json",
+        "field": "preventive_data_preservation_accepted",
+        "equals": true,
+        "issue": 57
       }
     ],
     "commercial": [

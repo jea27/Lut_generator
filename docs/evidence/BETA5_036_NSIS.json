@@ -1,0 +1,201 @@
+{
+  "schema": "color-studio-nsis-audit-v1",
+  "installer_sha256": "789983ea5c8e71b92271b91e2fc7a76ad6d6fef3272ac5ac24d96ac4c308bb69",
+  "installer_bytes": 48473299,
+  "source": "29fb77ac8c4c279e83381e97cdf6769671f40160",
+  "dirty": false,
+  "files": 951,
+  "runtime_files": 924,
+  "runtime_manifest_sha256": "7b75622da437835598070037284a2164a77c24587d217c3c6e637d59e5754f87",
+  "plugins_and_graphics": [
+    {
+      "file": "$PLUGINSDIR/System.dll",
+      "member": "nsis-3.13/Plugins/x86-unicode/System.dll",
+      "sha256": "afe032f942e2ed0bf7494ec08ba813f5739fb522c640bde81d30ecaf9f894432",
+      "source": "nsis",
+      "machine": "0x14c",
+      "imports": [
+        "kernel32.dll",
+        "ole32.dll",
+        "user32.dll"
+      ]
+    },
+    {
+      "file": "$PLUGINSDIR/nsDialogs.dll",
+      "member": "nsis-3.13/Plugins/x86-unicode/nsDialogs.dll",
+      "sha256": "9c76f4d53ceee2a471c936e0899688405e1009ce962d140e9acb49ed68d114cb",
+      "source": "nsis",
+      "machine": "0x14c",
+      "imports": [
+        "comdlg32.dll",
+        "gdi32.dll",
+        "kernel32.dll",
+        "ole32.dll",
+        "shell32.dll",
+        "user32.dll"
+      ]
+    },
+    {
+      "file": "$PLUGINSDIR/StartMenu.dll",
+      "member": "nsis-3.13/Plugins/x86-unicode/StartMenu.dll",
+      "sha256": "39870682e7d1c026cd2b33ca25591db28250dde17de7eb1feec404222d534ffc",
+      "source": "nsis",
+      "machine": "0x14c",
+      "imports": [
+        "gdi32.dll",
+        "kernel32.dll",
+        "ole32.dll",
+        "shell32.dll",
+        "user32.dll"
+      ]
+    },
+    {
+      "file": "$PLUGINSDIR/LangDLL.dll",
+      "member": "nsis-3.13/Plugins/x86-unicode/LangDLL.dll",
+      "sha256": "3c8b2629048c118e4fcf80188cbcdaad3a668270e49fd95d2809feccc98fe220",
+      "source": "nsis",
+      "machine": "0x14c",
+      "imports": [
+        "gdi32.dll",
+        "kernel32.dll",
+        "user32.dll"
+      ]
+    },
+    {
+      "file": "$PLUGINSDIR/modern-wizard.bmp",
+      "member": "nsis-3.13/Contrib/Graphics/Wizard/win.bmp",
+      "sha256": "3ad2dc318056d0a2024af1804ea741146cfc18cc404649a44610cbf8b2056cf2",
+      "source": "nsis"
+    },
+    {
+      "file": "$PLUGINSDIR/nsis_tauri_utils.dll",
+      "sha256": "5ba143b5db4a87d32d6e7802e033330aae56cbceabe0d1e3ba41948385ad4709",
+      "source": "tauri-utils",
+      "machine": "0x14c",
+      "imports": [
+        "advapi32.dll",
+        "kernel32.dll",
+        "shell32.dll",
+        "user32.dll"
+      ]
+    },
+    {
+      "file": "$PLUGINSDIR/nsExec.dll",
+      "member": "nsis-3.13/Plugins/x86-unicode/nsExec.dll",
+      "sha256": "1dee37f6abb2dec9e767bd022d29386b6b295bbd55bf316d2649b8d298f89e9d",
+      "source": "nsis",
+      "machine": "0x14c",
+      "imports": [
+        "advapi32.dll",
+        "kernel32.dll",
+        "user32.dll"
+      ]
+    }
+  ],
+  "nsis_source": {
+    "version": "3.13",
+    "filename": "nsis-3.13.zip",
+    "url": "https://github.com/tauri-apps/binary-releases/releases/download/nsis-3.13/nsis-3.13.zip",
+    "sha256": "ba63dffc4410ee89193e1cb5a41989991bd77c61068da17e3156d136b7b0b3d8",
+    "upstream_sha1": "db14f8af2ea346b786c6ae19343f61aaf5e09b8e"
+  },
+  "native_components": {
+    "installer": {
+      "machine": "0x14c",
+      "imports": [
+        "advapi32.dll",
+        "comctl32.dll",
+        "gdi32.dll",
+        "kernel32.dll",
+        "ole32.dll",
+        "shell32.dll",
+        "user32.dll"
+      ],
+      "sha256": "789983ea5c8e71b92271b91e2fc7a76ad6d6fef3272ac5ac24d96ac4c308bb69"
+    },
+    "uninstaller": {
+      "machine": "0x14c",
+      "imports": [
+        "advapi32.dll",
+        "comctl32.dll",
+        "gdi32.dll",
+        "kernel32.dll",
+        "ole32.dll",
+        "shell32.dll",
+        "user32.dll"
+      ],
+      "sha256": "526d9d8eff2ebf7405af9222793697d24f1db4554acdb0c1075f70dc834adc1d"
+    },
+    "launcher": {
+      "machine": "0x8664",
+      "imports": [
+        "advapi32.dll",
+        "api-ms-win-core-synch-l1-2-0.dll",
+        "api-ms-win-core-winrt-error-l1-1-0.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-locale-l1-1-0.dll",
+        "api-ms-win-crt-math-l1-1-0.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "bcryptprimitives.dll",
+        "combase.dll",
+        "comctl32.dll",
+        "dwmapi.dll",
+        "gdi32.dll",
+        "imm32.dll",
+        "kernel32.dll",
+        "ntdll.dll",
+        "ole32.dll",
+        "oleaut32.dll",
+        "shell32.dll",
+        "shlwapi.dll",
+        "user32.dll"
+      ],
+      "sha256": "cb281f727f000e2efd4263d1d09cee33e394ce2fd5a7bc723405869ee7309423"
+    },
+    "webview2_bootstrapper": {
+      "machine": "0x14c",
+      "imports": [
+        "advapi32.dll",
+        "kernel32.dll",
+        "ole32.dll",
+        "shell32.dll",
+        "shlwapi.dll",
+        "user32.dll",
+        "version.dll"
+      ],
+      "sha256": "00c6e5a7413c37753bb92e176539dbf691a101846a622e00a9faec3f23e2816b"
+    }
+  },
+  "all_payload_bytes_match_verified_inputs": true,
+  "launcher_comparison": "only_Tauri_UNK_to_NSS_bundle_marker",
+  "build_launcher_sha256": "eec3c7eeab03df5163d358ece608e10b375fb69900d40023cb2a32c315b83cc1",
+  "notices_match_repository": true,
+  "privacy": {
+    "findings": [],
+    "blocking_findings": 0,
+    "passed": true
+  },
+  "webview2_runtime_or_bootstrapper_embedded": true,
+  "webview2_bootstrapper": {
+    "schema": "color-studio-webview2-bootstrapper-v1",
+    "version": "1.3.311.5",
+    "filename": "MicrosoftEdgeWebview2Setup.exe",
+    "source_url": "https://go.microsoft.com/fwlink/p/?LinkId=2124703",
+    "url": "https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/6afc3f6e-9ce1-4287-8501-612531eeeef7/MicrosoftEdgeWebview2Setup.exe",
+    "sha256": "00c6e5a7413c37753bb92e176539dbf691a101846a622e00a9faec3f23e2816b",
+    "bytes": 1888976,
+    "signer": "Microsoft Corporation",
+    "machine": "0x14c",
+    "purpose": "Official Evergreen bootstrapper only; downloads runtime if absent. Not a fixed WebView2 runtime.",
+    "terms": "https://developer.microsoft.com/en-us/microsoft-edge/webview2/",
+    "redistribution_approved": false
+  },
+  "installer_manifest_sha256": "29a08740b7c72b096f3b43bb509b1c59b4b0bc8148c4af001781e21bee496aaa",
+  "clean_windows_tested": false,
+  "redistribution_approved": false,
+  "external_beta": "NO-GO",
+  "scope": "NSIS full extraction, exact file set/hashes and native import audit; not installation or legal approval"
+}

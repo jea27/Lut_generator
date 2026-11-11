@@ -404,3 +404,402 @@ verificado en41294069249 y comentario6556221187; recepción física nueva no
 confirmada. Cola sync canceló ejecuciones sin steps durante la ráfaga de eventos;
 se comprueba reintento en reposo sin modificar permisos/concurrencia del workflow.
 Identidad Git del checkpoint no-reply por comando; ninguna reescritura remota.
+
+### COL036 · investigación de actualización y entorno QA interno
+
+Nueva autorización del usuario para beta3 interna/VM Windows11 oficial y Resolve
+gratuito. PR89 integrada por jea27 en918cb638. Se trabaja en rama/worktree propio
+COL-036-actualizacion-segura. Preflight detecta gestor Hyper-V ausente, elevación740
+y RAM disponible insuficiente para VM recomendada; no cambios de host ni reinicio.
+Registro Blackmagic requiere intervención personal; Resolve ausente, Adobe sin
+activación acreditada. Guías preparadas, sin simular ejecución de Windows/editor.
+
+El código2 histórico es aborto NSIS genérico; la traza /S actual pasa WebView2 y
+alcanza Install (parada diagnóstica90), sin lanzar desinstalador. La observación
+interactiva del idioma es otra ruta. No atribuir una causa por documentación sola:
+NSISdl aceptó HTTPS y devolvió success, pero un fixture loopback observó HTTP plano
+para URL https, sin saludo TLS. Descarga diagnóstica no ejecutada. Se conserva la
+evidencia privada y se continúa con reproducción, corrección y recuperación reales.
+
+
+## 01-11-2026 · COL036 · preparación transaccional de actualización
+
+PR89 integrada por jea27; nueva rama aislada desde918cb638. Se repitió actualización
+original beta2→beta3 sin desinstalación intermedia:0, preset de QA por API preservado,
+legacy runtime retenido. La línea base beta2 requirió retirada anterior únicamente
+para el experimento. No reproduce el2 histórico ni se afirma causa resuelta.
+Probe de transporte NSISdl a loopbackhttps recibió plaintextHTTP, distinto del
+histórico. Decisión material: usar bootstrapper oficial Microsoft firmado fijado por
+hash y transporte HTTPS en construcción, con licencia propietaria/gate externo
+pendiente. No copiar DLLs del host, ni desactivar protecciones.
+
+Nueva beta4 en preparación: stage hermano con ledger completo, mutex/lock, validación,
+backup/rollback y diario; antiguo desinstalador no se ejecuta para actualizar. Logs
+por fases sin rutas/datos. Extras personales de raíz se conservan; componentes
+legacy quedan en backup privado, no runtime activo ni material redistribuible.
+Interrupciones sintéticas no son cortes eléctricos. Windows limpio/Resolve/offline
+real pendientes de operador; solicitud67 única, workflow41316675082 y mención
+6559335054 comprobados. No se habilitó Hyper-V ni reinició el host. Guías preparadas.
+
+
+## 02-11-2026 · COL036 · revisión independiente y defensa de archivos
+
+El candidato intermedio25c/e317 supera build/auditoría951 archivos y CI41347038273,
+pero la revisión detectó Delete de MainBinaryName del registro sin validar. Se
+retira esa limpieza; no es necesaria con stage nuevo y backup. El candidato queda
+superado antes de distribución. Se añade preflight de directorios/ancestros del
+desinstalador: rechaza reparse/junction antes del primer Delete, sin ejecutar un
+Python instalado que pudiera haberse redirigido. Prueba roja funcional encontró
+registroSystem incorrecto; corregido a r17/r18. Verde5 casos reales con NSIS
+verificado y junctions sin administrador, marcadores intactos. No permisos nuevos.
+No ejecutar uninstall.exe de backups: conservar evidencia y recuperación guiada.
+
+Evidencias intermedias: ambos updates directos0; errorWin32=32 controlado restaura
+bytes de app y datos, reintento0; aplicación abierta aborta2 antes de copiar.
+GUI real y descargasPNG/receta/PlannerJSON en25c, Creator→Pro conserva60%; no
+aceptación visual humana.105 tests con Python embebido,130 seguimiento,7frontend;
+se suman5 probes de guard en el próximo candidato. Codecs, fechas, rutasMSIX y
+sufijos de descarga del harness se corrigieron sin atribuirlos a defectos del producto.
+Windows limpio/desconexión/editores/licencias/aceptación siguen NO-GO/pending.
+
+## 02-11-2026 · COL036 · candidato final y conservación pendiente de diagnóstico
+
+PR90 permanece borrador. Candidato limpio8f4c60e/f002769d…ca4bf, extracción951
+archivos/924runtime y construcciónCI41399176754 correctas;60PE y bootstrapper
+coinciden CI/local, setups no idénticos, sin publicar ejecutables. Directos beta3→4
+0/8,016s y beta2→4 0/7,110s. Fallo nativo Winerror32 durante cambio de carpetas:
+NSIS2/hijo2, rollback byte-idéntico, reintento0/8,438s. No identifica2 histórico.
+Pruebas reales de registro manipulado/junction final y desinstalación preservan
+stores; runtime restaurado, sin operaciones propias a medias. GUI intermedia25c
+tiene apps/packages idénticos a8f; no se presenta como retest visual final.
+
+Se corrigió el auditor QA para leer rutas del loader PSAPI en lugar de nombres de
+secciones mapeadas que conservaban la ruta del stage renombrado. No relaja origen
+ni hashes;3 regresiones.116 MVP host y116 con Python embebido pasan,3 symlink
+omitidos; smoke2CC0 e aislamiento71módulos correctos. Instrumento de diagnóstico
+PowerShell probado con3 casos inertes y ejecutado en lectura real; no distribuye
+dependencias QA ni requiere otro setup. Capturas solo demo autorizada.
+
+Bloqueo material:9 archivos de captura inicial frente a5 actuales,4 imágenes
+temporales ausentes y0 cambios de hash entre presentes. El operador niega limpieza:
+no aceptar conservación global ni atribuirla a otra API. Comparaciones de cada
+instalación son iguales, pero no cubren el intervalo. Búsquedas/historial sin causa;
+USN lecturaAccesoDenegado5. Se prepara comparación fuera de Codex/lectura elevada
+por operador con identidades NTFS actuales, salida privada y sin restauración,
+borrado ni permisos cambiados. Guía DIAGNOSTICO_TEMPORALES_BETA4 y checkpoint.
+Manifiesto incorpora PR90/evidencia y puerta independiente de conservación;
+roadmap histórico intacto. Beta externa y venta NO-GO; Windows limpio/offline real,
+Resolve/Adobe y revisión de derechos/humana pendientes. Solicitud67 se reutiliza.
+
+Seguimiento final132 tests correctos. Consulta GitHub real con manifiesto de PR90:
+Windows bloqueado, no aprobado, conservación false y beta/venta NO-GO. Detectado y
+corregido que needs_review/changes_requested reemplazaba visualmente blocked;
+historial/observaciones conservados, regresión incluida. Pages de main consultado:
+COL036 bloqueada con PR90, versiónbeta3; mejoras de PR90 aún sin desplegar.
+Issue57 blocked, sin in-progress; solicitud67 actualizada con diagnóstico concreto.
+Workflow41410069177 success, mención6572098610 a jea27 comprobada; no recepción
+física nueva confirmada. No repetir aviso ni aprobar por CI. CI810bf44 MVP/Studio/
+validate/sync correctos; último head consultable en checks de PR90. Checkpoint listo.
+
+## 02-11-2026 · COL036 · incidente P0 y contención de eliminaciones
+
+Recibido diagnóstico privado:4 PNG con FILE_DELETE/CLOSE; no identifica proceso.
+Se preservan originales/copias/hash y se correlaciona hora local/UTC con tareas y
+logs sin atribuir causa al instalador. El candidato final se construyó después.
+La vista externa1/9 y Codex5/9 tienen identidades de directorio distintas; otros2PNG
+y2presets siguen disponibles con hash original, copiados a evidencia privada sin
+restaurar. Baseline original no tenía identidad física. No afirmar ocho pérdidas
+globales ni que las comparaciones inmediatas resuelven el incidente.
+
+Reproducción aislada con audit hook: código anterior DELETE borra6PNG sin
+consentimiento específico; contención423 conserva9. Cleanup .part anterior borra
+un archivo preexistente tras fallar creación exclusiva; corrección lo conserva.
+PID registrado es del fixture, no del incidente. DELETE privados/UI deshabilitados,
+guard de temporales por creación/inode, reserva de lote exclusiva y estado solo tras
+persistir. Instalación/recuperación rechazan almacén privado; NSIS ya no purgaAppData.
+QA baselinev2 liga volumen/directorio y rechaza otra identidad o baseline antiguo.
+
+Probes sintéticos, host y runtime oficial embebido de contención; frontend7/build
+y seguimiento se verifican. Conteos/resultados reales en INCIDENT_036_QA.json.
+No nuevo instalador, pruebas destructivas reales, restore, cambios de permisos,
+logging, controlador o uso de Procmon. Preparados script de auditoría existente y
+protocolo Procmon de solo fixtures. Security pendiente de operador; ausencia de
+eventos no prueba ausencia de borrado. Hipótesis históricas siguen abiertas.
+
+PR90 continúa borrador. Candidato f002 en cuarentena y descargas bloqueadas por
+evidencia de seguridad faltante/no validada, incluso histórica autorización de tag.
+Manifiesto/recibo enlazan incidente; estados de las42 tareas sin edición manual.
+Beta externa/venta NO-GO, ninguna capacidad aprobada, merge ni publicación binaria.
+
+Resultados finales locales:135 MVP host y135 con Python3.14.10 embebido,0 fallos,
+3 symlinks omitidos;7 probes NSIS reales inertes. Seguimiento134, frontend7/build
+correctos. La nueva prueba de texto del hold detectó lectura por defecto cp1252 en
+el harness Windows; JS era UTF8 válido y el test ahora lee explícitamente UTF8.
+Las primeras trazas fallidas se conservan privadas; no eran pérdida de datos real.
+
+## 02-11-2026 · COL036 · Security sin coincidencias y preparación de Procmon
+
+Recibido resultado privado del operador: consulta Security existente sin eventos
+coincidentes. Original/hash preservados; no repetir ni inferir ausencia de borrado
+o exoneración. Revisión adicional de historial propio/tres agentes sin orden de
+borrado identificada en la ventana; no prueba contra procesos en segundo plano.
+Defender/AppModel/AppX consultados sin atribución, sin cambios de configuración.
+
+Preparado ZIP oficial Process Monitor4.12 en carpeta ignorada del workspace. Hash
+ZIP477754bf…3a10, x64 SHA28495e64…885 y tres firmas Microsoft válidas. /NoConnect
+verificado en ayuda incorporada firmada. No ejecución, aceptación de EULA, carga
+de controlador ni inclusión en instalador. Captura con fixture preparada; requiere
+acción/consentimiento del operador para arranque privilegiado. No reconstruye el PID
+histórico por sí sola. Causa abierta, PR90 borrador y beta/venta NO-GO.
+
+Solo evidencia/documentación; sin nuevos cambios del producto. JSON saneados y
+diff comprobados; no se repiten suites ya verificadas135/135/134/7. CI comprobará
+el nuevo commit. El resultado privado no se adjunta a Issues/PR.
+
+## 02-11-2026 · COL036 · Procmon abierto por operador; control elevado pendiente
+
+El usuario confirma ventana abierta y autoriza continuar. Mediante la habilidad
+Computer Use se observa Process Monitor receptivo, vacío y captura desactivada.
+Activar ventana funciona; clic en Filter y Ctrl+L no abren menú/diálogo; solo título
+accesible. Tokens consultados sin modificación: Procmon alto/elevado y diagnóstico
+medio/no elevado; compatible con UIPI, sin atribuir el fallo a un canal interno
+no inspeccionado. No elevar agentes ni modificar permisos, logging o protecciones.
+
+No se ejecutan probes nuevos sin confirmar filtro. Se solicita solo configurar
+Path begins with el prefijo sintético privado, sin otras Include, Drop Filtered
+Events y arrancar captura. Después Codex ejecutará los cuatro probes existentes;
+PML/CSV permanecerán privados. Apertura satisfecha, captura todavía pendiente.
+No es nueva evidencia de atribución histórica. PR90 borrador y distribución NO-GO.
+
+Solicitud67 reutilizada conservando marcadores y needs-human, sin quitar/reaplicar
+etiqueta. Dispatch41452456160 success y comentario6578231215 del bot con @jea27
+verificados; no afirmar recepción física nueva. JSON e invariantes NO-GO correctos,
+diff sin rutas privadas/credenciales y evidencia privada ignorada por Git. Solo
+cuatro archivos de documentación/evidencia; no repetir suites de producto sin cambio.
+
+## 02-11-2026 · COL036 · conservación atómica y recuperación de lotes
+
+El usuario pide reintentar Procmon y continuar desarrollo si falla. Ventana nueva
+localizada; Ctrl+L de nuevo sin efecto, sin eventos/captura desactivada. Se pospone
+solo la captura nativa, sin nuevos avisos por el mismo bloqueo ni cambios de permisos.
+
+Reproducción sintética previa al parche:5 tests de storage/colisión producen6
+fallos (subtests JSON/bytes),0 errores;2 tests de persistencia del trabajador fallan.
+Limpiar por nombre borraba un sustituto ajeno; UUID forzado sobrescribía un archivo
+existente; fallo inicial de save dejaba el lote activo indefinidamente. No atribuye
+ninguno de estos defectos al evento histórico. Trazas solo privadas.
+
+Parche: identidad de temporal antes de publicar/limpiar, protección compartida con
+lotes, creaciones sin reemplazo/409 y ediciones atómicas preservadas. Fallos de
+persistencia del trabajador quedan en failed/reintentables; si no se guarda ese
+estado, reinicio muestra interrupted. No fallback destructivo ni purga nueva.
+147 host y147 embebidos correctos,12 regresiones nuevas;3 omisiones host por symlink.
+Runtime QA nuevo oficial offline/dirty declarado,924 archivos/60 nativos; aislamiento
+71 módulos/reinicio y smoke2CC0 correctos, originales intactos, sin instalación.
+Recibo INCIDENT_036_STORAGE_QA.json y hashes por fuente; no confundir con Windows limpio.
+
+Manifiesto conserva IDs y estados: añade pruebas/PR90/dependencias de huella y retira
+del guion humano la eliminación de presets, actualmente bloqueada. No setup nuevo,
+aprobaciones, merge o escrituras de main. PR90 borrador; causa abierta y NO-GO.
+
+Seguimiento134 correcto tras el ajuste de manifiesto. JSON/hashes de fuentes
+probadas, enlaces de pruebas/huellas e invariantes NO-GO cotejados. Escaneo de los
+11 archivos de entrega sin credenciales/rutas privadas; trazas privadas ignoradas.
+42 tareas históricas sin cambios. Sin nuevos tests frontend al no cambiar UI;
+la CI de la PR comprobará la entrega completa. No repetir aviso del bloqueo Procmon.
+
+## 03-11-2026 · COL036 · consolidación y candidato interno beta.5
+
+Revisión desde edf82d0 con preservación del worktree y custodia de las copias.
+Junctions NTFS reales detectan recuperación directa sin comprobar ancestros y
+root de almacén resuelto antes de comprobar enlaces; corregidos. No atribución
+histórica. Prueba real de readonly conserva preferencias, fotos, presets y receta;
+bloqueo Win32 de directorio aborta switch y permite retry con stage nuevo, como NSIS.
+El primer harness intentó reutilizar stage con extras ya copiados: corregido el
+harness para crear stage fresco; fallo/trace retenidos.154 host correctos,3 omitidos.
+CI Linux añadida para ejecutar los3 symlinks originales; NTFS se prueba en Windows.
+
+VM actual no disponible: gestor ausente,3,41GiB libres. No activar features, reiniciar
+o ejecutar Procmon en host; fase nativa queda para entorno aislado. Custodia privada
+2PNG+2presets y preferencias cotejada contra hashes sin restauración/publicación.
+Preparar versión beta.5 y build interno, guardando etapas/recibos/launcher previos.
+Gate global usa data_safety_validated=false: una causa desconocida no sustituye
+evaluación preventiva y aceptación humana. Tests no conceden GO ni aprobación.
+Nuevo test de sincronización usa evidencia futura sintética, nunca modifica el recibo
+real. Sin merge/cierre/release ni permisos cambiados. Build/auditorías aún pendientes.
+
+03-11: ebdfbe5 compilado/auditado en limpio: preliminar beta5 d1cbdd…68ea,
+48.482.443bytes,951 archivos/924 runtime,289 componentes con avisos. Sin instalación.
+Tres symlinks pasan en LinuxCI41585993189; no prueba de file-symlink Windows.
+Revisión posterior de sustitutos detecta pérdida del diario si aparece un destino
+ajeno tras el move del old: reproducción real de colisión falla y corrección retiene
+diario+backup+receta ajena. La recuperación no sobrescribe ese destino; tras revisión
+manual de la carpeta el fixture puede recuperar el old.36 tests focales correctos.
+Regenerar beta5 después del commit, archivando preliminar. CI candidata41586295244
+cancelada por fuente superada, no por pérdida de datos. No publicar instaladores.
+
+Kit VM preparado con guard/modelo/ruta, hashes, instaladores fijados y fuentes legacy
+con SHA; pruebas directas no se presentan como HTTP. Inputs PNG/receta sintéticos,
+sin dependencias de desarrollo globales. Pendiente generar/testear kit final tras
+build. Readiness de conservación apunta a aceptación preventiva nueva, todavía
+false; conserva el recibo histórico y no lo convierte en una aceptación retrospectiva.
+
+
+## 03-11-2026 · COL036 · candidato beta5 final y kit privado verificable
+
+Compilado desde29fb77a limpio, beta.5 SHA789983…8bb69,48.473.299bytes. Auditoría
+NSIS951/924runtime/60nativos correcta;289 paquetes con avisos y0ausentes; firmas
+PSF/MS requeridas válidas. Sin instalar en host, sin firmas compradas ni publicación.
+Se preservan beta4 y preliminar beta5. Fuentes posteriores solo CI/herramientas/docs;
+apps/packages/packaging siguen iguales. Build mueve staging a archivo privado y
+conserva launcher/setup/recibos; TEMP/TMP locales se restauran. No copia DLL del host.
+
+Kit privado17entradas+manifiesto,95.194.508bytes, SHAabf342…fd4015; candidato,
+beta3 fijada, fuentes QA allowlist,2PNG/receta sintéticos. CRC/todos hashes correctos.
+Scripts rechazan host, guest/ruta no esperados, enlaces y payload cambiado; no se
+han ejecutado en Windows11 limpio. No hay Python/Node/Git global requerido en guest.
+Primer intento con Python del sistema falló por dependencias ausentes; se conservó
+su carpeta parcial y se generó otro kit con el venv existente, sin instalaciones.
+
+160 host (3omitidos), primer runtime160 correcto, aislamiento71módulos y smoke
+2CC0 correctos. Una repetición del runtime dio1error directory_switch_failed en
+fixture de interrupción tras el move de una instalación limpia. No registró causa
+Win32, por tanto no atribuirla. Recibo fallido preservado;20repeticiones del caso y
+una suite completa diagnóstica pasan. Runner ahora registra omitidos y report de
+InstallError sin rutas; serie limitada adicional en curso. No declarar resuelto por
+repeticiones verdes. No relacionarlo con el actor histórico sin evidencia.
+
+CI8876535 MVP/cliente/seguimiento correctos;3symlinks originales pasan en Windows
+CI y Linux. Job Windows153 tests con clase7guardas NSIS omitida por cache ausente;
+los7sí pasan en build local160. Primer CI29fb falló por checkout superficial sin
+fuente legacy fijada: corregido fetch-depth0, sin modificar permisos. Build completo
+remoto41649084841 en curso; sube solo informes, no instalador.
+
+Recibos públicos beta5 y agregado de incidente actualizados sin aceptar seguridad
+ni causa histórica. Capturas beta4 existentes revisadas: demo CC0 y UI, sin rutas
+privadas; no presentarlas como GUIbeta5.42tareas intactas y aceptación por capacidad
+independiente de merge/CI. Windows/Procmon/red real/editores siguen NOT_RUN; NO-GO.
+
+Cierre diagnóstico limitado: cinco suites adicionales160/3omitidos correctas, sin
+InstallError nuevo; no explica el único fallo previo. Sigue registrado y PRborrador.
+Colector GitHub real:42tareas, COL036blocked/PR90, aceptación0/8, beta5 en cuarentena
+y NO-GO. Generated files preservados byte a byte. Pages publica beta3/main918cb638;
+los recibos/cambios de esta rama esperan integración humana. Ver BETA5_036_SYNC.json.
+
+Build independiente41649084841 success sobre8876535:160tests/0omitidos, incluyendo
+3symlinks nativos y7guards NSIS, auditoría951/924/60 y firmas correctas. Solo4recibos
+subidos; no EXE. SHA e5862a…27da difiere del candidato local789983…8bb69. Mismas
+fuentes apps/packages/packaging entre29fb/8876, no afirmar identidad de binarios.
+Recibo BETA5_036_CI_BUILD.json. CI1d917c7 MVP/cliente/seguimiento success.
+Solicitud67 actualizada con7campos y VM concreta; aviso41650561917 success y bot
+@jea27 en67#issuecomment-6605944403. No nueva confirmación física. Sin toggles de
+needs-human ni Issue duplicada; no repetir aviso. Algunos sync cancelados en cola
+sin steps, verificar despliegue final. PR90 sigue borrador; incertidumbre y NO-GO.
+
+
+## 05-11-2026 · COL036 · cierre MVP y QA asistida de VM existente
+
+Usuario confirma VMWindows11Pro/HyperV con checkpoints. Cmdlets presentes;
+Get-VM falla en contexto no elevado y no hay consola accesible. No modificación
+administrativa ni checkpoint. Preparado asistente PowerShellDirect con identidad
+BIOS/guest, kitSHA, selección/atestación checkpoint, sin shares/credenciales guardadas.
+Ciclo guest prepara semillaAPI3, baselineNTFS, bloqueo Win32/fracaso nativo, retry
+update5, API/reinicio/cancelación, fixtures, red guest real/finally y desinstalación.
+No ejecutado en guest. La confirmación del operador no se confunde con verificación
+automática del contenido del checkpoint ni con aprobación de producto.
+
+Cliente nuevo probado por HTTP real con runtime empaquetado beta5, fuente29fb:
+2pases semilla/reinicio, modo Creator/Pro byteigual, receta/presets,LUT sin óptica,
+Planner/incertidumbre/fuentes y cancelación realPASS. Sintéticos768x1024, nada de
+fotos personales ni AppData real. No prueba GUI ni Windows limpio.
+
+4tests nuevos primero y suite164/3omitidos correctos; nueva prueba de hash host
+falló porque WindowsPowerShell5 heredaba PSModulePath7 y ocultaba Get-FileHash.
+Test corregido con entorno propio del hijo, sin instalaciones/cambios globales;
+5tests focales correctos. Regresión adicional comprueba captura de fallo inesperado
+antes de limpiar el fixture. Cause histórica e intermitente no resueltas.
+
+MVP_CLOSURE_036 clasifica8bloqueos; manifiesto añade evidencias/tests/huellas de
+herramientas de QA, sin aprobación. Preparación comercial existente conciliada:
+no duplicar feedback/guías,49€ de COL005 conserva significado,0respuestas inventadas.
+Falta licencia propia y decisiones humanas/legales. NoGO beta externa/venta.
+
+Cierre de verificación: primer kitv2 bloqueado antes del ZIP porque beta3 no tiene
+ledger transaccional. Se preservó su carpeta y se corrigió la verificación con
+runtime+launcher ligados al NSIS auditado; regresión real metadata beta3 correcta.
+CIe246 detectó GET/404 en fixtureAPI antes del buildUI. El cliente del kit conserva
+web200 obligatorio; el fixture unitario API lo declara no probado. CI9f3702a MVP,
+cliente y seguimiento correctos. Sin cambios de apps/packages/packaging.
+
+Kit final22entradas+manifest,95.299.557bytes, SHAa304c5…b0a1f4, toolsource9f3702a,
+apps29fb. CRC/hashes y extractorWindowsPS5 reales correctos;3archivesmalformados
+rechazados antes de extraer. Runtime167/3omitidos correcto; host166/3omitidos más
+regresiónlegacy focal, seguimiento135.100repeticionesinstrumentadas pasan sin
+explicar fallo anterior; fixture inesperado se conserva si reaparece. No ejecución
+guest, copiaVM ni cambio decheckpoint. VMMSRunning/GetVMpermiso insuficiente confirmado.
+Actualización nativa, UI, offline real y editores siguen NOT_RUN y NO-GO.
+
+Handoff final: guía visual actualizada a beta5, sin recomendar reinstalación como
+prueba de upgrade. Separados almacenes QA/Inicio para evitar conclusiones entre
+vistas distintas. Verificador de enlacesoffline con regresión; kit23miembros,
+95.299.851bytes, SHA c3521f…bc011, toolsource539a159. Kit9f previo preservado.
+Archivo/hash/extracción WindowsPS5 y enlaces correctos. Host168/3omitidos correcto;
+embebido167/3omitidos anterior más prueba focal de enlaces correcta. No nativeVM.
+Notificaciónúnica42014330354 success, bot@jea27 en67#issuecomment-6656140492; no
+confirmación física nueva. Body67 actualizado al hash final sin volver a disparar
+aviso. Coordinación73 y comentarios60/61/62 publicados; nadie contactado, sin pagos,
+merge, aprobaciones o publicación de instalador. Datos privados recuperados intactos.
+
+
+### COL036 · no reutilizar un perfil con otra instalación · 06-11-2026
+
+La preparación del ciclo asumía que C:\LF-QA vacío implicaba perfil limpio. Se
+corrige antes de copiar el kit y en el guest: presencia del almacén predeterminado,
+directorios conocidos o clave de desinstalación exacta (HKCU/HKLM, vistas32/64)
+bloquea sin modificar. Acceso a registro fallido también bloquea. Así se evita
+que beta3 encuentre por registro otra instalación fuera de la carpeta dedicada.
+13 tests focales correctos con sondas sintéticas; no hay instalación real, cambios
+de registro, VM/checkpoints o lectura de fotos/presets del usuario. No identifica
+el actor histórico. Kits anteriores retenidos; beta externa y venta NO-GO.
+
+### COL-036 · Bloqueos temporales durante la actualización · 11-11-2026
+
+El cambio de directorio admite tres reintentos acotados para errores de Windows
+5, 32 y 33. Antes de reintentar, comprueba identidad, enlaces, huella del árbol y
+que el destino esté libre. Si el bloqueo persiste, conserva la aplicación anterior
+o su respaldo y el registro de recuperación. El diagnóstico distingue mover la
+instalación previa y activar el paquete preparado.
+
+Handles reales de Windows sobre directorios sintéticos comprobaron recuperación
+de ambas fases y conservación ante bloqueo persistente. Una modificación del
+paquete durante la espera detuvo la operación y restauró la instalación previa.
+Suite MVP local 171 casos, 168 correctos y 3 omitidos por permisos de symlinks.
+Esta evidencia corresponde al helper en desarrollo. El beta.5 ya construido
+conserva sus bytes y SHA para la QA beta.3 → beta.5. La causa histórica de las
+eliminaciones sigue desconocida. La VM devuelve acceso denegado desde Codex.
+
+### COL-046 · Proyectos locales · 11-11-2026
+
+Pro recupera una copia de edición con las dos imágenes importadas, receta y
+comparador. API privada por sesión, referencias por UUID y huella SHA-256,
+registros acotados y escritura atómica sin sobrescritura. Confirmación antes
+de cambiar una edición abierta. El navegador recorrió demo CC0, guardar,
+recargar, abrir y exportación disponible. Suite de API verificó reinicio,
+PNG idéntico y rechazo de medio cambiado, ausente o fuera del almacén.
+166 casos MVP, 162 correctos y 4 omitidos en este worktree. Tres requieren
+symlinks y la clase NSIS requiere el caché fijado del worktree COL036.
+Siete pruebas de cliente y build correctos. Validación de VM pendiente en #67.
+
+### QA final de beta.7 en Hyper-V · COL-036
+
+Se compararon la composición beta.7 y la rama de #90 tras la integración de
+#92–95. El conflicto dejó llamadas a dos funciones auxiliares ausentes.
+Restaurar ambas y el límite de concurrencia preserva la importación, la demo
+estable y los cambios integrados. La prueba usa medios sintéticos o CC0.
+
+La batería del invitado distingue actualización de instalación limpia.
+Para beta.7 conserva y reabre un proyecto, verifica los hashes después del
+reinicio y genera el control sRGB para medir la LUT en Resolve. Los
+instaladores y kits originales conservan sus SHA-256. El kit revisado
+solo añade herramientas de ensayo. La guía de ejecución está en
+[QA final en Hyper-V](QA_HYPER_V_BETA7.md).

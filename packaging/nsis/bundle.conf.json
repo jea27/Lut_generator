@@ -1,0 +1,7 @@
+{
+  "bundle": {
+    "resources": {
+      "binaries/installer-manifest.json": "installer-manifest.json"
+    }
+  }
+}

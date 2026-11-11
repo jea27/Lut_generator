@@ -1,0 +1,15 @@
+{
+  "schema": "color-studio-planner-optics-v1",
+  "date": "2026-11-11",
+  "planner_tests_passed": 9,
+  "client_tests_passed": 7,
+  "client_build_passed": true,
+  "browser_demo_reference_checked": true,
+  "setup": {"focal_mm": 50, "sensor_width_mm": 36, "focus_distance_m": 3, "aperture": 4},
+  "browser_horizontal_fov_degrees": 39.6,
+  "browser_frame_width_m": 2.12,
+  "browser_near_m": 2.63,
+  "browser_far_m": 3.49,
+  "original_setup_recovered": false,
+  "human_validated": false
+}

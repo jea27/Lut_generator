@@ -15,8 +15,18 @@ os.environ['LUMAFORGE_DATA_DIR']=sys.argv[3]
 import packages.colour_core.engine as engine
 assert Path(engine.__file__).resolve().is_relative_to((runtime/'app').resolve())
 suite=unittest.defaultTestLoader.discover(str(root/'tests_mvp'))
-result=unittest.TextTestRunner(verbosity=2).run(suite)
-print(json.dumps({'python':sys.version.split()[0],'tests':result.testsRun,'failures':len(result.failures),'errors':len(result.errors),'successful':result.wasSuccessful(),'core_loaded_from_packaged_runtime':True,'isolated':sys.flags.isolated,'no_site':sys.flags.no_site,'qa_dependencies_shipped':False,'clean_windows':False}))
+class DiagnosticResult(unittest.TextTestResult):
+    def __init__(self,*args,**kwargs):
+        super().__init__(*args,**kwargs);self.installer_errors=[]
+    def addError(self,test,error):
+        from apps.desktop.installer_helper import InstallError
+        if isinstance(error[1],InstallError):
+            detail={'test':test.id(),**error[1].report()}
+            self.installer_errors.append(detail)
+            print(json.dumps({'unexpected_installer_error':detail}),file=self.stream)
+        super().addError(test,error)
+result=unittest.TextTestRunner(verbosity=2,resultclass=DiagnosticResult).run(suite)
+print(json.dumps({'python':sys.version.split()[0],'tests':result.testsRun,'failures':len(result.failures),'errors':len(result.errors),'skipped':len(result.skipped),'unexpected_installer_errors':result.installer_errors,'successful':result.wasSuccessful(),'core_loaded_from_packaged_runtime':True,'isolated':sys.flags.isolated,'no_site':sys.flags.no_site,'qa_dependencies_shipped':False,'clean_windows':False}))
 raise SystemExit(not result.wasSuccessful())
 '''
 

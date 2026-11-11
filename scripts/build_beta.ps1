@@ -16,12 +16,47 @@ if(-not $lfSevenZip){throw 'An authorized 7-Zip extractor is required for full N
 $lfArchiveArgs=@('-c','from scripts.audit_nsis_payload import prepare_archive; import sys; prepare_archive(offline=sys.argv[1]=="1")', [string][int][bool]$Offline)
 & $lfPython @lfArchiveArgs
 if($LASTEXITCODE -ne 0){throw 'Pinned NSIS audit archive unavailable'}
+$lfInstallerInputs=@('scripts/prepare_installer_inputs.py')
+if($Offline){$lfInstallerInputs+='--offline'}
+& $lfPython @lfInstallerInputs
+if($LASTEXITCODE -ne 0){throw 'Pinned installer inputs unavailable'}
+$lfBootstrapper=Join-Path $lfRoot 'apps/desktop/src-tauri/target/.tauri/MicrosoftEdgeWebview2Setup.exe'
+$lfBootstrapperSignature=Get-AuthenticodeSignature -LiteralPath $lfBootstrapper
+if($lfBootstrapperSignature.Status -ne 'Valid' -or $lfBootstrapperSignature.SignerCertificate.Subject -notmatch 'O=Microsoft Corporation(?:,|$)'){throw 'Official Microsoft bootstrapper signature validation failed'}
 $lfTools=Get-Content -LiteralPath packaging/build-environment.json -Raw | ConvertFrom-Json
 if((node --version).Trim() -ne ('v'+$lfTools.node)){throw 'Use the recorded Node version; no automatic local tool installation'}
 $lfDirty=[bool](git status --porcelain --untracked-files=normal)
 if($lfDirty -and -not $AllowDirtyInternal){throw 'Commit reviewable sources first, or explicitly choose an internal dirty build'}
+$lfBuildSource=(git rev-parse HEAD).Trim()
+$lfPrivateRoot=Join-Path $lfRoot '.lumaforge-local'
+if((Get-Item -LiteralPath $lfPrivateRoot -Force).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Refusing linked private build archive'}
+$lfHistory=Join-Path $lfPrivateRoot ('build-history-'+[guid]::NewGuid().ToString('N'))
+if(Test-Path -LiteralPath $lfHistory){throw 'Build archive already exists'}
+New-Item -ItemType Directory -Path $lfHistory | Out-Null
+foreach($lfReportName in @('beta-artifact.json','beta-nsis-audit.json','beta-payload-audit.json','runtime-signatures.json','runtime-payload.json')){
+ $lfPreviousReport=Join-Path $lfPrivateRoot $lfReportName
+ if(Test-Path -LiteralPath $lfPreviousReport){
+  if((Get-Item -LiteralPath $lfPreviousReport -Force).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Refusing linked build receipt'}
+  Copy-Item -LiteralPath $lfPreviousReport -Destination (Join-Path $lfHistory $lfReportName)
+ }
+}
+$lfPreviousLauncher=Join-Path $lfRoot 'apps/desktop/src-tauri/target/release/color-studio-beta.exe'
+if(Test-Path -LiteralPath $lfPreviousLauncher){
+ if((Get-Item -LiteralPath $lfPreviousLauncher -Force).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Refusing linked previous launcher'}
+ Copy-Item -LiteralPath $lfPreviousLauncher -Destination (Join-Path $lfHistory 'previous-launcher.exe')
+}
+$lfPreviousConfig=Get-Content -LiteralPath apps/desktop/src-tauri/tauri.conf.json -Raw | ConvertFrom-Json
+$lfPreviousSetup=Join-Path $lfRoot ('apps/desktop/src-tauri/target/release/bundle/nsis/'+$lfPreviousConfig.productName+'_'+$lfPreviousConfig.version+'_x64-setup.exe')
+if(Test-Path -LiteralPath $lfPreviousSetup){
+ if((Get-Item -LiteralPath $lfPreviousSetup -Force).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Refusing linked previous setup'}
+ Copy-Item -LiteralPath $lfPreviousSetup -Destination (Join-Path $lfHistory 'previous-setup.exe')
+}
 $lfOldPath=$env:PATH;$lfOldFlags=$env:CARGO_ENCODED_RUSTFLAGS;$lfOldJobs=$env:CARGO_BUILD_JOBS
+$lfOldTemp=$env:TEMP;$lfOldTmp=$env:TMP
 try {
+ $lfTemporary=Join-Path $lfHistory 'tmp'
+ New-Item -ItemType Directory -Path $lfTemporary | Out-Null
+ $env:TEMP=$lfTemporary;$env:TMP=$lfTemporary
  $env:PATH="$env:USERPROFILE\.cargo\bin;$env:PATH"
  $env:CARGO_BUILD_JOBS='2'
  if((rustc --version) -notlike ('rustc '+$lfTools.rust+' *')){throw 'Use the recorded Rust version; no automatic local tool installation'}
@@ -49,28 +84,41 @@ try {
   if([IO.Path]::GetFullPath($lfBinaries) -ne [IO.Path]::GetFullPath((Join-Path $lfRoot 'apps/desktop/src-tauri/binaries'))){throw 'Unsafe staging path'}
   if((Get-Item -LiteralPath $lfBinaries -Force).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Refusing linked staging'}
   if(-not(Test-Path -LiteralPath (Join-Path $lfBinaries '.generated-by-color-studio'))){throw 'Refusing unmarked staging'}
-  if(Get-ChildItem -LiteralPath $lfBinaries -Force | Where-Object {$_.Name -notin @('.generated-by-color-studio','runtime')}){throw 'Unexpected staging files; preserve and inspect'}
+  if(Get-ChildItem -LiteralPath $lfBinaries -Force | Where-Object {$_.Name -notin @('.generated-by-color-studio','runtime','installer-manifest.json','installer-vars.nsh')}){throw 'Unexpected staging files; preserve and inspect'}
   if(Get-ChildItem -LiteralPath $lfBinaries -Force -Recurse | Where-Object {$_.Attributes -band [IO.FileAttributes]::ReparsePoint}){throw 'Refusing linked staging contents'}
   & $lfPython -c 'from pathlib import Path; from scripts.build_embedded_runtime import verify_bundle; import sys; verify_bundle(Path(sys.argv[1]))' (Join-Path $lfBinaries 'runtime')
   if($LASTEXITCODE -ne 0){throw 'Existing staging changed; preserve it instead of replacing'}
-  # Only this resolved, marked, fully verified generated tree is replaced.
-  Remove-Item -LiteralPath $lfBinaries -Recurse -Force
+  # Preserve the verified generated stage; never discard an earlier build receipt.
+  $lfStageArchive=Join-Path $lfHistory 'previous-staging'
+  $lfArchivePrefix=[IO.Path]::GetFullPath($lfPrivateRoot).TrimEnd('\','/')+[IO.Path]::DirectorySeparatorChar
+  if(-not [IO.Path]::GetFullPath($lfStageArchive).StartsWith($lfArchivePrefix,[StringComparison]::OrdinalIgnoreCase)){throw 'Unsafe staging archive destination'}
+  if(Test-Path -LiteralPath $lfStageArchive){throw 'Refusing to overwrite a staging archive'}
+  Move-Item -LiteralPath $lfBinaries -Destination $lfStageArchive
  }
  New-Item -ItemType Directory -Path $lfBinaries | Out-Null
  Set-Content -LiteralPath (Join-Path $lfBinaries '.generated-by-color-studio') -Value 'Verified embedded runtime staging only'
  Copy-Item -LiteralPath $lfRuntime -Destination (Join-Path $lfBinaries 'runtime') -Recurse
  Push-Location apps/desktop
  try {
-  & ../../apps/web/node_modules/.bin/tauri.cmd build --bundles nsis -- --locked --offline
-  if($LASTEXITCODE -ne 0){throw 'Native installer build failed'}
+  & ../../apps/web/node_modules/.bin/tauri.cmd build --no-bundle -- --locked --offline
+  if($LASTEXITCODE -ne 0){throw 'Native application build failed'}
+ } finally {Pop-Location}
+ & $lfPython scripts/create_install_manifest.py
+ if($LASTEXITCODE -ne 0){throw 'Installer ledger generation failed'}
+ Push-Location apps/desktop
+ try {
+  & ../../apps/web/node_modules/.bin/tauri.cmd bundle --bundles nsis --config (Join-Path $lfRoot 'packaging/nsis/bundle.conf.json')
+  if($LASTEXITCODE -ne 0){throw 'NSIS installer bundling failed'}
  } finally {Pop-Location}
  & $lfPython scripts/audit_embedded_payload.py $lfRuntime .lumaforge-local/beta-payload-audit.json --native apps/desktop/src-tauri/target/release/color-studio-beta.exe
  if($LASTEXITCODE -ne 0){throw 'Native/payload privacy or import gate failed'}
  $lfConfig=Get-Content -LiteralPath apps/desktop/src-tauri/tauri.conf.json -Raw | ConvertFrom-Json
  $lfExpectedName=$lfConfig.productName+'_'+$lfConfig.version+'_x64-setup.exe'
  $lfInstaller=Get-Item -LiteralPath (Join-Path $lfRoot ('apps/desktop/src-tauri/target/release/bundle/nsis/'+$lfExpectedName))
- & $lfPython scripts/audit_nsis_payload.py $lfInstaller.FullName .lumaforge-local/beta-nsis-audit.json $lfSevenZip apps/desktop/src-tauri/target/release/color-studio-beta.exe .lumaforge-local/downloads/nsis-3.13.zip (Join-Path $env:LOCALAPPDATA 'tauri/NSIS')
+ & $lfPython scripts/audit_nsis_payload.py $lfInstaller.FullName .lumaforge-local/beta-nsis-audit.json $lfSevenZip apps/desktop/src-tauri/target/release/color-studio-beta.exe .lumaforge-local/downloads/nsis-3.13.zip apps/desktop/src-tauri/target/.tauri/NSIS
  if($LASTEXITCODE -ne 0){throw 'Full NSIS provenance/architecture/privacy gate failed'}
+ if((git rev-parse HEAD).Trim() -ne $lfBuildSource){throw 'Source commit changed during build'}
+ if(-not $lfDirty -and [bool](git status --porcelain --untracked-files=normal)){throw 'Build changed tracked source or notices; review them before claiming a clean candidate'}
  $lfArtifact=@{
   version=$lfConfig.version;file=$lfInstaller.Name;bytes=$lfInstaller.Length
   sha256=(Get-FileHash -LiteralPath $lfInstaller.FullName -Algorithm SHA256).Hash.ToLower()
@@ -79,7 +127,10 @@ try {
   python_runtime='PSF CPython3.14.10 embedded';build_python=(& $lfPython --version);rust=(& rustc --version);node=(& node --version)
   runtime_manifest_sha256=(Get-FileHash -LiteralPath (Join-Path $lfRuntime 'runtime-manifest.json') -Algorithm SHA256).Hash.ToLower()
   build_origin_gate_passed=$true;payload_audit_passed=$true
-  webview2='Evergreen downloaded officially if absent; first install then requires Internet'
+  webview2='Pinned signed Microsoft Evergreen bootstrapper embedded; downloads runtime if absent; then requires Internet'
+  webview2_bootstrapper_sha256=(Get-FileHash -LiteralPath $lfBootstrapper -Algorithm SHA256).Hash.ToLower()
+  webview2_bootstrapper_signature=$lfBootstrapperSignature.Status.ToString()
+  installer_manifest_sha256=(Get-FileHash -LiteralPath (Join-Path $lfBinaries 'installer-manifest.json') -Algorithm SHA256).Hash.ToLower()
   status='internal_candidate_not_approved';windows_clean_install='not_tested'
   nsis_full_audit='passed';distribution_status='NO-GO_pending_clean_Windows_upgrade_QA_rights_and_owner_review'
  }
@@ -87,4 +138,5 @@ try {
  Write-Output 'Internal candidate built and NSIS audited. Do not distribute: clean-Windows/upgrade/editor/rights/owner gates remain.'
 } finally {
  $env:PATH=$lfOldPath;$env:CARGO_ENCODED_RUSTFLAGS=$lfOldFlags;$env:CARGO_BUILD_JOBS=$lfOldJobs
+ $env:TEMP=$lfOldTemp;$env:TMP=$lfOldTmp
 }
