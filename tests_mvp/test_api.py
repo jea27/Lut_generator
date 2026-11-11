@@ -1,5 +1,9 @@
 import io
+import json
+import subprocess
+import sys
 import tempfile
+import time
 import unittest
 from pathlib import Path
 import numpy as np
@@ -54,14 +58,30 @@ class ApiTests(unittest.TestCase):
         first=self.client.post('/api/demo/load',json={})
         self.assertEqual(first.status_code,200,first.text[:200])
         self.assertEqual(len(list((store/'images').glob('*.png'))),3)
-        with TestClient(create_app(store),base_url='http://127.0.0.1') as restarted:
-            csrf=restarted.get('/api/session').json()['csrf']
-            restarted.headers.update({**H,'X-Color-Studio-Token':csrf})
-            repeat=restarted.post('/api/demo/load',json={})
-            self.assertEqual(repeat.status_code,200,repeat.text[:200])
-            for role in ('source','reference'):
-                self.assertEqual(repeat.json()[role]['id'],first.json()[role]['id'])
+        # LCMS profiles use a wall-clock timestamp with one-second precision.
+        time.sleep(1.1)
+        script = """
+import json
+import sys
+from fastapi.testclient import TestClient
+from apps.api.main import create_app
+
+with TestClient(create_app(sys.argv[1]), base_url='http://127.0.0.1') as client:
+    csrf = client.get('/api/session').json()['csrf']
+    client.headers.update({'X-LumaForge-Local': '1', 'X-Color-Studio-Token': csrf})
+    response = client.post('/api/demo/load', json={})
+    response.raise_for_status()
+    print(json.dumps({role: response.json()[role]['id'] for role in ('source', 'reference')}))
+"""
+        ids = json.loads(subprocess.check_output(
+            [sys.executable, '-c', script, str(store)],
+            cwd=Path(__file__).resolve().parents[1], timeout=30,
+        ))
+        self.assertEqual(ids,{role:first.json()[role]['id'] for role in ('source','reference')})
         self.assertEqual(len(list((store/'images').glob('*.png'))),3)
+        preview=self.client.get(first.json()['source']['preview_url'])
+        with Image.open(io.BytesIO(preview.content)) as image:
+            self.assertTrue(image.info['icc_profile'])
         self.assertEqual(self.client.get('/api/images/'+original+'/preview').status_code,200)
 
     def test_demo_preserves_existing_images_when_capacity_or_content_conflicts(self):

@@ -155,9 +155,9 @@ def create_app(data_dir=None):
     def pixels(identifier, size=None):
         return image_io.decode(path_for(identifier,images,'.png').read_bytes(),max_side=size)
 
-    def prepare_image(payload):
+    def prepare_image(payload, *, embed_profile=True):
         rgb, alpha, notes = image_io.decode(payload)
-        return image_io.encode(rgb, alpha), {
+        return image_io.encode(rgb, alpha, embed_profile=embed_profile), {
             'width': rgb.shape[1], 'height': rgb.shape[0], 'has_alpha': alpha is not None,
             'notes': notes, 'analysis': engine.analyze(rgb, alpha),
         }
@@ -206,7 +206,9 @@ def create_app(data_dir=None):
         with LOCK, measurement() as stats:
             missing = []
             for role in ('source', 'reference'):
-                png, description = prepare_image((directory/(role+'.jpg')).read_bytes())
+                # Internal demo pixels have already been normalized to sRGB.
+                # The generated ICC creation timestamp would change their IDs on restart.
+                png, description = prepare_image((directory/(role+'.jpg')).read_bytes(), embed_profile=False)
                 digest = hashlib.sha256(png).hexdigest()
                 identifier = str(uuid.uuid5(uuid.NAMESPACE_URL, f'urn:lumaforge:demo:{role}:{digest}'))
                 path = private_path(data, 'images', identifier+'.png')
