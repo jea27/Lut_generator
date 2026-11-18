@@ -17,8 +17,8 @@ fn startup_error() {
     #[cfg(windows)] unsafe {
         #[link(name="user32")]
         extern "system" {fn MessageBoxW(window:*mut std::ffi::c_void,text:*const u16,title:*const u16,kind:u32)->i32;}
-        let text:Vec<u16>="Color Studio no puede iniciar el motor local. Reinicia la aplicación o reinstala la beta. / Cannot start the local engine. Restart or reinstall the beta.".encode_utf16().chain(Some(0)).collect();
-        let title:Vec<u16>="Color Studio Beta".encode_utf16().chain(Some(0)).collect();
+        let text:Vec<u16>="Color Studio no puede iniciar el motor local. Reinicia la aplicación o reinstala Color Studio. / Cannot start the local engine. Restart or reinstall Color Studio.".encode_utf16().chain(Some(0)).collect();
+        let title:Vec<u16>="Color Studio".encode_utf16().chain(Some(0)).collect();
         MessageBoxW(std::ptr::null_mut(),text.as_ptr(),title.as_ptr(),0x10);
     }
 }
@@ -57,7 +57,7 @@ fn main() {
             app.manage(engine);
             let allowed=origin.clone();
             WebviewWindowBuilder::new(app,"studio",WebviewUrl::External(origin.parse()?))
-                .title("Color Studio · Technical Beta").inner_size(1440.0,960.0).min_inner_size(900.0,650.0)
+                .title("Color Studio").inner_size(1440.0,960.0).min_inner_size(900.0,650.0)
                 .on_navigation(move |url| url.as_str().starts_with(&(allowed.clone()+"/")) || url.scheme()=="blob")
                 .build()?;
             Ok(())

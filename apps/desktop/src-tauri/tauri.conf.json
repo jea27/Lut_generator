@@ -17,7 +17,7 @@
     "targets": [
       "nsis"
     ],
-    "shortDescription": "Offline colour grading technical beta",
+    "shortDescription": "Offline photo colour grading",
     "resources": {
       "binaries/runtime/": "runtime/",
       "../../../packaging/notices/": "notices/"
