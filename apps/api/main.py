@@ -111,7 +111,7 @@ def measurement():
 
 
 def create_app(data_dir=None):
-    app=FastAPI(title='Color Studio local beta',version='0.3.0-beta.5',
+    app=FastAPI(title='Color Studio local beta',version='1.0.0',
                 docs_url=None,redoc_url=None,openapi_url=None)
     default_data=Path(os.environ.get('LOCALAPPDATA',str(Path.home())))/'ColorStudioBetaData' if getattr(sys,'frozen',False) else ROOT/'.lumaforge-local'
     data=private_path(Path(data_dir or os.environ.get('LUMAFORGE_DATA_DIR',default_data))).resolve()
@@ -284,7 +284,7 @@ def create_app(data_dir=None):
                 'matched': record.matched and reference is not None}
 
     @app.get('/api/health')
-    def health(): return {'version':'0.3.0-beta.5','offline_processing':True,'domain':'encoded-sRGB-D65'}
+    def health(): return {'version':'1.0.0','offline_processing':True,'domain':'encoded-sRGB-D65'}
 
     @app.get('/api/capabilities')
     def capabilities():return catalogue()

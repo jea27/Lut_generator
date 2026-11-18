@@ -803,3 +803,11 @@ reinicio y genera el control sRGB para medir la LUT en Resolve. Los
 instaladores y kits originales conservan sus SHA-256. El kit revisado
 solo añade herramientas de ensayo. La guía de ejecución está en
 [QA final en Hyper-V](QA_HYPER_V_BETA7.md).
+
+### 18-11-2026 · Candidato de publicación Color Studio 1.0.0
+
+Se compiló el instalador de 1.0.0 desde la rama que parte de la integración de
+#90. Se conservó la identidad de actualización de Windows y se actualizó la
+versión visible. La auditoría NSIS y el smoke del runtime extraído pasaron. El
+EXE y su suma están en un borrador de GitHub. El kit de Hyper-V, los datos
+sintéticos de trabajo y los logs permanecen locales.

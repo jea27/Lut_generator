@@ -36,7 +36,7 @@ Test-LfPath $lfKit
 if($ExpectedManifestSha256 -notmatch '^[a-f0-9]{64}$' -or (Get-FileHash -LiteralPath "$lfKit\kit-manifest.json").Hash.ToLower() -ne $ExpectedManifestSha256){throw 'Untrusted kit manifest'}
 $lfManifest=Get-Content -LiteralPath "$lfKit\kit-manifest.json" -Raw|ConvertFrom-Json
 if($lfManifest.schema -ne 'color-studio-private-vm-kit-v2'){throw 'Requires the cycle-enabled v2 kit'}
-if($CleanCandidate -and $lfManifest.version -ne '0.3.0-beta.7'){throw 'This clean-candidate cycle is pinned to beta.7'}
+if($CleanCandidate -and $lfManifest.version -notin @('0.3.0-beta.7','1.0.0')){throw 'This clean-candidate cycle requires an audited project-capable candidate'}
 foreach($lfFile in $lfManifest.files.psobject.Properties){
  if([IO.Path]::IsPathRooted($lfFile.Name) -or $lfFile.Name -match '(^|[\\/])\.\.([\\/]|$)|:'){throw 'Unsafe kit member'}
  $lfPath=Join-Path $lfKit $lfFile.Name;Test-LfPath $lfPath
@@ -101,7 +101,7 @@ function Test-LfRuntime([bool]$lfPrevious){
 function Invoke-LfApi([string]$lfName,[string]$lfSeed,[switch]$Cancel){
  $lfArgs=@('-I','-S','-B',"$lfKit\scripts\qa_guest_api.py",'--output',"$lfRun\$lfName")
  if($lfSeed){$lfArgs+=@('--seed',$lfSeed)};if($Cancel){$lfArgs+='--cancellation'}
- if($lfName -ne 'seed' -and $lfManifest.version -eq '0.3.0-beta.7'){$lfArgs+='--projects'}
+ if($lfName -ne 'seed' -and $lfManifest.version -in @('0.3.0-beta.7','1.0.0')){$lfArgs+='--projects'}
  & 'C:\LF-QA\App\runtime\python.exe' @lfArgs *> "$lfRun\$lfName.log"
  if($LASTEXITCODE -ne 0){throw 'Installed API check failed; inspect the private log'}
  $lfResult=Get-Content -LiteralPath "$lfRun\$lfName\result.json" -Raw|ConvertFrom-Json

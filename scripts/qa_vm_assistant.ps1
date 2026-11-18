@@ -62,7 +62,7 @@ try{
 $lfExtract=Join-Path $lfOutput 'verified-kit';Expand-Archive -LiteralPath $lfZip -DestinationPath $lfExtract
 $lfManifest=Get-Content -LiteralPath "$lfExtract\kit-manifest.json" -Raw|ConvertFrom-Json
 if($lfManifest.schema -ne 'color-studio-private-vm-kit-v2'){throw 'Use the cycle-enabled v2 kit'}
-if($CleanCandidate -and $lfManifest.version -ne '0.3.0-beta.7'){throw 'CleanCandidate requires the revised beta.7 kit'}
+if($CleanCandidate -and $lfManifest.version -notin @('0.3.0-beta.7','1.0.0')){throw 'CleanCandidate requires a verified beta.7 or 1.0 kit'}
 if($lfNames.Count -ne @($lfManifest.files.psobject.Properties).Count+1){throw 'ZIP has undeclared files'}
 foreach($lfFile in $lfManifest.files.psobject.Properties){
  if(-not $lfNames.Contains($lfFile.Name) -or (Get-FileHash -LiteralPath (Join-Path $lfExtract $lfFile.Name)).Hash.ToLower() -ne $lfFile.Value){throw 'Kit file mismatch'}

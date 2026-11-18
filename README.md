@@ -1,5 +1,10 @@
 # LumaForge · Color Studio local y seguimiento
 
+Color Studio 1.0.0 para Windows x64 está preparado para validación interna.
+El instalador, su suma SHA-256 y las instrucciones de prueba están en
+[QA de Color Studio 1.0.0](docs/QA_COLOR_STUDIO_1_0.md).
+Las pruebas de instalación y actualización en Windows limpio siguen pendientes.
+
 **MVP v0.1 técnico:** abrir `Iniciar-LumaForge.cmd` y visitar
 http://127.0.0.1:8790. Preparación, recorrido y límites en
 [MVP_V01_WINDOWS.md](docs/MVP_V01_WINDOWS.md).
