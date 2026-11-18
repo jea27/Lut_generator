@@ -1,0 +1,44 @@
+{
+  "version": "1.0.0",
+  "source": "ab7204063a54eb278a452bc1e534297f304a6b57",
+  "bytes": 48490299,
+  "sha256": "a4dc6cd09c41464946916505d1fad5fdd1fa5e042188b24dfc4de6f3f264ebcb",
+  "signature": "NotSigned",
+  "dirty": false,
+  "windows_clean_install": "not_tested",
+  "nsis_full_audit": "passed",
+  "runtime_manifest_sha256": "20d61e96535335f4d54fdb0624bee5a8659c7cafaac30d040b64f12dd9f82eea",
+  "installer_manifest_sha256": "b60e2ab9b814eb80dfa5b73defa20eaec5902bd4aac20176b7de3b2b5885078f",
+  "nsis_files": 951,
+  "runtime_files": 924,
+  "all_payload_bytes_match_verified_inputs": true,
+  "inventory_components": 289,
+  "inventory_missing_notices": 0,
+  "embedded_regression_tests": {
+    "passed": 172,
+    "skipped": 3,
+    "reason_for_skips": "Windows symlink fixture privileges"
+  },
+  "runtime_isolation_passed": true,
+  "extracted_runtime_smoke": {
+    "web_bundle_served": true,
+    "demo_reused_after_process_restart": true,
+    "project_restart_png_pixel_identical": true,
+    "planner_optics": true,
+    "cube_color_only": true,
+    "png_24mp": {
+      "runs": 1,
+      "dimensions": [
+        6000,
+        4000
+      ],
+      "processing_ms": 21397.7,
+      "peak_rss_mib": 1192.9,
+      "decoded_pixels_sha256": "a93aac87d5b33871883920360a8d80c2dba20a7d7228b13eb9dd0b3102ec352f",
+      "matches_source_benchmark_pixels": true
+    }
+  },
+  "vm_kit_sha256": "659f6bc327147cfd3084bdbe82814ba00625abe08d99c1e4f308827e736a8d84",
+  "distribution_status": "NO-GO_pending_clean_Windows_upgrade_QA_rights_and_owner_review",
+  "human_approved": false
+}

@@ -1451,3 +1451,23 @@ paso sigue en [#67](https://github.com/jea27/Lut_generator/issues/67).
 Los dos ciclos, la validación visual y el ensayo en Resolve siguen
 pendientes de ejecución. El fallo intermitente anterior y las eliminaciones
 históricas permanecen abiertos. Beta externa y venta siguen en NO-GO.
+
+## 18-11-2026 · Color Studio 1.0.0 en QA interna
+
+COL-036, rama `codex/COL-036-color-studio-1`, [PR #100](https://github.com/jea27/Lut_generator/pull/100).
+La rama parte de la integración humana de #90 en `main`. La aplicación y el
+instalador llevan 1.0.0. Se conserva la identidad de instalación de Windows para
+probar actualizaciones desde las betas. Restauradas dos pruebas de la demo.
+
+Instalador x64 de `ab72040`, auditoría NSIS de 951 archivos, 172 casos correctos
+con el runtime empaquetado y tres omisiones de symlinks en el host. El motor
+extraído reutilizó la demo entre procesos, recuperó el proyecto con los mismos
+píxeles y exportó la LUT sin los efectos ópticos. Se subieron el instalador y
+SHA256SUMS.txt a un borrador de release, con el hash remoto cotejado.
+[Recibo](evidence/COLOR_STUDIO_1_0_ARTIFACT.json).
+
+El kit privado de 1.0.0 contiene el mismo instalador, verificado miembro a
+miembro. Reanudar con [la guía de Hyper-V](QA_COLOR_STUDIO_1_0.md) y registrar
+los informes en privado. La sesión de Codex no pudo acceder a Hyper-V.
+Quedan pendientes Windows limpio, actualización, aceptación de derechos
+y revisión humana. La descarga pública sigue bloqueada.
