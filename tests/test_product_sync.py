@@ -27,8 +27,8 @@ class ProductTests(unittest.TestCase):
         self.runs=[{'id':n,'name':name,'status':'completed','conclusion':'success','head_sha':'a'*40,'head_branch':'main','run_number':3,'html_url':f'{BASE}/actions/runs/{n}'} for n,name in enumerate(self.manifest['required_ci'])]
         self.releases=[]
 
-    def derive(self):
-        return product.derive(self.manifest,ROOT,REPO,self.issues,self.prs,self.runs,'a'*40,self.releases,[],'2026-10-31T00:00:00Z')
+    def derive(self, root=ROOT):
+        return product.derive(self.manifest,root,REPO,self.issues,self.prs,self.runs,'a'*40,self.releases,[],'2026-10-31T00:00:00Z')
 
     def issue(self,n): return next(i for i in self.issues if i['number']==n)
 
@@ -78,14 +78,33 @@ class ProductTests(unittest.TestCase):
                 self.assertFalse(windows['human_approved']);self.assertEqual(windows['review']['state'],state)
 
     def test_quarantined_build_never_counts_as_candidate_or_enables_download(self):
-        initial=self.derive();self.assertIsNone(initial['candidate'])
-        build=next(b for b in initial['versions'] if b['quarantined'])
-        self.assertTrue(build['quarantined'])
-        tag='v'+build['version'];self.issue(62)['labels']=[{'name':'release-approved:'+tag}]
-        self.releases=[{'tag_name':tag,'draft':False,'published_at':'2026-11-02T00:00:00Z',
-            'html_url':BASE+'/releases/tag/'+tag,'assets':[{'state':'uploaded','name':'fixture.exe','digest':'sha256:'+build['sha256']}]}]
-        result=self.derive();self.assertIsNone(result['latest_release']['download_url'])
-        self.assertFalse(result['latest_release']['asset_matches_manifest']);self.assertFalse(result['readiness']['beta']['go'])
+        build = {'version':'9.8.7', 'sha256':'a'*64, 'source':'a'*40, 'bytes':120,
+                 'dirty':False, 'quarantined':True}
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            roadmap = root/'site/data/roadmap.json'
+            roadmap.parent.mkdir(parents=True)
+            shutil.copyfile(ROOT/'site/data/roadmap.json', roadmap)
+            version = root/self.manifest['version_source']
+            version.parent.mkdir(parents=True)
+            version.write_text(json.dumps({'version':build['version']}), encoding='utf-8')
+            artifact = root/'docs/evidence/TEST_ARTIFACT.json'
+            artifact.parent.mkdir(parents=True)
+            artifact.write_text(json.dumps(build), encoding='utf-8')
+
+            initial = self.derive(root)
+            self.assertIsNone(initial['candidate'])
+            self.assertTrue(initial['versions'][0]['quarantined'])
+
+            tag = 'v'+build['version']
+            self.issue(62)['labels'] = [{'name':'release-approved:'+tag}]
+            self.releases = [{'tag_name':tag, 'draft':False, 'published_at':'2026-11-02T00:00:00Z',
+                             'html_url':BASE+'/releases/tag/'+tag,
+                             'assets':[{'state':'uploaded', 'name':'fixture.exe', 'digest':'sha256:'+build['sha256']}]}]
+            result = self.derive(root)
+            self.assertIsNone(result['latest_release']['download_url'])
+            self.assertFalse(result['latest_release']['asset_matches_manifest'])
+            self.assertFalse(result['readiness']['beta']['go'])
 
     def test_new_capability_needs_own_receipt_even_after_delivery_and_issue_label(self):
         creator=next(f for f in self.manifest['features'] if f['id']=='creator')
